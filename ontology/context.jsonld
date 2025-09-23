@@ -1,0 +1,36 @@
+{
+  "@context": {
+    "@vocab": "https://w3id.org/hcmo/ontology/hcm#",
+    "hcm": "https://w3id.org/hcmo/ontology/hcm#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "width": { "@id": "hcm:width", "@type": "xsd:decimal" },
+    "length": { "@id": "hcm:length", "@type": "xsd:decimal" },
+    "height": { "@id": "hcm:height", "@type": "xsd:decimal" },
+    "unit":   { "@id": "hcm:unit" },
+
+    "durationHours": { "@id": "hcm:durationHours", "@type": "xsd:decimal" },
+    "isExtendable":  { "@id": "hcm:isExtendable",  "@type": "xsd:boolean" },
+
+    "hasEnclosure":  "hcm:hasEnclosure",
+    "hasHardware":   "hcm:hasHardware",
+    "hasSoftware":   "hcm:hasSoftware",
+    "producedBy":    "hcm:producedBy",
+    "collectsInfoOn":"hcm:collectsInfoOn",
+    "livesIn":       "hcm:livesIn",
+    "requiresToThrive": "hcm:requiresToThrive",
+    "provides":      "hcm:provides",
+    "displays":      "hcm:displays",
+    "isDisplayedInside": "hcm:isDisplayedInside",
+    "hasCircadianRhythm": "hcm:hasCircadianRhythm",
+    "extendsEnoughToCapture": "hcm:extendsEnoughToCapture",
+    "hasProperty":   "hcm:hasProperty",
+    "captures":      "hcm:captures",
+    "elicits":       "hcm:elicits",
+    "hasSensor":     "hcm:hasSensor",
+    "hasActuator":   "hcm:hasActuator",
+    "communicatesWith": "hcm:communicatesWith",
+    "hasDimensions": "hcm:hasDimensions"
+  }
+}
+

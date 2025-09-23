@@ -1,0 +1,32 @@
+@prefix hcm:   <https://w3id.org/hcmo/ontology/hcm#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix sosa:  <http://www.w3.org/ns/sosa/> .
+@prefix ssn:   <http://www.w3.org/ns/ssn/> .
+@prefix time:  <http://www.w3.org/2006/time#> .
+@prefix prov:  <http://www.w3.org/ns/prov#> .
+@prefix schema:<http://schema.org/> .
+@prefix qudt:  <http://qudt.org/schema/qudt/> .
+@prefix unit:  <http://qudt.org/vocab/unit/> .
+@prefix bfo:   <http://purl.obolibrary.org/obo/BFO_> .
+
+# Sensors / Actuators / Platform
+hcm:Sensor rdfs:subClassOf sosa:Sensor .
+hcm:Actuator rdfs:subClassOf sosa:Actuator .
+hcm:System  rdfs:subClassOf sosa:Platform .
+hcm:hasSensor rdfs:subPropertyOf sosa:hosts .
+
+# Time alignment
+hcm:TimeInterval rdfs:subClassOf time:TemporalEntity .
+
+# Process alignment (Behavior as process)
+hcm:BehaviorAndPhysiology rdfs:subClassOf bfo:0000015 .  # process
+
+# Provenance / Agents
+hcm:producedBy rdfs:subPropertyOf prov:wasAttributedTo .
+hcm:Supplier rdfs:subClassOf prov:Agent , schema:Organization .
+
+# Geometry / Units (conservative hints)
+# NOTE: Keep simple datatype pattern in TBox; migrate to QUDT/OM per roadmap.
+# hcm:Dimensions could be re-modeled as a set of qudt:QuantityValue instances.
+

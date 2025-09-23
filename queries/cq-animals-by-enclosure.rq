@@ -1,0 +1,10 @@
+PREFIX hcm: <https://w3id.org/hcmo/ontology/hcm#>
+
+SELECT ?system ?enclosure (GROUP_CONCAT(?animal; separator=", ") AS ?animals)
+WHERE {
+  ?system a hcm:System ; hcm:hasEnclosure ?enclosure .
+  OPTIONAL { ?animal a hcm:Animal ; hcm:livesIn ?enclosure . }
+}
+GROUP BY ?system ?enclosure
+ORDER BY ?system ?enclosure
+

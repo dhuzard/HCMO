@@ -1,0 +1,40 @@
+name: Validate Ontology
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: pip install -r tooling/requirements.txt
+      - name: Parse TTL files
+        run: |
+          python - << 'PY'
+          import sys, glob
+          from rdflib import Graph
+          def check(paths):
+              for p in paths:
+                  g = Graph()
+                  g.parse(p, format='turtle')
+                  print(f"[OK] {p}")
+          check(glob.glob('ontology/*.ttl'))
+          check(glob.glob('shapes/*.ttl'))
+          check(glob.glob('examples/*.ttl'))
+          PY
+      - name: SHACL validation (minimal ABox)
+        run: |
+          python -m pyshacl -s shapes/hcm-shapes.ttl -m -i rdfs -a -f human examples/abox-minimal.ttl
+      - name: SHACL validation (edge cases expected to fail)
+        run: |
+          set +e
+          python -m pyshacl -s shapes/hcm-shapes.ttl -m -i rdfs -a -f human examples/abox-edge-cases.ttl && exit 1 || echo "Edge-case failures detected as expected"
+

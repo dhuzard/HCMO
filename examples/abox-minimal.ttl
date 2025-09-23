@@ -1,0 +1,52 @@
+@prefix hcm:  <https://w3id.org/hcmo/ontology/hcm#> .
+@prefix ex:   <https://example.org/id/> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+ex:System_A a hcm:System ;
+  hcm:hasEnclosure ex:Enc_01 ;
+  hcm:hasHardware  ex:HW_01 ;
+  hcm:hasSoftware  ex:SW_01 ;
+  hcm:producedBy   ex:SupplierAcme ;
+  hcm:collectsInfoOn ex:Mouse_1 ;
+  hcm:hasSensor    ex:IR_Sensor_1 ;
+  hcm:hasActuator  ex:Feeder_1 .
+
+ex:SupplierAcme a hcm:Supplier .
+
+ex:Mouse_1 a hcm:Animal ;
+  hcm:livesIn ex:Enc_01 ;
+  hcm:requiresToThrive ex:Needs_Default ;
+  hcm:displays ex:Behav_Rec_1 .
+
+ex:Enc_01 a hcm:Enclosure ;
+  hcm:provides ex:Needs_Default ;
+  hcm:hasDimensions ex:Dims_01 .
+
+ex:Dims_01 a hcm:Dimensions ;
+  hcm:width  30.0 ; hcm:length 45.0 ; hcm:height 20.0 ; hcm:unit "cm" .
+
+ex:Needs_Default a hcm:NeedsSequence ;
+  hcm:hasFood "true"^^xsd:boolean ;
+  hcm:hasWater "true"^^xsd:boolean ;
+  hcm:hasSocialContacts "true"^^xsd:boolean ;
+  hcm:hasSafetyFromThreat "true"^^xsd:boolean ;
+  hcm:hasEnvironmentalEnrichment "true"^^xsd:boolean .
+
+ex:Behav_Rec_1 a hcm:BehaviorAndPhysiology ;
+  hcm:isDisplayedInside ex:Enc_01 ;
+  hcm:hasCircadianRhythm ex:CR_1 ;
+  hcm:extendsEnoughToCapture ex:TI_24h .
+
+ex:CR_1 a hcm:CircadianRhythm .
+ex:TI_24h a hcm:TimeInterval ;
+  hcm:durationHours 24.0 ;
+  hcm:isExtendable  "true"^^xsd:boolean ;
+  hcm:hasProperty   ex:LowHumanInteraction .
+
+ex:LowHumanInteraction a hcm:LimitedInteractionWithHumans .
+
+ex:IR_Sensor_1 a hcm:Sensor ;   hcm:captures ex:Behav_Rec_1 .
+ex:Feeder_1    a hcm:Actuator ; hcm:elicits  ex:Behav_Rec_1 .
+ex:HW_01 a hcm:Hardware ; hcm:communicatesWith ex:SW_01 .
+ex:SW_01 a hcm:Software .
+

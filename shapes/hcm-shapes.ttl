@@ -1,0 +1,46 @@
+@prefix sh:   <http://www.w3.org/ns/shacl#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix hcm:  <https://w3id.org/hcmo/ontology/hcm#> .
+
+# System must have exactly one enclosure and at least one sensor
+hcm:SystemShape a sh:NodeShape ;
+  sh:targetClass hcm:System ;
+  sh:property [ sh:path hcm:hasEnclosure ; sh:minCount 1 ; sh:maxCount 1 ; sh:message "System must have exactly one enclosure." ] ;
+  sh:property [ sh:path hcm:hasSensor ; sh:minCount 1 ; sh:message "System must have at least one sensor." ] ;
+  sh:property [ sh:path hcm:hasHardware ; sh:nodeKind sh:IRIOrLiteral ; sh:minCount 0 ] ;
+  sh:property [ sh:path hcm:hasSoftware ; sh:nodeKind sh:IRIOrLiteral ; sh:minCount 0 ] .
+
+# Behavior needs enclosure and time interval
+hcm:BehaviorShape a sh:NodeShape ;
+  sh:targetClass hcm:BehaviorAndPhysiology ;
+  sh:property [ sh:path hcm:isDisplayedInside ; sh:minCount 1 ; sh:message "Behavior must be linked to an enclosure." ] ;
+  sh:property [ sh:path hcm:extendsEnoughToCapture ; sh:minCount 1 ; sh:message "Behavior must have a capturing time interval." ] .
+
+# Time interval semantics
+hcm:TimeIntervalShape a sh:NodeShape ;
+  sh:targetClass hcm:TimeInterval ;
+  sh:property [ sh:path hcm:durationHours ; sh:datatype xsd:decimal ; sh:minInclusive 24 ; sh:message "durationHours must be a decimal ≥ 24." ] ;
+  sh:property [ sh:path hcm:isExtendable ; sh:datatype xsd:boolean ; sh:message "isExtendable must be boolean." ] ;
+  sh:property [ sh:path hcm:hasProperty ; sh:class hcm:LimitedInteractionWithHumans ; sh:minCount 1 ; sh:message "Time interval must assert limited human interaction." ] .
+
+# Enclosure must have dimensions
+hcm:EnclosureDimsShape a sh:NodeShape ;
+  sh:targetClass hcm:Enclosure ;
+  sh:property [ sh:path hcm:hasDimensions ; sh:minCount 1 ; sh:message "Enclosure must have a dimensions record." ] .
+
+# Dimensions should be positive and have a unit
+hcm:DimensionsShape a sh:NodeShape ;
+  sh:targetClass hcm:Dimensions ;
+  sh:property [ sh:path hcm:width ;  sh:datatype xsd:decimal ; sh:minExclusive 0 ; sh:message "width must be > 0." ] ;
+  sh:property [ sh:path hcm:length ; sh:datatype xsd:decimal ; sh:minExclusive 0 ; sh:message "length must be > 0." ] ;
+  sh:property [ sh:path hcm:height ; sh:datatype xsd:decimal ; sh:minExclusive 0 ; sh:message "height must be > 0." ] ;
+  sh:property [ sh:path hcm:unit ; sh:datatype xsd:string ; sh:minCount 1 ; sh:message "unit must be present (e.g., 'cm')." ] .
+
+# Optional: IRIs pattern example for Mouse IDs (commented, enable if desired)
+# hcm:MouseIdShape a sh:NodeShape ;
+#   sh:targetSubjectsOf hcm:livesIn ;
+#   sh:pattern "^https://example.org/id/Mouse_[0-9]+$" ;
+#   sh:message "Mouse IRIs should match https://example.org/id/Mouse_<n>." .
+

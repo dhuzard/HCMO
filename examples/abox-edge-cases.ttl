@@ -1,0 +1,38 @@
+@prefix hcm:  <https://w3id.org/hcmo/ontology/hcm#> .
+@prefix ex:   <https://example.org/id/> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+# 1) System without sensors (should fail SystemShape minCount on hasSensor)
+ex:System_NoSensor a hcm:System ;
+  hcm:hasEnclosure ex:Enc_NoSensor .
+
+ex:Enc_NoSensor a hcm:Enclosure ;
+  hcm:hasDimensions ex:Dims_OK .
+
+ex:Dims_OK a hcm:Dimensions ;
+  hcm:width 30.0 ; hcm:length 45.0 ; hcm:height 20.0 ; hcm:unit "cm" .
+
+# 2) TimeInterval at 23.5 hours (should fail minInclusive 24)
+ex:TI_TooShort a hcm:TimeInterval ;
+  hcm:durationHours 23.5 ;
+  hcm:isExtendable "true"^^xsd:boolean ;
+  hcm:hasProperty ex:LowHumanInteraction .
+
+ex:LowHumanInteraction a hcm:LimitedInteractionWithHumans .
+
+# 3) Enclosure without dimensions (should fail EnclosureDimsShape)
+ex:Enc_NoDims a hcm:Enclosure .
+
+# 4) Behavior missing isDisplayedInside (should fail BehaviorShape)
+ex:Behav_NoEnclosure a hcm:BehaviorAndPhysiology ;
+  hcm:extendsEnoughToCapture ex:TI_24h_OK .
+
+ex:TI_24h_OK a hcm:TimeInterval ;
+  hcm:durationHours 24.0 ;
+  hcm:isExtendable "false"^^xsd:boolean ;
+  hcm:hasProperty ex:LowHumanInteraction .
+
+# 5) Dimensions with negative height (should fail DimensionsShape)
+ex:Dims_Bad a hcm:Dimensions ;
+  hcm:width 30.0 ; hcm:length 45.0 ; hcm:height -1.0 ; hcm:unit "cm" .
+

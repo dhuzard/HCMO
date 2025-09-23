@@ -1,0 +1,14 @@
+PREFIX hcm: <https://w3id.org/hcmo/ontology/hcm#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?animal ?enclosure ?needs
+WHERE {
+  ?animal a hcm:Animal ; hcm:livesIn ?enclosure ; hcm:requiresToThrive ?needs .
+  ?enclosure a hcm:Enclosure .
+  # Check for any missing boolean flags (simple pattern)
+  FILTER ( ! EXISTS { ?needs hcm:hasFood ?f } || ! EXISTS { ?needs hcm:hasWater ?w } ||
+           ! EXISTS { ?needs hcm:hasSocialContacts ?sc } || ! EXISTS { ?needs hcm:hasSafetyFromThreat ?sf } ||
+           ! EXISTS { ?needs hcm:hasEnvironmentalEnrichment ?ee } )
+}
+ORDER BY ?animal
+

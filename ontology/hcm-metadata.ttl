@@ -1,0 +1,18 @@
+@prefix :       <https://w3id.org/hcmo/ontology/hcm#> .
+@prefix hcm:    <https://w3id.org/hcmo/ontology/hcm#> .
+@prefix owl:    <http://www.w3.org/2002/07/owl#> .
+@prefix dcterms:<http://purl.org/dc/terms/> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/hcmo/ontology/hcm>
+    a owl:Ontology ;
+    dcterms:title "HCMO Ontology (Home-Cage Monitoring Ontology)" ;
+    dcterms:description "An ontology for modeling home-cage monitoring systems, enclosures, animals, behaviors, sensors, actuators, time windows, and provisioning needs." ;
+    owl:versionIRI <https://w3id.org/hcmo/ontology/hcm/1.0.0> ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:creator "HCMO maintainers" ;
+    dcterms:issued "2025-09-23"^^xsd:date ;
+    dcterms:modified "2025-09-23"^^xsd:date ;
+    owl:imports <https://w3id.org/hcmo/ontology/hcm.ttl> ,
+                <https://w3id.org/hcmo/ontology/hcm-align.ttl> .
+

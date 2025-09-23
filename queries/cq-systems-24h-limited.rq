@@ -1,0 +1,17 @@
+PREFIX hcm:  <https://w3id.org/hcmo/ontology/hcm#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+
+SELECT DISTINCT ?system ?interval ?hours
+WHERE {
+  ?system a hcm:System ;
+          hcm:hasSensor ?sensor .
+  ?sensor hcm:captures ?beh .
+  ?beh a hcm:BehaviorAndPhysiology ;
+       hcm:extendsEnoughToCapture ?interval .
+  ?interval hcm:durationHours ?hours ;
+           hcm:hasProperty ?prop .
+  ?prop a hcm:LimitedInteractionWithHumans .
+  FILTER(?hours >= 24)
+}
+ORDER BY ?system
+

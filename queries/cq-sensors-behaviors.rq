@@ -1,0 +1,9 @@
+PREFIX hcm: <https://w3id.org/hcmo/ontology/hcm#>
+
+SELECT ?system ?sensor ?behavior
+WHERE {
+  ?system a hcm:System ; hcm:hasSensor ?sensor .
+  OPTIONAL { ?sensor hcm:captures ?behavior }
+}
+ORDER BY ?system ?sensor
+
