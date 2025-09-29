@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HCMO System Authoring Form</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <header class="page__header">
+      <h1>HCMO System Authoring Form</h1>
+      <p>Capture the minimum information required by the HCMO ontology and export validated RDF packages.</p>
+    </header>
+
+    <form id="hcmo-form" class="form">
+      <section class="card">
+        <h2>Global Settings</h2>
+        <label>
+          Base IRI
+          <input type="url" name="baseIri" value="https://mfg.example.com/hcm/id/" required>
+          <small>Used to mint IRIs for all resources; include trailing slash or hash.</small>
+        </label>
+        <label>
+          Ingestion Timestamp (optional)
+          <input type="datetime-local" name="ingestedAt">
+        </label>
+      </section>
+
+      <section class="card">
+        <h2>System</h2>
+        <div class="grid grid--two">
+          <label>
+            System ID
+            <input type="text" name="systemId" placeholder="System_A" required>
+          </label>
+          <label>
+            System Label
+            <input type="text" name="systemLabel" placeholder="System A (rack 3, cage 12)">
+          </label>
+        </div>
+        <div class="grid grid--three">
+          <label>
+            Hardware ID
+            <input type="text" name="hardwareId" placeholder="HW_01" required>
+          </label>
+          <label>
+            Hardware Label
+            <input type="text" name="hardwareLabel" placeholder="HW control board">
+          </label>
+          <label>
+            Software ID
+            <input type="text" name="softwareId" placeholder="SW_01" required>
+          </label>
+        </div>
+        <div class="grid grid--two">
+          <label>
+            Software Label
+            <input type="text" name="softwareLabel" placeholder="Telemetry Service">
+          </label>
+          <label>
+            Supplier ID
+            <input type="text" name="supplierId" placeholder="SupplierAcme" required>
+          </label>
+        </div>
+        <label>
+          Supplier Label
+          <input type="text" name="supplierLabel" placeholder="Acme supply partners">
+        </label>
+      </section>
+
+      <section class="card">
+        <h2>Enclosure &amp; Needs</h2>
+        <div class="grid grid--two">
+          <label>
+            Enclosure ID
+            <input type="text" name="enclosureId" placeholder="Enc_01" required>
+          </label>
+          <label>
+            Enclosure Label
+            <input type="text" name="enclosureLabel" placeholder="Enclosure 01">
+          </label>
+        </div>
+        <fieldset class="fieldset">
+          <legend>Dimensions</legend>
+          <div class="grid grid--four">
+            <label>Width (cm)
+              <input type="number" step="0.1" name="width" value="30" required>
+            </label>
+            <label>Length (cm)
+              <input type="number" step="0.1" name="length" value="45" required>
+            </label>
+            <label>Height (cm)
+              <input type="number" step="0.1" name="height" value="20" required>
+            </label>
+            <label>Unit
+              <input type="text" name="unit" value="cm" required>
+            </label>
+          </div>
+        </fieldset>
+        <fieldset class="fieldset">
+          <legend>Needs Provisioning</legend>
+          <div class="grid grid--five">
+            <label><input type="checkbox" name="needFood" checked> Food</label>
+            <label><input type="checkbox" name="needWater" checked> Water</label>
+            <label><input type="checkbox" name="needSocial" checked> Social Contacts</label>
+            <label><input type="checkbox" name="needSafety" checked> Safety from Threat</label>
+            <label><input type="checkbox" name="needEnrichment" checked> Environmental Enrichment</label>
+          </div>
+        </fieldset>
+      </section>
+
+      <section class="card">
+        <h2>Animal &amp; Behavior</h2>
+        <div class="grid grid--two">
+          <label>
+            Animal ID
+            <input type="text" name="animalId" placeholder="Mouse_1" required>
+          </label>
+          <label>
+            Animal Label
+            <input type="text" name="animalLabel" placeholder="Mouse 1 (study cohort)">
+          </label>
+        </div>
+        <div class="grid grid--three">
+          <label>
+            Behavior ID
+            <input type="text" name="behaviorId" placeholder="Behav_Rec_1" required>
+          </label>
+          <label>
+            Behavior Label
+            <input type="text" name="behaviorLabel" placeholder="Exploration bouts">
+          </label>
+          <label>
+            Circadian Rhythm Label
+            <input type="text" name="circadianLabel" placeholder="Nocturnal peak">
+          </label>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Observation Window</h2>
+        <div class="grid grid--three">
+          <label>
+            Interval ID
+            <input type="text" name="intervalId" placeholder="TI_24h" required>
+          </label>
+          <label>
+            Interval Label
+            <input type="text" name="intervalLabel" placeholder="24-hour observation window">
+          </label>
+          <label>
+            Duration (hours)
+            <input type="number" step="0.1" name="durationHours" value="24" required>
+          </label>
+        </div>
+        <div class="grid grid--two">
+          <label>
+            Extendable?
+            <select name="isExtendable" required>
+              <option value="true" selected>Yes</option>
+              <option value="false">No</option>
+            </select>
+          </label>
+          <label>
+            Limited Interaction Label
+            <input type="text" name="limitedInteractionLabel" placeholder="Minimal human contact" required>
+          </label>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Sensors</h2>
+        <div id="sensor-list" class="repeat-list" data-sensor-list></div>
+        <button type="button" id="add-sensor" class="button button--secondary">Add Sensor</button>
+      </section>
+
+      <section class="card">
+        <h2>Actuators</h2>
+        <div id="actuator-list" class="repeat-list" data-actuator-list></div>
+        <button type="button" id="add-actuator" class="button button--secondary">Add Actuator</button>
+      </section>
+
+      <footer class="form__footer">
+        <button type="submit" class="button button--primary">Generate &amp; Validate</button>
+      </footer>
+    </form>
+
+    <section id="results" class="card card--results" hidden>
+      <h2>Export Results</h2>
+      <p id="status-line" class="status"></p>
+      <div class="results-grid">
+        <div>
+          <h3>JSON-LD</h3>
+          <textarea id="jsonld-output" readonly></textarea>
+          <button type="button" id="download-jsonld" class="button button--secondary" disabled>Download JSON-LD</button>
+        </div>
+        <div>
+          <h3>Turtle</h3>
+          <textarea id="turtle-output" readonly></textarea>
+          <button type="button" id="download-turtle" class="button button--secondary" disabled>Download Turtle</button>
+        </div>
+        <div>
+          <h3>Validation Report</h3>
+          <textarea id="validation-output" readonly></textarea>
+          <button type="button" id="download-zip" class="button button--secondary" disabled>Download ZIP Bundle</button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
