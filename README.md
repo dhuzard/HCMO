@@ -10,12 +10,21 @@ A professional, reusable ontology package for home‑cage monitoring (HCMO). It 
 - SPARQL queries: `queries/`
 - JSON‑LD context: `ontology/context.jsonld`
 - Validation script and CI: `tooling/validate.ps1`, `.github/workflows/validate.yml`
+- Web-based authoring app: `webapp/`
 
 ## Why HCMO?
 - Interoperability: Aligns with SOSA/SSN (sensing/actuation), OWL‑Time, PROV, and BFO.
 - Data quality: Enforces practical constraints (≥24h window, enclosure dimensions, etc.) with SHACL.
 - Developer‑ready: JSON‑LD context and examples; simple upgrade path to QUDT/OM units.
 - FAIR: Clear IRIs, metadata, governance, and publishing guidance.
+
+## Web Authoring App
+
+- Install once: `cd webapp && npm install`
+- Start locally: `npm run dev` (serves http://localhost:3000)
+- Fill the form (base IRI, system/enclosure/sensor/actuator/time interval) and press **Generate & Validate**
+- Download JSON-LD, Turtle, or the ZIP bundle; validation mirrors `tooling/validate.ps1`
+- Optional CLI check: `node examples/sample-request.mjs` posts the sample payload and prints the SHACL result
 
 ## Quickstart
 
