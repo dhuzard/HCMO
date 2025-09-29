@@ -21,7 +21,7 @@ hcm:BehaviorShape a sh:NodeShape ;
 # Time interval semantics
 hcm:TimeIntervalShape a sh:NodeShape ;
   sh:targetClass hcm:TimeInterval ;
-  sh:property [ sh:path hcm:durationHours ; sh:datatype xsd:decimal ; sh:minInclusive 24 ; sh:message "durationHours must be a decimal ≥ 24." ] ;
+  sh:property [ sh:path hcm:durationHours ; sh:datatype xsd:decimal ; sh:minInclusive 24 ; sh:message "durationHours must be a decimal >= 24." ] ;
   sh:property [ sh:path hcm:isExtendable ; sh:datatype xsd:boolean ; sh:message "isExtendable must be boolean." ] ;
   sh:property [ sh:path hcm:hasProperty ; sh:class hcm:LimitedInteractionWithHumans ; sh:minCount 1 ; sh:message "Time interval must assert limited human interaction." ] .
 
@@ -41,6 +41,5 @@ hcm:DimensionsShape a sh:NodeShape ;
 # Optional: IRIs pattern example for Mouse IDs (commented, enable if desired)
 # hcm:MouseIdShape a sh:NodeShape ;
 #   sh:targetSubjectsOf hcm:livesIn ;
-#   sh:pattern "^https://example.org/id/Mouse_[0-9]+$" ;
-#   sh:message "Mouse IRIs should match https://example.org/id/Mouse_<n>." .
-
+#   sh:pattern "^https://mfg.example.com/hcm/id/Mouse_[0-9]+$" ;
+#   sh:message "Mouse IRIs should match https://mfg.example.com/hcm/id/Mouse_<n>." .

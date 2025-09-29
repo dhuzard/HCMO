@@ -11,24 +11,33 @@ if ($LASTEXITCODE -ne 0) {
   pip install -r tooling/requirements.txt
 }
 
-python - << 'PY'
-import sys, glob
+$parseScript = @"
+import glob
+import sys
 from rdflib import Graph
 
-def check_parse(paths):
-    for p in paths:
-        g = Graph()
-        try:
-            g.parse(p, format='turtle')
-            print(f"[OK] Parsed: {p}")
-        except Exception as e:
-            print(f"[ERR] Parse failed: {p}: {e}")
-            sys.exit(2)
+PATTERNS = ('ontology/*.ttl', 'shapes/*.ttl', 'examples/*.ttl')
 
-check_parse(glob.glob('ontology/*.ttl'))
-check_parse(glob.glob('shapes/*.ttl'))
-check_parse(glob.glob('examples/*.ttl'))
-PY
+for pattern in PATTERNS:
+    matches = sorted(glob.glob(pattern))
+    if not matches:
+        print(f'[WARN] No files matched {pattern}')
+    for path in matches:
+        graph = Graph()
+        try:
+            graph.parse(path, format='turtle')
+            print(f'[OK] Parsed: {path}')
+        except Exception as exc:
+            print(f'[ERR] Parse failed: {path}: {exc}')
+            sys.exit(2)
+"@
+
+python -c $parseScript
+
+if ($LASTEXITCODE -ne 0) {
+  Write-Host "Parsing failed." -ForegroundColor Red
+  exit 1
+}
 
 python -m pyshacl -s $Shapes -m -i rdfs -a -f human $Data
 
@@ -38,4 +47,3 @@ if ($LASTEXITCODE -eq 0) {
   Write-Host "Validation failed." -ForegroundColor Red
   exit 1
 }
-

@@ -1,31 +1,42 @@
 @prefix hcm:  <https://w3id.org/hcmo/ontology/hcm#> .
-@prefix ex:   <https://example.org/id/> .
+@prefix ex:   <https://mfg.example.com/hcm/id/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
 
 ex:System_A a hcm:System ;
+  rdfs:label "System A (rack 3, cage 12)" ;
   hcm:hasEnclosure ex:Enc_01 ;
   hcm:hasHardware  ex:HW_01 ;
   hcm:hasSoftware  ex:SW_01 ;
   hcm:producedBy   ex:SupplierAcme ;
   hcm:collectsInfoOn ex:Mouse_1 ;
   hcm:hasSensor    ex:IR_Sensor_1 ;
-  hcm:hasActuator  ex:Feeder_1 .
+  hcm:hasActuator  ex:Feeder_1 ;
+  ex:ingestedAt    "2025-09-29T09:00:00Z"^^xsd:dateTime .
 
-ex:SupplierAcme a hcm:Supplier .
+ex:SupplierAcme a hcm:Supplier ;
+  rdfs:label "Acme supply partners" .
 
 ex:Mouse_1 a hcm:Animal ;
+  rdfs:label "Mouse 1 (study cohort alpha)" ;
   hcm:livesIn ex:Enc_01 ;
   hcm:requiresToThrive ex:Needs_Default ;
   hcm:displays ex:Behav_Rec_1 .
 
 ex:Enc_01 a hcm:Enclosure ;
+  rdfs:label "Enclosure 01 (Rack 3 Cage 12)" ;
   hcm:provides ex:Needs_Default ;
   hcm:hasDimensions ex:Dims_01 .
 
 ex:Dims_01 a hcm:Dimensions ;
-  hcm:width  30.0 ; hcm:length 45.0 ; hcm:height 20.0 ; hcm:unit "cm" .
+  rdfs:label "Cage interior dimensions" ;
+  hcm:width  30.0 ;
+  hcm:length 45.0 ;
+  hcm:height 20.0 ;
+  hcm:unit "cm" .
 
 ex:Needs_Default a hcm:NeedsSequence ;
+  rdfs:label "Baseline welfare requirements" ;
   hcm:hasFood "true"^^xsd:boolean ;
   hcm:hasWater "true"^^xsd:boolean ;
   hcm:hasSocialContacts "true"^^xsd:boolean ;
@@ -33,20 +44,34 @@ ex:Needs_Default a hcm:NeedsSequence ;
   hcm:hasEnvironmentalEnrichment "true"^^xsd:boolean .
 
 ex:Behav_Rec_1 a hcm:BehaviorAndPhysiology ;
+  rdfs:label "Exploration bouts (24h window)" ;
   hcm:isDisplayedInside ex:Enc_01 ;
   hcm:hasCircadianRhythm ex:CR_1 ;
   hcm:extendsEnoughToCapture ex:TI_24h .
 
-ex:CR_1 a hcm:CircadianRhythm .
+ex:CR_1 a hcm:CircadianRhythm ;
+  rdfs:label "Nocturnal peak" .
+
 ex:TI_24h a hcm:TimeInterval ;
+  rdfs:label "24-hour observation window" ;
   hcm:durationHours 24.0 ;
   hcm:isExtendable  "true"^^xsd:boolean ;
   hcm:hasProperty   ex:LowHumanInteraction .
 
-ex:LowHumanInteraction a hcm:LimitedInteractionWithHumans .
+ex:LowHumanInteraction a hcm:LimitedInteractionWithHumans ;
+  rdfs:label "Minimal human contact" .
 
-ex:IR_Sensor_1 a hcm:Sensor ;   hcm:captures ex:Behav_Rec_1 .
-ex:Feeder_1    a hcm:Actuator ; hcm:elicits  ex:Behav_Rec_1 .
-ex:HW_01 a hcm:Hardware ; hcm:communicatesWith ex:SW_01 .
-ex:SW_01 a hcm:Software .
+ex:IR_Sensor_1 a hcm:Sensor ;
+  rdfs:label "IR beam sensor (left wall)" ;
+  hcm:captures ex:Behav_Rec_1 .
 
+ex:Feeder_1 a hcm:Actuator ;
+  rdfs:label "Feeder 1 (pellet dispenser)" ;
+  hcm:elicits  ex:Behav_Rec_1 .
+
+ex:HW_01 a hcm:Hardware ;
+  rdfs:label "HW control board 01" ;
+  hcm:communicatesWith ex:SW_01 .
+
+ex:SW_01 a hcm:Software ;
+  rdfs:label "Telemetry service 01" .
