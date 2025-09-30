@@ -25,6 +25,7 @@ A professional, reusable ontology package for home‑cage monitoring (HCMO). It 
 - Fill the form (base IRI, system/enclosure/sensor/actuator/time interval) and press **Generate & Validate**
 - Download JSON-LD, Turtle, or the ZIP bundle; validation mirrors `tooling/validate.ps1`
 - Optional CLI check: `node examples/sample-request.mjs` posts the sample payload and prints the SHACL result
+- Field legend: `*` mandatory · `$` recommended · `§` optional (matching the blueprint classifications surfaced in the web UI)
 
 ## Quickstart
 

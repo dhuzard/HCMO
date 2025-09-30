@@ -93,6 +93,52 @@ label {
   font-size: 0.95rem;
 }
 
+.form-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.field-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.3rem;
+  height: 1.3rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: #e2e8f0;
+  color: #1f2933;
+  line-height: 1;
+}
+
+.field-tag--mandatory {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.field-tag--recommended {
+  background: #fef9c3;
+  color: #a16207;
+}
+
+.field-tag--optional {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.field-hint {
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.field-legend {
+  font-size: 0.85rem;
+  color: #475569;
+  margin-bottom: 1rem;
+}
+
 input, select, textarea {
   padding: 0.6rem 0.75rem;
   border-radius: 8px;

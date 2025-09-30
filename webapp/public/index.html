@@ -18,17 +18,19 @@
       <button type="button" class="tab-button" data-panel-target="blueprint-panel">Metadata Blueprint</button>
     </nav>
 
+    <p class="field-legend" role="note">Legend: <span class="field-tag field-tag--mandatory" aria-hidden="true">*</span> mandatory · <span class="field-tag field-tag--recommended" aria-hidden="true">$</span> recommended · <span class="field-tag field-tag--optional" aria-hidden="true">§</span> optional</p>
+
     <section id="export-panel" class="panel panel--active" data-panel="export-panel">
       <form id="hcmo-form" class="form">
         <section class="card">
           <h2>Global Settings</h2>
           <label>
-            Base IRI
+            <span class="form-label">Base IRI <span class="field-tag field-tag--mandatory" aria-hidden="true">*</span></span>
             <input type="url" name="baseIri" value="https://mfg.example.com/hcm/id/" required>
             <small>Used to mint IRIs for all resources; include trailing slash or hash.</small>
           </label>
           <label>
-            Ingestion Timestamp (optional)
+            <span class="form-label">Ingestion Timestamp <span class="field-tag field-tag--optional" aria-hidden="true">§</span></span>
             <input type="datetime-local" name="ingestedAt">
           </label>
         </section>
@@ -37,40 +39,40 @@
           <h2>System</h2>
           <div class="grid grid--two">
             <label>
-              System ID
+              <span class="form-label">System ID <span class="field-tag field-tag--mandatory" aria-hidden="true">*</span></span>
               <input type="text" name="systemId" placeholder="System_A" required>
             </label>
             <label>
-              System Label
+              <span class="form-label">System Label <span class="field-tag field-tag--recommended" aria-hidden="true">$</span></span>
               <input type="text" name="systemLabel" placeholder="System A (rack 3, cage 12)">
             </label>
           </div>
           <div class="grid grid--three">
             <label>
-              Hardware ID
+              <span class="form-label">Hardware ID <span class="field-tag field-tag--mandatory" aria-hidden="true">*</span></span>
               <input type="text" name="hardwareId" placeholder="HW_01" required>
             </label>
             <label>
-              Hardware Label
+              <span class="form-label">Hardware Label <span class="field-tag field-tag--optional" aria-hidden="true">§</span></span>
               <input type="text" name="hardwareLabel" placeholder="HW control board">
             </label>
             <label>
-              Software ID
+              <span class="form-label">Software ID <span class="field-tag field-tag--mandatory" aria-hidden="true">*</span></span>
               <input type="text" name="softwareId" placeholder="SW_01" required>
             </label>
           </div>
           <div class="grid grid--two">
             <label>
-              Software Label
+              <span class="form-label">Software Label <span class="field-tag field-tag--recommended" aria-hidden="true">$</span></span>
               <input type="text" name="softwareLabel" placeholder="Telemetry Service">
             </label>
             <label>
-              Supplier ID
+              <span class="form-label">Supplier ID <span class="field-tag field-tag--mandatory" aria-hidden="true">*</span></span>
               <input type="text" name="supplierId" placeholder="SupplierAcme" required>
             </label>
           </div>
           <label>
-            Supplier Label
+            <span class="form-label">Supplier Label <span class="field-tag field-tag--optional" aria-hidden="true">§</span></span>
             <input type="text" name="supplierLabel" placeholder="Acme supply partners">
           </label>
         </section>
@@ -79,33 +81,37 @@
           <h2>Enclosure &amp; Needs</h2>
           <div class="grid grid--two">
             <label>
-              Enclosure ID
+              <span class="form-label">Enclosure ID <span class="field-tag field-tag--mandatory" aria-hidden="true">*</span></span>
               <input type="text" name="enclosureId" placeholder="Enc_01" required>
             </label>
             <label>
-              Enclosure Label
+              <span class="form-label">Enclosure Label <span class="field-tag field-tag--recommended" aria-hidden="true">$</span></span>
               <input type="text" name="enclosureLabel" placeholder="Enclosure 01">
             </label>
           </div>
           <fieldset class="fieldset">
             <legend>Dimensions</legend>
             <div class="grid grid--four">
-              <label>Width (cm)
+              <label>
+                <span class="form-label">Width (cm) <span class="field-tag field-tag--mandatory" aria-hidden="true">*</span></span>
                 <input type="number" step="0.1" name="width" value="30" required>
               </label>
-              <label>Length (cm)
+              <label>
+                <span class="form-label">Length (cm) <span class="field-tag field-tag--mandatory" aria-hidden="true">*</span></span>
                 <input type="number" step="0.1" name="length" value="45" required>
               </label>
-              <label>Height (cm)
+              <label>
+                <span class="form-label">Height (cm) <span class="field-tag field-tag--mandatory" aria-hidden="true">*</span></span>
                 <input type="number" step="0.1" name="height" value="20" required>
               </label>
-              <label>Unit
+              <label>
+                <span class="form-label">Unit <span class="field-tag field-tag--mandatory" aria-hidden="true">*</span></span>
                 <input type="text" name="unit" value="cm" required>
               </label>
             </div>
           </fieldset>
           <fieldset class="fieldset">
-            <legend>Needs Provisioning</legend>
+            <legend>Needs Provisioning <span class="field-tag field-tag--optional" aria-hidden="true">§</span></legend>
             <div class="grid grid--five">
               <label><input type="checkbox" name="needFood" checked> Food</label>
               <label><input type="checkbox" name="needWater" checked> Water</label>
@@ -120,25 +126,25 @@
           <h2>Animal &amp; Behavior</h2>
           <div class="grid grid--two">
             <label>
-              Animal ID
+              <span class="form-label">Animal ID <span class="field-tag field-tag--mandatory" aria-hidden="true">*</span></span>
               <input type="text" name="animalId" placeholder="Mouse_1" required>
             </label>
             <label>
-              Animal Label
+              <span class="form-label">Animal Label <span class="field-tag field-tag--recommended" aria-hidden="true">$</span></span>
               <input type="text" name="animalLabel" placeholder="Mouse 1 (study cohort)">
             </label>
           </div>
           <div class="grid grid--three">
             <label>
-              Behavior ID
+              <span class="form-label">Behavior ID <span class="field-tag field-tag--mandatory" aria-hidden="true">*</span></span>
               <input type="text" name="behaviorId" placeholder="Behav_Rec_1" required>
             </label>
             <label>
-              Behavior Label
+              <span class="form-label">Behavior Label <span class="field-tag field-tag--recommended" aria-hidden="true">$</span></span>
               <input type="text" name="behaviorLabel" placeholder="Exploration bouts">
             </label>
             <label>
-              Circadian Rhythm Label
+              <span class="form-label">Circadian Rhythm Label <span class="field-tag field-tag--optional" aria-hidden="true">§</span></span>
               <input type="text" name="circadianLabel" placeholder="Nocturnal peak">
             </label>
           </div>
@@ -148,43 +154,46 @@
           <h2>Observation Window</h2>
           <div class="grid grid--three">
             <label>
-              Interval ID
+              <span class="form-label">Interval ID <span class="field-tag field-tag--mandatory" aria-hidden="true">*</span></span>
               <input type="text" name="intervalId" placeholder="TI_24h" required>
             </label>
             <label>
-              Interval Label
+              <span class="form-label">Interval Label <span class="field-tag field-tag--recommended" aria-hidden="true">$</span></span>
               <input type="text" name="intervalLabel" placeholder="24-hour observation window">
             </label>
             <label>
-              Duration (hours)
+              <span class="form-label">Duration (hours) <span class="field-tag field-tag--mandatory" aria-hidden="true">*</span></span>
               <input type="number" step="0.1" name="durationHours" value="24" required>
             </label>
           </div>
           <div class="grid grid--two">
             <label>
-              Extendable?
+              <span class="form-label">Extendable? <span class="field-tag field-tag--mandatory" aria-hidden="true">*</span></span>
               <select name="isExtendable" required>
                 <option value="true" selected>Yes</option>
                 <option value="false">No</option>
               </select>
             </label>
             <label>
-              Limited Interaction Label
-              <input type="text" name="limitedInteractionLabel" placeholder="Minimal human contact" required>
+              <span class="form-label">Limited Interaction Label <span class="field-tag field-tag--recommended" aria-hidden="true">$</span></span>
+              <input type="text" name="limitedInteractionLabel" placeholder="Minimal human contact">
+              <span class="field-hint">Adds context for the limited-interaction policy node.</span>
             </label>
           </div>
         </section>
 
         <section class="card">
-          <h2>Sensors</h2>
+          <h2>Sensors <span class="field-tag field-tag--mandatory" aria-hidden="true">*</span></h2>
           <div id="sensor-list" class="repeat-list" data-sensor-list></div>
           <button type="button" id="add-sensor" class="button button--secondary">Add Sensor</button>
+          <p class="field-hint">Include at least one sensor entry with ID and optional label.</p>
         </section>
 
         <section class="card">
-          <h2>Actuators</h2>
+          <h2>Actuators <span class="field-tag field-tag--mandatory" aria-hidden="true">*</span></h2>
           <div id="actuator-list" class="repeat-list" data-actuator-list></div>
           <button type="button" id="add-actuator" class="button button--secondary">Add Actuator</button>
+          <p class="field-hint">Include at least one actuator entry with ID and optional label.</p>
         </section>
 
         <footer class="form__footer">
