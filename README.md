@@ -40,6 +40,32 @@ A professional, reusable ontology package for home‑cage monitoring (HCMO). It 
 - Load `ontology/hcm-metadata.ttl` and `examples/abox-minimal.ttl` into your triple store (e.g., Jena/Fuseki, GraphDB).
 - Run queries from `queries/` (e.g., `cq-systems-24h-limited.rq`).
 
+## Ontology Blueprint TODO
+
+- Audit existing repo assets (`README`, `docs/`, `schemas/`, `scripts/`) for existing TEATIME/HCM coverage and identify reuse or gaps.
+- Add an updated YAML representation of the ontology blueprint under `ontology/` for downstream tooling.
+- Collect the latest TEATIME HCM ontology schema and Bains et al. “Too Big to Lose” metadata definitions in `reference/ontology/`.
+- Gather the representative device’s metadata/export specifications (field names, types, units, sampling cadence) in `reference/device/`.
+- Design a canonical ontology-field inventory spanning subjects, environment, hardware, software, and outputs as a repo-consumable artifact.
+- Map device fields to ontology terms, capturing matches, transforms, gaps, and source notes for stakeholder review.
+- Classify each ontology field as Mandatory, Recommended, or Optional with supporting evidence.
+- Implement a checklist scaffold (spreadsheet in `docs/` plus machine-readable export) tracking ✔️/⚠️/❌ coverage and rationale.
+- Prototype an automated scoring routine summarizing coverage by domain and overall alignment using sample metadata.
+- Draft a stakeholder memo summarizing ambiguous mappings, open questions, and proposed device-specific extensions.
+- Record outcomes of the stakeholder feedback loop and propagate approved adjustments into the mapping artifacts.
+- Finalize blueprint deliverables (checklist, README/SOP, reproducible mapping workflow) and plan OSF or similar deposition.
+- Capture beta metadata-entry tool requirements (inputs, validation, JSON-LD/CSV export) and log follow-up implementation issues.
+
+**Blueprint Assets**
+- YAML blueprint: `ontology/hcmo-blueprint.yaml`
+- Field inventory: `ontology/hcmo-field-inventory.tsv`
+- Device export spec: `reference/device/representative-device-export.yaml`
+- Device mapping log: `reference/device/device-to-ontology-mapping.csv`
+- Coverage checklist: `docs/hcmo-blueprint-checklist.csv` and `docs/hcmo-blueprint-checklist.json`
+- Scoring script: `node tooling/score_blueprint.mjs [checklist]`
+- Metadata-entry tool: `node tooling/metadata_entry_tool.mjs --format jsonld|csv --out <file>`
+- SOP & issue log: `docs/BLUEPRINT-SOP.md`, `docs/metadata-entry-tool-issues.md`
+
 ## Namespaces and IRIs
 - Base ontology IRI: `https://w3id.org/hcmo/ontology/hcm`
 - Version IRI: `https://w3id.org/hcmo/ontology/hcm/1.0.0`

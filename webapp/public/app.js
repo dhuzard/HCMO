@@ -51,7 +51,62 @@ const actuatorList = document.querySelector('[data-actuator-list]');
 const addSensorButton = document.querySelector('#add-sensor');
 const addActuatorButton = document.querySelector('#add-actuator');
 
+const tabButtons = document.querySelectorAll('.tab-button');
+const panels = document.querySelectorAll('.panel');
+const blueprintPanel = document.querySelector('#blueprint-panel');
+const blueprintFieldsContainer = document.querySelector('#blueprint-fields');
+const blueprintSummaryContainer = document.querySelector('#blueprint-summary');
+const blueprintExampleSelect = document.querySelector('#blueprint-example-select');
+const blueprintExampleDescription = document.querySelector('#blueprint-example-description');
+const blueprintLoading = document.querySelector('#blueprint-loading');
+const blueprintApplyButton = document.querySelector('#blueprint-apply-example');
+const blueprintResetButton = document.querySelector('#blueprint-reset');
+
+const DEFAULT_STATUS_ICONS = {
+  provided: '✅',
+  partial: '⚠️',
+  missing: '❌',
+  unknown: '•'
+};
+
+const blueprintState = {
+  inventory: null,
+  examples: [],
+  statusIcons: { ...DEFAULT_STATUS_ICONS },
+  fieldMap: new Map(),
+  domainSummaries: new Map(),
+  initialised: false
+};
+
 const titleCase = (value) => value.charAt(0).toUpperCase() + value.slice(1);
+
+function showPanel(panelId) {
+  panels.forEach((panel) => {
+    const matches = panel.dataset.panel === panelId;
+    panel.classList.toggle('panel--active', matches);
+    panel.toggleAttribute('hidden', !matches);
+  });
+}
+
+tabButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    const target = button.dataset.panelTarget;
+    tabButtons.forEach((btn) => btn.classList.toggle('tab-button--active', btn === button));
+    showPanel(target);
+    if (target === 'blueprint-panel' && blueprintPanel && !blueprintState.initialised) {
+      initBlueprintPanel();
+    }
+  });
+});
+
+async function fetchJson(url) {
+  const response = await fetch(url);
+  if (!response.ok) {
+    const message = await response.text();
+    throw new Error(message || `Request failed (${response.status})`);
+  }
+  return response.json();
+}
 
 function ensureTrailing(base) {
   if (!base) return base;
@@ -371,6 +426,400 @@ function saveBlob(data, mime, filename, isBase64 = false) {
   document.body.removeChild(link);
 }
 
+function normalizeCoverageStatus(raw) {
+  if (!raw) return 'unknown';
+  const value = String(raw).toLowerCase();
+  if (value.includes('provided') || String(raw).includes('✅')) return 'provided';
+  if (value.includes('partial') || String(raw).includes('⚠')) return 'partial';
+  if (value.includes('missing') || String(raw).includes('❌')) return 'missing';
+  if (value.includes('unknown')) return 'unknown';
+  return value || 'unknown';
+}
+
+const formatDomainName = (id) => titleCase(id.replace(/_/g, ' '));
+
+function statusIcon(status) {
+  return blueprintState.statusIcons[status] ?? DEFAULT_STATUS_ICONS[status] ?? DEFAULT_STATUS_ICONS.unknown;
+}
+
+function createStats() {
+  return {
+    provided: 0,
+    partial: 0,
+    missing: 0,
+    unknown: 0,
+    total: 0,
+    mandatoryTotal: 0,
+    mandatoryProvided: 0
+  };
+}
+
+function setFieldStatus(fieldState, status, options = {}) {
+  const normalized = normalizeCoverageStatus(status);
+  fieldState.status = normalized;
+  if (typeof options.manual === 'boolean') {
+    fieldState.manualStatus = options.manual;
+  }
+  const select = fieldState.elements.statusSelect;
+  if (select && select.value !== normalized) {
+    select.value = normalized;
+  }
+  const iconChar = statusIcon(normalized);
+  fieldState.elements.statusIcon.textContent = iconChar;
+  fieldState.elements.statusIcon.title = `${titleCase(normalized)} status`;
+}
+
+function updateDomainSummary(domainId, stats) {
+  const summary = blueprintState.domainSummaries.get(domainId);
+  if (!summary) return;
+  const mandatoryNote = summary.mandatoryTotal
+    ? ` · Mandatory ${stats.mandatoryProvided}/${summary.mandatoryTotal}`
+    : '';
+  summary.element.textContent = `${statusIcon('provided')} ${stats.provided} · ${statusIcon('partial')} ${stats.partial} · ${statusIcon('missing')} ${stats.missing}${mandatoryNote}`;
+}
+
+function updateBlueprintSummary() {
+  if (!blueprintSummaryContainer) return;
+  if (!blueprintState.fieldMap.size) {
+    blueprintSummaryContainer.innerHTML = '<p class="blueprint-description">Blueprint inventory not loaded yet.</p>';
+    return;
+  }
+
+  const domainStats = new Map();
+  const totals = createStats();
+
+  blueprintState.fieldMap.forEach((fieldState) => {
+    const stats = domainStats.get(fieldState.domainId) ?? createStats();
+    if (stats[fieldState.status] !== undefined) {
+      stats[fieldState.status] += 1;
+    }
+    stats.total += 1;
+    if (fieldState.field.classification === 'mandatory') {
+      stats.mandatoryTotal += 1;
+      if (fieldState.status === 'provided') {
+        stats.mandatoryProvided += 1;
+      }
+    }
+    domainStats.set(fieldState.domainId, stats);
+
+    if (totals[fieldState.status] !== undefined) {
+      totals[fieldState.status] += 1;
+    }
+    totals.total += 1;
+    if (fieldState.field.classification === 'mandatory') {
+      totals.mandatoryTotal += 1;
+      if (fieldState.status === 'provided') {
+        totals.mandatoryProvided += 1;
+      }
+    }
+  });
+
+  blueprintSummaryContainer.innerHTML = '';
+
+  const weightedCoverage = totals.total
+    ? (((totals.provided + 0.5 * totals.partial) / totals.total) * 100).toFixed(1)
+    : '0.0';
+  const mandatoryCoverage = totals.mandatoryTotal
+    ? ((totals.mandatoryProvided / totals.mandatoryTotal) * 100).toFixed(1)
+    : '0.0';
+
+  const overallCard = document.createElement('div');
+  overallCard.className = 'blueprint-summary-card';
+  overallCard.innerHTML = `
+    <h4>Overall</h4>
+    <div class="blueprint-summary-metrics">
+      <span class="status-chip status-chip--provided">${statusIcon('provided')} ${totals.provided}</span>
+      <span class="status-chip status-chip--partial">${statusIcon('partial')} ${totals.partial}</span>
+      <span class="status-chip status-chip--missing">${statusIcon('missing')} ${totals.missing}</span>
+    </div>
+    <p class="blueprint-description">Weighted coverage ${weightedCoverage}% · Mandatory provided ${mandatoryCoverage}%</p>
+  `;
+  blueprintSummaryContainer.appendChild(overallCard);
+
+  const domainsInOrder = blueprintState.inventory?.domains ?? [];
+  domainsInOrder.forEach((domain) => {
+    const stats = domainStats.get(domain.id) ?? createStats();
+    const mandatoryProvided = stats.mandatoryProvided || 0;
+    const mandatoryTotal = stats.mandatoryTotal || 0;
+    const mandatoryPercent = mandatoryTotal
+      ? ((mandatoryProvided / mandatoryTotal) * 100).toFixed(1)
+      : '0.0';
+
+    const domainCard = document.createElement('div');
+    domainCard.className = 'blueprint-summary-card';
+    domainCard.innerHTML = `
+      <h4>${formatDomainName(domain.id)}</h4>
+      <div class="blueprint-summary-metrics">
+        <span class="status-chip status-chip--provided">${statusIcon('provided')} ${stats.provided}</span>
+        <span class="status-chip status-chip--partial">${statusIcon('partial')} ${stats.partial}</span>
+        <span class="status-chip status-chip--missing">${statusIcon('missing')} ${stats.missing}</span>
+      </div>
+      <p class="blueprint-description">Mandatory provided ${mandatoryProvided}/${mandatoryTotal} (${mandatoryPercent}%)</p>
+    `;
+    blueprintSummaryContainer.appendChild(domainCard);
+
+    updateDomainSummary(domain.id, stats);
+  });
+}
+
+function createBlueprintFieldRow(domainId, field) {
+  const row = document.createElement('tr');
+  const fieldKey = `${domainId}:${field.identifier}`;
+
+  const titleCell = document.createElement('th');
+  titleCell.scope = 'row';
+  const title = document.createElement('div');
+  title.className = 'blueprint-field__title';
+  title.textContent = field.label;
+  const meta = document.createElement('div');
+  meta.className = 'blueprint-field__meta';
+  meta.textContent = `${field.identifier} · ${field.ontologyIri || 'n/a'}`;
+  titleCell.appendChild(title);
+  titleCell.appendChild(meta);
+
+  const classificationCell = document.createElement('td');
+  const badge = document.createElement('span');
+  badge.className = `badge badge--${field.classification}`;
+  badge.textContent = field.classification;
+  classificationCell.appendChild(badge);
+
+  const valueCell = document.createElement('td');
+  const textarea = document.createElement('textarea');
+  textarea.className = 'blueprint-input';
+  textarea.placeholder = 'Enter mapping value or notes';
+  valueCell.appendChild(textarea);
+  const expected = document.createElement('div');
+  expected.className = 'blueprint-field__meta';
+  expected.textContent = `Expected: ${field.expectedDatatype || 'n/a'}`;
+  valueCell.appendChild(expected);
+  const notes = document.createElement('div');
+  notes.className = 'blueprint-notes';
+  notes.hidden = true;
+  valueCell.appendChild(notes);
+
+  const statusCell = document.createElement('td');
+  const statusControl = document.createElement('div');
+  statusControl.className = 'status-control';
+  const icon = document.createElement('span');
+  icon.className = 'status-icon';
+  icon.textContent = statusIcon('missing');
+  icon.title = 'Missing status';
+  const select = document.createElement('select');
+  select.className = 'blueprint-status';
+  ['provided', 'partial', 'missing'].forEach((status) => {
+    const option = document.createElement('option');
+    option.value = status;
+    option.textContent = `${statusIcon(status)} ${titleCase(status)}`;
+    select.appendChild(option);
+  });
+  select.value = 'missing';
+  statusControl.appendChild(icon);
+  statusControl.appendChild(select);
+  statusCell.appendChild(statusControl);
+
+  row.appendChild(titleCell);
+  row.appendChild(classificationCell);
+  row.appendChild(valueCell);
+  row.appendChild(statusCell);
+
+  const state = {
+    domainId,
+    field,
+    status: 'missing',
+    value: '',
+    manualStatus: false,
+    elements: {
+      textarea,
+      statusSelect: select,
+      statusIcon: icon,
+      notes
+    }
+  };
+
+  blueprintState.fieldMap.set(fieldKey, state);
+
+  textarea.addEventListener('input', () => {
+    state.value = textarea.value.trim();
+    if (!state.manualStatus) {
+      const autoStatus = state.value ? 'provided' : 'missing';
+      setFieldStatus(state, autoStatus, { manual: false });
+    } else if (!state.value && state.status === 'provided') {
+      setFieldStatus(state, 'missing', { manual: true });
+    }
+    updateBlueprintSummary();
+  });
+
+  select.addEventListener('change', () => {
+    state.manualStatus = true;
+    setFieldStatus(state, select.value, { manual: true });
+    updateBlueprintSummary();
+  });
+
+  return row;
+}
+
+function buildBlueprintUI(domains) {
+  if (!blueprintFieldsContainer) return;
+  blueprintFieldsContainer.innerHTML = '';
+  blueprintState.fieldMap.clear();
+  blueprintState.domainSummaries.clear();
+
+  if (!domains.length) {
+    blueprintFieldsContainer.innerHTML = '<p class="blueprint-description">No blueprint domains available.</p>';
+    return;
+  }
+
+  domains.forEach((domain) => {
+    const card = document.createElement('section');
+    card.className = 'card blueprint-domain';
+
+    const header = document.createElement('div');
+    header.className = 'blueprint-domain__header';
+    const title = document.createElement('h3');
+    title.className = 'blueprint-domain__title';
+    title.textContent = formatDomainName(domain.id);
+    const summary = document.createElement('div');
+    summary.className = 'blueprint-domain__summary';
+    header.appendChild(title);
+    header.appendChild(summary);
+
+    const table = document.createElement('table');
+    table.className = 'blueprint-table';
+    const tbody = document.createElement('tbody');
+    (domain.fields || []).forEach((field) => {
+      const row = createBlueprintFieldRow(domain.id, field);
+      tbody.appendChild(row);
+    });
+    table.appendChild(tbody);
+
+    card.appendChild(header);
+    card.appendChild(table);
+    blueprintFieldsContainer.appendChild(card);
+
+    const mandatoryTotal = (domain.fields || []).filter((field) => field.classification === 'mandatory').length;
+    blueprintState.domainSummaries.set(domain.id, {
+      element: summary,
+      total: domain.fields?.length ?? 0,
+      mandatoryTotal
+    });
+  });
+
+  updateBlueprintSummary();
+}
+
+function applyBlueprintExample(exampleOrId) {
+  const example = typeof exampleOrId === 'string'
+    ? blueprintState.examples.find((item) => item.id === exampleOrId)
+    : exampleOrId;
+  if (!example) return;
+
+  if (blueprintExampleSelect && blueprintExampleSelect.value !== example.id) {
+    blueprintExampleSelect.value = example.id;
+  }
+
+  blueprintState.fieldMap.forEach((fieldState) => {
+    const entry = example.fields?.[fieldState.domainId]?.[fieldState.field.identifier];
+    const value = entry?.value ?? '';
+    const note = entry?.notes || entry?.transform || '';
+
+    fieldState.value = value;
+    fieldState.manualStatus = Boolean(entry?.status);
+    fieldState.elements.textarea.value = value;
+    if (note) {
+      fieldState.elements.notes.textContent = note;
+      fieldState.elements.notes.hidden = false;
+    } else {
+      fieldState.elements.notes.textContent = '';
+      fieldState.elements.notes.hidden = true;
+    }
+
+    const status = entry?.status ?? (value ? 'provided' : 'missing');
+    setFieldStatus(fieldState, status, { manual: Boolean(entry?.status) });
+  });
+
+  if (blueprintExampleDescription) {
+    blueprintExampleDescription.textContent = example.description || '';
+  }
+
+  updateBlueprintSummary();
+}
+
+function populateBlueprintExamples(examples) {
+  if (!blueprintExampleSelect) return;
+  blueprintExampleSelect.innerHTML = '';
+  const placeholder = document.createElement('option');
+  placeholder.value = '';
+  placeholder.textContent = 'Select example…';
+  blueprintExampleSelect.appendChild(placeholder);
+
+  examples.forEach((example) => {
+    const option = document.createElement('option');
+    option.value = example.id;
+    option.textContent = example.label;
+    blueprintExampleSelect.appendChild(option);
+  });
+
+  if (examples.length) {
+    applyBlueprintExample(examples[0]);
+  } else if (blueprintExampleDescription) {
+    blueprintExampleDescription.textContent = 'No predefined examples available yet.';
+  }
+}
+
+function resetBlueprintFields() {
+  blueprintState.fieldMap.forEach((fieldState) => {
+    fieldState.value = '';
+    fieldState.manualStatus = false;
+    fieldState.elements.textarea.value = '';
+    fieldState.elements.notes.textContent = '';
+    fieldState.elements.notes.hidden = true;
+    setFieldStatus(fieldState, 'missing', { manual: false });
+  });
+
+  if (blueprintExampleSelect) {
+    blueprintExampleSelect.value = '';
+  }
+  if (blueprintExampleDescription) {
+    blueprintExampleDescription.textContent = 'Fields cleared. Enter values to compute coverage.';
+  }
+
+  updateBlueprintSummary();
+}
+
+async function initBlueprintPanel() {
+  if (!blueprintPanel || blueprintState.initialised) return;
+  blueprintState.initialised = true;
+
+  if (blueprintLoading) {
+    blueprintLoading.textContent = 'Loading blueprint metadata…';
+    blueprintLoading.hidden = false;
+    blueprintLoading.classList.remove('status--error');
+  }
+
+  try {
+    const [inventory, examples] = await Promise.all([
+      fetchJson('/api/blueprint/inventory'),
+      fetchJson('/api/blueprint/examples')
+    ]);
+
+    blueprintState.inventory = inventory;
+    blueprintState.statusIcons = { ...DEFAULT_STATUS_ICONS, ...(inventory.statusIcons || {}) };
+    blueprintState.examples = examples.examples || [];
+
+    buildBlueprintUI(inventory.domains || []);
+    populateBlueprintExamples(blueprintState.examples);
+
+    if (blueprintLoading) {
+      blueprintLoading.textContent = 'Loaded blueprint inventory. Load an example or enter values to update coverage.';
+    }
+  } catch (error) {
+    if (blueprintLoading) {
+      blueprintLoading.textContent = `Failed to load blueprint metadata: ${error.message}`;
+      blueprintLoading.classList.add('status--error');
+    }
+  }
+}
+
 async function handleSubmit(event) {
   event.preventDefault();
   statusLine.classList.remove('status--error');
@@ -438,3 +887,34 @@ addActuatorButton.addEventListener('click', () => buildRow(actuatorList, 'actuat
 // Seed defaults
 buildRow(sensorList, 'sensor', { id: 'IR_Sensor_1', label: 'IR beam sensor (left wall)' });
 buildRow(actuatorList, 'actuator', { id: 'Feeder_1', label: 'Feeder (pellet dispenser)' });
+
+if (blueprintApplyButton) {
+  blueprintApplyButton.addEventListener('click', () => {
+    const selected = blueprintExampleSelect?.value;
+    if (selected) {
+      applyBlueprintExample(selected);
+    }
+  });
+}
+
+if (blueprintResetButton) {
+  blueprintResetButton.addEventListener('click', () => {
+    resetBlueprintFields();
+  });
+}
+
+if (blueprintExampleSelect) {
+  blueprintExampleSelect.addEventListener('change', () => {
+    const selected = blueprintExampleSelect.value;
+    const example = blueprintState.examples.find((item) => item.id === selected);
+    if (blueprintExampleDescription) {
+      blueprintExampleDescription.textContent = example?.description ?? '';
+    }
+  });
+}
+
+showPanel('export-panel');
+
+if (blueprintPanel) {
+  initBlueprintPanel();
+}

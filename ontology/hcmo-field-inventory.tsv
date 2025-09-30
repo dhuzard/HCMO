@@ -1,0 +1,31 @@
+domain	identifier	label	classification	ontology_iri	expected_datatype
+subjects	subject_id	Animal subject ID	mandatory	hcm:Animal	xsd:string
+subjects	species	Species	mandatory	hcm:species	schema:Taxon
+subjects	strain	Strain or stock	mandatory	hcm:strain	xsd:string
+subjects	sex	Sex	mandatory	hcm:sex	hcm:SexEnum
+subjects	age_at_start	Age at start of monitoring	recommended	hcm:ageAtStart	xsd:decimal
+subjects	genotype	Genotype / transgenic markers	optional	hcm:genotype	xsd:string
+subjects	experimental_group	Experimental group assignment	recommended	hcm:assignedToGroup	xsd:string
+environment	enclosure_id	Enclosure identifier	mandatory	hcm:Enclosure	xsd:string
+environment	enclosure_dimensions	Enclosure dimensions	mandatory	hcm:Dimensions	qudt:Quantity
+environment	housing_type	Housing type / configuration	recommended	hcm:housingType	xsd:string
+environment	light_cycle	Light/dark cycle	mandatory	hcm:lightCycle	xsd:string
+environment	temperature_range	Ambient temperature range	recommended	hcm:ambientTemperature	qudt:Quantity
+environment	humidity_range	Relative humidity range	recommended	hcm:ambientHumidity	qudt:Quantity
+environment	enrichment_items	Environmental enrichment	optional	hcm:hasEnvironmentalEnrichment	rdf:List
+hardware	system_model	HCM system model	mandatory	hcm:System	xsd:string
+hardware	sensor_inventory	Sensor inventory	mandatory	hcm:Sensor	rdf:List
+hardware	sensor_sampling_rates	Sensor sampling rates	mandatory	hcm:samplingRate	qudt:Quantity
+hardware	actuator_inventory	Actuator inventory	recommended	hcm:Actuator	rdf:List
+hardware	hardware_supplier	Hardware supplier details	recommended	hcm:Supplier	schema:Organization
+software	acquisition_software	Acquisition software name	mandatory	hcm:Software	schema:SoftwareApplication
+software	acquisition_version	Acquisition software version	mandatory	hcm:softwareVersion	xsd:string
+software	analysis_pipeline	Analysis pipeline description	recommended	hcm:analysisWorkflow	xsd:string
+software	analysis_version	Analysis pipeline version or commit	recommended	hcm:analysisVersion	xsd:string
+software	calibration_procedure	Calibration procedure reference	optional	hcm:calibrationProcedure	xsd:string
+data_outputs	data_modalities	Data modalities captured	mandatory	hcm:collectsInfoOn	rdf:List
+data_outputs	data_formats	Data file formats	mandatory	hcm:dataFormat	rdf:List
+data_outputs	sampling_summary	Sampling cadence summary	recommended	hcm:samplingSummary	xsd:string
+data_outputs	event_definitions	Behavioral event definitions	recommended	hcm:eventDefinition	xsd:string
+data_outputs	qc_metrics	Quality control metrics	optional	hcm:qualityControl	rdf:List
+data_outputs	provenance_records	Provenance records	recommended	prov:Activity	rdf:List
