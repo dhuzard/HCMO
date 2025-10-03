@@ -19,7 +19,7 @@ const __dirname = path.dirname(__filename);
 const repoRoot = path.resolve(__dirname, '..');
 const publicDir = path.join(__dirname, 'public');
 const shapesPath = path.join(repoRoot, 'shapes', 'hcm-shapes.ttl');
-const blueprintInventoryPath = path.join(repoRoot, 'ontology', 'hcmo-field-inventory.tsv');
+const blueprintInventoryPath = path.join(repoRoot, 'ontology', 'hcm-field-inventory.tsv');
 const blueprintMappingPath = path.join(repoRoot, 'reference', 'device', 'device-to-ontology-mapping.csv');
 
 const STATUS_ICONS = {

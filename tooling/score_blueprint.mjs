@@ -51,7 +51,7 @@ function scoreChecklist(records) {
 }
 
 function main() {
-  const inputPath = process.argv[2] ?? "docs/hcmo-blueprint-checklist.csv";
+  const inputPath = process.argv[2] ?? "docs/hcm-blueprint-checklist.csv";
   const csvPath = resolve(process.cwd(), inputPath);
   const content = readFileSync(csvPath, "utf8");
   const records = parseCsv(content);

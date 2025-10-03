@@ -8,8 +8,8 @@ Provide a repeatable workflow for mapping a home-cage monitoring (HCM) device ex
    - TEATIME ontology schema (`reference/ontology/TEATIME-HCM-latest.ttl`).
    - Too Big to Lose supplemental metadata (`reference/ontology/too-big-to-lose-supplement.md`).
    - Device export schema (`reference/device/representative-device-export.yaml`).
-2. Update `ontology/hcmo-blueprint.yaml` with device-specific mappings and coverage statuses.
-3. Maintain the canonical field inventory (`ontology/hcmo-field-inventory.tsv`).
+2. Update `ontology/hcm-blueprint.yaml` with device-specific mappings and coverage statuses.
+3. Maintain the canonical field inventory (`ontology/hcm-field-inventory.tsv`).
 4. Record device-to-ontology mappings in `reference/device/device-to-ontology-mapping.csv`.
 5. Refresh the checklist CSV/JSON in `docs/`.
 6. Run `node tooling/score_blueprint.mjs` to compute coverage metrics.

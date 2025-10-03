@@ -1,6 +1,6 @@
-# HCMO Ontology (Home‑Cage Monitoring Ontology)
+﻿# HCMO Ontology (Homeâ€‘Cage Monitoring Ontology)
 
-A professional, reusable ontology package for home‑cage monitoring (HCMO). It models systems, animals, enclosures, behaviors, sensors/actuators, time intervals, and provisioning needs; aligns to key web standards; ships with SHACL validation, examples, queries, CI, and a JSON‑LD context for application developers.
+A professional, reusable ontology package for homeâ€‘cage monitoring (HCMO). It models systems, animals, enclosures, behaviors, sensors/actuators, time intervals, and provisioning needs; aligns to key web standards; ships with SHACL validation, examples, queries, CI, and a JSONâ€‘LD context for application developers.
 
 - Ontology core: `ontology/hcm.ttl`
 - Standards alignment: `ontology/hcm-align.ttl`
@@ -8,24 +8,35 @@ A professional, reusable ontology package for home‑cage monitoring (HCMO). It 
 - SHACL shapes: `shapes/hcm-shapes.ttl`
 - Examples (ABox): `examples/`
 - SPARQL queries: `queries/`
-- JSON‑LD context: `ontology/context.jsonld`
+- JSONâ€‘LD context: `ontology/context.jsonld`
 - Validation script and CI: `tooling/validate.ps1`, `.github/workflows/validate.yml`
 - Web-based authoring app: `webapp/`
 
 ## Why HCMO?
-- Interoperability: Aligns with SOSA/SSN (sensing/actuation), OWL‑Time, PROV, and BFO.
-- Data quality: Enforces practical constraints (≥24h window, enclosure dimensions, etc.) with SHACL.
-- Developer‑ready: JSON‑LD context and examples; simple upgrade path to QUDT/OM units.
+- Interoperability: Aligns with SOSA/SSN (sensing/actuation), OWLâ€‘Time, PROV, and BFO.
+- Data quality: Enforces practical constraints (â‰¥24h window, enclosure dimensions, etc.) with SHACL.
+- Developerâ€‘ready: JSONâ€‘LD context and examples; simple upgrade path to QUDT/OM units.
 - FAIR: Clear IRIs, metadata, governance, and publishing guidance.
 
 ## Web Authoring App
 
+The web UI packaged in `webapp/` doubles as an authoring tool and a blueprint-driven checklist for mapping device exports to HCMO.
+
+### Author HCMO payloads
+- Requires Node.js 20.x or later (ESM + tooling compatibility).
 - Install once: `cd webapp && npm install`
 - Start locally: `npm run dev` (serves http://localhost:3000)
-- Fill the form (base IRI, system/enclosure/sensor/actuator/time interval) and press **Generate & Validate**
-- Download JSON-LD, Turtle, or the ZIP bundle; validation mirrors `tooling/validate.ps1`
-- Optional CLI check: `node examples/sample-request.mjs` posts the sample payload and prints the SHACL result
-- Field legend: `*` mandatory · `$` recommended · `§` optional (matching the blueprint classifications surfaced in the web UI)
+- Use the guided form to capture system, enclosure, sensors, actuators, interval, and welfare needs; it mirrors the SHACL shapes in `shapes/hcm-shapes.ttl`.
+- Press **Generate & Validate** to produce JSON-LD and Turtle output while running the same pySHACL validation as `tooling/validate.ps1`.
+- Download individual serializations or the bundled ZIP for downstream ingestion.
+- Field markers in the form align with the blueprint classification (mandatory / recommended / optional) surfaced in the checklist tab.
+- Optional CLI check: `node examples/sample-request.mjs` posts the sample payload and prints the SHACL result.
+
+### Mapping checklist workflow
+- Switch to the **Metadata Blueprint Coverage** tab to load the master field inventory from `ontology/hcm-field-inventory.tsv`, grouped by blueprint domain.
+- Each field exposes its blueprint designation and a status selector (`provided`, `partial`, `missing`, `unknown`) so you can track how well a device export satisfies the TEATIME requirements; add notes to capture transformations, owners, or next steps.
+- The summary cards recalculate overall weighted coverage and mandatory completion as you work, matching the metrics reported in `docs/hcm-blueprint-checklist.*` and the scoring helper in `tooling/score_blueprint.mjs`.
+- Use the example dropdown to preload mappings derived from `reference/device/device-to-ontology-mapping.csv`; tweak them to build a device-specific checklist, or reset the panel to start from scratch before sharing the results with stakeholders.
 
 ## Quickstart
 
@@ -45,12 +56,12 @@ A professional, reusable ontology package for home‑cage monitoring (HCMO). It 
 
 - Audit existing repo assets (`README`, `docs/`, `schemas/`, `scripts/`) for existing TEATIME/HCM coverage and identify reuse or gaps.
 - Add an updated YAML representation of the ontology blueprint under `ontology/` for downstream tooling.
-- Collect the latest TEATIME HCM ontology schema and Bains et al. “Too Big to Lose” metadata definitions in `reference/ontology/`.
-- Gather the representative device’s metadata/export specifications (field names, types, units, sampling cadence) in `reference/device/`.
+- Collect the latest TEATIME HCM ontology schema and Bains et al. â€œToo Big to Loseâ€ metadata definitions in `reference/ontology/`.
+- Gather the representative deviceâ€™s metadata/export specifications (field names, types, units, sampling cadence) in `reference/device/`.
 - Design a canonical ontology-field inventory spanning subjects, environment, hardware, software, and outputs as a repo-consumable artifact.
 - Map device fields to ontology terms, capturing matches, transforms, gaps, and source notes for stakeholder review.
 - Classify each ontology field as Mandatory, Recommended, or Optional with supporting evidence.
-- Implement a checklist scaffold (spreadsheet in `docs/` plus machine-readable export) tracking ✔️/⚠️/❌ coverage and rationale.
+- Implement a checklist scaffold (spreadsheet in `docs/` plus machine-readable export) tracking âœ”ï¸/âš ï¸/âŒ coverage and rationale.
 - Prototype an automated scoring routine summarizing coverage by domain and overall alignment using sample metadata.
 - Draft a stakeholder memo summarizing ambiguous mappings, open questions, and proposed device-specific extensions.
 - Record outcomes of the stakeholder feedback loop and propagate approved adjustments into the mapping artifacts.
@@ -58,11 +69,11 @@ A professional, reusable ontology package for home‑cage monitoring (HCMO). It 
 - Capture beta metadata-entry tool requirements (inputs, validation, JSON-LD/CSV export) and log follow-up implementation issues.
 
 **Blueprint Assets**
-- YAML blueprint: `ontology/hcmo-blueprint.yaml`
-- Field inventory: `ontology/hcmo-field-inventory.tsv`
+- YAML blueprint: `ontology/hcm-blueprint.yaml`
+- Field inventory: `ontology/hcm-field-inventory.tsv`
 - Device export spec: `reference/device/representative-device-export.yaml`
 - Device mapping log: `reference/device/device-to-ontology-mapping.csv`
-- Coverage checklist: `docs/hcmo-blueprint-checklist.csv` and `docs/hcmo-blueprint-checklist.json`
+- Coverage checklist: `docs/hcm-blueprint-checklist.csv` and `docs/hcm-blueprint-checklist.json`
 - Scoring script: `node tooling/score_blueprint.mjs [checklist]`
 - Metadata-entry tool: `node tooling/metadata_entry_tool.mjs --format jsonld|csv --out <file>`
 - SOP & issue log: `docs/BLUEPRINT-SOP.md`, `docs/metadata-entry-tool-issues.md`
@@ -74,19 +85,19 @@ A professional, reusable ontology package for home‑cage monitoring (HCMO). It 
 
 See alignments in `docs/ALIGNMENTS.md`.
 
-## What’s in the Ontology
+## Whatâ€™s in the Ontology
 
 Core classes (selected)
-- `hcm:System` – HCM system composed of enclosure, hardware, software; hosts sensors/actuators.
-- `hcm:Animal` – Experimental animal.
-- `hcm:Enclosure` ⊑ `hcm:PhysicalSpace` – Housing environment; has `hcm:Dimensions`.
-- `hcm:BehaviorAndPhysiology` – Observed process; has `hcm:CircadianRhythm`; observed over `hcm:TimeInterval`.
+- `hcm:System` â€“ HCM system composed of enclosure, hardware, software; hosts sensors/actuators.
+- `hcm:Animal` â€“ Experimental animal.
+- `hcm:Enclosure` âŠ‘ `hcm:PhysicalSpace` â€“ Housing environment; has `hcm:Dimensions`.
+- `hcm:BehaviorAndPhysiology` â€“ Observed process; has `hcm:CircadianRhythm`; observed over `hcm:TimeInterval`.
 - `hcm:Sensor`, `hcm:Actuator`, `hcm:Hardware`, `hcm:Software`, `hcm:Supplier`.
 - `hcm:NeedsSequence`, `hcm:LimitedInteractionWithHumans`, `hcm:Dimensions`, `hcm:TimeInterval`.
 
 Key object properties
 - System composition: `hcm:hasEnclosure`, `hcm:hasHardware`, `hcm:hasSoftware`, `hcm:hasSensor`, `hcm:hasActuator`, `hcm:producedBy`, `hcm:collectsInfoOn`.
-- Animal ↔ Enclosure ↔ Needs: `hcm:livesIn`, `hcm:provides`, `hcm:requiresToThrive`.
+- Animal â†” Enclosure â†” Needs: `hcm:livesIn`, `hcm:provides`, `hcm:requiresToThrive`.
 - Behavior context: `hcm:isDisplayedInside`, `hcm:hasCircadianRhythm`, `hcm:extendsEnoughToCapture`.
 - Sensing/Actuation: `hcm:captures`, `hcm:elicits`.
 - Space/Geometry: `hcm:hasDimensions`.
@@ -97,15 +108,15 @@ Key datatype properties
 - Needs (simple booleans): `hcm:hasFood`, `hcm:hasWater`, `hcm:hasSocialContacts`, `hcm:hasSafetyFromThreat`, `hcm:hasEnvironmentalEnrichment`.
 
 Selected OWL axioms
-- Disjointness: `hcm:Sensor ⟂ hcm:Actuator`, `hcm:Hardware ⟂ hcm:Software`.
+- Disjointness: `hcm:Sensor âŸ‚ hcm:Actuator`, `hcm:Hardware âŸ‚ hcm:Software`.
 - Restrictions: `hcm:System` has exactly 1 `hcm:hasEnclosure`, at least 1 `hcm:hasSensor`.
 
 ## Standards Alignment
 
-- SOSA/SSN: `hcm:Sensor` ⊑ `sosa:Sensor`, `hcm:Actuator` ⊑ `sosa:Actuator`, `hcm:System` ⊑ `sosa:Platform`, `hcm:hasSensor` ⊑ `sosa:hosts`.
-- OWL‑Time: `hcm:TimeInterval` ⊑ `time:TemporalEntity`.
-- PROV/Agents: `hcm:producedBy` ⊑ `prov:wasAttributedTo`; `hcm:Supplier` ⊑ `prov:Agent`, `schema:Organization`.
-- BFO: `hcm:BehaviorAndPhysiology` ⊑ `bfo:0000015` (process).
+- SOSA/SSN: `hcm:Sensor` âŠ‘ `sosa:Sensor`, `hcm:Actuator` âŠ‘ `sosa:Actuator`, `hcm:System` âŠ‘ `sosa:Platform`, `hcm:hasSensor` âŠ‘ `sosa:hosts`.
+- OWLâ€‘Time: `hcm:TimeInterval` âŠ‘ `time:TemporalEntity`.
+- PROV/Agents: `hcm:producedBy` âŠ‘ `prov:wasAttributedTo`; `hcm:Supplier` âŠ‘ `prov:Agent`, `schema:Organization`.
+- BFO: `hcm:BehaviorAndPhysiology` âŠ‘ `bfo:0000015` (process).
 
 Details and rationale in `docs/ALIGNMENTS.md`.
 
@@ -114,7 +125,7 @@ Details and rationale in `docs/ALIGNMENTS.md`.
 Shapes in `shapes/hcm-shapes.ttl` check:
 - System: exactly one enclosure; at least one sensor.
 - Behavior: must link to an enclosure and a time interval.
-- Time interval: `durationHours` ≥ 24, `isExtendable` boolean, and explicit `LimitedInteractionWithHumans`.
+- Time interval: `durationHours` â‰¥ 24, `isExtendable` boolean, and explicit `LimitedInteractionWithHumans`.
 - Enclosure: must have a dimensions record.
 - Dimensions: width/length/height > 0; unit present.
 
@@ -137,7 +148,7 @@ Edge cases (expected SHACL failures)
 The `queries/` directory provides SPARQL for common questions.
 
 - 24h + limited interaction
-  - `queries/cq-systems-24h-limited.rq` – find systems where behaviors use a time interval ≥ 24h and limited human interaction.
+  - `queries/cq-systems-24h-limited.rq` â€“ find systems where behaviors use a time interval â‰¥ 24h and limited human interaction.
 - Animals by enclosure/system
   - `queries/cq-animals-by-enclosure.rq`
 - Missing dimensions
@@ -150,9 +161,9 @@ The `queries/` directory provides SPARQL for common questions.
 Example: run with Apache Jena `arq`
 - `arq --data=ontology/hcm.ttl --data=examples/abox-minimal.ttl --query=queries/cq-systems-24h-limited.rq`
 
-## JSON‑LD for Developers
+## JSONâ€‘LD for Developers
 
-A compact JSON‑LD context is provided at `ontology/context.jsonld`. Example payload:
+A compact JSONâ€‘LD context is provided at `ontology/context.jsonld`. Example payload:
 
 ```
 {
@@ -197,14 +208,14 @@ print(report_text)
 
 - Benchmark an HCM system design
   - Model systems, enclosures, sensors, actuators; validate cardinalities and constraints.
-- Long‑run behavior studies
-  - Assert ≥24h intervals with limited human interaction; query which systems comply.
+- Longâ€‘run behavior studies
+  - Assert â‰¥24h intervals with limited human interaction; query which systems comply.
 - Facility inventory and QA
   - Ensure all enclosures have dimension records; find missing or invalid data.
 - Protocol comparison
   - Compare needs provisioning across enclosures; identify gaps or differences.
 - Pipeline integration (LIMS/ELN)
-  - Use JSON‑LD context to serialize system/animal metadata from applications.
+  - Use JSONâ€‘LD context to serialize system/animal metadata from applications.
 
 ## Extending the Model
 
@@ -212,8 +223,8 @@ print(report_text)
   - Replace simple dimension datatypes with `qudt:QuantityValue` and `qudt:unit` (e.g., `unit:CentiM`). See `docs/ALIGNMENTS.md` for the pattern.
 - Observations (SOSA)
   - Introduce `sosa:Observation` to capture measurement semantics; link to `hcm:BehaviorAndPhysiology` and features of interest (animals).
-- N‑ary composition events
-  - Reify `System` composition as an event with roles if component‑level provenance is needed.
+- Nâ€‘ary composition events
+  - Reify `System` composition as an event with roles if componentâ€‘level provenance is needed.
 
 ## Governance and Versioning
 
@@ -231,7 +242,7 @@ print(report_text)
 ## References
 
 - SOSA/SSN: `http://www.w3.org/ns/sosa/`, `http://www.w3.org/ns/ssn/`
-- OWL‑Time: `http://www.w3.org/2006/time#`
+- OWLâ€‘Time: `http://www.w3.org/2006/time#`
 - PROV: `http://www.w3.org/ns/prov#`
 - QUDT: `http://qudt.org/schema/qudt/`, Units: `http://qudt.org/vocab/unit/`
 - BFO: `http://purl.obolibrary.org/obo/BFO_`

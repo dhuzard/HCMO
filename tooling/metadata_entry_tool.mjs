@@ -3,7 +3,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 function parseArgs(argv) {
-  const args = { format: "jsonld", out: null, inventory: "ontology/hcmo-field-inventory.tsv" };
+  const args = { format: "jsonld", out: null, inventory: "ontology/hcm-field-inventory.tsv" };
   for (let i = 2; i < argv.length; i++) {
     const arg = argv[i];
     if (arg === "--format" && argv[i + 1]) {

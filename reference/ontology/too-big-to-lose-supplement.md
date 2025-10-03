@@ -8,4 +8,4 @@
   - Housing and environment (enclosure size, light cycle, enrichment, husbandry notes).
   - Hardware/software (system model, sensor list, sampling rates, firmware, acquisition software).
   - Data outputs (modality, format, QC metrics, provenance links).
-- Integration guidance: Normalize column headers to snake_case for CSV ingestion and track provenance in `source_documents` within `ontology/hcmo-blueprint.yaml`.
+- Integration guidance: Normalize column headers to snake_case for CSV ingestion and track provenance in `source_documents` within `ontology/hcm-blueprint.yaml`.
