@@ -1,0 +1,350 @@
+version: 0.1.0
+status: draft
+updated: 2025-02-15
+scope: Home-Cage Monitoring device metadata mapping against TEATIME HCM ontology
+source_documents:
+  teatime_schema: reference/ontology/TEATIME-HCM-latest.ttl
+  too_big_to_lose_supplement: reference/ontology/too-big-to-lose-supplement.md
+  representative_device_spec: reference/device/representative-device-export.yaml
+coverage_key:
+  provided: "✅ device already provides the ontology field"
+  partial: "⚠️ device provides a related field but needs transformation or is incomplete"
+  missing: "❌ device does not provide the field"
+  unknown: "Status not yet reviewed"
+classification_key:
+  mandatory: "Required for minimum interoperability and repository ingestion"
+  recommended: "Improves reuse and interpretability across studies"
+  optional: "Valuable for specialised analyses or advanced integrations"
+domains:
+  subjects:
+    summary: "Animal-level descriptors required for identifying and contextualising subjects"
+    fields:
+      - identifier: subject_id
+        label: Animal subject ID
+        ontology_iri: hcm:Animal
+        classification: mandatory
+        expected_datatype: xsd:string
+        device_mapping:
+          candidate_field: animal_id
+          transform: null
+        coverage_status: provided
+        notes: "Unique, stable identifier for each animal within the dataset."
+      - identifier: species
+        label: Species
+        ontology_iri: hcm:species
+        classification: mandatory
+        expected_datatype: schema:Taxon
+        device_mapping:
+          candidate_field: null
+          transform: "Derive from colony management registry"
+        coverage_status: partial
+        notes: "Latin binomial; align with NCBI taxonomy URI when possible."
+      - identifier: strain
+        label: Strain or stock
+        ontology_iri: hcm:strain
+        classification: mandatory
+        expected_datatype: xsd:string
+        device_mapping:
+          candidate_field: strain_label
+          transform: "Normalize to ontology vocabulary"
+        coverage_status: provided
+        notes: "Include substrain identifiers or supplier catalogue code."
+      - identifier: sex
+        label: Sex
+        ontology_iri: hcm:sex
+        classification: mandatory
+        expected_datatype: hcm:SexEnum
+        device_mapping:
+          candidate_field: sex_code
+          transform: "Map M/F/U to ontology enum"
+        coverage_status: partial
+        notes: "Controlled vocabulary: male, female, mixed, unknown."
+      - identifier: age_at_start
+        label: Age at start of monitoring
+        ontology_iri: hcm:ageAtStart
+        classification: recommended
+        expected_datatype: xsd:decimal
+        device_mapping:
+          candidate_field: birth_date
+          transform: "Compute session_start - birth_date and convert to ISO 8601 duration"
+        coverage_status: partial
+        notes: "Specify unit via auxiliary field age_unit."
+      - identifier: genotype
+        label: Genotype / transgenic markers
+        ontology_iri: hcm:genotype
+        classification: optional
+        expected_datatype: xsd:string
+        device_mapping:
+          candidate_field: null
+          transform: "Augment from colony management system"
+        coverage_status: missing
+        notes: "Document known gene knockouts/knock-ins or reporter lines."
+      - identifier: experimental_group
+        label: Experimental group assignment
+        ontology_iri: hcm:assignedToGroup
+        classification: recommended
+        expected_datatype: xsd:string
+        device_mapping:
+          candidate_field: null
+          transform: "Join with protocol manifest"
+        coverage_status: missing
+        notes: "Link to protocol or treatment condition identifiers."
+  environment:
+    summary: "Housing, enclosure, and environmental condition metadata"
+    fields:
+      - identifier: enclosure_id
+        label: Enclosure identifier
+        ontology_iri: hcm:Enclosure
+        classification: mandatory
+        expected_datatype: xsd:string
+        device_mapping:
+          candidate_field: cage_id
+          transform: null
+        coverage_status: provided
+        notes: "Unique reference for each physical cage or enclosure."
+      - identifier: enclosure_dimensions
+        label: Enclosure dimensions
+        ontology_iri: hcm:Dimensions
+        classification: mandatory
+        expected_datatype: qudt:Quantity
+        device_mapping:
+          candidate_field: null
+          transform: "Load from facility registry; provide width, length, height, and unit"
+        coverage_status: missing
+        notes: "Express using QUDT or OM units (cm, mm)."
+      - identifier: housing_type
+        label: Housing type / configuration
+        ontology_iri: hcm:housingType
+        classification: recommended
+        expected_datatype: xsd:string
+        device_mapping:
+          candidate_field: enclosure_type
+          transform: "Normalize to ontology vocabulary"
+        coverage_status: provided
+        notes: "E.g., group-housed, single-housed, enriched."
+      - identifier: light_cycle
+        label: Light/dark cycle
+        ontology_iri: hcm:lightCycle
+        classification: mandatory
+        expected_datatype: xsd:string
+        device_mapping:
+          candidate_field: light_cycle
+          transform: "Normalize 12:12 -> 12L:12D"
+        coverage_status: provided
+        notes: "Describe photoperiod (e.g., 12:12 inverted)."
+      - identifier: temperature_range
+        label: Ambient temperature range
+        ontology_iri: hcm:ambientTemperature
+        classification: recommended
+        expected_datatype: qudt:Quantity
+        device_mapping:
+          candidate_field: temperature_c
+          transform: "Wrap mean temperature with unit and compute min/max if available"
+        coverage_status: partial
+        notes: "If dynamic, include sensor channel reference."
+      - identifier: humidity_range
+        label: Relative humidity range
+        ontology_iri: hcm:ambientHumidity
+        classification: recommended
+        expected_datatype: qudt:Quantity
+        device_mapping:
+          candidate_field: humidity_pct
+          transform: "Wrap mean relative humidity with unit and compute min/max if available"
+        coverage_status: partial
+        notes: "If not measured, state control method or N/A."
+      - identifier: enrichment_items
+        label: Environmental enrichment
+        ontology_iri: hcm:hasEnvironmentalEnrichment
+        classification: optional
+        expected_datatype: rdf:List
+        device_mapping:
+          candidate_field: null
+          transform: "Capture from husbandry log"
+        coverage_status: missing
+        notes: "List items such as shelters, running wheels, chew sticks."
+  hardware:
+    summary: "Sensors, actuators, and system hardware components"
+    fields:
+      - identifier: system_model
+        label: HCM system model
+        ontology_iri: hcm:System
+        classification: mandatory
+        expected_datatype: xsd:string
+        device_mapping:
+          candidate_field: system_serial
+          transform: "Look up model from serial registry"
+        coverage_status: partial
+        notes: "Formal name/version provided by supplier."
+      - identifier: sensor_inventory
+        label: Sensor inventory
+        ontology_iri: hcm:Sensor
+        classification: mandatory
+        expected_datatype: rdf:List
+        device_mapping:
+          candidate_field: sensor_type
+          transform: "Pivot sensor manifest with location"
+        coverage_status: partial
+        notes: "Include modality (RFID, IR beam, video, load cell)."
+      - identifier: sensor_sampling_rates
+        label: Sensor sampling rates
+        ontology_iri: hcm:samplingRate
+        classification: mandatory
+        expected_datatype: qudt:Quantity
+        device_mapping:
+          candidate_field: sampling_rate_hz
+          transform: null
+        coverage_status: provided
+        notes: "Provide per sensor; fast video vs slow telemetry."
+      - identifier: actuator_inventory
+        label: Actuator inventory
+        ontology_iri: hcm:Actuator
+        classification: recommended
+        expected_datatype: rdf:List
+        device_mapping:
+          candidate_field: null
+          transform: "Derive from configuration file"
+        coverage_status: missing
+        notes: "Feeder, water valve, lighting modules, etc."
+      - identifier: hardware_supplier
+        label: Hardware supplier details
+        ontology_iri: hcm:Supplier
+        classification: recommended
+        expected_datatype: schema:Organization
+        device_mapping:
+          candidate_field: null
+          transform: "Join with procurement database"
+        coverage_status: missing
+        notes: "Include contact info or catalogue numbers when available."
+  software:
+    summary: "Acquisition and analysis software provenance"
+    fields:
+      - identifier: acquisition_software
+        label: Acquisition software name
+        ontology_iri: hcm:Software
+        classification: mandatory
+        expected_datatype: schema:SoftwareApplication
+        device_mapping:
+          candidate_field: acquisition_app
+          transform: null
+        coverage_status: provided
+        notes: "Specify executable/module in charge of data capture."
+      - identifier: acquisition_version
+        label: Acquisition software version
+        ontology_iri: hcm:softwareVersion
+        classification: mandatory
+        expected_datatype: xsd:string
+        device_mapping:
+          candidate_field: acquisition_app_version
+          transform: null
+        coverage_status: provided
+        notes: "Follow semantic versioning string if available."
+      - identifier: analysis_pipeline
+        label: Analysis pipeline description
+        ontology_iri: hcm:analysisWorkflow
+        classification: recommended
+        expected_datatype: xsd:string
+        device_mapping:
+          candidate_field: analysis_pipeline_id
+          transform: null
+        coverage_status: provided
+        notes: "Reference scripts, notebooks, or proprietary modules."
+      - identifier: analysis_version
+        label: Analysis pipeline version or commit
+        ontology_iri: hcm:analysisVersion
+        classification: recommended
+        expected_datatype: xsd:string
+        device_mapping:
+          candidate_field: analysis_pipeline_version
+          transform: null
+        coverage_status: provided
+        notes: "Include git commit, release tag, or build number."
+      - identifier: calibration_procedure
+        label: Calibration procedure reference
+        ontology_iri: hcm:calibrationProcedure
+        classification: optional
+        expected_datatype: xsd:string
+        device_mapping:
+          candidate_field: calibration_file
+          transform: "Wrap file reference with metadata"
+        coverage_status: partial
+        notes: "Document calibration scripts, frequency, responsible party."
+  data_outputs:
+    summary: "Primary data products and metadata delivered to repositories"
+    fields:
+      - identifier: data_modalities
+        label: Data modalities captured
+        ontology_iri: hcm:collectsInfoOn
+        classification: mandatory
+        expected_datatype: rdf:List
+        device_mapping:
+          candidate_field: modality
+          transform: "Map device-specific labels to ontology concepts"
+        coverage_status: provided
+        notes: "Define behaviors, physiological metrics, derived events."
+      - identifier: data_formats
+        label: Data file formats
+        ontology_iri: hcm:dataFormat
+        classification: mandatory
+        expected_datatype: rdf:List
+        device_mapping:
+          candidate_field: file_format
+          transform: null
+        coverage_status: provided
+        notes: "E.g., CSV, HDF5, MPEG-4; include encoding details."
+      - identifier: sampling_summary
+        label: Sampling cadence summary
+        ontology_iri: hcm:samplingSummary
+        classification: recommended
+        expected_datatype: xsd:string
+        device_mapping:
+          candidate_field: sampling_rate_hz
+          transform: "Aggregate per modality into narrative summary"
+        coverage_status: partial
+        notes: "Combine sensor-specific sampling rates into narrative description."
+      - identifier: event_definitions
+        label: Behavioral event definitions
+        ontology_iri: hcm:eventDefinition
+        classification: recommended
+        expected_datatype: xsd:string
+        device_mapping:
+          candidate_field: definition_source
+          transform: null
+        coverage_status: partial
+        notes: "Describe algorithms or thresholds triggering each event."
+      - identifier: qc_metrics
+        label: Quality control metrics
+        ontology_iri: hcm:qualityControl
+        classification: optional
+        expected_datatype: rdf:List
+        device_mapping:
+          candidate_field: qc_metric
+          transform: "Represent as structured key/value"
+        coverage_status: partial
+        notes: "E.g., uptime %, data loss %, sensor calibration checks."
+      - identifier: provenance_records
+        label: Provenance records
+        ontology_iri: prov:Activity
+        classification: recommended
+        expected_datatype: rdf:List
+        device_mapping:
+          candidate_field: file_uri
+          transform: "Convert file references into PROV activities"
+        coverage_status: partial
+        notes: "Align to PROV model storing acquisition/analysis steps."
+stakeholder_reviews:
+  - role: device_developer
+    contacts: []
+    feedback_status: pending
+    notes: "Share mapping spreadsheet and YAML for validation."
+  - role: ontology_curator
+    contacts: []
+    feedback_status: pending
+    notes: "Confirm term usage and suggest extensions."
+  - role: repository_team
+    contacts: []
+    feedback_status: pending
+    notes: "Check ingestion requirements and FAIR compliance."
+next_actions:
+  - "Populate device_mapping.candidate_field for each reviewed dataset."
+  - "Update coverage_status once stakeholders confirm mappings."
+  - "Version bump to 0.1.1 after first device alignment review."
