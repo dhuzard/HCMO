@@ -1,4 +1,4 @@
-import express from 'express';
+﻿import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import fs from 'fs';
@@ -19,14 +19,13 @@ const __dirname = path.dirname(__filename);
 const repoRoot = path.resolve(__dirname, '..');
 const publicDir = path.join(__dirname, 'public');
 const shapesPath = path.join(repoRoot, 'shapes', 'hcm-shapes.ttl');
-const blueprintInventoryPath = path.join(repoRoot, 'ontology', 'hcm-field-inventory.tsv');
-const blueprintMappingPath = path.join(repoRoot, 'reference', 'device', 'device-to-ontology-mapping.csv');
+const fieldTiersPath = path.join(repoRoot, 'docs', 'FIELD-TIERS.md');
 
 const STATUS_ICONS = {
-  provided: '✅',
-  partial: '⚠️',
-  missing: '❌',
-  unknown: '•'
+  provided: '\u2713',
+  partial: '\u25B3',
+  missing: '\u25CB',
+  unknown: '?'
 };
 
 function createApp() {
@@ -40,175 +39,150 @@ function createApp() {
   return app;
 }
 
-function parseDelimited(content, delimiter) {
-  const lines = content.trim().split(/\r?\n/).filter(Boolean);
-  if (!lines.length) {
+function toIdentifier(value) {
+  return value
+    .replace(/`/g, '')
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '_')
+    .replace(/^_+|_+$/g, '');
+}
+
+function normalizeMarkdownText(text, { collapseWhitespace = true } = {}) {
+  if (!text) return '';
+  let value = text.trim();
+  if (value.startsWith('`') && value.endsWith('`')) {
+    value = value.slice(1, -1).trim();
+  }
+  value = value
+    .replace(/\*\*/g, '')
+    .replace(/\[(.+?)\]\((.+?)\)/g, '$1');
+  return collapseWhitespace ? value.replace(/\s+/g, ' ').trim() : value.trim();
+}
+
+function parseMarkdownTable(section) {
+  const lines = section.split(/\r?\n/).map((line) => line.trim());
+  const tableLines = lines.filter((line) => line.startsWith('|'));
+  if (tableLines.length < 2) {
     return [];
   }
-  const headers = lines.shift().split(delimiter);
-  return lines.map((line) => {
-    const cells = line.split(delimiter);
+
+  const headers = tableLines[0]
+    .split('|')
+    .slice(1, -1)
+    .map((cell) => normalizeMarkdownText(cell));
+
+  const rows = [];
+  for (let i = 2; i < tableLines.length; i += 1) {
+    const line = tableLines[i];
+    if (!line) continue;
+    const cleaned = line.replace(/[-|:\s]/g, '');
+    if (!cleaned) continue;
+    const cells = line.split('|').slice(1, -1).map((cell) => cell.trim());
     const record = {};
     headers.forEach((header, idx) => {
-      record[header.trim()] = (cells[idx] ?? '').trim();
+      record[header] = cells[idx] ?? '';
     });
-    return record;
-  });
-}
-
-function parseTsv(content) {
-  return parseDelimited(content, '\t');
-}
-
-function parseCsv(content) {
-  const lines = content.trim().split(/\r?\n/).filter(Boolean);
-  if (!lines.length) {
-    return [];
+    rows.push(record);
   }
-  const headers = lines.shift().split(',').map((header) => header.trim());
-  return lines.map((line) => {
-    const cells = [];
-    let current = '';
-    let inQuotes = false;
-
-    for (let i = 0; i < line.length; i += 1) {
-      const char = line[i];
-      if (char === '"') {
-        if (inQuotes && line[i + 1] === '"') {
-          current += '"';
-          i += 1;
-        } else {
-          inQuotes = !inQuotes;
-        }
-      } else if (char === ',' && !inQuotes) {
-        cells.push(current.trim());
-        current = '';
-      } else {
-        current += char;
-      }
-    }
-    cells.push(current.trim());
-
-    const record = {};
-    headers.forEach((header, idx) => {
-      const value = cells[idx] ?? '';
-      record[header] = value.replace(/^"|"$/g, '');
-    });
-    return record;
-  });
+  return rows;
 }
 
-function normalizeStatus(raw) {
-  if (!raw) return 'unknown';
-  const lower = raw.toLowerCase();
-  if (lower.includes('provided') || raw.includes('✅')) return 'provided';
-  if (lower.includes('partial') || raw.includes('⚠') || raw.includes('warning')) return 'partial';
-  if (lower.includes('missing') || raw.includes('❌')) return 'missing';
-  if (lower.includes('unknown')) return 'unknown';
-  return lower || 'unknown';
+function parseFieldTiersMarkdown(markdown) {
+  const tierMatches = [...markdown.matchAll(/##\s+(Mandatory|Recommended|Optional) Fields([\s\S]*?)(?=##\s+|$)/g)];
+  return tierMatches.map((match) => {
+    const tierName = match[1];
+    const section = match[2];
+    const rows = parseMarkdownTable(section);
+    const tierId = tierName.toLowerCase();
+    const fields = rows.map((row) => {
+      const rawField = row.Field ?? row['Field'] ?? '';
+      const identifier = toIdentifier(rawField || tierName);
+      const label = normalizeMarkdownText(rawField, { collapseWhitespace: false }) || identifier;
+      return {
+        id: identifier,
+        tierId,
+        tierLabel: tierName,
+        label,
+        description: normalizeMarkdownText(row.Description ?? ''),
+        rationale: normalizeMarkdownText(row.Rationale ?? ''),
+        exampleValue: normalizeMarkdownText(row['Example Value'] ?? '', { collapseWhitespace: false }),
+        validationNotes: normalizeMarkdownText(row['Validation Notes'] ?? ''),
+        downstreamUtility: normalizeMarkdownText(row['Downstream Utility'] ?? '')
+      };
+    });
+    return {
+      id: tierId,
+      label: `${tierName} Fields`,
+      tier: tierName,
+      fields
+    };
+  });
 }
 
 async function loadBlueprintInventory() {
-  const content = await fs.promises.readFile(blueprintInventoryPath, 'utf8');
-  const records = parseTsv(content);
-  const domains = new Map();
+  const content = await fs.promises.readFile(fieldTiersPath, 'utf8');
+  const tiers = parseFieldTiersMarkdown(content);
+  return { tiers };
+}
 
-  records.forEach((record) => {
-    const domainId = record.domain;
-    if (!domains.has(domainId)) {
-      domains.set(domainId, {
-        id: domainId,
-        label: record.domain.replace(/_/g, ' '),
-        fields: []
-      });
-    }
-    const domain = domains.get(domainId);
-    domain.fields.push({
-      identifier: record.identifier,
-      label: record.label,
-      classification: record.classification,
-      ontologyIri: record.ontology_iri,
-      expectedDatatype: record.expected_datatype
+function buildExampleFromTiers(tiers) {
+  const minimal = {
+    id: 'example-minimal-mandatory',
+    label: 'Minimal Mandatory Coverage',
+    description: 'Matches docs/EXAMPLES/example-minimal-mandatory.json',
+    fields: {}
+  };
+  const extended = {
+    id: 'example-extended-recommended',
+    label: 'Extended Mandatory + Recommended Coverage',
+    description: 'Matches docs/EXAMPLES/example-extended-recommended.yaml',
+    fields: {}
+  };
+
+  tiers.forEach((tier) => {
+    minimal.fields[tier.id] = {};
+    extended.fields[tier.id] = {};
+
+    tier.fields.forEach((field) => {
+      if (tier.id === 'mandatory') {
+        minimal.fields[tier.id][field.id] = {
+          status: 'provided',
+          value: field.exampleValue || '',
+          notes: 'Covered in the minimal mandatory example payload.'
+        };
+      } else {
+        minimal.fields[tier.id][field.id] = {
+          status: 'missing',
+          value: '',
+          notes: ''
+        };
+      }
+
+      if (tier.id === 'optional') {
+        extended.fields[tier.id][field.id] = {
+          status: 'partial',
+          value: '',
+          notes: 'Optional field – include when available.'
+        };
+      } else {
+        extended.fields[tier.id][field.id] = {
+          status: 'provided',
+          value: field.exampleValue || '',
+          notes: tier.id === 'mandatory'
+            ? 'Mandatory field'
+            : 'Recommended field covered in extended example.'
+        };
+      }
     });
   });
 
-  return {
-    domains: Array.from(domains.values()).sort((a, b) => a.id.localeCompare(b.id))
-  };
-}
-
-async function loadBlueprintMapping() {
-  try {
-    const content = await fs.promises.readFile(blueprintMappingPath, 'utf8');
-    const records = parseCsv(content);
-    const mapping = new Map();
-    records.forEach((record) => {
-      const domain = record.domain;
-      const field = record.blueprint_field;
-      if (!domain || !field) return;
-      const key = `${domain}:${field}`;
-      const status = normalizeStatus(record.coverage_status);
-      const deviceField = record.device_field || '';
-      const transform = record.transform || '';
-      const value = deviceField || transform || '';
-      mapping.set(key, {
-        status,
-        value,
-        deviceField,
-        transform,
-        notes: record.notes || ''
-      });
-    });
-    return mapping;
-  } catch (error) {
-    // Mapping is optional; return empty map if missing.
-    return new Map();
-  }
+  return { examples: [minimal, extended] };
 }
 
 async function loadBlueprintExamples() {
-  const inventory = await loadBlueprintInventory();
-  const mapping = await loadBlueprintMapping();
-
-  const representative = {
-    id: 'representative-device',
-    label: 'Representative Device Export',
-    description: 'Derived from reference/device/device-to-ontology-mapping.csv coverage data.',
-    fields: {}
-  };
-
-  const ideal = {
-    id: 'ideal-complete',
-    label: 'Ideal Complete Alignment',
-    description: 'All mandatory and optional fields provided with placeholder values.',
-    fields: {}
-  };
-
-  inventory.domains.forEach((domain) => {
-    representative.fields[domain.id] = {};
-    ideal.fields[domain.id] = {};
-
-    domain.fields.forEach((field) => {
-      const key = `${domain.id}:${field.identifier}`;
-      const mappingEntry = mapping.get(key);
-      representative.fields[domain.id][field.identifier] = {
-        status: mappingEntry?.status ?? 'missing',
-        value: mappingEntry?.value ?? '',
-        notes: mappingEntry?.notes ?? mappingEntry?.transform ?? '',
-        transform: mappingEntry?.transform ?? ''
-      };
-
-      ideal.fields[domain.id][field.identifier] = {
-        status: 'provided',
-        value: `Example ${field.identifier}`,
-        notes: field.classification === 'mandatory' ? 'Core metadata' : 'Recommended metadata'
-      };
-    });
-  });
-
-  return {
-    examples: [representative, ideal]
-  };
+  const { tiers } = await loadBlueprintInventory();
+  return buildExampleFromTiers(tiers);
 }
 
 async function blueprintInventoryHandler(_req, res) {
@@ -346,3 +320,4 @@ if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
 
 export default app;
 export { createApp };
+

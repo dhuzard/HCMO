@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HCMO Authoring & Blueprint Checker</title>
+  <title>HCMO Device-Agnostic Blueprint Workbench</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <main class="page">
     <header class="page__header">
-      <h1>HCMO Authoring & Blueprint Checker</h1>
-      <p>Capture ontology-aligned system exports or audit device metadata coverage against the TEATIME blueprint.</p>
+      <h1>HCMO Device-Agnostic Blueprint Workbench</h1>
+      <p>Use this tool to produce illustrative VMG exports and track Mandatory / Recommended / Optional coverage without freezing any specific device mapping. See <a href="../README.md#purpose--scope">Purpose &amp; Scope</a> and the <a href="../README.md#examples-policy">Examples Policy</a> for context.</p>
+      <p class="notice notice--ethics">Cite ethics approvals when available (<a href="../docs/ETHICS-APPROVALS.md">guidance</a>, placeholder <strong>(O)</strong>). Ethics approvals are not required to explore the mapping model itself.</p>
     </header>
 
     <nav class="page__tabs" aria-label="Application sections">
@@ -18,19 +19,19 @@
       <button type="button" class="tab-button" data-panel-target="blueprint-panel">Metadata Blueprint</button>
     </nav>
 
-    <p class="field-legend" role="note">Legend: <span class="field-tag field-tag--mandatory" aria-hidden="true">*</span> mandatory · <span class="field-tag field-tag--recommended" aria-hidden="true">$</span> recommended · <span class="field-tag field-tag--optional" aria-hidden="true">§</span> optional</p>
+    <p class="field-legend" role="note">Field tiers: <span class="field-tag field-tag--mandatory" aria-hidden="true">M</span> Mandatory � <span class="field-tag field-tag--recommended" aria-hidden="true">R</span> Recommended � <span class="field-tag field-tag--optional" aria-hidden="true">O</span> Optional (<a href="../docs/FIELD-TIERS.md">details</a>)</p>
 
     <section id="export-panel" class="panel panel--active" data-panel="export-panel">
       <form id="hcmo-form" class="form">
         <section class="card">
           <h2>Global Settings</h2>
           <label>
-            <span class="form-label">Base IRI <span class="field-tag field-tag--mandatory" aria-hidden="true">*</span></span>
+            <span class="form-label">Base IRI <span class="field-tag field-tag--mandatory" aria-hidden="true">M</span></span>
             <input type="url" name="baseIri" value="https://mfg.example.com/hcm/id/" required>
             <small>Used to mint IRIs for all resources; include trailing slash or hash.</small>
           </label>
           <label>
-            <span class="form-label">Ingestion Timestamp <span class="field-tag field-tag--optional" aria-hidden="true">§</span></span>
+            <span class="form-label">Ingestion Timestamp <span class="field-tag field-tag--optional" aria-hidden="true">O</span></span>
             <input type="datetime-local" name="ingestedAt">
           </label>
         </section>
@@ -39,53 +40,73 @@
           <h2>System</h2>
           <div class="grid grid--two">
             <label>
-              <span class="form-label">System ID <span class="field-tag field-tag--mandatory" aria-hidden="true">*</span></span>
-              <input type="text" name="systemId" placeholder="System_A" required>
+              <span class="form-label">System ID <span class="field-tag field-tag--mandatory" aria-hidden="true">M</span></span>
+              <input type="text" name="systemId" placeholder="hcmo-system-001" required>
             </label>
             <label>
-              <span class="form-label">System Label <span class="field-tag field-tag--recommended" aria-hidden="true">$</span></span>
+              <span class="form-label">System Label <span class="field-tag field-tag--recommended" aria-hidden="true">R</span></span>
               <input type="text" name="systemLabel" placeholder="System A (rack 3, cage 12)">
             </label>
           </div>
           <div class="grid grid--three">
             <label>
-              <span class="form-label">Hardware ID <span class="field-tag field-tag--mandatory" aria-hidden="true">*</span></span>
+              <span class="form-label">Hardware ID <span class="field-tag field-tag--mandatory" aria-hidden="true">M</span></span>
               <input type="text" name="hardwareId" placeholder="HW_01" required>
             </label>
             <label>
-              <span class="form-label">Hardware Label <span class="field-tag field-tag--optional" aria-hidden="true">§</span></span>
-              <input type="text" name="hardwareLabel" placeholder="HW control board">
+              <span class="form-label">Hardware Label <span class="field-tag field-tag--optional" aria-hidden="true">O</span></span>
+              <input type="text" name="hardwareLabel" placeholder="Control board">
             </label>
             <label>
-              <span class="form-label">Software ID <span class="field-tag field-tag--mandatory" aria-hidden="true">*</span></span>
+              <span class="form-label">Software ID <span class="field-tag field-tag--mandatory" aria-hidden="true">M</span></span>
               <input type="text" name="softwareId" placeholder="SW_01" required>
             </label>
           </div>
           <div class="grid grid--two">
             <label>
-              <span class="form-label">Software Label <span class="field-tag field-tag--recommended" aria-hidden="true">$</span></span>
-              <input type="text" name="softwareLabel" placeholder="Telemetry Service">
+              <span class="form-label">Software Label <span class="field-tag field-tag--recommended" aria-hidden="true">R</span></span>
+              <input type="text" name="softwareLabel" placeholder="Telemetry service">
             </label>
             <label>
-              <span class="form-label">Supplier ID <span class="field-tag field-tag--mandatory" aria-hidden="true">*</span></span>
+              <span class="form-label">Supplier ID <span class="field-tag field-tag--mandatory" aria-hidden="true">M</span></span>
               <input type="text" name="supplierId" placeholder="SupplierAcme" required>
             </label>
           </div>
           <label>
-            <span class="form-label">Supplier Label <span class="field-tag field-tag--optional" aria-hidden="true">§</span></span>
+            <span class="form-label">Supplier Label <span class="field-tag field-tag--optional" aria-hidden="true">O</span></span>
             <input type="text" name="supplierLabel" placeholder="Acme supply partners">
           </label>
+          <label>
+            <span class="form-label">Operator Contact <span class="field-tag field-tag--recommended" aria-hidden="true">R</span></span>
+            <input type="email" name="operatorContact" placeholder="hcmo-operations@example.org">
+            <small>Shared mailbox or ticket queue for collaborators.</small>
+          </label>
+        </section>
+
+        <section class="card">
+          <h2>Protocol &amp; Governance</h2>
+          <div class="grid grid--two">
+            <label>
+              <span class="form-label">Protocol ID <span class="field-tag field-tag--mandatory" aria-hidden="true">M</span></span>
+              <input type="text" name="protocolId" placeholder="doi:10.1234/hcmo-protocol" required>
+            </label>
+            <label>
+              <span class="form-label">Protocol Label <span class="field-tag field-tag--recommended" aria-hidden="true">R</span></span>
+              <input type="text" name="protocolLabel" placeholder="Minimally disruptive 24h monitoring">
+            </label>
+          </div>
+          <p class="field-hint">Reference the governing ethics or SOP identifier. Cite approvals when available.</p>
         </section>
 
         <section class="card">
           <h2>Enclosure &amp; Needs</h2>
           <div class="grid grid--two">
             <label>
-              <span class="form-label">Enclosure ID <span class="field-tag field-tag--mandatory" aria-hidden="true">*</span></span>
+              <span class="form-label">Enclosure ID <span class="field-tag field-tag--mandatory" aria-hidden="true">M</span></span>
               <input type="text" name="enclosureId" placeholder="Enc_01" required>
             </label>
             <label>
-              <span class="form-label">Enclosure Label <span class="field-tag field-tag--recommended" aria-hidden="true">$</span></span>
+              <span class="form-label">Enclosure Label <span class="field-tag field-tag--recommended" aria-hidden="true">R</span></span>
               <input type="text" name="enclosureLabel" placeholder="Enclosure 01">
             </label>
           </div>
@@ -93,31 +114,31 @@
             <legend>Dimensions</legend>
             <div class="grid grid--four">
               <label>
-                <span class="form-label">Width (cm) <span class="field-tag field-tag--mandatory" aria-hidden="true">*</span></span>
-                <input type="number" step="0.1" name="width" value="30" required>
+                <span class="form-label">Width (cm) <span class="field-tag field-tag--mandatory" aria-hidden="true">M</span></span>
+                <input type="number" step="0.1" name="width" required>
               </label>
               <label>
-                <span class="form-label">Length (cm) <span class="field-tag field-tag--mandatory" aria-hidden="true">*</span></span>
-                <input type="number" step="0.1" name="length" value="45" required>
+                <span class="form-label">Length (cm) <span class="field-tag field-tag--mandatory" aria-hidden="true">M</span></span>
+                <input type="number" step="0.1" name="length" required>
               </label>
               <label>
-                <span class="form-label">Height (cm) <span class="field-tag field-tag--mandatory" aria-hidden="true">*</span></span>
-                <input type="number" step="0.1" name="height" value="20" required>
+                <span class="form-label">Height (cm) <span class="field-tag field-tag--mandatory" aria-hidden="true">M</span></span>
+                <input type="number" step="0.1" name="height" required>
               </label>
               <label>
-                <span class="form-label">Unit <span class="field-tag field-tag--mandatory" aria-hidden="true">*</span></span>
+                <span class="form-label">Unit <span class="field-tag field-tag--mandatory" aria-hidden="true">M</span></span>
                 <input type="text" name="unit" value="cm" required>
               </label>
             </div>
           </fieldset>
           <fieldset class="fieldset">
-            <legend>Needs Provisioning <span class="field-tag field-tag--optional" aria-hidden="true">§</span></legend>
-            <div class="grid grid--five">
+            <legend>Needs Provisioning</legend>
+            <div class="needs-grid">
               <label><input type="checkbox" name="needFood" checked> Food</label>
               <label><input type="checkbox" name="needWater" checked> Water</label>
-              <label><input type="checkbox" name="needSocial" checked> Social Contacts</label>
-              <label><input type="checkbox" name="needSafety" checked> Safety from Threat</label>
-              <label><input type="checkbox" name="needEnrichment" checked> Environmental Enrichment</label>
+              <label><input type="checkbox" name="needSocial" checked> Social</label>
+              <label><input type="checkbox" name="needSafety" checked> Safety</label>
+              <label><input type="checkbox" name="needEnrichment" checked> Enrichment</label>
             </div>
           </fieldset>
         </section>
@@ -126,25 +147,25 @@
           <h2>Animal &amp; Behavior</h2>
           <div class="grid grid--two">
             <label>
-              <span class="form-label">Animal ID <span class="field-tag field-tag--mandatory" aria-hidden="true">*</span></span>
-              <input type="text" name="animalId" placeholder="Mouse_1" required>
+              <span class="form-label">Animal ID <span class="field-tag field-tag--mandatory" aria-hidden="true">M</span></span>
+              <input type="text" name="animalId" placeholder="S-00123" required>
             </label>
             <label>
-              <span class="form-label">Animal Label <span class="field-tag field-tag--recommended" aria-hidden="true">$</span></span>
-              <input type="text" name="animalLabel" placeholder="Mouse 1 (study cohort)">
+              <span class="form-label">Animal Label <span class="field-tag field-tag--recommended" aria-hidden="true">R</span></span>
+              <input type="text" name="animalLabel" placeholder="Mouse 1 (cohort alpha)">
             </label>
           </div>
           <div class="grid grid--three">
             <label>
-              <span class="form-label">Behavior ID <span class="field-tag field-tag--mandatory" aria-hidden="true">*</span></span>
+              <span class="form-label">Behavior ID <span class="field-tag field-tag--mandatory" aria-hidden="true">M</span></span>
               <input type="text" name="behaviorId" placeholder="Behav_Rec_1" required>
             </label>
             <label>
-              <span class="form-label">Behavior Label <span class="field-tag field-tag--recommended" aria-hidden="true">$</span></span>
-              <input type="text" name="behaviorLabel" placeholder="Exploration bouts">
+              <span class="form-label">Behavior Label <span class="field-tag field-tag--recommended" aria-hidden="true">R</span></span>
+              <input type="text" name="behaviorLabel" placeholder="Exploration bouts (24h)">
             </label>
             <label>
-              <span class="form-label">Circadian Rhythm Label <span class="field-tag field-tag--optional" aria-hidden="true">§</span></span>
+              <span class="form-label">Circadian Label <span class="field-tag field-tag--recommended" aria-hidden="true">R</span></span>
               <input type="text" name="circadianLabel" placeholder="Nocturnal peak">
             </label>
           </div>
@@ -152,30 +173,40 @@
 
         <section class="card">
           <h2>Observation Window</h2>
+          <div class="grid grid--two">
+            <label>
+              <span class="form-label">Session Start <span class="field-tag field-tag--mandatory" aria-hidden="true">M</span></span>
+              <input type="datetime-local" name="sessionStart" required>
+            </label>
+            <label>
+              <span class="form-label">Session End <span class="field-tag field-tag--mandatory" aria-hidden="true">M</span></span>
+              <input type="datetime-local" name="sessionEnd" required>
+            </label>
+          </div>
           <div class="grid grid--three">
             <label>
-              <span class="form-label">Interval ID <span class="field-tag field-tag--mandatory" aria-hidden="true">*</span></span>
+              <span class="form-label">Interval ID <span class="field-tag field-tag--mandatory" aria-hidden="true">M</span></span>
               <input type="text" name="intervalId" placeholder="TI_24h" required>
             </label>
             <label>
-              <span class="form-label">Interval Label <span class="field-tag field-tag--recommended" aria-hidden="true">$</span></span>
+              <span class="form-label">Interval Label <span class="field-tag field-tag--recommended" aria-hidden="true">R</span></span>
               <input type="text" name="intervalLabel" placeholder="24-hour observation window">
             </label>
             <label>
-              <span class="form-label">Duration (hours) <span class="field-tag field-tag--mandatory" aria-hidden="true">*</span></span>
+              <span class="form-label">Duration (hours) <span class="field-tag field-tag--mandatory" aria-hidden="true">M</span></span>
               <input type="number" step="0.1" name="durationHours" value="24" required>
             </label>
           </div>
           <div class="grid grid--two">
             <label>
-              <span class="form-label">Extendable? <span class="field-tag field-tag--mandatory" aria-hidden="true">*</span></span>
+              <span class="form-label">Extendable? <span class="field-tag field-tag--mandatory" aria-hidden="true">M</span></span>
               <select name="isExtendable" required>
                 <option value="true" selected>Yes</option>
                 <option value="false">No</option>
               </select>
             </label>
             <label>
-              <span class="form-label">Limited Interaction Label <span class="field-tag field-tag--recommended" aria-hidden="true">$</span></span>
+              <span class="form-label">Limited Interaction Label <span class="field-tag field-tag--recommended" aria-hidden="true">R</span></span>
               <input type="text" name="limitedInteractionLabel" placeholder="Minimal human contact">
               <span class="field-hint">Adds context for the limited-interaction policy node.</span>
             </label>
@@ -183,14 +214,23 @@
         </section>
 
         <section class="card">
-          <h2>Sensors <span class="field-tag field-tag--mandatory" aria-hidden="true">*</span></h2>
+          <h2>Collaboration &amp; Outputs</h2>
+          <label>
+            <span class="form-label">Data Product Links <span class="field-tag field-tag--recommended" aria-hidden="true">R</span></span>
+            <textarea name="dataProductLinks" rows="3" placeholder="https://example.org/datasets/hcmo-system-001/day-01.csv"></textarea>
+            <small>Reference derived data artifacts or archives that accompany this export.</small>
+          </label>
+        </section>
+
+        <section class="card">
+          <h2>Sensors <span class="field-tag field-tag--mandatory" aria-hidden="true">M</span></h2>
           <div id="sensor-list" class="repeat-list" data-sensor-list></div>
           <button type="button" id="add-sensor" class="button button--secondary">Add Sensor</button>
           <p class="field-hint">Include at least one sensor entry with ID and optional label.</p>
         </section>
 
         <section class="card">
-          <h2>Actuators <span class="field-tag field-tag--mandatory" aria-hidden="true">*</span></h2>
+          <h2>Actuators <span class="field-tag field-tag--mandatory" aria-hidden="true">M</span></h2>
           <div id="actuator-list" class="repeat-list" data-actuator-list></div>
           <button type="button" id="add-actuator" class="button button--secondary">Add Actuator</button>
           <p class="field-hint">Include at least one actuator entry with ID and optional label.</p>
@@ -227,7 +267,8 @@
     <section id="blueprint-panel" class="panel panel--hidden" data-panel="blueprint-panel" hidden>
       <section class="card card--blueprint-intro">
         <h2>Metadata Blueprint Coverage</h2>
-        <p>Complete the checklist to assess whether a device export satisfies mandatory, recommended, and optional TEATIME metadata.</p>
+        <p>This checklist inventories the device-agnostic VMG tiers. Provide illustrative mappings without making performance claims. Device owners can propose checklists via <a href="../.github/ISSUE_TEMPLATE/device-checklist-request.md">Device Checklist Request</a>.</p>
+        <p class="notice notice--collab">We intentionally do not freeze device mappings. Use this space to explore coverage, then collaborate with system owners in future PRs.</p>
         <div class="blueprint-controls">
           <label>
             Example dataset
@@ -237,7 +278,7 @@
           <button type="button" class="button button--secondary" id="blueprint-reset">Clear Fields</button>
         </div>
         <p id="blueprint-example-description" class="blueprint-description"></p>
-        <p id="blueprint-loading" class="status status--info">Loading blueprint metadata…</p>
+        <p id="blueprint-loading" class="status status--info">Loading blueprint metadata...</p>
       </section>
 
       <section class="card card--blueprint-summary">

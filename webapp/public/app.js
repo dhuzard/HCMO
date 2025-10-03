@@ -1,41 +1,46 @@
-const baseContext = {
+﻿const baseContext = {
   "@context": {
     "@vocab": "https://w3id.org/hcmo/ontology/hcm#",
     "hcm": "https://w3id.org/hcmo/ontology/hcm#",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "time": "http://www.w3.org/2006/time#",
     "width": { "@id": "hcm:width", "@type": "xsd:decimal" },
     "length": { "@id": "hcm:length", "@type": "xsd:decimal" },
     "height": { "@id": "hcm:height", "@type": "xsd:decimal" },
-    "unit":   { "@id": "hcm:unit" },
+    "unit": { "@id": "hcm:unit" },
     "durationHours": { "@id": "hcm:durationHours", "@type": "xsd:decimal" },
-    "isExtendable":  { "@id": "hcm:isExtendable",  "@type": "xsd:boolean" },
-    "hasEnclosure":  "hcm:hasEnclosure",
-    "hasHardware":   "hcm:hasHardware",
-    "hasSoftware":   "hcm:hasSoftware",
-    "producedBy":    "hcm:producedBy",
-    "collectsInfoOn":"hcm:collectsInfoOn",
-    "livesIn":       "hcm:livesIn",
+    "isExtendable": { "@id": "hcm:isExtendable", "@type": "xsd:boolean" },
+    "followsProtocol": "hcm:followsProtocol",
+    "protocolReference": "hcm:protocolReference",
+    "hasEnclosure": "hcm:hasEnclosure",
+    "hasHardware": "hcm:hasHardware",
+    "hasSoftware": "hcm:hasSoftware",
+    "producedBy": "hcm:producedBy",
+    "collectsInfoOn": "hcm:collectsInfoOn",
+    "livesIn": "hcm:livesIn",
     "requiresToThrive": "hcm:requiresToThrive",
-    "provides":      "hcm:provides",
-    "displays":      "hcm:displays",
+    "provides": "hcm:provides",
+    "displays": "hcm:displays",
     "isDisplayedInside": "hcm:isDisplayedInside",
     "hasCircadianRhythm": "hcm:hasCircadianRhythm",
     "extendsEnoughToCapture": "hcm:extendsEnoughToCapture",
-    "hasProperty":   "hcm:hasProperty",
-    "captures":      "hcm:captures",
-    "elicits":       "hcm:elicits",
-    "hasSensor":     "hcm:hasSensor",
-    "hasActuator":   "hcm:hasActuator",
+    "hasProperty": "hcm:hasProperty",
+    "captures": "hcm:captures",
+    "elicits": "hcm:elicits",
+    "hasSensor": "hcm:hasSensor",
+    "hasActuator": "hcm:hasActuator",
     "communicatesWith": "hcm:communicatesWith",
     "hasDimensions": "hcm:hasDimensions",
     "hasFood": "hcm:hasFood",
     "hasWater": "hcm:hasWater",
     "hasSocialContacts": "hcm:hasSocialContacts",
     "hasSafetyFromThreat": "hcm:hasSafetyFromThreat",
-    "hasEnvironmentalEnrichment": "hcm:hasEnvironmentalEnrichment"
+    "hasEnvironmentalEnrichment": "hcm:hasEnvironmentalEnrichment",
+    "hasBeginning": { "@id": "time:hasBeginning", "@type": "@id" },
+    "hasEnd": { "@id": "time:hasEnd", "@type": "@id" },
+    "inXSDDateTime": { "@id": "time:inXSDDateTime", "@type": "xsd:dateTime" }
   }
 };
-
 const form = document.querySelector('#hcmo-form');
 const resultsSection = document.querySelector('#results');
 const statusLine = document.querySelector('#status-line');
@@ -63,10 +68,10 @@ const blueprintApplyButton = document.querySelector('#blueprint-apply-example');
 const blueprintResetButton = document.querySelector('#blueprint-reset');
 
 const DEFAULT_STATUS_ICONS = {
-  provided: '✅',
-  partial: '⚠️',
-  missing: '❌',
-  unknown: '•'
+  provided: '\u2713',
+  partial: '\u25B3',
+  missing: '\u25CB',
+  unknown: '?'
 };
 
 const blueprintState = {
@@ -74,12 +79,15 @@ const blueprintState = {
   examples: [],
   statusIcons: { ...DEFAULT_STATUS_ICONS },
   fieldMap: new Map(),
-  domainSummaries: new Map(),
+  tierSummaries: new Map(),
   initialised: false
 };
 
 const titleCase = (value) => value.charAt(0).toUpperCase() + value.slice(1);
 
+function formatTierLabel(id) {
+  return id.replace(/_/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase());
+}
 function showPanel(panelId) {
   panels.forEach((panel) => {
     const matches = panel.dataset.panel === panelId;
@@ -112,7 +120,6 @@ function ensureTrailing(base) {
   if (!base) return base;
   return /[\/#]$/.test(base) ? base : `${base}/`;
 }
-
 function buildRow(container, prefix, defaults = {}) {
   const wrapper = document.createElement('div');
   wrapper.className = 'item-row';
@@ -125,32 +132,103 @@ function buildRow(container, prefix, defaults = {}) {
     </label>
     <button type="button" class="remove-item">Remove</button>
   `;
+
   wrapper.querySelector('.remove-item').addEventListener('click', () => {
-    container.removeChild(wrapper);
-    if (container.children.length === 0) {
-      buildRow(container, prefix);
-    }
+    wrapper.remove();
+    updateBlueprintSummary();
   });
+
   container.appendChild(wrapper);
 }
 
 function collectRepeated(container, prefix) {
-  return Array.from(container.querySelectorAll('.item-row')).map((row) => {
-    const id = row.querySelector(`input[name="${prefix}Id[]"]`).value.trim();
-    const label = row.querySelector(`input[name="${prefix}Label[]"]`).value.trim();
-    return { id, label };
-  }).filter((item) => item.id);
-}
-
-function toBoolean(value) {
-  return String(value).toLowerCase() === 'true';
+  const entries = [];
+  container.querySelectorAll('.item-row').forEach((row) => {
+    const idInput = row.querySelector(`input[name="${prefix}Id[]"]`);
+    const labelInput = row.querySelector(`input[name="${prefix}Label[]"]`);
+    const id = idInput?.value.trim();
+    if (id) {
+      entries.push({ id, label: labelInput?.value.trim() || '' });
+    }
+  });
+  return entries;
 }
 
 function toNumber(value) {
-  const num = Number(value);
-  return Number.isFinite(num) ? num : undefined;
+  if (value === undefined || value === null || value === '') return undefined;
+  const number = Number(value);
+  return Number.isNaN(number) ? undefined : number;
 }
 
+function toBoolean(value) {
+  if (typeof value === 'boolean') return value;
+  if (typeof value === 'string') {
+    return value.toLowerCase() === 'true';
+  }
+  return Boolean(value);
+}
+
+function dateTimeToIso(value) {
+  if (!value) return undefined;
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return undefined;
+  return date.toISOString();
+}
+function gatherFormData() {
+  const formData = new FormData(form);
+  const sensors = collectRepeated(sensorList, 'sensor');
+  const actuators = collectRepeated(actuatorList, 'actuator');
+
+  const ingestedAtIso = dateTimeToIso(formData.get('ingestedAt'));
+  const sessionStartIso = dateTimeToIso(formData.get('sessionStart'));
+  const sessionEndIso = dateTimeToIso(formData.get('sessionEnd'));
+
+  return {
+    baseIri: formData.get('baseIri').trim(),
+    systemId: formData.get('systemId').trim(),
+    systemLabel: formData.get('systemLabel').trim(),
+    hardwareId: formData.get('hardwareId').trim(),
+    hardwareLabel: formData.get('hardwareLabel').trim(),
+    softwareId: formData.get('softwareId').trim(),
+    softwareLabel: formData.get('softwareLabel').trim(),
+    supplierId: formData.get('supplierId').trim(),
+    supplierLabel: formData.get('supplierLabel').trim(),
+    protocolId: formData.get('protocolId').trim(),
+    protocolLabel: formData.get('protocolLabel').trim(),
+    enclosureId: formData.get('enclosureId').trim(),
+    enclosureLabel: formData.get('enclosureLabel').trim(),
+    width: formData.get('width'),
+    length: formData.get('length'),
+    height: formData.get('height'),
+    unit: formData.get('unit').trim(),
+    needs: {
+      food: formData.get('needFood') === 'on',
+      water: formData.get('needWater') === 'on',
+      social: formData.get('needSocial') === 'on',
+      safety: formData.get('needSafety') === 'on',
+      enrichment: formData.get('needEnrichment') === 'on'
+    },
+    animalId: formData.get('animalId').trim(),
+    animalLabel: formData.get('animalLabel').trim(),
+    behaviorId: formData.get('behaviorId').trim(),
+    behaviorLabel: formData.get('behaviorLabel').trim(),
+    circadianLabel: formData.get('circadianLabel').trim(),
+    operatorContact: formData.get('operatorContact').trim(),
+    dataProductLinks: formData.get('dataProductLinks').trim(),
+    intervalId: formData.get('intervalId').trim(),
+    intervalLabel: formData.get('intervalLabel').trim(),
+    durationHours: formData.get('durationHours'),
+    isExtendable: formData.get('isExtendable'),
+    limitedInteractionLabel: formData.get('limitedInteractionLabel').trim(),
+    sessionInterval: {
+      start: sessionStartIso,
+      end: sessionEndIso
+    },
+    sensors,
+    actuators,
+    ingestedAt: ingestedAtIso
+  };
+}
 function buildGraph(data) {
   const {
     baseIri,
@@ -162,6 +240,8 @@ function buildGraph(data) {
     softwareLabel,
     supplierId,
     supplierLabel,
+    protocolId,
+    protocolLabel,
     enclosureId,
     enclosureLabel,
     width,
@@ -174,11 +254,14 @@ function buildGraph(data) {
     behaviorId,
     behaviorLabel,
     circadianLabel,
+    operatorContact,
+    dataProductLinks,
     intervalId,
     intervalLabel,
     durationHours,
     isExtendable,
     limitedInteractionLabel,
+    sessionInterval,
     sensors,
     actuators,
     ingestedAt
@@ -190,18 +273,23 @@ function buildGraph(data) {
   const hardwareIri = `${base}${hardwareId}`;
   const softwareIri = `${base}${softwareId}`;
   const supplierIri = `${base}${supplierId}`;
+  const protocolIri = `${base}${protocolId}`;
   const enclosureIri = `${base}${enclosureId}`;
   const needsIri = `${base}${enclosureId}_Needs`;
   const dimensionsIri = `${base}${enclosureId}_Dims`;
+  const operatorContactIri = operatorContact ? `${base}${systemId}_Contact` : undefined;
+  const dataProductsIri = dataProductLinks ? `${base}${systemId}_DataProducts` : undefined;
   const animalIri = `${base}${animalId}`;
   const behaviorIri = `${base}${behaviorId}`;
   const circadianIri = `${base}${behaviorId}_CR`;
   const intervalIri = `${base}${intervalId}`;
   const limitedInteractionIri = `${base}${intervalId}_LHI`;
+  const intervalStartIri = sessionInterval.start ? `${intervalIri}_Start` : undefined;
+  const intervalEndIri = sessionInterval.end ? `${intervalIri}_End` : undefined;
 
   const graph = [];
 
-  const optionalLabel = (label) => label ? { label } : {};
+  const optionalLabel = (label) => (label ? { label } : {});
 
   const systemNode = {
     '@id': systemIri,
@@ -212,6 +300,7 @@ function buildGraph(data) {
     hasSoftware: { '@id': softwareIri },
     producedBy: { '@id': supplierIri },
     collectsInfoOn: { '@id': animalIri },
+    followsProtocol: { '@id': protocolIri },
     hasSensor: sensors.map((sensor) => ({ '@id': `${base}${sensor.id}` })),
     hasActuator: actuators.map((actuator) => ({ '@id': `${base}${actuator.id}` }))
   };
@@ -221,6 +310,12 @@ function buildGraph(data) {
   }
 
   graph.push(systemNode);
+  graph.push({
+    '@id': protocolIri,
+    '@type': 'Protocol',
+    ...optionalLabel(protocolLabel),
+    protocolReference: protocolId
+  });
 
   graph.push({
     '@id': hardwareIri,
@@ -235,11 +330,15 @@ function buildGraph(data) {
     ...optionalLabel(softwareLabel)
   });
 
-  graph.push({
+  const supplierNode = {
     '@id': supplierIri,
     '@type': 'Supplier',
     ...optionalLabel(supplierLabel)
-  });
+  };
+  if (operatorContactIri) {
+    supplierNode.hasProperty = { '@id': operatorContactIri };
+  }
+  graph.push(supplierNode);
 
   graph.push({
     '@id': needsIri,
@@ -260,13 +359,17 @@ function buildGraph(data) {
     unit
   });
 
-  graph.push({
+  const enclosureNode = {
     '@id': enclosureIri,
     '@type': 'Enclosure',
     ...optionalLabel(enclosureLabel),
     provides: { '@id': needsIri },
     hasDimensions: { '@id': dimensionsIri }
-  });
+  };
+  if (dataProductsIri) {
+    enclosureNode.hasProperty = { '@id': dataProductsIri };
+  }
+  graph.push(enclosureNode);
 
   graph.push({
     '@id': animalIri,
@@ -292,14 +395,34 @@ function buildGraph(data) {
     ...optionalLabel(circadianLabel)
   });
 
-  graph.push({
+  const intervalNode = {
     '@id': intervalIri,
     '@type': 'TimeInterval',
     ...optionalLabel(intervalLabel),
     durationHours: toNumber(durationHours),
     isExtendable: toBoolean(isExtendable),
     hasProperty: { '@id': limitedInteractionIri }
-  });
+  };
+
+  if (intervalStartIri) {
+    intervalNode.hasBeginning = { '@id': intervalStartIri };
+    graph.push({
+      '@id': intervalStartIri,
+      '@type': 'time:Instant',
+      inXSDDateTime: { '@value': sessionInterval.start, '@type': 'xsd:dateTime' }
+    });
+  }
+
+  if (intervalEndIri) {
+    intervalNode.hasEnd = { '@id': intervalEndIri };
+    graph.push({
+      '@id': intervalEndIri,
+      '@type': 'time:Instant',
+      inXSDDateTime: { '@value': sessionInterval.end, '@type': 'xsd:dateTime' }
+    });
+  }
+
+  graph.push(intervalNode);
 
   graph.push({
     '@id': limitedInteractionIri,
@@ -325,9 +448,24 @@ function buildGraph(data) {
     });
   });
 
-  return { graph, base, needsIri, dimensionsIri };
-}
+  if (operatorContactIri && operatorContact) {
+    graph.push({
+      '@id': operatorContactIri,
+      '@type': 'ContactPoint',
+      label: operatorContact
+    });
+  }
 
+  if (dataProductsIri && dataProductLinks) {
+    graph.push({
+      '@id': dataProductsIri,
+      '@type': 'DataProduct',
+      label: dataProductLinks
+    });
+  }
+
+  return { graph, base };
+}
 function buildJsonLdDocument(data) {
   const { graph, base } = buildGraph(data);
 
@@ -347,57 +485,17 @@ function buildJsonLdDocument(data) {
   };
 }
 
-function dateTimeToIso(value) {
-  if (!value) return undefined;
-  const date = new Date(value);
-  if (Number.isNaN(date.getTime())) return undefined;
-  return date.toISOString();
-}
+function saveBlob(data, mime, filename, isBase64 = false) {
+  const blob = isBase64
+    ? new Blob([Uint8Array.from(atob(data), (c) => c.charCodeAt(0))], { type: mime })
+    : new Blob([data], { type: mime });
 
-function gatherFormData() {
-  const formData = new FormData(form);
-  const sensors = collectRepeated(sensorList, 'sensor');
-  const actuators = collectRepeated(actuatorList, 'actuator');
-
-  const ingestedAtIso = dateTimeToIso(formData.get('ingestedAt'));
-
-  return {
-    baseIri: formData.get('baseIri').trim(),
-    systemId: formData.get('systemId').trim(),
-    systemLabel: formData.get('systemLabel').trim(),
-    hardwareId: formData.get('hardwareId').trim(),
-    hardwareLabel: formData.get('hardwareLabel').trim(),
-    softwareId: formData.get('softwareId').trim(),
-    softwareLabel: formData.get('softwareLabel').trim(),
-    supplierId: formData.get('supplierId').trim(),
-    supplierLabel: formData.get('supplierLabel').trim(),
-    enclosureId: formData.get('enclosureId').trim(),
-    enclosureLabel: formData.get('enclosureLabel').trim(),
-    width: formData.get('width'),
-    length: formData.get('length'),
-    height: formData.get('height'),
-    unit: formData.get('unit').trim(),
-    needs: {
-      food: formData.get('needFood') === 'on',
-      water: formData.get('needWater') === 'on',
-      social: formData.get('needSocial') === 'on',
-      safety: formData.get('needSafety') === 'on',
-      enrichment: formData.get('needEnrichment') === 'on'
-    },
-    animalId: formData.get('animalId').trim(),
-    animalLabel: formData.get('animalLabel').trim(),
-    behaviorId: formData.get('behaviorId').trim(),
-    behaviorLabel: formData.get('behaviorLabel').trim(),
-    circadianLabel: formData.get('circadianLabel').trim(),
-    intervalId: formData.get('intervalId').trim(),
-    intervalLabel: formData.get('intervalLabel').trim(),
-    durationHours: formData.get('durationHours'),
-    isExtendable: formData.get('isExtendable'),
-    limitedInteractionLabel: formData.get('limitedInteractionLabel').trim(),
-    sensors,
-    actuators,
-    ingestedAt: ingestedAtIso
-  };
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 }
 
 function enableDownloads(jsonldText, turtleText, zipBuffer, zipFilename) {
@@ -413,33 +511,24 @@ function enableDownloads(jsonldText, turtleText, zipBuffer, zipFilename) {
   }
 }
 
-function saveBlob(data, mime, filename, isBase64 = false) {
-  const blob = isBase64
-    ? new Blob([Uint8Array.from(atob(data), (c) => c.charCodeAt(0))], { type: mime })
-    : new Blob([data], { type: mime });
-
-  const link = document.createElement('a');
-  link.href = URL.createObjectURL(blob);
-  link.download = filename;
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-}
-
 function normalizeCoverageStatus(raw) {
   if (!raw) return 'unknown';
   const value = String(raw).toLowerCase();
-  if (value.includes('provided') || String(raw).includes('✅')) return 'provided';
-  if (value.includes('partial') || String(raw).includes('⚠')) return 'partial';
-  if (value.includes('missing') || String(raw).includes('❌')) return 'missing';
+  if (value.includes('provided') || String(raw).includes(DEFAULT_STATUS_ICONS.provided)) return 'provided';
+  if (value.includes('partial') || String(raw).includes(DEFAULT_STATUS_ICONS.partial)) return 'partial';
+  if (value.includes('missing') || String(raw).includes(DEFAULT_STATUS_ICONS.missing)) return 'missing';
   if (value.includes('unknown')) return 'unknown';
   return value || 'unknown';
 }
 
-const formatDomainName = (id) => titleCase(id.replace(/_/g, ' '));
+function decodeIcon(value) {
+  if (!value) return DEFAULT_STATUS_ICONS.unknown;
+  return value.replace(/\\u([0-9a-f]{4})/gi, (_, code) => String.fromCharCode(parseInt(code, 16)));
+}
 
 function statusIcon(status) {
-  return blueprintState.statusIcons[status] ?? DEFAULT_STATUS_ICONS[status] ?? DEFAULT_STATUS_ICONS.unknown;
+  const raw = blueprintState.statusIcons[status] ?? DEFAULT_STATUS_ICONS[status] ?? DEFAULT_STATUS_ICONS.unknown;
+  return decodeIcon(raw);
 }
 
 function createStats() {
@@ -468,9 +557,8 @@ function setFieldStatus(fieldState, status, options = {}) {
   fieldState.elements.statusIcon.textContent = iconChar;
   fieldState.elements.statusIcon.title = `${titleCase(normalized)} status`;
 }
-
-function updateDomainSummary(domainId, stats) {
-  const summary = blueprintState.domainSummaries.get(domainId);
+function updateTierSummary(tierId, stats) {
+  const summary = blueprintState.tierSummaries.get(tierId);
   if (!summary) return;
   const mandatoryNote = summary.mandatoryTotal
     ? ` · Mandatory ${stats.mandatoryProvided}/${summary.mandatoryTotal}`
@@ -485,28 +573,28 @@ function updateBlueprintSummary() {
     return;
   }
 
-  const domainStats = new Map();
+  const tierStats = new Map();
   const totals = createStats();
 
   blueprintState.fieldMap.forEach((fieldState) => {
-    const stats = domainStats.get(fieldState.domainId) ?? createStats();
+    const stats = tierStats.get(fieldState.tierId) ?? createStats();
     if (stats[fieldState.status] !== undefined) {
       stats[fieldState.status] += 1;
     }
     stats.total += 1;
-    if (fieldState.field.classification === 'mandatory') {
+    if (fieldState.field.tierId === 'mandatory') {
       stats.mandatoryTotal += 1;
       if (fieldState.status === 'provided') {
         stats.mandatoryProvided += 1;
       }
     }
-    domainStats.set(fieldState.domainId, stats);
+    tierStats.set(fieldState.tierId, stats);
 
     if (totals[fieldState.status] !== undefined) {
       totals[fieldState.status] += 1;
     }
     totals.total += 1;
-    if (fieldState.field.classification === 'mandatory') {
+    if (fieldState.field.tierId === 'mandatory') {
       totals.mandatoryTotal += 1;
       if (fieldState.status === 'provided') {
         totals.mandatoryProvided += 1;
@@ -536,19 +624,19 @@ function updateBlueprintSummary() {
   `;
   blueprintSummaryContainer.appendChild(overallCard);
 
-  const domainsInOrder = blueprintState.inventory?.domains ?? [];
-  domainsInOrder.forEach((domain) => {
-    const stats = domainStats.get(domain.id) ?? createStats();
+  const tiersInOrder = blueprintState.inventory?.tiers ?? [];
+  tiersInOrder.forEach((tier) => {
+    const stats = tierStats.get(tier.id) ?? createStats();
     const mandatoryProvided = stats.mandatoryProvided || 0;
     const mandatoryTotal = stats.mandatoryTotal || 0;
     const mandatoryPercent = mandatoryTotal
       ? ((mandatoryProvided / mandatoryTotal) * 100).toFixed(1)
       : '0.0';
 
-    const domainCard = document.createElement('div');
-    domainCard.className = 'blueprint-summary-card';
-    domainCard.innerHTML = `
-      <h4>${formatDomainName(domain.id)}</h4>
+    const tierCard = document.createElement('div');
+    tierCard.className = 'blueprint-summary-card';
+    tierCard.innerHTML = `
+      <h4>${tier.tier}</h4>
       <div class="blueprint-summary-metrics">
         <span class="status-chip status-chip--provided">${statusIcon('provided')} ${stats.provided}</span>
         <span class="status-chip status-chip--partial">${statusIcon('partial')} ${stats.partial}</span>
@@ -556,42 +644,47 @@ function updateBlueprintSummary() {
       </div>
       <p class="blueprint-description">Mandatory provided ${mandatoryProvided}/${mandatoryTotal} (${mandatoryPercent}%)</p>
     `;
-    blueprintSummaryContainer.appendChild(domainCard);
+    blueprintSummaryContainer.appendChild(tierCard);
 
-    updateDomainSummary(domain.id, stats);
+    updateTierSummary(tier.id, stats);
   });
 }
-
-function createBlueprintFieldRow(domainId, field) {
+function createBlueprintFieldRow(tierId, field) {
   const row = document.createElement('tr');
-  const fieldKey = `${domainId}:${field.identifier}`;
+  const fieldKey = `${tierId}:${field.id}`;
 
   const titleCell = document.createElement('th');
   titleCell.scope = 'row';
   const title = document.createElement('div');
   title.className = 'blueprint-field__title';
   title.textContent = field.label;
-  const meta = document.createElement('div');
-  meta.className = 'blueprint-field__meta';
-  meta.textContent = `${field.identifier} · ${field.ontologyIri || 'n/a'}`;
+  const description = document.createElement('div');
+  description.className = 'blueprint-field__meta';
+  description.textContent = field.description || 'Description pending';
   titleCell.appendChild(title);
-  titleCell.appendChild(meta);
+  titleCell.appendChild(description);
 
   const classificationCell = document.createElement('td');
   const badge = document.createElement('span');
-  badge.className = `badge badge--${field.classification}`;
-  badge.textContent = field.classification;
+  badge.className = `badge badge--${field.tierId}`;
+  badge.textContent = field.tierLabel;
   classificationCell.appendChild(badge);
 
   const valueCell = document.createElement('td');
   const textarea = document.createElement('textarea');
   textarea.className = 'blueprint-input';
-  textarea.placeholder = 'Enter mapping value or notes';
+  textarea.placeholder = field.exampleValue ? `Example: ${field.exampleValue}` : 'Enter mapping value or notes';
   valueCell.appendChild(textarea);
-  const expected = document.createElement('div');
-  expected.className = 'blueprint-field__meta';
-  expected.textContent = `Expected: ${field.expectedDatatype || 'n/a'}`;
-  valueCell.appendChild(expected);
+
+  const metaList = document.createElement('dl');
+  metaList.className = 'blueprint-field__details';
+  metaList.innerHTML = `
+    <dt>Rationale</dt><dd>${field.rationale || '—'}</dd>
+    <dt>Validation</dt><dd>${field.validationNotes || '—'}</dd>
+    <dt>Downstream</dt><dd>${field.downstreamUtility || '—'}</dd>
+  `;
+  valueCell.appendChild(metaList);
+
   const notes = document.createElement('div');
   notes.className = 'blueprint-notes';
   notes.hidden = true;
@@ -606,7 +699,7 @@ function createBlueprintFieldRow(domainId, field) {
   icon.title = 'Missing status';
   const select = document.createElement('select');
   select.className = 'blueprint-status';
-  ['provided', 'partial', 'missing'].forEach((status) => {
+  ['provided', 'partial', 'missing', 'unknown'].forEach((status) => {
     const option = document.createElement('option');
     option.value = status;
     option.textContent = `${statusIcon(status)} ${titleCase(status)}`;
@@ -623,7 +716,7 @@ function createBlueprintFieldRow(domainId, field) {
   row.appendChild(statusCell);
 
   const state = {
-    domainId,
+    tierId,
     field,
     status: 'missing',
     value: '',
@@ -658,36 +751,36 @@ function createBlueprintFieldRow(domainId, field) {
   return row;
 }
 
-function buildBlueprintUI(domains) {
+function buildBlueprintUI(tiers) {
   if (!blueprintFieldsContainer) return;
   blueprintFieldsContainer.innerHTML = '';
   blueprintState.fieldMap.clear();
-  blueprintState.domainSummaries.clear();
+  blueprintState.tierSummaries.clear();
 
-  if (!domains.length) {
-    blueprintFieldsContainer.innerHTML = '<p class="blueprint-description">No blueprint domains available.</p>';
+  if (!tiers.length) {
+    blueprintFieldsContainer.innerHTML = '<p class="blueprint-description">No blueprint tiers available.</p>';
     return;
   }
 
-  domains.forEach((domain) => {
+  tiers.forEach((tier) => {
     const card = document.createElement('section');
-    card.className = 'card blueprint-domain';
+    card.className = 'card blueprint-tier';
 
     const header = document.createElement('div');
-    header.className = 'blueprint-domain__header';
+    header.className = 'blueprint-tier__header';
     const title = document.createElement('h3');
-    title.className = 'blueprint-domain__title';
-    title.textContent = formatDomainName(domain.id);
+    title.className = 'blueprint-tier__title';
+    title.textContent = tier.label;
     const summary = document.createElement('div');
-    summary.className = 'blueprint-domain__summary';
+    summary.className = 'blueprint-tier__summary';
     header.appendChild(title);
     header.appendChild(summary);
 
     const table = document.createElement('table');
     table.className = 'blueprint-table';
     const tbody = document.createElement('tbody');
-    (domain.fields || []).forEach((field) => {
-      const row = createBlueprintFieldRow(domain.id, field);
+    (tier.fields || []).forEach((field) => {
+      const row = createBlueprintFieldRow(tier.id, field);
       tbody.appendChild(row);
     });
     table.appendChild(tbody);
@@ -696,17 +789,15 @@ function buildBlueprintUI(domains) {
     card.appendChild(table);
     blueprintFieldsContainer.appendChild(card);
 
-    const mandatoryTotal = (domain.fields || []).filter((field) => field.classification === 'mandatory').length;
-    blueprintState.domainSummaries.set(domain.id, {
+    const mandatoryTotal = (tier.fields || []).filter((field) => field.tierId === 'mandatory').length;
+    blueprintState.tierSummaries.set(tier.id, {
       element: summary,
-      total: domain.fields?.length ?? 0,
       mandatoryTotal
     });
   });
 
   updateBlueprintSummary();
 }
-
 function applyBlueprintExample(exampleOrId) {
   const example = typeof exampleOrId === 'string'
     ? blueprintState.examples.find((item) => item.id === exampleOrId)
@@ -718,9 +809,9 @@ function applyBlueprintExample(exampleOrId) {
   }
 
   blueprintState.fieldMap.forEach((fieldState) => {
-    const entry = example.fields?.[fieldState.domainId]?.[fieldState.field.identifier];
+    const entry = example.fields?.[fieldState.tierId]?.[fieldState.field.id];
     const value = entry?.value ?? '';
-    const note = entry?.notes || entry?.transform || '';
+    const note = entry?.notes ?? '';
 
     fieldState.value = value;
     fieldState.manualStatus = Boolean(entry?.status);
@@ -788,10 +879,11 @@ function resetBlueprintFields() {
 
 async function initBlueprintPanel() {
   if (!blueprintPanel || blueprintState.initialised) return;
+
   blueprintState.initialised = true;
 
   if (blueprintLoading) {
-    blueprintLoading.textContent = 'Loading blueprint metadata…';
+    blueprintLoading.textContent = 'Loading blueprint metadata...';
     blueprintLoading.hidden = false;
     blueprintLoading.classList.remove('status--error');
   }
@@ -806,11 +898,11 @@ async function initBlueprintPanel() {
     blueprintState.statusIcons = { ...DEFAULT_STATUS_ICONS, ...(inventory.statusIcons || {}) };
     blueprintState.examples = examples.examples || [];
 
-    buildBlueprintUI(inventory.domains || []);
+    buildBlueprintUI(inventory.tiers || []);
     populateBlueprintExamples(blueprintState.examples);
 
     if (blueprintLoading) {
-      blueprintLoading.textContent = 'Loaded blueprint inventory. Load an example or enter values to update coverage.';
+      blueprintLoading.textContent = 'Loaded blueprint tiers. Load an example or enter values to update coverage.';
     }
   } catch (error) {
     if (blueprintLoading) {
@@ -819,13 +911,13 @@ async function initBlueprintPanel() {
     }
   }
 }
-
 async function handleSubmit(event) {
   event.preventDefault();
   statusLine.classList.remove('status--error');
   statusLine.textContent = 'Building payload...';
 
   const data = gatherFormData();
+
   if (!data.sensors.length) {
     statusLine.textContent = 'Add at least one sensor.';
     statusLine.classList.add('status--error');
@@ -833,6 +925,16 @@ async function handleSubmit(event) {
   }
   if (!data.actuators.length) {
     statusLine.textContent = 'Add at least one actuator.';
+    statusLine.classList.add('status--error');
+    return;
+  }
+  if (!data.sessionInterval.start || !data.sessionInterval.end) {
+    statusLine.textContent = 'Provide start and end timestamps for the session interval.';
+    statusLine.classList.add('status--error');
+    return;
+  }
+  if (new Date(data.sessionInterval.start) >= new Date(data.sessionInterval.end)) {
+    statusLine.textContent = 'Session end must be later than the start timestamp.';
     statusLine.classList.add('status--error');
     return;
   }
@@ -918,3 +1020,13 @@ showPanel('export-panel');
 if (blueprintPanel) {
   initBlueprintPanel();
 }
+
+
+
+
+
+
+
+
+
+
