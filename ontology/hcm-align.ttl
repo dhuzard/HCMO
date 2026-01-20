@@ -17,7 +17,7 @@ hcm:System  rdfs:subClassOf sosa:Platform .
 hcm:hasSensor rdfs:subPropertyOf sosa:hosts .
 
 # Time alignment
-hcm:TimeInterval rdfs:subClassOf time:TemporalEntity .
+hcm:ObservationWindow rdfs:subClassOf time:TemporalEntity .
 
 # Process alignment (Behavior as process)
 hcm:BehaviorAndPhysiology rdfs:subClassOf bfo:0000015 .  # process
@@ -29,4 +29,3 @@ hcm:Supplier rdfs:subClassOf prov:Agent , schema:Organization .
 # Geometry / Units (conservative hints)
 # NOTE: Keep simple datatype pattern in TBox; migrate to QUDT/OM per roadmap.
 # hcm:Dimensions could be re-modeled as a set of qudt:QuantityValue instances.
-

@@ -1,0 +1,16 @@
+@prefix hcm:    <https://w3id.org/hcmo/ontology/hcm#> .
+@prefix owl:    <http://www.w3.org/2002/07/owl#> .
+@prefix dcterms:<http://purl.org/dc/terms/> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
+
+<https://w3id.org/hcmo/ontology/hcm-bridge-animal>
+    a owl:Ontology ;
+    dcterms:title "HCMO Animal Bridge Module" ;
+    dcterms:description "Optional bridge module for aligning hcm:Animal to external animal ontologies (e.g., taxonomy or anatomy). Keep all external imports and equivalences here." ;
+    owl:imports <https://w3id.org/hcmo/ontology/hcm> .
+
+# NOTE: Add external imports and alignments in this file only.
+# Example patterns (choose sparingly):
+# hcm:Animal rdfs:subClassOf <external:AnimalClass> .
+# hcm:Animal skos:exactMatch <external:AnimalClass> .

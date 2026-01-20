@@ -7,7 +7,7 @@ SOSA/SSN
 - `hcm:hasSensor` ⊑ `sosa:hosts`
 
 OWL-Time
-- `hcm:TimeInterval` ⊑ `time:TemporalEntity`
+- `hcm:ObservationWindow` ⊑ `time:TemporalEntity`
 
 PROV and Agents
 - `hcm:producedBy` ⊑ `prov:wasAttributedTo`
@@ -19,4 +19,3 @@ BFO
 Units (QUDT/OM) – Roadmap
 - Keep datatype-based dimensions initially.
 - Future: model width/length/height as `qudt:QuantityValue` with `qudt:numericValue` and `qudt:unit` (e.g., `unit:CentiM`).
-

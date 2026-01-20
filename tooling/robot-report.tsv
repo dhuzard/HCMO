@@ -1,0 +1,22 @@
+ID	LEVEL	LABEL	MESSAGE	QUERY
+missing_label	ERROR	Missing label	Entity is missing rdfs:label	PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?entity WHERE {
+  ?entity a ?type .
+  FILTER(?type IN (owl:Class, owl:ObjectProperty, owl:DatatypeProperty))
+  FILTER NOT EXISTS { ?entity rdfs:label ?label }
+}
+missing_definition	ERROR	Missing definition	Entity is missing IAO:0000115	PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX IAO: <http://purl.obolibrary.org/obo/IAO_>
+SELECT ?entity WHERE {
+  ?entity a ?type .
+  FILTER(?type IN (owl:Class, owl:ObjectProperty, owl:DatatypeProperty))
+  FILTER NOT EXISTS { ?entity IAO:0000115 ?def }
+}
+missing_provenance	WARN	Missing provenance	Entity is missing dcterms:source	PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+SELECT ?entity WHERE {
+  ?entity a ?type .
+  FILTER(?type IN (owl:Class, owl:ObjectProperty, owl:DatatypeProperty))
+  FILTER NOT EXISTS { ?entity dcterms:source ?src }
+}

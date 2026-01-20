@@ -1,20 +1,21 @@
 # HCMO Ontology (Home-Cage Monitoring Ontology)
 
-A professional, reusable ontology package for home-cage monitoring (HCMO). It models systems, animals, enclosures, behaviors, sensors/actuators, time intervals, and provisioning needs; aligns to key web standards; ships with SHACL validation, examples, queries, and a JSON-LD context for application developers.
+A professional, reusable ontology package for home-cage monitoring (HCMO). It models systems, animals, enclosures, behaviors, sensors/actuators, observation windows, and provisioning needs; aligns to key web standards; ships with SHACL validation, examples, queries, and a JSON-LD context for application developers.
 
 - Ontology core: `ontology/hcm.ttl`
 - Standards alignment: `ontology/hcm-align.ttl`
 - Ontology metadata and imports: `ontology/hcm-metadata.ttl`
+- Optional bridge modules: `ontology/hcm-bridge-*.ttl`
 - SHACL shapes: `shapes/hcm-shapes.ttl`
 - Examples (ABox): `examples/`
 - SPARQL queries: `queries/`
 - JSON-LD context: `ontology/context.jsonld`
-- Validation script and CI: `tooling/validate.ps1`, `.github/workflows/validate.yml`
+- Validation scripts and CI: `tooling/validate.ps1`, `tooling/validate.sh`, `.github/workflows/validate.yml`
 - Web-based authoring app: `webapp/`
 
 ## Why HCMO?
 - **Interoperability**: Aligns with SOSA/SSN (sensing/actuation), OWL-Time, PROV, and BFO.
-- **Data quality**: Enforces practical constraints (<= 24 h window, enclosure dimensions, sensor coverage) with SHACL.
+- **Data quality**: Enforces practical constraints (> 24 h observation window, enclosure space/dimensions, system composition) with SHACL.
 - **Developer-ready**: JSON-LD context and examples; simple upgrade path to QUDT/OM units.
 - **FAIR**: Clear IRIs, metadata, governance, and publishing guidance.
 
@@ -23,9 +24,10 @@ A professional, reusable ontology package for home-cage monitoring (HCMO). It mo
 - `shapes/` - SHACL shapes used to validate HCMO payloads.
 - `examples/` - Sample ABox datasets demonstrating minimal and edge-case coverage.
 - `queries/` - SPARQL queries for common analysis scenarios.
-- `tooling/` - Validation script and Python requirements for ontology QA.
+- `tooling/` - Validation scripts, ROBOT report config, and Python requirements for ontology QA.
 - `webapp/` - Node.js authoring and blueprint checklist application.
 - `docs/` - Supporting documentation, including field tiers and alignment notes.
+- `docs/ARCHITECTURE.md` - Modular architecture plan and bridge module rules.
 - `.github/` - CI workflow and issue templates.
 
 ## Prerequisites and Installation
@@ -42,6 +44,11 @@ Run the full validation loop from the repository root:
 
 ```powershell
 ./tooling/validate.ps1
+```
+
+Linux/macOS (bash):
+```bash
+./tooling/validate.sh
 ```
 
 The script will:
@@ -75,6 +82,7 @@ The server starts on `http://localhost:3000`.
 
 ## Consuming the ontology
 - Import `ontology/hcm.ttl`, `ontology/hcm-align.ttl`, and `ontology/hcm-metadata.ttl` into your triple store or reasoning environment.
+- Optional: import `ontology/hcm-bridge-*.ttl` for domain-specific alignments (e.g., animal or device ontologies).
 - Apply the JSON-LD context (`ontology/context.jsonld`) when exchanging data with web applications.
 - Use `shapes/hcm-shapes.ttl` to enforce constraints during ingestion pipelines or data QA. The shapes expect the same structure the webapp produces.
 - Explore the SPARQL queries in `queries/` (for example `cq-systems-24h-limited.rq`) to answer common competency questions about systems, intervals, and welfare coverage.
@@ -87,7 +95,10 @@ Adapt either file by copying it into a working directory and editing IDs, labels
 ## Tooling scripts
 Currently available:
 - `tooling/validate.ps1` - orchestrates Turtle parsing and pySHACL validation (see above).
+- `tooling/validate.sh` - bash equivalent for validation on Linux/macOS.
 - `tooling/requirements.txt` - pinned dependencies for validation tooling.
+- `tooling/robot-report.tsv` - ROBOT report profile for labels/definitions/provenance.
+- `tooling/robot-report.md` - ROBOT report usage and output format.
 
 The blueprint TODO (below) tracks planned additions such as a checklist scoring helper and metadata entry CLI; those scripts are not yet implemented.
 
@@ -149,33 +160,32 @@ See alignments in `docs/ALIGNMENTS.md`.
 ## What's in the ontology
 
 **Core classes (selected)**  
-- `hcm:System` - HCM system composed of enclosure, hardware, software; hosts sensors and actuators.  
+- `hcm:System` - HCM system composed of enclosure, hardware, and software.  
 - `hcm:Animal` - Experimental animal.  
-- `hcm:Enclosure` subset of `hcm:PhysicalSpace` - Housing environment; has `hcm:Dimensions`.  
-- `hcm:BehaviorAndPhysiology` - Observed process; has `hcm:CircadianRhythm`; observed over `hcm:TimeInterval`.  
-- `hcm:Sensor`, `hcm:Actuator`, `hcm:Hardware`, `hcm:Software`, `hcm:Supplier`.  
-- `hcm:NeedsSequence`, `hcm:LimitedInteractionWithHumans`, `hcm:Dimensions`, `hcm:TimeInterval`.  
+- `hcm:Enclosure` - Artifact enclosure linked to `hcm:PhysicalSpace`.  
+- `hcm:BehaviorAndPhysiology` - Observed process captured over an `hcm:ObservationWindow`.  
+- `hcm:Sensor`, `hcm:Actuator`, `hcm:Hardware`, `hcm:Software`, `hcm:Supplier` (+ subtypes).  
+- `hcm:AnimalNeedProfile`, `hcm:LimitedInteractionWithHumans`, `hcm:Dimensions`, `hcm:ObservationWindow`.  
 
 **Key object properties**  
-- System composition: `hcm:hasEnclosure`, `hcm:hasHardware`, `hcm:hasSoftware`, `hcm:hasSensor`, `hcm:hasActuator`, `hcm:producedBy`, `hcm:collectsInfoOn`.  
-- Animal, enclosure, needs: `hcm:livesIn`, `hcm:provides`, `hcm:requiresToThrive`.  
-- Behavior context: `hcm:isDisplayedInside`, `hcm:hasCircadianRhythm`, `hcm:extendsEnoughToCapture`.  
-- Sensing and actuation: `hcm:captures`, `hcm:elicits`.  
-- Space and geometry: `hcm:hasDimensions`.  
+- System composition: `hcm:hasEnclosure`, `hcm:hasHardware`, `hcm:hasSoftware`, `hcm:producedBy`.  
+- Hardware IO: `hcm:hasSensorComponent`, `hcm:hasActuatorComponent`; system-level `hcm:hasSensor`/`hcm:hasActuator` via property chains.  
+- Animal, enclosure, needs: `hcm:livesIn`, `hcm:providesNeedProfile`, `hcm:requiresToThrive`.  
+- Behavior context: `hcm:isDisplayedInside`, `hcm:hasCircadianRhythm`, `hcm:isCapturedOver`.  
+- Space and geometry: `hcm:hasSpaceRegion`, `hcm:hasDimensions`.  
 
 **Key datatype properties**  
 - Dimensions: `hcm:width`, `hcm:length`, `hcm:height`, `hcm:unit`.  
-- Time: `hcm:durationHours`, `hcm:isExtendable`.  
-- Needs (booleans): `hcm:hasFood`, `hcm:hasWater`, `hcm:hasSocialContacts`, `hcm:hasSafetyFromThreat`, `hcm:hasEnvironmentalEnrichment`.  
+- Observation window: `hcm:durationHours`, `hcm:isExtendable`.  
 
 **Selected OWL axioms**  
 - Disjointness: `hcm:Sensor` disjoint `hcm:Actuator`, `hcm:Hardware` disjoint `hcm:Software`.  
-- Restrictions: `hcm:System` has exactly one `hcm:hasEnclosure`, at least one `hcm:hasSensor`.  
+- Restrictions: `hcm:System` has at least one enclosure, hardware, and software; property chains derive system sensors/actuators from hardware components.  
 
 ## Standards alignment
 
 - SOSA/SSN: `hcm:Sensor` subset of `sosa:Sensor`, `hcm:Actuator` subset of `sosa:Actuator`, `hcm:System` subset of `sosa:Platform`, `hcm:hasSensor` subset of `sosa:hosts`.  
-- OWL-Time: `hcm:TimeInterval` subset of `time:TemporalEntity`.  
+- OWL-Time: `hcm:ObservationWindow` subset of `time:TemporalEntity`.  
 - PROV/Agents: `hcm:producedBy` subset of `prov:wasAttributedTo`; `hcm:Supplier` subset of `prov:Agent` and `schema:Organization`.  
 - BFO: `hcm:BehaviorAndPhysiology` subset of `bfo:0000015` (process).  
 
@@ -184,10 +194,9 @@ Details and rationale are documented in `docs/ALIGNMENTS.md`.
 ## SHACL validation
 
 Shapes in `shapes/hcm-shapes.ttl` check:  
-- System: exactly one enclosure, at least one sensor.  
-- Behavior: must link to an enclosure and a time interval.  
-- Time interval: `durationHours` <= 24, `isExtendable` boolean, explicit `LimitedInteractionWithHumans`.  
-- Enclosure: must have a dimensions record.  
+- System: at least one enclosure, hardware, and software.  
+- Observation window: `durationHours` > 24, optional `isExtendable`.  
+- Enclosure: must have a `PhysicalSpace` via `hasSpaceRegion`.  
 - Dimensions: width, length, height > 0; unit present.  
 
 Run locally (PowerShell):  

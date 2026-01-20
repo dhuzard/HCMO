@@ -3,74 +3,569 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl:  <http://www.w3.org/2002/07/owl#> .
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix IAO: <http://purl.obolibrary.org/obo/IAO_> .
 
-# Core classes
-hcm:System a owl:Class ; rdfs:label "System" ; rdfs:comment "A home-cage monitoring system comprising an enclosure, hardware, software, and I/O." .
-hcm:Animal a owl:Class ; rdfs:label "Animal" ; rdfs:comment "An experimental animal housed in an enclosure." .
-hcm:Enclosure a owl:Class ; rdfs:subClassOf hcm:PhysicalSpace ; rdfs:label "Enclosure" ; rdfs:comment "A physical enclosure where animals live and behaviors are displayed." .
-hcm:PhysicalSpace a owl:Class ; rdfs:label "Physical Space" ; rdfs:comment "A physical spatial region or container relevant to HCM." .
-hcm:BehaviorAndPhysiology a owl:Class ; rdfs:label "Behavior and Physiology" ; rdfs:comment "Observed behavioral/physiological process displayed by an animal." .
-hcm:CircadianRhythm a owl:Class ; rdfs:label "Circadian Rhythm" ; rdfs:comment "A circadian rhythm associated with a behavior/physiology process." .
-hcm:Sensor a owl:Class ; rdfs:label "Sensor" ; rdfs:comment "A device that captures signals related to behavior/physiology." .
-hcm:Actuator a owl:Class ; rdfs:label "Actuator" ; rdfs:comment "A device that elicits or perturbs behavior/physiology." .
-hcm:Hardware a owl:Class ; rdfs:label "Hardware" ; rdfs:comment "Physical computing hardware component(s) of a system." .
-hcm:Software a owl:Class ; rdfs:label "Software" ; rdfs:comment "Software component(s) of a system." .
-hcm:Supplier a owl:Class ; rdfs:label "Supplier" ; rdfs:comment "Commercial supplier or laboratory providing the system." .
-hcm:NeedsSequence a owl:Class ; rdfs:label "Needs Sequence" ; rdfs:comment "Provisioning covering food, water, social contacts, safety, enrichment." .
-hcm:TimeInterval a owl:Class ; rdfs:label "Time Interval" ; rdfs:comment "An observation time window for behavior capture (≥ 24h recommended)." .
-hcm:LimitedInteractionWithHumans a owl:Class ; rdfs:label "Limited Interaction With Humans" ; rdfs:comment "A condition indicating minimal human interference during observation." .
-hcm:Dimensions a owl:Class ; rdfs:label "Dimensions" ; rdfs:comment "Geometric dimensions (width, length, height) of a physical space." .
-hcm:CollectionOfSensors a owl:Class ; rdfs:label "Collection Of Sensors" ; rdfs:comment "A collection or set of sensors." .
-hcm:CollectionOfActuators a owl:Class ; rdfs:label "Collection Of Actuators" ; rdfs:comment "A collection or set of actuators." .
+#################################################################
+# Ontology header
+#################################################################
+hcm: a owl:Ontology ;
+  rdfs:label "HCMO Core (Merged)" ;
+  rdfs:comment "Merged ontology: BehaviorAndPhysiology chosen; Enclosure as artifact with space region; Hardware hasSensor/hasActuator; property chains for System-level queries; object-based needs; ObservationWindow with SHACL constraints." .
 
-# Disjointness axioms (safe)
+#################################################################
+# Core Classes
+#################################################################
+hcm:System a owl:Class ;
+  rdfs:label "System" ;
+  rdfs:comment "A home-cage monitoring system comprising an enclosure, hardware, and software." ;
+  IAO:0000115 "A home-cage monitoring system comprising an enclosure, hardware, and software." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:Animal a owl:Class ;
+  rdfs:label "Animal" ;
+  rdfs:comment "An experimental animal housed in an enclosure." ;
+  IAO:0000115 "An experimental animal housed in an enclosure." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+# Enclosure as ARTIFACT (not the space itself)
+hcm:Enclosure a owl:Class ;
+  rdfs:label "Enclosure" ;
+  rdfs:comment "A physical enclosure (artifact) where animals live and behaviors are displayed." ;
+  IAO:0000115 "A physical enclosure (artifact) where animals live and behaviors are displayed." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+# Space region
+hcm:PhysicalSpace a owl:Class ;
+  rdfs:label "Physical Space" ;
+  rdfs:comment "A spatial region relevant to HCM (e.g., the interior space of an enclosure)." ;
+  IAO:0000115 "A spatial region relevant to HCM (e.g., the interior space of an enclosure)." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:Dimensions a owl:Class ;
+  rdfs:label "Dimensions" ;
+  rdfs:comment "Geometric dimensions (width, length, height) of a physical space." ;
+  IAO:0000115 "Geometric dimensions (width, length, height) of a physical space." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:Hardware a owl:Class ;
+  rdfs:label "Hardware" ;
+  rdfs:comment "Physical computing hardware component(s) of a system." ;
+  IAO:0000115 "Physical computing hardware component(s) of a system." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:Software a owl:Class ;
+  rdfs:label "Software" ;
+  rdfs:comment "Software component(s) of a system." ;
+  IAO:0000115 "Software component(s) of a system." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:Sensor a owl:Class ;
+  rdfs:label "Sensor" ;
+  rdfs:comment "A device that captures signals related to behavior or physiology." ;
+  IAO:0000115 "A device that captures signals related to behavior or physiology." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:Actuator a owl:Class ;
+  rdfs:label "Actuator" ;
+  rdfs:comment "A device that elicits or perturbs behavior or physiology." ;
+  IAO:0000115 "A device that elicits or perturbs behavior or physiology." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:BehaviorAndPhysiology a owl:Class ;
+  rdfs:label "Behavior and Physiology" ;
+  skos:altLabel "Behavior & Physiology" ;
+  rdfs:comment "Observed behavioral or physiological process displayed by an animal." ;
+  IAO:0000115 "An observed behavioral or physiological process displayed by an animal." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:CircadianRhythm a owl:Class ;
+  rdfs:label "Circadian Rhythm" ;
+  rdfs:comment "A circadian rhythm associated with a behavior or physiology process." ;
+  IAO:0000115 "A circadian rhythm associated with a behavior or physiology process." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+# Supplier modeling (merge-friendly)
+hcm:Supplier a owl:Class ;
+  rdfs:label "Supplier" ;
+  rdfs:comment "Commercial supplier or laboratory providing the system." ;
+  IAO:0000115 "A commercial supplier or laboratory providing the system." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:CommercialSupplier a owl:Class ;
+  rdfs:subClassOf hcm:Supplier ;
+  rdfs:label "Commercial Supplier" ;
+  rdfs:comment "A commercial supplier that produces a system." ;
+  IAO:0000115 "A commercial supplier that produces a system." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:Laboratory a owl:Class ;
+  rdfs:subClassOf hcm:Supplier ;
+  rdfs:label "Laboratory" ;
+  rdfs:comment "A laboratory that produces a system." ;
+  IAO:0000115 "A laboratory that produces a system." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+#################################################################
+# Needs model (OBJECT-based, O1-style)
+#################################################################
+hcm:AnimalNeedProfile a owl:Class ;
+  rdfs:label "Animal Need Profile" ;
+  rdfs:comment "Provisioning covering food, water, social contacts, safety, enrichment." ;
+  IAO:0000115 "A need profile covering food, water, social contacts, safety, and enrichment." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:Food a owl:Class ;
+  rdfs:label "Food" ;
+  rdfs:comment "A food need or provision for an animal." ;
+  IAO:0000115 "A food need or provision for an animal." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:Water a owl:Class ;
+  rdfs:label "Water" ;
+  rdfs:comment "A water need or provision for an animal." ;
+  IAO:0000115 "A water need or provision for an animal." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:SocialContacts a owl:Class ;
+  rdfs:label "Social Contacts" ;
+  rdfs:comment "A social contact need or provision for an animal." ;
+  IAO:0000115 "A social contact need or provision for an animal." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:SafetyFromThreat a owl:Class ;
+  rdfs:label "Safety From Threat" ;
+  rdfs:comment "A safety-from-threat need or provision for an animal." ;
+  IAO:0000115 "A safety-from-threat need or provision for an animal." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:EnvironmentalEnrichment a owl:Class ;
+  rdfs:label "Environmental Enrichment" ;
+  rdfs:comment "An environmental enrichment need or provision for an animal." ;
+  IAO:0000115 "An environmental enrichment need or provision for an animal." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+#################################################################
+# Time model (refactored)
+#################################################################
+hcm:ObservationWindow a owl:Class ;
+  rdfs:label "Observation Window" ;
+  rdfs:comment "An observation time window for behavior capture (must be > 24h; may be extendable indefinitely)." ;
+  IAO:0000115 "An observation time window for behavior capture that must be longer than 24 hours and may be extendable." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:LimitedInteractionWithHumans a owl:Class ;
+  rdfs:label "Limited Interaction With Humans" ;
+  rdfs:comment "A condition indicating minimal human interference during observation." ;
+  IAO:0000115 "A condition indicating minimal human interference during observation." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+#################################################################
+# Disjointness axioms (minimal + safe)
+#################################################################
 hcm:Sensor owl:disjointWith hcm:Actuator , hcm:Animal .
 hcm:Hardware owl:disjointWith hcm:Software .
 
-# Object properties
-hcm:hasEnclosure a owl:ObjectProperty ; rdfs:domain hcm:System ; rdfs:range hcm:Enclosure ; rdfs:label "has enclosure" ; rdfs:comment "Links a System to its Enclosure." .
-hcm:hasHardware a owl:ObjectProperty ; rdfs:domain hcm:System ; rdfs:range hcm:Hardware ; rdfs:label "has hardware" ; rdfs:comment "Links a System to its Hardware component." .
-hcm:hasSoftware a owl:ObjectProperty ; rdfs:domain hcm:System ; rdfs:range hcm:Software ; rdfs:label "has software" ; rdfs:comment "Links a System to its Software component." .
-hcm:producedBy a owl:ObjectProperty ; rdfs:domain hcm:System ; rdfs:range hcm:Supplier ; rdfs:label "produced by" ; rdfs:comment "The supplier/lab that produced the System." .
-hcm:collectsInfoOn a owl:ObjectProperty ; rdfs:domain hcm:System ; rdfs:range hcm:Animal ; rdfs:label "collects info on" ; rdfs:comment "The animal(s) for which the System collects information." .
+#################################################################
+# Object Properties
+#################################################################
 
-hcm:livesIn a owl:ObjectProperty ; rdfs:domain hcm:Animal ; rdfs:range hcm:Enclosure ; rdfs:label "lives in" ; rdfs:comment "Animal lives in (is housed in) an Enclosure." .
-hcm:requiresToThrive a owl:ObjectProperty ; rdfs:domain hcm:Animal ; rdfs:range hcm:NeedsSequence ; rdfs:label "requires to thrive" ; rdfs:comment "Needs provisioning required by an Animal." .
-hcm:provides a owl:ObjectProperty ; rdfs:domain hcm:Enclosure ; rdfs:range hcm:NeedsSequence ; rdfs:label "provides" ; rdfs:comment "Needs provisioning provided by an Enclosure." .
+# System composition
+hcm:hasEnclosure a owl:ObjectProperty ;
+  rdfs:domain hcm:System ;
+  rdfs:range hcm:Enclosure ;
+  rdfs:label "has enclosure" ;
+  rdfs:comment "Links a System to its Enclosure." ;
+  IAO:0000115 "Relates a system to the enclosure that is part of it." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
 
-hcm:displays a owl:ObjectProperty ; rdfs:domain hcm:Animal ; rdfs:range hcm:BehaviorAndPhysiology ; rdfs:label "displays" ; rdfs:comment "An Animal displays a behavior/physiological process." .
-hcm:isDisplayedInside a owl:ObjectProperty ; rdfs:domain hcm:BehaviorAndPhysiology ; rdfs:range hcm:Enclosure ; rdfs:label "is displayed inside" ; rdfs:comment "Behavior/physiology occurs inside an Enclosure." .
-hcm:hasCircadianRhythm a owl:ObjectProperty ; rdfs:domain hcm:BehaviorAndPhysiology ; rdfs:range hcm:CircadianRhythm ; rdfs:label "has circadian rhythm" ; rdfs:comment "Associates a behavior/physiology with a circadian rhythm." .
-hcm:extendsEnoughToCapture a owl:ObjectProperty ; rdfs:domain hcm:BehaviorAndPhysiology ; rdfs:range hcm:TimeInterval ; rdfs:label "extends enough to capture" ; rdfs:comment "Time interval that sufficiently captures the behavior/physiology." .
+hcm:hasHardware a owl:ObjectProperty ;
+  rdfs:domain hcm:System ;
+  rdfs:range hcm:Hardware ;
+  rdfs:label "has hardware" ;
+  rdfs:comment "Links a System to its Hardware component." ;
+  IAO:0000115 "Relates a system to a hardware component that is part of it." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
 
-hcm:hasProperty a owl:ObjectProperty ; rdfs:domain hcm:TimeInterval ; rdfs:range hcm:LimitedInteractionWithHumans ; rdfs:label "has property" ; rdfs:comment "Property/condition applying to the TimeInterval (e.g., limited human interaction)." .
-hcm:captures a owl:ObjectProperty ; rdfs:domain hcm:Sensor ; rdfs:range hcm:BehaviorAndPhysiology ; rdfs:label "captures" ; rdfs:comment "Sensor captures signals of a behavior/physiology." .
-hcm:elicits a owl:ObjectProperty ; rdfs:domain hcm:Actuator ; rdfs:range hcm:BehaviorAndPhysiology ; rdfs:label "elicits" ; rdfs:comment "Actuator elicits or perturbs a behavior/physiology." .
+hcm:hasSoftware a owl:ObjectProperty ;
+  rdfs:domain hcm:System ;
+  rdfs:range hcm:Software ;
+  rdfs:label "has software" ;
+  rdfs:comment "Links a System to its Software component." ;
+  IAO:0000115 "Relates a system to a software component that is part of it." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
 
-hcm:hasSensor a owl:ObjectProperty ; rdfs:domain hcm:System ; rdfs:range hcm:Sensor ; rdfs:label "has sensor" ; rdfs:comment "Associates a System with a Sensor." .
-hcm:hasActuator a owl:ObjectProperty ; rdfs:domain hcm:System ; rdfs:range hcm:Actuator ; rdfs:label "has actuator" ; rdfs:comment "Associates a System with an Actuator." .
-hcm:communicatesWith a owl:ObjectProperty ; rdfs:domain hcm:Hardware ; rdfs:range hcm:Software ; rdfs:label "communicates with" ; rdfs:comment "Hardware communicates with software component(s)." .
+# Supplier provenance
+hcm:producedBy a owl:ObjectProperty ;
+  rdfs:domain hcm:System ;
+  rdfs:range hcm:Supplier ;
+  rdfs:label "produced by" ;
+  rdfs:comment "Links a System to the supplier or laboratory that produced it." ;
+  IAO:0000115 "Relates a system to the supplier or laboratory that produced it." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
 
-hcm:hasDimensions a owl:ObjectProperty ; rdfs:domain hcm:PhysicalSpace ; rdfs:range hcm:Dimensions ; rdfs:label "has dimensions" ; rdfs:comment "Links a PhysicalSpace to its Dimensions record." .
+# Animal housing
+hcm:livesIn a owl:ObjectProperty ;
+  rdfs:domain hcm:Animal ;
+  rdfs:range hcm:Enclosure ;
+  rdfs:label "lives in" ;
+  rdfs:comment "Animal lives in (is housed in) an Enclosure." ;
+  IAO:0000115 "Relates an animal to the enclosure it lives in." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
 
-# Datatype properties
-hcm:width a owl:DatatypeProperty ; rdfs:domain hcm:Dimensions ; rdfs:range xsd:decimal ; rdfs:label "width" ; rdfs:comment "Width magnitude for Dimensions (units specified in unit)." .
-hcm:length a owl:DatatypeProperty ; rdfs:domain hcm:Dimensions ; rdfs:range xsd:decimal ; rdfs:label "length" ; rdfs:comment "Length magnitude for Dimensions (units specified in unit)." .
-hcm:height a owl:DatatypeProperty ; rdfs:domain hcm:Dimensions ; rdfs:range xsd:decimal ; rdfs:label "height" ; rdfs:comment "Height magnitude for Dimensions (units specified in unit)." .
-hcm:unit a owl:DatatypeProperty ; rdfs:domain hcm:Dimensions ; rdfs:range xsd:string ; rdfs:label "unit" ; rdfs:comment "Unit label for dimensions (e.g., 'cm')." .
+# Enclosure -> space region (chosen modeling)
+hcm:hasSpaceRegion a owl:ObjectProperty ;
+  rdfs:domain hcm:Enclosure ;
+  rdfs:range hcm:PhysicalSpace ;
+  rdfs:label "has space region" ;
+  rdfs:comment "Links an enclosure (artifact) to its relevant spatial region (e.g., internal cage volume)." ;
+  IAO:0000115 "Relates an enclosure artifact to its associated physical space region." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
 
-hcm:durationHours a owl:DatatypeProperty ; rdfs:domain hcm:TimeInterval ; rdfs:range xsd:decimal ; rdfs:label "duration (hours)" ; rdfs:comment "Duration of the time interval in hours (≥ 24 recommended)." .
-hcm:isExtendable a owl:DatatypeProperty ; rdfs:domain hcm:TimeInterval ; rdfs:range xsd:boolean ; rdfs:label "is extendable" ; rdfs:comment "Whether the time interval is extendable." .
+# Space -> dimensions
+hcm:hasDimensions a owl:ObjectProperty ;
+  rdfs:domain hcm:PhysicalSpace ;
+  rdfs:range hcm:Dimensions ;
+  rdfs:label "has dimensions" ;
+  rdfs:comment "Links a PhysicalSpace to its Dimensions record." ;
+  IAO:0000115 "Relates a physical space to its dimensions record." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
 
-# Optional boolean decomposition of needs
-hcm:hasFood a owl:DatatypeProperty ; rdfs:domain hcm:NeedsSequence ; rdfs:range xsd:boolean ; rdfs:label "has food" .
-hcm:hasWater a owl:DatatypeProperty ; rdfs:domain hcm:NeedsSequence ; rdfs:range xsd:boolean ; rdfs:label "has water" .
-hcm:hasSocialContacts a owl:DatatypeProperty ; rdfs:domain hcm:NeedsSequence ; rdfs:range xsd:boolean ; rdfs:label "has social contacts" .
-hcm:hasSafetyFromThreat a owl:DatatypeProperty ; rdfs:domain hcm:NeedsSequence ; rdfs:range xsd:boolean ; rdfs:label "has safety from threat" .
-hcm:hasEnvironmentalEnrichment a owl:DatatypeProperty ; rdfs:domain hcm:NeedsSequence ; rdfs:range xsd:boolean ; rdfs:label "has environmental enrichment" .
+# Hardware/software comms
+hcm:communicatesWith a owl:ObjectProperty ;
+  rdfs:domain hcm:Hardware ;
+  rdfs:range hcm:Software ;
+  rdfs:label "communicates with" ;
+  rdfs:comment "Hardware communicates with software component(s)." ;
+  IAO:0000115 "Relates hardware to software that it communicates with." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
 
-# Structural restrictions (illustrative)
-hcm:System rdfs:subClassOf 
-    [ a owl:Restriction ; owl:onProperty hcm:hasEnclosure ; owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass hcm:Enclosure ] ,
-    [ a owl:Restriction ; owl:onProperty hcm:hasSensor ; owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass hcm:Sensor ] .
+# Behavior relations
+hcm:displays a owl:ObjectProperty ;
+  rdfs:domain hcm:Animal ;
+  rdfs:range hcm:BehaviorAndPhysiology ;
+  rdfs:label "displays" ;
+  rdfs:comment "An Animal displays a behavior or physiological process." ;
+  IAO:0000115 "Relates an animal to a behavior or physiology process it displays." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
 
+hcm:isDisplayedInside a owl:ObjectProperty ;
+  rdfs:domain hcm:BehaviorAndPhysiology ;
+  rdfs:range hcm:Enclosure ;
+  rdfs:label "is displayed inside" ;
+  rdfs:comment "Behavior or physiology occurs inside an Enclosure." ;
+  IAO:0000115 "Relates a behavior or physiology process to the enclosure where it occurs." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:hasCircadianRhythm a owl:ObjectProperty ;
+  rdfs:domain hcm:BehaviorAndPhysiology ;
+  rdfs:range hcm:CircadianRhythm ;
+  rdfs:label "has circadian rhythm" ;
+  rdfs:comment "Associates a behavior or physiology process with a circadian rhythm." ;
+  IAO:0000115 "Relates a behavior or physiology process to its circadian rhythm." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:isCapturedOver a owl:ObjectProperty ;
+  rdfs:domain hcm:BehaviorAndPhysiology ;
+  rdfs:range hcm:ObservationWindow ;
+  rdfs:label "is captured over" ;
+  rdfs:comment "Links a behavior or physiology process to an observation window sufficient to capture it." ;
+  IAO:0000115 "Relates a behavior or physiology process to an observation window over which it is captured." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+# Observation window conditions
+hcm:hasCondition a owl:ObjectProperty ;
+  rdfs:domain hcm:ObservationWindow ;
+  rdfs:range hcm:LimitedInteractionWithHumans ;
+  rdfs:label "has condition" ;
+  rdfs:comment "Links an ObservationWindow to an observation condition." ;
+  IAO:0000115 "Relates an observation window to an observation condition." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+# Hardware-level I/O (O1 structure)
+hcm:hasSensorComponent a owl:ObjectProperty ;
+  rdfs:domain hcm:Hardware ;
+  rdfs:range hcm:Sensor ;
+  rdfs:label "has sensor component" ;
+  rdfs:comment "Links Hardware to a Sensor component." ;
+  IAO:0000115 "Relates hardware to a sensor component that is part of it." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:hasActuatorComponent a owl:ObjectProperty ;
+  rdfs:domain hcm:Hardware ;
+  rdfs:range hcm:Actuator ;
+  rdfs:label "has actuator component" ;
+  rdfs:comment "Links Hardware to an Actuator component." ;
+  IAO:0000115 "Relates hardware to an actuator component that is part of it." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+# System-level convenience properties (for queries)
+hcm:hasSensor a owl:ObjectProperty ;
+  rdfs:domain hcm:System ;
+  rdfs:range hcm:Sensor ;
+  rdfs:label "has sensor" ;
+  rdfs:comment "Derived (via property chain) from hasHardware o hasSensorComponent." ;
+  IAO:0000115 "Relates a system to a sensor hosted by its hardware (via a property chain)." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:hasActuator a owl:ObjectProperty ;
+  rdfs:domain hcm:System ;
+  rdfs:range hcm:Actuator ;
+  rdfs:label "has actuator" ;
+  rdfs:comment "Derived (via property chain) from hasHardware o hasActuatorComponent." ;
+  IAO:0000115 "Relates a system to an actuator hosted by its hardware (via a property chain)." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+# Property chains to support System hasSensor/hasActuator queries
+hcm:hasSensor owl:propertyChainAxiom ( hcm:hasHardware hcm:hasSensorComponent ) .
+hcm:hasActuator owl:propertyChainAxiom ( hcm:hasHardware hcm:hasActuatorComponent ) .
+
+# Capture / elicit at device level
+hcm:captures a owl:ObjectProperty ;
+  rdfs:domain hcm:Sensor ;
+  rdfs:range hcm:BehaviorAndPhysiology ;
+  rdfs:label "captures" ;
+  rdfs:comment "A Sensor captures signals of a behavior or physiology." ;
+  IAO:0000115 "Relates a sensor to a behavior or physiology process it captures." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:elicits a owl:ObjectProperty ;
+  rdfs:domain hcm:Actuator ;
+  rdfs:range hcm:BehaviorAndPhysiology ;
+  rdfs:label "elicits" ;
+  rdfs:comment "An Actuator elicits or perturbs a behavior or physiology." ;
+  IAO:0000115 "Relates an actuator to a behavior or physiology process it elicits or perturbs." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+#################################################################
+# Needs properties (OBJECT-based)
+#################################################################
+hcm:requiresToThrive a owl:ObjectProperty ;
+  rdfs:domain hcm:Animal ;
+  rdfs:range hcm:AnimalNeedProfile ;
+  rdfs:label "requires to thrive" ;
+  rdfs:comment "Links an Animal to the AnimalNeedProfile it requires." ;
+  IAO:0000115 "Relates an animal to the animal need profile it requires." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:providesNeedProfile a owl:ObjectProperty ;
+  rdfs:domain hcm:Enclosure ;
+  rdfs:range hcm:AnimalNeedProfile ;
+  rdfs:label "provides need profile" ;
+  rdfs:comment "Needs provisioning provided by the enclosure context." ;
+  IAO:0000115 "Relates an enclosure to the animal need profile it provides." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:hasFood a owl:ObjectProperty ;
+  rdfs:domain hcm:AnimalNeedProfile ;
+  rdfs:range hcm:Food ;
+  rdfs:label "has food" ;
+  rdfs:comment "Links an AnimalNeedProfile to a Food need." ;
+  IAO:0000115 "Relates an animal need profile to a food need." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:hasWater a owl:ObjectProperty ;
+  rdfs:domain hcm:AnimalNeedProfile ;
+  rdfs:range hcm:Water ;
+  rdfs:label "has water" ;
+  rdfs:comment "Links an AnimalNeedProfile to a Water need." ;
+  IAO:0000115 "Relates an animal need profile to a water need." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:hasSocialContacts a owl:ObjectProperty ;
+  rdfs:domain hcm:AnimalNeedProfile ;
+  rdfs:range hcm:SocialContacts ;
+  rdfs:label "has social contacts" ;
+  rdfs:comment "Links an AnimalNeedProfile to SocialContacts." ;
+  IAO:0000115 "Relates an animal need profile to social contacts." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:hasSafetyFromThreat a owl:ObjectProperty ;
+  rdfs:domain hcm:AnimalNeedProfile ;
+  rdfs:range hcm:SafetyFromThreat ;
+  rdfs:label "has safety from threat" ;
+  rdfs:comment "Links an AnimalNeedProfile to SafetyFromThreat." ;
+  IAO:0000115 "Relates an animal need profile to safety from threat." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:hasEnvironmentalEnrichment a owl:ObjectProperty ;
+  rdfs:domain hcm:AnimalNeedProfile ;
+  rdfs:range hcm:EnvironmentalEnrichment ;
+  rdfs:label "has environmental enrichment" ;
+  rdfs:comment "Links an AnimalNeedProfile to EnvironmentalEnrichment." ;
+  IAO:0000115 "Relates an animal need profile to environmental enrichment." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+#################################################################
+# Datatype Properties
+#################################################################
+hcm:width a owl:DatatypeProperty ;
+  rdfs:domain hcm:Dimensions ;
+  rdfs:range xsd:decimal ;
+  rdfs:label "width" ;
+  rdfs:comment "Width magnitude for Dimensions (units specified in unit)." ;
+  IAO:0000115 "A width magnitude for a dimensions record." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:length a owl:DatatypeProperty ;
+  rdfs:domain hcm:Dimensions ;
+  rdfs:range xsd:decimal ;
+  rdfs:label "length" ;
+  rdfs:comment "Length magnitude for Dimensions (units specified in unit)." ;
+  IAO:0000115 "A length magnitude for a dimensions record." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:height a owl:DatatypeProperty ;
+  rdfs:domain hcm:Dimensions ;
+  rdfs:range xsd:decimal ;
+  rdfs:label "height" ;
+  rdfs:comment "Height magnitude for Dimensions (units specified in unit)." ;
+  IAO:0000115 "A height magnitude for a dimensions record." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:unit a owl:DatatypeProperty ;
+  rdfs:domain hcm:Dimensions ;
+  rdfs:range xsd:string ;
+  rdfs:label "unit" ;
+  rdfs:comment "Unit label for dimensions (e.g., 'cm')." ;
+  IAO:0000115 "A unit label for dimensions values." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:durationHours a owl:DatatypeProperty ;
+  rdfs:domain hcm:ObservationWindow ;
+  rdfs:range xsd:decimal ;
+  rdfs:label "duration (hours)" ;
+  rdfs:comment "Duration of the observation window in hours (must be > 24)." ;
+  IAO:0000115 "A duration value in hours for an observation window." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:isExtendable a owl:DatatypeProperty ;
+  rdfs:domain hcm:ObservationWindow ;
+  rdfs:range xsd:boolean ;
+  rdfs:label "is extendable" ;
+  rdfs:comment "Whether the observation window is extendable." ;
+  IAO:0000115 "A boolean indicating whether an observation window is extendable." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+#################################################################
+# OWL structural constraints (minimal, non-overcommitting)
+#################################################################
+
+# System must include at least one of each component (diagram triple, permissive)
+hcm:System rdfs:subClassOf
+  [ a owl:Restriction ; owl:onProperty hcm:hasEnclosure ; owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass hcm:Enclosure ],
+  [ a owl:Restriction ; owl:onProperty hcm:hasHardware  ; owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass hcm:Hardware  ],
+  [ a owl:Restriction ; owl:onProperty hcm:hasSoftware  ; owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass hcm:Software  ] .
+
+# Dimensions triple (w,l,h): exactly one each
+hcm:Dimensions rdfs:subClassOf
+  [ a owl:Restriction ; owl:onProperty hcm:width  ; owl:cardinality "1"^^xsd:nonNegativeInteger ],
+  [ a owl:Restriction ; owl:onProperty hcm:length ; owl:cardinality "1"^^xsd:nonNegativeInteger ],
+  [ a owl:Restriction ; owl:onProperty hcm:height ; owl:cardinality "1"^^xsd:nonNegativeInteger ] .
+
+#################################################################
+# Deprecated legacy terms (preserve IRIs)
+#################################################################
+
+hcm:NeedsSequence a owl:Class ;
+  owl:deprecated "true"^^xsd:boolean ;
+  rdfs:label "Needs Sequence (deprecated)" ;
+  rdfs:comment "Deprecated; use hcm:AnimalNeedProfile with object-based needs." ;
+  IAO:0000115 "Deprecated; use hcm:AnimalNeedProfile with object-based needs." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:TimeInterval a owl:Class ;
+  owl:deprecated "true"^^xsd:boolean ;
+  rdfs:label "Time Interval (deprecated)" ;
+  rdfs:comment "Deprecated; use hcm:ObservationWindow." ;
+  IAO:0000115 "Deprecated; use hcm:ObservationWindow." ;
+  rdfs:subClassOf hcm:ObservationWindow ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:HumanInteractionProfile a owl:Class ;
+  owl:deprecated "true"^^xsd:boolean ;
+  rdfs:label "Human Interaction Profile (deprecated)" ;
+  rdfs:comment "Deprecated; use hcm:LimitedInteractionWithHumans as a condition." ;
+  IAO:0000115 "Deprecated; use hcm:LimitedInteractionWithHumans as a condition." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:CollectionOfSensors a owl:Class ;
+  owl:deprecated "true"^^xsd:boolean ;
+  rdfs:label "Collection Of Sensors (deprecated)" ;
+  rdfs:comment "Deprecated; model sensors via hcm:hasSensorComponent on Hardware." ;
+  IAO:0000115 "Deprecated; model sensors via hcm:hasSensorComponent on Hardware." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:CollectionOfActuators a owl:Class ;
+  owl:deprecated "true"^^xsd:boolean ;
+  rdfs:label "Collection Of Actuators (deprecated)" ;
+  rdfs:comment "Deprecated; model actuators via hcm:hasActuatorComponent on Hardware." ;
+  IAO:0000115 "Deprecated; model actuators via hcm:hasActuatorComponent on Hardware." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:hasPhysicalSpace a owl:ObjectProperty ;
+  owl:deprecated "true"^^xsd:boolean ;
+  rdfs:label "has physical space (deprecated)" ;
+  rdfs:comment "Deprecated; use hcm:hasSpaceRegion." ;
+  IAO:0000115 "Deprecated; use hcm:hasSpaceRegion." ;
+  rdfs:subPropertyOf hcm:hasSpaceRegion ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:extendsEnoughToCapture a owl:ObjectProperty ;
+  owl:deprecated "true"^^xsd:boolean ;
+  rdfs:label "extends enough to capture (deprecated)" ;
+  rdfs:comment "Deprecated; use hcm:isCapturedOver." ;
+  IAO:0000115 "Deprecated; use hcm:isCapturedOver." ;
+  rdfs:subPropertyOf hcm:isCapturedOver ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:extendsOver a owl:ObjectProperty ;
+  owl:deprecated "true"^^xsd:boolean ;
+  rdfs:label "extends over (deprecated)" ;
+  rdfs:comment "Deprecated; no direct replacement; model with hcm:ObservationWindow if needed." ;
+  IAO:0000115 "Deprecated; no direct replacement; model with hcm:ObservationWindow if needed." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:hasProperty a owl:ObjectProperty ;
+  owl:deprecated "true"^^xsd:boolean ;
+  rdfs:label "has property (deprecated)" ;
+  rdfs:comment "Deprecated; use hcm:hasCondition." ;
+  IAO:0000115 "Deprecated; use hcm:hasCondition." ;
+  rdfs:subPropertyOf hcm:hasCondition ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:hasSensorSet a owl:ObjectProperty ;
+  owl:deprecated "true"^^xsd:boolean ;
+  rdfs:label "has sensor set (deprecated)" ;
+  rdfs:comment "Deprecated; use hcm:hasSensorComponent." ;
+  IAO:0000115 "Deprecated; use hcm:hasSensorComponent." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:hasActuatorSet a owl:ObjectProperty ;
+  owl:deprecated "true"^^xsd:boolean ;
+  rdfs:label "has actuator set (deprecated)" ;
+  rdfs:comment "Deprecated; use hcm:hasActuatorComponent." ;
+  IAO:0000115 "Deprecated; use hcm:hasActuatorComponent." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:hasLimitedHumanInteraction a owl:ObjectProperty ;
+  owl:deprecated "true"^^xsd:boolean ;
+  rdfs:label "has limited human interaction (deprecated)" ;
+  rdfs:comment "Deprecated; use hcm:hasCondition with hcm:LimitedInteractionWithHumans." ;
+  IAO:0000115 "Deprecated; use hcm:hasCondition with hcm:LimitedInteractionWithHumans." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:indefinitelyExtendable a owl:DatatypeProperty ;
+  owl:deprecated "true"^^xsd:boolean ;
+  rdfs:label "indefinitely extendable (deprecated)" ;
+  rdfs:comment "Deprecated; represent extendability with hcm:isExtendable." ;
+  IAO:0000115 "Deprecated; represent extendability with hcm:isExtendable." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+
+hcm:limitedHumanInteraction a owl:DatatypeProperty ;
+  owl:deprecated "true"^^xsd:boolean ;
+  rdfs:label "limited human interaction (deprecated boolean)" ;
+  rdfs:comment "Deprecated; use hcm:hasCondition with hcm:LimitedInteractionWithHumans." ;
+  IAO:0000115 "Deprecated; use hcm:hasCondition with hcm:LimitedInteractionWithHumans." ;
+  dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .

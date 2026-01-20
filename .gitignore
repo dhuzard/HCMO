@@ -11,3 +11,6 @@ build/
 .cache/
 .next/
 coverage/
+
+# Python virtualenv
+.venv/
