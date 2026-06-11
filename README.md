@@ -1,233 +1,130 @@
-# HCMO Ontology (Home-Cage Monitoring Ontology)
+# HCMO — Home-Cage Monitoring Ontology
 
-> **MAPP 0.0.1 — repository reorganized as a standalone, tool-consumable ontology project.**
-> The active ontology is the **MAPP** ontology (Monitoring and Analytics for
-> Physiological Processes), ontology IRI `https://w3id.org/hcmo/ontology/hcm`,
-> namespace `https://w3id.org/hcmo/ontology/hcm#` (module sub-namespaces
-> `…/hcm/bio#`, `…/hcm/env#`, `…/hcm/obs#`). It carries forward this established
-> namespace; the prior HCMO 1.0.0 term set is preserved under `ontology/legacy/`.
-> See `CHANGELOG.md`.
->
-> **Release contract:** [`hcmo.yaml`](hcmo.yaml) — the stable manifest downstream
-> tools (e.g. the hcmo-kgqa-lab sync layer) read.
->
-> **Layout:**
-> - `hcmo.yaml` — release manifest (name, version, namespace, modules, dist, shapes, queries, examples).
-> - `ontology/modules/*.ttl` — hand-authored modular sources (`hcm-core`, `hcm-bio`, `hcm-env`, `hcm-obs`).
-> - `ontology/context.jsonld` — JSON-LD context.
-> - `dist/` — **generated** (`hcmo.ttl` merged/canonical, `hcmo.owl`, `hcmo.json`, `profile.json`). Never hand-edit.
-> - `shapes/`, `examples/`, `queries/` — SHACL, ABox examples, competency queries (see `docs/MISSING-DEFINITIONS.md` re: namespace).
-> - `tooling/build.py` — regenerate `dist/` + `profile.json` (idempotent, reproducible).
-> - `tooling/validate.py` — parse + pySHACL + competency-query gate (used by CI).
-> - `ontology/legacy/` — the previous HCMO 1.0.0 ontology, retained, not deleted.
->
-> **Build & validate:**
-> ```bash
-> pip install -r tooling/requirements.txt
-> python tooling/build.py      # regenerate dist/ + profile.json
-> python tooling/validate.py   # parse + SHACL + competency queries (CI gate)
-> ```
+[![Validate](https://github.com/Neuronautix/HCMO/actions/workflows/validate.yml/badge.svg)](https://github.com/Neuronautix/HCMO/actions/workflows/validate.yml)
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-blue.svg)](LICENSE)
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.18925285-blue.svg)](https://doi.org/10.5281/zenodo.18925285)
 
-A professional, reusable ontology package for home-cage monitoring (HCMO). It models systems, animals, enclosures, behaviors, sensors/actuators, observation windows, and provisioning needs; aligns to key web standards; ships with SHACL validation, examples, queries, and a JSON-LD context for application developers.
+HCMO is an ontology for **home-cage monitoring** of laboratory animals. It models
+monitored enclosures, biological subjects and experimental groups, the
+environment and its measurements, observations and results, and the sensors,
+hardware, and software that produce the data — under the **MAPP** framework
+(Monitoring and Analytics for Physiological Processes). The project ships as a
+standalone, tool-consumable package: a stable release manifest, modular Turtle
+sources, generated distributions, SHACL shapes, competency queries, and a
+JSON-LD context.
 
-- Ontology core: `ontology/hcm.ttl`
-- Standards alignment: `ontology/hcm-align.ttl`
-- Ontology metadata and imports: `ontology/hcm-metadata.ttl`
-- Optional bridge modules: `ontology/hcm-bridge-*.ttl`
-- SHACL shapes: `shapes/hcm-shapes.ttl`
-- Examples (ABox): `examples/`
-- SPARQL queries: `queries/`
-- JSON-LD context: `ontology/context.jsonld`
-- Validation scripts and CI: `tooling/validate.ps1`, `tooling/validate.sh`, `.github/workflows/validate.yml`
-- Web-based authoring app: `webapp/`
+## At a glance
 
-## Why HCMO?
-- **Interoperability**: Aligns with SOSA/SSN (sensing/actuation), OWL-Time, PROV, and BFO.
-- **Data quality**: Enforces practical constraints (> 24 h observation window, enclosure space/dimensions, system composition) with SHACL.
-- **Developer-ready**: JSON-LD context and examples; simple upgrade path to QUDT/OM units.
-- **FAIR**: Clear IRIs, metadata, governance, and publishing guidance.
+| | |
+|---|---|
+| **Ontology IRI** | `https://w3id.org/hcmo/ontology/hcm` |
+| **Base namespace** | `https://w3id.org/hcmo/ontology/hcm#` |
+| **Module sub-namespaces** | `…/hcm/bio#`, `…/hcm/env#`, `…/hcm/obs#` |
+| **Version** | `0.0.1` (versionIRI `…/hcm/0.0.1`) |
+| **Prefix** | `hcm` |
+| **License** | CC BY 4.0 |
+| **Release manifest** | [`hcmo.yaml`](hcmo.yaml) |
 
-## Repository Map
-- `ontology/` - Core ontology Turtle files, metadata, and JSON-LD context.
-- `shapes/` - SHACL shapes used to validate HCMO payloads.
-- `examples/` - Sample ABox datasets demonstrating minimal and edge-case coverage.
-- `queries/` - SPARQL queries for common analysis scenarios.
-- `tooling/` - Validation scripts, ROBOT report config, and Python requirements for ontology QA.
-- `webapp/` - Node.js authoring and blueprint checklist application.
-- `docs/` - Supporting documentation, including field tiers and alignment notes.
-- `docs/ARCHITECTURE.md` - Modular architecture plan and bridge module rules.
-- `.github/` - CI workflow and issue templates.
+> The release manifest [`hcmo.yaml`](hcmo.yaml) is the **contract** that
+> downstream tools (e.g. the `hcmo-kgqa-lab` sync layer) read. Its shape is
+> treated as an API and kept stable across releases.
 
-## Prerequisites and Installation
-### Ontology tooling
-- Install Python 3.11 or later.
-- From the repository root, install validation dependencies once: `pip install -r tooling/requirements.txt`.
+## Repository layout
 
-### Web authoring app
-- Install Node.js 20.x or later.
-- Change into `webapp/` and install dependencies: `npm install`.
-
-## Ontology validation workflow
-Run the full validation loop from the repository root:
-
-```powershell
-./tooling/validate.ps1
 ```
-
-Linux/macOS (bash):
-```bash
-./tooling/validate.sh
+hcmo.yaml                      # release manifest (name, version, namespace, modules, dist, shapes, queries, examples)
+ontology/
+  modules/                     # hand-authored modular sources
+    hcm-core.ttl               #   core terms + owl:Ontology header (attribution)
+    hcm-bio.ttl                #   subjects, experimental groups        (…/hcm/bio#)
+    hcm-env.ttl                #   environment & measurements           (…/hcm/env#)
+    hcm-obs.ttl                #   observations & results               (…/hcm/obs#)
+  context.jsonld               # JSON-LD context for app developers
+  legacy/                      # previous HCMO 1.0.0 ontology (retained, not merged)
+dist/                          # GENERATED — never hand-edit
+  hcmo.ttl                     #   merged graph, canonical/sorted Turtle (reproducible)
+  hcmo.owl                     #   merged graph, RDF/XML
+  hcmo.json                    #   merged graph, JSON-LD
+  profile.json                 #   flat term inventory {iri,label,comment} + counts
+shapes/hcm-shapes.ttl          # SHACL constraints
+examples/                      # ABox examples (abox-minimal, abox-edge-cases)
+queries/                       # competency_questions.yaml + cq-*.rq
+tooling/                       # build.py, validate.py, requirements.txt
+docs/                          # documentation (incl. MISSING-DEFINITIONS.md)
+.github/workflows/             # validate.yml (PR gate), release.yml (tag → assets)
+webapp/                        # optional Node.js authoring/blueprint app
 ```
-
-The script will:
-1. Ensure `pyshacl` and `rdflib` are available (and install them if missing).
-2. Parse every Turtle file under `ontology/`, `shapes/`, and `examples/`, emitting `[OK] Parsed: <file>` lines.
-3. Validate `examples/abox-minimal.ttl` against `shapes/hcm-shapes.ttl` with `pyshacl -f human`.
-
-A successful run ends with `Validation passed.`. If parsing or validation fails, the script stops with `Validation failed.` and the upstream error. Troubleshooting tips:
-- Confirm Python 3.11+ is on PATH and `pip install -r tooling/requirements.txt` succeeds.
-- Use the `-Data` and `-Shapes` parameters to point at alternate Turtle files when developing new payloads.
-- If SHACL errors persist, open the report written to the console and cross-reference the offending shapes in `shapes/hcm-shapes.ttl`.
-
-## Web authoring app
-### Launch the app
-```powershell
-cd webapp
-npm run dev
-```
-The server starts on `http://localhost:3000`.
-
-### System Export tab
-- Capture system, enclosure, sensors, actuators, welfare needs, and time interval details.
-- Submit the form to receive JSON-LD, Turtle, and pySHACL validation output. Three panels appear with copyable text areas plus `Download` buttons.
-- The `Download ZIP Bundle` button bundles the JSON-LD, Turtle, and validation report for sharing with downstream systems.
-
-### Blueprint tab
-- `docs/FIELD-TIERS.md` supplies the tier inventory surfaced in the UI. Fields are grouped as mandatory, recommended, or optional with rationale and example values.
-- The app queries `/api/blueprint/inventory` and `/api/blueprint/examples` to populate tiers and sample datasets. Select an example dataset and click **Load Example** to prefill statuses and notes.
-- Update field values and statuses (`provided`, `partial`, `missing`, `unknown`) to track coverage. Summary tiles recompute weighted coverage and mandatory completion as you edit.
-- Use **Clear Fields** to reset the checklist before exporting or sharing results.
-
-## Consuming the ontology
-- Import `ontology/hcm.ttl`, `ontology/hcm-align.ttl`, and `ontology/hcm-metadata.ttl` into your triple store or reasoning environment.
-- Optional: import `ontology/hcm-bridge-*.ttl` for domain-specific alignments (e.g., animal or device ontologies).
-- Apply the JSON-LD context (`ontology/context.jsonld`) when exchanging data with web applications.
-- Use `shapes/hcm-shapes.ttl` to enforce constraints during ingestion pipelines or data QA. The shapes expect the same structure the webapp produces.
-- Explore the SPARQL queries in `queries/` (for example `cq-systems-24h-limited.rq`) to answer common competency questions about systems, intervals, and welfare coverage.
-
-## Example data
-- `examples/abox-minimal.ttl` - A conformant payload matching the mandatory field coverage described in the blueprint.
-- `examples/abox-edge-cases.ttl` - Intentionally invalid scenarios (missing sensors, short intervals, etc.) to exercise SHACL failure paths.
-Adapt either file by copying it into a working directory and editing IDs, labels, and measurements while keeping the ontology structure intact.
-
-## Tooling scripts
-Currently available:
-- `tooling/validate.ps1` - orchestrates Turtle parsing and pySHACL validation (see above).
-- `tooling/validate.sh` - bash equivalent for validation on Linux/macOS.
-- `tooling/requirements.txt` - pinned dependencies for validation tooling.
-- `tooling/robot-report.tsv` - ROBOT report profile for labels/definitions/provenance.
-- `tooling/robot-report.md` - ROBOT report usage and output format.
-
-The blueprint TODO (below) tracks planned additions such as a checklist scoring helper and metadata entry CLI; those scripts are not yet implemented.
-
-## Testing
-Inside `webapp/`, run the front-end API and UI tests:
-```powershell
-npm test
-```
-This exercises the blueprint inventory endpoints and UI guardrails. Run the suite before submitting changes to the form logic, API handlers, or blueprint resources.
-
-## Contribution and support
-- Open issues or feature requests through GitHub Issues; use the templates in `.github/ISSUE_TEMPLATE/` when applicable.
-- Follow the existing coding style (ES modules in the webapp, Turtle/JSON-LD formatting in ontology assets) and document non-obvious changes inline or in `docs/`.
-- Reference semantic version information from `ontology/hcm-metadata.ttl` (current version IRI `https://w3id.org/hcmo/ontology/hcm/1.0.0`) when publishing derived packages.
-- For security or data governance concerns, contact the maintainers via the repository issue tracker before disclosing sensitive details.
 
 ## Quickstart
-1. Install validation tooling and webapp dependencies (see prerequisites above).
-2. Run `./tooling/validate.ps1` to confirm ontology and example integrity.
-3. Launch the webapp with `npm run dev` and generate a sample export.
-4. Import `ontology/hcm.ttl` plus `examples/abox-minimal.ttl` into your triple store and test the queries in `queries/`.
 
-## Ontology blueprint TODO
+```bash
+pip install -r tooling/requirements.txt
 
-- Audit existing repo assets (`README`, `docs/`, `schemas/`, `scripts/`) for existing TEATIME/HCM coverage and identify reuse or gaps.
-- Add an updated YAML representation of the ontology blueprint under `ontology/` for downstream tooling.
-- Collect the latest TEATIME HCM ontology schema and Bains et al. *"Too Big to Lose"* metadata definitions in `reference/ontology/`.
-- Gather the representative device's metadata/export specifications (field names, types, units, sampling cadence) in `reference/device/`.
-- Design a canonical ontology-field inventory spanning subjects, environment, hardware, software, and outputs as a repo-consumable artifact.
-- Map device fields to ontology terms, capturing matches, transforms, gaps, and source notes for stakeholder review.
-- Implement a checklist scaffold (spreadsheet in `docs/` plus machine-readable export) tracking check / warning / fail coverage and rationale.
-- Prototype an automated scoring routine summarizing coverage by domain and overall alignment using sample metadata.
-- Draft a stakeholder memo summarizing ambiguous mappings, open questions, and proposed device-specific extensions.
-- Record outcomes of the stakeholder feedback loop and propagate approved adjustments into the mapping artifacts.
-- Finalize blueprint deliverables (checklist, README/SOP, reproducible mapping workflow) and plan OSF or similar deposition.
-- Capture beta metadata-entry tool requirements (inputs, validation, JSON-LD/CSV export) and log follow-up implementation issues.
-
-### Completed
-
-- Classify each ontology field as Mandatory, Recommended, or Optional with supporting evidence (`docs/FIELD-TIERS.md`).
-
-**Blueprint assets**  
-- YAML blueprint: `ontology/hcm-blueprint.yaml`  
-- Field inventory: `ontology/hcm-field-inventory.tsv`  
-- Device export spec: `reference/device/representative-device-export.yaml`  
-- Device mapping log: `reference/device/device-to-ontology-mapping.csv`  
-- Coverage checklist: `docs/hcm-blueprint-checklist.csv` and `docs/hcm-blueprint-checklist.json`  
-- Scoring script: `node tooling/score_blueprint.mjs [checklist]`  
-- Metadata-entry tool: `node tooling/metadata_entry_tool.mjs --format jsonld|csv --out <file>`  
-- SOP and issue log: `docs/BLUEPRINT-SOP.md`, `docs/metadata-entry-tool-issues.md`
-
-## Namespaces and IRIs
-- Base ontology IRI: `https://w3id.org/hcmo/ontology/hcm`
-- Version IRI: `https://w3id.org/hcmo/ontology/hcm/1.0.0`
-- Prefixes used: `hcm`, `sosa`, `ssn`, `time`, `prov`, `dcterms`, `qudt`, `unit`, `om`, `schema`, `bfo`
-
-See alignments in `docs/ALIGNMENTS.md`.
-
-## What's in the ontology
-
-**Core classes (selected)**  
-- `hcm:System` - HCM system composed of enclosure, hardware, and software.  
-- `hcm:Animal` - Experimental animal.  
-- `hcm:Enclosure` - Artifact enclosure linked to `hcm:PhysicalSpace`.  
-- `hcm:BehaviorAndPhysiology` - Observed process captured over an `hcm:ObservationWindow`.  
-- `hcm:Sensor`, `hcm:Actuator`, `hcm:Hardware`, `hcm:Software`, `hcm:Supplier` (+ subtypes).  
-- `hcm:AnimalNeedProfile`, `hcm:LimitedInteractionWithHumans`, `hcm:Dimensions`, `hcm:ObservationWindow`.  
-
-**Key object properties**  
-- System composition: `hcm:hasEnclosure`, `hcm:hasHardware`, `hcm:hasSoftware`, `hcm:producedBy`.  
-- Hardware IO: `hcm:hasSensorComponent`, `hcm:hasActuatorComponent`; system-level `hcm:hasSensor`/`hcm:hasActuator` via property chains.  
-- Animal, enclosure, needs: `hcm:livesIn`, `hcm:providesNeedProfile`, `hcm:requiresToThrive`.  
-- Behavior context: `hcm:isDisplayedInside`, `hcm:hasCircadianRhythm`, `hcm:isCapturedOver`.  
-- Space and geometry: `hcm:hasSpaceRegion`, `hcm:hasDimensions`.  
-
-**Key datatype properties**  
-- Dimensions: `hcm:width`, `hcm:length`, `hcm:height`, `hcm:unit`.  
-- Observation window: `hcm:durationHours`, `hcm:isExtendable`.  
-
-**Selected OWL axioms**  
-- Disjointness: `hcm:Sensor` disjoint `hcm:Actuator`, `hcm:Hardware` disjoint `hcm:Software`.  
-- Restrictions: `hcm:System` has at least one enclosure, hardware, and software; property chains derive system sensors/actuators from hardware components.  
-
-## Standards alignment
-
-- SOSA/SSN: `hcm:Sensor` subset of `sosa:Sensor`, `hcm:Actuator` subset of `sosa:Actuator`, `hcm:System` subset of `sosa:Platform`, `hcm:hasSensor` subset of `sosa:hosts`.  
-- OWL-Time: `hcm:ObservationWindow` subset of `time:TemporalEntity`.  
-- PROV/Agents: `hcm:producedBy` subset of `prov:wasAttributedTo`; `hcm:Supplier` subset of `prov:Agent` and `schema:Organization`.  
-- BFO: `hcm:BehaviorAndPhysiology` subset of `bfo:0000015` (process).  
-
-Details and rationale are documented in `docs/ALIGNMENTS.md`.
-
-## SHACL validation
-
-Shapes in `shapes/hcm-shapes.ttl` check:  
-- System: at least one enclosure, hardware, and software.  
-- Observation window: `durationHours` > 24, optional `isExtendable`.  
-- Enclosure: must have a `PhysicalSpace` via `hasSpaceRegion`.  
-- Dimensions: width, length, height > 0; unit present.  
-
-Run locally (PowerShell):  
-```powershell
-./tooling/validate.ps1
+python tooling/build.py      # regenerate dist/ + profile.json (idempotent, reproducible)
+python tooling/validate.py   # parse all TTL + pySHACL + competency queries (the CI gate)
 ```
+
+- **`tooling/build.py`** merges `ontology/modules/*.ttl` into `dist/` using a
+  canonicalized, sorted serialization, so re-running produces byte-identical
+  output (clean diffs). Everything in `dist/` is generated — edit the modules,
+  not the artifacts.
+- **`tooling/validate.py`** parses every TTL, runs the SHACL shapes against the
+  examples, and runs every `queries/cq-*.rq` against the merged graph; it exits
+  non-zero on failure. It is the same check the PR workflow runs.
+
+## Consuming the ontology
+
+- **Merged graph:** import `dist/hcmo.ttl` (or `dist/hcmo.owl`) into your triple
+  store or reasoner.
+- **Programmatic inventory:** read `dist/profile.json` for the flat list of
+  classes / object properties / datatype properties with labels, comments, and
+  counts — ideal for sync layers and UIs.
+- **JSON-LD apps:** apply `ontology/context.jsonld` when exchanging data.
+- **Validation:** use `shapes/hcm-shapes.ttl` to validate payloads during
+  ingestion; see `examples/` for conformant and intentionally-invalid ABoxes.
+- **Everything is discoverable from `hcmo.yaml`** — resolve module, dist, shapes,
+  queries, and example paths from there rather than hard-coding them.
+
+## Status & known issues
+
+This is an early release (`0.0.1`) derived from a Chowlk diagram export.
+`docs/MISSING-DEFINITIONS.md` tracks the open data-quality work, including:
+
+- Terms still lacking `rdfs:comment` definitions (labels are present).
+- Chowlk placeholder/erroneous terms preserved as authored (`UNKNOWN:*`,
+  `ns:Class2`, `xsd:boolean`/`xsd:integer` typed as properties) — to be re-mapped
+  or removed at the source.
+- `shapes/`, `examples/`, and `queries/` currently reference the legacy 1.0.0
+  term set and need re-authoring against the MAPP terms (competency queries
+  return 0 rows until then).
+
+Per project policy, missing labels and definitions are **listed, not fabricated**.
+
+## Web authoring app (optional)
+
+A Node.js app under `webapp/` supports form-based authoring and a blueprint
+checklist. From `webapp/`: `npm install` then `npm run dev` (serves on
+`http://localhost:3000`); `npm test` runs the API/UI tests. The app predates the
+MAPP reorganization and targets the legacy term set.
+
+## Contributors
+
+- **Damien Huzard** — [0000-0003-4820-7951](https://orcid.org/0000-0003-4820-7951)
+- **Konstantin Todorov** — [0000-0002-9116-6692](https://orcid.org/0000-0002-9116-6692)
+- **Cyril Gilbert** — _ORCID: TBD_
+- **Pierre Larmande** — [0000-0002-2923-9790](https://orcid.org/0000-0002-2923-9790)
+- **Gaoussou Sanou** — _ORCID: TBD_
+- **Serge Sonfack** — _ORCID: TBD_
+- **Antoine Tofano** — _ORCID: TBD_
+
+Attribution is also recorded on the `owl:Ontology` header (`dcterms:creator`,
+using ORCID IRIs where known) and in [`CITATION.cff`](CITATION.cff).
+
+## Citation
+
+If you use HCMO, please cite it via [`CITATION.cff`](CITATION.cff) (GitHub's
+"Cite this repository") or the DOI [10.5281/zenodo.18925285](https://doi.org/10.5281/zenodo.18925285).
+
+## License
+
+Released under [CC BY 4.0](LICENSE).

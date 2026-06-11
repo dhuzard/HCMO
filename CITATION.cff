@@ -1,11 +1,43 @@
 cff-version: 1.2.0
-message: "If you use this software, please cite it as below."
-authors:
-- family-names: "Huzard"
-  given-names: "Damien"
-  orcid: "https://orcid.org/0000-0003-4820-7951"
+message: "If you use this software/ontology, please cite it as below."
 title: "The Home-Cage Monitoring Ontology (HCMO)"
+abstract: >-
+  An ontology for home-cage monitoring of laboratory animals, modeling
+  monitored enclosures, subjects, environment and observation data, sensors and
+  hardware/software, in the MAPP (Monitoring and Analytics for Physiological
+  Processes) framework.
+type: dataset
+authors:
+  - family-names: "Huzard"
+    given-names: "Damien"
+    orcid: "https://orcid.org/0000-0003-4820-7951"
+  - family-names: "Todorov"
+    given-names: "Konstantin"
+    orcid: "https://orcid.org/0000-0002-9116-6692"
+  - family-names: "Gilbert"
+    given-names: "Cyril"
+    # orcid: "https://orcid.org/0000-0000-0000-0000"  # TODO: add ORCID
+  - family-names: "Larmande"
+    given-names: "Pierre"
+    orcid: "https://orcid.org/0000-0002-2923-9790"
+  - family-names: "Sanou"
+    given-names: "Gaoussou"
+    # orcid: "https://orcid.org/0000-0000-0000-0000"  # TODO: add ORCID
+  - family-names: "Sonfack"
+    given-names: "Serge"
+    # orcid: "https://orcid.org/0000-0000-0000-0000"  # TODO: add ORCID
+  - family-names: "Tofano"
+    given-names: "Antoine"
+    # orcid: "https://orcid.org/0000-0000-0000-0000"  # TODO: add ORCID
 version: 0.1
 doi: 10.5281/zenodo.18925285
 date-released: 2026-03-09
 url: "https://github.com/dhuzard/HCMO"
+repository-code: "https://github.com/Neuronautix/HCMO"
+license: CC-BY-4.0
+keywords:
+  - ontology
+  - home-cage monitoring
+  - laboratory animals
+  - semantic web
+  - FAIR data

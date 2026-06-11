@@ -240,6 +240,11 @@
       "rdfs:label": "supports enclosure"
     },
     {
+      "@id": "_:cb160c7c4054321f6a510d5f5989b3a5691f1f291b6a0f61e5277528d2f6939dfa8",
+      "@type": "schema:Person",
+      "schema:name": "Cyril Gilbert"
+    },
+    {
       "@id": "_:cb16ecbbc8bf4babbcae00a50aaf1e70557b2dd74f57693930fbe651ab1ed75e499",
       "@type": "owl:Restriction",
       "owl:allValuesFrom": {
@@ -248,6 +253,11 @@
       "owl:onProperty": {
         "@id": "hcm-env:hasMeasurementSpec"
       }
+    },
+    {
+      "@id": "_:cb16ed6fc717ad5d6768187410fe718b5cc7a2ce7d1fb6059fbb4c1d434bfe6ce1c",
+      "@type": "schema:Person",
+      "schema:name": "Gaoussou Sanou"
     },
     {
       "@id": "_:cb1927685761ff8827d6b6aa29d9020102456bb3441f2299305340b361363817349",
@@ -261,6 +271,11 @@
       }
     },
     {
+      "@id": "_:cb192a98778b14bb7268e9f35693b103bf9fa8bd8b8f67b01a2ede6deb98433886f",
+      "@type": "schema:Person",
+      "schema:name": "Antoine Tofano"
+    },
+    {
       "@id": "_:cb1973efc7f24e152ca98a85ff21b8c66dd7e164ae7d89060a391a90f98e4f00834",
       "@type": "owl:Restriction",
       "owl:allValuesFrom": {
@@ -269,6 +284,11 @@
       "owl:onProperty": {
         "@id": "hcm-bio:belongsToGroup"
       }
+    },
+    {
+      "@id": "_:cb19eb4d2089a2fe8c838a2de87ce1941cfc86dbada43b73334ecc2002d4b96a699",
+      "@type": "schema:Person",
+      "schema:name": "Serge Sonfack"
     },
     {
       "@id": "_:cb1a90ed890653fe72b8d32c4bb3dbcb89d9ee3d9ab3d4df5d9718ba4f815cd0026",
@@ -1658,11 +1678,48 @@
       "rdfs:label": "monitored by"
     },
     {
+      "@id": "https://orcid.org/0000-0002-2923-9790",
+      "@type": "schema:Person",
+      "schema:name": "Pierre Larmande"
+    },
+    {
+      "@id": "https://orcid.org/0000-0002-9116-6692",
+      "@type": "schema:Person",
+      "schema:name": "Konstantin Todorov"
+    },
+    {
+      "@id": "https://orcid.org/0000-0003-4820-7951",
+      "@type": "schema:Person",
+      "schema:name": "Damien Huzard"
+    },
+    {
       "@id": "https://w3id.org/hcmo/ontology/hcm",
       "@type": "owl:Ontology",
-      "dc:creator": "Damien/Cyril",
       "dc:description": "Ontology for Monitoring and Analytics for Physiological Processes (MAPP)",
       "dc:title": "MAPP Ontology",
+      "dcterms:creator": [
+        {
+          "@id": "_:cb160c7c4054321f6a510d5f5989b3a5691f1f291b6a0f61e5277528d2f6939dfa8"
+        },
+        {
+          "@id": "_:cb16ed6fc717ad5d6768187410fe718b5cc7a2ce7d1fb6059fbb4c1d434bfe6ce1c"
+        },
+        {
+          "@id": "_:cb192a98778b14bb7268e9f35693b103bf9fa8bd8b8f67b01a2ede6deb98433886f"
+        },
+        {
+          "@id": "_:cb19eb4d2089a2fe8c838a2de87ce1941cfc86dbada43b73334ecc2002d4b96a699"
+        },
+        {
+          "@id": "https://orcid.org/0000-0002-2923-9790"
+        },
+        {
+          "@id": "https://orcid.org/0000-0002-9116-6692"
+        },
+        {
+          "@id": "https://orcid.org/0000-0003-4820-7951"
+        }
+      ],
       "mod:createdWith": {
         "@id": "https://chowlk.linkeddata.es/"
       },

@@ -3,6 +3,7 @@
 # Edit the modules and re-run `python tooling/build.py` to regenerate.
 @prefix UNKNOWN: <http://www.owl-ontologies.com/UNKNOWN#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix hcm: <https://w3id.org/hcmo/ontology/hcm#> .
 @prefix hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#> .
 @prefix hcm-env: <https://w3id.org/hcmo/ontology/hcm/env#> .
@@ -11,6 +12,7 @@
 @prefix ns: <http://www.owl-ontologies.com/ns#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
 @prefix semts: <https://w3id.org/semts/ontology/120#> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
 @prefix time: <http://www.w3.org/2006/time#> .
@@ -138,9 +140,19 @@ xsd:integer a owl:DatatypeProperty ;
 owl:versionInfo a owl:AnnotationProperty .
 
 <https://w3id.org/hcmo/ontology/hcm> a owl:Ontology ;
-    dc:creator "Damien/Cyril" ;
     dc:description "Ontology for Monitoring and Analytics for Physiological Processes (MAPP)" ;
     dc:title "MAPP Ontology" ;
+    dcterms:creator [ a schema:Person ;
+            schema:name "Cyril Gilbert" ],
+        [ a schema:Person ;
+            schema:name "Gaoussou Sanou" ],
+        [ a schema:Person ;
+            schema:name "Antoine Tofano" ],
+        [ a schema:Person ;
+            schema:name "Serge Sonfack" ],
+        <https://orcid.org/0000-0002-2923-9790>,
+        <https://orcid.org/0000-0002-9116-6692>,
+        <https://orcid.org/0000-0003-4820-7951> ;
     owl:versionIRI <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
     owl:versionInfo "0.0.1" ;
     mod:createdWith <https://chowlk.linkeddata.es/> .
@@ -305,6 +317,15 @@ sosa:madeBySensor a owl:ObjectProperty ;
 
 sosa:madeObservation a owl:ObjectProperty ;
     rdfs:label "made observation" .
+
+<https://orcid.org/0000-0002-2923-9790> a schema:Person ;
+    schema:name "Pierre Larmande" .
+
+<https://orcid.org/0000-0002-9116-6692> a schema:Person ;
+    schema:name "Konstantin Todorov" .
+
+<https://orcid.org/0000-0003-4820-7951> a schema:Person ;
+    schema:name "Damien Huzard" .
 
 hcm:QuantityValue a owl:Class ;
     rdfs:label "Quantity Value" .

@@ -1,43 +1,40 @@
 # AGENTS.md — Ontology Workspace (ontology/)
 
-This folder contains the ontology source of truth. Generated files should not be edited by hand.
+This folder contains the ontology source of truth. Generated files (`../dist/`) must not be edited by hand.
 
 ## Architecture (repo-specific)
-- `hcm.ttl` : core ontology terms and axioms (authoritative source)
-- `hcm-align.ttl` : external standards alignments
-- `hcm-metadata.ttl` : ontology metadata and import declarations
-- `hcm-bridge-*.ttl` : optional bridge modules for external domain ontologies
-- `context.jsonld` : JSON-LD context for application developers
+- `modules/hcm-core.ttl` : core terms, axioms, and the `owl:Ontology` header (incl. `dcterms:creator` attribution).
+- `modules/hcm-bio.ttl`  : biological subjects/groups (namespace `…/hcm/bio#`).
+- `modules/hcm-env.ttl`  : environment & measurement terms (namespace `…/hcm/env#`).
+- `modules/hcm-obs.ttl`  : observations & results (namespace `…/hcm/obs#`).
+- `context.jsonld`       : JSON-LD context for application developers.
+- `legacy/`              : the previous HCMO 1.0.0 ontology (retained, not merged).
 
-## Canonical modeling patterns (project-specific)
-Authoritative notes live in `docs/MODEL.md`. Use ONLY these patterns unless you propose a change:
-1) Behavior as process:
-   - `hcm:BehaviorAndPhysiology` is a process (BFO-aligned)
-2) Observation window:
-   - `hcm:TimeInterval` with `hcm:durationHours` >= 24 and limited human interaction
-3) System composition:
-   - `hcm:System` uses `hcm:hasEnclosure`, `hcm:hasHardware`, `hcm:hasSoftware`,
-     `hcm:hasSensor`, `hcm:hasActuator`
-4) Needs:
-   - simple boolean decomposition (upgrade to classes only if justified)
-5) Dimensions:
-   - simple datatype pattern; roadmap to QUDT/OM if needed
+The merged graph is the union of `modules/*.ttl`, produced by `../tooling/build.py` into `../dist/`.
+Module load order and all paths are declared in `../hcmo.yaml`.
+
+## Namespaces
+- Base: `https://w3id.org/hcmo/ontology/hcm#` (ontology IRI `https://w3id.org/hcmo/ontology/hcm`).
+- Sub-namespaces are path segments: `…/hcm/bio#`, `…/hcm/env#`, `…/hcm/obs#`.
+- Put each new term in the module matching its namespace.
 
 ## Required annotations (per entity)
-- label: rdfs:label
-- definition: IAO:0000115 (or the project's definition property)
-- editor note / provenance: project choice (keep lightweight)
-- created/modified dates only if the repo already enforces them (avoid inventing metadata rules)
+- label: `rdfs:label`
+- definition: `rdfs:comment` and/or `IAO:0000115`
+- provenance / editor note: lightweight, project choice
+- Do not invent labels/definitions. Missing ones are listed in `../docs/MISSING-DEFINITIONS.md`.
+
+## Known data-quality debt (see ../docs/MISSING-DEFINITIONS.md)
+- Many terms still lack `rdfs:comment` definitions.
+- Chowlk export artifacts are preserved as authored (e.g. `UNKNOWN:*`, `ns:Class2`,
+  `xsd:boolean`/`xsd:integer` typed as properties) — review and re-map/remove at the source, do not silently delete.
 
 ## Deprecation & replacements
-When deprecating:
-- keep the IRI
-- mark deprecated = true
-- add "replaced by" pointer (property depends on your profile)
-- preserve old label as an exact synonym if appropriate
+When deprecating: keep the IRI, mark `owl:deprecated true`, add a "replaced by" pointer, and preserve the old label as an exact synonym if appropriate.
 
-## Validation commands (repo scripts)
-Preferred: run the repo script:
-- `./tooling/validate.ps1`
+## Validation (repo scripts)
+From the repo root:
+- `python ../tooling/build.py`    — regenerate `../dist/` (reproducible).
+- `python ../tooling/validate.py` — parse + SHACL + competency queries.
 
 Never claim validation passed unless you actually ran the command.
