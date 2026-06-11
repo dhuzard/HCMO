@@ -1,0 +1,26 @@
+# Competency questions index for the HCMO / MAPP ontology.
+# Each entry maps a natural-language competency question to its SPARQL file.
+#
+# NOTE: these query files use the namespace https://w3id.org/hcmo/ontology/hcm#
+# (the active base) but reference the legacy HCMO 1.0.0 term set (hcm:System,
+# hcm:ObservationWindow, ...), which the MAPP term set does not define. Run
+# against the current merged graph they parse and execute but return 0 rows.
+# They need re-authoring against the MAPP terms. See ontology/legacy/README.md.
+version: 0.0.1
+dir: queries
+questions:
+  - id: animals-by-enclosure
+    question: Which animals are housed in each enclosure of each system?
+    file: queries/cq-animals-by-enclosure.rq
+  - id: missing-dimensions
+    question: Which enclosures are missing dimension records?
+    file: queries/cq-missing-dimensions.rq
+  - id: needs-provisioning
+    question: Which animals have incomplete need-profile provisioning?
+    file: queries/cq-needs-provisioning.rq
+  - id: sensors-behaviors
+    question: Which behaviors does each system's sensors capture?
+    file: queries/cq-sensors-behaviors.rq
+  - id: systems-24h-limited
+    question: Which systems observe over a >=24h window under limited human interaction?
+    file: queries/cq-systems-24h-limited.rq

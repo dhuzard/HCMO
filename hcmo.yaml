@@ -1,0 +1,42 @@
+# HCMO / MAPP ontology release manifest.
+#
+# This file is the stable contract that downstream tools (e.g. the
+# hcmo-kgqa-lab sync layer) read. Its SHAPE must stay stable across future
+# reshapes — treat it as an API. Values are filled from the authored ontology
+# in ontology/modules/ and regenerated artifacts in dist/.
+name: hcmo
+title: MAPP Ontology
+version: 0.0.1
+namespace: https://w3id.org/hcmo/ontology/hcm#
+prefix: hcm
+ontology_iri: https://w3id.org/hcmo/ontology/hcm
+version_iri: https://w3id.org/hcmo/ontology/hcm/0.0.1
+# Module sub-namespaces (path segments under the base):
+#   hcm-bio: https://w3id.org/hcmo/ontology/hcm/bio#
+#   hcm-env: https://w3id.org/hcmo/ontology/hcm/env#
+#   hcm-obs: https://w3id.org/hcmo/ontology/hcm/obs#
+
+# Hand-authored modular sources, in load order. The merged graph is the union.
+modules:
+  - ontology/modules/hcm-core.ttl
+  - ontology/modules/hcm-bio.ttl
+  - ontology/modules/hcm-env.ttl
+  - ontology/modules/hcm-obs.ttl
+
+# Generated artifacts (see tooling/build.py). Never hand-edit dist/.
+dist:
+  merged_ttl: dist/hcmo.ttl
+  merged_owl: dist/hcmo.owl
+  jsonld: dist/hcmo.json
+  profile: dist/profile.json
+  context: ontology/context.jsonld
+
+shapes: shapes/hcm-shapes.ttl
+
+queries:
+  index: queries/competency_questions.yaml
+  dir: queries
+
+examples:
+  - examples/abox-minimal.ttl
+  - examples/abox-edge-cases.ttl

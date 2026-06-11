@@ -1,0 +1,87 @@
+# HCMO / MAPP ontology — hand-authored source module: hcm-obs
+# Part of the MAPP (Monitoring and Analytics for Physiological Processes) ontology.
+# Namespace: https://w3id.org/hcmo/ontology/hcm# (+ /bio#, /env#, /obs# per module).
+# Edit modules here; regenerate dist/ artifacts with: python tooling/build.py
+#
+@prefix hcm: <https://w3id.org/hcmo/ontology/hcm#> .
+@prefix hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#> .
+@prefix hcm-obs: <https://w3id.org/hcmo/ontology/hcm/obs#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix semts: <https://w3id.org/semts/ontology/120#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+hcm-obs: a owl:ObjectProperty ;
+    rdfs:label "" .
+
+hcm-obs:BehaviorObservation a owl:Class ;
+    rdfs:label "Behavior Observation" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty sosa:hasResult ;
+            owl:someValuesFrom hcm:MonitoredEnclosure ],
+        [ a owl:Restriction ;
+            owl:onProperty sosa:hasFeatureOfInterest ;
+            owl:someValuesFrom hcm-bio:Subject ] .
+
+hcm-obs:BehaviorResult a owl:Class ;
+    rdfs:label "Behavior Result" .
+
+hcm-obs:EnvironmentObservation a owl:Class ;
+    rdfs:label "Environment Observation" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty sosa:hasFeatureOfInterest ;
+            owl:someValuesFrom hcm:MonitoredEnclosure ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom semts:DataDimension ;
+            owl:onProperty semts:hasDimension ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm:hasCategory ] .
+
+hcm-obs:GasConcentrationObservation a owl:Class ;
+    rdfs:label "Gas Concentration Observation" .
+
+hcm-obs:HealthStatusObservation a owl:Class ;
+    rdfs:label "Health Status Observation" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty sosa:hasFeatureOfInterest ;
+            owl:someValuesFrom hcm:MonitoredEnclosure ] .
+
+hcm-obs:HousingAssignment a owl:Class ;
+    rdfs:label "Housing Assignment" .
+
+hcm-obs:WeightObservation a owl:Class ;
+    rdfs:label "Weight Observation" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty sosa:usedProcedure ],
+        [ a owl:Restriction ;
+            owl:onProperty sosa:hasFeatureOfInterest ;
+            owl:someValuesFrom hcm:MonitoredEnclosure ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty sosa:resultTime ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty sosa:observedProperty ],
+        hcm:ObservationResult .
+
+hcm-obs:assignedToEnclosure a owl:ObjectProperty ;
+    rdfs:label "assigned to enclosure" .
+
+hcm-obs:hasBehaviorType a owl:DatatypeProperty ;
+    rdfs:label "has behavior type" .
+
+hcm-obs:hasConfidenceScore a owl:DatatypeProperty ;
+    rdfs:label "has confidence score" .
+
+hcm-obs:hasHealthStatusTerm a owl:DatatypeProperty ;
+    rdfs:label "has health status term" .
+
+hcm-obs:hasInterval a owl:DatatypeProperty ;
+    rdfs:label "has interval" .
+
+hcm-obs:occursIn a owl:ObjectProperty ;
+    rdfs:label "occurs in" .
+

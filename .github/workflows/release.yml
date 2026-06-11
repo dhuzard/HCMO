@@ -1,0 +1,33 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: pip install -r tooling/requirements.txt
+      - name: Build dist artifacts
+        run: python tooling/build.py
+      - name: Validate before release
+        run: python tooling/validate.py
+      - name: Attach dist artifacts to the GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/hcmo.ttl
+            dist/hcmo.owl
+            dist/hcmo.json
+            dist/profile.json
+            hcmo.yaml

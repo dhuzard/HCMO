@@ -1,0 +1,75 @@
+# HCMO / MAPP ontology — hand-authored source module: hcm-env
+# Part of the MAPP (Monitoring and Analytics for Physiological Processes) ontology.
+# Namespace: https://w3id.org/hcmo/ontology/hcm# (+ /bio#, /env#, /obs# per module).
+# Edit modules here; regenerate dist/ artifacts with: python tooling/build.py
+#
+@prefix hcm-env: <https://w3id.org/hcmo/ontology/hcm/env#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+hcm-env:AmbientTemperature a owl:ObjectProperty ;
+    rdfs:label "ambient temperature" .
+
+hcm-env:AmmoniaConcentration a owl:ObjectProperty ;
+    rdfs:label "ammonia concentration" .
+
+hcm-env:CarbonDioxideConcentration a owl:ObjectProperty ;
+    rdfs:label "carbon dioxide concentration" .
+
+hcm-env:EnclosureDimensions a owl:Class ;
+    rdfs:label "Enclosure Dimensions" .
+
+hcm-env:EnvironmentProfile a owl:Class ;
+    rdfs:label "Environment Profile" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom hcm-env:MeasurementSpecification ;
+            owl:onProperty hcm-env:hasMeasurementSpec ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom hcm-env:GasConcentrationProfile ;
+            owl:onProperty hcm-env:hasGasConcentrationProfile ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom hcm-env:LightCycle ;
+            owl:onProperty hcm-env:hasLightCycle ] .
+
+hcm-env:EnvironmentalProperty a owl:Class ;
+    rdfs:label "Environmental Property" .
+
+hcm-env:LightState a owl:ObjectProperty ;
+    rdfs:label "light state" .
+
+hcm-env:OxygenConcentration a owl:ObjectProperty ;
+    rdfs:label "oxygen concentration" .
+
+hcm-env:RelativeHumidity a owl:ObjectProperty ;
+    rdfs:label "relative humidity" .
+
+hcm-env:ThriveProfile a owl:Class ;
+    rdfs:label "Thrive Profile" .
+
+hcm-env:hasGasType a owl:DatatypeProperty ;
+    rdfs:label "has gas type" .
+
+hcm-env:hasUnit a owl:DatatypeProperty ;
+    rdfs:label "has unit" .
+
+hcm-env:hasValue a owl:DatatypeProperty ;
+    rdfs:label "has value" .
+
+hcm-env:GasConcentrationProfile a owl:Class ;
+    rdfs:label "Gas Concentration Profile" .
+
+hcm-env:LightCycle a owl:Class ;
+    rdfs:label "Light Cycle" .
+
+hcm-env:MeasurementSpecification a owl:Class ;
+    rdfs:label "Measurement Specification" .
+
+hcm-env:hasGasConcentrationProfile a owl:ObjectProperty ;
+    rdfs:label "has gas concentration profile" .
+
+hcm-env:hasLightCycle a owl:ObjectProperty ;
+    rdfs:label "has light cycle" .
+
+hcm-env:hasMeasurementSpec a owl:ObjectProperty ;
+    rdfs:label "has measurement spec" .
+

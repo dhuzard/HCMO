@@ -26,6 +26,10 @@ ex:Mouse_1 a hcm:Animal ;
 ex:Enc_01 a hcm:Enclosure ;
   rdfs:label "Enclosure 01 (Rack 3 Cage 12)" ;
   hcm:provides ex:Needs_Default ;
+  hcm:hasSpaceRegion ex:Space_01 .
+
+ex:Space_01 a hcm:PhysicalSpace ;
+  rdfs:label "Enclosure 01 interior space" ;
   hcm:hasDimensions ex:Dims_01 .
 
 ex:Dims_01 a hcm:Dimensions ;
