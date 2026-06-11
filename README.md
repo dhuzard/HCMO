@@ -1,5 +1,32 @@
 # HCMO Ontology (Home-Cage Monitoring Ontology)
 
+> **MAPP 0.0.1 — repository reorganized as a standalone, tool-consumable ontology project.**
+> The active ontology is the **MAPP** ontology (Monitoring and Analytics for
+> Physiological Processes), IRI `https://w3id.org/hcm/mapp`, namespace
+> `https://w3id.org/hcm/`. This **replaces** the previous `https://w3id.org/hcmo/ontology/hcm#`
+> ontology (now preserved under `ontology/legacy/`). See `CHANGELOG.md` for the
+> breaking namespace change.
+>
+> **Release contract:** [`hcmo.yaml`](hcmo.yaml) — the stable manifest downstream
+> tools (e.g. the hcmo-kgqa-lab sync layer) read.
+>
+> **Layout:**
+> - `hcmo.yaml` — release manifest (name, version, namespace, modules, dist, shapes, queries, examples).
+> - `ontology/modules/*.ttl` — hand-authored modular sources (`hcm-core`, `hcm-bio`, `hcm-env`, `hcm-obs`).
+> - `ontology/context.jsonld` — JSON-LD context.
+> - `dist/` — **generated** (`hcmo.ttl` merged/canonical, `hcmo.owl`, `hcmo.json`, `profile.json`). Never hand-edit.
+> - `shapes/`, `examples/`, `queries/` — SHACL, ABox examples, competency queries (see `docs/MISSING-DEFINITIONS.md` re: namespace).
+> - `tooling/build.py` — regenerate `dist/` + `profile.json` (idempotent, reproducible).
+> - `tooling/validate.py` — parse + pySHACL + competency-query gate (used by CI).
+> - `ontology/legacy/` — the previous HCMO 1.0.0 ontology, retained, not deleted.
+>
+> **Build & validate:**
+> ```bash
+> pip install -r tooling/requirements.txt
+> python tooling/build.py      # regenerate dist/ + profile.json
+> python tooling/validate.py   # parse + SHACL + competency queries (CI gate)
+> ```
+
 A professional, reusable ontology package for home-cage monitoring (HCMO). It models systems, animals, enclosures, behaviors, sensors/actuators, observation windows, and provisioning needs; aligns to key web standards; ships with SHACL validation, examples, queries, and a JSON-LD context for application developers.
 
 - Ontology core: `ontology/hcm.ttl`

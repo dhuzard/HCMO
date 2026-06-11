@@ -6,7 +6,10 @@ yarn-error.log*
 pnpm-debug.log*
 
 # Builds / caches (adjust if you use these)
-dist/
+# NOTE: the repo-root dist/ holds GENERATED ontology release artifacts that are
+# intentionally tracked (downstream consumers + CI read them). Ignore nested
+# build dirs (e.g. webapp/dist) but not the ontology dist/.
+**/webapp/dist/
 build/
 .cache/
 .next/
