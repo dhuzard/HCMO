@@ -1,9 +1,9 @@
 # HCMO / MAPP ontology — hand-authored source module: hcm-env
 # Part of the MAPP (Monitoring and Analytics for Physiological Processes) ontology.
-# Derived by splitting the authored Chowlk export by namespace. Edit modules here;
-# regenerate dist/ artifacts with: python tooling/build.py
+# Namespace: https://w3id.org/hcmo/ontology/hcm# (+ /bio#, /env#, /obs# per module).
+# Edit modules here; regenerate dist/ artifacts with: python tooling/build.py
 #
-@prefix hcm-env: <https://w3id.org/hcm/env/> .
+@prefix hcm-env: <https://w3id.org/hcmo/ontology/hcm/env#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 

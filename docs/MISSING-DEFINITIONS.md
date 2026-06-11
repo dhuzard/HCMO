@@ -1,18 +1,17 @@
 # Terms needing labels / definitions / cleanup
 
-Auto-derived from `dist/profile.json` (regenerate context: `python tooling/build.py`).
+Auto-derived from `dist/profile.json` (regenerate: `python tooling/build.py`).
 Per project policy, missing labels and definitions are **not fabricated** — they are
 listed here for the ontology authors to fill in.
 
 ## Missing `rdfs:label` (1)
 
-- `https://w3id.org/hcm/obs/`
+- `https://w3id.org/hcmo/ontology/hcm/obs#`
 
 ## Missing definition / `rdfs:comment` (143)
 
 Every authored term currently lacks a definition. Add `rdfs:comment` (and/or
 `IAO:0000115`) to each term in `ontology/modules/*.ttl`.
-
 
 ## Chowlk placeholder / likely-erroneous terms (43)
 
@@ -74,4 +73,4 @@ review and either re-map to real IRIs or remove at the source module:
 - `hcm-env:AmbientTemperature`, `AmmoniaConcentration`, `CarbonDioxideConcentration`, `OxygenConcentration`, `RelativeHumidity`, `LightState` are typed as `owl:ObjectProperty` but named like measured quantities/classes.
 - `sosa:hasResult` and `sosa:observedProperty` are each declared as BOTH `owl:ObjectProperty` and `owl:DatatypeProperty`.
 - `hcm:OWL-Timeintervaltable`, `hcm:Structural&LocationTable` have spreadsheet-derived names (auto-labels "O W L- Timeintervaltable", "Structural& Location Table").
-- `hcm-obs:` (the bare namespace IRI) is declared an `owl:ObjectProperty` with an empty label.
+- `hcm-obs:` (the bare namespace IRI `https://w3id.org/hcmo/ontology/hcm/obs#`) is declared an `owl:ObjectProperty` with an empty label.

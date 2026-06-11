@@ -3,10 +3,10 @@
 # Edit the modules and re-run `python tooling/build.py` to regenerate.
 @prefix UNKNOWN: <http://www.owl-ontologies.com/UNKNOWN#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
-@prefix hcm: <https://w3id.org/hcm/> .
-@prefix hcm-bio: <https://w3id.org/hcm/bio/> .
-@prefix hcm-env: <https://w3id.org/hcm/env/> .
-@prefix hcm-obs: <https://w3id.org/hcm/obs/> .
+@prefix hcm: <https://w3id.org/hcmo/ontology/hcm#> .
+@prefix hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#> .
+@prefix hcm-env: <https://w3id.org/hcmo/ontology/hcm/env#> .
+@prefix hcm-obs: <https://w3id.org/hcmo/ontology/hcm/obs#> .
 @prefix mod: <https://w3id.org/mod#> .
 @prefix ns: <http://www.owl-ontologies.com/ns#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -137,6 +137,14 @@ xsd:integer a owl:DatatypeProperty ;
 
 owl:versionInfo a owl:AnnotationProperty .
 
+<https://w3id.org/hcmo/ontology/hcm> a owl:Ontology ;
+    dc:creator "Damien/Cyril" ;
+    dc:description "Ontology for Monitoring and Analytics for Physiological Processes (MAPP)" ;
+    dc:title "MAPP Ontology" ;
+    owl:versionIRI <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
+    owl:versionInfo "0.0.1" ;
+    mod:createdWith <https://chowlk.linkeddata.es/> .
+
 hcm:CategoricalResult a owl:Class ;
     rdfs:label "Categorical Result" .
 
@@ -153,17 +161,17 @@ hcm:Hardware a owl:Class ;
 hcm:OWL-Timeintervaltable a owl:Class ;
     rdfs:label "O W L- Timeintervaltable" .
 
-<https://w3id.org/hcm/Structural&LocationTable> a owl:Class ;
+<https://w3id.org/hcmo/ontology/hcm#Structural&LocationTable> a owl:Class ;
     rdfs:label "Structural& Location Table" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty sosa:hasResult ;
+            owl:someValuesFrom hcm:QuantityValue ],
+        [ a owl:Restriction ;
             owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty sosa:usedProcedure ],
         [ a owl:Restriction ;
             owl:onProperty semts:generated ;
             owl:someValuesFrom semts:TimeSeriesSegment ],
-        [ a owl:Restriction ;
-            owl:onProperty sosa:hasResult ;
-            owl:someValuesFrom hcm:QuantityValue ],
         [ a owl:Restriction ;
             owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty sosa:resultTime ],
@@ -174,45 +182,6 @@ hcm:OWL-Timeintervaltable a owl:Class ;
 
 hcm:TimeSeries a owl:Class ;
     rdfs:label "Time Series" .
-
-hcm-bio:hasTreatment a owl:DatatypeProperty ;
-    rdfs:label "has treatment" .
-
-hcm-env:AmbientTemperature a owl:ObjectProperty ;
-    rdfs:label "ambient temperature" .
-
-hcm-env:AmmoniaConcentration a owl:ObjectProperty ;
-    rdfs:label "ammonia concentration" .
-
-hcm-env:CarbonDioxideConcentration a owl:ObjectProperty ;
-    rdfs:label "carbon dioxide concentration" .
-
-hcm-env:EnvironmentProfile a owl:Class ;
-    rdfs:label "Environment Profile" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom hcm-env:GasConcentrationProfile ;
-            owl:onProperty hcm-env:hasGasConcentrationProfile ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom hcm-env:MeasurementSpecification ;
-            owl:onProperty hcm-env:hasMeasurementSpec ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom hcm-env:LightCycle ;
-            owl:onProperty hcm-env:hasLightCycle ] .
-
-hcm-env:EnvironmentalProperty a owl:Class ;
-    rdfs:label "Environmental Property" .
-
-hcm-env:LightState a owl:ObjectProperty ;
-    rdfs:label "light state" .
-
-hcm-env:OxygenConcentration a owl:ObjectProperty ;
-    rdfs:label "oxygen concentration" .
-
-hcm-env:RelativeHumidity a owl:ObjectProperty ;
-    rdfs:label "relative humidity" .
-
-hcm-env:ThriveProfile a owl:Class ;
-    rdfs:label "Thrive Profile" .
 
 hcm:hasCapacity a owl:DatatypeProperty ;
     rdfs:label "has capacity" .
@@ -238,22 +207,53 @@ hcm:hasStoragePath a owl:DatatypeProperty ;
 hcm:isOccupied a owl:DatatypeProperty ;
     rdfs:label "is occupied" .
 
-hcm:mapp a owl:Ontology ;
-    dc:creator "Damien/Cyril" ;
-    dc:description "Ontology for Monitoring and Analytics for Physiological Processes (MAPP)" ;
-    dc:title "MAPP Ontology" ;
-    owl:versionIRI <https://w3id.org/hcm/mapp/0.0.1> ;
-    owl:versionInfo "0.0.1" ;
-    mod:createdWith <https://chowlk.linkeddata.es/> .
+hcm-bio:hasTreatment a owl:DatatypeProperty ;
+    rdfs:label "has treatment" .
+
+hcm-env:AmbientTemperature a owl:ObjectProperty ;
+    rdfs:label "ambient temperature" .
+
+hcm-env:AmmoniaConcentration a owl:ObjectProperty ;
+    rdfs:label "ammonia concentration" .
+
+hcm-env:CarbonDioxideConcentration a owl:ObjectProperty ;
+    rdfs:label "carbon dioxide concentration" .
+
+hcm-env:EnvironmentProfile a owl:Class ;
+    rdfs:label "Environment Profile" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom hcm-env:MeasurementSpecification ;
+            owl:onProperty hcm-env:hasMeasurementSpec ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom hcm-env:LightCycle ;
+            owl:onProperty hcm-env:hasLightCycle ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom hcm-env:GasConcentrationProfile ;
+            owl:onProperty hcm-env:hasGasConcentrationProfile ] .
+
+hcm-env:EnvironmentalProperty a owl:Class ;
+    rdfs:label "Environmental Property" .
+
+hcm-env:LightState a owl:ObjectProperty ;
+    rdfs:label "light state" .
+
+hcm-env:OxygenConcentration a owl:ObjectProperty ;
+    rdfs:label "oxygen concentration" .
+
+hcm-env:RelativeHumidity a owl:ObjectProperty ;
+    rdfs:label "relative humidity" .
+
+hcm-env:ThriveProfile a owl:Class ;
+    rdfs:label "Thrive Profile" .
 
 hcm-obs:BehaviorObservation a owl:Class ;
     rdfs:label "Behavior Observation" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty sosa:hasResult ;
-            owl:someValuesFrom hcm:MonitoredEnclosure ],
-        [ a owl:Restriction ;
             owl:onProperty sosa:hasFeatureOfInterest ;
-            owl:someValuesFrom hcm-bio:Subject ] .
+            owl:someValuesFrom hcm-bio:Subject ],
+        [ a owl:Restriction ;
+            owl:onProperty sosa:hasResult ;
+            owl:someValuesFrom hcm:MonitoredEnclosure ] .
 
 hcm-obs:BehaviorResult a owl:Class ;
     rdfs:label "Behavior Result" .
@@ -311,6 +311,42 @@ hcm:QuantityValue a owl:Class ;
 
 hcm:Software a owl:Class ;
     rdfs:label "Software" .
+
+hcm:hasCategory a owl:DatatypeProperty ;
+    rdfs:label "has category" .
+
+hcm:hasDimensions a owl:ObjectProperty ;
+    rdfs:label "has dimensions" .
+
+hcm:hasEnclosureIdentifier a owl:DatatypeProperty ;
+    rdfs:label "has enclosure identifier" .
+
+hcm:hasEnrichment a owl:DatatypeProperty ;
+    rdfs:label "has enrichment" .
+
+hcm:hasManufacturer a owl:DatatypeProperty ;
+    rdfs:label "has manufacturer" .
+
+hcm:hasNumericValue a owl:DatatypeProperty ;
+    rdfs:label "has numeric value" .
+
+hcm:hasResult a owl:ObjectProperty ;
+    rdfs:label "has result" .
+
+hcm:hasThriveProfile a owl:ObjectProperty ;
+    rdfs:label "has thrive profile" .
+
+hcm:hasUnit a owl:DatatypeProperty ;
+    rdfs:label "has unit" .
+
+hcm:installedIn a owl:ObjectProperty ;
+    rdfs:label "installed in" .
+
+hcm:locatedIn a owl:DatatypeProperty ;
+    rdfs:label "located in" .
+
+hcm:monitoredBy a owl:ObjectProperty ;
+    rdfs:label "monitored by" .
 
 hcm-bio:ExperimentalGroup a owl:Class ;
     rdfs:label "Experimental Group" .
@@ -375,42 +411,6 @@ hcm-env:hasUnit a owl:DatatypeProperty ;
 hcm-env:hasValue a owl:DatatypeProperty ;
     rdfs:label "has value" .
 
-hcm:hasCategory a owl:DatatypeProperty ;
-    rdfs:label "has category" .
-
-hcm:hasDimensions a owl:ObjectProperty ;
-    rdfs:label "has dimensions" .
-
-hcm:hasEnclosureIdentifier a owl:DatatypeProperty ;
-    rdfs:label "has enclosure identifier" .
-
-hcm:hasEnrichment a owl:DatatypeProperty ;
-    rdfs:label "has enrichment" .
-
-hcm:hasManufacturer a owl:DatatypeProperty ;
-    rdfs:label "has manufacturer" .
-
-hcm:hasNumericValue a owl:DatatypeProperty ;
-    rdfs:label "has numeric value" .
-
-hcm:hasResult a owl:ObjectProperty ;
-    rdfs:label "has result" .
-
-hcm:hasThriveProfile a owl:ObjectProperty ;
-    rdfs:label "has thrive profile" .
-
-hcm:hasUnit a owl:DatatypeProperty ;
-    rdfs:label "has unit" .
-
-hcm:installedIn a owl:ObjectProperty ;
-    rdfs:label "installed in" .
-
-hcm:locatedIn a owl:DatatypeProperty ;
-    rdfs:label "located in" .
-
-hcm:monitoredBy a owl:ObjectProperty ;
-    rdfs:label "monitored by" .
-
 hcm-obs: a owl:ObjectProperty ;
     rdfs:label "" .
 
@@ -435,11 +435,11 @@ hcm-obs:HealthStatusObservation a owl:Class ;
 hcm-obs:WeightObservation a owl:Class ;
     rdfs:label "Weight Observation" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty sosa:hasFeatureOfInterest ;
-            owl:someValuesFrom hcm:MonitoredEnclosure ],
-        [ a owl:Restriction ;
             owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty sosa:usedProcedure ],
+        [ a owl:Restriction ;
+            owl:onProperty sosa:hasFeatureOfInterest ;
+            owl:someValuesFrom hcm:MonitoredEnclosure ],
         [ a owl:Restriction ;
             owl:cardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty sosa:observedProperty ],
@@ -516,11 +516,11 @@ sosa:observedProperty a owl:DatatypeProperty,
 hcm:ObservationResult a owl:Class ;
     rdfs:label "Observation Result" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty hcm:hasResult ;
-            owl:someValuesFrom hcm:MonitoredEnclosure ],
-        [ a owl:Restriction ;
             owl:allValuesFrom hcm:Sensor ;
-            owl:onProperty sosa:madeBySensor ] .
+            owl:onProperty sosa:madeBySensor ],
+        [ a owl:Restriction ;
+            owl:onProperty hcm:hasResult ;
+            owl:someValuesFrom hcm:MonitoredEnclosure ] .
 
 sosa:hasFeatureOfInterest a owl:ObjectProperty ;
     rdfs:label "has feature of interest" .
@@ -535,10 +535,10 @@ hcm:MonitoredEnclosure a owl:Class ;
     rdfs:label "Monitored Enclosure" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm:hasManufacturer ],
+            owl:onProperty hcm:hasEnrichment ],
         [ a owl:Restriction ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm-obs:hasInterval ],
+            owl:allValuesFrom hcm-bio:ExperimentalGroup ;
+            owl:onProperty hcm-bio:belongsToGroup ],
         [ a owl:Restriction ;
             owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty hcm-bio:hasDateOfBirth ],
@@ -546,44 +546,23 @@ hcm:MonitoredEnclosure a owl:Class ;
             owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty sosa:usedProcedure ],
         [ a owl:Restriction ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm:hasEnrichment ],
-        [ a owl:Restriction ;
             owl:allValuesFrom hcm:Software ;
             owl:onProperty sosa:madeObservation ],
         [ a owl:Restriction ;
-            owl:onProperty hcm:monitoredBy ;
-            owl:someValuesFrom hcm:Sensor ],
-        [ a owl:Restriction ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm-obs:hasConfidenceScore ],
-        [ a owl:Restriction ;
-            owl:onProperty hcm-bio:hasHousingAssignment ;
-            owl:someValuesFrom hcm:MonitoredEnclosure ],
-        [ a owl:Restriction ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm-bio:hasBiologicalSex ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom hcm:MonitoredEnclosure ;
-            owl:onProperty hcm:hasThriveProfile ],
-        [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm:hasUnit ],
+            owl:allValuesFrom hcm-obs:HealthStatusObservation ;
+            owl:onProperty hcm-bio:hasHealthStatusObservation ],
         [ a owl:Restriction ;
             owl:allValuesFrom hcm:MonitoredEnclosure ;
             owl:onProperty hcm-obs:occursIn ],
         [ a owl:Restriction ;
-            owl:onProperty hcm:hasDimensions ;
-            owl:someValuesFrom hcm-env:EnclosureDimensions ],
-        [ a owl:Restriction ;
             owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm-obs:hasHealthStatusTerm ],
+            owl:onProperty hcm-obs:hasBehaviorType ],
         [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm-bio:hasStrain ],
+            owl:allValuesFrom hcm-obs:WeightObservation ;
+            owl:onProperty hcm-bio:hasWeightObservation ],
         [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm:hasEnclosureIdentifier ],
+            owl:onProperty hcm-obs:assignedToEnclosure ;
+            owl:someValuesFrom hcm:MonitoredEnclosure ],
         [ a owl:Restriction ;
             owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty sosa:usedProcedure ],
@@ -592,52 +571,61 @@ hcm:MonitoredEnclosure a owl:Class ;
             owl:onProperty UNKNOWN:hasHeight ],
         [ a owl:Restriction ;
             owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm:locatedIn ],
+            owl:onProperty hcm:hasNumericValue ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm-obs:hasInterval ],
         [ a owl:Restriction ;
             owl:cardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty time:hasBeginning ],
         [ a owl:Restriction ;
             owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm-env:hasValue ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty sosa:observedProperty ],
         [ a owl:Restriction ;
-            owl:allValuesFrom hcm-obs:WeightObservation ;
-            owl:onProperty hcm-bio:hasWeightObservation ],
-        [ a owl:Restriction ;
             owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm:hasNumericValue ],
+            owl:onProperty hcm-bio:hasStrain ],
         [ a owl:Restriction ;
-            owl:allValuesFrom hcm-obs:HealthStatusObservation ;
-            owl:onProperty hcm-bio:hasHealthStatusObservation ],
+            owl:onProperty hcm:hasDimensions ;
+            owl:someValuesFrom hcm-env:EnclosureDimensions ],
         [ a owl:Restriction ;
-            owl:allValuesFrom hcm-bio:ExperimentalGroup ;
-            owl:onProperty hcm-bio:belongsToGroup ],
-        [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm-bio:hasSpecies ],
+            owl:onProperty hcm:monitoredBy ;
+            owl:someValuesFrom hcm:Sensor ],
         [ a owl:Restriction ;
             owl:cardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty sosa:hasResult ],
         [ a owl:Restriction ;
-            owl:onProperty hcm-obs: ;
-            owl:someValuesFrom hcm-bio:Subject ],
-        [ a owl:Restriction ;
             owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm-env:hasUnit ],
+            owl:onProperty hcm:hasEnclosureIdentifier ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm-obs:hasConfidenceScore ],
         [ a owl:Restriction ;
             owl:cardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty UNKNOWN:hasDimUnit ],
         [ a owl:Restriction ;
-            owl:onProperty hcm-bio:hasMember ;
-            owl:someValuesFrom hcm:MonitoredEnclosure ],
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm:hasUnit ],
         [ a owl:Restriction ;
             owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty UNKNOWN:isOccupied ],
         [ a owl:Restriction ;
-            owl:onProperty hcm-obs:assignedToEnclosure ;
-            owl:someValuesFrom hcm:MonitoredEnclosure ],
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm:hasManufacturer ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm-obs:hasHealthStatusTerm ],
         [ a owl:Restriction ;
             owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty sosa:resultTime ],
+        [ a owl:Restriction ;
+            owl:onProperty hcm-obs: ;
+            owl:someValuesFrom hcm-bio:Subject ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm-bio:hasBiologicalSex ],
         [ a owl:Restriction ;
             owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty UNKNOWN:isOperational ],
@@ -645,8 +633,11 @@ hcm:MonitoredEnclosure a owl:Class ;
             owl:cardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty UNKNOWN:hasLength ],
         [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm-env:hasValue ],
+            owl:allValuesFrom hcm:MonitoredEnclosure ;
+            owl:onProperty hcm:hasThriveProfile ],
+        [ a owl:Restriction ;
+            owl:onProperty hcm-bio:hasMember ;
+            owl:someValuesFrom hcm:MonitoredEnclosure ],
         [ a owl:Restriction ;
             owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty sosa:usedProcedure ],
@@ -654,11 +645,17 @@ hcm:MonitoredEnclosure a owl:Class ;
             owl:cardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty time:inXSDDateTime ],
         [ a owl:Restriction ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm-obs:hasConfidenceScore ],
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm-bio:hasSpecies ],
+        [ a owl:Restriction ;
+            owl:onProperty hcm-bio:hasHousingAssignment ;
+            owl:someValuesFrom hcm:MonitoredEnclosure ],
         [ a owl:Restriction ;
             owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm-obs:hasBehaviorType ],
+            owl:onProperty hcm-env:hasGasType ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm-env:hasUnit ],
         [ a owl:Restriction ;
             owl:cardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty time:hasEnd ],
@@ -670,13 +667,16 @@ hcm:MonitoredEnclosure a owl:Class ;
             owl:onProperty sosa:phenomenonTime ],
         [ a owl:Restriction ;
             owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm-env:hasGasType ],
-        [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty UNKNOWN:hasWidth ],
         [ a owl:Restriction ;
             owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm:locatedIn ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty sosa:observedProperty ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm-obs:hasConfidenceScore ],
         [ a owl:Restriction ;
             owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty sosa:resultTime ],

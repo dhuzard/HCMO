@@ -1,10 +1,11 @@
 # Competency questions index for the HCMO / MAPP ontology.
 # Each entry maps a natural-language competency question to its SPARQL file.
 #
-# NOTE: these query files were authored for the legacy HCMO namespace
-# (https://w3id.org/hcmo/ontology/hcm#) and have not yet been re-authored for
-# the MAPP namespace (https://w3id.org/hcm/). Run against the current merged
-# graph they parse and execute but return 0 rows. See ontology/legacy/README.md.
+# NOTE: these query files use the namespace https://w3id.org/hcmo/ontology/hcm#
+# (the active base) but reference the legacy HCMO 1.0.0 term set (hcm:System,
+# hcm:ObservationWindow, ...), which the MAPP term set does not define. Run
+# against the current merged graph they parse and execute but return 0 rows.
+# They need re-authoring against the MAPP terms. See ontology/legacy/README.md.
 version: 0.0.1
 dir: queries
 questions:

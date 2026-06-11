@@ -7,10 +7,14 @@
 name: hcmo
 title: MAPP Ontology
 version: 0.0.1
-namespace: https://w3id.org/hcm/
+namespace: https://w3id.org/hcmo/ontology/hcm#
 prefix: hcm
-ontology_iri: https://w3id.org/hcm/mapp
-version_iri: https://w3id.org/hcm/mapp/0.0.1
+ontology_iri: https://w3id.org/hcmo/ontology/hcm
+version_iri: https://w3id.org/hcmo/ontology/hcm/0.0.1
+# Module sub-namespaces (path segments under the base):
+#   hcm-bio: https://w3id.org/hcmo/ontology/hcm/bio#
+#   hcm-env: https://w3id.org/hcmo/ontology/hcm/env#
+#   hcm-obs: https://w3id.org/hcmo/ontology/hcm/obs#
 
 # Hand-authored modular sources, in load order. The merged graph is the union.
 modules:

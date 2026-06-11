@@ -2,10 +2,11 @@
 
 > **MAPP 0.0.1 — repository reorganized as a standalone, tool-consumable ontology project.**
 > The active ontology is the **MAPP** ontology (Monitoring and Analytics for
-> Physiological Processes), IRI `https://w3id.org/hcm/mapp`, namespace
-> `https://w3id.org/hcm/`. This **replaces** the previous `https://w3id.org/hcmo/ontology/hcm#`
-> ontology (now preserved under `ontology/legacy/`). See `CHANGELOG.md` for the
-> breaking namespace change.
+> Physiological Processes), ontology IRI `https://w3id.org/hcmo/ontology/hcm`,
+> namespace `https://w3id.org/hcmo/ontology/hcm#` (module sub-namespaces
+> `…/hcm/bio#`, `…/hcm/env#`, `…/hcm/obs#`). It carries forward this established
+> namespace; the prior HCMO 1.0.0 term set is preserved under `ontology/legacy/`.
+> See `CHANGELOG.md`.
 >
 > **Release contract:** [`hcmo.yaml`](hcmo.yaml) — the stable manifest downstream
 > tools (e.g. the hcmo-kgqa-lab sync layer) read.

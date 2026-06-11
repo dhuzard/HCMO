@@ -40,137 +40,137 @@
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/CategoricalResult",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#CategoricalResult",
       "label": "Categorical Result"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/Enrichment",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#Enrichment",
       "label": "Enrichment"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/Hardware",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#Hardware",
       "label": "Hardware"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/MonitoredEnclosure",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#MonitoredEnclosure",
       "label": "Monitored Enclosure"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/OWL-Timeintervaltable",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#OWL-Timeintervaltable",
       "label": "O W L- Timeintervaltable"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/ObservationResult",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#ObservationResult",
       "label": "Observation Result"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/QuantityValue",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#QuantityValue",
       "label": "Quantity Value"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/Sensor",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#Sensor",
       "label": "Sensor"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/Software",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#Software",
       "label": "Software"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/Structural&LocationTable",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#Structural&LocationTable",
       "label": "Structural& Location Table"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/TimeSeries",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#TimeSeries",
       "label": "Time Series"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/bio/ExperimentalGroup",
+      "iri": "https://w3id.org/hcmo/ontology/hcm/bio#ExperimentalGroup",
       "label": "Experimental Group"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/bio/Subject",
+      "iri": "https://w3id.org/hcmo/ontology/hcm/bio#Subject",
       "label": "Subject"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/env/EnclosureDimensions",
+      "iri": "https://w3id.org/hcmo/ontology/hcm/env#EnclosureDimensions",
       "label": "Enclosure Dimensions"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/env/EnvironmentProfile",
+      "iri": "https://w3id.org/hcmo/ontology/hcm/env#EnvironmentProfile",
       "label": "Environment Profile"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/env/EnvironmentalProperty",
+      "iri": "https://w3id.org/hcmo/ontology/hcm/env#EnvironmentalProperty",
       "label": "Environmental Property"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/env/GasConcentrationProfile",
+      "iri": "https://w3id.org/hcmo/ontology/hcm/env#GasConcentrationProfile",
       "label": "Gas Concentration Profile"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/env/LightCycle",
+      "iri": "https://w3id.org/hcmo/ontology/hcm/env#LightCycle",
       "label": "Light Cycle"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/env/MeasurementSpecification",
+      "iri": "https://w3id.org/hcmo/ontology/hcm/env#MeasurementSpecification",
       "label": "Measurement Specification"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/env/ThriveProfile",
+      "iri": "https://w3id.org/hcmo/ontology/hcm/env#ThriveProfile",
       "label": "Thrive Profile"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/obs/BehaviorObservation",
+      "iri": "https://w3id.org/hcmo/ontology/hcm/obs#BehaviorObservation",
       "label": "Behavior Observation"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/obs/BehaviorResult",
+      "iri": "https://w3id.org/hcmo/ontology/hcm/obs#BehaviorResult",
       "label": "Behavior Result"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/obs/EnvironmentObservation",
+      "iri": "https://w3id.org/hcmo/ontology/hcm/obs#EnvironmentObservation",
       "label": "Environment Observation"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/obs/GasConcentrationObservation",
+      "iri": "https://w3id.org/hcmo/ontology/hcm/obs#GasConcentrationObservation",
       "label": "Gas Concentration Observation"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/obs/HealthStatusObservation",
+      "iri": "https://w3id.org/hcmo/ontology/hcm/obs#HealthStatusObservation",
       "label": "Health Status Observation"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/obs/HousingAssignment",
+      "iri": "https://w3id.org/hcmo/ontology/hcm/obs#HousingAssignment",
       "label": "Housing Assignment"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/obs/WeightObservation",
+      "iri": "https://w3id.org/hcmo/ontology/hcm/obs#WeightObservation",
       "label": "Weight Observation"
     },
     {
@@ -409,142 +409,142 @@
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/Enclosure",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#Enclosure",
       "label": "enclosure"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/bio/hasBiologicalSex",
-      "label": "has biological sex"
-    },
-    {
-      "comment": null,
-      "iri": "https://w3id.org/hcm/bio/hasDateOfBirth",
-      "label": "has date of birth"
-    },
-    {
-      "comment": null,
-      "iri": "https://w3id.org/hcm/bio/hasSpecies",
-      "label": "has species"
-    },
-    {
-      "comment": null,
-      "iri": "https://w3id.org/hcm/bio/hasStrain",
-      "label": "has strain"
-    },
-    {
-      "comment": null,
-      "iri": "https://w3id.org/hcm/bio/hasTreatment",
-      "label": "has treatment"
-    },
-    {
-      "comment": null,
-      "iri": "https://w3id.org/hcm/env/hasGasType",
-      "label": "has gas type"
-    },
-    {
-      "comment": null,
-      "iri": "https://w3id.org/hcm/env/hasUnit",
-      "label": "has unit"
-    },
-    {
-      "comment": null,
-      "iri": "https://w3id.org/hcm/env/hasValue",
-      "label": "has value"
-    },
-    {
-      "comment": null,
-      "iri": "https://w3id.org/hcm/hasCapacity",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#hasCapacity",
       "label": "has capacity"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/hasCategory",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#hasCategory",
       "label": "has category"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/hasDescription",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#hasDescription",
       "label": "has description"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/hasEnclosureIdentifier",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#hasEnclosureIdentifier",
       "label": "has enclosure identifier"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/hasEnrichment",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#hasEnrichment",
       "label": "has enrichment"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/hasEnvironment",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#hasEnvironment",
       "label": "has environment"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/hasFileFormat",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#hasFileFormat",
       "label": "has file format"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/hasManufacturer",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#hasManufacturer",
       "label": "has manufacturer"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/hasMonitoredAnimals",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#hasMonitoredAnimals",
       "label": "has monitored animals"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/hasNumericValue",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#hasNumericValue",
       "label": "has numeric value"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/hasSamplingRate",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#hasSamplingRate",
       "label": "has sampling rate"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/hasStoragePath",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#hasStoragePath",
       "label": "has storage path"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/hasUnit",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#hasUnit",
       "label": "has unit"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/isOccupied",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#isOccupied",
       "label": "is occupied"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/locatedIn",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#locatedIn",
       "label": "located in"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/obs/hasBehaviorType",
+      "iri": "https://w3id.org/hcmo/ontology/hcm/bio#hasBiologicalSex",
+      "label": "has biological sex"
+    },
+    {
+      "comment": null,
+      "iri": "https://w3id.org/hcmo/ontology/hcm/bio#hasDateOfBirth",
+      "label": "has date of birth"
+    },
+    {
+      "comment": null,
+      "iri": "https://w3id.org/hcmo/ontology/hcm/bio#hasSpecies",
+      "label": "has species"
+    },
+    {
+      "comment": null,
+      "iri": "https://w3id.org/hcmo/ontology/hcm/bio#hasStrain",
+      "label": "has strain"
+    },
+    {
+      "comment": null,
+      "iri": "https://w3id.org/hcmo/ontology/hcm/bio#hasTreatment",
+      "label": "has treatment"
+    },
+    {
+      "comment": null,
+      "iri": "https://w3id.org/hcmo/ontology/hcm/env#hasGasType",
+      "label": "has gas type"
+    },
+    {
+      "comment": null,
+      "iri": "https://w3id.org/hcmo/ontology/hcm/env#hasUnit",
+      "label": "has unit"
+    },
+    {
+      "comment": null,
+      "iri": "https://w3id.org/hcmo/ontology/hcm/env#hasValue",
+      "label": "has value"
+    },
+    {
+      "comment": null,
+      "iri": "https://w3id.org/hcmo/ontology/hcm/obs#hasBehaviorType",
       "label": "has behavior type"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/obs/hasConfidenceScore",
+      "iri": "https://w3id.org/hcmo/ontology/hcm/obs#hasConfidenceScore",
       "label": "has confidence score"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/obs/hasHealthStatusTerm",
+      "iri": "https://w3id.org/hcmo/ontology/hcm/obs#hasHealthStatusTerm",
       "label": "has health status term"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/obs/hasInterval",
+      "iri": "https://w3id.org/hcmo/ontology/hcm/obs#hasInterval",
       "label": "has interval"
     },
     {
@@ -558,7 +558,7 @@
       "label": "title"
     }
   ],
-  "namespace": "https://w3id.org/hcm/",
+  "namespace": "https://w3id.org/hcmo/ontology/hcm#",
   "object_properties": [
     {
       "comment": null,
@@ -617,117 +617,117 @@
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/bio/belongsToGroup",
-      "label": "belongs to group"
-    },
-    {
-      "comment": null,
-      "iri": "https://w3id.org/hcm/bio/hasBehaviorObservation",
-      "label": "has behavior observation"
-    },
-    {
-      "comment": null,
-      "iri": "https://w3id.org/hcm/bio/hasHealthStatusObservation",
-      "label": "has health status observation"
-    },
-    {
-      "comment": null,
-      "iri": "https://w3id.org/hcm/bio/hasHousingAssignment",
-      "label": "has housing assignment"
-    },
-    {
-      "comment": null,
-      "iri": "https://w3id.org/hcm/bio/hasMember",
-      "label": "has member"
-    },
-    {
-      "comment": null,
-      "iri": "https://w3id.org/hcm/bio/hasWeightObservation",
-      "label": "has weight observation"
-    },
-    {
-      "comment": null,
-      "iri": "https://w3id.org/hcm/env/AmbientTemperature",
-      "label": "ambient temperature"
-    },
-    {
-      "comment": null,
-      "iri": "https://w3id.org/hcm/env/AmmoniaConcentration",
-      "label": "ammonia concentration"
-    },
-    {
-      "comment": null,
-      "iri": "https://w3id.org/hcm/env/CarbonDioxideConcentration",
-      "label": "carbon dioxide concentration"
-    },
-    {
-      "comment": null,
-      "iri": "https://w3id.org/hcm/env/LightState",
-      "label": "light state"
-    },
-    {
-      "comment": null,
-      "iri": "https://w3id.org/hcm/env/OxygenConcentration",
-      "label": "oxygen concentration"
-    },
-    {
-      "comment": null,
-      "iri": "https://w3id.org/hcm/env/RelativeHumidity",
-      "label": "relative humidity"
-    },
-    {
-      "comment": null,
-      "iri": "https://w3id.org/hcm/env/hasGasConcentrationProfile",
-      "label": "has gas concentration profile"
-    },
-    {
-      "comment": null,
-      "iri": "https://w3id.org/hcm/env/hasLightCycle",
-      "label": "has light cycle"
-    },
-    {
-      "comment": null,
-      "iri": "https://w3id.org/hcm/env/hasMeasurementSpec",
-      "label": "has measurement spec"
-    },
-    {
-      "comment": null,
-      "iri": "https://w3id.org/hcm/hasDimensions",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#hasDimensions",
       "label": "has dimensions"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/hasResult",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#hasResult",
       "label": "has result"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/hasThriveProfile",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#hasThriveProfile",
       "label": "has thrive profile"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/installedIn",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#installedIn",
       "label": "installed in"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/monitoredBy",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#monitoredBy",
       "label": "monitored by"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/obs/",
+      "iri": "https://w3id.org/hcmo/ontology/hcm/bio#belongsToGroup",
+      "label": "belongs to group"
+    },
+    {
+      "comment": null,
+      "iri": "https://w3id.org/hcmo/ontology/hcm/bio#hasBehaviorObservation",
+      "label": "has behavior observation"
+    },
+    {
+      "comment": null,
+      "iri": "https://w3id.org/hcmo/ontology/hcm/bio#hasHealthStatusObservation",
+      "label": "has health status observation"
+    },
+    {
+      "comment": null,
+      "iri": "https://w3id.org/hcmo/ontology/hcm/bio#hasHousingAssignment",
+      "label": "has housing assignment"
+    },
+    {
+      "comment": null,
+      "iri": "https://w3id.org/hcmo/ontology/hcm/bio#hasMember",
+      "label": "has member"
+    },
+    {
+      "comment": null,
+      "iri": "https://w3id.org/hcmo/ontology/hcm/bio#hasWeightObservation",
+      "label": "has weight observation"
+    },
+    {
+      "comment": null,
+      "iri": "https://w3id.org/hcmo/ontology/hcm/env#AmbientTemperature",
+      "label": "ambient temperature"
+    },
+    {
+      "comment": null,
+      "iri": "https://w3id.org/hcmo/ontology/hcm/env#AmmoniaConcentration",
+      "label": "ammonia concentration"
+    },
+    {
+      "comment": null,
+      "iri": "https://w3id.org/hcmo/ontology/hcm/env#CarbonDioxideConcentration",
+      "label": "carbon dioxide concentration"
+    },
+    {
+      "comment": null,
+      "iri": "https://w3id.org/hcmo/ontology/hcm/env#LightState",
+      "label": "light state"
+    },
+    {
+      "comment": null,
+      "iri": "https://w3id.org/hcmo/ontology/hcm/env#OxygenConcentration",
+      "label": "oxygen concentration"
+    },
+    {
+      "comment": null,
+      "iri": "https://w3id.org/hcmo/ontology/hcm/env#RelativeHumidity",
+      "label": "relative humidity"
+    },
+    {
+      "comment": null,
+      "iri": "https://w3id.org/hcmo/ontology/hcm/env#hasGasConcentrationProfile",
+      "label": "has gas concentration profile"
+    },
+    {
+      "comment": null,
+      "iri": "https://w3id.org/hcmo/ontology/hcm/env#hasLightCycle",
+      "label": "has light cycle"
+    },
+    {
+      "comment": null,
+      "iri": "https://w3id.org/hcmo/ontology/hcm/env#hasMeasurementSpec",
+      "label": "has measurement spec"
+    },
+    {
+      "comment": null,
+      "iri": "https://w3id.org/hcmo/ontology/hcm/obs#",
       "label": ""
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/obs/assignedToEnclosure",
+      "iri": "https://w3id.org/hcmo/ontology/hcm/obs#assignedToEnclosure",
       "label": "assigned to enclosure"
     },
     {
       "comment": null,
-      "iri": "https://w3id.org/hcm/obs/occursIn",
+      "iri": "https://w3id.org/hcmo/ontology/hcm/obs#occursIn",
       "label": "occurs in"
     },
     {
@@ -751,7 +751,7 @@
       "label": "is part of"
     }
   ],
-  "ontology_iri": "https://w3id.org/hcm/mapp",
+  "ontology_iri": "https://w3id.org/hcmo/ontology/hcm",
   "version": "0.0.1",
-  "version_iri": "https://w3id.org/hcm/mapp/0.0.1"
+  "version_iri": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
 }

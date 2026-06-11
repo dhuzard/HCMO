@@ -1,11 +1,11 @@
 # HCMO / MAPP ontology — hand-authored source module: hcm-obs
 # Part of the MAPP (Monitoring and Analytics for Physiological Processes) ontology.
-# Derived by splitting the authored Chowlk export by namespace. Edit modules here;
-# regenerate dist/ artifacts with: python tooling/build.py
+# Namespace: https://w3id.org/hcmo/ontology/hcm# (+ /bio#, /env#, /obs# per module).
+# Edit modules here; regenerate dist/ artifacts with: python tooling/build.py
 #
-@prefix hcm: <https://w3id.org/hcm/> .
-@prefix hcm-bio: <https://w3id.org/hcm/bio/> .
-@prefix hcm-obs: <https://w3id.org/hcm/obs/> .
+@prefix hcm: <https://w3id.org/hcmo/ontology/hcm#> .
+@prefix hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#> .
+@prefix hcm-obs: <https://w3id.org/hcmo/ontology/hcm/obs#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix semts: <https://w3id.org/semts/ontology/120#> .
@@ -54,6 +54,9 @@ hcm-obs:HousingAssignment a owl:Class ;
 hcm-obs:WeightObservation a owl:Class ;
     rdfs:label "Weight Observation" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty sosa:usedProcedure ],
+        [ a owl:Restriction ;
             owl:onProperty sosa:hasFeatureOfInterest ;
             owl:someValuesFrom hcm:MonitoredEnclosure ],
         [ a owl:Restriction ;
@@ -62,9 +65,6 @@ hcm-obs:WeightObservation a owl:Class ;
         [ a owl:Restriction ;
             owl:cardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty sosa:observedProperty ],
-        [ a owl:Restriction ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty sosa:usedProcedure ],
         hcm:ObservationResult .
 
 hcm-obs:assignedToEnclosure a owl:ObjectProperty ;
