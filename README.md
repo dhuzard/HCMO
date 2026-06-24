@@ -49,7 +49,7 @@ dist/                          # GENERATED — never hand-edit
 shapes/hcm-shapes.ttl          # SHACL constraints
 examples/                      # ABox examples (abox-minimal, abox-edge-cases)
 queries/                       # competency_questions.yaml + cq-*.rq
-tooling/                       # build.py, validate.py, requirements.txt
+tooling/                       # build.py, validate.py, docs.py, requirements.txt
 docs/                          # documentation (incl. MISSING-DEFINITIONS.md)
 .github/workflows/             # validate.yml (PR gate), release.yml (tag → assets)
 webapp/                        # optional Node.js authoring/blueprint app
@@ -84,6 +84,28 @@ python tooling/validate.py   # parse all TTL + pySHACL + competency queries (the
   ingestion; see `examples/` for conformant and intentionally-invalid ABoxes.
 - **Everything is discoverable from `hcmo.yaml`** — resolve module, dist, shapes,
   queries, and example paths from there rather than hard-coding them.
+
+## Documentation
+
+Human-readable HTML documentation is generated from the merged graph with
+[WIDOCO](https://github.com/dgarijo/Widoco) (overview, term cross-reference,
+namespace declarations, a WebVOWL diagram, and provenance).
+
+```bash
+python tooling/build.py      # ensure dist/ is current
+python tooling/docs.py       # render docs/widoco/ (needs a Java 11+ runtime)
+# then open docs/widoco/index.html
+```
+
+`tooling/docs.py` downloads a pinned WIDOCO release into `tooling/.widoco/` on
+first run (override with `--jar PATH` or `WIDOCO_JAR`). The generated site under
+`docs/widoco/` is **not committed** — it is published to GitHub Pages by
+`.github/workflows/docs.yml` on every push to `main`. Term descriptions are
+sourced from the `owl:Ontology` header and `rdfs:comment`; terms still missing
+definitions (see `docs/MISSING-DEFINITIONS.md`) render with empty descriptions.
+
+> To serve the published site, enable Pages once in **Settings → Pages →
+> Source: "GitHub Actions"**.
 
 ## Status & known issues
 
