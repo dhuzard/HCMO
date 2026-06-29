@@ -1,26 +1,46 @@
 # 2. Related work
 
-> **Positioning (HITL R2): HCMO is the first ontology for the HCM domain** — no
-> direct competitor known. Compare to general standards we reuse and to adjacent
-> biomedical/animal ontologies, and show none model HCM end-to-end.
-> (Optional: I can verify via LOV/BioPortal search on request — not yet done.)
+> **Status:** full draft (artifact-independent). Positioning per `NOVELTY.md`:
+> HCMO is the first HCM ontology; reuses standards; differentiates from adjacent
+> biomedical/animal ontologies. ~1 pp.
 
-- HCM / laboratory-animal data models & standards efforts (and their limits).
-- Sensor/observation ontologies: SOSA/SSN — what HCMO reuses and extends.
-- Temporal modelling: OWL-Time.
-- Provenance: PROV.
-- Upper ontology: BFO (process modelling for behaviour/physiology).
-- **Adjacent ontologies (found in novelty search — see `NOVELTY.md`):**
-  - **OBI** (Ontology for Biomedical Investigations) — investigations/protocols/
-    instruments; bridge candidate, but no HCM acquisition chain.
-  - **OLAM** (Ontology of Laboratory Animal Medicine) — lab-animal terminology.
-  - **MEDO** (Mouse Experimental Design Ontology) — experimental design (overlaps
-    HCMO-housing groups/study factors).
-  - **ARRIVE** guidelines — in-vivo reporting standard (not an ontology) → a
-    metadata-completeness requirements source.
-- Units: **UO** (reused), QUDT/OM (roadmap).
-- Conclusion: **no ontology models HCM end-to-end** → HCMO is the first; it
-  **reuses** SOSA/SSN, OWL-Time, UO, PROV, BFO (not competitors) and can bridge to
-  OBI/MEDO.
+**Home-Cage Monitoring and data sharing.** HCM is an active and rapidly growing
+field, with recent surveys of systems, sensing technologies, and applications
+\cite{kiryk2026,huzard2026tech,duarte2026diy}. The community has begun to address
+data sharing and metadata explicitly \cite{forrest2026} and to frame data quality
+as part of animal welfare through the WellFAIR perspective \cite{petit2026wellfair}.
+These efforts establish *requirements* — rich, standardised metadata that travel
+with the measurements — but stop short of a shared, machine-actionable semantic
+model. To our knowledge, no ontology models the HCM acquisition chain (animal
+subject ↔ housing ↔ environment ↔ device ↔ observation ↔ result) end-to-end.
 
-> TODO: deepen with direct BioPortal/LOV queries; cite 15–25 refs in references.bib.
+**Standards reused, not duplicated.** HCMO builds on W3C and community vocabularies.
+SOSA/SSN provides the sensor/observation/platform backbone \cite{sosa}; OWL-Time
+models temporal entities and intervals \cite{owltime}; UO provides units of
+measurement \cite{uo}; PROV captures provenance \cite{provo}; and BFO supplies an
+upper-ontology grounding for processes such as behaviour \cite{bfo}. HCMO reuses
+these as-is or by specialisation, contributing the HCM-specific concepts and the
+relations that bind them.
+
+**Adjacent biomedical and laboratory-animal ontologies.** Several resources cover
+neighbouring concerns. The Ontology for Biomedical Investigations (OBI) models
+investigations, protocols, instruments, materials, and data \cite{obi}; the
+Ontology of Laboratory Animal Medicine (OLAM) provides laboratory-animal
+terminology; and the Mouse Experimental Design Ontology (MEDO) standardises
+experimental-design descriptions, overlapping HCMO's housing/experimental-group
+notions. Reporting guidelines such as ARRIVE \cite{arrive} prescribe *what* to
+report about in-vivo experiments but are not machine-readable ontologies. None of
+these model continuous in-cage acquisition; HCMO is complementary to them and can
+bridge to OBI and MEDO where appropriate.
+
+**Ontology engineering.** Methodologically, HCMO follows an incremental,
+competency-question-driven process in the spirit of LOT \cite{lot2022} and SAMOD
+\cite{samod2017}, with requirements expressed as competency questions
+\cite{noy2001}. The current version was conceptualised graphically in
+diagrams.net and exported to OWL/Turtle with Chowlk \cite{chowlk2022}; LinkML was
+explored as an alternative serialisation \cite{linkml2021}. Documentation is
+produced with WIDOCO \cite{widoco2017}, and quality is assessed with OOPS!
+\cite{oops2012} and, for FAIRness, FOOPS! \cite{foops}, complemented by reasoning
+and SHACL validation \cite{gangemi2006}. Positioned this way, HCMO is the first
+ontology dedicated to HCM, designed to interoperate with — rather than replace —
+the surrounding standards and biomedical ontologies.

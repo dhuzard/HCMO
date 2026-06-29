@@ -38,9 +38,9 @@ column and append to the **Change log** whenever something moves.
 | ID | Section | File | Status |
 |----|---------|------|--------|
 | T10 | Abstract + resource-metadata block | `metadata/resource-metadata.md`, `sections/00-abstract.md` | ☐ |
-| T11 | Introduction & motivation (HCM domain, problem, contributions) | `sections/01-introduction.md` | ☐ |
-| T12 | Related work (HCM data models, SOSA/SSN-based ontologies, animal/biomed ontologies) | `sections/02-related-work.md` | ☐ |
-| T13 | Requirements & competency questions | `sections/03-requirements.md` | ☐ |
+| T11 | Introduction & motivation — **drafted** (Gilbert 2026) | `sections/01-introduction.md` | ☑ |
+| T12 | Related work — **drafted** (OBI/OLAM/MEDO/ARRIVE positioned) | `sections/02-related-work.md` | ☑ |
+| T13 | Requirements & competency questions — **drafted** (R1–R8 + CQ1–CQ6; results deferred T6) | `sections/03-requirements.md` | ☑ |
 | T14 | Resource description (modules, classes/properties, standards reuse) | `sections/04-resource.md` | ☐ |
 | T15 | Engineering & availability (build, CI, manifest, FAIR, license, PURL/DOI) | `sections/05-availability.md` | ☐ |
 | T16 | Evaluation (OOPS!/FOOPS!/reasoner/SHACL/CQs + completeness) | `sections/06-evaluation.md` | ☐ |
