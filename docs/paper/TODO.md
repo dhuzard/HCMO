@@ -42,7 +42,7 @@ column and append to the **Change log** whenever something moves.
 | T12 | Related work — **drafted** (OBI/OLAM/MEDO/ARRIVE positioned) | `sections/02-related-work.md` | ☑ |
 | T13 | Requirements & competency questions — **drafted** (R1–R8 + CQ1–CQ6; results deferred T6) | `sections/03-requirements.md` | ☑ |
 | T14 | Resource description (modules, classes/properties, standards reuse) | `sections/04-resource.md` | ☐ |
-| T15 | Engineering & availability (build, CI, manifest, FAIR, license, PURL/DOI) | `sections/05-availability.md` | ☐ |
+| T15 | Engineering & availability — **drafted** (manifest, build, CI, FAIR, license, endpoint, governance; pending items marked) | `sections/05-availability.md` | ☑ |
 | T16 | Evaluation (OOPS!/FOOPS!/reasoner/SHACL/CQs + completeness) | `sections/06-evaluation.md` | ☐ |
 | T17 | Impact, use cases & sustainability (KGQA, webapp, vendor mapping, 3Rs/welfare) | `sections/07-impact.md` | ☐ |
 | T18 | Conclusion & future work (limitations stated honestly) | `sections/08-conclusion.md` | ☐ |
