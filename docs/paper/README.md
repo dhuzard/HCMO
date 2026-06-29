@@ -16,18 +16,31 @@ abstract. **Page budget: 15 pp + unlimited references.**
 > ~Dec 2026). Re-confirm dates, page limit, and template against the live CfP when
 > it opens. (ISWC Resources Track is the equivalent fallback if needed.)
 
+## Tracking checklist (Cyril)
+
+Cyril maintains the master progress checklist as a Google Sheet:
+<https://docs.google.com/spreadsheets/d/1AcxwqF7L6NVEI07FE5GWx74uxTq_UACBWfGS44O7XKo/edit?gid=822209222#gid=822209222>
+
+A repo-side mirror with current status + evidence links is in
+[`CHECKLIST-CYRIL.md`](CHECKLIST-CYRIL.md) (re-synced manually — the sheet is the
+source of truth for assignments/deadlines).
+
 ## Folder layout
 
 ```
 docs/paper/
   README.md               # this file
+  CHECKLIST-CYRIL.md      # mirror of Cyril's Google-Sheet checklist (status + evidence)
   TODO.md                 # precise, tracked task list + change log
+  OPEN-QUESTIONS.md       # HITL loop backlog (decisions log)
+  AUDIT.md                # repo-vs-report artifact audit (the T0 blocker)
+  NOVELTY.md              # related-resources / novelty search findings
   CALL-REQUIREMENTS.md    # distilled track requirements + compliance checklist
   OUTLINE.md              # section-by-section outline with page budget
-  metadata/
-    resource-metadata.md  # the mandatory "after the abstract" block + FAIR table
-  sections/               # one Markdown stub per paper section (draft here first)
-  figures/                # diagrams (architecture, ontology overview, examples)
+  metadata/               # resource-metadata block + FAIR table + authors
+  sections/               # one Markdown file per paper section (drafts)
+  sources/                # Gilbert 2026 report (PDF + EN translation) + figures
+  emails/                 # co-author comms (e.g. request-clean-v1.md)
   references.bib          # BibTeX bibliography
 ```
 
