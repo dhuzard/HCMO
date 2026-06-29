@@ -14,7 +14,7 @@ column and append to the **Change log** whenever something moves.
 |----|------|-------|--------|-------|
 | T0 | **🔴 BLOCKER (awaiting author): commit the clean V1 artifact** — Damien will provide the diagrams.net/Chowlk + exported Turtle (HITL R2) | Damien → Claude | ⚠ | Repo `dist/` is an old, broken export — see `AUDIT.md`. Everything depends on this. |
 | T1 | ~~Lock venue~~ → **ESWC 2027 Resources Track, 15 pp** (HITL R1) | — | ☑ | Re-confirm dates/template when CfP opens. |
-| T2 | Verify **w3id PURL** redirect resolves to the ontology; fix if not | — | ☐ | CfP availability is a hard gate. |
+| T2 | **Create the w3id PURL redirect** (CHANGELOG says it's not set up yet) so the ontology IRI dereferences | — | ☐ | **Availability hard gate** — submit a PR to perma-id/w3id.org. |
 | T3 | Create Overleaf project from **LNCS** template; mirror `sections/` | — | ☐ | Keep authors **named** (single-anonymous). |
 | T3b | **Re-modularise** ontology to **bio/housing/env/tech** (HITL R1) | — | ☐ | Repo currently core/bio/env/obs. |
 
@@ -55,7 +55,7 @@ column and append to the **Change log** whenever something moves.
 |----|------|--------|
 | T21 | Complete **CALL-REQUIREMENTS.md** checklist — all ✔ | ☐ |
 | T22 | Internal review pass (co-authors) + proofread, page-count check | ☐ |
-| T23 | Confirm affiliations + ORCIDs of all 7 authors | ☐ |
+| T23 | Confirm affiliations + ORCIDs of all 7 authors (Gilbert lead, Huzard corresponding — see `metadata/authors.md`) | ☐ |
 | T24 | Submit **abstract** by pre-submission deadline | ☐ |
 | T25 | Submit **full paper** (+ supplementary material link) | ☐ |
 
