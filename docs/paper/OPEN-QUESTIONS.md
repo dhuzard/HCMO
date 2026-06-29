@@ -37,7 +37,7 @@ the relevant doc and logged in `TODO.md`.
 | # | Aspect | Conf. | Answer |
 |---|--------|-------|--------|
 | Q15 | w3id PURL redirect resolves today? (availability hard gate) | 🟢 | **Likely NO** (CHANGELOG: "redirect to be created"; proxy blocked external check). → **T2 high-priority**. |
-| Q16 | Authorship / order | 🟢 | **Gilbert first author; Huzard senior/corresponding.** TEATIME = acknowledgement. See `metadata/authors.md`. |
+| Q16 | Authorship / order | 🟢 | **Gilbert first author; Todorov & Huzard co-lead / co-corresponding (contact).** TEATIME = acknowledgement. See `metadata/authors.md`. |
 | Q17 | Affiliations + missing ORCIDs | 🟠 | **ORCIDs provided** (2026-06-29) → CITATION.cff, README, authors.md; names fixed (Sonfack **Sounchio**, To**ff**ano). **Affiliations still pending.** Fold ORCIDs into V1 ontology header at T0. |
 | Q18 | Novelty verification | 🟢 | **Search run** → no HCM ontology exists; adjacents = OBI/OLAM/MEDO + ARRIVE. See `NOVELTY.md`; applied to §2. |
 

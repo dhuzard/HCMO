@@ -1,18 +1,22 @@
 # Authors & front matter (HITL Round 4)
 
-**Decision:** Cyril Gilbert is **first author** (wrote the design report); Damien
-Huzard is **senior / corresponding** author. Affiliations + 4 missing ORCIDs to be
-provided by the author (placeholders below).
+**Decision (HITL R4 + update 2026-06-29):** Cyril Gilbert is **first author** (wrote
+the design report). **Konstantin Todorov and Damien Huzard are the two co-lead /
+corresponding (contact) authors.** Affiliations to be provided (placeholders below).
 
 | # | Author | Role | ORCID | Affiliation |
 |---|--------|------|-------|-------------|
 | 1 | **Cyril Gilbert** | First author | 0009-0008-2489-8106 | _TBD_ |
-| 2 | Konstantin Todorov | KG / semantic web | 0000-0002-9116-6692 | _TBD_ |
-| 3 | Pierre Larmande | FAIR / KG life sciences | 0000-0002-2923-9790 | _TBD_ |
-| 4 | Gaoussou Sanou | KGQA / embeddings | 0000-0003-2204-2466 | _TBD_ |
-| 5 | Serge Sonfack Sounchio | engineering | 0000-0002-6085-6818 | _TBD_ |
-| 6 | Antoine Toffano | ontology-structured ML | 0009-0008-0575-8490 | _TBD_ |
-| 7 | **Damien Huzard** | Senior / **corresponding** | 0000-0003-4820-7951 | _TBD_ |
+| – | Pierre Larmande | contributing author | 0000-0002-2923-9790 | _TBD_ |
+| – | Gaoussou Sanou | contributing author | 0000-0003-2204-2466 | _TBD_ |
+| – | Serge Sonfack Sounchio | contributing author | 0000-0002-6085-6818 | _TBD_ |
+| – | Antoine Toffano | contributing author | 0009-0008-0575-8490 | _TBD_ |
+| L | **Konstantin Todorov** | **Co-lead / corresponding ✉** | 0000-0002-9116-6692 | _TBD_ |
+| L | **Damien Huzard** | **Co-lead / corresponding ✉** | 0000-0003-4820-7951 | _TBD_ |
+
+> ✉ = contact author. Two co-corresponding authors (Todorov, Huzard), typically
+> placed last. Middle-author positions/order (Larmande, Sanou, Sonfack Sounchio,
+> Toffano) still **to be confirmed**.
 
 > Order beyond first/last to be confirmed. Single-anonymous track → authors are
 > **named** in the submission.
@@ -28,5 +32,5 @@ provided by the author (placeholders below).
 ## To provide before submission (T-author)
 - [x] ORCIDs for Gilbert, Sanou, Sonfack Sounchio, Toffano. *(provided 2026-06-29)*
 - [ ] **Affiliations for all 7 authors.** *(still blank)*
-- [ ] Confirm full author order (positions 2–6) + corresponding-author email.
+- [ ] Confirm middle-author order + **both** corresponding emails (Todorov & Huzard).
 - [ ] Funding/acknowledgements (COST TEATIME grant number?).
