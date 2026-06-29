@@ -25,21 +25,22 @@ the relevant doc and logged in `TODO.md`.
 
 > Q6 (HCMO vs MAPP branding) deferred to Round 3.
 
-## Round 3 — evaluation evidence
+## Round 3 — branding, vocab, availability, governance ✅ RESOLVED (2026-06-29)
 | # | Aspect | Conf. | Answer |
 |---|--------|-------|--------|
-| Q9 | **Competency-question SPARQL** — do runnable CQs against the MAPP terms exist (repo's return 0 rows)? | 🔴 | _pending_ |
-| Q10 | **Quality reports** — have OOPS!/FOOPS!/reasoner/SHACL been run? results available? | 🔴 | _pending_ |
-| Q11 | **Counts to report** — confirm ~45 classes / ~46 props / 6 reused classes / 17 reused props / 12 prefixes vs repo | 🟠 | _pending_ |
-| Q12 | **Reused vocabularies in V1** — report: SOSA, OWL-Time, UO; repo also: PROV, BFO, schema, semts. Which are real vs roadmap? | 🟠 | _pending_ |
+| Q6 | HCMO vs MAPP branding | 🟢 | **Drop MAPP** — use HCMO only in the paper (repo reconcile = T7b). |
+| Q12 | Reused vocabularies in V1 | 🟢 | **All real**: SOSA/SSN, OWL-Time, UO, PROV, BFO, schema, semts. |
+| Q13 | SPARQL endpoint | 🟢 | **Yes — will host one** (T6b). |
+| Q14 | Governance/maintenance | 🟢 | **Lab-maintained** (Huzard team, GitHub); TEATIME = feedback channel. |
 
-## Round 4 — availability & sustainability
+## Round 4 — artifact-dependent (PARKED until clean V1 arrives, T0)
 | # | Aspect | Conf. | Answer |
 |---|--------|-------|--------|
-| Q13 | **SPARQL endpoint** — will one be provided (CfP values LOD/API availability)? | 🟠 | _pending_ |
-| Q14 | **Governance & maintenance** — maintainer, release cadence, role of COST TEATIME network | 🟠 | _pending_ |
-| Q15 | **w3id PURL** — does the redirect resolve today? (availability hard gate) | 🟠 | _pending_ |
-| Q16 | **Author affiliations + missing ORCIDs** (Gilbert, Sanou, Sonfack, Tofano) | 🟠 | _pending_ |
+| Q9 | Runnable competency-question SPARQL against the V1 terms | 🔴 | _parked: needs T0 artifact_ |
+| Q10 | OOPS!/FOOPS!/reasoner/SHACL reports run? | 🔴 | _parked: needs T0 artifact_ |
+| Q11 | Confirm counts (~45 classes / ~46 props / 6 reused / 17 reused / 12 prefixes) | 🟠 | _parked: verify against T0 artifact_ |
+| Q15 | w3id PURL redirect resolves today? (availability hard gate) | 🟠 | _to verify (T2) — actionable without author_ |
+| Q16 | Author affiliations + missing ORCIDs (Gilbert, Sanou, Sonfack, Tofano) | 🟠 | _pending (next round)_ |
 
 ## Change log
 | Date | Round | Outcome |
@@ -47,3 +48,4 @@ the relevant doc and logged in `TODO.md`.
 | 2026-06-29 | — | Backlog created from Gilbert 2026 report + repo cross-check. |
 | 2026-06-29 | R1 | Resolved Q1–Q4: ESWC 2027 Resources, 15 pp, bio/housing/env/tech; audit done → AUDIT.md, blocker T0. |
 | 2026-06-29 | R2 | Resolved Q5a/Q5/Q7/Q8: author provides clean V1; scope = ontology package only; HCMO is first; data via TEATIME (synthetic now). Applied to §1/§2/§7. |
+| 2026-06-29 | R3 | Resolved Q6/Q12/Q13/Q14: drop MAPP; all vocabs real; host SPARQL endpoint; lab-maintained. Applied to README/OUTLINE/§00/§04/§05/§07; T6b/T7/T7b added. Q9–Q11 parked on T0. |

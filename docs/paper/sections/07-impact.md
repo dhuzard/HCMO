@@ -10,5 +10,7 @@
   - Vendor-data mapping ambition (lift proprietary exports into HCMO).
 - Societal impact: animal welfare, 3Rs, preclinical reproducibility, FAIR/open data.
 - Community interest: SOSA/SSN reuse; bridge to biomedical ontologies.
-- Sustainability & governance (T7): maintainer(s), issue tracker, contribution
-  workflow, release cadence, SemVer + owl:versionIRI, deprecation policy.
+- Sustainability & governance (HITL R3 = **lab-maintained**): maintained by
+  Damien Huzard's team via GitHub (issues, PRs, tagged releases); SemVer +
+  owl:versionIRI; deprecation policy; COST TEATIME as community feedback channel
+  (not formal governance).

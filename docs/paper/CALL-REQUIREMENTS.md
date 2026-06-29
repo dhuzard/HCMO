@@ -55,7 +55,7 @@ The CfP requires these fields right after the abstract (drafted in
 - [ ] **Quality evidence:** OOPS! pitfall scan + FOOPS! FAIR score + reasoner
       (no unsat/cycles) + SHACL validation + competency-question results (T5).
 - [ ] **GAP:** shapes/examples/queries currently target the *legacy* term set →
-      competency queries return 0 rows. **Re-author against MAPP terms** (T6).
+      competency queries return 0 rows. **Re-author against the clean V1 terms** (T6).
 
 ### 4. Impact, reusability & sustainability
 - [ ] Interest to the SW community **and** to society (animal welfare, 3Rs,

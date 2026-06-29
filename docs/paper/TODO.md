@@ -26,8 +26,10 @@ column and append to the **Change log** whenever something moves.
 |----|------|--------|-------|
 | T4 | Replace/remove **Chowlk placeholders** (`UNKNOWN:*`, `ns:Class2`, `ns:objectProperty`, `xsd:boolean/integer` as properties) | ☐ | 43 terms. See `docs/MISSING-DEFINITIONS.md`. |
 | T5 | Add **labels + `rdfs:comment`/IAO definitions** for all terms | ☐ | 143 terms lack comments; 1 lacks a label. |
-| T6 | **Re-author SHACL shapes, examples & competency queries** against the MAPP term set | ☐ | Currently legacy → CQs return 0 rows. |
-| T7 | Write **sustainability/governance/versioning** policy (maintainer, release cadence, issue process) | ☐ | Feeds §Sustainability. |
+| T6 | **Re-author SHACL shapes, examples & competency queries** against the clean V1 term set | ☐ | Currently legacy → CQs return 0 rows. |
+| T6b | **Host a public SPARQL endpoint** (HITL R3) | ☐ | Strongest availability story; depends on T0. |
+| T7 | Write **lab-maintained** governance/versioning policy (Huzard team, GitHub, SemVer+versionIRI; TEATIME = feedback channel) | ☐ | HITL R3. Feeds §7. |
+| T7b | **Drop MAPP branding** in paper docs (done) + reconcile repo branding (`hcmo.yaml` title, README) separately | ◐ | HITL R3. Repo rename is a bigger change — confirm before touching core files. |
 | T8 | Run **quality evaluation**: OOPS!, FOOPS! (FAIR), reasoner (HermiT/ELK), pySHACL, CQ results — archive reports | ☐ | Evidence for §Evaluation. |
 | T9 | Cut a **tagged release** (e.g. `v0.x`) + refreshed Zenodo DOI matching the paper | ☐ | Canonical citation. |
 

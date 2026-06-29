@@ -2,7 +2,8 @@
 
 This folder holds everything needed to write and submit a **Resources Track**
 paper describing HCMO for **ISWC** or **ESWC**. The resource being presented is
-the **Home-Cage Monitoring Ontology (HCMO)**, under the MAPP framework.
+the **Home-Cage Monitoring Ontology (HCMO)**. (Branding, HITL R3: use **HCMO
+only** — do not use the "MAPP" name in the paper.)
 
 ## Target venue — **ESWC 2027, Resources Track** (decided, HITL Round 1)
 
