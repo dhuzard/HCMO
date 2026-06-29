@@ -1,0 +1,67 @@
+# =============================================================================
+# w3id.org content-negotiation config for the HCMO / MAPP ontology.
+#
+# This file is NOT consumed by this repository. It is the redirect config for
+# the persistent IRI base  https://w3id.org/hcmo/  and must be submitted as a
+# pull request to  https://github.com/perma-id/w3id.org  at  hcmo/.htaccess
+# (modelled on the upstream /example/ and /OWLunit/ entries).
+#
+# Ontology IRI : https://w3id.org/hcmo/ontology/hcm
+# Version IRI  : https://w3id.org/hcmo/ontology/hcm/<version>   (e.g. 0.0.1)
+# Modules      : https://w3id.org/hcmo/ontology/hcm/{bio,env,obs}#
+#
+# Artifacts are served from GitHub:
+#   * latest   -> the GitHub Release marked "latest"
+#   * <version>-> the GitHub Release tagged v<version>
+#   * HTML doc -> the WIDOCO site published to GitHub Pages
+# =============================================================================
+
+Options -MultiViews
+RewriteEngine On
+RewriteBase /hcmo/
+
+# -----------------------------------------------------------------------------
+# Block 1 — latest: /ontology/hcm  (and the module namespaces)  -> latest release
+# -----------------------------------------------------------------------------
+
+# Turtle
+RewriteCond %{HTTP_ACCEPT} text/turtle [OR]
+RewriteCond %{HTTP_ACCEPT} application/x-turtle
+RewriteRule ^ontology/hcm(/(bio|env|obs))?/?$ https://github.com/dhuzard/hcmo/releases/latest/download/hcmo.ttl [R=303,L]
+
+# RDF/XML (OWL)
+RewriteCond %{HTTP_ACCEPT} application/rdf\+xml
+RewriteRule ^ontology/hcm(/(bio|env|obs))?/?$ https://github.com/dhuzard/hcmo/releases/latest/download/hcmo.owl [R=303,L]
+
+# JSON-LD
+RewriteCond %{HTTP_ACCEPT} application/ld\+json [OR]
+RewriteCond %{HTTP_ACCEPT} application/json
+RewriteRule ^ontology/hcm(/(bio|env|obs))?/?$ https://github.com/dhuzard/hcmo/releases/latest/download/hcmo.json [R=303,L]
+
+# Default / browsers -> the human-readable WIDOCO documentation on Pages
+RewriteRule ^ontology/hcm(/(bio|env|obs))?/?$ https://dhuzard.github.io/hcmo/ [R=303,L]
+
+# -----------------------------------------------------------------------------
+# Block 2 — version-aware: /ontology/hcm/<version>  -> the v<version> release
+#
+# <version> is constrained to a semantic version so this never shadows the
+# module namespaces (/ontology/hcm/bio etc.) handled by Block 1. $1 captures
+# the version; release tags are v<version> (release.yml triggers on 'v*').
+# -----------------------------------------------------------------------------
+
+# Turtle
+RewriteCond %{HTTP_ACCEPT} text/turtle [OR]
+RewriteCond %{HTTP_ACCEPT} application/x-turtle
+RewriteRule ^ontology/hcm/(\d+\.\d+\.\d+)/?$ https://github.com/dhuzard/hcmo/releases/download/v$1/hcmo.ttl [R=303,L]
+
+# RDF/XML (OWL)
+RewriteCond %{HTTP_ACCEPT} application/rdf\+xml
+RewriteRule ^ontology/hcm/(\d+\.\d+\.\d+)/?$ https://github.com/dhuzard/hcmo/releases/download/v$1/hcmo.owl [R=303,L]
+
+# JSON-LD
+RewriteCond %{HTTP_ACCEPT} application/ld\+json [OR]
+RewriteCond %{HTTP_ACCEPT} application/json
+RewriteRule ^ontology/hcm/(\d+\.\d+\.\d+)/?$ https://github.com/dhuzard/hcmo/releases/download/v$1/hcmo.json [R=303,L]
+
+# Default / browsers -> the tagged release page for that version
+RewriteRule ^ontology/hcm/(\d+\.\d+\.\d+)/?$ https://github.com/dhuzard/hcmo/releases/tag/v$1 [R=303,L]
