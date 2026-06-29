@@ -1,9 +1,10 @@
 # HCMO Resource Paper — outline & page budget
 
 Working title: **HCMO: An Ontology for Home-Cage Monitoring of Laboratory Animals**
-Target: ISWC/ESWC Resources Track, Springer LNCS. Budget below assumes a
-**12-page incl. references** ceiling (safe for either venue); expand §4–§7 if ESWC
-(15 pp) is locked.
+Target: **ESWC 2027 Resources Track**, Springer LNCS, **15 pp + unlimited refs**
+(decided, HITL Round 1). Canonical module structure: **bio / housing / env / tech**
+(per the Gilbert 2026 report), NOT the repo's current core/bio/env/obs — the repo
+must be re-modularised first (see `AUDIT.md`, `TODO.md` T0).
 
 | § | Section | Pages | Key content / evidence |
 |---|---------|------:|------------------------|

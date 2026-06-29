@@ -7,13 +7,13 @@ the relevant doc and logged in `TODO.md`.
 **Confidence legend:** 🔴 low (<60%) · 🟠 medium (60–90%) · 🟢 resolved (≥90%)
 **Last updated:** 2026-06-29
 
-## Round 1 — foundational (asked first)
-| # | Aspect | Conf. | Why it matters | Answer |
-|---|--------|-------|----------------|--------|
-| Q1 | **Target venue + cycle** (ISWC vs ESWC; which year) | 🔴 | Sets page limit, dates, template. Both 2026 closed. | _pending_ |
-| Q2 | **Paper authorship & lead** (who leads; author order; is this Resources vs In-Use track) | 🔴 | Affects framing & credit; Resources≠In-Use. | _pending_ |
-| Q3 | **Canonical module structure** — report says `bio/housing/env/tech`; repo ships `core/bio/env/obs` | 🔴 | The paper must present ONE consistent structure. | _pending_ |
-| Q4 | **True current artifact state** — committed `dist/` has 43 `UNKNOWN:*` placeholders + 143 undefined terms, but the report's diagrams are clean | 🔴 | Determines what we can honestly claim; is there a newer Turtle? | _pending_ |
+## Round 1 — foundational ✅ RESOLVED (2026-06-29)
+| # | Aspect | Conf. | Answer |
+|---|--------|-------|--------|
+| Q1 | Target venue + cycle | 🟢 | **ESWC 2027, Resources Track, 15 pp + unlimited refs.** |
+| Q2 | Track | 🟢 | **Resources Track** (not In-Use). |
+| Q3 | Canonical module structure | 🟢 | **bio/housing/env/tech** (report) → repo must be re-modularised (T3b). |
+| Q4 | True current artifact state | 🟢 | **Needs audit → done.** Repo `dist/` is an OLD broken Chowlk export (143 terms, 0 defs, 43 placeholders); the report's clean V1 is **not committed**. See `AUDIT.md`. New blocker **T0**: obtain & commit the clean source. |
 
 ## Round 2 — scope & contribution
 | # | Aspect | Conf. | Answer |
@@ -43,3 +43,4 @@ the relevant doc and logged in `TODO.md`.
 | Date | Round | Outcome |
 |------|-------|---------|
 | 2026-06-29 | — | Backlog created from Gilbert 2026 report + repo cross-check. |
+| 2026-06-29 | R1 | Resolved Q1–Q4: ESWC 2027 Resources, 15 pp, bio/housing/env/tech; audit done → AUDIT.md, blocker T0. |

@@ -12,9 +12,11 @@ column and append to the **Change log** whenever something moves.
 
 | ID | Task | Owner | Status | Notes |
 |----|------|-------|--------|-------|
-| T1 | **Lock target venue + cycle** (ISWC vs ESWC; confirm dates/page limit/template against live CfP) | Damien | ☐ | Both 2026 deadlines passed; aim next round. |
+| T0 | **🔴 BLOCKER: obtain & commit the clean V1 artifact** (diagrams.net/Chowlk + exported Turtle behind the report figures) | Damien/Cyril | ☐ | Repo `dist/` is an old, broken export — see `AUDIT.md`. Everything depends on this. |
+| T1 | ~~Lock venue~~ → **ESWC 2027 Resources Track, 15 pp** (HITL R1) | — | ☑ | Re-confirm dates/template when CfP opens. |
 | T2 | Verify **w3id PURL** redirect resolves to the ontology; fix if not | — | ☐ | CfP availability is a hard gate. |
 | T3 | Create Overleaf project from **LNCS** template; mirror `sections/` | — | ☐ | Keep authors **named** (single-anonymous). |
+| T3b | **Re-modularise** ontology to **bio/housing/env/tech** (HITL R1) | — | ☐ | Repo currently core/bio/env/obs. |
 
 ## Phase 1 — Make the resource paper-ready (ontology work)
 

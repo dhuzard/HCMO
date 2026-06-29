@@ -4,22 +4,16 @@ This folder holds everything needed to write and submit a **Resources Track**
 paper describing HCMO for **ISWC** or **ESWC**. The resource being presented is
 the **Home-Cage Monitoring Ontology (HCMO)**, under the MAPP framework.
 
-## Target venue (to confirm — see `TODO.md` T1)
+## Target venue — **ESWC 2027, Resources Track** (decided, HITL Round 1)
 
-Both tracks publish in **Springer LNCS**, use **single-anonymous** review
-(reviewers anonymous, **authors visible** — resource ownership must be checkable),
-require an **abstract pre-submission**, and a **mandatory resource-metadata block**
-right after the abstract. Differences are minor (exact page limit, dates).
+Publishes in **Springer LNCS**, **single-anonymous** review (reviewers anonymous,
+**authors visible** — resource ownership must be checkable), **abstract
+pre-submission** required, **mandatory resource-metadata block** right after the
+abstract. **Page budget: 15 pp + unlimited references.**
 
-| | ISWC 2026 | ESWC 2026 |
-|---|---|---|
-| Location | Bari, Italy | (see CfP) |
-| Page limit | ~12 pp LNCS incl. refs *(confirm)* | 15 pp + unlimited refs *(per CfP)* |
-| Abstract / paper | 2 May / 7 May 2026 (AoE) — **passed** | Dec 2025 — **passed** |
-| Status | plan for **next cycle** | plan for **next cycle** |
-
-> Both 2026 deadlines have passed. Treat this as preparation for the next round;
-> re-confirm dates, page limit, and template against the live CfP once it opens.
+> ESWC 2026 deadlines have passed; target the **2027** cycle (deadlines expected
+> ~Dec 2026). Re-confirm dates, page limit, and template against the live CfP when
+> it opens. (ISWC Resources Track is the equivalent fallback if needed.)
 
 ## Folder layout
 
