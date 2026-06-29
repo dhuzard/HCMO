@@ -136,11 +136,11 @@ MAPP reorganization and targets the legacy term set.
 
 - **Damien Huzard** — [0000-0003-4820-7951](https://orcid.org/0000-0003-4820-7951)
 - **Konstantin Todorov** — [0000-0002-9116-6692](https://orcid.org/0000-0002-9116-6692)
-- **Cyril Gilbert** — _ORCID: TBD_
+- **Cyril Gilbert** — [0009-0008-2489-8106](https://orcid.org/0009-0008-2489-8106)
 - **Pierre Larmande** — [0000-0002-2923-9790](https://orcid.org/0000-0002-2923-9790)
-- **Gaoussou Sanou** — _ORCID: TBD_
-- **Serge Sonfack** — _ORCID: TBD_
-- **Antoine Tofano** — _ORCID: TBD_
+- **Gaoussou Sanou** — [0000-0003-2204-2466](https://orcid.org/0000-0003-2204-2466)
+- **Serge Sonfack Sounchio** — [0000-0002-6085-6818](https://orcid.org/0000-0002-6085-6818)
+- **Antoine Toffano** — [0009-0008-0575-8490](https://orcid.org/0009-0008-0575-8490)
 
 Attribution is also recorded on the `owl:Ontology` header (`dcterms:creator`,
 using ORCID IRIs where known) and in [`CITATION.cff`](CITATION.cff).
