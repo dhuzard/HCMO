@@ -24,6 +24,7 @@ JSON-LD context.
 | **Prefix** | `hcm` |
 | **License** | CC BY 4.0 |
 | **Release manifest** | [`hcmo.yaml`](hcmo.yaml) |
+| **Documentation** | <https://dhuzard.github.io/HCMO/index-en.html> |
 
 > The release manifest [`hcmo.yaml`](hcmo.yaml) is the **contract** that
 > downstream tools (e.g. the `hcmo-kgqa-lab` sync layer) read. Its shape is
@@ -86,6 +87,8 @@ python tooling/validate.py   # parse all TTL + pySHACL + competency queries (the
   queries, and example paths from there rather than hard-coding them.
 
 ## Documentation
+
+📖 **Published docs:** <https://dhuzard.github.io/HCMO/index-en.html>
 
 Human-readable HTML documentation is generated from the merged graph with
 [WIDOCO](https://github.com/dgarijo/Widoco) (overview, term cross-reference,

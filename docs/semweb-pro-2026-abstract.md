@@ -72,7 +72,7 @@ graphes de connaissances et données FAIR :
 - Dépôt de code : <https://github.com/dhuzard/HCMO>
 - Espace de noms / IRI de l'ontologie : <https://w3id.org/hcmo/ontology/hcm>
 - DOI (Zenodo) : <https://doi.org/10.5281/zenodo.18925285>
-- Documentation HTML (WIDOCO, GitHub Pages) — _à insérer : URL du site publié._
+- Documentation HTML (WIDOCO) : <https://dhuzard.github.io/HCMO/index-en.html>
 - Démo / vidéo de la couche KGQA — _à insérer si disponible avant l'envoi._
 
 ---
