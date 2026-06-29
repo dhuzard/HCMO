@@ -44,24 +44,25 @@ RewriteRule ^ontology/hcm(/(bio|env|obs))?/?$ https://dhuzard.github.io/hcmo/ [R
 # -----------------------------------------------------------------------------
 # Block 2 — version-aware: /ontology/hcm/<version>  -> the v<version> release
 #
-# <version> is constrained to a semantic version so this never shadows the
-# module namespaces (/ontology/hcm/bio etc.) handled by Block 1. $1 captures
-# the version; release tags are v<version> (release.yml triggers on 'v*').
+# <version> is constrained to a version-shaped segment (two or three numeric
+# components, e.g. 0.9 or 0.0.1) so this never shadows the module namespaces
+# (/ontology/hcm/bio etc.) handled by Block 1. $1 captures the version; release
+# tags are v<version> (release.yml triggers on 'v*', e.g. the v0.9 release).
 # -----------------------------------------------------------------------------
 
 # Turtle
 RewriteCond %{HTTP_ACCEPT} text/turtle [OR]
 RewriteCond %{HTTP_ACCEPT} application/x-turtle
-RewriteRule ^ontology/hcm/(\d+\.\d+\.\d+)/?$ https://github.com/dhuzard/hcmo/releases/download/v$1/hcmo.ttl [R=303,L]
+RewriteRule ^ontology/hcm/(\d+\.\d+(?:\.\d+)?)/?$ https://github.com/dhuzard/hcmo/releases/download/v$1/hcmo.ttl [R=303,L]
 
 # RDF/XML (OWL)
 RewriteCond %{HTTP_ACCEPT} application/rdf\+xml
-RewriteRule ^ontology/hcm/(\d+\.\d+\.\d+)/?$ https://github.com/dhuzard/hcmo/releases/download/v$1/hcmo.owl [R=303,L]
+RewriteRule ^ontology/hcm/(\d+\.\d+(?:\.\d+)?)/?$ https://github.com/dhuzard/hcmo/releases/download/v$1/hcmo.owl [R=303,L]
 
 # JSON-LD
 RewriteCond %{HTTP_ACCEPT} application/ld\+json [OR]
 RewriteCond %{HTTP_ACCEPT} application/json
-RewriteRule ^ontology/hcm/(\d+\.\d+\.\d+)/?$ https://github.com/dhuzard/hcmo/releases/download/v$1/hcmo.json [R=303,L]
+RewriteRule ^ontology/hcm/(\d+\.\d+(?:\.\d+)?)/?$ https://github.com/dhuzard/hcmo/releases/download/v$1/hcmo.json [R=303,L]
 
 # Default / browsers -> the tagged release page for that version
-RewriteRule ^ontology/hcm/(\d+\.\d+\.\d+)/?$ https://github.com/dhuzard/hcmo/releases/tag/v$1 [R=303,L]
+RewriteRule ^ontology/hcm/(\d+\.\d+(?:\.\d+)?)/?$ https://github.com/dhuzard/hcmo/releases/tag/v$1 [R=303,L]
