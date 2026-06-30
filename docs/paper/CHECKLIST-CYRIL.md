@@ -15,10 +15,10 @@
 | Indicateur | Valeur |
 |---|---|
 | Total | 44 |
-| ✅ Fait | 21 |
-| 🟡 En cours | 6 |
+| ✅ Fait | 22 |
+| 🟡 En cours | 4 |
 | ⛔ Bloqué (T0) | 11 |
-| ⬜ À faire | 6 |
+| ⬜ À faire | 7 |
 | Obligatoires restantes (non-Fait) | ~20 |
 
 ## Items
@@ -51,7 +51,7 @@
 | 24 | Availability | DOI Zenodo | Oui | ✅ | `CITATION.cff` → 10.5281/zenodo.18925285 | Existe; à refigers sur la release du papier (T9). |
 | 25 | Availability | Vérifier la licence | Oui | ✅ | `LICENSE`, `README.md` | CC BY 4.0. |
 | 26 | Availability | CITATION.cff | Oui | ✅ | `CITATION.cff` | Présent + ORCIDs ajoutés. |
-| 27 | Availability | Namespace persistant w3id | Oui | 🟡 | `TODO.md` (T2) | **Redirection w3id pas encore créée** (CHANGELOG). Priorité. |
+| 27 | Availability | Namespace persistant w3id | Oui | ✅ | <https://github.com/perma-id/w3id.org/pull/6261>, <https://w3id.org/hcmo/ontology/hcm> | PR w3id merged le 2026-06-30 ; namespace HCMO accepté. À vérifier ensuite avec la release finale. |
 | 28 | Availability | README : comment utiliser l'ontologie | Oui | ✅ | `README.md` | Quickstart + "Consuming the ontology". |
 | 29 | Availability | Release/doc/DOI = même version | Oui | ⬜ | `TODO.md` (T9) | À faire au moment de la release. |
 | 30 | Availability | Section Availability prête à coller | Oui | ✅ | `sections/05-availability.md`, `metadata/resource-metadata.md` | GitHub/DOI/licence/docs/examples/queries. |
