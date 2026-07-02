@@ -15,8 +15,8 @@
 | Indicateur | Valeur |
 |---|---|
 | Total | 44 |
-| ✅ Fait | 22 |
-| 🟡 En cours | 4 |
+| ✅ Fait | 23 |
+| 🟡 En cours | 3 |
 | ⛔ Bloqué (T0) | 11 |
 | ⬜ À faire | 7 |
 | Obligatoires restantes (non-Fait) | ~20 |
