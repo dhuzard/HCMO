@@ -62,7 +62,8 @@
 | 35 | KGQA | Capture/figure du démonstrateur | Non | ⬜ | — | Seulement si utile. |
 | 36 | Soumission | Format & template | Oui | ✅ | `CALL-REQUIREMENTS.md` | **LNCS** (Springer). |
 | 37 | Soumission | (Non-)anonymisation | Oui | ✅ | `CALL-REQUIREMENTS.md` | **Single-anonymous** : auteurs nommés. |
-| 38 | Soumission | Figures principales | Oui | 🟡 | `sources/figures/`, rapport de stage | Figures candidates importées depuis le rapport. Sélection proposée pour l’article : F1 = contexte HCM/Olog ou paramètres HCM ; F2 = vue modules HCMO bio/housing/env/tech ; F3 = chaîne capteur → observation → résultat/provenance. Reste à choisir avec Damien lesquelles garder et à nettoyer les versions finales. || 39 | Soumission | Tableau récap des ressources | Oui | ✅ | `metadata/resource-metadata.md` | GitHub/DOI/docs/examples/SHACL/queries. |
+| 38 | Soumission | Figures principales | Oui | 🟡 | `sources/figures/`, rapport de stage | Figures candidates importées depuis le rapport. Sélection proposée pour l’article : F1 = contexte HCM/Olog ou paramètres HCM ; F2 = vue modules HCMO bio/housing/env/tech ; F3 = chaîne capteur → observation → résultat/provenance. Reste à choisir avec Damien lesquelles garder et à nettoyer les versions finales. |
+| 39 | Soumission | Tableau récap des ressources | Oui | ✅ | `metadata/resource-metadata.md` | GitHub/DOI/docs/examples/SHACL/queries. |
 | 40 | Soumission | Relecture interne complète | Oui | ⬜ | `TODO.md` (T22) | À faire en fin de rédaction. |
 | 41 | Soumission | Liste auteurs & contributions | Oui | ✅ | `metadata/authors.md` | Gilbert 1ᵉʳ; Todorov & Huzard co-corresp. |
 | 42 | Soumission | Version soumissionnable (objectif fin juillet) | Oui | ⛔ | — | Bloqué T0 (§4 & §6 manquent). |
