@@ -41,10 +41,12 @@ the relevant doc and logged in `TODO.md`.
 | Q17 | Affiliations + missing ORCIDs | 🟠 | **ORCIDs provided** (2026-06-29) → CITATION.cff, README, authors.md; names fixed (Sonfack **Sounchio**, To**ff**ano). **Affiliations still pending.** Fold ORCIDs into V1 ontology header at T0. |
 | Q18 | Novelty verification | 🟢 | **Search run** → no HCM ontology exists; adjacents = OBI/OLAM/MEDO + ARRIVE. See `NOVELTY.md`; applied to §2. |
 
-## Round 5 — governance / legal ⬜ OPEN
-| # | Aspect | Conf. | Answer |
-|---|--------|-------|--------|
-| Q19 | **License confirmed with all co-authors?** CC BY 4.0 is asserted in `LICENSE`, README, `CITATION.cff`, and the ontology header, but there is no record that all 7 co-authors have consented. For an ontology there is also a real **CC BY 4.0 vs CC0** choice (LOV/OBO communities often prefer CC0 or CC BY for maximal vocabulary reuse). Confirm the license with co-authors before submission. | 🟠 | _open: needs author/co-author confirmation_ |
+## Round 5 — ontology architecture ◐ (Q19–Q20 RESOLVED 2026-07-03 · Q21 open)
+| # | Aspect | Conf. | Decision / status |
+|---|--------|-------|-------------------|
+| Q19 | Should `tech` be its own module? Device layer (Sensor / Hardware / Software / TimeSeries + all sensor properties). | 🟢 | **YES — full `tech` module ("for now").** Final shape: **5 modules `hcm` core · `bio` · `obs` · `env` · `tech`.** Quarantines the 34 `UNKNOWN:` tech placeholders; mirrors SOSA/SSN's Observation ‖ System split; matches report fig10. `Sensor/Hardware/Software/TimeSeries` IRIs move `…/hcm#` → `…/hcm/tech#` **before** the T9 release. |
+| Q20 | Where do results live? (Decision 0 vs 1 conflict.) | 🟢 | **Drop results from core entirely → `core = enclosure only`; all result/value classes (`ObservationResult`, `QuantityValue`, `CategoricalResult`, `Structural&LocationTable`) move to `obs`.** Reference scan confirmed: once Chowlk cruft (`MonitoredEnclosure ⊑ ObservationResult`) is cleaned, all result usage is obs-internal → zero cross-module edges. Core reduces to the single hub concept: **MonitoredEnclosure**. |
+| Q21 | Adopt **QUDT/OM** for units & quantities? | 🟠 | ◐ **Units: YES** — M4 folds both `hasUnit` props into QUDT/OM. **Still open:** how far to extend (`QuantityValue`, `hasValue`, `hasNumericValue`) and V1-now vs. roadmap timing. See `MODULE-MAP.md` §6 M4. |
 
 ## Parked — artifact-dependent (until clean V1 arrives, T0; author: "soon, days")
 | # | Aspect | Conf. | Answer |
@@ -62,4 +64,6 @@ the relevant doc and logged in `TODO.md`.
 | 2026-06-29 | R3 | Resolved Q6/Q12/Q13/Q14: drop MAPP; all vocabs real; host SPARQL endpoint; lab-maintained. Applied to README/OUTLINE/§00/§04/§05/§07; T6b/T7/T7b added. Q9–Q11 parked on T0. |
 | 2026-06-29 | R4 | Resolved Q15/Q16/Q17/Q18: Gilbert lead + Huzard corresponding (authors.md); affiliations later; w3id redirect missing (T2); novelty search done (NOVELTY.md, §2). Q9–Q11 remain parked on T0 (author: V1 in days). |
 | 2026-07-03 | — | **Q15 closed**: w3id PURL verified live (303 → docs site); T2 done, availability hard gate cleared. |
-| 2026-07-03 | R5 | **Q19 opened**: confirm license (CC BY 4.0 vs CC0) with all co-authors before submission. |
+| 2026-07-03 | R5 | **Ontology architecture opened (to vote)**: Q19 tech-as-own-module (suggest YES → 5 modules), Q20 results placement (suggest core = enclosure only, results → obs). Cross-ref TODO T3b/T3c. |
+| 2026-07-03 | R5 | **Q19 + Q20 RESOLVED**: tech = own module (5 modules); results dropped from core (core = enclosure only, all results → obs). **Q21 opened**: adopt QUDT/OM for units — to discuss. Final shape recorded in TODO T3b. |
+| 2026-07-03 | R5 | **7 micro-decisions resolved** (`MODULE-MAP.md` §6): StudyFactors→bio, TimeSeries→tech, dim-props→core, hasUnit→QUDT/OM (**Q21 units decided**), manufacturer/version split, monitoredBy/installedIn→tech, OWL-Timeintervaltable dropped. Spec now implementation-ready. |

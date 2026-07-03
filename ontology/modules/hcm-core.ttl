@@ -28,7 +28,7 @@ dc:description a owl:AnnotationProperty .
 
 dc:title a owl:AnnotationProperty .
 
-UNKNOWN:StudyFactors a owl:Class ;
+hcm:StudyFactors a owl:Class ;
     rdfs:label "Study Factors" ;
     rdfs:subClassOf hcm:MonitoredEnclosure .
 
@@ -111,7 +111,7 @@ UNKNOWN:hasSocialReq a owl:DatatypeProperty ;
 UNKNOWN:hasType a owl:DatatypeProperty ;
     rdfs:label "has type" .
 
-UNKNOWN:hasVersion a owl:DatatypeProperty ;
+hcm:hasVersion a owl:DatatypeProperty ;
     rdfs:label "has version" .
 
 UNKNOWN:hasWaterReq a owl:DatatypeProperty ;
@@ -128,9 +128,6 @@ UNKNOWN:runsOn a owl:ObjectProperty ;
 
 UNKNOWN:supportsEnclosure a owl:ObjectProperty ;
     rdfs:label "supports enclosure" .
-
-ns:Class2 a owl:Class ;
-    rdfs:label "Class2" .
 
 ns:objectProperty a owl:ObjectProperty ;
     rdfs:label "object property" .
@@ -237,18 +234,6 @@ semts:hasDimension a owl:ObjectProperty ;
 semts:title a owl:DatatypeProperty ;
     rdfs:label "title" .
 
-UNKNOWN:hasDimUnit a owl:DatatypeProperty ;
-    rdfs:label "has dim unit" .
-
-UNKNOWN:hasHeight a owl:DatatypeProperty ;
-    rdfs:label "has height" .
-
-UNKNOWN:hasLength a owl:DatatypeProperty ;
-    rdfs:label "has length" .
-
-UNKNOWN:hasWidth a owl:DatatypeProperty ;
-    rdfs:label "has width" .
-
 UNKNOWN:isOccupied a owl:DatatypeProperty ;
     rdfs:label "is occupied" .
 
@@ -311,6 +296,10 @@ hcm:hasEnrichment a owl:DatatypeProperty ;
 
 hcm:hasManufacturer a owl:DatatypeProperty ;
     rdfs:label "has manufacturer" .
+
+hcm:hasName a owl:DatatypeProperty ;
+    rdfs:label "has name" ;
+    rdfs:range xsd:string .
 
 hcm:hasNumericValue a owl:DatatypeProperty ;
     rdfs:label "has numeric value" .
@@ -507,16 +496,16 @@ hcm:MonitoredEnclosure a owl:Class ;
             owl:onProperty hcm-env:hasUnit ],
         [ a owl:Restriction ;
             owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty UNKNOWN:hasWidth ],
+            owl:onProperty hcm-env:hasWidth ],
         [ a owl:Restriction ;
             owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty UNKNOWN:hasLength ],
+            owl:onProperty hcm-env:hasLength ],
         [ a owl:Restriction ;
             owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty UNKNOWN:hasHeight ],
+            owl:onProperty hcm-env:hasHeight ],
         [ a owl:Restriction ;
             owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty UNKNOWN:hasDimUnit ],
+            owl:onProperty hcm-env:hasDimUnit ],
         [ a owl:Restriction ;
             owl:onProperty hcm-obs: ;
             owl:someValuesFrom hcm-bio:Subject ],

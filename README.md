@@ -1,4 +1,4 @@
-# HCMO — Home-Cage Monitoring Ontology
+﻿# HCMO — Home-Cage Monitoring Ontology
 
 [![Validate](https://github.com/Neuronautix/HCMO/actions/workflows/validate.yml/badge.svg)](https://github.com/Neuronautix/HCMO/actions/workflows/validate.yml)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-blue.svg)](LICENSE)
@@ -15,16 +15,16 @@ JSON-LD context.
 
 ## At a glance
 
-| | |
-|---|---|
-| **Ontology IRI** | `https://w3id.org/hcmo/ontology/hcm` |
-| **Base namespace** | `https://w3id.org/hcmo/ontology/hcm#` |
-| **Module sub-namespaces** | `…/hcm/bio#`, `…/hcm/env#`, `…/hcm/obs#` |
-| **Version** | `0.0.1` (versionIRI `…/hcm/0.0.1`) |
-| **Prefix** | `hcm` |
-| **License** | CC BY 4.0 |
-| **Release manifest** | [`hcmo.yaml`](hcmo.yaml) |
-| **Documentation** | <https://dhuzard.github.io/HCMO/index-en.html> |
+|                                 |                                                                                             |
+| ------------------------------- | ------------------------------------------------------------------------------------------- |
+| **Ontology IRI**          | `https://w3id.org/hcmo/ontology/hcm`                                                      |
+| **Base namespace**        | `https://w3id.org/hcmo/ontology/hcm#`                                                     |
+| **Module sub-namespaces** | `…/hcm/bio#`, `…/hcm/env#`, `…/hcm/obs#`                                           |
+| **Version**               | `0.0.1` (versionIRI `…/hcm/0.0.1`)                                                     |
+| **Prefix**                | `hcm`                                                                                     |
+| **License**               | CC BY 4.0                                                                                   |
+| **Release manifest**      | [`hcmo.yaml`](hcmo.yaml)                                                                   |
+| **Documentation**         | [https://dhuzard.github.io/HCMO/index-en.html](https://dhuzard.github.io/HCMO/index-en.html) |
 
 > The release manifest [`hcmo.yaml`](hcmo.yaml) is the **contract** that
 > downstream tools (e.g. the `hcmo-kgqa-lab` sync layer) read. Its shape is
@@ -88,7 +88,7 @@ python tooling/validate.py   # parse all TTL + pySHACL + competency queries (the
 
 ## Documentation
 
-📖 **Published docs:** <https://dhuzard.github.io/HCMO/index-en.html>
+📖 **Published docs:** [https://dhuzard.github.io/HCMO/index-en.html](https://dhuzard.github.io/HCMO/index-en.html)
 
 Human-readable HTML documentation is generated from the merged graph with
 [WIDOCO](https://github.com/dgarijo/Widoco) (overview, term cross-reference,

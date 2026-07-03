@@ -39,14 +39,6 @@
   },
   "@graph": [
     {
-      "@id": "UNKNOWN:StudyFactors",
-      "@type": "owl:Class",
-      "rdfs:label": "Study Factors",
-      "rdfs:subClassOf": {
-        "@id": "hcm:MonitoredEnclosure"
-      }
-    },
-    {
       "@id": "UNKNOWN:captures",
       "@type": "owl:DatatypeProperty",
       "rdfs:label": "captures"
@@ -82,11 +74,6 @@
       "rdfs:label": "has dawn duration"
     },
     {
-      "@id": "UNKNOWN:hasDimUnit",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has dim unit"
-    },
-    {
       "@id": "UNKNOWN:hasDuskDuration",
       "@type": "owl:DatatypeProperty",
       "rdfs:label": "has dusk duration"
@@ -120,16 +107,6 @@
       "@id": "UNKNOWN:hasFoodReq",
       "@type": "owl:DatatypeProperty",
       "rdfs:label": "has food req"
-    },
-    {
-      "@id": "UNKNOWN:hasHeight",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has height"
-    },
-    {
-      "@id": "UNKNOWN:hasLength",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has length"
     },
     {
       "@id": "UNKNOWN:hasLightPhaseDuration",
@@ -195,19 +172,9 @@
       "rdfs:label": "has type"
     },
     {
-      "@id": "UNKNOWN:hasVersion",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has version"
-    },
-    {
       "@id": "UNKNOWN:hasWaterReq",
       "@type": "owl:DatatypeProperty",
       "rdfs:label": "has water req"
-    },
-    {
-      "@id": "UNKNOWN:hasWidth",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has width"
     },
     {
       "@id": "UNKNOWN:isCalibrated",
@@ -343,6 +310,17 @@
       }
     },
     {
+      "@id": "_:cb2043b433cdffe56fa47ef8847b63bcdded0854f7ed5917917d25a1b0a6c30d575",
+      "@type": "owl:Restriction",
+      "owl:cardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      },
+      "owl:onProperty": {
+        "@id": "hcm-env:hasDimUnit"
+      }
+    },
+    {
       "@id": "_:cb20b5fbc13dbf2fcef35fde99b83b06bc78d7926e4be85341c89cfd043951e95eb",
       "@type": "owl:Restriction",
       "owl:cardinality": {
@@ -392,17 +370,6 @@
       },
       "owl:onProperty": {
         "@id": "sosa:usedProcedure"
-      }
-    },
-    {
-      "@id": "_:cb213f0d54c5fa1d906b1fa271f4b2ed652dd7a3b0e59fd5becf609086d3440ef60",
-      "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "UNKNOWN:hasHeight"
       }
     },
     {
@@ -492,6 +459,17 @@
       }
     },
     {
+      "@id": "_:cb22c364d8c23f537299ceead79ba735ddcd95ba8f9e30158af533c4793161b2790",
+      "@type": "owl:Restriction",
+      "owl:cardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      },
+      "owl:onProperty": {
+        "@id": "hcm-env:hasWidth"
+      }
+    },
+    {
       "@id": "_:cb22ef2312a2ddf97e18a300707bd37aebba84aa72070d0837fbde8b6f8c4246be6",
       "@type": "owl:Restriction",
       "owl:cardinality": {
@@ -566,17 +544,6 @@
       }
     },
     {
-      "@id": "_:cb253edf0ee1402a2b4b80d965919285b97ccd4bf55c3f87f8213f28d4d9ba455fd",
-      "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "UNKNOWN:hasDimUnit"
-      }
-    },
-    {
       "@id": "_:cb2570ca9e5240d4e7484e0da717fe20cb6b6c3f895cd15afe23e4525c367454596",
       "@type": "owl:Restriction",
       "owl:cardinality": {
@@ -609,6 +576,17 @@
       }
     },
     {
+      "@id": "_:cb25b69c955f6865744754ffa8a883465f5ec8ecfa28eef3beda758ebac5f3cb363",
+      "@type": "owl:Restriction",
+      "owl:cardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      },
+      "owl:onProperty": {
+        "@id": "hcm-env:hasHeight"
+      }
+    },
+    {
       "@id": "_:cb2625d47294f6f94d6512d3fe7e510c07ba3cde7a9d62cefe10dc92e974450a548",
       "@type": "owl:Restriction",
       "owl:maxCardinality": {
@@ -617,6 +595,17 @@
       },
       "owl:onProperty": {
         "@id": "sosa:usedProcedure"
+      }
+    },
+    {
+      "@id": "_:cb26797f51830125a49be427bb4573b4e6f92ffd6e8d793493bac6c0102b71ba536",
+      "@type": "owl:Restriction",
+      "owl:cardinality": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "1"
+      },
+      "owl:onProperty": {
+        "@id": "hcm-env:hasLength"
       }
     },
     {
@@ -692,17 +681,6 @@
       },
       "owl:onProperty": {
         "@id": "UNKNOWN:isOperational"
-      }
-    },
-    {
-      "@id": "_:cb27e8813534d58241c66af214b63dd180414679be7da580de6dd4f5186faefd7ec",
-      "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "UNKNOWN:hasLength"
       }
     },
     {
@@ -893,17 +871,6 @@
       },
       "owl:onProperty": {
         "@id": "hcm-bio:hasBehaviorObservation"
-      }
-    },
-    {
-      "@id": "_:cb2e29d528c735be3a3554fe09d7b9a9f4783cd581b3c6514fa739b36d0bc42459f",
-      "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "UNKNOWN:hasWidth"
       }
     },
     {
@@ -1145,6 +1112,11 @@
       "rdfs:label": "Light Cycle"
     },
     {
+      "@id": "hcm-env:LightIntensity",
+      "@type": "owl:ObjectProperty",
+      "rdfs:label": "light intensity"
+    },
+    {
       "@id": "hcm-env:LightState",
       "@type": "owl:ObjectProperty",
       "rdfs:label": "light state"
@@ -1170,6 +1142,11 @@
       "rdfs:label": "Thrive Profile"
     },
     {
+      "@id": "hcm-env:hasDimUnit",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:label": "has dim unit"
+    },
+    {
       "@id": "hcm-env:hasGasConcentrationProfile",
       "@type": "owl:ObjectProperty",
       "rdfs:label": "has gas concentration profile"
@@ -1178,6 +1155,16 @@
       "@id": "hcm-env:hasGasType",
       "@type": "owl:DatatypeProperty",
       "rdfs:label": "has gas type"
+    },
+    {
+      "@id": "hcm-env:hasHeight",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:label": "has height"
+    },
+    {
+      "@id": "hcm-env:hasLength",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:label": "has length"
     },
     {
       "@id": "hcm-env:hasLightCycle",
@@ -1198,6 +1185,11 @@
       "@id": "hcm-env:hasValue",
       "@type": "owl:DatatypeProperty",
       "rdfs:label": "has value"
+    },
+    {
+      "@id": "hcm-env:hasWidth",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:label": "has width"
     },
     {
       "@id": "hcm-obs:",
@@ -1358,6 +1350,9 @@
           "@id": "_:cb1da4fbb00363561c187566c823203a6e42cca371704b8b94c82a13d18cb7a794b"
         },
         {
+          "@id": "_:cb2043b433cdffe56fa47ef8847b63bcdded0854f7ed5917917d25a1b0a6c30d575"
+        },
+        {
           "@id": "_:cb20b5fbc13dbf2fcef35fde99b83b06bc78d7926e4be85341c89cfd043951e95eb"
         },
         {
@@ -1368,9 +1363,6 @@
         },
         {
           "@id": "_:cb213c3039824c882634fbf71fe0e22bd258b5d93df7d6853268f57baf9db27f4d8"
-        },
-        {
-          "@id": "_:cb213f0d54c5fa1d906b1fa271f4b2ed652dd7a3b0e59fd5becf609086d3440ef60"
         },
         {
           "@id": "_:cb214e980bee92cb86d9169602c4236921015bdf27ebcafaebe10f81ce936181cbe"
@@ -1386,6 +1378,9 @@
         },
         {
           "@id": "_:cb22c0391c4877a1584fd21ce01322dcfd292e66fbe955d82098202a9de1601901d"
+        },
+        {
+          "@id": "_:cb22c364d8c23f537299ceead79ba735ddcd95ba8f9e30158af533c4793161b2790"
         },
         {
           "@id": "_:cb22ef2312a2ddf97e18a300707bd37aebba84aa72070d0837fbde8b6f8c4246be6"
@@ -1406,13 +1401,16 @@
           "@id": "_:cb248f9b61c229158e9e4e4121f752d569499b2bbb93e2206c7829b04696b6b03e9"
         },
         {
-          "@id": "_:cb253edf0ee1402a2b4b80d965919285b97ccd4bf55c3f87f8213f28d4d9ba455fd"
-        },
-        {
           "@id": "_:cb2570ca9e5240d4e7484e0da717fe20cb6b6c3f895cd15afe23e4525c367454596"
         },
         {
           "@id": "_:cb25b4872a2b3f75e22a0e8cd01ca9d052cc468816c30a3a44a0f74be0ba61bc1dd"
+        },
+        {
+          "@id": "_:cb25b69c955f6865744754ffa8a883465f5ec8ecfa28eef3beda758ebac5f3cb363"
+        },
+        {
+          "@id": "_:cb26797f51830125a49be427bb4573b4e6f92ffd6e8d793493bac6c0102b71ba536"
         },
         {
           "@id": "_:cb26c5c6d9ff16d82f61f5e0dabe72cde65bd209041d31a12dc42fef0e54bdc68e9"
@@ -1431,9 +1429,6 @@
         },
         {
           "@id": "_:cb27cd55df4aa24314b2e3834501529d36abe8656fcda4805f3617bd3d72f61ff4b"
-        },
-        {
-          "@id": "_:cb27e8813534d58241c66af214b63dd180414679be7da580de6dd4f5186faefd7ec"
         },
         {
           "@id": "_:cb28298578685294227561c08271167ef54e7ad9b57fd2459eb9dc075ee9f1f4a41"
@@ -1467,9 +1462,6 @@
         },
         {
           "@id": "_:cb2e130268b383065b6b9c1b7d49cfb81c6c918b9df727e364784bbb9a57101f6e2"
-        },
-        {
-          "@id": "_:cb2e29d528c735be3a3554fe09d7b9a9f4783cd581b3c6514fa739b36d0bc42459f"
         },
         {
           "@id": "_:cb2e433199239f5dcd71b67060da183432e1e56b5de0dceed5ac2ba2e4492e9d613"
@@ -1553,6 +1545,14 @@
       ]
     },
     {
+      "@id": "hcm:StudyFactors",
+      "@type": "owl:Class",
+      "rdfs:label": "Study Factors",
+      "rdfs:subClassOf": {
+        "@id": "hcm:MonitoredEnclosure"
+      }
+    },
+    {
       "@id": "hcm:TimeSeries",
       "@type": "owl:Class",
       "rdfs:label": "Time Series"
@@ -1608,6 +1608,14 @@
       "rdfs:label": "has monitored animals"
     },
     {
+      "@id": "hcm:hasName",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:label": "has name",
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
       "@id": "hcm:hasNumericValue",
       "@type": "owl:DatatypeProperty",
       "rdfs:label": "has numeric value"
@@ -1636,6 +1644,11 @@
       "@id": "hcm:hasUnit",
       "@type": "owl:DatatypeProperty",
       "rdfs:label": "has unit"
+    },
+    {
+      "@id": "hcm:hasVersion",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:label": "has version"
     },
     {
       "@id": "hcm:installedIn",
@@ -1727,11 +1740,6 @@
         "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
       },
       "owl:versionInfo": "0.0.1"
-    },
-    {
-      "@id": "ns:Class2",
-      "@type": "owl:Class",
-      "rdfs:label": "Class2"
     },
     {
       "@id": "ns:objectProperty",

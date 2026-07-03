@@ -16,7 +16,8 @@ column and append to the **Change log** whenever something moves.
 | T1 | ~~Lock venue~~ → **ESWC 2027 Resources Track, 15 pp** (HITL R1) | — | ☑ | Re-confirm dates/template when CfP opens. |
 | T2 | ~~Create the w3id PURL redirect~~ → **live**: `https://w3id.org/hcmo/ontology/hcm#` resolves (303 → docs site) | — | ☑ | **Availability hard gate cleared.** [w3id PR #6261](https://github.com/perma-id/w3id.org/pull/6261) merged 2026-06-30; verified 2026-07-03. Re-check with the paper-matching release (T9). |
 | T3 | Create Overleaf project from **LNCS** template; mirror `sections/` | — | ☐ | Keep authors **named** (single-anonymous). |
-| T3b | **Re-modularise** ontology to **bio/housing/env/tech** (HITL R1) | — | ☐ | Repo currently core/bio/env/obs. |
+| T3b | **Re-modularise** to the **DECIDED** R5 shape (2026-07-03): **5 modules — `hcm` core = enclosure only · `bio` · `obs` (observations + results) · `env` · `tech`**. `HousingAssignment` → bio (out of obs); `EnclosureDimensions` → core; all result/value classes → obs; `Sensor/Hardware/Software/TimeSeries` → new `tech` (`…/hcm/tech#`). Supersedes bio/housing/env/tech. | — | ☐ | Repo currently core/bio/env/obs. Spec: `docs/paper/MODULE-MAP.md`. Q19/Q20 resolved; **Q21 (QUDT/OM units) open**. Do IRI moves **before** T9 release. |
+| T3c | **Decide which module owns the bio↔obs linking properties** (Subject→observation vs Observation→subject). The two modules are mutually dependent; **accept the bio/obs cycle for V1 knowingly** (harmless in the merged graph; blocks strict `owl:imports` layering only). | — | ☐ | HITL R5. Document the chosen direction in `docs/ARCHITECTURE.md`/`MODEL.md`. |
 
 ## Phase 1 — Make the resource paper-ready (ontology work)
 
@@ -66,6 +67,9 @@ column and append to the **Change log** whenever something moves.
 
 | Date | Change | By |
 |------|--------|----|
+| 2026-07-03 | **MODULE-MAP.md finalised** — all 7 term-placement micro-decisions resolved (StudyFactors→bio, TimeSeries→tech, dim-props→core, hasUnit→QUDT/OM, manufacturer/version split, monitoredBy/installedIn→tech, OWL-Timeintervaltable dropped). Spec is now implementation-ready for T3b. No ontology code changed yet. | Claude |
+| 2026-07-03 | **Module shape FINALISED (R5)**: 5 modules — hcm core = **enclosure only** / bio / obs (observations+results) / env / **tech** (own module). HousingAssignment → bio; EnclosureDimensions → core; all results → obs. Q19/Q20 resolved; Q21 (QUDT/OM) open. Spec → `MODULE-MAP.md`. No ontology code changed yet. | Claude |
+| 2026-07-03 | **Module shape proposed (R5)**: initial enclosure+tech+results core; superseded same day by the finalised 5-module shape above. | Claude |
 | 2026-07-03 | **T23b added** — open license question (Q19): confirm CC BY 4.0 vs CC0 with all co-authors before submission. | Claude |
 | 2026-07-03 | Updated ontology header attribution — all 7 co-authors now carry ORCID IRIs (Sonfack Sounchio, Toffano, Gilbert, Sanou added); rebuilt `dist/`. Feeds WIDOCO docs. | Claude |
 | 2026-07-03 | **T2 done** — w3id PURL `https://w3id.org/hcmo/ontology/hcm#` verified live (303 → docs site); availability hard gate cleared. Updated OPEN-QUESTIONS Q15, §5 availability, FAIR table. | Claude |

@@ -34,6 +34,9 @@ hcm-env:EnvironmentProfile a owl:Class ;
 hcm-env:EnvironmentalProperty a owl:Class ;
     rdfs:label "Environmental Property" .
 
+hcm-env:LightIntensity a owl:ObjectProperty ;
+    rdfs:label "light intensity" .
+
 hcm-env:LightState a owl:ObjectProperty ;
     rdfs:label "light state" .
 
@@ -54,6 +57,18 @@ hcm-env:hasUnit a owl:DatatypeProperty ;
 
 hcm-env:hasValue a owl:DatatypeProperty ;
     rdfs:label "has value" .
+
+hcm-env:hasDimUnit a owl:DatatypeProperty ;
+    rdfs:label "has dim unit" .
+
+hcm-env:hasHeight a owl:DatatypeProperty ;
+    rdfs:label "has height" .
+
+hcm-env:hasLength a owl:DatatypeProperty ;
+    rdfs:label "has length" .
+
+hcm-env:hasWidth a owl:DatatypeProperty ;
+    rdfs:label "has width" .
 
 hcm-env:GasConcentrationProfile a owl:Class ;
     rdfs:label "Gas Concentration Profile" .
