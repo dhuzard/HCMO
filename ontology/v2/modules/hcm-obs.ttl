@@ -1,0 +1,120 @@
+# HCMO v2 (re-modularised draft, obs) — obs — observations AND results (LocationResultTable, ObservationResult, QuantityValue, ...)
+# Generated for co-author review; see docs/paper/MODULE-MAP.md. Namespace policy: …/hcm/obs#.
+#
+@prefix hcm: <https://w3id.org/hcmo/ontology/hcm#> .
+@prefix hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#> .
+@prefix hcm-obs: <https://w3id.org/hcmo/ontology/hcm/obs#> .
+@prefix hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix semts: <https://w3id.org/semts/ontology/120#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+hcm-obs:BehaviorObservation a owl:Class ;
+    rdfs:label "Behavior Observation" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty sosa:hasResult ;
+            owl:someValuesFrom hcm:MonitoredEnclosure ],
+        [ a owl:Restriction ;
+            owl:onProperty sosa:hasFeatureOfInterest ;
+            owl:someValuesFrom hcm-bio:Subject ] .
+
+hcm-obs:BehaviorResult a owl:Class ;
+    rdfs:label "Behavior Result" .
+
+hcm-obs:CategoricalResult a owl:Class ;
+    rdfs:label "Categorical Result" .
+
+hcm-obs:EnvironmentObservation a owl:Class ;
+    rdfs:label "Environment Observation" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty sosa:hasFeatureOfInterest ;
+            owl:someValuesFrom hcm:MonitoredEnclosure ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom semts:DataDimension ;
+            owl:onProperty semts:hasDimension ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm-obs:hasCategory ] .
+
+hcm-obs:GasConcentrationObservation a owl:Class ;
+    rdfs:label "Gas Concentration Observation" .
+
+hcm-obs:HealthStatusObservation a owl:Class ;
+    rdfs:label "Health Status Observation" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty sosa:hasFeatureOfInterest ;
+            owl:someValuesFrom hcm:MonitoredEnclosure ] .
+
+hcm-obs:LocationResultTable a owl:Class ;
+    rdfs:label "Structural& Location Table" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty sosa:hasResult ;
+            owl:someValuesFrom hcm-obs:QuantityValue ],
+        [ a owl:Restriction ;
+            owl:onProperty semts:generated ;
+            owl:someValuesFrom semts:TimeSeriesSegment ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty sosa:resultTime ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty sosa:phenomenonTime ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty sosa:usedProcedure ],
+        hcm-obs:ObservationResult .
+
+hcm-obs:WeightObservation a owl:Class ;
+    rdfs:label "Weight Observation" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty sosa:observedProperty ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty sosa:usedProcedure ],
+        [ a owl:Restriction ;
+            owl:onProperty sosa:hasFeatureOfInterest ;
+            owl:someValuesFrom hcm:MonitoredEnclosure ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty sosa:resultTime ],
+        hcm-obs:ObservationResult .
+
+hcm-obs:hasBehaviorType a owl:DatatypeProperty ;
+    rdfs:label "has behavior type" .
+
+hcm-obs:hasConfidenceScore a owl:DatatypeProperty ;
+    rdfs:label "has confidence score" .
+
+hcm-obs:hasHealthStatusTerm a owl:DatatypeProperty ;
+    rdfs:label "has health status term" .
+
+hcm-obs:hasInterval a owl:DatatypeProperty ;
+    rdfs:label "has interval" .
+
+hcm-obs:hasNumericValue a owl:DatatypeProperty ;
+    rdfs:label "has numeric value" .
+
+hcm-obs:occursIn a owl:ObjectProperty ;
+    rdfs:label "occurs in" .
+
+hcm-obs:QuantityValue a owl:Class ;
+    rdfs:label "Quantity Value" .
+
+hcm-obs:hasCategory a owl:DatatypeProperty ;
+    rdfs:label "has category" .
+
+hcm-obs:hasResult a owl:ObjectProperty ;
+    rdfs:label "has result" .
+
+hcm-obs:ObservationResult a owl:Class ;
+    rdfs:label "Observation Result" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty hcm-obs:hasResult ;
+            owl:someValuesFrom hcm:MonitoredEnclosure ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom hcm-tech:Sensor ;
+            owl:onProperty sosa:madeBySensor ] .
+

@@ -1,0 +1,41 @@
+# HCMO v2 (re-modularised draft, tech) — tech — devices & data (Sensor/Hardware/Software/TimeSeries) — NEW module
+# Generated for co-author review; see docs/paper/MODULE-MAP.md. Namespace policy: …/hcm/tech#.
+#
+@prefix hcm: <https://w3id.org/hcmo/ontology/hcm#> .
+@prefix hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+hcm-tech:Hardware a owl:Class ;
+    rdfs:label "Hardware" .
+
+hcm-tech:Sensor a owl:Class ;
+    rdfs:label "Sensor" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty hcm-tech:installedIn ;
+            owl:someValuesFrom hcm:MonitoredEnclosure ] .
+
+hcm-tech:Software a owl:Class ;
+    rdfs:label "Software" .
+
+hcm-tech:TimeSeries a owl:Class ;
+    rdfs:label "Time Series" .
+
+hcm-tech:hasFileFormat a owl:DatatypeProperty ;
+    rdfs:label "has file format" .
+
+hcm-tech:hasSamplingRate a owl:DatatypeProperty ;
+    rdfs:label "has sampling rate" .
+
+hcm-tech:hasStoragePath a owl:DatatypeProperty ;
+    rdfs:label "has storage path" .
+
+hcm-tech:hasVersion a owl:DatatypeProperty ;
+    rdfs:label "has version" .
+
+hcm-tech:monitoredBy a owl:ObjectProperty ;
+    rdfs:label "monitored by" .
+
+hcm-tech:installedIn a owl:ObjectProperty ;
+    rdfs:label "installed in" .
+
