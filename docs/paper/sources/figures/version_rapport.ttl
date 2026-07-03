@@ -139,8 +139,8 @@ hcm:Hardware a owl:Class ;
 hcm:OWL-Timeintervaltable a owl:Class ;
     rdfs:label "O W L- Timeintervaltable" .
 
-<https://w3id.org/hcm/Structural&LocationTable> a owl:Class ;
-    rdfs:label "Structural& Location Table" ;
+<https://w3id.org/hcmo/ontology/hcm/obs#LocationResultTable> a owl:Class ;
+    rdfs:label "Location Result Table" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty sosa:hasResult ;
             owl:someValuesFrom hcm:QuantityValue ],
@@ -238,10 +238,10 @@ hcm:hasVersion a owl:DatatypeProperty ;
 hcm:isOccupied a owl:DatatypeProperty ;
     rdfs:label "is occupied" .
 
-hcm:mapp a owl:Ontology ;
+<https://w3id.org/hcmo/ontology/hcm> a owl:Ontology ;
     dc:creator "Damien/Cyril" ;
-    dc:description "Ontology for Monitoring and Analytics for Physiological Processes (MAPP)" ;
-    dc:title "MAPP Ontology" ;
+    dc:description "Ontology for home-cage monitoring of laboratory animals" ;
+    dc:title "Home-Cage Monitoring Ontology" ;
     owl:versionInfo "0.0.1" ;
     mod:createdWith <https://chowlk.linkeddata.es/> .
 
