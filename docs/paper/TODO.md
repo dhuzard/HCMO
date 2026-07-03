@@ -25,7 +25,7 @@ column and append to the **Change log** whenever something moves.
 
 | ID | Task | Status | Notes |
 |----|------|--------|-------|
-| T4 | Replace/remove **Chowlk placeholders** (`UNKNOWN:*`, `ns:Class2`, `ns:objectProperty`, `xsd:boolean/integer` as properties) | ☐ | 43 terms. See `docs/MISSING-DEFINITIONS.md`. |
+| T4 | Replace/remove **Chowlk placeholders** (`UNKNOWN:*`, `ns:Class2`, `ns:objectProperty`, `xsd:boolean/integer` as properties) | ◐ | v2 placeholders reduced from 32 to 29; safe duplicates resolved (`isOccupied`, `isOperational`, `hasSamplingRate`). Decision table: `docs/paper/PLACEHOLDER-MAP.md`. |
 | T5 | Add **labels + `rdfs:comment`/IAO definitions** for all terms | ☐ | 143 terms lack comments; 1 lacks a label. |
 | T6 | **Re-author SHACL shapes, examples & competency queries** against the clean V1 term set | ☐ | Currently legacy → CQs return 0 rows. |
 | T6b | **Host a public SPARQL endpoint** (HITL R3) | ☐ | Strongest availability story; depends on T0. |
@@ -67,6 +67,7 @@ column and append to the **Change log** whenever something moves.
 
 | Date | Change | By |
 |------|--------|----|
+| 2026-07-03 | **T4 started** — resolved safe v2 placeholder cases: `UNKNOWN:isOccupied` → `hcm:isOccupied`, `UNKNOWN:isOperational` → new `hcm:isOperational`, and duplicate `UNKNOWN:hasSamplingRate` dropped in favour of `hcm-tech:hasSamplingRate`. Added `PLACEHOLDER-MAP.md` for the remaining 29 placeholders. | Codex |
 | 2026-07-03 | **T3c closed** — documented the accepted `bio`↔`obs` cycle and ownership rule: subject-side observation links live in `bio`; observation classes/results and SOSA feature-of-interest semantics live in `obs`. | Codex |
 | 2026-07-03 | **Figure source labels refreshed** — `version_rapport.drawio`, `.drawio.xml`, and source TTL now use HCMO branding and `LocationResultTable`; only labels/IRIs were touched, not diagram structure. | Codex |
 | 2026-07-03 | **v2 cleanup pass after co-author review** — HCMO branding applied to the v2 ontology header; `LocationResultTable` legacy label fixed; relation-like properties corrected from datatype to object properties; obvious Chowlk-inherited wrong-direction restrictions removed or retargeted. v2 modules + merged TTL parse with rdflib. | Codex |

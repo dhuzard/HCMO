@@ -16,8 +16,8 @@
 |---|---|
 | Total | 44 |
 | ✅ Fait | 23 |
-| 🟡 En cours | 5 |
-| ⛔ Bloqué (T0) | 9 |
+| 🟡 En cours | 6 |
+| ⛔ Bloqué (T0) | 8 |
 | ⬜ À faire | 7 |
 | Obligatoires restantes (non-Fait) | ~20 |
 
@@ -37,7 +37,7 @@
 | 10 | Ontologie | Stabiliser classes & propriétés centrales | Oui | 🟡 | `ontology/v2/`, `docs/paper/MODULE-MAP.md` | v2 5 modules construit et nettoyé légèrement; reste à promouvoir officiellement puis traiter placeholders/unités/définitions. |
 | 11 | Ontologie | Labels + commentaires entités principales | Oui | ⛔ | `AUDIT.md` | **0 `rdfs:comment`** dans le dépôt actuel → V1. |
 | 12 | Ontologie | Vérifier modules Turtle/OWL exportés | Oui | 🟡 | `ontology/v2/README.md`, `ontology/v2/hcmo-v2-merged.ttl` | Modules v2 + merged TTL parsés avec rdflib; live build/CI pas encore repointés. |
-| 13 | Ontologie | Nettoyer termes Chowlk temporaires | Oui | ⛔ | `AUDIT.md` | **43 placeholders** (`UNKNOWN:*`, `ns:Class2`…) → V1. |
+| 13 | Ontologie | Nettoyer termes Chowlk temporaires | Oui | 🟡 | `docs/paper/PLACEHOLDER-MAP.md`, `ontology/v2/modules/hcm-placeholders.ttl` | v2 réduit à 29 placeholders; doublons sûrs résolus. Reste à mint/drop les termes listés avant promotion. |
 | 14 | Ontologie | Exemples d'instances représentatifs | Oui | ⛔ | `sections/03-requirements.md` | Scénario HCM complet; ABox synthétiques après T0. |
 | 15 | Ontologie | Requêtes SPARQL des competency questions | Oui | ⛔ | `sections/03-requirements.md` | CQ1–CQ6 définies; requêtes après T0 (renvoient 0 actuellement). |
 | 16 | Ontologie | SHACL valides/invalides | Oui | ⛔ | — | Bloqué T0 (shapes ciblent les termes legacy). |
@@ -77,7 +77,8 @@ Engineering/Availability + §7 Impact + §8 Conclusion are **drafted** in
 only sections still missing — both **blocked on the clean V1 (T0)**.
 
 ## The one blocker driving most ⛔ items
-Items **11, 13–17, 19, 42** still wait on the promoted clean ontology (see
+Items **11, 14–17, 19, 42** still wait on the promoted clean ontology (see
 `ontology/v2/` and `AUDIT.md`). Item **10** has moved from blocked to in progress
-because the v2 modular draft is now the working artifact. Item **27 (w3id)** is
-done; **23/29 (release alignment)** proceed after promotion.
+because the v2 modular draft is now the working artifact; item **13** is also in
+progress via `PLACEHOLDER-MAP.md`. Item **27 (w3id)** is done; **23/29 (release
+alignment)** proceed after promotion.

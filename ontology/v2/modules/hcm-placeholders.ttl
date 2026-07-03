@@ -59,9 +59,6 @@ UNKNOWN:hasProtocol a owl:DatatypeProperty ;
 UNKNOWN:hasSafetyReq a owl:DatatypeProperty ;
     rdfs:label "has safety req" .
 
-UNKNOWN:hasSamplingRate a owl:DatatypeProperty ;
-    rdfs:label "has sampling rate" .
-
 UNKNOWN:hasSensorIdentifier a owl:DatatypeProperty ;
     rdfs:label "has sensor identifier" .
 
@@ -85,12 +82,6 @@ UNKNOWN:hasWaterReq a owl:DatatypeProperty ;
 
 UNKNOWN:isCalibrated a owl:DatatypeProperty ;
     rdfs:label "is calibrated" .
-
-UNKNOWN:isOccupied a owl:DatatypeProperty ;
-    rdfs:label "is occupied" .
-
-UNKNOWN:isOperational a owl:DatatypeProperty ;
-    rdfs:label "is operational" .
 
 UNKNOWN:partOF a owl:DatatypeProperty ;
     rdfs:label "part o f" .

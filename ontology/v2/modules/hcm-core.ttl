@@ -1,7 +1,6 @@
 # HCMO v2 (re-modularised draft, core) — core — the MonitoredEnclosure hub + reused-vocab scaffolding + ontology header
 # Generated for co-author review; see docs/paper/MODULE-MAP.md. Namespace policy: …/hcm#.
 #
-@prefix UNKNOWN: <http://www.owl-ontologies.com/UNKNOWN#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix hcm: <https://w3id.org/hcmo/ontology/hcm#> .
@@ -68,6 +67,9 @@ hcm:hasName a owl:DatatypeProperty ;
 
 hcm:isOccupied a owl:DatatypeProperty ;
     rdfs:label "is occupied" .
+
+hcm:isOperational a owl:DatatypeProperty ;
+    rdfs:label "is operational" .
 
 semts:DataDimension a owl:Class ;
     rdfs:label "Data Dimension" .
@@ -190,10 +192,10 @@ hcm:MonitoredEnclosure a owl:Class ;
             owl:onProperty hcm-env:hasThriveProfile ],
         [ a owl:Restriction ;
             owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty UNKNOWN:isOperational ],
+            owl:onProperty hcm:isOperational ],
         [ a owl:Restriction ;
             owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty UNKNOWN:isOccupied ],
+            owl:onProperty hcm:isOccupied ],
         [ a owl:Restriction ;
             owl:cardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty time:hasBeginning ],

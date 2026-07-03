@@ -77,9 +77,6 @@ UNKNOWN:hasProtocol a owl:DatatypeProperty ;
 UNKNOWN:hasSafetyReq a owl:DatatypeProperty ;
     rdfs:label "has safety req" .
 
-UNKNOWN:hasSamplingRate a owl:DatatypeProperty ;
-    rdfs:label "has sampling rate" .
-
 UNKNOWN:hasSensorIdentifier a owl:DatatypeProperty ;
     rdfs:label "has sensor identifier" .
 
@@ -151,6 +148,9 @@ hcm:hasName a owl:DatatypeProperty ;
 
 hcm:isOccupied a owl:DatatypeProperty ;
     rdfs:label "is occupied" .
+
+hcm:isOperational a owl:DatatypeProperty ;
+    rdfs:label "is operational" .
 
 hcm-bio:HousingAssignment a owl:Class ;
     rdfs:label "Housing Assignment" .
@@ -263,12 +263,6 @@ semts:dimensionUnit a owl:DatatypeProperty ;
 
 semts:title a owl:DatatypeProperty ;
     rdfs:label "title" .
-
-UNKNOWN:isOccupied a owl:DatatypeProperty ;
-    rdfs:label "is occupied" .
-
-UNKNOWN:isOperational a owl:DatatypeProperty ;
-    rdfs:label "is operational" .
 
 time:TemporalEntity a owl:Class ;
     rdfs:label "Temporal Entity" .
@@ -542,10 +536,10 @@ hcm:MonitoredEnclosure a owl:Class ;
             owl:onProperty hcm-env:hasThriveProfile ],
         [ a owl:Restriction ;
             owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty UNKNOWN:isOperational ],
+            owl:onProperty hcm:isOperational ],
         [ a owl:Restriction ;
             owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty UNKNOWN:isOccupied ],
+            owl:onProperty hcm:isOccupied ],
         [ a owl:Restriction ;
             owl:cardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty time:hasBeginning ],

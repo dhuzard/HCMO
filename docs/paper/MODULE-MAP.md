@@ -98,12 +98,12 @@ empty `…/hcm/obs#` property (blank label) · duplicate `UNKNOWN:hasName` (real
 
 ## 9. Placeholders → define or drop (T4/T5), grouped by likely target module
 
-- **tech**: `communicatesWith` `hasSensors` `runsOn` `supportsEnclosure` `captures` `hasActuators` `hasFirmware` `hasModelNumber` `hasProtocol` `hasSamplingRate`(UNKNOWN dup) `hasSensorIdentifier` `hasSensorTechnology` `hasSensorType` `isCalibrated`
-- **core/enclosure**: `hasEnrichmentReq` `hasEnrichmentType` `hasFacilityType` `hasFloorArea` `hasFoodReq` `hasSafetyReq` `hasWaterReq` `isOccupied`(dup) `isOperational` `partOF`
+- **tech**: `communicatesWith` `hasSensors` `runsOn` `supportsEnclosure` `captures` `hasActuators` `hasFirmware` `hasModelNumber` `hasProtocol` `hasSensorIdentifier` `hasSensorTechnology` `hasSensorType` `isCalibrated`
+- **core/enclosure**: `hasEnrichmentReq` `hasEnrichmentType` `hasFacilityType` `hasFloorArea` `hasFoodReq` `hasSafetyReq` `hasWaterReq` `partOF`
 - **env**: `hasCondition` `hasDarkPhaseDuration` `hasDarkPhaseStart` `hasDawnDuration` `hasDuskDuration` `hasLightPhaseDuration`
 - **bio**: `hasSocialReq`
 - **generic → redefine/drop**: `hasType`
 
-> ~34 placeholders total. All are `UNKNOWN:`/`ns:` today; each becomes a real term in the module above
+> 29 placeholders remain after the first v2 cleanup pass. All are `UNKNOWN:`/`ns:` today; each becomes a real term in the module above
 > (with label + `rdfs:comment`, T5) or is dropped. Note the tech bucket dominates — the rationale for Q19
 > (a `tech` module quarantines this debt).
