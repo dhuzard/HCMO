@@ -14,7 +14,7 @@ column and append to the **Change log** whenever something moves.
 |----|------|-------|--------|-------|
 | T0 | **🔴 BLOCKER (awaiting author): commit the clean V1 artifact** — Damien will provide the diagrams.net/Chowlk + exported Turtle (HITL R2) | Damien → Claude | ⚠ | Repo `dist/` is an old, broken export — see `AUDIT.md`. Everything depends on this. |
 | T1 | ~~Lock venue~~ → **ESWC 2027 Resources Track, 15 pp** (HITL R1) | — | ☑ | Re-confirm dates/template when CfP opens. |
-| T2 | **Create the w3id PURL redirect** (CHANGELOG says it's not set up yet) so the ontology IRI dereferences | — | ☐ | **Availability hard gate** — submit a PR to perma-id/w3id.org. |
+| T2 | ~~Create the w3id PURL redirect~~ → **live**: `https://w3id.org/hcmo/ontology/hcm#` resolves (303 → docs site) | — | ☑ | **Availability hard gate cleared.** [w3id PR #6261](https://github.com/perma-id/w3id.org/pull/6261) merged 2026-06-30; verified 2026-07-03. Re-check with the paper-matching release (T9). |
 | T3 | Create Overleaf project from **LNCS** template; mirror `sections/` | — | ☐ | Keep authors **named** (single-anonymous). |
 | T3b | **Re-modularise** ontology to **bio/housing/env/tech** (HITL R1) | — | ☐ | Repo currently core/bio/env/obs. |
 
@@ -56,6 +56,7 @@ column and append to the **Change log** whenever something moves.
 | T21 | Complete **CALL-REQUIREMENTS.md** checklist — all ✔ | ☐ |
 | T22 | Internal review pass (co-authors) + proofread, page-count check | ☐ |
 | T23 | Confirm affiliations + ORCIDs of all 7 authors (Gilbert lead, Huzard corresponding — see `metadata/authors.md`) | ☐ |
+| T23b | **Confirm the license with all co-authors** (CC BY 4.0 vs CC0 for an ontology) — currently asserted but unconfirmed. See OPEN-QUESTIONS Q19. Pre-submission gate. | ☐ |
 | T24 | Submit **abstract** by pre-submission deadline | ☐ |
 | T25 | Submit **full paper** (+ supplementary material link) | ☐ |
 
@@ -65,6 +66,9 @@ column and append to the **Change log** whenever something moves.
 
 | Date | Change | By |
 |------|--------|----|
+| 2026-07-03 | **T23b added** — open license question (Q19): confirm CC BY 4.0 vs CC0 with all co-authors before submission. | Claude |
+| 2026-07-03 | Updated ontology header attribution — all 7 co-authors now carry ORCID IRIs (Sonfack Sounchio, Toffano, Gilbert, Sanou added); rebuilt `dist/`. Feeds WIDOCO docs. | Claude |
+| 2026-07-03 | **T2 done** — w3id PURL `https://w3id.org/hcmo/ontology/hcm#` verified live (303 → docs site); availability hard gate cleared. Updated OPEN-QUESTIONS Q15, §5 availability, FAIR table. | Claude |
 | 2026-06-29 | Created paper folder, requirements checklist, outline, section stubs, metadata block. | Claude |
 
 <!-- Append new rows above this line. One row per meaningful change/decision. -->

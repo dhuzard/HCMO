@@ -36,10 +36,15 @@ the relevant doc and logged in `TODO.md`.
 ## Round 4 — authorship, novelty, availability ✅ RESOLVED (2026-06-29)
 | # | Aspect | Conf. | Answer |
 |---|--------|-------|--------|
-| Q15 | w3id PURL redirect resolves today? (availability hard gate) | 🟢 | **Likely NO** (CHANGELOG: "redirect to be created"; proxy blocked external check). → **T2 high-priority**. |
+| Q15 | w3id PURL redirect resolves today? (availability hard gate) | 🟢 | **YES — resolved.** `https://w3id.org/hcmo/ontology/hcm#` returns 303 → docs site (verified 2026-07-03; w3id PR #6261 merged 2026-06-30). **T2 done.** |
 | Q16 | Authorship / order | 🟢 | **Gilbert first author; Todorov & Huzard co-lead / co-corresponding (contact).** TEATIME = acknowledgement. See `metadata/authors.md`. |
 | Q17 | Affiliations + missing ORCIDs | 🟠 | **ORCIDs provided** (2026-06-29) → CITATION.cff, README, authors.md; names fixed (Sonfack **Sounchio**, To**ff**ano). **Affiliations still pending.** Fold ORCIDs into V1 ontology header at T0. |
 | Q18 | Novelty verification | 🟢 | **Search run** → no HCM ontology exists; adjacents = OBI/OLAM/MEDO + ARRIVE. See `NOVELTY.md`; applied to §2. |
+
+## Round 5 — governance / legal ⬜ OPEN
+| # | Aspect | Conf. | Answer |
+|---|--------|-------|--------|
+| Q19 | **License confirmed with all co-authors?** CC BY 4.0 is asserted in `LICENSE`, README, `CITATION.cff`, and the ontology header, but there is no record that all 7 co-authors have consented. For an ontology there is also a real **CC BY 4.0 vs CC0** choice (LOV/OBO communities often prefer CC0 or CC BY for maximal vocabulary reuse). Confirm the license with co-authors before submission. | 🟠 | _open: needs author/co-author confirmation_ |
 
 ## Parked — artifact-dependent (until clean V1 arrives, T0; author: "soon, days")
 | # | Aspect | Conf. | Answer |
@@ -56,3 +61,5 @@ the relevant doc and logged in `TODO.md`.
 | 2026-06-29 | R2 | Resolved Q5a/Q5/Q7/Q8: author provides clean V1; scope = ontology package only; HCMO is first; data via TEATIME (synthetic now). Applied to §1/§2/§7. |
 | 2026-06-29 | R3 | Resolved Q6/Q12/Q13/Q14: drop MAPP; all vocabs real; host SPARQL endpoint; lab-maintained. Applied to README/OUTLINE/§00/§04/§05/§07; T6b/T7/T7b added. Q9–Q11 parked on T0. |
 | 2026-06-29 | R4 | Resolved Q15/Q16/Q17/Q18: Gilbert lead + Huzard corresponding (authors.md); affiliations later; w3id redirect missing (T2); novelty search done (NOVELTY.md, §2). Q9–Q11 remain parked on T0 (author: V1 in days). |
+| 2026-07-03 | — | **Q15 closed**: w3id PURL verified live (303 → docs site); T2 done, availability hard gate cleared. |
+| 2026-07-03 | R5 | **Q19 opened**: confirm license (CC BY 4.0 vs CC0) with all co-authors before submission. |

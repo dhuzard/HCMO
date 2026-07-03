@@ -1,4 +1,4 @@
-# DO NOT EDIT â€” GENERATED FILE.
+# DO NOT EDIT — GENERATED FILE.
 # Produced by tooling/build.py from ontology/modules/*.ttl.
 # Edit the modules and re-run `python tooling/build.py` to regenerate.
 @prefix UNKNOWN: <http://www.owl-ontologies.com/UNKNOWN#> .
@@ -142,17 +142,13 @@ owl:versionInfo a owl:AnnotationProperty .
 <https://w3id.org/hcmo/ontology/hcm> a owl:Ontology ;
     dc:description "Ontology for Monitoring and Analytics for Physiological Processes (MAPP)" ;
     dc:title "MAPP Ontology" ;
-    dcterms:creator [ a schema:Person ;
-            schema:name "Cyril Gilbert" ],
-        [ a schema:Person ;
-            schema:name "Gaoussou Sanou" ],
-        [ a schema:Person ;
-            schema:name "Antoine Tofano" ],
-        [ a schema:Person ;
-            schema:name "Serge Sonfack" ],
-        <https://orcid.org/0000-0002-2923-9790>,
+    dcterms:creator <https://orcid.org/0000-0002-2923-9790>,
+        <https://orcid.org/0000-0002-6085-6818>,
         <https://orcid.org/0000-0002-9116-6692>,
-        <https://orcid.org/0000-0003-4820-7951> ;
+        <https://orcid.org/0000-0003-2204-2466>,
+        <https://orcid.org/0000-0003-4820-7951>,
+        <https://orcid.org/0009-0008-0575-8490>,
+        <https://orcid.org/0009-0008-2489-8106> ;
     owl:versionIRI <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
     owl:versionInfo "0.0.1" ;
     mod:createdWith <https://chowlk.linkeddata.es/> .
@@ -321,11 +317,23 @@ sosa:madeObservation a owl:ObjectProperty ;
 <https://orcid.org/0000-0002-2923-9790> a schema:Person ;
     schema:name "Pierre Larmande" .
 
+<https://orcid.org/0000-0002-6085-6818> a schema:Person ;
+    schema:name "Serge Sonfack Sounchio" .
+
 <https://orcid.org/0000-0002-9116-6692> a schema:Person ;
     schema:name "Konstantin Todorov" .
 
+<https://orcid.org/0000-0003-2204-2466> a schema:Person ;
+    schema:name "Gaoussou Sanou" .
+
 <https://orcid.org/0000-0003-4820-7951> a schema:Person ;
     schema:name "Damien Huzard" .
+
+<https://orcid.org/0009-0008-0575-8490> a schema:Person ;
+    schema:name "Antoine Toffano" .
+
+<https://orcid.org/0009-0008-2489-8106> a schema:Person ;
+    schema:name "Cyril Gilbert" .
 
 hcm:QuantityValue a owl:Class ;
     rdfs:label "Quantity Value" .

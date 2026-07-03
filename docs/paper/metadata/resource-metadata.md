@@ -23,11 +23,11 @@ Supplementary links (provide for reviewers):
 
 | Principle | How HCMO satisfies it | Evidence | Gap / action |
 |-----------|-----------------------|----------|--------------|
-| **F1** Globally unique, persistent IDs | w3id PURL + per-term IRIs; Zenodo DOI | `w3id.org/hcmo/...`, DOI | Verify PURL redirect (T2) |
+| **F1** Globally unique, persistent IDs | w3id PURL + per-term IRIs; Zenodo DOI | `w3id.org/hcmo/...` (303→docs), DOI | ✓ PURL resolves (T2 done) |
 | **F2** Rich metadata | `owl:Ontology` header (creators, version, license); WIDOCO | header, docs site | Add missing term defs (T5) |
 | **F3** Metadata include data ID | Ontology IRI in metadata | header | — |
 | **F4** Indexed/searchable | Zenodo; GitHub; (target LOV registration) | Zenodo, GitHub | Register in LOV (future) |
-| **A1** Retrievable by ID over open protocol | HTTPS dereference + download | repo/dist | Ensure content negotiation on PURL |
+| **A1** Retrievable by ID over open protocol | HTTPS dereference + download | repo/dist | ✓ PURL 303 content negotiation confirmed |
 | **A2** Metadata persist | Zenodo archival | DOI | — |
 | **I1** Formal knowledge representation | OWL 2 in Turtle/RDF/XML/JSON-LD | `dist/` | — |
 | **I2** FAIR vocabularies | Reuse SOSA/SSN, OWL-Time, PROV, BFO | alignments | Add QUDT/OM (roadmap) |

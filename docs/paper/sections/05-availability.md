@@ -39,8 +39,9 @@ competency queries return results only once re-authored against the V1 terms —
 \cite{fair}:
 
 - *Findable / Interoperable identification.* The ontology and its terms are
-  identified by a persistent `w3id.org` IRI; the resource is archived on Zenodo
-  with a DOI. *[pending: create the w3id redirect so the IRI dereferences — T2.]*
+  identified by a persistent `w3id.org` IRI (`https://w3id.org/hcmo/ontology/hcm#`,
+  which dereferences via HTTP 303 content negotiation to the documentation); the
+  resource is archived on Zenodo with a DOI.
 - *Accessible.* Sources and distributions are openly available from the public
   Git repository and the Zenodo deposit (download), with HTML documentation served
   via GitHub Pages. A public **SPARQL endpoint** will be provided for live
