@@ -16,6 +16,31 @@ taxa, anatomy, devices) to be connected safely.
 - Metadata and imports live in `ontology/hcm-metadata.ttl`.
 
 ## Target modular architecture
+
+### v2 review architecture (current paper track)
+The resource-paper draft currently uses a five-module proposal under
+`ontology/v2/`:
+
+- `hcm` core: the monitored enclosure hub, dimensions, and stable enclosure
+  relations.
+- `bio`: biological subjects, experimental groups, study factors, and housing
+  assignments.
+- `obs`: observations and observation results.
+- `env`: environmental profiles, properties, and measurement specifications.
+- `tech`: sensors, hardware, software, and time-series/data-handling concerns.
+
+This v2 proposal is intentionally staged in parallel until co-author validation.
+Once accepted, it should replace `ontology/modules/`, be wired into `hcmo.yaml`,
+and regenerate `dist/`.
+
+The v2 module graph knowingly accepts a small `bio` <-> `obs` cycle for V1:
+`bio` owns subject-side convenience links such as `hasWeightObservation`,
+`hasHealthStatusObservation`, and `hasBehaviorObservation`, while `obs` owns
+observation classes and uses SOSA `hasFeatureOfInterest` to point back to the
+biological subject being observed. This is harmless for the merged ontology and
+clear for users; it only means the modules are not a strict acyclic
+`owl:imports` stack.
+
 ### 1) Core module (authoritative, minimal)
 File: `ontology/hcm.ttl`
 Scope:

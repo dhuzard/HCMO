@@ -9,15 +9,15 @@
 > Commentaire** columns below back into the sheet.
 >
 > **Statut legend:** ✅ Fait · 🟡 En cours · ⛔ Bloqué (needs clean V1 = T0) · ⬜ À faire
-> **Last synced:** 2026-06-29 (branch `claude/resource-paper-draft`)
+> **Last synced:** 2026-07-03 (branch `claude/resource-paper-draft`)
 
 ## Progress snapshot
 | Indicateur | Valeur |
 |---|---|
 | Total | 44 |
 | ✅ Fait | 23 |
-| 🟡 En cours | 3 |
-| ⛔ Bloqué (T0) | 11 |
+| 🟡 En cours | 5 |
+| ⛔ Bloqué (T0) | 9 |
 | ⬜ À faire | 7 |
 | Obligatoires restantes (non-Fait) | ~20 |
 
@@ -34,9 +34,9 @@
 | 7 | Related work | 5–10 resource papers d'ontologies comparables | Oui | ✅ | `docs/paper/notes/resource-papers/README.md` | 5 resource papers comparables identifiés avec source et critères de comparaison pour HCMO : metadata, availability, figures, CQ/SPARQL, évaluation. |
 | 8 | Related work | Guidelines / best practices publication ontologie | Oui | ✅ | `CALL-REQUIREMENTS.md`, `references.bib` | WIDOCO, OOPS!, FAIR, w3id, Zenodo, LOT/SAMOD. |
 | 9 | Related work | Tableau critères ESWC vs ISWC | Oui | ✅ | `README.md`, `CALL-REQUIREMENTS.md` | Format, anonymat, pages, availability. |
-| 10 | Ontologie | Stabiliser classes & propriétés centrales | Oui | ⛔ | `AUDIT.md` | **Bloqué T0** : dépôt = export Chowlk obsolète. |
+| 10 | Ontologie | Stabiliser classes & propriétés centrales | Oui | 🟡 | `ontology/v2/`, `docs/paper/MODULE-MAP.md` | v2 5 modules construit et nettoyé légèrement; reste à promouvoir officiellement puis traiter placeholders/unités/définitions. |
 | 11 | Ontologie | Labels + commentaires entités principales | Oui | ⛔ | `AUDIT.md` | **0 `rdfs:comment`** dans le dépôt actuel → V1. |
-| 12 | Ontologie | Vérifier modules Turtle/OWL exportés | Oui | 🟡 | `AUDIT.md` | Audit fait (mismatch repo↔rapport); correctif = T0. |
+| 12 | Ontologie | Vérifier modules Turtle/OWL exportés | Oui | 🟡 | `ontology/v2/README.md`, `ontology/v2/hcmo-v2-merged.ttl` | Modules v2 + merged TTL parsés avec rdflib; live build/CI pas encore repointés. |
 | 13 | Ontologie | Nettoyer termes Chowlk temporaires | Oui | ⛔ | `AUDIT.md` | **43 placeholders** (`UNKNOWN:*`, `ns:Class2`…) → V1. |
 | 14 | Ontologie | Exemples d'instances représentatifs | Oui | ⛔ | `sections/03-requirements.md` | Scénario HCM complet; ABox synthétiques après T0. |
 | 15 | Ontologie | Requêtes SPARQL des competency questions | Oui | ⛔ | `sections/03-requirements.md` | CQ1–CQ6 définies; requêtes après T0 (renvoient 0 actuellement). |
@@ -46,7 +46,7 @@
 | 19 | Évaluation | Chaque requête répond à une CQ | Oui | ⛔ | — | Bloqué T0 (besoin de la V1 + requêtes). |
 | 20 | Évaluation | Bilan OOPS!/SHACL/WIDOCO | Oui | 🟡 | `sections/06-evaluation.md` | WIDOCO ✅; OOPS!/SHACL bloqués T0. |
 | 21 | Ontologie | Documentation WIDOCO | Oui | ✅ | `README.md` → <https://dhuzard.github.io/HCMO/index-en.html> | Lien ajouté au README. |
-| 22 | Availability | Dépôt GitHub propre & compréhensible | Oui | 🟡 | `README.md` | README enrichi; nettoyage global en cours. |
+| 22 | Availability | Dépôt GitHub propre & compréhensible | Oui | 🟡 | `README.md`, `ontology/v2/README.md`, `docs/paper/TODO.md` | README enrichi; v2 documentée; nettoyage global et promotion restent en cours. |
 | 23 | Availability | Release versionnée figée | Oui | ⬜ | `TODO.md` (T9) | À cadrer sur la version citée. |
 | 24 | Availability | DOI Zenodo | Oui | ✅ | `CITATION.cff` → 10.5281/zenodo.18925285 | Existe; à refigers sur la release du papier (T9). |
 | 25 | Availability | Vérifier la licence | Oui | ✅ | `LICENSE`, `README.md` | CC BY 4.0 (fichier vérifié). ⚠ **Consentement des co-auteurs à confirmer** (CC BY 4.0 vs CC0) — voir OPEN-QUESTIONS Q19 / TODO T23b. |
@@ -62,7 +62,7 @@
 | 35 | KGQA | Capture/figure du démonstrateur | Non | ⬜ | — | Seulement si utile. |
 | 36 | Soumission | Format & template | Oui | ✅ | `CALL-REQUIREMENTS.md` | **LNCS** (Springer). |
 | 37 | Soumission | (Non-)anonymisation | Oui | ✅ | `CALL-REQUIREMENTS.md` | **Single-anonymous** : auteurs nommés. |
-| 38 | Soumission | Figures principales | Oui | 🟡 | `sources/figures/`, rapport de stage | Figures candidates importées depuis le rapport. Sélection proposée pour l’article : F1 = contexte HCM/Olog ou paramètres HCM ; F2 = vue modules HCMO bio/housing/env/tech ; F3 = chaîne capteur → observation → résultat/provenance. Reste à choisir avec Damien lesquelles garder et à nettoyer les versions finales. |
+| 38 | Soumission | Figures principales | Oui | 🟡 | `sources/figures/`, `version_rapport.drawio` | Figures candidates importées depuis le rapport; source draw.io/TTL harmonisée sur HCMO + `LocationResultTable`. Reste à choisir les figures finales et régénérer les PNG si nécessaire. |
 | 39 | Soumission | Tableau récap des ressources | Oui | ✅ | `metadata/resource-metadata.md` | GitHub/DOI/docs/examples/SHACL/queries. |
 | 40 | Soumission | Relecture interne complète | Oui | ⬜ | `TODO.md` (T22) | À faire en fin de rédaction. |
 | 41 | Soumission | Liste auteurs & contributions | Oui | ✅ | `metadata/authors.md` | Gilbert 1ᵉʳ; Todorov & Huzard co-corresp. |
@@ -77,6 +77,7 @@ Engineering/Availability + §7 Impact + §8 Conclusion are **drafted** in
 only sections still missing — both **blocked on the clean V1 (T0)**.
 
 ## The one blocker driving most ⛔ items
-Items **10–17, 19, 42** all wait on the **clean V1 ontology** (see `AUDIT.md` and
-the co-author email `emails/request-clean-v1.md`). Unblocking T0 clears 9+ items.
-Item **27 (w3id)** and **23/29 (release)** are independent and can proceed now.
+Items **11, 13–17, 19, 42** still wait on the promoted clean ontology (see
+`ontology/v2/` and `AUDIT.md`). Item **10** has moved from blocked to in progress
+because the v2 modular draft is now the working artifact. Item **27 (w3id)** is
+done; **23/29 (release alignment)** proceed after promotion.

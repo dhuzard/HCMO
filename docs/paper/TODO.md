@@ -1,7 +1,7 @@
 # HCMO Resource Paper — TODO & change tracking
 
 **Status legend:** ☐ todo · ◐ in progress · ☑ done · ⚠ blocked
-**Last updated:** 2026-06-29
+**Last updated:** 2026-07-03
 
 This is the single source of truth for paper progress. Update the **status**
 column and append to the **Change log** whenever something moves.
@@ -12,12 +12,12 @@ column and append to the **Change log** whenever something moves.
 
 | ID | Task | Owner | Status | Notes |
 |----|------|-------|--------|-------|
-| T0 | **🔴 BLOCKER (awaiting author): commit the clean V1 artifact** — Damien will provide the diagrams.net/Chowlk + exported Turtle (HITL R2) | Damien → Claude | ⚠ | Repo `dist/` is an old, broken export — see `AUDIT.md`. Everything depends on this. |
+| T0 | **Clean ontology artifact for paper/release** — v2 draft now exists in `ontology/v2/`; official promotion still waits on co-author sign-off and cleanup gates. | Damien/Cyril/Codex | ◐ | `ontology/v2/` is the reviewed path forward. Live `ontology/modules/`, `dist/`, shapes/examples/queries still point to the old export until promotion. |
 | T1 | ~~Lock venue~~ → **ESWC 2027 Resources Track, 15 pp** (HITL R1) | — | ☑ | Re-confirm dates/template when CfP opens. |
 | T2 | ~~Create the w3id PURL redirect~~ → **live**: `https://w3id.org/hcmo/ontology/hcm#` resolves (303 → docs site) | — | ☑ | **Availability hard gate cleared.** [w3id PR #6261](https://github.com/perma-id/w3id.org/pull/6261) merged 2026-06-30; verified 2026-07-03. Re-check with the paper-matching release (T9). |
 | T3 | Create Overleaf project from **LNCS** template; mirror `sections/` | — | ☐ | Keep authors **named** (single-anonymous). |
-| T3b | **Re-modularise** to the **DECIDED** R5 shape (2026-07-03): **5 modules — `hcm` core = enclosure only · `bio` · `obs` (observations + results) · `env` · `tech`**. `HousingAssignment` → bio (out of obs); `EnclosureDimensions` → core; all result/value classes → obs; `Sensor/Hardware/Software/TimeSeries` → new `tech` (`…/hcm/tech#`). Supersedes bio/housing/env/tech. | — | ◐ | **Draft built in `ontology/v2/`** (parallel, not yet wired to build/CI) — awaiting **co-author validation** (Damien, ~next week) before replacing `ontology/modules/`. Spec: `docs/paper/MODULE-MAP.md`. Q19/Q20 resolved; **Q21 (QUDT/OM units) open**. Do IRI moves **before** T9 release. |
-| T3c | **Decide which module owns the bio↔obs linking properties** (Subject→observation vs Observation→subject). The two modules are mutually dependent; **accept the bio/obs cycle for V1 knowingly** (harmless in the merged graph; blocks strict `owl:imports` layering only). | — | ☐ | HITL R5. Document the chosen direction in `docs/ARCHITECTURE.md`/`MODEL.md`. |
+| T3b | **Re-modularise** to the **DECIDED** R5 shape (2026-07-03): **5 modules — `hcm` core = enclosure only · `bio` · `obs` (observations + results) · `env` · `tech`**. `HousingAssignment` → bio (out of obs); `EnclosureDimensions` → core; all result/value classes → obs; `Sensor/Hardware/Software/TimeSeries` → new `tech` (`…/hcm/tech#`). Supersedes bio/housing/env/tech. | — | ◐ | **Draft built and lightly cleaned in `ontology/v2/`** (parallel, not yet wired to build/CI). Commits `d1fd21e` + `3fc46a4` apply co-author-review cleanup and figure-label alignment. Awaiting Damien validation before replacing `ontology/modules/`. Spec: `docs/paper/MODULE-MAP.md`. |
+| T3c | **Decide which module owns the bio↔obs linking properties** (Subject→observation vs Observation→subject). The two modules are mutually dependent; **accept the bio/obs cycle for V1 knowingly** (harmless in the merged graph; blocks strict `owl:imports` layering only). | — | ☑ | Decision applied in v2 and documented in `docs/ARCHITECTURE.md`/`MODEL.md`: subject-to-observation convenience links stay in `bio`; observation-to-subject semantics use SOSA `hasFeatureOfInterest` in `obs`. |
 
 ## Phase 1 — Make the resource paper-ready (ontology work)
 
@@ -30,7 +30,7 @@ column and append to the **Change log** whenever something moves.
 | T6 | **Re-author SHACL shapes, examples & competency queries** against the clean V1 term set | ☐ | Currently legacy → CQs return 0 rows. |
 | T6b | **Host a public SPARQL endpoint** (HITL R3) | ☐ | Strongest availability story; depends on T0. |
 | T7 | Write **lab-maintained** governance/versioning policy (Huzard team, GitHub, SemVer+versionIRI; TEATIME = feedback channel) | ☐ | HITL R3. Feeds §7. |
-| T7b | **Drop MAPP branding** in paper docs (done) + reconcile repo branding (`hcmo.yaml` title, README) separately | ◐ | HITL R3. Repo rename is a bigger change — confirm before touching core files. |
+| T7b | **Drop MAPP branding** in paper docs (done) + reconcile repo branding (`hcmo.yaml` title, README) separately | ◐ | HCMO branding applied to v2 ontology header and `version_rapport` figure sources. Live manifest/README/dist still need reconciliation at promotion. |
 | T8 | Run **quality evaluation**: OOPS!, FOOPS! (FAIR), reasoner (HermiT/ELK), pySHACL, CQ results — archive reports | ☐ | Evidence for §Evaluation. |
 | T9 | Cut a **tagged release** (e.g. `v0.x`) + refreshed Zenodo DOI matching the paper | ☐ | Canonical citation. |
 
@@ -47,7 +47,7 @@ column and append to the **Change log** whenever something moves.
 | T16 | Evaluation (OOPS!/FOOPS!/reasoner/SHACL/CQs + completeness) | `sections/06-evaluation.md` | ☐ |
 | T17 | Impact, use cases & outlook — **drafted** (reasoning, KGQA/authoring/vendor as outlook, TEATIME adoption) | `sections/07-impact.md` | ☑ |
 | T18 | Conclusion & future work — **drafted** (honest limitations + roadmap) | `sections/08-conclusion.md` | ☑ |
-| T19 | Figures: architecture, ontology overview (WebVOWL), example ABox graph | `figures/` | ☐ |
+| T19 | Figures: architecture, ontology overview (WebVOWL), example ABox graph | `figures/` | ◐ |
 | T20 | Bibliography | `references.bib` | ☐ |
 
 ## Phase 3 — Polish & submit
@@ -67,6 +67,8 @@ column and append to the **Change log** whenever something moves.
 
 | Date | Change | By |
 |------|--------|----|
+| 2026-07-03 | **T3c closed** — documented the accepted `bio`↔`obs` cycle and ownership rule: subject-side observation links live in `bio`; observation classes/results and SOSA feature-of-interest semantics live in `obs`. | Codex |
+| 2026-07-03 | **Figure source labels refreshed** — `version_rapport.drawio`, `.drawio.xml`, and source TTL now use HCMO branding and `LocationResultTable`; only labels/IRIs were touched, not diagram structure. | Codex |
 | 2026-07-03 | **v2 cleanup pass after co-author review** — HCMO branding applied to the v2 ontology header; `LocationResultTable` legacy label fixed; relation-like properties corrected from datatype to object properties; obvious Chowlk-inherited wrong-direction restrictions removed or retargeted. v2 modules + merged TTL parse with rdflib. | Codex |
 | 2026-07-03 | **v2 draft built** — re-modularised 5-module ontology generated in `ontology/v2/` (parallel; live `ontology/modules/` untouched). `Structural&LocationTable`→`LocationResultTable`. All files parse; sanity checks pass. Awaiting co-author validation before promotion. | Claude |
 | 2026-07-03 | **MODULE-MAP.md finalised** — all 7 term-placement micro-decisions resolved (StudyFactors→bio, TimeSeries→tech, dim-props→core, hasUnit→QUDT/OM, manufacturer/version split, monitoredBy/installedIn→tech, OWL-Timeintervaltable dropped). Spec is now implementation-ready for T3b. No ontology code changed yet. | Claude |
