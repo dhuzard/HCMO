@@ -23,10 +23,11 @@ Source of truth for the inventory: `dist/profile.json` (31 classes · 39 obj · 
 | `EnclosureDimensions` | Class | Moved from env (#3). |
 | `hasDimensions` | ObjProp | enclosure → dimensions. |
 | `hasHeight` `hasLength` `hasWidth` `hasDimUnit` | DataProp | **Move from env → core** — they describe `EnclosureDimensions` (#3 consequence). |
-| `hasCapacity` `hasEnclosureIdentifier` `hasEnrichment` `isOccupied` `locatedIn` `hasMonitoredAnimals` | DataProp | Enclosure attributes. |
+| `hasCapacity` `hasEnclosureIdentifier` `isOccupied` | DataProp | Enclosure attributes. |
+| `hasEnrichment` `locatedIn` `hasMonitoredAnimals` | ObjProp | Enclosure relations. |
 | `hasName` `hasDescription` | DataProp | Generic identity/label — kept in core as shared. |
 | `hasManufacturer` (enclosure) | DataProp | Enclosure manufacturer (M5). Device manufacturer = separate prop in `tech`. |
-| `hasEnvironment` | DataProp | → concern **env** (should likely be an object property to `EnvironmentProfile`; fix at T4). |
+| `hasEnvironment` | ObjProp | → concern **env**; relation to `EnvironmentProfile`. |
 
 ## 2. `bio` — biological subjects & grouping
 
@@ -46,7 +47,7 @@ Source of truth for the inventory: `dist/profile.json` (31 classes · 39 obj · 
 |------|------|------|
 | `BehaviorObservation` `EnvironmentObservation` `GasConcentrationObservation` `HealthStatusObservation` `WeightObservation` | Class | Observations. |
 | `ObservationResult` `BehaviorResult` `CategoricalResult` `QuantityValue` | Class | **Results → obs (Q20).** `CategoricalResult` is an orphan (unused) — define + wire or drop (T4). `QuantityValue` ⚠ candidate for QUDT/OM (Q21). |
-| `Structural&LocationTable` | Class | **→ obs** (it's a result table). ⚠ **illegal IRI** (`&`) — must be renamed (T4). |
+| `Structural&LocationTable` | Class | **→ obs** as `LocationResultTable` (it's a result table); illegal `&` IRI and legacy label removed in v2. |
 | `hasResult` `occursIn` | ObjProp | |
 | `hasBehaviorType` `hasHealthStatusTerm` `hasConfidenceScore` `hasInterval` `hasCategory` | DataProp | Observation/result attributes. |
 | ~~`hasUnit` (core-ns)~~ `hasNumericValue` | DataProp | `hasUnit` **removed → QUDT/OM** (M4). `hasNumericValue`/`hasValue` are QUDT/OM candidates (Q21). |

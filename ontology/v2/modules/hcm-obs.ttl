@@ -15,7 +15,7 @@ hcm-obs:BehaviorObservation a owl:Class ;
     rdfs:label "Behavior Observation" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty sosa:hasResult ;
-            owl:someValuesFrom hcm:MonitoredEnclosure ],
+            owl:someValuesFrom hcm-obs:BehaviorResult ],
         [ a owl:Restriction ;
             owl:onProperty sosa:hasFeatureOfInterest ;
             owl:someValuesFrom hcm-bio:Subject ] .
@@ -45,10 +45,10 @@ hcm-obs:HealthStatusObservation a owl:Class ;
     rdfs:label "Health Status Observation" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty sosa:hasFeatureOfInterest ;
-            owl:someValuesFrom hcm:MonitoredEnclosure ] .
+            owl:someValuesFrom hcm-bio:Subject ] .
 
 hcm-obs:LocationResultTable a owl:Class ;
-    rdfs:label "Structural& Location Table" ;
+    rdfs:label "Location Result Table" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty sosa:hasResult ;
             owl:someValuesFrom hcm-obs:QuantityValue ],
@@ -76,7 +76,7 @@ hcm-obs:WeightObservation a owl:Class ;
             owl:onProperty sosa:usedProcedure ],
         [ a owl:Restriction ;
             owl:onProperty sosa:hasFeatureOfInterest ;
-            owl:someValuesFrom hcm:MonitoredEnclosure ],
+            owl:someValuesFrom hcm-bio:Subject ],
         [ a owl:Restriction ;
             owl:cardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty sosa:resultTime ],
@@ -112,9 +112,6 @@ hcm-obs:hasResult a owl:ObjectProperty ;
 hcm-obs:ObservationResult a owl:Class ;
     rdfs:label "Observation Result" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty hcm-obs:hasResult ;
-            owl:someValuesFrom hcm:MonitoredEnclosure ],
-        [ a owl:Restriction ;
             owl:allValuesFrom hcm-tech:Sensor ;
             owl:onProperty sosa:madeBySensor ] .
 

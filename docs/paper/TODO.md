@@ -67,6 +67,7 @@ column and append to the **Change log** whenever something moves.
 
 | Date | Change | By |
 |------|--------|----|
+| 2026-07-03 | **v2 cleanup pass after co-author review** — HCMO branding applied to the v2 ontology header; `LocationResultTable` legacy label fixed; relation-like properties corrected from datatype to object properties; obvious Chowlk-inherited wrong-direction restrictions removed or retargeted. v2 modules + merged TTL parse with rdflib. | Codex |
 | 2026-07-03 | **v2 draft built** — re-modularised 5-module ontology generated in `ontology/v2/` (parallel; live `ontology/modules/` untouched). `Structural&LocationTable`→`LocationResultTable`. All files parse; sanity checks pass. Awaiting co-author validation before promotion. | Claude |
 | 2026-07-03 | **MODULE-MAP.md finalised** — all 7 term-placement micro-decisions resolved (StudyFactors→bio, TimeSeries→tech, dim-props→core, hasUnit→QUDT/OM, manufacturer/version split, monitoredBy/installedIn→tech, OWL-Timeintervaltable dropped). Spec is now implementation-ready for T3b. No ontology code changed yet. | Claude |
 | 2026-07-03 | **Module shape FINALISED (R5)**: 5 modules — hcm core = **enclosure only** / bio / obs (observations+results) / env / **tech** (own module). HousingAssignment → bio; EnclosureDimensions → core; all results → obs. Q19/Q20 resolved; Q21 (QUDT/OM) open. Spec → `MODULE-MAP.md`. No ontology code changed yet. | Claude |

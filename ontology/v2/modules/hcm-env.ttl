@@ -44,7 +44,7 @@ hcm-env:RelativeHumidity a owl:ObjectProperty ;
 hcm-env:ThriveProfile a owl:Class ;
     rdfs:label "Thrive Profile" .
 
-hcm-env:hasEnvironment a owl:DatatypeProperty ;
+hcm-env:hasEnvironment a owl:ObjectProperty ;
     rdfs:label "has environment" .
 
 hcm-env:hasGasType a owl:DatatypeProperty ;

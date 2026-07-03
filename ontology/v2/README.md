@@ -20,7 +20,7 @@ then delete `ontology/modules/` and repoint the tooling (see *Promotion* below).
 | HousingAssignment → bio | + `assignedToEnclosure`. |
 | StudyFactors → bio | dropped the bogus `⊑ MonitoredEnclosure` axiom. |
 | EnclosureDimensions → core | + its dimension props `hasHeight/Length/Width/DimUnit`. |
-| `Structural&LocationTable` → **`LocationResultTable`** (obs) | fixed the illegal `&` IRI. |
+| `Structural&LocationTable` → **`LocationResultTable`** (obs) | fixed the illegal `&` IRI and legacy label. |
 | Dropped cruft | `OWL-Timeintervaltable`, `ns:objectProperty`, `xsd:boolean/integer`-as-property, empty `hcm-obs:#` property, duplicate `UNKNOWN:hasName`. |
 | Unit dedup (M4) | the two `hasUnit` merged into one `hcm:hasUnit` **stub** — pending replacement by QUDT/OM (Q21, still open). |
 
@@ -48,7 +48,7 @@ tech 4; 32 placeholders isolated. All files parse clean.
   vocabulary is chosen (Q21). `hasValue`/`hasNumericValue` are follow-on candidates.
 - **32 placeholders** in `hcm-placeholders.ttl` — define or drop (T4), then add
   `rdfs:comment` definitions to every term (T5).
-- **Branding**: the ontology header still reads "MAPP Ontology" — reconcile to HCMO (T7b).
+- **Branding**: the v2 ontology header now uses HCMO; reconcile the remaining repository-level branding separately (T7b).
 - **Device-manufacturer** property (M5 split) not yet minted; enclosure keeps
   `hcm:hasManufacturer`.
 

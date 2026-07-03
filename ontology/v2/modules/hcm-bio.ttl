@@ -3,6 +3,7 @@
 #
 @prefix hcm: <https://w3id.org/hcmo/ontology/hcm#> .
 @prefix hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#> .
+@prefix hcm-obs: <https://w3id.org/hcmo/ontology/hcm/obs#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
@@ -18,7 +19,7 @@ hcm-bio:StudyFactors a owl:Class ;
 hcm-bio:Subject a owl:Class ;
     rdfs:label "Subject" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom hcm:MonitoredEnclosure ;
+            owl:allValuesFrom hcm-obs:BehaviorObservation ;
             owl:onProperty hcm-bio:hasBehaviorObservation ] .
 
 hcm-bio:assignedToEnclosure a owl:ObjectProperty ;
