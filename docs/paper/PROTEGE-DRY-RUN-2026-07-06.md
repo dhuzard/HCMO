@@ -59,6 +59,12 @@ points that should be inspected during the Protege reasoner/debug pass.
    windows, not as a simple environmental literal. Do not mint this as an
    `env` datatype property without deciding the observation-condition model.
 
+4. Environmental measured-property terms (`hcm-env:AmbientTemperature`,
+   `RelativeHumidity`, gas concentrations, `LightIntensity`, `LightState`) are
+   intentionally kept as object properties in v2 according to
+   `docs/paper/MODULE-MAP.md`; do not treat this as a Protege error unless the
+   reasoner exposes an actual inconsistency.
+
 ## SHACL status
 
 SHACL remains deferred. The current shapes/examples target the legacy/live term
