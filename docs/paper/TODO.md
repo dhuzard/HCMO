@@ -27,11 +27,11 @@ column and append to the **Change log** whenever something moves.
 |----|------|--------|-------|
 | T4 | Replace/remove **Chowlk placeholders** (`UNKNOWN:*`, `ns:Class2`, `ns:objectProperty`, `xsd:boolean/integer` as properties) | ◐ | v2 placeholders reduced from 32 to 7; safe core duplicates, obvious tech metadata/support terms, light-cycle env terms, the bio social requirement, and core facility/husbandry attributes resolved. Decision table: `docs/paper/PLACEHOLDER-MAP.md`. |
 | T5 | Add **labels + `rdfs:comment`/IAO definitions** for all terms | ☐ | 143 terms lack comments; 1 lacks a label. |
-| T6 | **Re-author SHACL shapes, examples & competency queries** against the clean V1 term set | ☐ | Currently legacy → CQs return 0 rows. |
+| T6 | **Re-author SHACL shapes, examples & competency queries** against the clean V1 term set | ☐ | Deferred after the 2026-07-06 meeting: SHACL waits until v2 terms are frozen/promoted; current shapes target legacy terms. |
 | T6b | **Host a public SPARQL endpoint** (HITL R3) | ☐ | Strongest availability story; depends on T0. |
 | T7 | Write **lab-maintained** governance/versioning policy (Huzard team, GitHub, SemVer+versionIRI; TEATIME = feedback channel) | ☐ | HITL R3. Feeds §7. |
 | T7b | **Drop MAPP branding** in paper docs (done) + reconcile repo branding (`hcmo.yaml` title, README) separately | ◐ | HCMO branding applied to v2 ontology header and `version_rapport` figure sources. Live manifest/README/dist still need reconciliation at promotion. |
-| T8 | Run **quality evaluation**: OOPS!, FOOPS! (FAIR), reasoner (HermiT/ELK), pySHACL, CQ results — archive reports | ☐ | Evidence for §Evaluation. |
+| T8 | Run **quality evaluation**: OOPS!, FOOPS! (FAIR), reasoner (HermiT/ELK), pySHACL, CQ results — archive reports | ◐ | Immediate task: Protege reasoner check on `ontology/v2/hcmo-v2-merged.ttl`; SHACL deferred. See `docs/paper/PROTEGE-REASONER.md`. |
 | T9 | Cut a **tagged release** (e.g. `v0.x`) + refreshed Zenodo DOI matching the paper | ☐ | Canonical citation. |
 
 ## Phase 2 — Write the paper
@@ -67,6 +67,7 @@ column and append to the **Change log** whenever something moves.
 
 | Date | Change | By |
 |------|--------|----|
+| 2026-07-06 | **Meeting follow-up** — main is now the working branch; Cyril task captured as Protege reasoner check on v2, with SHACL deferred until v2 terms are frozen/promoted. | Codex |
 | 2026-07-06 | **T4 tech support pass** — minted `UNKNOWN:supportsEnclosure` as `hcm-tech:supportsEnclosure`; reclassified `hasCondition` as an observation-condition modeling decision rather than an env literal; normalized remaining relation-like placeholders to `owl:ObjectProperty`. | Codex |
 | 2026-07-06 | **T4 core facility pass** — minted safe core placeholders as `hcm:*` (`hasEnrichmentType`, `hasFacilityType`, `hasFloorArea`, food/water/safety requirements); left requirement-object, part-whole, generic type, and ambiguous tech relations deferred. | Codex |
 | 2026-07-06 | **T4 bio pass** — minted `UNKNOWN:hasSocialReq` as `hcm-bio:hasSocialRequirement`; no bio placeholders remain. | Codex |
