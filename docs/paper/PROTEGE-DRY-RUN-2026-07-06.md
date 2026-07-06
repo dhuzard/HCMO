@@ -2,8 +2,9 @@
 
 Source tested: `ontology/v2/hcmo-v2-merged.ttl` on `main`.
 
-This is not a full Protege/HermiT/ELK run. It is a pre-check done before the
-manual Protege pass, using RDF parsing and OWL typing sanity checks.
+This started as a pre-check before the Protege pass, using RDF parsing and OWL
+typing sanity checks. It now also includes a HermiT run via `owlready2`, which
+uses the same OWL reasoning family intended for the Protege check.
 
 ## Automated checks
 
@@ -31,6 +32,24 @@ Results:
 | `owl:onProperty` without object/datatype declaration | 0 |
 | Obvious restriction type warnings | 0 |
 | Remaining `UNKNOWN:` IRIs | 7 |
+
+## HermiT reasoner result
+
+Tool path: `owlready2` HermiT runner, after converting
+`ontology/v2/hcmo-v2-merged.ttl` to temporary RDF/XML.
+
+Local Java note: this Windows environment has Java 8 32-bit, so the default
+2 GB HermiT heap could not start. The run succeeded with `JAVA_MEMORY=512`.
+
+Result:
+
+| Check | Result |
+|---|---:|
+| Loaded classes | 31 |
+| Inconsistent classes | 0 |
+
+HermiT command completed successfully in about 2 seconds. No unsatisfiable
+classes were reported.
 
 Remaining placeholders:
 
