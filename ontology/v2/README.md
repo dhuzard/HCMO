@@ -39,7 +39,7 @@ ontology/v2/
   README.md               # this file
 ```
 
-Term counts (HCMO + reused scaffolding): core 6 cls / bio 4 / obs 10 / env 6 /
+Term counts (HCMO + reused scaffolding): core 7 cls / bio 4 / obs 10 / env 6 /
 tech 4; 7 placeholders isolated. All files parse clean.
 
 ## Still pending (not addressed by re-modularisation)

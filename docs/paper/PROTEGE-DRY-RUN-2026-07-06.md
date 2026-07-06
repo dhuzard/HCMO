@@ -22,10 +22,10 @@ Results:
 
 | Check | Result |
 |---|---:|
-| RDF triples | 565 |
-| OWL classes | 30 |
-| Object properties | 47 |
-| Datatype properties | 56 |
+| RDF triples | 564 |
+| OWL classes | 31 |
+| Object properties | 49 |
+| Datatype properties | 53 |
 | Annotation properties | 4 |
 | Properties typed both object and datatype | 0 |
 | `owl:onProperty` without object/datatype declaration | 0 |
@@ -47,17 +47,12 @@ Remaining placeholders:
 These are not proven inconsistencies from the pre-check. They are modeling
 points that should be inspected during the Protege reasoner/debug pass.
 
-1. `hcm:Enclosure` is currently declared as `owl:DatatypeProperty`.
-   The term name looks class-like, and the v2 design says the core hub is
-   `hcm:MonitoredEnclosure`. Decide whether `hcm:Enclosure` is obsolete cruft,
-   a label/property artifact, or a class that was lost during Chowlk export.
+1. Resolved after pre-check: `hcm:Enclosure` was restored as `owl:Class`
+   because legacy HCMO models it as an enclosure artifact class. The v2 hub
+   remains `hcm:MonitoredEnclosure`.
 
-2. `time:hasBeginning` and `time:hasEnd` are currently declared as
-   `owl:DatatypeProperty`.
-   In OWL-Time these are normally object relations to `time:Instant`. The v2
-   graph currently uses only cardinality restrictions on them, so this did not
-   trigger the automated restriction check, but Protege may make the modeling
-   issue more visible.
+2. Resolved after pre-check: `time:hasBeginning` and `time:hasEnd` were restored
+   as `owl:ObjectProperty`, matching OWL-Time relation semantics.
 
 3. `UNKNOWN:hasCondition` remains a modeling decision.
    Legacy HCMO used `hcm:hasCondition` as an object property on observation
