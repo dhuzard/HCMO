@@ -1,0 +1,63 @@
+# HCMO v2 (re-modularised draft, bio) — bio — subjects, groups, housing assignment, study factors
+# Generated for co-author review; see docs/paper/MODULE-MAP.md. Namespace policy: …/hcm/bio#.
+#
+@prefix hcm: <https://w3id.org/hcmo/ontology/hcm#> .
+@prefix hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#> .
+@prefix hcm-obs: <https://w3id.org/hcmo/ontology/hcm/obs#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+hcm-bio:ExperimentalGroup a owl:Class ;
+    rdfs:label "Experimental Group" .
+
+hcm-bio:HousingAssignment a owl:Class ;
+    rdfs:label "Housing Assignment" .
+
+hcm-bio:StudyFactors a owl:Class ;
+    rdfs:label "Study Factors" .
+
+hcm-bio:Subject a owl:Class ;
+    rdfs:label "Subject" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom hcm-obs:BehaviorObservation ;
+            owl:onProperty hcm-bio:hasBehaviorObservation ] .
+
+hcm-bio:assignedToEnclosure a owl:ObjectProperty ;
+    rdfs:label "assigned to enclosure" .
+
+hcm-bio:belongsToGroup a owl:ObjectProperty ;
+    rdfs:label "belongs to group" .
+
+hcm-bio:hasBiologicalSex a owl:DatatypeProperty ;
+    rdfs:label "has biological sex" .
+
+hcm-bio:hasDateOfBirth a owl:DatatypeProperty ;
+    rdfs:label "has date of birth" .
+
+hcm-bio:hasHealthStatusObservation a owl:ObjectProperty ;
+    rdfs:label "has health status observation" .
+
+hcm-bio:hasHousingAssignment a owl:ObjectProperty ;
+    rdfs:label "has housing assignment" .
+
+hcm-bio:hasMember a owl:ObjectProperty ;
+    rdfs:label "has member" .
+
+hcm-bio:hasSpecies a owl:DatatypeProperty ;
+    rdfs:label "has species" .
+
+hcm-bio:hasSocialRequirement a owl:DatatypeProperty ;
+    rdfs:label "has social requirement" .
+
+hcm-bio:hasStrain a owl:DatatypeProperty ;
+    rdfs:label "has strain" .
+
+hcm-bio:hasTreatment a owl:DatatypeProperty ;
+    rdfs:label "has treatment" .
+
+hcm-bio:hasWeightObservation a owl:ObjectProperty ;
+    rdfs:label "has weight observation" .
+
+hcm-bio:hasBehaviorObservation a owl:ObjectProperty ;
+    rdfs:label "has behavior observation" .
+

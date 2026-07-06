@@ -1,0 +1,28 @@
+# HCMO v2 (re-modularised draft, placeholders) — PENDING PLACEHOLDERS — UNKNOWN:/ns: terms awaiting definition-or-drop (T4/T5)
+# Generated for co-author review; see docs/paper/MODULE-MAP.md. Namespace policy: …/hcm#.
+#
+@prefix UNKNOWN: <http://www.owl-ontologies.com/UNKNOWN#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+UNKNOWN:captures a owl:ObjectProperty ;
+    rdfs:label "captures" .
+
+UNKNOWN:hasActuators a owl:ObjectProperty ;
+    rdfs:label "has actuators" .
+
+UNKNOWN:hasCondition a owl:ObjectProperty ;
+    rdfs:label "has condition" .
+
+UNKNOWN:hasEnrichmentReq a owl:ObjectProperty ;
+    rdfs:label "has enrichment req" .
+
+UNKNOWN:hasSensors a owl:ObjectProperty ;
+    rdfs:label "has sensors" .
+
+UNKNOWN:hasType a owl:DatatypeProperty ;
+    rdfs:label "has type" .
+
+UNKNOWN:partOF a owl:ObjectProperty ;
+    rdfs:label "part o f" .
+

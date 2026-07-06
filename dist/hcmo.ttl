@@ -24,10 +24,6 @@ dc:description a owl:AnnotationProperty .
 
 dc:title a owl:AnnotationProperty .
 
-UNKNOWN:StudyFactors a owl:Class ;
-    rdfs:label "Study Factors" ;
-    rdfs:subClassOf hcm:MonitoredEnclosure .
-
 UNKNOWN:captures a owl:DatatypeProperty ;
     rdfs:label "captures" .
 
@@ -107,9 +103,6 @@ UNKNOWN:hasSocialReq a owl:DatatypeProperty ;
 UNKNOWN:hasType a owl:DatatypeProperty ;
     rdfs:label "has type" .
 
-UNKNOWN:hasVersion a owl:DatatypeProperty ;
-    rdfs:label "has version" .
-
 UNKNOWN:hasWaterReq a owl:DatatypeProperty ;
     rdfs:label "has water req" .
 
@@ -125,9 +118,6 @@ UNKNOWN:runsOn a owl:ObjectProperty ;
 UNKNOWN:supportsEnclosure a owl:ObjectProperty ;
     rdfs:label "supports enclosure" .
 
-ns:Class2 a owl:Class ;
-    rdfs:label "Class2" .
-
 ns:objectProperty a owl:ObjectProperty ;
     rdfs:label "object property" .
 
@@ -142,17 +132,13 @@ owl:versionInfo a owl:AnnotationProperty .
 <https://w3id.org/hcmo/ontology/hcm> a owl:Ontology ;
     dc:description "Ontology for Monitoring and Analytics for Physiological Processes (MAPP)" ;
     dc:title "MAPP Ontology" ;
-    dcterms:creator [ a schema:Person ;
-            schema:name "Cyril Gilbert" ],
-        [ a schema:Person ;
-            schema:name "Gaoussou Sanou" ],
-        [ a schema:Person ;
-            schema:name "Antoine Tofano" ],
-        [ a schema:Person ;
-            schema:name "Serge Sonfack" ],
-        <https://orcid.org/0000-0002-2923-9790>,
+    dcterms:creator <https://orcid.org/0000-0002-2923-9790>,
+        <https://orcid.org/0000-0002-6085-6818>,
         <https://orcid.org/0000-0002-9116-6692>,
-        <https://orcid.org/0000-0003-4820-7951> ;
+        <https://orcid.org/0000-0003-2204-2466>,
+        <https://orcid.org/0000-0003-4820-7951>,
+        <https://orcid.org/0009-0008-0575-8490>,
+        <https://orcid.org/0009-0008-2489-8106> ;
     owl:versionIRI <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
     owl:versionInfo "0.0.1" ;
     mod:createdWith <https://chowlk.linkeddata.es/> .
@@ -192,6 +178,10 @@ hcm:OWL-Timeintervaltable a owl:Class ;
             owl:onProperty sosa:phenomenonTime ],
         hcm:ObservationResult .
 
+hcm:StudyFactors a owl:Class ;
+    rdfs:label "Study Factors" ;
+    rdfs:subClassOf hcm:MonitoredEnclosure .
+
 hcm:TimeSeries a owl:Class ;
     rdfs:label "Time Series" .
 
@@ -210,11 +200,18 @@ hcm:hasFileFormat a owl:DatatypeProperty ;
 hcm:hasMonitoredAnimals a owl:DatatypeProperty ;
     rdfs:label "has monitored animals" .
 
+hcm:hasName a owl:DatatypeProperty ;
+    rdfs:label "has name" ;
+    rdfs:range xsd:string .
+
 hcm:hasSamplingRate a owl:DatatypeProperty ;
     rdfs:label "has sampling rate" .
 
 hcm:hasStoragePath a owl:DatatypeProperty ;
     rdfs:label "has storage path" .
+
+hcm:hasVersion a owl:DatatypeProperty ;
+    rdfs:label "has version" .
 
 hcm:isOccupied a owl:DatatypeProperty ;
     rdfs:label "is occupied" .
@@ -245,6 +242,9 @@ hcm-env:EnvironmentProfile a owl:Class ;
 
 hcm-env:EnvironmentalProperty a owl:Class ;
     rdfs:label "Environmental Property" .
+
+hcm-env:LightIntensity a owl:ObjectProperty ;
+    rdfs:label "light intensity" .
 
 hcm-env:LightState a owl:ObjectProperty ;
     rdfs:label "light state" .
@@ -282,18 +282,6 @@ semts:dimensionUnit a owl:DatatypeProperty ;
 semts:title a owl:DatatypeProperty ;
     rdfs:label "title" .
 
-UNKNOWN:hasDimUnit a owl:DatatypeProperty ;
-    rdfs:label "has dim unit" .
-
-UNKNOWN:hasHeight a owl:DatatypeProperty ;
-    rdfs:label "has height" .
-
-UNKNOWN:hasLength a owl:DatatypeProperty ;
-    rdfs:label "has length" .
-
-UNKNOWN:hasWidth a owl:DatatypeProperty ;
-    rdfs:label "has width" .
-
 UNKNOWN:isOccupied a owl:DatatypeProperty ;
     rdfs:label "is occupied" .
 
@@ -321,11 +309,23 @@ sosa:madeObservation a owl:ObjectProperty ;
 <https://orcid.org/0000-0002-2923-9790> a schema:Person ;
     schema:name "Pierre Larmande" .
 
+<https://orcid.org/0000-0002-6085-6818> a schema:Person ;
+    schema:name "Serge Sonfack Sounchio" .
+
 <https://orcid.org/0000-0002-9116-6692> a schema:Person ;
     schema:name "Konstantin Todorov" .
 
+<https://orcid.org/0000-0003-2204-2466> a schema:Person ;
+    schema:name "Gaoussou Sanou" .
+
 <https://orcid.org/0000-0003-4820-7951> a schema:Person ;
     schema:name "Damien Huzard" .
+
+<https://orcid.org/0009-0008-0575-8490> a schema:Person ;
+    schema:name "Antoine Toffano" .
+
+<https://orcid.org/0009-0008-2489-8106> a schema:Person ;
+    schema:name "Cyril Gilbert" .
 
 hcm:QuantityValue a owl:Class ;
     rdfs:label "Quantity Value" .
@@ -414,11 +414,20 @@ hcm-env:LightCycle a owl:Class ;
 hcm-env:MeasurementSpecification a owl:Class ;
     rdfs:label "Measurement Specification" .
 
+hcm-env:hasDimUnit a owl:DatatypeProperty ;
+    rdfs:label "has dim unit" .
+
 hcm-env:hasGasConcentrationProfile a owl:ObjectProperty ;
     rdfs:label "has gas concentration profile" .
 
 hcm-env:hasGasType a owl:DatatypeProperty ;
     rdfs:label "has gas type" .
+
+hcm-env:hasHeight a owl:DatatypeProperty ;
+    rdfs:label "has height" .
+
+hcm-env:hasLength a owl:DatatypeProperty ;
+    rdfs:label "has length" .
 
 hcm-env:hasLightCycle a owl:ObjectProperty ;
     rdfs:label "has light cycle" .
@@ -431,6 +440,9 @@ hcm-env:hasUnit a owl:DatatypeProperty ;
 
 hcm-env:hasValue a owl:DatatypeProperty ;
     rdfs:label "has value" .
+
+hcm-env:hasWidth a owl:DatatypeProperty ;
+    rdfs:label "has width" .
 
 hcm-obs: a owl:ObjectProperty ;
     rdfs:label "" .
@@ -577,6 +589,9 @@ hcm:MonitoredEnclosure a owl:Class ;
             owl:onProperty hcm-obs:occursIn ],
         [ a owl:Restriction ;
             owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm-env:hasDimUnit ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty hcm-obs:hasBehaviorType ],
         [ a owl:Restriction ;
             owl:allValuesFrom hcm-obs:WeightObservation ;
@@ -587,9 +602,6 @@ hcm:MonitoredEnclosure a owl:Class ;
         [ a owl:Restriction ;
             owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty sosa:usedProcedure ],
-        [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty UNKNOWN:hasHeight ],
         [ a owl:Restriction ;
             owl:cardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty hcm:hasNumericValue ],
@@ -605,6 +617,9 @@ hcm:MonitoredEnclosure a owl:Class ;
         [ a owl:Restriction ;
             owl:cardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty sosa:observedProperty ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm-env:hasWidth ],
         [ a owl:Restriction ;
             owl:cardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty hcm-bio:hasStrain ],
@@ -625,13 +640,16 @@ hcm:MonitoredEnclosure a owl:Class ;
             owl:onProperty hcm-obs:hasConfidenceScore ],
         [ a owl:Restriction ;
             owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty UNKNOWN:hasDimUnit ],
-        [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty hcm:hasUnit ],
         [ a owl:Restriction ;
             owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty UNKNOWN:isOccupied ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm-env:hasHeight ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm-env:hasLength ],
         [ a owl:Restriction ;
             owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty hcm:hasManufacturer ],
@@ -650,9 +668,6 @@ hcm:MonitoredEnclosure a owl:Class ;
         [ a owl:Restriction ;
             owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty UNKNOWN:isOperational ],
-        [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty UNKNOWN:hasLength ],
         [ a owl:Restriction ;
             owl:allValuesFrom hcm:MonitoredEnclosure ;
             owl:onProperty hcm:hasThriveProfile ],
@@ -686,9 +701,6 @@ hcm:MonitoredEnclosure a owl:Class ;
         [ a owl:Restriction ;
             owl:cardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty sosa:phenomenonTime ],
-        [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty UNKNOWN:hasWidth ],
         [ a owl:Restriction ;
             owl:cardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty hcm:locatedIn ],

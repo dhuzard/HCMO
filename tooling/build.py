@@ -132,7 +132,9 @@ def build_profile(g: Graph, manifest: dict) -> dict:
 
 def write_text(path: Path, text: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(text)
+    # Pin UTF-8 + LF so output is byte-identical across platforms (Windows would
+    # otherwise use cp1252 + CRLF, corrupting non-ASCII chars like the header em-dash).
+    path.write_text(text, encoding="utf-8", newline="\n")
 
 
 def main() -> int:

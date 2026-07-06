@@ -42,6 +42,10 @@ jobs:
         run: python tooling/build.py
       - name: Generate WIDOCO documentation
         run: python tooling/docs.py
+      - name: Add HCM-systems contribution form to the site
+        run: |
+          mkdir -p docs/widoco/contribute
+          cp docs/hcm-systems/contribute/index.html docs/widoco/contribute/index.html
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:

@@ -10,6 +10,7 @@ Key Choices
 - Needs: object-based 5-tuple via `hcm:AnimalNeedProfile`; deprecated boolean needs remain for legacy data.
 - Enclosure vs space: `hcm:Enclosure` is an artifact linked to a `hcm:PhysicalSpace` via `hcm:hasSpaceRegion`.
 - Dimensions: simple datatype pattern; roadmap to QUDT/OM for quantity values and units.
+- v2 module ownership: `bio` owns subject/grouping/housing terms and subject-side observation links; `obs` owns observation/result classes and points to subjects with SOSA `hasFeatureOfInterest`. The resulting `bio` <-> `obs` cycle is accepted for V1 because HCMO is released as a merged graph; strict acyclic imports can be revisited later if needed.
 
 Alternatives
 - N-ary relations for System composition with provenance.

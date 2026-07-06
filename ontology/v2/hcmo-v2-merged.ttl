@@ -1,0 +1,663 @@
+# HCMO v2 (re-modularised draft) — MERGED graph for review. Generated; do not hand-edit.
+#
+@prefix UNKNOWN: <http://www.owl-ontologies.com/UNKNOWN#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix hcm: <https://w3id.org/hcmo/ontology/hcm#> .
+@prefix hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#> .
+@prefix hcm-env: <https://w3id.org/hcmo/ontology/hcm/env#> .
+@prefix hcm-obs: <https://w3id.org/hcmo/ontology/hcm/obs#> .
+@prefix hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#> .
+@prefix mod: <https://w3id.org/mod#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix semts: <https://w3id.org/semts/ontology/120#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dc:creator a owl:AnnotationProperty .
+
+dc:description a owl:AnnotationProperty .
+
+dc:title a owl:AnnotationProperty .
+
+UNKNOWN:captures a owl:ObjectProperty ;
+    rdfs:label "captures" .
+
+UNKNOWN:hasActuators a owl:ObjectProperty ;
+    rdfs:label "has actuators" .
+
+UNKNOWN:hasCondition a owl:ObjectProperty ;
+    rdfs:label "has condition" .
+
+UNKNOWN:hasEnrichmentReq a owl:ObjectProperty ;
+    rdfs:label "has enrichment req" .
+
+UNKNOWN:hasSensors a owl:ObjectProperty ;
+    rdfs:label "has sensors" .
+
+UNKNOWN:hasType a owl:DatatypeProperty ;
+    rdfs:label "has type" .
+
+UNKNOWN:partOF a owl:ObjectProperty ;
+    rdfs:label "part o f" .
+
+owl:versionInfo a owl:AnnotationProperty .
+
+<https://w3id.org/hcmo/ontology/hcm> a owl:Ontology ;
+    dc:description "Ontology for home-cage monitoring of laboratory animals" ;
+    dc:title "Home-Cage Monitoring Ontology" ;
+    dcterms:creator <https://orcid.org/0000-0002-2923-9790>,
+        <https://orcid.org/0000-0002-6085-6818>,
+        <https://orcid.org/0000-0002-9116-6692>,
+        <https://orcid.org/0000-0003-2204-2466>,
+        <https://orcid.org/0000-0003-4820-7951>,
+        <https://orcid.org/0009-0008-0575-8490>,
+        <https://orcid.org/0009-0008-2489-8106> ;
+    owl:versionIRI <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
+    owl:versionInfo "0.0.1" ;
+    mod:createdWith <https://chowlk.linkeddata.es/> .
+
+hcm:Enclosure a owl:DatatypeProperty ;
+    rdfs:label "enclosure" ;
+    rdfs:domain hcm:MonitoredEnclosure .
+
+hcm:Enrichment a owl:Class ;
+    rdfs:label "Enrichment" .
+
+hcm:hasCapacity a owl:DatatypeProperty ;
+    rdfs:label "has capacity" .
+
+hcm:hasDescription a owl:DatatypeProperty ;
+    rdfs:label "has description" .
+
+hcm:hasMonitoredAnimals a owl:ObjectProperty ;
+    rdfs:label "has monitored animals" .
+
+hcm:hasName a owl:DatatypeProperty ;
+    rdfs:label "has name" ;
+    rdfs:range xsd:string .
+
+hcm:isOccupied a owl:DatatypeProperty ;
+    rdfs:label "is occupied" .
+
+hcm:isOperational a owl:DatatypeProperty ;
+    rdfs:label "is operational" .
+
+hcm-bio:HousingAssignment a owl:Class ;
+    rdfs:label "Housing Assignment" .
+
+hcm-bio:StudyFactors a owl:Class ;
+    rdfs:label "Study Factors" .
+
+hcm-bio:hasTreatment a owl:DatatypeProperty ;
+    rdfs:label "has treatment" .
+
+hcm-env:AmbientTemperature a owl:ObjectProperty ;
+    rdfs:label "ambient temperature" .
+
+hcm-env:AmmoniaConcentration a owl:ObjectProperty ;
+    rdfs:label "ammonia concentration" .
+
+hcm-env:CarbonDioxideConcentration a owl:ObjectProperty ;
+    rdfs:label "carbon dioxide concentration" .
+
+hcm-env:EnvironmentProfile a owl:Class ;
+    rdfs:label "Environment Profile" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom hcm-env:MeasurementSpecification ;
+            owl:onProperty hcm-env:hasMeasurementSpec ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom hcm-env:GasConcentrationProfile ;
+            owl:onProperty hcm-env:hasGasConcentrationProfile ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom hcm-env:LightCycle ;
+            owl:onProperty hcm-env:hasLightCycle ] .
+
+hcm-env:EnvironmentalProperty a owl:Class ;
+    rdfs:label "Environmental Property" .
+
+hcm-env:LightIntensity a owl:ObjectProperty ;
+    rdfs:label "light intensity" .
+
+hcm-env:LightState a owl:ObjectProperty ;
+    rdfs:label "light state" .
+
+hcm-env:OxygenConcentration a owl:ObjectProperty ;
+    rdfs:label "oxygen concentration" .
+
+hcm-env:RelativeHumidity a owl:ObjectProperty ;
+    rdfs:label "relative humidity" .
+
+hcm-env:ThriveProfile a owl:Class ;
+    rdfs:label "Thrive Profile" .
+
+hcm-env:hasEnvironment a owl:ObjectProperty ;
+    rdfs:label "has environment" .
+
+hcm-env:hasDarkPhaseDuration a owl:DatatypeProperty ;
+    rdfs:label "has dark phase duration" .
+
+hcm-env:hasDarkPhaseStart a owl:DatatypeProperty ;
+    rdfs:label "has dark phase start" .
+
+hcm-env:hasDawnDuration a owl:DatatypeProperty ;
+    rdfs:label "has dawn duration" .
+
+hcm-env:hasDuskDuration a owl:DatatypeProperty ;
+    rdfs:label "has dusk duration" .
+
+hcm-env:hasLightPhaseDuration a owl:DatatypeProperty ;
+    rdfs:label "has light phase duration" .
+
+hcm-obs:BehaviorObservation a owl:Class ;
+    rdfs:label "Behavior Observation" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty sosa:hasResult ;
+            owl:someValuesFrom hcm-obs:BehaviorResult ],
+        [ a owl:Restriction ;
+            owl:onProperty sosa:hasFeatureOfInterest ;
+            owl:someValuesFrom hcm-bio:Subject ] .
+
+hcm-obs:BehaviorResult a owl:Class ;
+    rdfs:label "Behavior Result" .
+
+hcm-obs:CategoricalResult a owl:Class ;
+    rdfs:label "Categorical Result" .
+
+hcm-obs:GasConcentrationObservation a owl:Class ;
+    rdfs:label "Gas Concentration Observation" .
+
+hcm-obs:LocationResultTable a owl:Class ;
+    rdfs:label "Location Result Table" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty sosa:hasResult ;
+            owl:someValuesFrom hcm-obs:QuantityValue ],
+        [ a owl:Restriction ;
+            owl:onProperty semts:generated ;
+            owl:someValuesFrom semts:TimeSeriesSegment ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty sosa:resultTime ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty sosa:phenomenonTime ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty sosa:usedProcedure ],
+        hcm-obs:ObservationResult .
+
+hcm-tech:Hardware a owl:Class ;
+    rdfs:label "Hardware" .
+
+hcm-tech:TimeSeries a owl:Class ;
+    rdfs:label "Time Series" .
+
+hcm-tech:hasFileFormat a owl:DatatypeProperty ;
+    rdfs:label "has file format" .
+
+hcm-tech:hasFirmware a owl:DatatypeProperty ;
+    rdfs:label "has firmware" .
+
+hcm-tech:hasModelNumber a owl:DatatypeProperty ;
+    rdfs:label "has model number" .
+
+hcm-tech:hasProtocol a owl:DatatypeProperty ;
+    rdfs:label "has protocol" .
+
+hcm-tech:hasSamplingRate a owl:DatatypeProperty ;
+    rdfs:label "has sampling rate" .
+
+hcm-tech:hasSensorIdentifier a owl:DatatypeProperty ;
+    rdfs:label "has sensor identifier" .
+
+hcm-tech:hasSensorTechnology a owl:DatatypeProperty ;
+    rdfs:label "has sensor technology" .
+
+hcm-tech:hasSensorType a owl:DatatypeProperty ;
+    rdfs:label "has sensor type" .
+
+hcm-tech:hasStoragePath a owl:DatatypeProperty ;
+    rdfs:label "has storage path" .
+
+hcm-tech:hasVersion a owl:DatatypeProperty ;
+    rdfs:label "has version" .
+
+hcm-tech:isCalibrated a owl:DatatypeProperty ;
+    rdfs:label "is calibrated" .
+
+semts:dimensionUnit a owl:DatatypeProperty ;
+    rdfs:label "dimension unit" .
+
+semts:title a owl:DatatypeProperty ;
+    rdfs:label "title" .
+
+time:TemporalEntity a owl:Class ;
+    rdfs:label "Temporal Entity" .
+
+time:hasBeginning a owl:DatatypeProperty ;
+    rdfs:label "has beginning" .
+
+time:hasEnd a owl:DatatypeProperty ;
+    rdfs:label "has end" .
+
+time:inXSDDateTime a owl:DatatypeProperty ;
+    rdfs:label "in x s d date time" .
+
+sosa:madeBySensor a owl:ObjectProperty ;
+    rdfs:label "made by sensor" .
+
+sosa:madeObservation a owl:ObjectProperty ;
+    rdfs:label "made observation" .
+
+<https://orcid.org/0000-0002-2923-9790> a schema:Person ;
+    schema:name "Pierre Larmande" .
+
+<https://orcid.org/0000-0002-6085-6818> a schema:Person ;
+    schema:name "Serge Sonfack Sounchio" .
+
+<https://orcid.org/0000-0002-9116-6692> a schema:Person ;
+    schema:name "Konstantin Todorov" .
+
+<https://orcid.org/0000-0003-2204-2466> a schema:Person ;
+    schema:name "Gaoussou Sanou" .
+
+<https://orcid.org/0000-0003-4820-7951> a schema:Person ;
+    schema:name "Damien Huzard" .
+
+<https://orcid.org/0009-0008-0575-8490> a schema:Person ;
+    schema:name "Antoine Toffano" .
+
+<https://orcid.org/0009-0008-2489-8106> a schema:Person ;
+    schema:name "Cyril Gilbert" .
+
+hcm:EnclosureDimensions a owl:Class ;
+    rdfs:label "Enclosure Dimensions" .
+
+hcm:hasDimUnit a owl:DatatypeProperty ;
+    rdfs:label "has dim unit" .
+
+hcm:hasDimensions a owl:ObjectProperty ;
+    rdfs:label "has dimensions" .
+
+hcm:hasEnclosureIdentifier a owl:DatatypeProperty ;
+    rdfs:label "has enclosure identifier" .
+
+hcm:hasEnrichment a owl:ObjectProperty ;
+    rdfs:label "has enrichment" .
+
+hcm:hasEnrichmentType a owl:DatatypeProperty ;
+    rdfs:label "has enrichment type" .
+
+hcm:hasFacilityType a owl:DatatypeProperty ;
+    rdfs:label "has facility type" .
+
+hcm:hasFloorArea a owl:DatatypeProperty ;
+    rdfs:label "has floor area" .
+
+hcm:hasFoodRequirement a owl:DatatypeProperty ;
+    rdfs:label "has food requirement" .
+
+hcm:hasHeight a owl:DatatypeProperty ;
+    rdfs:label "has height" .
+
+hcm:hasLength a owl:DatatypeProperty ;
+    rdfs:label "has length" .
+
+hcm:hasManufacturer a owl:DatatypeProperty ;
+    rdfs:label "has manufacturer" .
+
+hcm:hasSafetyRequirement a owl:DatatypeProperty ;
+    rdfs:label "has safety requirement" .
+
+hcm:hasWaterRequirement a owl:DatatypeProperty ;
+    rdfs:label "has water requirement" .
+
+hcm:hasWidth a owl:DatatypeProperty ;
+    rdfs:label "has width" .
+
+hcm:locatedIn a owl:ObjectProperty ;
+    rdfs:label "located in" .
+
+hcm-bio:ExperimentalGroup a owl:Class ;
+    rdfs:label "Experimental Group" .
+
+hcm-bio:Subject a owl:Class ;
+    rdfs:label "Subject" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom hcm-obs:BehaviorObservation ;
+            owl:onProperty hcm-bio:hasBehaviorObservation ] .
+
+hcm-bio:assignedToEnclosure a owl:ObjectProperty ;
+    rdfs:label "assigned to enclosure" .
+
+hcm-bio:belongsToGroup a owl:ObjectProperty ;
+    rdfs:label "belongs to group" .
+
+hcm-bio:hasBehaviorObservation a owl:ObjectProperty ;
+    rdfs:label "has behavior observation" .
+
+hcm-bio:hasBiologicalSex a owl:DatatypeProperty ;
+    rdfs:label "has biological sex" .
+
+hcm-bio:hasDateOfBirth a owl:DatatypeProperty ;
+    rdfs:label "has date of birth" .
+
+hcm-bio:hasHealthStatusObservation a owl:ObjectProperty ;
+    rdfs:label "has health status observation" .
+
+hcm-bio:hasHousingAssignment a owl:ObjectProperty ;
+    rdfs:label "has housing assignment" .
+
+hcm-bio:hasMember a owl:ObjectProperty ;
+    rdfs:label "has member" .
+
+hcm-bio:hasSpecies a owl:DatatypeProperty ;
+    rdfs:label "has species" .
+
+hcm-bio:hasSocialRequirement a owl:DatatypeProperty ;
+    rdfs:label "has social requirement" .
+
+hcm-bio:hasStrain a owl:DatatypeProperty ;
+    rdfs:label "has strain" .
+
+hcm-bio:hasWeightObservation a owl:ObjectProperty ;
+    rdfs:label "has weight observation" .
+
+hcm-env:GasConcentrationProfile a owl:Class ;
+    rdfs:label "Gas Concentration Profile" .
+
+hcm-env:LightCycle a owl:Class ;
+    rdfs:label "Light Cycle" .
+
+hcm-env:MeasurementSpecification a owl:Class ;
+    rdfs:label "Measurement Specification" .
+
+hcm-env:hasGasConcentrationProfile a owl:ObjectProperty ;
+    rdfs:label "has gas concentration profile" .
+
+hcm-env:hasGasType a owl:DatatypeProperty ;
+    rdfs:label "has gas type" .
+
+hcm-env:hasLightCycle a owl:ObjectProperty ;
+    rdfs:label "has light cycle" .
+
+hcm-env:hasMeasurementSpec a owl:ObjectProperty ;
+    rdfs:label "has measurement spec" .
+
+hcm-env:hasThriveProfile a owl:ObjectProperty ;
+    rdfs:label "has thrive profile" .
+
+hcm-env:hasValue a owl:DatatypeProperty ;
+    rdfs:label "has value" .
+
+hcm-obs:EnvironmentObservation a owl:Class ;
+    rdfs:label "Environment Observation" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty sosa:hasFeatureOfInterest ;
+            owl:someValuesFrom hcm:MonitoredEnclosure ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom semts:DataDimension ;
+            owl:onProperty semts:hasDimension ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm-obs:hasCategory ] .
+
+hcm-obs:HealthStatusObservation a owl:Class ;
+    rdfs:label "Health Status Observation" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty sosa:hasFeatureOfInterest ;
+            owl:someValuesFrom hcm-bio:Subject ] .
+
+hcm-obs:QuantityValue a owl:Class ;
+    rdfs:label "Quantity Value" .
+
+hcm-obs:WeightObservation a owl:Class ;
+    rdfs:label "Weight Observation" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty sosa:observedProperty ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty sosa:usedProcedure ],
+        [ a owl:Restriction ;
+            owl:onProperty sosa:hasFeatureOfInterest ;
+            owl:someValuesFrom hcm-bio:Subject ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty sosa:resultTime ],
+        hcm-obs:ObservationResult .
+
+hcm-obs:hasBehaviorType a owl:DatatypeProperty ;
+    rdfs:label "has behavior type" .
+
+hcm-obs:hasCategory a owl:DatatypeProperty ;
+    rdfs:label "has category" .
+
+hcm-obs:hasHealthStatusTerm a owl:DatatypeProperty ;
+    rdfs:label "has health status term" .
+
+hcm-obs:hasInterval a owl:DatatypeProperty ;
+    rdfs:label "has interval" .
+
+hcm-obs:hasNumericValue a owl:DatatypeProperty ;
+    rdfs:label "has numeric value" .
+
+hcm-obs:hasResult a owl:ObjectProperty ;
+    rdfs:label "has result" .
+
+hcm-obs:occursIn a owl:ObjectProperty ;
+    rdfs:label "occurs in" .
+
+hcm-tech:Software a owl:Class ;
+    rdfs:label "Software" .
+
+hcm-tech:installedIn a owl:ObjectProperty ;
+    rdfs:label "installed in" .
+
+hcm-tech:communicatesWith a owl:ObjectProperty ;
+    rdfs:label "communicates with" .
+
+hcm-tech:monitoredBy a owl:ObjectProperty ;
+    rdfs:label "monitored by" .
+
+hcm-tech:runsOn a owl:ObjectProperty ;
+    rdfs:label "runs on" .
+
+hcm-tech:supportsEnclosure a owl:ObjectProperty ;
+    rdfs:label "supports enclosure" .
+
+semts:DataDimension a owl:Class ;
+    rdfs:label "Data Dimension" .
+
+semts:TimeSeriesSegment a owl:Class ;
+    rdfs:label "Time Series Segment" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty semts:during ;
+            owl:someValuesFrom time:TemporalEntity ],
+        [ a owl:Restriction ;
+            owl:onProperty semts:isPartOf ;
+            owl:someValuesFrom hcm-obs:EnvironmentObservation ] .
+
+semts:during a owl:ObjectProperty ;
+    rdfs:label "during" .
+
+semts:generated a owl:ObjectProperty ;
+    rdfs:label "generated" .
+
+semts:hasDimension a owl:ObjectProperty ;
+    rdfs:label "has dimension" .
+
+semts:isPartOf a owl:ObjectProperty ;
+    rdfs:label "is part of" .
+
+sosa:phenomenonTime a owl:ObjectProperty ;
+    rdfs:label "phenomenon time" .
+
+hcm:hasUnit a owl:DatatypeProperty ;
+    rdfs:label "has unit" .
+
+hcm-obs:ObservationResult a owl:Class ;
+    rdfs:label "Observation Result" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom hcm-tech:Sensor ;
+            owl:onProperty sosa:madeBySensor ] .
+
+hcm-obs:hasConfidenceScore a owl:DatatypeProperty ;
+    rdfs:label "has confidence score" .
+
+hcm-tech:Sensor a owl:Class ;
+    rdfs:label "Sensor" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty hcm-tech:installedIn ;
+            owl:someValuesFrom hcm:MonitoredEnclosure ] .
+
+sosa:hasResult a owl:ObjectProperty ;
+    rdfs:label "has result" .
+
+sosa:observedProperty a owl:ObjectProperty ;
+    rdfs:label "observed property" .
+
+sosa:hasFeatureOfInterest a owl:ObjectProperty ;
+    rdfs:label "has feature of interest" .
+
+sosa:resultTime a owl:DatatypeProperty ;
+    rdfs:label "result time" .
+
+sosa:usedProcedure a owl:ObjectProperty ;
+    rdfs:label "used procedure" .
+
+hcm:MonitoredEnclosure a owl:Class ;
+    rdfs:label "Monitored Enclosure" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom hcm-env:ThriveProfile ;
+            owl:onProperty hcm-env:hasThriveProfile ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm:isOperational ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm:isOccupied ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty time:hasBeginning ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty time:hasEnd ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty time:inXSDDateTime ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm:hasEnclosureIdentifier ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm:hasManufacturer ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom hcm-bio:ExperimentalGroup ;
+            owl:onProperty hcm-bio:belongsToGroup ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm:locatedIn ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm:hasEnrichment ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty sosa:resultTime ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty sosa:phenomenonTime ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty sosa:usedProcedure ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm-bio:hasDateOfBirth ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm-bio:hasBiologicalSex ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm-bio:hasStrain ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm-bio:hasSpecies ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty sosa:resultTime ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom hcm-obs:WeightObservation ;
+            owl:onProperty hcm-bio:hasWeightObservation ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty sosa:observedProperty ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm-obs:hasInterval ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty sosa:usedProcedure ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty sosa:observedProperty ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty sosa:hasResult ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty sosa:resultTime ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty sosa:usedProcedure ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm-obs:hasHealthStatusTerm ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm-obs:hasConfidenceScore ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm-obs:hasNumericValue ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom hcm-obs:HealthStatusObservation ;
+            owl:onProperty hcm-bio:hasHealthStatusObservation ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm:hasUnit ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm-obs:hasBehaviorType ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm-obs:hasConfidenceScore ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm-env:hasGasType ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm-env:hasValue ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm:hasUnit ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm:hasWidth ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm:hasLength ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm:hasHeight ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm:hasDimUnit ],
+        [ a owl:Restriction ;
+            owl:onProperty hcm:hasDimensions ;
+            owl:someValuesFrom hcm:EnclosureDimensions ],
+        [ a owl:Restriction ;
+            owl:onProperty hcm-tech:monitoredBy ;
+            owl:someValuesFrom hcm-tech:Sensor ] .
+

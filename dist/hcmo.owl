@@ -54,6 +54,12 @@
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="cb2043b433cdffe56fa47ef8847b63bcdded0854f7ed5917917d25a1b0a6c30d575">
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+        <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#hasDimUnit"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
       <owl:Restriction rdf:nodeID="cb20b5fbc13dbf2fcef35fde99b83b06bc78d7926e4be85341c89cfd043951e95eb">
         <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
         <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm/obs#hasBehaviorType"/>
@@ -75,12 +81,6 @@
       <owl:Restriction rdf:nodeID="cb213c3039824c882634fbf71fe0e22bd258b5d93df7d6853268f57baf9db27f4d8">
         <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
         <owl:onProperty rdf:resource="http://www.w3.org/ns/sosa/usedProcedure"/>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction rdf:nodeID="cb213f0d54c5fa1d906b1fa271f4b2ed652dd7a3b0e59fd5becf609086d3440ef60">
-        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
-        <owl:onProperty rdf:resource="http://www.owl-ontologies.com/UNKNOWN#hasHeight"/>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
@@ -111,6 +111,12 @@
       <owl:Restriction rdf:nodeID="cb22c0391c4877a1584fd21ce01322dcfd292e66fbe955d82098202a9de1601901d">
         <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
         <owl:onProperty rdf:resource="http://www.w3.org/ns/sosa/observedProperty"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="cb22c364d8c23f537299ceead79ba735ddcd95ba8f9e30158af533c4793161b2790">
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+        <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#hasWidth"/>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
@@ -150,12 +156,6 @@
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
-      <owl:Restriction rdf:nodeID="cb253edf0ee1402a2b4b80d965919285b97ccd4bf55c3f87f8213f28d4d9ba455fd">
-        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
-        <owl:onProperty rdf:resource="http://www.owl-ontologies.com/UNKNOWN#hasDimUnit"/>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
       <owl:Restriction rdf:nodeID="cb2570ca9e5240d4e7484e0da717fe20cb6b6c3f895cd15afe23e4525c367454596">
         <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
         <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm#hasUnit"/>
@@ -165,6 +165,18 @@
       <owl:Restriction rdf:nodeID="cb25b4872a2b3f75e22a0e8cd01ca9d052cc468816c30a3a44a0f74be0ba61bc1dd">
         <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
         <owl:onProperty rdf:resource="http://www.owl-ontologies.com/UNKNOWN#isOccupied"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="cb25b69c955f6865744754ffa8a883465f5ec8ecfa28eef3beda758ebac5f3cb363">
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+        <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#hasHeight"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="cb26797f51830125a49be427bb4573b4e6f92ffd6e8d793493bac6c0102b71ba536">
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+        <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#hasLength"/>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
@@ -201,12 +213,6 @@
       <owl:Restriction rdf:nodeID="cb27cd55df4aa24314b2e3834501529d36abe8656fcda4805f3617bd3d72f61ff4b">
         <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
         <owl:onProperty rdf:resource="http://www.owl-ontologies.com/UNKNOWN#isOperational"/>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction rdf:nodeID="cb27e8813534d58241c66af214b63dd180414679be7da580de6dd4f5186faefd7ec">
-        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
-        <owl:onProperty rdf:resource="http://www.owl-ontologies.com/UNKNOWN#hasLength"/>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
@@ -276,12 +282,6 @@
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
-      <owl:Restriction rdf:nodeID="cb2e29d528c735be3a3554fe09d7b9a9f4783cd581b3c6514fa739b36d0bc42459f">
-        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
-        <owl:onProperty rdf:resource="http://www.owl-ontologies.com/UNKNOWN#hasWidth"/>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
       <owl:Restriction rdf:nodeID="cb2e433199239f5dcd71b67060da183432e1e56b5de0dceed5ac2ba2e4492e9d613">
         <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
         <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm#locatedIn"/>
@@ -311,32 +311,23 @@
   <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/UNKNOWN#hasSensorTechnology">
     <rdfs:label>has sensor technology</rdfs:label>
   </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm#hasDescription">
+    <rdfs:label>has description</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm#hasVersion">
+    <rdfs:label>has version</rdfs:label>
+  </owl:DatatypeProperty>
   <owl:Ontology rdf:about="https://w3id.org/hcmo/ontology/hcm">
     <dc:description>Ontology for Monitoring and Analytics for Physiological Processes (MAPP)</dc:description>
     <dc:title>MAPP Ontology</dc:title>
     <dcterms:creator>
-      <schema:Person rdf:nodeID="cb160c7c4054321f6a510d5f5989b3a5691f1f291b6a0f61e5277528d2f6939dfa8">
-        <schema:name>Cyril Gilbert</schema:name>
-      </schema:Person>
-    </dcterms:creator>
-    <dcterms:creator>
-      <schema:Person rdf:nodeID="cb16ed6fc717ad5d6768187410fe718b5cc7a2ce7d1fb6059fbb4c1d434bfe6ce1c">
-        <schema:name>Gaoussou Sanou</schema:name>
-      </schema:Person>
-    </dcterms:creator>
-    <dcterms:creator>
-      <schema:Person rdf:nodeID="cb192a98778b14bb7268e9f35693b103bf9fa8bd8b8f67b01a2ede6deb98433886f">
-        <schema:name>Antoine Tofano</schema:name>
-      </schema:Person>
-    </dcterms:creator>
-    <dcterms:creator>
-      <schema:Person rdf:nodeID="cb19eb4d2089a2fe8c838a2de87ce1941cfc86dbada43b73334ecc2002d4b96a699">
-        <schema:name>Serge Sonfack</schema:name>
-      </schema:Person>
-    </dcterms:creator>
-    <dcterms:creator>
       <schema:Person rdf:about="https://orcid.org/0000-0002-2923-9790">
         <schema:name>Pierre Larmande</schema:name>
+      </schema:Person>
+    </dcterms:creator>
+    <dcterms:creator>
+      <schema:Person rdf:about="https://orcid.org/0000-0002-6085-6818">
+        <schema:name>Serge Sonfack Sounchio</schema:name>
       </schema:Person>
     </dcterms:creator>
     <dcterms:creator>
@@ -345,17 +336,29 @@
       </schema:Person>
     </dcterms:creator>
     <dcterms:creator>
+      <schema:Person rdf:about="https://orcid.org/0000-0003-2204-2466">
+        <schema:name>Gaoussou Sanou</schema:name>
+      </schema:Person>
+    </dcterms:creator>
+    <dcterms:creator>
       <schema:Person rdf:about="https://orcid.org/0000-0003-4820-7951">
         <schema:name>Damien Huzard</schema:name>
+      </schema:Person>
+    </dcterms:creator>
+    <dcterms:creator>
+      <schema:Person rdf:about="https://orcid.org/0009-0008-0575-8490">
+        <schema:name>Antoine Toffano</schema:name>
+      </schema:Person>
+    </dcterms:creator>
+    <dcterms:creator>
+      <schema:Person rdf:about="https://orcid.org/0009-0008-2489-8106">
+        <schema:name>Cyril Gilbert</schema:name>
       </schema:Person>
     </dcterms:creator>
     <owl:versionIRI rdf:resource="https://w3id.org/hcmo/ontology/hcm/0.0.1"/>
     <owl:versionInfo>0.0.1</owl:versionInfo>
     <mod:createdWith rdf:resource="https://chowlk.linkeddata.es/"/>
   </owl:Ontology>
-  <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm#hasDescription">
-    <rdfs:label>has description</rdfs:label>
-  </owl:DatatypeProperty>
   <owl:Class rdf:about="https://w3id.org/hcmo/ontology/hcm#Structural&amp;LocationTable">
     <rdfs:label>Structural&amp; Location Table</rdfs:label>
     <rdfs:subClassOf>
@@ -430,6 +433,9 @@
   <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/UNKNOWN#hasWaterReq">
     <rdfs:label>has water req</rdfs:label>
   </owl:DatatypeProperty>
+  <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/env#LightIntensity">
+    <rdfs:label>light intensity</rdfs:label>
+  </owl:ObjectProperty>
   <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/UNKNOWN#partOF">
     <rdfs:label>part o f</rdfs:label>
   </owl:DatatypeProperty>
@@ -441,10 +447,6 @@
   </owl:DatatypeProperty>
   <owl:Class rdf:about="https://w3id.org/hcmo/ontology/hcm/env#EnvironmentalProperty">
     <rdfs:label>Environmental Property</rdfs:label>
-  </owl:Class>
-  <owl:Class rdf:about="http://www.owl-ontologies.com/UNKNOWN#StudyFactors">
-    <rdfs:label>Study Factors</rdfs:label>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/hcmo/ontology/hcm#MonitoredEnclosure"/>
   </owl:Class>
   <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/UNKNOWN#hasFoodReq">
     <rdfs:label>has food req</rdfs:label>
@@ -507,6 +509,10 @@
   <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/UNKNOWN#hasDarkPhaseDuration">
     <rdfs:label>has dark phase duration</rdfs:label>
   </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm#hasName">
+    <rdfs:label>has name</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/UNKNOWN#hasSafetyReq">
     <rdfs:label>has safety req</rdfs:label>
   </owl:DatatypeProperty>
@@ -519,9 +525,6 @@
   <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/UNKNOWN#hasSensorIdentifier">
     <rdfs:label>has sensor identifier</rdfs:label>
   </owl:DatatypeProperty>
-  <owl:Class rdf:about="http://www.owl-ontologies.com/ns#Class2">
-    <rdfs:label>Class2</rdfs:label>
-  </owl:Class>
   <owl:Class rdf:about="https://w3id.org/hcmo/ontology/hcm#Hardware">
     <rdfs:label>Hardware</rdfs:label>
   </owl:Class>
@@ -540,9 +543,10 @@
   <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/env#CarbonDioxideConcentration">
     <rdfs:label>carbon dioxide concentration</rdfs:label>
   </owl:ObjectProperty>
-  <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/UNKNOWN#hasVersion">
-    <rdfs:label>has version</rdfs:label>
-  </owl:DatatypeProperty>
+  <owl:Class rdf:about="https://w3id.org/hcmo/ontology/hcm#StudyFactors">
+    <rdfs:label>Study Factors</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/hcmo/ontology/hcm#MonitoredEnclosure"/>
+  </owl:Class>
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm#hasCapacity">
     <rdfs:label>has capacity</rdfs:label>
   </owl:DatatypeProperty>
@@ -653,9 +657,6 @@
   <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#hasWeightObservation">
     <rdfs:label>has weight observation</rdfs:label>
   </owl:ObjectProperty>
-  <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/UNKNOWN#hasWidth">
-    <rdfs:label>has width</rdfs:label>
-  </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm#hasNumericValue">
     <rdfs:label>has numeric value</rdfs:label>
   </owl:DatatypeProperty>
@@ -668,9 +669,6 @@
   <owl:ObjectProperty rdf:about="https://w3id.org/semts/ontology/120#hasDimension">
     <rdfs:label>has dimension</rdfs:label>
   </owl:ObjectProperty>
-  <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/UNKNOWN#hasDimUnit">
-    <rdfs:label>has dim unit</rdfs:label>
-  </owl:DatatypeProperty>
   <owl:Class rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#WeightObservation">
     <rdfs:label>Weight Observation</rdfs:label>
     <rdfs:subClassOf>
@@ -708,6 +706,9 @@
   <owl:DatatypeProperty rdf:about="http://www.w3.org/ns/sosa/hasResult">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
     <rdfs:label>has result</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/env#hasHeight">
+    <rdfs:label>has height</rdfs:label>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm#hasManufacturer">
     <rdfs:label>has manufacturer</rdfs:label>
@@ -757,9 +758,6 @@
   <owl:Class rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#ExperimentalGroup">
     <rdfs:label>Experimental Group</rdfs:label>
   </owl:Class>
-  <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/UNKNOWN#hasLength">
-    <rdfs:label>has length</rdfs:label>
-  </owl:DatatypeProperty>
   <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm#hasResult">
     <rdfs:label>has result</rdfs:label>
   </owl:ObjectProperty>
@@ -820,18 +818,21 @@
   <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/env#hasGasConcentrationProfile">
     <rdfs:label>has gas concentration profile</rdfs:label>
   </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/env#hasDimUnit">
+    <rdfs:label>has dim unit</rdfs:label>
+  </owl:DatatypeProperty>
   <owl:Class rdf:about="https://w3id.org/hcmo/ontology/hcm/env#GasConcentrationProfile">
     <rdfs:label>Gas Concentration Profile</rdfs:label>
   </owl:Class>
+  <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/env#hasWidth">
+    <rdfs:label>has width</rdfs:label>
+  </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#hasBeginning">
     <rdfs:label>has beginning</rdfs:label>
   </owl:DatatypeProperty>
   <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm#hasDimensions">
     <rdfs:label>has dimensions</rdfs:label>
   </owl:ObjectProperty>
-  <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/UNKNOWN#hasHeight">
-    <rdfs:label>has height</rdfs:label>
-  </owl:DatatypeProperty>
   <owl:Class rdf:about="https://w3id.org/semts/ontology/120#TimeSeriesSegment">
     <rdfs:label>Time Series Segment</rdfs:label>
     <rdfs:subClassOf>
@@ -924,5 +925,8 @@
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/env#hasUnit">
     <rdfs:label>has unit</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/env#hasLength">
+    <rdfs:label>has length</rdfs:label>
   </owl:DatatypeProperty>
 </rdf:RDF>

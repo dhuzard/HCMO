@@ -25,16 +25,6 @@
   "classes": [
     {
       "comment": null,
-      "iri": "http://www.owl-ontologies.com/UNKNOWN#StudyFactors",
-      "label": "Study Factors"
-    },
-    {
-      "comment": null,
-      "iri": "http://www.owl-ontologies.com/ns#Class2",
-      "label": "Class2"
-    },
-    {
-      "comment": null,
       "iri": "http://www.w3.org/2006/time#TemporalEntity",
       "label": "Temporal Entity"
     },
@@ -87,6 +77,11 @@
       "comment": null,
       "iri": "https://w3id.org/hcmo/ontology/hcm#Structural&LocationTable",
       "label": "Structural& Location Table"
+    },
+    {
+      "comment": null,
+      "iri": "https://w3id.org/hcmo/ontology/hcm#StudyFactors",
+      "label": "Study Factors"
     },
     {
       "comment": null,
@@ -186,10 +181,10 @@
   ],
   "counts": {
     "annotation_properties": 4,
-    "classes": 32,
-    "datatype_properties": 73,
-    "object_properties": 38,
-    "triples": 614
+    "classes": 31,
+    "datatype_properties": 74,
+    "object_properties": 39,
+    "triples": 617
   },
   "datatype_properties": [
     {
@@ -224,11 +219,6 @@
     },
     {
       "comment": null,
-      "iri": "http://www.owl-ontologies.com/UNKNOWN#hasDimUnit",
-      "label": "has dim unit"
-    },
-    {
-      "comment": null,
       "iri": "http://www.owl-ontologies.com/UNKNOWN#hasDuskDuration",
       "label": "has dusk duration"
     },
@@ -256,16 +246,6 @@
       "comment": null,
       "iri": "http://www.owl-ontologies.com/UNKNOWN#hasFoodReq",
       "label": "has food req"
-    },
-    {
-      "comment": null,
-      "iri": "http://www.owl-ontologies.com/UNKNOWN#hasHeight",
-      "label": "has height"
-    },
-    {
-      "comment": null,
-      "iri": "http://www.owl-ontologies.com/UNKNOWN#hasLength",
-      "label": "has length"
     },
     {
       "comment": null,
@@ -324,18 +304,8 @@
     },
     {
       "comment": null,
-      "iri": "http://www.owl-ontologies.com/UNKNOWN#hasVersion",
-      "label": "has version"
-    },
-    {
-      "comment": null,
       "iri": "http://www.owl-ontologies.com/UNKNOWN#hasWaterReq",
       "label": "has water req"
-    },
-    {
-      "comment": null,
-      "iri": "http://www.owl-ontologies.com/UNKNOWN#hasWidth",
-      "label": "has width"
     },
     {
       "comment": null,
@@ -459,6 +429,11 @@
     },
     {
       "comment": null,
+      "iri": "https://w3id.org/hcmo/ontology/hcm#hasName",
+      "label": "has name"
+    },
+    {
+      "comment": null,
       "iri": "https://w3id.org/hcmo/ontology/hcm#hasNumericValue",
       "label": "has numeric value"
     },
@@ -476,6 +451,11 @@
       "comment": null,
       "iri": "https://w3id.org/hcmo/ontology/hcm#hasUnit",
       "label": "has unit"
+    },
+    {
+      "comment": null,
+      "iri": "https://w3id.org/hcmo/ontology/hcm#hasVersion",
+      "label": "has version"
     },
     {
       "comment": null,
@@ -514,8 +494,23 @@
     },
     {
       "comment": null,
+      "iri": "https://w3id.org/hcmo/ontology/hcm/env#hasDimUnit",
+      "label": "has dim unit"
+    },
+    {
+      "comment": null,
       "iri": "https://w3id.org/hcmo/ontology/hcm/env#hasGasType",
       "label": "has gas type"
+    },
+    {
+      "comment": null,
+      "iri": "https://w3id.org/hcmo/ontology/hcm/env#hasHeight",
+      "label": "has height"
+    },
+    {
+      "comment": null,
+      "iri": "https://w3id.org/hcmo/ontology/hcm/env#hasLength",
+      "label": "has length"
     },
     {
       "comment": null,
@@ -526,6 +521,11 @@
       "comment": null,
       "iri": "https://w3id.org/hcmo/ontology/hcm/env#hasValue",
       "label": "has value"
+    },
+    {
+      "comment": null,
+      "iri": "https://w3id.org/hcmo/ontology/hcm/env#hasWidth",
+      "label": "has width"
     },
     {
       "comment": null,
@@ -684,6 +684,11 @@
       "comment": null,
       "iri": "https://w3id.org/hcmo/ontology/hcm/env#CarbonDioxideConcentration",
       "label": "carbon dioxide concentration"
+    },
+    {
+      "comment": null,
+      "iri": "https://w3id.org/hcmo/ontology/hcm/env#LightIntensity",
+      "label": "light intensity"
     },
     {
       "comment": null,

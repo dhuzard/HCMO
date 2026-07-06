@@ -1,4 +1,4 @@
-# HCMO — Home-Cage Monitoring Ontology
+﻿# HCMO — Home-Cage Monitoring Ontology
 
 [![Validate](https://github.com/Neuronautix/HCMO/actions/workflows/validate.yml/badge.svg)](https://github.com/Neuronautix/HCMO/actions/workflows/validate.yml)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-blue.svg)](LICENSE)
@@ -15,15 +15,16 @@ JSON-LD context.
 
 ## At a glance
 
-| | |
-|---|---|
-| **Ontology IRI** | `https://w3id.org/hcmo/ontology/hcm` |
-| **Base namespace** | `https://w3id.org/hcmo/ontology/hcm#` |
-| **Module sub-namespaces** | `…/hcm/bio#`, `…/hcm/env#`, `…/hcm/obs#` |
-| **Version** | `0.0.1` (versionIRI `…/hcm/0.0.1`) |
-| **Prefix** | `hcm` |
-| **License** | CC BY 4.0 |
-| **Release manifest** | [`hcmo.yaml`](hcmo.yaml) |
+|                                 |                                                                                             |
+| ------------------------------- | ------------------------------------------------------------------------------------------- |
+| **Ontology IRI**          | `https://w3id.org/hcmo/ontology/hcm`                                                      |
+| **Base namespace**        | `https://w3id.org/hcmo/ontology/hcm#`                                                     |
+| **Module sub-namespaces** | `…/hcm/bio#`, `…/hcm/env#`, `…/hcm/obs#`                                           |
+| **Version**               | `0.0.1` (versionIRI `…/hcm/0.0.1`)                                                     |
+| **Prefix**                | `hcm`                                                                                     |
+| **License**               | CC BY 4.0                                                                                   |
+| **Release manifest**      | [`hcmo.yaml`](hcmo.yaml)                                                                   |
+| **Documentation**         | [https://dhuzard.github.io/HCMO/index-en.html](https://dhuzard.github.io/HCMO/index-en.html) |
 
 > The release manifest [`hcmo.yaml`](hcmo.yaml) is the **contract** that
 > downstream tools (e.g. the `hcmo-kgqa-lab` sync layer) read. Its shape is
@@ -87,6 +88,8 @@ python tooling/validate.py   # parse all TTL + pySHACL + competency queries (the
 
 ## Documentation
 
+📖 **Published docs:** [https://dhuzard.github.io/HCMO/index-en.html](https://dhuzard.github.io/HCMO/index-en.html)
+
 Human-readable HTML documentation is generated from the merged graph with
 [WIDOCO](https://github.com/dgarijo/Widoco) (overview, term cross-reference,
 namespace declarations, a WebVOWL diagram, and provenance).
@@ -131,13 +134,13 @@ MAPP reorganization and targets the legacy term set.
 
 ## Contributors
 
-- **Damien Huzard** — [0000-0003-4820-7951](https://orcid.org/0000-0003-4820-7951)
+- **Damien Huzard** — [0000-0003-4820-7951](https://orcid.org/0000-0003-4820-7951) · [@dhuzard](https://github.com/dhuzard)
 - **Konstantin Todorov** — [0000-0002-9116-6692](https://orcid.org/0000-0002-9116-6692)
-- **Cyril Gilbert** — _ORCID: TBD_
-- **Pierre Larmande** — [0000-0002-2923-9790](https://orcid.org/0000-0002-2923-9790)
-- **Gaoussou Sanou** — _ORCID: TBD_
-- **Serge Sonfack** — _ORCID: TBD_
-- **Antoine Tofano** — _ORCID: TBD_
+- **Cyril Gilbert** — [0009-0008-2489-8106](https://orcid.org/0009-0008-2489-8106) · [@cyrilbonus](https://github.com/cyrilbonus)
+- **Pierre Larmande** — [0000-0002-2923-9790](https://orcid.org/0000-0002-2923-9790) · [@pierrelarmande](https://github.com/pierrelarmande)
+- **Gaoussou Sanou** — [0000-0003-2204-2466](https://orcid.org/0000-0003-2204-2466) · [@gsanou](https://github.com/gsanou)
+- **Serge Sonfack Sounchio** — [0000-0002-6085-6818](https://orcid.org/0000-0002-6085-6818) · [@sonfack](https://github.com/sonfack)
+- **Antoine Toffano** — [0009-0008-0575-8490](https://orcid.org/0009-0008-0575-8490)
 
 Attribution is also recorded on the `owl:Ontology` header (`dcterms:creator`,
 using ORCID IRIs where known) and in [`CITATION.cff`](CITATION.cff).
