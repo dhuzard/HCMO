@@ -8,9 +8,6 @@
 UNKNOWN:captures a owl:DatatypeProperty ;
     rdfs:label "captures" .
 
-UNKNOWN:communicatesWith a owl:ObjectProperty ;
-    rdfs:label "communicates with" .
-
 UNKNOWN:hasActuators a owl:DatatypeProperty ;
     rdfs:label "has actuators" .
 
@@ -38,9 +35,6 @@ UNKNOWN:hasEnrichmentType a owl:DatatypeProperty ;
 UNKNOWN:hasFacilityType a owl:DatatypeProperty ;
     rdfs:label "has facility type" .
 
-UNKNOWN:hasFirmware a owl:DatatypeProperty ;
-    rdfs:label "has firmware" .
-
 UNKNOWN:hasFloorArea a owl:DatatypeProperty ;
     rdfs:label "has floor area" .
 
@@ -50,23 +44,8 @@ UNKNOWN:hasFoodReq a owl:DatatypeProperty ;
 UNKNOWN:hasLightPhaseDuration a owl:DatatypeProperty ;
     rdfs:label "has light phase duration" .
 
-UNKNOWN:hasModelNumber a owl:DatatypeProperty ;
-    rdfs:label "has model number" .
-
-UNKNOWN:hasProtocol a owl:DatatypeProperty ;
-    rdfs:label "has protocol" .
-
 UNKNOWN:hasSafetyReq a owl:DatatypeProperty ;
     rdfs:label "has safety req" .
-
-UNKNOWN:hasSensorIdentifier a owl:DatatypeProperty ;
-    rdfs:label "has sensor identifier" .
-
-UNKNOWN:hasSensorTechnology a owl:DatatypeProperty ;
-    rdfs:label "has sensor technology" .
-
-UNKNOWN:hasSensorType a owl:DatatypeProperty ;
-    rdfs:label "has sensor type" .
 
 UNKNOWN:hasSensors a owl:ObjectProperty ;
     rdfs:label "has sensors" .
@@ -80,14 +59,8 @@ UNKNOWN:hasType a owl:DatatypeProperty ;
 UNKNOWN:hasWaterReq a owl:DatatypeProperty ;
     rdfs:label "has water req" .
 
-UNKNOWN:isCalibrated a owl:DatatypeProperty ;
-    rdfs:label "is calibrated" .
-
 UNKNOWN:partOF a owl:DatatypeProperty ;
     rdfs:label "part o f" .
-
-UNKNOWN:runsOn a owl:ObjectProperty ;
-    rdfs:label "runs on" .
 
 UNKNOWN:supportsEnclosure a owl:ObjectProperty ;
     rdfs:label "supports enclosure" .
