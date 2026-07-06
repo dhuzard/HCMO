@@ -1,6 +1,7 @@
 name: Docs
 
-# Build the WIDOCO HTML documentation and publish it to GitHub Pages.
+# Build the WIDOCO HTML documentation. Deployment is manual for now because
+# GitHub Pages deployment fails at the service/settings layer while build passes.
 # The "Configure Pages" step enables Pages automatically (enablement: true); if
 # your token can't enable it, set Source to "GitHub Actions" in repo Settings → Pages.
 
@@ -53,6 +54,7 @@ jobs:
 
   deploy:
     needs: build
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
