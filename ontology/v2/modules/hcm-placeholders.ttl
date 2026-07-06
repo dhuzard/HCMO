@@ -35,9 +35,6 @@ UNKNOWN:hasSafetyReq a owl:DatatypeProperty ;
 UNKNOWN:hasSensors a owl:ObjectProperty ;
     rdfs:label "has sensors" .
 
-UNKNOWN:hasSocialReq a owl:DatatypeProperty ;
-    rdfs:label "has social req" .
-
 UNKNOWN:hasType a owl:DatatypeProperty ;
     rdfs:label "has type" .
 

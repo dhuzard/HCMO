@@ -25,6 +25,7 @@ be handled before promotion. The goal is to avoid silently minting weak terms.
 | `UNKNOWN:hasDawnDuration` | Mint as `hcm-env:hasDawnDuration` | Light-cycle transition duration. |
 | `UNKNOWN:hasDuskDuration` | Mint as `hcm-env:hasDuskDuration` | Light-cycle transition duration. |
 | `UNKNOWN:hasLightPhaseDuration` | Mint as `hcm-env:hasLightPhaseDuration` | Light-cycle duration parameter. |
+| `UNKNOWN:hasSocialReq` | Mint as `hcm-bio:hasSocialRequirement` | Subject/group husbandry requirement. |
 
 ## Remaining placeholders by proposed action
 
@@ -55,12 +56,6 @@ be handled before promotion. The goal is to avoid silently minting weak terms.
 | `UNKNOWN:hasSafetyReq` | `hcm:hasSafetyRequirement` | DatatypeProperty | Husbandry/facility requirement. |
 | `UNKNOWN:hasWaterReq` | `hcm:hasWaterRequirement` | DatatypeProperty | Husbandry requirement; consider future needs profile. |
 | `UNKNOWN:partOF` | `hcm:partOf` or external relation | ObjectProperty | Typo/case issue; use a standard part-whole relation if one is adopted. |
-
-### Mint in `bio`
-
-| Placeholder | Proposed term | Kind | Notes |
-|---|---|---|---|
-| `UNKNOWN:hasSocialReq` | `hcm-bio:hasSocialRequirement` | DatatypeProperty | Subject/group husbandry requirement. |
 
 ### Drop or defer
 

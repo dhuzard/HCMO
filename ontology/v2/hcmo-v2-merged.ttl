@@ -53,9 +53,6 @@ UNKNOWN:hasSafetyReq a owl:DatatypeProperty ;
 UNKNOWN:hasSensors a owl:ObjectProperty ;
     rdfs:label "has sensors" .
 
-UNKNOWN:hasSocialReq a owl:DatatypeProperty ;
-    rdfs:label "has social req" .
-
 UNKNOWN:hasType a owl:DatatypeProperty ;
     rdfs:label "has type" .
 
@@ -362,6 +359,9 @@ hcm-bio:hasMember a owl:ObjectProperty ;
 
 hcm-bio:hasSpecies a owl:DatatypeProperty ;
     rdfs:label "has species" .
+
+hcm-bio:hasSocialRequirement a owl:DatatypeProperty ;
+    rdfs:label "has social requirement" .
 
 hcm-bio:hasStrain a owl:DatatypeProperty ;
     rdfs:label "has strain" .

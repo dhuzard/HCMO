@@ -34,19 +34,19 @@ ontology/v2/
     hcm-obs.ttl           # observations + ALL results
     hcm-env.ttl           # profiles, specs, environmental properties
     hcm-tech.ttl          # Sensor/Hardware/Software/TimeSeries (NEW namespace …/hcm/tech#)
-    hcm-placeholders.ttl  # 15 UNKNOWN:/ns: terms still awaiting definition-or-drop (T4/T5)
+    hcm-placeholders.ttl  # 14 UNKNOWN:/ns: terms still awaiting definition-or-drop (T4/T5)
   hcmo-v2-merged.ttl      # merged graph (595 triples) for quick review
   README.md               # this file
 ```
 
 Term counts (HCMO + reused scaffolding): core 6 cls / bio 4 / obs 10 / env 6 /
-tech 4; 15 placeholders isolated. All files parse clean.
+tech 4; 14 placeholders isolated. All files parse clean.
 
 ## Still pending (not addressed by re-modularisation)
 
 - **Units**: `hcm:hasUnit` is a temporary stub — replace with **QUDT/OM** once the
   vocabulary is chosen (Q21). `hasValue`/`hasNumericValue` are follow-on candidates.
-- **15 placeholders** in `hcm-placeholders.ttl` — define or drop (T4), then add
+- **14 placeholders** in `hcm-placeholders.ttl` — define or drop (T4), then add
   `rdfs:comment` definitions to every term (T5).
 - **Branding**: the v2 ontology header now uses HCMO; reconcile the remaining repository-level branding separately (T7b).
 - **Device-manufacturer** property (M5 split) not yet minted; enclosure keeps

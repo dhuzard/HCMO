@@ -25,7 +25,7 @@ column and append to the **Change log** whenever something moves.
 
 | ID | Task | Status | Notes |
 |----|------|--------|-------|
-| T4 | Replace/remove **Chowlk placeholders** (`UNKNOWN:*`, `ns:Class2`, `ns:objectProperty`, `xsd:boolean/integer` as properties) | ◐ | v2 placeholders reduced from 32 to 15; safe core duplicates, obvious tech metadata terms, and light-cycle env terms resolved. Decision table: `docs/paper/PLACEHOLDER-MAP.md`. |
+| T4 | Replace/remove **Chowlk placeholders** (`UNKNOWN:*`, `ns:Class2`, `ns:objectProperty`, `xsd:boolean/integer` as properties) | ◐ | v2 placeholders reduced from 32 to 14; safe core duplicates, obvious tech metadata terms, light-cycle env terms, and the bio social requirement resolved. Decision table: `docs/paper/PLACEHOLDER-MAP.md`. |
 | T5 | Add **labels + `rdfs:comment`/IAO definitions** for all terms | ☐ | 143 terms lack comments; 1 lacks a label. |
 | T6 | **Re-author SHACL shapes, examples & competency queries** against the clean V1 term set | ☐ | Currently legacy → CQs return 0 rows. |
 | T6b | **Host a public SPARQL endpoint** (HITL R3) | ☐ | Strongest availability story; depends on T0. |
@@ -67,6 +67,7 @@ column and append to the **Change log** whenever something moves.
 
 | Date | Change | By |
 |------|--------|----|
+| 2026-07-06 | **T4 bio pass** — minted `UNKNOWN:hasSocialReq` as `hcm-bio:hasSocialRequirement`; no bio placeholders remain. | Codex |
 | 2026-07-06 | **T4 env pass** — minted light-cycle placeholders as `hcm-env:*` (`hasDarkPhaseStart`, dark/light phase durations, dawn/dusk durations); kept generic `hasCondition` deferred. | Codex |
 | 2026-07-06 | **T4 tech pass** — minted obvious tech placeholders as `hcm-tech:*` (`communicatesWith`, `runsOn`, firmware/model/protocol/sensor metadata, calibration), leaving only ambiguous tech relations in the placeholder queue. | Codex |
 | 2026-07-03 | **T4 started** — resolved safe v2 placeholder cases: `UNKNOWN:isOccupied` → `hcm:isOccupied`, `UNKNOWN:isOperational` → new `hcm:isOperational`, and duplicate `UNKNOWN:hasSamplingRate` dropped in favour of `hcm-tech:hasSamplingRate`. Added `PLACEHOLDER-MAP.md` for the remaining 29 placeholders. | Codex |
