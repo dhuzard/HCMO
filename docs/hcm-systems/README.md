@@ -20,6 +20,8 @@ hcm-systems/
   CATALOG.md                # master index of systems extracted from the literature
   REFERENCES.md             # papers/patents/standards to dig into, grouped by modality
   LLM-RESEARCH-PROMPT.md    # reusable prompt to research each system with an LLM
+  contribute/               # public, static form for system owners to submit their system + data
+    index.html              #   self-contained page (mailto → damien.huzard@gmail.com)
   _template/                # copy this to start a new system folder
     README.md               #   system profile (fill from research)
     docs/                   #   manuals, brochures, spec sheets, API docs
@@ -27,8 +29,16 @@ hcm-systems/
     datasets/
       real/                 #   real exports (anonymised, license-checked)
       mock/                 #   synthetic data hand-authored to match the real schema
-  <system-slug>/            # one folder per system, same shape as _template/
+  systems/                  # one folder per system (same shape as _template/)
+    DVC_Tecniplast/         #   ★ first worked example: profile + real export + mock traces
 ```
+
+## Worked examples
+
+- **[`systems/DVC_Tecniplast/`](systems/DVC_Tecniplast/)** — Tecniplast DVC®: a
+  source-cited system profile, a **real** cohort export, and **synthetic traces that
+  mirror the real CSV schema exactly** (with a deterministic generator). Use it as the
+  template for how a filled-in system folder should look.
 
 ## How to add a system
 

@@ -17,7 +17,7 @@ dataset or code; **P3** = component/toolchain useful for context or mocks.
 
 | System | Vendor | Modality | Key measured parameters | Data / links | Prio | slug |
 |---|---|---|---|---|---|---|
-| **DVC® (Digital Ventilated Cage)** | Tecniplast S.p.A. | EMF (capacitive electrode array under cage) | Activity, rest/wake bouts, social/aggression proxy, urination/wetness, polyuria; rack-level room conditions | ~4 MB/cage/day @ 4 Hz; monitors 10,000+ cages. Iannello 2019; Voikar & Gaburro 2020; Brachs et al. 2025 | P1 | `tecniplast-dvc` |
+| **DVC® (Digital Ventilated Cage)** ✅ [worked example](systems/DVC_Tecniplast/) | Tecniplast S.p.A. | EMF (capacitive electrode array under cage) | Activity, rest/wake bouts, social/aggression proxy, urination/wetness, polyuria; rack-level room conditions | ~4 MB/cage/day @ 4 Hz; monitors 10,000+ cages. Iannello 2019; Voikar & Gaburro 2020; Brachs et al. 2025 | P1 | `systems/DVC_Tecniplast` |
 | **Telemetry implants (PhysioTel / HD)** | Data Sciences International (DSI), Harvard Bioscience | Implantable telemetry | ECG, BP, EEG, EMG, glucose, temperature, activity; 600–1000 Hz | ~1.5 GB/subject/7 days. Kramer et al. 2021 | P1 | `dsi-telemetry` |
 | **Oxymax / CLAMS** (Comprehensive Lab Animal Monitoring System) | Columbus Instruments | Indirect calorimetry + IR beam-break + plethysmography | VO₂, VCO₂, RER, energy expenditure, activity, feeding, (respiratory freq.) | Czekajewski et al. 1982 (activity patent); Škop et al. 2020/2023 | P1 | `columbus-clams` |
 | **PhenoMaster / AnimalGate** | TSE Systems | Metabolic (calorimetry) + feeding/drinking + body-weight gate | VO₂/VCO₂/RER, food/water intake, body weight, activity | Gallage et al. 2024 | P1 | `tse-phenomaster` |

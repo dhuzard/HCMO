@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contribute your system — HCMO</title>
+<meta name="description" content="Share your home-cage monitoring system and data to help build the HCMO knowledge graph." />
+<style>
+  /* ---------- Design tokens ---------- */
+  :root {
+    --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", "Cascadia Code", Menlo, Consolas, monospace;
+
+    --bg:        #f5f8f7;
+    --surface:   #ffffff;
+    --surface-2: #eef3f1;
+    --border:    #d7e0dd;
+    --border-2:  #c4d0cc;
+    --text:      #16211f;
+    --muted:     #57665f;
+    --faint:     #7d8b85;
+
+    --accent:        #0d9488;
+    --accent-strong: #0b6b62;
+    --accent-soft:   #d4ece8;
+    --accent-ink:    #ffffff;
+
+    --req-fg: #be123c; --req-bg: #ffe4e9;
+    --rec-fg: #9a6b04; --rec-bg: #fdf0d0;
+    --opt-fg: #15803d; --opt-bg: #dcf5e3;
+
+    --ok:    #0f766e;
+    --warn:  #b45309;
+
+    --radius: 14px;
+    --radius-sm: 9px;
+    --shadow: 0 12px 30px rgba(16, 40, 36, 0.08);
+    --shadow-sm: 0 3px 10px rgba(16, 40, 36, 0.06);
+    --ring: 0 0 0 3px rgba(13, 148, 136, 0.28);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg:        #0e1514;
+      --surface:   #16211f;
+      --surface-2: #1d2b28;
+      --border:    #2b3a37;
+      --border-2:  #38504b;
+      --text:      #e7efec;
+      --muted:     #a3b3ad;
+      --faint:     #7f918b;
+
+      --accent:        #2dd4bf;
+      --accent-strong: #5eead4;
+      --accent-soft:   #12332f;
+      --accent-ink:    #06201d;
+
+      --req-fg: #fda4af; --req-bg: #3a1620;
+      --rec-fg: #f5cf7a; --rec-bg: #3a2c11;
+      --opt-fg: #86efac; --opt-bg: #10301d;
+
+      --ok:    #5eead4;
+      --warn:  #fbbf24;
+
+      --shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+      --shadow-sm: 0 3px 12px rgba(0, 0, 0, 0.4);
+      --ring: 0 0 0 3px rgba(45, 212, 191, 0.32);
+    }
+  }
+  /* explicit toggle wins over the media query, both directions */
+  :root[data-theme="light"] {
+    --bg:#f5f8f7; --surface:#ffffff; --surface-2:#eef3f1; --border:#d7e0dd; --border-2:#c4d0cc;
+    --text:#16211f; --muted:#57665f; --faint:#7d8b85;
+    --accent:#0d9488; --accent-strong:#0b6b62; --accent-soft:#d4ece8; --accent-ink:#ffffff;
+    --req-fg:#be123c; --req-bg:#ffe4e9; --rec-fg:#9a6b04; --rec-bg:#fdf0d0; --opt-fg:#15803d; --opt-bg:#dcf5e3;
+    --ok:#0f766e; --warn:#b45309;
+    --shadow:0 12px 30px rgba(16,40,36,.08); --shadow-sm:0 3px 10px rgba(16,40,36,.06); --ring:0 0 0 3px rgba(13,148,136,.28);
+  }
+  :root[data-theme="dark"] {
+    --bg:#0e1514; --surface:#16211f; --surface-2:#1d2b28; --border:#2b3a37; --border-2:#38504b;
+    --text:#e7efec; --muted:#a3b3ad; --faint:#7f918b;
+    --accent:#2dd4bf; --accent-strong:#5eead4; --accent-soft:#12332f; --accent-ink:#06201d;
+    --req-fg:#fda4af; --req-bg:#3a1620; --rec-fg:#f5cf7a; --rec-bg:#3a2c11; --opt-fg:#86efac; --opt-bg:#10301d;
+    --ok:#5eead4; --warn:#fbbf24;
+    --shadow:0 16px 36px rgba(0,0,0,.45); --shadow-sm:0 3px 12px rgba(0,0,0,.4); --ring:0 0 0 3px rgba(45,212,191,.32);
+  }
+
+  /* ---------- Reset-ish ---------- */
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { text-wrap: balance; margin: 0; }
+  a { color: var(--accent-strong); }
+  button { font-family: inherit; }
+  :focus-visible { outline: none; box-shadow: var(--ring); border-radius: 8px; }
+
+  /* ---------- Header ---------- */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(1200px 340px at 82% -40%, var(--accent-soft), transparent 60%),
+      var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+  .hero__graph { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .5; pointer-events: none; }
+  .hero__inner {
+    position: relative;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: clamp(1.6rem, 4vw, 3rem) clamp(1.1rem, 3vw, 2rem) clamp(1.4rem, 3vw, 2.2rem);
+  }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: .5rem;
+    font-size: .74rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--accent-strong);
+    background: var(--accent-soft);
+    padding: .32rem .7rem; border-radius: 999px;
+  }
+  .hero h1 {
+    font-size: clamp(1.7rem, 3.6vw, 2.6rem);
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+    margin: .85rem 0 .5rem;
+    max-width: 20ch;
+  }
+  .hero p.lead { font-size: clamp(1rem, 1.6vw, 1.12rem); color: var(--muted); max-width: 60ch; margin: 0; }
+  .topbar {
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    max-width: 1120px; margin: 0 auto; padding: .75rem clamp(1.1rem, 3vw, 2rem) 0;
+    position: relative;
+  }
+  .brand { display: flex; align-items: center; gap: .6rem; font-weight: 700; letter-spacing: -.01em; }
+  .brand .dot { width: 22px; height: 22px; border-radius: 6px; background: linear-gradient(135deg, var(--accent), var(--accent-strong)); box-shadow: var(--shadow-sm); }
+  .theme-toggle {
+    border: 1px solid var(--border); background: var(--surface); color: var(--muted);
+    width: 40px; height: 40px; border-radius: 10px; cursor: pointer; font-size: 1.05rem;
+    display: grid; place-items: center; transition: border-color .15s, color .15s;
+  }
+  .theme-toggle:hover { border-color: var(--accent); color: var(--accent-strong); }
+
+  /* ---------- Layout ---------- */
+  .wrap {
+    max-width: 1120px; margin: 0 auto;
+    padding: clamp(1.2rem, 3vw, 2rem) clamp(1.1rem, 3vw, 2rem) 4rem;
+    display: grid; gap: clamp(1rem, 2.5vw, 1.8rem);
+    grid-template-columns: minmax(0, 1fr);
+  }
+  @media (min-width: 980px) {
+    .wrap { grid-template-columns: minmax(0, 1fr) 320px; align-items: start; }
+    .aside { position: sticky; top: 1.2rem; }
+  }
+
+  .legend {
+    display: flex; flex-wrap: wrap; gap: .5rem .9rem; align-items: center;
+    font-size: .82rem; color: var(--muted);
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); padding: .6rem .85rem; margin-bottom: .2rem;
+  }
+  .tier {
+    display: inline-flex; align-items: center; gap: .35rem;
+    font-size: .68rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase;
+    padding: .12rem .5rem; border-radius: 999px; white-space: nowrap;
+  }
+  .tier--req { background: var(--req-bg); color: var(--req-fg); }
+  .tier--rec { background: var(--rec-bg); color: var(--rec-fg); }
+  .tier--opt { background: var(--opt-bg); color: var(--opt-fg); }
+
+  /* ---------- Cards / sections ---------- */
+  form { display: flex; flex-direction: column; gap: clamp(1rem, 2.2vw, 1.5rem); }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    padding: clamp(1.1rem, 2.4vw, 1.6rem);
+  }
+  .card > header { display: flex; align-items: baseline; gap: .7rem; margin-bottom: 1.1rem; }
+  .card__num {
+    font-family: var(--font-mono); font-size: .82rem; font-weight: 700;
+    color: var(--accent-strong); background: var(--accent-soft);
+    border-radius: 7px; padding: .15rem .5rem; line-height: 1.4;
+  }
+  .card h2 { font-size: 1.16rem; letter-spacing: -.01em; }
+  .card__hint { color: var(--muted); font-size: .88rem; margin: .2rem 0 0; }
+
+  /* ---------- Fields ---------- */
+  .grid { display: grid; gap: 1rem; }
+  .g2 { grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
+  .g3 { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+  .g4 { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
+  .field { display: flex; flex-direction: column; gap: .4rem; }
+  .field > .lbl { display: inline-flex; align-items: center; gap: .45rem; font-weight: 600; font-size: .92rem; }
+  .field .sub { font-size: .8rem; color: var(--faint); font-weight: 400; }
+  .field small { color: var(--faint); font-size: .78rem; }
+
+  input, select, textarea {
+    width: 100%;
+    font: inherit; font-size: .94rem;
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--border-2);
+    border-radius: var(--radius-sm);
+    padding: .6rem .7rem;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  input::placeholder, textarea::placeholder { color: var(--faint); }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: var(--ring); }
+  textarea { resize: vertical; min-height: 78px; line-height: 1.5; }
+  select { cursor: pointer; }
+  input[type="number"] { font-variant-numeric: tabular-nums; }
+  .field--flag input { border-color: var(--req-fg) !important; }
+
+  .dims { display: grid; grid-template-columns: repeat(4, 1fr); gap: .6rem; align-items: end; }
+  @media (max-width: 460px) { .dims { grid-template-columns: repeat(2, 1fr); } }
+
+  /* chips (checkbox groups) */
+  .chips { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .chip {
+    display: inline-flex; align-items: center; gap: .45rem;
+    border: 1px solid var(--border-2); border-radius: 999px;
+    padding: .42rem .8rem; cursor: pointer; font-size: .88rem; user-select: none;
+    background: var(--surface); transition: all .14s;
+  }
+  .chip:hover { border-color: var(--accent); }
+  .chip input { width: auto; margin: 0; accent-color: var(--accent); }
+  .chip:has(input:checked) { background: var(--accent-soft); border-color: var(--accent); color: var(--accent-strong); font-weight: 600; }
+
+  .check { display: inline-flex; align-items: flex-start; gap: .6rem; font-size: .9rem; cursor: pointer; }
+  .check input { width: auto; margin-top: .18rem; accent-color: var(--accent); }
+
+  /* repeatable rows */
+  .rows { display: flex; flex-direction: column; gap: .6rem; }
+  .row {
+    display: grid; gap: .55rem; align-items: center;
+    grid-template-columns: 1fr 1fr 1fr auto;
+    background: var(--surface-2); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); padding: .55rem;
+  }
+  .row--2 { grid-template-columns: 1.4fr 1fr auto; }
+  @media (max-width: 560px) { .row, .row--2 { grid-template-columns: 1fr 1fr; } .row .del, .row--2 .del { grid-column: 1 / -1; justify-self: end; } }
+  .row input, .row select { background: var(--surface); }
+  .del {
+    border: none; background: transparent; color: var(--req-fg);
+    cursor: pointer; font-weight: 700; font-size: .95rem; padding: .3rem .5rem; border-radius: 7px;
+  }
+  .del:hover { background: var(--req-bg); }
+  .add {
+    align-self: flex-start; margin-top: .2rem;
+    border: 1px dashed var(--border-2); background: transparent; color: var(--accent-strong);
+    padding: .5rem .9rem; border-radius: 999px; cursor: pointer; font-weight: 600; font-size: .86rem;
+    transition: all .14s;
+  }
+  .add:hover { border-color: var(--accent); background: var(--accent-soft); }
+
+  .callout {
+    display: flex; gap: .7rem; align-items: flex-start;
+    background: var(--accent-soft); border: 1px solid transparent;
+    border-radius: var(--radius-sm); padding: .8rem .95rem; font-size: .9rem; color: var(--text);
+  }
+  .callout .ic { font-size: 1.1rem; line-height: 1.2; }
+  .callout code { font-family: var(--font-mono); font-size: .84em; background: rgba(0,0,0,.06); padding: .05em .35em; border-radius: 5px; }
+  :root[data-theme="dark"] .callout code { background: rgba(255,255,255,.08); }
+
+  details.adv { border: 1px dashed var(--border-2); border-radius: var(--radius-sm); padding: .3rem .85rem; }
+  details.adv > summary { cursor: pointer; font-weight: 600; font-size: .9rem; color: var(--muted); padding: .55rem 0; list-style: none; }
+  details.adv > summary::-webkit-details-marker { display: none; }
+  details.adv > summary::before { content: "▸ "; color: var(--accent); }
+  details.adv[open] > summary::before { content: "▾ "; }
+  details.adv .grid { margin: .4rem 0 .9rem; }
+
+  /* ---------- Aside ---------- */
+  .aside { display: flex; flex-direction: column; gap: 1rem; }
+  .panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.1rem 1.15rem; }
+  .panel h3 { font-size: .96rem; letter-spacing: -.01em; margin-bottom: .3rem; }
+  .progress { margin: .7rem 0 .3rem; }
+  .progress__track { height: 9px; background: var(--surface-2); border-radius: 999px; overflow: hidden; border: 1px solid var(--border); }
+  .progress__bar { height: 100%; width: 0%; background: linear-gradient(90deg, var(--accent), var(--accent-strong)); border-radius: 999px; transition: width .35s ease; }
+  .progress__label { display: flex; justify-content: space-between; font-size: .82rem; color: var(--muted); margin-top: .45rem; }
+  .progress__label b { color: var(--text); font-variant-numeric: tabular-nums; }
+  .miss { margin: .6rem 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: .25rem; font-size: .82rem; }
+  .miss li { display: flex; align-items: center; gap: .4rem; color: var(--req-fg); }
+  .miss li::before { content: "•"; }
+  .miss.ok li { color: var(--ok); }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+    width: 100%; padding: .72rem 1rem; border-radius: 999px; border: 1px solid transparent;
+    font-weight: 700; font-size: .92rem; cursor: pointer; transition: transform .12s, box-shadow .15s, background .15s;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn--primary { background: var(--accent); color: var(--accent-ink); box-shadow: var(--shadow-sm); }
+  .btn--primary:hover { background: var(--accent-strong); }
+  .btn--ghost { background: var(--surface); color: var(--text); border-color: var(--border-2); }
+  .btn--ghost:hover { border-color: var(--accent); color: var(--accent-strong); }
+  .btn-row { display: grid; grid-template-columns: 1fr 1fr; gap: .55rem; }
+  .aside .btn + .btn, .aside .btn-row { margin-top: .55rem; }
+  .aside .fineprint { font-size: .78rem; color: var(--faint); margin: .7rem 0 0; }
+
+  /* ---------- Result ---------- */
+  .result { margin-top: 1rem; }
+  .result[hidden] { display: none; }
+  .result .head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: .7rem; }
+  .status { font-size: .88rem; font-weight: 600; }
+  .status.ok { color: var(--ok); }
+  .status.warn { color: var(--warn); }
+  .tabs { display: inline-flex; gap: .3rem; background: var(--surface-2); padding: .25rem; border-radius: 999px; }
+  .tab { border: none; background: transparent; color: var(--muted); padding: .35rem .8rem; border-radius: 999px; cursor: pointer; font-size: .83rem; font-weight: 600; }
+  .tab[aria-selected="true"] { background: var(--surface); color: var(--accent-strong); box-shadow: var(--shadow-sm); }
+  pre.out {
+    font-family: var(--font-mono); font-size: .8rem; line-height: 1.55;
+    background: #0c1413; color: #d6e6e1; border-radius: var(--radius-sm);
+    padding: 1rem; overflow-x: auto; max-height: 420px; white-space: pre; margin: 0;
+    border: 1px solid #1c2b28;
+  }
+  .toast {
+    position: fixed; left: 50%; bottom: 1.4rem; transform: translateX(-50%) translateY(20px);
+    background: var(--text); color: var(--bg); padding: .7rem 1.1rem; border-radius: 999px;
+    font-size: .88rem; font-weight: 600; box-shadow: var(--shadow); opacity: 0; pointer-events: none;
+    transition: opacity .2s, transform .2s; z-index: 50;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  footer.foot { max-width: 1120px; margin: 0 auto; padding: 0 clamp(1.1rem,3vw,2rem) 3rem; color: var(--faint); font-size: .82rem; }
+  footer.foot a { color: var(--accent-strong); }
+
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="brand"><span class="dot" aria-hidden="true"></span> HCMO</div>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light / dark theme" title="Toggle theme">◐</button>
+  </div>
+
+  <header class="hero">
+    <svg class="hero__graph" id="graph" aria-hidden="true" preserveAspectRatio="xMidYMid slice"></svg>
+    <div class="hero__inner">
+      <span class="eyebrow">Home-Cage Monitoring Ontology · community call</span>
+      <h1>Add your monitoring system to the HCMO knowledge graph</h1>
+      <p class="lead">
+        Whether you run, build, or sell a home-cage monitoring setup — video, RFID, EMF, telemetry,
+        load cells, metabolic, environmental, acoustic, or operant — help us model what your system
+        measures and outputs. Fill what you can (nothing here is hard), then send it to Damien in one click.
+        You can attach a sample dataset to the same email.
+      </p>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <main>
+      <div class="legend" role="note">
+        <span>Field priority:</span>
+        <span class="tier tier--req">Required</span> to model the system
+        <span class="tier tier--rec">Recommended</span> makes it richer
+        <span class="tier tier--opt">Optional</span> more is better for v2
+      </div>
+
+      <form id="hcmoForm" novalidate>
+
+        <!-- 1. Contributor -->
+        <section class="card">
+          <header><span class="card__num">01</span><h2>About you</h2></header>
+          <div class="grid g2">
+            <label class="field">
+              <span class="lbl">Your name <span class="tier tier--rec">Rec</span></span>
+              <input name="contribName" data-req="soft" placeholder="Jane Doe" />
+            </label>
+            <label class="field">
+              <span class="lbl">Email <span class="tier tier--rec">Rec</span> <span class="sub">so we can follow up &amp; credit you</span></span>
+              <input name="contribEmail" type="email" data-req="soft" placeholder="jane@lab.edu" />
+            </label>
+          </div>
+          <div class="grid g2" style="margin-top:1rem">
+            <label class="field">
+              <span class="lbl">Organization / lab <span class="tier tier--rec">Rec</span></span>
+              <input name="contribOrg" placeholder="Institute of Neuroscience, Univ. …" />
+            </label>
+            <label class="field">
+              <span class="lbl">Your role <span class="tier tier--opt">Opt</span></span>
+              <select name="contribRole">
+                <option value="">Select…</option>
+                <option>Researcher / PI</option>
+                <option>PhD student / postdoc</option>
+                <option>Animal-facility / core staff</option>
+                <option>Vendor / manufacturer</option>
+                <option>Software developer</option>
+                <option>Other</option>
+              </select>
+            </label>
+          </div>
+          <label class="check" style="margin-top:1rem">
+            <input type="checkbox" name="consent" data-req="hard" />
+            <span>I'm happy to be contacted about this submission and credited as an HCMO contributor. <span class="tier tier--req">Required</span></span>
+          </label>
+        </section>
+
+        <!-- 2. System -->
+        <section class="card">
+          <header><span class="card__num">02</span><h2>The system</h2></header>
+          <div class="grid g2">
+            <label class="field">
+              <span class="lbl">System / product name <span class="tier tier--req">Required</span></span>
+              <input name="sysName" data-req="hard" placeholder="e.g. Digital Ventilated Cage (DVC®)" />
+            </label>
+            <label class="field">
+              <span class="lbl">Vendor / developer <span class="tier tier--req">Required</span></span>
+              <input name="vendor" data-req="hard" placeholder="e.g. Tecniplast, or your lab (DIY)" />
+            </label>
+          </div>
+          <div class="field" style="margin-top:1rem">
+            <span class="lbl">Type <span class="tier tier--rec">Rec</span></span>
+            <div class="chips" data-single="sysType">
+              <label class="chip"><input type="radio" name="sysType" value="Commercial" /> Commercial</label>
+              <label class="chip"><input type="radio" name="sysType" value="Open-source" /> Open-source</label>
+              <label class="chip"><input type="radio" name="sysType" value="DIY" /> DIY</label>
+              <label class="chip"><input type="radio" name="sysType" value="In-house / prototype" /> In-house / prototype</label>
+            </div>
+          </div>
+          <div class="field" style="margin-top:1rem">
+            <span class="lbl">Monitoring modality <span class="tier tier--rec">Rec</span> <span class="sub">tick all that apply</span></span>
+            <div class="chips" data-multi="modality">
+              <label class="chip"><input type="checkbox" name="modality" value="Video / pose" /> Video / pose</label>
+              <label class="chip"><input type="checkbox" name="modality" value="RFID" /> RFID</label>
+              <label class="chip"><input type="checkbox" name="modality" value="EMF (capacitive)" /> EMF</label>
+              <label class="chip"><input type="checkbox" name="modality" value="Load cell / pressure" /> Load cell</label>
+              <label class="chip"><input type="checkbox" name="modality" value="Telemetry" /> Telemetry</label>
+              <label class="chip"><input type="checkbox" name="modality" value="Metabolic / calorimetry" /> Metabolic</label>
+              <label class="chip"><input type="checkbox" name="modality" value="Environmental" /> Environmental</label>
+              <label class="chip"><input type="checkbox" name="modality" value="Beam-break / PIR" /> Beam-break / PIR</label>
+              <label class="chip"><input type="checkbox" name="modality" value="Acoustic / USV" /> Acoustic / USV</label>
+              <label class="chip"><input type="checkbox" name="modality" value="Operant" /> Operant</label>
+              <label class="chip"><input type="checkbox" name="modality" value="Other" /> Other</label>
+            </div>
+          </div>
+          <div class="grid g2" style="margin-top:1rem">
+            <label class="field">
+              <span class="lbl">Short description <span class="tier tier--rec">Rec</span></span>
+              <input name="sysDesc" placeholder="One line: what it does / how it's deployed" />
+            </label>
+            <label class="field">
+              <span class="lbl">Reference URL <span class="tier tier--opt">Opt</span> <span class="sub">product page, paper, or repo</span></span>
+              <input name="sysUrl" type="url" placeholder="https://…" />
+            </label>
+          </div>
+        </section>
+
+        <!-- 3. Hardware & software -->
+        <section class="card">
+          <header><span class="card__num">03</span><h2>Hardware &amp; software</h2></header>
+          <div class="grid g2">
+            <label class="field">
+              <span class="lbl">Hardware unit / version <span class="tier tier--rec">Rec</span></span>
+              <input name="hwName" placeholder="e.g. DVC board rev C, or Raspberry Pi 4 rig" />
+            </label>
+            <label class="field">
+              <span class="lbl">Acquisition / analysis software <span class="tier tier--rec">Rec</span></span>
+              <input name="swName" placeholder="e.g. DVC Analytics v3, EthoVision, custom Python" />
+            </label>
+          </div>
+          <label class="field" style="margin-top:1rem">
+            <span class="lbl">Open API / export &amp; interoperability <span class="tier tier--opt">Opt</span></span>
+            <input name="interop" placeholder="e.g. REST API, RDF/TTL export, standard schema, or 'none yet'" />
+          </label>
+        </section>
+
+        <!-- 4. Enclosure -->
+        <section class="card">
+          <header><span class="card__num">04</span><h2>Enclosure &amp; housing</h2></header>
+          <div class="grid g2">
+            <label class="field">
+              <span class="lbl">Enclosure type <span class="tier tier--rec">Rec</span></span>
+              <input name="encType" placeholder="e.g. IVC shoebox, custom arena, standard rack cage" />
+            </label>
+            <label class="field">
+              <span class="lbl">Retrofit or bespoke? <span class="tier tier--opt">Opt</span></span>
+              <select name="encFit">
+                <option value="">Select…</option>
+                <option>Retrofits standard cages</option>
+                <option>Bespoke / integrated enclosure</option>
+                <option>Rack-level (whole rack)</option>
+              </select>
+            </label>
+          </div>
+          <div class="field" style="margin-top:1rem">
+            <span class="lbl">Interior dimensions <span class="tier tier--req">Required</span> <span class="sub">approximate is fine</span></span>
+            <div class="dims">
+              <label class="field"><small>Width</small><input name="encW" type="number" step="0.1" min="0" data-req="hard" placeholder="30" /></label>
+              <label class="field"><small>Length</small><input name="encL" type="number" step="0.1" min="0" data-req="hard" placeholder="15" /></label>
+              <label class="field"><small>Height</small><input name="encH" type="number" step="0.1" min="0" data-req="hard" placeholder="13" /></label>
+              <label class="field"><small>Unit</small>
+                <select name="encUnit"><option>cm</option><option>mm</option><option>in</option></select>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <!-- 5. Animals -->
+        <section class="card">
+          <header><span class="card__num">05</span><h2>Animals / subjects</h2></header>
+          <div class="grid g3">
+            <label class="field">
+              <span class="lbl">Species <span class="tier tier--rec">Rec</span></span>
+              <select name="species">
+                <option value="">Select…</option>
+                <option>Mouse</option><option>Rat</option>
+                <option>Both mouse &amp; rat</option><option>Other rodent</option><option>Other</option>
+              </select>
+            </label>
+            <label class="field">
+              <span class="lbl">Strain <span class="tier tier--opt">Opt</span></span>
+              <input name="strain" placeholder="e.g. C57BL/6J" />
+            </label>
+            <label class="field">
+              <span class="lbl">Sex <span class="tier tier--opt">Opt</span></span>
+              <select name="sex"><option value="">Select…</option><option>Male</option><option>Female</option><option>Both</option><option>N/A</option></select>
+            </label>
+          </div>
+          <div class="grid g3" style="margin-top:1rem">
+            <label class="field">
+              <span class="lbl">Housing <span class="tier tier--rec">Rec</span></span>
+              <select name="housing"><option value="">Select…</option><option>Single-housed</option><option>Group-housed</option><option>Both supported</option></select>
+            </label>
+            <label class="field">
+              <span class="lbl">Animals per cage <span class="tier tier--opt">Opt</span></span>
+              <input name="perCage" type="number" min="1" step="1" placeholder="e.g. 4" />
+            </label>
+            <label class="field">
+              <span class="lbl"># cages in a study <span class="tier tier--opt">Opt</span></span>
+              <input name="nCages" placeholder="e.g. up to 10,000" />
+            </label>
+          </div>
+        </section>
+
+        <!-- 6. Measurements -->
+        <section class="card">
+          <header><span class="card__num">06</span><h2>What it measures</h2></header>
+          <p class="card__hint">List the parameters your system produces. Add a row per parameter — units and sampling rate help us map to <code style="font-family:var(--font-mono)">hcm-env</code> / <code style="font-family:var(--font-mono)">hcm-obs</code>.</p>
+          <div class="rows" id="paramRows"></div>
+          <button type="button" class="add" data-add="param">+ Add parameter</button>
+          <div class="grid g2" style="margin-top:1.1rem">
+            <label class="field">
+              <span class="lbl">Behaviours observed <span class="tier tier--rec">Rec</span></span>
+              <input name="behaviors" placeholder="e.g. locomotion, rearing, grooming, sleep, social" />
+            </label>
+            <label class="field">
+              <span class="lbl">Circadian context <span class="tier tier--opt">Opt</span></span>
+              <input name="circadian" placeholder="e.g. continuous across light/dark cycle" />
+            </label>
+          </div>
+        </section>
+
+        <!-- 7. Sensors & actuators -->
+        <section class="card">
+          <header><span class="card__num">07</span><h2>Sensors &amp; actuators</h2></header>
+          <div class="field">
+            <span class="lbl">Sensors <span class="tier tier--req">Required</span> <span class="sub">at least one</span></span>
+            <div class="rows" id="sensorRows"></div>
+            <button type="button" class="add" data-add="sensor">+ Add sensor</button>
+          </div>
+          <div class="field" style="margin-top:1.2rem">
+            <span class="lbl">Actuators <span class="tier tier--rec">Rec</span> <span class="sub">feeders, LEDs, gates… leave empty if none</span></span>
+            <div class="rows" id="actuatorRows"></div>
+            <button type="button" class="add" data-add="actuator">+ Add actuator</button>
+          </div>
+        </section>
+
+        <!-- 8. Observation window -->
+        <section class="card">
+          <header><span class="card__num">08</span><h2>Recording window</h2></header>
+          <div class="grid g3">
+            <label class="field">
+              <span class="lbl">Typical continuous duration <span class="tier tier--rec">Rec</span></span>
+              <input name="duration" placeholder="e.g. 24 h, or 'continuous / weeks'" />
+            </label>
+            <label class="field">
+              <span class="lbl">Recording mode <span class="tier tier--opt">Opt</span></span>
+              <select name="recMode"><option value="">Select…</option><option>Continuous</option><option>Scheduled sessions</option><option>Event-triggered</option></select>
+            </label>
+            <label class="field">
+              <span class="lbl">Extendable / long-term? <span class="tier tier--opt">Opt</span></span>
+              <select name="extendable"><option value="">Select…</option><option value="true">Yes</option><option value="false">No</option></select>
+            </label>
+          </div>
+        </section>
+
+        <!-- 9. Data output -->
+        <section class="card">
+          <header><span class="card__num">09</span><h2>Data output &amp; sharing</h2></header>
+          <p class="card__hint">This is the most useful part for validation — it lets us author faithful mock data and test the shapes.</p>
+          <div class="field">
+            <span class="lbl">File / data formats <span class="tier tier--rec">Rec</span></span>
+            <div class="chips" data-multi="formats">
+              <label class="chip"><input type="checkbox" name="formats" value="CSV" /> CSV</label>
+              <label class="chip"><input type="checkbox" name="formats" value="Excel" /> Excel</label>
+              <label class="chip"><input type="checkbox" name="formats" value="JSON" /> JSON</label>
+              <label class="chip"><input type="checkbox" name="formats" value="HDF5" /> HDF5</label>
+              <label class="chip"><input type="checkbox" name="formats" value="XML" /> XML</label>
+              <label class="chip"><input type="checkbox" name="formats" value="Video files" /> Video files</label>
+              <label class="chip"><input type="checkbox" name="formats" value="Proprietary / binary" /> Proprietary</label>
+              <label class="chip"><input type="checkbox" name="formats" value="Database / API" /> Database / API</label>
+            </div>
+          </div>
+          <div class="grid g2" style="margin-top:1rem">
+            <label class="field">
+              <span class="lbl">Sampling rate / resolution <span class="tier tier--opt">Opt</span></span>
+              <input name="sampling" placeholder="e.g. 4 Hz; 30 fps; 1 kHz" />
+            </label>
+            <label class="field">
+              <span class="lbl">Typical volume <span class="tier tier--opt">Opt</span></span>
+              <input name="volume" placeholder="e.g. ~4 MB / cage / day" />
+            </label>
+          </div>
+          <label class="field" style="margin-top:1rem">
+            <span class="lbl">Example output schema <span class="tier tier--rec">Rec</span> <span class="sub">paste a real header row or field list</span></span>
+            <textarea name="schema" placeholder="timestamp, cage_id, animal_id, activity_index, temperature_c, …"></textarea>
+          </label>
+          <label class="field" style="margin-top:1rem">
+            <span class="lbl">Links to datasets / data dictionary <span class="tier tier--rec">Rec</span> <span class="sub">one per line — OSF, Zenodo, GitHub, Figshare…</span></span>
+            <textarea name="dataLinks" placeholder="https://osf.io/…&#10;https://zenodo.org/…"></textarea>
+          </label>
+          <div class="grid g2" style="margin-top:1rem">
+            <label class="field">
+              <span class="lbl">Data license <span class="tier tier--opt">Opt</span></span>
+              <select name="license"><option value="">Select…</option><option>CC0</option><option>CC BY 4.0</option><option>CC BY-NC</option><option>Proprietary</option><option>Not sure</option></select>
+            </label>
+            <label class="check" style="align-self:center">
+              <input type="checkbox" name="willEmailData" />
+              <span>I can attach a <b>sample dataset</b> to the email <span class="tier tier--opt">Opt</span></span>
+            </label>
+          </div>
+          <div class="callout" style="margin-top:1rem">
+            <span class="ic" aria-hidden="true">📎</span>
+            <div>To share data, use the <b>Email to Damien</b> button — it opens a pre-filled message to
+              <code>damien.huzard@gmail.com</code>. Just <b>attach your dataset file(s)</b> before sending.
+              Large files? Attach a shared link (Drive, OSF, WeTransfer) instead.</div>
+          </div>
+        </section>
+
+        <!-- 10. Extra -->
+        <section class="card">
+          <header><span class="card__num">10</span><h2>Anything else <span class="tier tier--opt" style="font-size:.62rem">more is better for v2</span></h2></header>
+          <label class="field">
+            <span class="lbl">What does HCMO fail to capture about your data? <span class="tier tier--opt">Opt</span></span>
+            <textarea name="gaps" placeholder="Concepts, parameters, or relationships you feel are missing…"></textarea>
+          </label>
+          <label class="field" style="margin-top:1rem">
+            <span class="lbl">Free notes <span class="tier tier--opt">Opt</span></span>
+            <textarea name="notes" placeholder="Anything else you'd like us to know."></textarea>
+          </label>
+
+          <details class="adv" style="margin-top:1rem">
+            <summary>Advanced — resource identifiers (auto-generated, edit only if you want)</summary>
+            <div class="grid g2">
+              <label class="field"><span class="lbl">Base IRI</span><input name="baseIri" placeholder="https://w3id.org/hcmo/id/" /></label>
+              <label class="field"><span class="lbl">System ID</span><input name="systemId" placeholder="auto from system name" /></label>
+            </div>
+            <p class="card__hint">Leave blank and we'll mint stable IDs from your entries. You never need to touch these.</p>
+          </details>
+        </section>
+      </form>
+    </main>
+
+    <!-- Aside -->
+    <aside class="aside">
+      <div class="panel">
+        <h3>Your submission</h3>
+        <div class="progress">
+          <div class="progress__track"><div class="progress__bar" id="bar"></div></div>
+          <div class="progress__label"><span>Required fields</span><span><b id="reqDone">0</b> / <b id="reqTotal">0</b></span></div>
+        </div>
+        <ul class="miss" id="missList"></ul>
+
+        <button type="button" class="btn btn--primary" id="genBtn" style="margin-top:.9rem">Review submission</button>
+        <button type="button" class="btn btn--primary" id="emailBtn" style="background:var(--accent-strong)">✉ Email to Damien</button>
+        <div class="btn-row">
+          <button type="button" class="btn btn--ghost" id="copyBtn">Copy</button>
+          <button type="button" class="btn btn--ghost" id="dlBtn">Download</button>
+        </div>
+        <p class="fineprint">Nothing is uploaded anywhere by this page — your entries stay in your browser until you send the email.</p>
+      </div>
+
+      <div class="result panel" id="result" hidden>
+        <div class="head">
+          <span class="status" id="status"></span>
+          <span class="tabs" role="tablist">
+            <button type="button" class="tab" data-view="md" aria-selected="true" role="tab">Summary</button>
+            <button type="button" class="tab" data-view="json" aria-selected="false" role="tab">JSON</button>
+          </span>
+        </div>
+        <pre class="out" id="out"></pre>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="foot">
+    HCMO — Home-Cage Monitoring Ontology · <a href="https://dhuzard.github.io/HCMO/index-en.html">documentation</a> ·
+    Released under CC BY 4.0. Thank you for contributing your expertise.
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+  "use strict";
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var form = $("#hcmoForm");
+
+  /* ---------- theme toggle ---------- */
+  var tt = $("#themeToggle");
+  tt.addEventListener("click", function () {
+    var cur = document.documentElement.getAttribute("data-theme");
+    var isDark = cur ? cur === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+    document.documentElement.setAttribute("data-theme", isDark ? "light" : "dark");
+    drawGraph();
+  });
+
+  /* ---------- decorative graph ---------- */
+  function drawGraph() {
+    var svg = $("#graph");
+    if (!svg) return;
+    var W = 1120, H = 260;
+    svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+    var css = getComputedStyle(document.documentElement);
+    var accent = css.getPropertyValue("--accent").trim() || "#0d9488";
+    // deterministic pseudo-random (no Math.random dependency for stability)
+    var seed = 7;
+    function rnd() { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
+    var nodes = [];
+    for (var i = 0; i < 22; i++) nodes.push({ x: rnd() * W, y: rnd() * H, r: 1.5 + rnd() * 3 });
+    var parts = [];
+    for (var a = 0; a < nodes.length; a++) {
+      for (var b = a + 1; b < nodes.length; b++) {
+        var dx = nodes[a].x - nodes[b].x, dy = nodes[a].y - nodes[b].y;
+        if (Math.sqrt(dx * dx + dy * dy) < 150) {
+          parts.push('<line x1="' + nodes[a].x.toFixed(1) + '" y1="' + nodes[a].y.toFixed(1) +
+            '" x2="' + nodes[b].x.toFixed(1) + '" y2="' + nodes[b].y.toFixed(1) +
+            '" stroke="' + accent + '" stroke-width="0.7" stroke-opacity="0.28"/>');
+        }
+      }
+    }
+    nodes.forEach(function (n) {
+      parts.push('<circle cx="' + n.x.toFixed(1) + '" cy="' + n.y.toFixed(1) + '" r="' + n.r.toFixed(1) +
+        '" fill="' + accent + '" fill-opacity="0.55"/>');
+    });
+    svg.innerHTML = parts.join("");
+  }
+  drawGraph();
+
+  /* ---------- repeatable rows ---------- */
+  var templates = {
+    param: function () {
+      return rowEl('row', [
+        inp("param_name", "parameter (e.g. activity index)"),
+        inp("param_unit", "unit (e.g. °C, count)"),
+        inp("param_rate", "rate (e.g. 4 Hz)")
+      ]);
+    },
+    sensor: function () {
+      return rowEl('row--2', [
+        inp("sensor_name", "sensor (e.g. IR camera, RFID reader)"),
+        inp("sensor_type", "what it senses / model")
+      ]);
+    },
+    actuator: function () {
+      return rowEl('row--2', [
+        inp("actuator_name", "actuator (e.g. pellet feeder)"),
+        inp("actuator_type", "what it does / model")
+      ]);
+    }
+  };
+  function inp(cls, ph) { var i = document.createElement("input"); i.className = cls; i.placeholder = ph; return i; }
+  function rowEl(mod, inputs) {
+    var d = document.createElement("div");
+    d.className = "row " + (mod === "row--2" ? "row--2" : "");
+    inputs.forEach(function (i) { d.appendChild(i); });
+    var del = document.createElement("button");
+    del.type = "button"; del.className = "del"; del.setAttribute("aria-label", "Remove row"); del.textContent = "✕";
+    del.addEventListener("click", function () { d.remove(); updateProgress(); });
+    d.appendChild(del);
+    return d;
+  }
+  function addRow(kind) {
+    var map = { param: "#paramRows", sensor: "#sensorRows", actuator: "#actuatorRows" };
+    var el = templates[kind]();
+    $(map[kind]).appendChild(el);
+    el.querySelectorAll("input").forEach(function (i) { i.addEventListener("input", updateProgress); });
+    updateProgress();
+    return el;
+  }
+  $$("[data-add]").forEach(function (b) { b.addEventListener("click", function () { addRow(b.getAttribute("data-add")); }); });
+  // seed one of each
+  addRow("param"); addRow("sensor");
+
+  function collectRows(sel, keys) {
+    return $$("#" + sel + " .row").map(function (r) {
+      var ins = r.querySelectorAll("input");
+      var o = {}; keys.forEach(function (k, i) { o[k] = (ins[i] && ins[i].value || "").trim(); });
+      return o;
+    }).filter(function (o) { return Object.keys(o).some(function (k) { return o[k]; }); });
+  }
+
+  /* ---------- helpers ---------- */
+  function val(name) { var el = form.elements[name]; return el ? (el.value || "").trim() : ""; }
+  function checked(name) { var el = form.elements[name]; return !!(el && el.checked); }
+  function multi(name) { return $$('input[name="' + name + '"]:checked').map(function (i) { return i.value; }); }
+  function slug(s) {
+    return (s || "").toLowerCase().replace(/[®™]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 48) || "unnamed";
+  }
+
+  /* ---------- required-field progress ---------- */
+  var REQUIRED = [
+    { key: "consent", label: "Consent to be contacted", test: function () { return checked("consent"); } },
+    { key: "sysName", label: "System name", test: function () { return !!val("sysName"); } },
+    { key: "vendor", label: "Vendor / developer", test: function () { return !!val("vendor"); } },
+    { key: "dims", label: "Enclosure dimensions", test: function () { return val("encW") && val("encL") && val("encH"); } },
+    { key: "sensor", label: "At least one sensor", test: function () { return collectRows("sensorRows", ["sensor_name", "sensor_type"]).length > 0; } }
+  ];
+  function updateProgress() {
+    var done = REQUIRED.filter(function (r) { return r.test(); });
+    var total = REQUIRED.length;
+    $("#reqDone").textContent = done.length;
+    $("#reqTotal").textContent = total;
+    $("#bar").style.width = Math.round((done.length / total) * 100) + "%";
+    var missing = REQUIRED.filter(function (r) { return !r.test(); });
+    var ul = $("#missList");
+    if (missing.length === 0) {
+      ul.className = "miss ok";
+      ul.innerHTML = "<li>All required fields complete — ready to send</li>";
+    } else {
+      ul.className = "miss";
+      ul.innerHTML = missing.map(function (m) { return "<li>" + m.label + "</li>"; }).join("");
+    }
+    return missing;
+  }
+  form.addEventListener("input", updateProgress);
+  form.addEventListener("change", updateProgress);
+  // radio-chip: allow unchecking a radio by re-click (nice UX)
+  $$('.chips[data-single] input[type=radio]').forEach(function (r) {
+    r.addEventListener("click", function () {
+      if (r.dataset.was === "1") { r.checked = false; r.dataset.was = "0"; }
+      else { $$('input[name="' + r.name + '"]').forEach(function (o) { o.dataset.was = "0"; }); r.dataset.was = "1"; }
+      updateProgress();
+    });
+  });
+
+  /* ---------- build submission ---------- */
+  function build() {
+    var params = collectRows("paramRows", ["param_name", "param_unit", "param_rate"]);
+    var sensors = collectRows("sensorRows", ["sensor_name", "sensor_type"]);
+    var actuators = collectRows("actuatorRows", ["actuator_name", "actuator_type"]);
+    var sysName = val("sysName");
+    var baseIri = val("baseIri") || "https://w3id.org/hcmo/id/";
+    var systemId = val("systemId") || ("system-" + slug(sysName));
+
+    var data = {
+      contributor: { name: val("contribName"), email: val("contribEmail"), organization: val("contribOrg"), role: val("contribRole"), consent: checked("consent") },
+      system: { name: sysName, vendor: val("vendor"), type: val("sysType"), modality: multi("modality"), description: val("sysDesc"), url: val("sysUrl") },
+      hardwareSoftware: { hardware: val("hwName"), software: val("swName"), interoperability: val("interop") },
+      enclosure: { type: val("encType"), fit: val("encFit"), width: val("encW"), length: val("encL"), height: val("encH"), unit: val("encUnit") },
+      animals: { species: val("species"), strain: val("strain"), sex: val("sex"), housing: val("housing"), perCage: val("perCage"), cages: val("nCages") },
+      measurements: { parameters: params, behaviors: val("behaviors"), circadian: val("circadian") },
+      sensors: sensors, actuators: actuators,
+      recording: { duration: val("duration"), mode: val("recMode"), extendable: val("extendable") },
+      dataOutput: {
+        formats: multi("formats"), sampling: val("sampling"), volume: val("volume"),
+        schema: val("schema"), datasetLinks: val("dataLinks").split(/\n+/).map(function (s) { return s.trim(); }).filter(Boolean),
+        license: val("license"), willEmailSample: checked("willEmailData")
+      },
+      extra: { gaps: val("gaps"), notes: val("notes") },
+      identifiers: { baseIri: baseIri, systemId: systemId, hardwareId: "hw-" + slug(val("hwName") || "unit"), softwareId: "sw-" + slug(val("swName") || "app"), supplierId: "supplier-" + slug(val("vendor") || "na") },
+      _meta: { schema: "hcmo-contribution/0.1", source: "hcmo-contribute-form" }
+    };
+    return data;
+  }
+
+  function line(label, value) { return value ? ("- **" + label + ":** " + value + "\n") : ""; }
+  function toMarkdown(d) {
+    var m = "# HCMO system contribution\n\n";
+    m += "## Contributor\n";
+    m += line("Name", d.contributor.name) + line("Email", d.contributor.email) + line("Organization", d.contributor.organization) + line("Role", d.contributor.role) + line("Consent to contact/credit", d.contributor.consent ? "yes" : "no");
+    m += "\n## System\n";
+    m += line("Name", d.system.name) + line("Vendor / developer", d.system.vendor) + line("Type", d.system.type) + line("Modality", d.system.modality.join(", ")) + line("Description", d.system.description) + line("Reference URL", d.system.url);
+    m += "\n## Hardware & software\n";
+    m += line("Hardware", d.hardwareSoftware.hardware) + line("Software", d.hardwareSoftware.software) + line("Interoperability", d.hardwareSoftware.interoperability);
+    m += "\n## Enclosure\n";
+    m += line("Type", d.enclosure.type) + line("Fit", d.enclosure.fit);
+    if (d.enclosure.width || d.enclosure.length || d.enclosure.height)
+      m += line("Dimensions (W×L×H)", [d.enclosure.width, d.enclosure.length, d.enclosure.height].join(" × ") + " " + d.enclosure.unit);
+    m += "\n## Animals\n";
+    m += line("Species", d.animals.species) + line("Strain", d.animals.strain) + line("Sex", d.animals.sex) + line("Housing", d.animals.housing) + line("Per cage", d.animals.perCage) + line("Cages", d.animals.cages);
+    m += "\n## Measured parameters\n";
+    if (d.measurements.parameters.length) d.measurements.parameters.forEach(function (p) { m += "- " + [p.param_name, p.param_unit, p.param_rate].filter(Boolean).join(" | ") + "\n"; });
+    else m += "- (none listed)\n";
+    m += line("Behaviours", d.measurements.behaviors) + line("Circadian", d.measurements.circadian);
+    m += "\n## Sensors\n";
+    if (d.sensors.length) d.sensors.forEach(function (s) { m += "- " + [s.sensor_name, s.sensor_type].filter(Boolean).join(" — ") + "\n"; }); else m += "- (none listed)\n";
+    m += "\n## Actuators\n";
+    if (d.actuators.length) d.actuators.forEach(function (s) { m += "- " + [s.actuator_name, s.actuator_type].filter(Boolean).join(" — ") + "\n"; }); else m += "- (none)\n";
+    m += "\n## Recording window\n";
+    m += line("Duration", d.recording.duration) + line("Mode", d.recording.mode) + line("Extendable", d.recording.extendable);
+    m += "\n## Data output\n";
+    m += line("Formats", d.dataOutput.formats.join(", ")) + line("Sampling", d.dataOutput.sampling) + line("Volume", d.dataOutput.volume);
+    if (d.dataOutput.schema) m += "- **Example schema:**\n  ```\n  " + d.dataOutput.schema.replace(/\n/g, "\n  ") + "\n  ```\n";
+    if (d.dataOutput.datasetLinks.length) m += line("Dataset links", d.dataOutput.datasetLinks.join(" , "));
+    m += line("License", d.dataOutput.license) + line("Will email a sample dataset", d.dataOutput.willEmailSample ? "yes" : "no");
+    if (d.extra.gaps || d.extra.notes) {
+      m += "\n## Notes & gaps for HCMO v2\n";
+      m += line("Missing in HCMO", d.extra.gaps) + line("Notes", d.extra.notes);
+    }
+    m += "\n---\n_Auto-minted IDs:_ `" + d.identifiers.systemId + "` · base `" + d.identifiers.baseIri + "`\n";
+    return m;
+  }
+
+  /* ---------- render / actions ---------- */
+  var current = { md: "", json: "" };
+  function generate(scrollTo) {
+    var missing = updateProgress();
+    var d = build();
+    current.md = toMarkdown(d);
+    current.json = JSON.stringify(d, null, 2);
+    var res = $("#result"); res.hidden = false;
+    var st = $("#status");
+    if (missing.length) { st.className = "status warn"; st.textContent = "⚠ " + missing.length + " required field(s) still empty — you can still send"; }
+    else { st.className = "status ok"; st.textContent = "✓ Ready to send"; }
+    showView($(".tab[aria-selected='true']").getAttribute("data-view"));
+    if (scrollTo && window.matchMedia("(max-width: 979px)").matches) res.scrollIntoView({ behavior: "smooth", block: "start" });
+    return d;
+  }
+  function showView(v) { $("#out").textContent = v === "json" ? current.json : current.md; }
+  $$(".tab").forEach(function (t) {
+    t.addEventListener("click", function () {
+      $$(".tab").forEach(function (x) { x.setAttribute("aria-selected", "false"); });
+      t.setAttribute("aria-selected", "true");
+      if (!current.md) generate(false);
+      showView(t.getAttribute("data-view"));
+    });
+  });
+
+  function toast(msg) { var t = $("#toast"); t.textContent = msg; t.classList.add("show"); setTimeout(function () { t.classList.remove("show"); }, 2200); }
+  function copyText(txt, okMsg) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(txt).then(function () { toast(okMsg); }, function () { fallbackCopy(txt, okMsg); });
+    } else { fallbackCopy(txt, okMsg); }
+  }
+  function fallbackCopy(txt, okMsg) {
+    var ta = document.createElement("textarea"); ta.value = txt; ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); toast(okMsg); } catch (e) { toast("Copy failed — select the text manually"); }
+    document.body.removeChild(ta);
+  }
+
+  $("#genBtn").addEventListener("click", function () { generate(true); toast("Submission built below"); });
+  $("#copyBtn").addEventListener("click", function () { generate(false); copyText(current.md, "Summary copied to clipboard"); });
+  $("#dlBtn").addEventListener("click", function () {
+    var d = generate(false);
+    var name = "hcmo-" + slug(d.system.name || "system") + ".md";
+    var blob = new Blob([current.md + "\n\n<!-- machine-readable -->\n```json\n" + current.json + "\n```\n"], { type: "text/markdown" });
+    var a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name; a.click();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000); toast("Downloaded " + name);
+  });
+
+  $("#emailBtn").addEventListener("click", function () {
+    var d = generate(false);
+    // copy full details so the user can paste if the mail body gets truncated
+    copyText(current.md, "Details copied — paste into the email if needed");
+    var subject = "HCMO contribution — " + (d.system.name || "new system");
+    var attachNote = d.dataOutput.willEmailSample
+      ? "\n\n>>> I will ATTACH a sample dataset to this email. <<<\n"
+      : "\n\n(If you have a sample dataset, please attach it to this email.)\n";
+    var intro = "Hi Damien,\n\nHere is my HCMO system contribution. Full structured details are below (also copied to my clipboard — paste here if anything is missing)." + attachNote + "\n";
+    var body = intro + current.md;
+    if (body.length > 1700) body = body.slice(0, 1650) + "\n\n…(truncated — full details are on my clipboard, please paste)\n";
+    var href = "mailto:damien.huzard@gmail.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+    window.location.href = href;
+    toast("Opening your email app…");
+  });
+
+  updateProgress();
+})();
+</script>
+</body>
+</html>
