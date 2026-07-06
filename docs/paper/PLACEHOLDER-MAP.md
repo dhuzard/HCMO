@@ -32,6 +32,7 @@ be handled before promotion. The goal is to avoid silently minting weak terms.
 | `UNKNOWN:hasFoodReq` | Mint as `hcm:hasFoodRequirement` | Husbandry requirement literal. |
 | `UNKNOWN:hasSafetyReq` | Mint as `hcm:hasSafetyRequirement` | Husbandry/facility requirement literal. |
 | `UNKNOWN:hasWaterReq` | Mint as `hcm:hasWaterRequirement` | Husbandry requirement literal. |
+| `UNKNOWN:supportsEnclosure` | Mint as `hcm-tech:supportsEnclosure` | Device/system support relation to enclosure. |
 
 ## Remaining placeholders by proposed action
 
@@ -39,16 +40,15 @@ be handled before promotion. The goal is to avoid silently minting weak terms.
 
 | Placeholder | Proposed term | Kind | Notes |
 |---|---|---|---|
-| `UNKNOWN:supportsEnclosure` | `hcm-tech:supportsEnclosure` | ObjectProperty | Device/system support relation to enclosure. |
 | `UNKNOWN:hasSensors` | `hcm-tech:hasSensor` or drop | ObjectProperty | Likely overlaps with `monitoredBy`; decide direction before minting. |
 | `UNKNOWN:captures` | `hcm-tech:captures` or SOSA property | ObjectProperty | Currently typed datatype; likely a relation. Check against SOSA before minting. |
 | `UNKNOWN:hasActuators` | `hcm-tech:hasActuator` | ObjectProperty | Currently typed datatype; plural suggests relation. |
 
-### Mint in `env`
+### Defer: observation condition model
 
 | Placeholder | Proposed term | Kind | Notes |
 |---|---|---|---|
-| `UNKNOWN:hasCondition` | `hcm-env:hasCondition` | DatatypeProperty | General condition label; may later become object relation to a Condition class. |
+| `UNKNOWN:hasCondition` | `hcm-obs:hasCondition` or restored core term | ObjectProperty | Legacy HCMO models conditions on observation windows; do not mint as an env literal without deciding the condition class. |
 
 ### Mint in `core`
 

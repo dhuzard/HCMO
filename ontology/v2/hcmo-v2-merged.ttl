@@ -23,13 +23,13 @@ dc:description a owl:AnnotationProperty .
 
 dc:title a owl:AnnotationProperty .
 
-UNKNOWN:captures a owl:DatatypeProperty ;
+UNKNOWN:captures a owl:ObjectProperty ;
     rdfs:label "captures" .
 
-UNKNOWN:hasActuators a owl:DatatypeProperty ;
+UNKNOWN:hasActuators a owl:ObjectProperty ;
     rdfs:label "has actuators" .
 
-UNKNOWN:hasCondition a owl:DatatypeProperty ;
+UNKNOWN:hasCondition a owl:ObjectProperty ;
     rdfs:label "has condition" .
 
 UNKNOWN:hasEnrichmentReq a owl:ObjectProperty ;
@@ -41,11 +41,8 @@ UNKNOWN:hasSensors a owl:ObjectProperty ;
 UNKNOWN:hasType a owl:DatatypeProperty ;
     rdfs:label "has type" .
 
-UNKNOWN:partOF a owl:DatatypeProperty ;
+UNKNOWN:partOF a owl:ObjectProperty ;
     rdfs:label "part o f" .
-
-UNKNOWN:supportsEnclosure a owl:ObjectProperty ;
-    rdfs:label "supports enclosure" .
 
 owl:versionInfo a owl:AnnotationProperty .
 
@@ -468,6 +465,9 @@ hcm-tech:monitoredBy a owl:ObjectProperty ;
 
 hcm-tech:runsOn a owl:ObjectProperty ;
     rdfs:label "runs on" .
+
+hcm-tech:supportsEnclosure a owl:ObjectProperty ;
+    rdfs:label "supports enclosure" .
 
 semts:DataDimension a owl:Class ;
     rdfs:label "Data Dimension" .

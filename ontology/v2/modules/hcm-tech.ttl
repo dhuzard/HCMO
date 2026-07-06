@@ -66,3 +66,6 @@ hcm-tech:installedIn a owl:ObjectProperty ;
 hcm-tech:runsOn a owl:ObjectProperty ;
     rdfs:label "runs on" .
 
+hcm-tech:supportsEnclosure a owl:ObjectProperty ;
+    rdfs:label "supports enclosure" .
+
