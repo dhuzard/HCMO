@@ -62,3 +62,5 @@ Create a short report after the Protege pass with:
 - consistency result;
 - list of unsatisfiable classes, or "none";
 - notes on warnings/debugging decisions.
+
+Pre-check report started at `docs/paper/PROTEGE-DRY-RUN-2026-07-06.md`.
