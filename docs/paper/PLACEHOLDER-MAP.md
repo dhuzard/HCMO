@@ -20,6 +20,11 @@ be handled before promotion. The goal is to avoid silently minting weak terms.
 | `UNKNOWN:hasSensorTechnology` | Mint as `hcm-tech:hasSensorTechnology` | Sensor technology metadata. |
 | `UNKNOWN:hasSensorType` | Mint as `hcm-tech:hasSensorType` | Sensor category metadata; controlled vocabulary can follow later. |
 | `UNKNOWN:isCalibrated` | Mint as `hcm-tech:isCalibrated` | Boolean calibration state. |
+| `UNKNOWN:hasDarkPhaseDuration` | Mint as `hcm-env:hasDarkPhaseDuration` | Light-cycle duration parameter. |
+| `UNKNOWN:hasDarkPhaseStart` | Mint as `hcm-env:hasDarkPhaseStart` | Light-cycle start-time parameter. |
+| `UNKNOWN:hasDawnDuration` | Mint as `hcm-env:hasDawnDuration` | Light-cycle transition duration. |
+| `UNKNOWN:hasDuskDuration` | Mint as `hcm-env:hasDuskDuration` | Light-cycle transition duration. |
+| `UNKNOWN:hasLightPhaseDuration` | Mint as `hcm-env:hasLightPhaseDuration` | Light-cycle duration parameter. |
 
 ## Remaining placeholders by proposed action
 
@@ -37,11 +42,6 @@ be handled before promotion. The goal is to avoid silently minting weak terms.
 | Placeholder | Proposed term | Kind | Notes |
 |---|---|---|---|
 | `UNKNOWN:hasCondition` | `hcm-env:hasCondition` | DatatypeProperty | General condition label; may later become object relation to a Condition class. |
-| `UNKNOWN:hasDarkPhaseDuration` | `hcm-env:hasDarkPhaseDuration` | DatatypeProperty | Light-cycle parameter. |
-| `UNKNOWN:hasDarkPhaseStart` | `hcm-env:hasDarkPhaseStart` | DatatypeProperty | Light-cycle parameter. |
-| `UNKNOWN:hasDawnDuration` | `hcm-env:hasDawnDuration` | DatatypeProperty | Light-cycle transition parameter. |
-| `UNKNOWN:hasDuskDuration` | `hcm-env:hasDuskDuration` | DatatypeProperty | Light-cycle transition parameter. |
-| `UNKNOWN:hasLightPhaseDuration` | `hcm-env:hasLightPhaseDuration` | DatatypeProperty | Light-cycle parameter. |
 
 ### Mint in `core`
 

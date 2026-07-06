@@ -32,18 +32,6 @@ UNKNOWN:hasActuators a owl:DatatypeProperty ;
 UNKNOWN:hasCondition a owl:DatatypeProperty ;
     rdfs:label "has condition" .
 
-UNKNOWN:hasDarkPhaseDuration a owl:DatatypeProperty ;
-    rdfs:label "has dark phase duration" .
-
-UNKNOWN:hasDarkPhaseStart a owl:DatatypeProperty ;
-    rdfs:label "has dark phase start" .
-
-UNKNOWN:hasDawnDuration a owl:DatatypeProperty ;
-    rdfs:label "has dawn duration" .
-
-UNKNOWN:hasDuskDuration a owl:DatatypeProperty ;
-    rdfs:label "has dusk duration" .
-
 UNKNOWN:hasEnrichmentReq a owl:ObjectProperty ;
     rdfs:label "has enrichment req" .
 
@@ -58,9 +46,6 @@ UNKNOWN:hasFloorArea a owl:DatatypeProperty ;
 
 UNKNOWN:hasFoodReq a owl:DatatypeProperty ;
     rdfs:label "has food req" .
-
-UNKNOWN:hasLightPhaseDuration a owl:DatatypeProperty ;
-    rdfs:label "has light phase duration" .
 
 UNKNOWN:hasSafetyReq a owl:DatatypeProperty ;
     rdfs:label "has safety req" .
@@ -175,6 +160,21 @@ hcm-env:ThriveProfile a owl:Class ;
 
 hcm-env:hasEnvironment a owl:ObjectProperty ;
     rdfs:label "has environment" .
+
+hcm-env:hasDarkPhaseDuration a owl:DatatypeProperty ;
+    rdfs:label "has dark phase duration" .
+
+hcm-env:hasDarkPhaseStart a owl:DatatypeProperty ;
+    rdfs:label "has dark phase start" .
+
+hcm-env:hasDawnDuration a owl:DatatypeProperty ;
+    rdfs:label "has dawn duration" .
+
+hcm-env:hasDuskDuration a owl:DatatypeProperty ;
+    rdfs:label "has dusk duration" .
+
+hcm-env:hasLightPhaseDuration a owl:DatatypeProperty ;
+    rdfs:label "has light phase duration" .
 
 hcm-obs:BehaviorObservation a owl:Class ;
     rdfs:label "Behavior Observation" ;

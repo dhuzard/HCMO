@@ -47,8 +47,23 @@ hcm-env:ThriveProfile a owl:Class ;
 hcm-env:hasEnvironment a owl:ObjectProperty ;
     rdfs:label "has environment" .
 
+hcm-env:hasDarkPhaseDuration a owl:DatatypeProperty ;
+    rdfs:label "has dark phase duration" .
+
+hcm-env:hasDarkPhaseStart a owl:DatatypeProperty ;
+    rdfs:label "has dark phase start" .
+
+hcm-env:hasDawnDuration a owl:DatatypeProperty ;
+    rdfs:label "has dawn duration" .
+
+hcm-env:hasDuskDuration a owl:DatatypeProperty ;
+    rdfs:label "has dusk duration" .
+
 hcm-env:hasGasType a owl:DatatypeProperty ;
     rdfs:label "has gas type" .
+
+hcm-env:hasLightPhaseDuration a owl:DatatypeProperty ;
+    rdfs:label "has light phase duration" .
 
 hcm-env:hasThriveProfile a owl:ObjectProperty ;
     rdfs:label "has thrive profile" .
