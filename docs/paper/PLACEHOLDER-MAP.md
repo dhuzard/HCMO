@@ -26,6 +26,12 @@ be handled before promotion. The goal is to avoid silently minting weak terms.
 | `UNKNOWN:hasDuskDuration` | Mint as `hcm-env:hasDuskDuration` | Light-cycle transition duration. |
 | `UNKNOWN:hasLightPhaseDuration` | Mint as `hcm-env:hasLightPhaseDuration` | Light-cycle duration parameter. |
 | `UNKNOWN:hasSocialReq` | Mint as `hcm-bio:hasSocialRequirement` | Subject/group husbandry requirement. |
+| `UNKNOWN:hasEnrichmentType` | Mint as `hcm:hasEnrichmentType` | Enclosure/enrichment attribute. |
+| `UNKNOWN:hasFacilityType` | Mint as `hcm:hasFacilityType` | Facility/location attribute. |
+| `UNKNOWN:hasFloorArea` | Mint as `hcm:hasFloorArea` | Enclosure/space dimension; later QUDT/OM candidate. |
+| `UNKNOWN:hasFoodReq` | Mint as `hcm:hasFoodRequirement` | Husbandry requirement literal. |
+| `UNKNOWN:hasSafetyReq` | Mint as `hcm:hasSafetyRequirement` | Husbandry/facility requirement literal. |
+| `UNKNOWN:hasWaterReq` | Mint as `hcm:hasWaterRequirement` | Husbandry requirement literal. |
 
 ## Remaining placeholders by proposed action
 
@@ -49,12 +55,6 @@ be handled before promotion. The goal is to avoid silently minting weak terms.
 | Placeholder | Proposed term | Kind | Notes |
 |---|---|---|---|
 | `UNKNOWN:hasEnrichmentReq` | `hcm:hasEnrichmentRequirement` | ObjectProperty or DatatypeProperty | Decide whether requirements become modeled objects. |
-| `UNKNOWN:hasEnrichmentType` | `hcm:hasEnrichmentType` | DatatypeProperty | Enclosure/enrichment attribute. |
-| `UNKNOWN:hasFacilityType` | `hcm:hasFacilityType` | DatatypeProperty | Facility/location attribute. |
-| `UNKNOWN:hasFloorArea` | `hcm:hasFloorArea` | DatatypeProperty | Enclosure/space dimension; later QUDT/OM candidate. |
-| `UNKNOWN:hasFoodReq` | `hcm:hasFoodRequirement` | DatatypeProperty | Husbandry requirement; consider future needs profile. |
-| `UNKNOWN:hasSafetyReq` | `hcm:hasSafetyRequirement` | DatatypeProperty | Husbandry/facility requirement. |
-| `UNKNOWN:hasWaterReq` | `hcm:hasWaterRequirement` | DatatypeProperty | Husbandry requirement; consider future needs profile. |
 | `UNKNOWN:partOF` | `hcm:partOf` or external relation | ObjectProperty | Typo/case issue; use a standard part-whole relation if one is adopted. |
 
 ### Drop or defer

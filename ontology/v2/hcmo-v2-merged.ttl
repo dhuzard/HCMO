@@ -35,29 +35,11 @@ UNKNOWN:hasCondition a owl:DatatypeProperty ;
 UNKNOWN:hasEnrichmentReq a owl:ObjectProperty ;
     rdfs:label "has enrichment req" .
 
-UNKNOWN:hasEnrichmentType a owl:DatatypeProperty ;
-    rdfs:label "has enrichment type" .
-
-UNKNOWN:hasFacilityType a owl:DatatypeProperty ;
-    rdfs:label "has facility type" .
-
-UNKNOWN:hasFloorArea a owl:DatatypeProperty ;
-    rdfs:label "has floor area" .
-
-UNKNOWN:hasFoodReq a owl:DatatypeProperty ;
-    rdfs:label "has food req" .
-
-UNKNOWN:hasSafetyReq a owl:DatatypeProperty ;
-    rdfs:label "has safety req" .
-
 UNKNOWN:hasSensors a owl:ObjectProperty ;
     rdfs:label "has sensors" .
 
 UNKNOWN:hasType a owl:DatatypeProperty ;
     rdfs:label "has type" .
-
-UNKNOWN:hasWaterReq a owl:DatatypeProperty ;
-    rdfs:label "has water req" .
 
 UNKNOWN:partOF a owl:DatatypeProperty ;
     rdfs:label "part o f" .
@@ -309,6 +291,18 @@ hcm:hasEnclosureIdentifier a owl:DatatypeProperty ;
 hcm:hasEnrichment a owl:ObjectProperty ;
     rdfs:label "has enrichment" .
 
+hcm:hasEnrichmentType a owl:DatatypeProperty ;
+    rdfs:label "has enrichment type" .
+
+hcm:hasFacilityType a owl:DatatypeProperty ;
+    rdfs:label "has facility type" .
+
+hcm:hasFloorArea a owl:DatatypeProperty ;
+    rdfs:label "has floor area" .
+
+hcm:hasFoodRequirement a owl:DatatypeProperty ;
+    rdfs:label "has food requirement" .
+
 hcm:hasHeight a owl:DatatypeProperty ;
     rdfs:label "has height" .
 
@@ -317,6 +311,12 @@ hcm:hasLength a owl:DatatypeProperty ;
 
 hcm:hasManufacturer a owl:DatatypeProperty ;
     rdfs:label "has manufacturer" .
+
+hcm:hasSafetyRequirement a owl:DatatypeProperty ;
+    rdfs:label "has safety requirement" .
+
+hcm:hasWaterRequirement a owl:DatatypeProperty ;
+    rdfs:label "has water requirement" .
 
 hcm:hasWidth a owl:DatatypeProperty ;
     rdfs:label "has width" .
