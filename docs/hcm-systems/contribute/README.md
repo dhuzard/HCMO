@@ -11,6 +11,8 @@ are auto-minted from human-friendly answers, and the page renders in light/dark.
 ## What it does
 - Live "required fields" progress + missing-field checklist.
 - **Review submission** → a Markdown summary and a JSON payload (`hcmo-contribution/0.1`).
+- **Turtle view** → a Fuseki-ready ABox graph using existing HCMO instance
+  patterns (`rdf:type`, object-property links, and literal values).
 - **Copy** / **Download** the submission, or **Email to Damien** (opens a pre-filled
   `mailto:` and copies the full details to the clipboard as a paste fallback; the
   contributor attaches their dataset file to that email).
@@ -35,6 +37,7 @@ the `<!doctype>/<html>/<head>/<body>` wrapper (keep `<style>`, the body markup, 
 `<script>`), since the Artifact host injects its own document skeleton.
 
 ## Incoming data
-Submissions arrive by email as Markdown + JSON. Drop each into the matching
-`../<system-slug>/` folder (real exports under `datasets/real/`, and use the JSON to
-seed the system `README.md`).
+Submissions arrive by email as Markdown + JSON + Turtle. Drop each into the matching
+`../<system-slug>/` folder (real exports under `datasets/real/`), use the JSON to
+seed the system `README.md`, and load the Turtle into Fuseki when building the
+instance graph.

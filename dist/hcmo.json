@@ -17,6 +17,7 @@
     "hcm-obs": "https://w3id.org/hcmo/ontology/hcm/obs#",
     "mod": "https://w3id.org/mod#",
     "ns": "http://www.owl-ontologies.com/ns#",
+    "ns1": "http://purl.obolibrary.org/obo/",
     "odrl": "http://www.w3.org/ns/odrl/2/",
     "org": "http://www.w3.org/ns/org#",
     "owl": "http://www.w3.org/2002/07/owl#",
@@ -1301,17 +1302,73 @@
       "rdfs:label": "occurs in"
     },
     {
+      "@id": "hcm:Actuator",
+      "@type": "owl:Class",
+      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
+      "ns1:IAO_0000115": "A device that elicits or perturbs behavior or physiology.",
+      "rdfs:comment": "A device that elicits or perturbs behavior or physiology.",
+      "rdfs:label": "Actuator"
+    },
+    {
+      "@id": "hcm:Animal",
+      "@type": "owl:Class",
+      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
+      "ns1:IAO_0000115": "An experimental animal housed in an enclosure.",
+      "rdfs:comment": "An experimental animal housed in an enclosure.",
+      "rdfs:label": "Animal"
+    },
+    {
+      "@id": "hcm:BehaviorAndPhysiology",
+      "@type": "owl:Class",
+      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
+      "ns1:IAO_0000115": "An observed behavioral or physiological process displayed by an animal.",
+      "rdfs:comment": "Observed behavioral or physiological process displayed by an animal.",
+      "rdfs:label": "Behavior and Physiology"
+    },
+    {
       "@id": "hcm:CategoricalResult",
       "@type": "owl:Class",
       "rdfs:label": "Categorical Result"
     },
     {
+      "@id": "hcm:CircadianRhythm",
+      "@type": "owl:Class",
+      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
+      "ns1:IAO_0000115": "A circadian rhythm associated with a behavior or physiology process.",
+      "rdfs:comment": "A circadian rhythm associated with a behavior or physiology process.",
+      "rdfs:label": "Circadian Rhythm"
+    },
+    {
+      "@id": "hcm:ContactPoint",
+      "@type": "owl:Class",
+      "dcterms:source": "HCMO user-submission form mapping.",
+      "ns1:IAO_0000115": "Contact detail associated with a submitted system or supplier.",
+      "rdfs:comment": "Contact detail associated with a submitted system or supplier.",
+      "rdfs:label": "Contact Point"
+    },
+    {
+      "@id": "hcm:DataProduct",
+      "@type": "owl:Class",
+      "dcterms:source": "HCMO user-submission form mapping.",
+      "ns1:IAO_0000115": "Data artifact or link associated with a submitted system.",
+      "rdfs:comment": "Data artifact or link associated with a submitted system.",
+      "rdfs:label": "Data Product"
+    },
+    {
+      "@id": "hcm:Dimensions",
+      "@type": "owl:Class",
+      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
+      "ns1:IAO_0000115": "Geometric dimensions of a physical space or enclosure.",
+      "rdfs:comment": "Geometric dimensions of a physical space or enclosure.",
+      "rdfs:label": "Dimensions"
+    },
+    {
       "@id": "hcm:Enclosure",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:domain": {
-        "@id": "hcm:MonitoredEnclosure"
-      },
-      "rdfs:label": "enclosure"
+      "@type": "owl:Class",
+      "dcterms:source": "HCMO active ABox examples and user-submission form mapping.",
+      "ns1:IAO_0000115": "A physical housing enclosure used as part of a home-cage monitoring system.",
+      "rdfs:comment": "A physical housing enclosure used as part of a home-cage monitoring system.",
+      "rdfs:label": "Enclosure"
     },
     {
       "@id": "hcm:Enrichment",
@@ -1321,7 +1378,18 @@
     {
       "@id": "hcm:Hardware",
       "@type": "owl:Class",
+      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
+      "ns1:IAO_0000115": "Physical computing hardware component of a home-cage monitoring system.",
+      "rdfs:comment": "Physical computing hardware component of a home-cage monitoring system.",
       "rdfs:label": "Hardware"
+    },
+    {
+      "@id": "hcm:LimitedInteractionWithHumans",
+      "@type": "owl:Class",
+      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
+      "ns1:IAO_0000115": "A condition indicating minimal human interference during observation.",
+      "rdfs:comment": "A condition indicating minimal human interference during observation.",
+      "rdfs:label": "Limited Interaction With Humans"
     },
     {
       "@id": "hcm:MonitoredEnclosure",
@@ -1484,6 +1552,15 @@
       ]
     },
     {
+      "@id": "hcm:NeedsSequence",
+      "@type": "owl:Class",
+      "dcterms:source": "HCMO active ABox examples.",
+      "ns1:IAO_0000115": "Legacy boolean need-profile record used by current examples.",
+      "owl:deprecated": true,
+      "rdfs:comment": "Legacy boolean need-profile record used by current examples; prefer a future object-based need profile for richer modeling.",
+      "rdfs:label": "Needs Sequence"
+    },
+    {
       "@id": "hcm:OWL-Timeintervaltable",
       "@type": "owl:Class",
       "rdfs:label": "O W L- Timeintervaltable"
@@ -1502,6 +1579,30 @@
       ]
     },
     {
+      "@id": "hcm:ObservationWindow",
+      "@type": "owl:Class",
+      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
+      "ns1:IAO_0000115": "An observation time window for behavior capture.",
+      "rdfs:comment": "An observation time window for behavior capture.",
+      "rdfs:label": "Observation Window"
+    },
+    {
+      "@id": "hcm:PhysicalSpace",
+      "@type": "owl:Class",
+      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
+      "ns1:IAO_0000115": "A spatial region associated with an enclosure.",
+      "rdfs:comment": "A spatial region associated with an enclosure.",
+      "rdfs:label": "Physical Space"
+    },
+    {
+      "@id": "hcm:Protocol",
+      "@type": "owl:Class",
+      "dcterms:source": "HCMO user-submission form mapping.",
+      "ns1:IAO_0000115": "A protocol, SOP, or approval reference governing a system submission.",
+      "rdfs:comment": "A protocol, SOP, or approval reference governing a system submission.",
+      "rdfs:label": "Protocol"
+    },
+    {
       "@id": "hcm:QuantityValue",
       "@type": "owl:Class",
       "rdfs:label": "Quantity Value"
@@ -1517,6 +1618,9 @@
     {
       "@id": "hcm:Software",
       "@type": "owl:Class",
+      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
+      "ns1:IAO_0000115": "Software component of a home-cage monitoring system.",
+      "rdfs:comment": "Software component of a home-cage monitoring system.",
       "rdfs:label": "Software"
     },
     {
@@ -1553,9 +1657,164 @@
       }
     },
     {
+      "@id": "hcm:Supplier",
+      "@type": "owl:Class",
+      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
+      "ns1:IAO_0000115": "A commercial supplier or laboratory providing the system.",
+      "rdfs:comment": "Commercial supplier or laboratory providing the system.",
+      "rdfs:label": "Supplier"
+    },
+    {
+      "@id": "hcm:System",
+      "@type": "owl:Class",
+      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
+      "ns1:IAO_0000115": "A home-cage monitoring system comprising an enclosure, hardware, and software.",
+      "rdfs:comment": "A home-cage monitoring system comprising an enclosure, hardware, and software.",
+      "rdfs:label": "System"
+    },
+    {
+      "@id": "hcm:TimeInterval",
+      "@type": "owl:Class",
+      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
+      "ns1:IAO_0000115": "Deprecated; use hcm:ObservationWindow.",
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated; use hcm:ObservationWindow.",
+      "rdfs:label": "Time Interval",
+      "rdfs:subClassOf": {
+        "@id": "hcm:ObservationWindow"
+      }
+    },
+    {
       "@id": "hcm:TimeSeries",
       "@type": "owl:Class",
       "rdfs:label": "Time Series"
+    },
+    {
+      "@id": "hcm:captures",
+      "@type": "owl:ObjectProperty",
+      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
+      "ns1:IAO_0000115": "Relates a sensor to a behavior or physiology process it captures.",
+      "rdfs:comment": "Relates a sensor to a behavior or physiology process it captures.",
+      "rdfs:domain": {
+        "@id": "hcm:Sensor"
+      },
+      "rdfs:label": "captures",
+      "rdfs:range": {
+        "@id": "hcm:BehaviorAndPhysiology"
+      }
+    },
+    {
+      "@id": "hcm:collectsInfoOn",
+      "@type": "owl:ObjectProperty",
+      "dcterms:source": "HCMO active ABox examples and user-submission form mapping.",
+      "ns1:IAO_0000115": "Relates a system to an animal or animal record it collects information on.",
+      "rdfs:comment": "Relates a system to an animal or animal record it collects information on.",
+      "rdfs:domain": {
+        "@id": "hcm:System"
+      },
+      "rdfs:label": "collects info on",
+      "rdfs:range": {
+        "@id": "hcm:Animal"
+      }
+    },
+    {
+      "@id": "hcm:communicatesWith",
+      "@type": "owl:ObjectProperty",
+      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
+      "ns1:IAO_0000115": "Relates hardware to software that it communicates with.",
+      "rdfs:comment": "Relates hardware to software that it communicates with.",
+      "rdfs:domain": {
+        "@id": "hcm:Hardware"
+      },
+      "rdfs:label": "communicates with",
+      "rdfs:range": {
+        "@id": "hcm:Software"
+      }
+    },
+    {
+      "@id": "hcm:displays",
+      "@type": "owl:ObjectProperty",
+      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
+      "ns1:IAO_0000115": "Relates an animal to a behavior or physiology process it displays.",
+      "rdfs:comment": "Relates an animal to a behavior or physiology process it displays.",
+      "rdfs:domain": {
+        "@id": "hcm:Animal"
+      },
+      "rdfs:label": "displays",
+      "rdfs:range": {
+        "@id": "hcm:BehaviorAndPhysiology"
+      }
+    },
+    {
+      "@id": "hcm:durationHours",
+      "@type": "owl:DatatypeProperty",
+      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
+      "ns1:IAO_0000115": "A duration value in hours for an observation window.",
+      "rdfs:comment": "Duration of an observation window in hours.",
+      "rdfs:domain": {
+        "@id": "hcm:ObservationWindow"
+      },
+      "rdfs:label": "duration hours",
+      "rdfs:range": {
+        "@id": "xsd:decimal"
+      }
+    },
+    {
+      "@id": "hcm:elicits",
+      "@type": "owl:ObjectProperty",
+      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
+      "ns1:IAO_0000115": "Relates an actuator to a behavior or physiology process it elicits or perturbs.",
+      "rdfs:comment": "Relates an actuator to a behavior or physiology process it elicits or perturbs.",
+      "rdfs:domain": {
+        "@id": "hcm:Actuator"
+      },
+      "rdfs:label": "elicits",
+      "rdfs:range": {
+        "@id": "hcm:BehaviorAndPhysiology"
+      }
+    },
+    {
+      "@id": "hcm:extendsEnoughToCapture",
+      "@type": "owl:ObjectProperty",
+      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
+      "ns1:IAO_0000115": "Deprecated legacy relation from a behavior process to a sufficient observation window.",
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated legacy relation from a behavior process to a sufficient observation window.",
+      "rdfs:domain": {
+        "@id": "hcm:BehaviorAndPhysiology"
+      },
+      "rdfs:label": "extends enough to capture",
+      "rdfs:range": {
+        "@id": "hcm:ObservationWindow"
+      }
+    },
+    {
+      "@id": "hcm:followsProtocol",
+      "@type": "owl:ObjectProperty",
+      "dcterms:source": "HCMO user-submission form mapping.",
+      "ns1:IAO_0000115": "Relates a system submission to a governing protocol or SOP reference.",
+      "rdfs:comment": "Relates a system submission to a governing protocol or SOP reference.",
+      "rdfs:domain": {
+        "@id": "hcm:System"
+      },
+      "rdfs:label": "follows protocol",
+      "rdfs:range": {
+        "@id": "hcm:Protocol"
+      }
+    },
+    {
+      "@id": "hcm:hasActuator",
+      "@type": "owl:ObjectProperty",
+      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
+      "ns1:IAO_0000115": "Relates a system to an actuator associated with it.",
+      "rdfs:comment": "Relates a system to an actuator associated with it.",
+      "rdfs:domain": {
+        "@id": "hcm:System"
+      },
+      "rdfs:label": "has actuator",
+      "rdfs:range": {
+        "@id": "hcm:Actuator"
+      }
     },
     {
       "@id": "hcm:hasCapacity",
@@ -1568,6 +1827,20 @@
       "rdfs:label": "has category"
     },
     {
+      "@id": "hcm:hasCircadianRhythm",
+      "@type": "owl:ObjectProperty",
+      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
+      "ns1:IAO_0000115": "Relates a behavior or physiology process to its circadian rhythm.",
+      "rdfs:comment": "Relates a behavior or physiology process to its circadian rhythm.",
+      "rdfs:domain": {
+        "@id": "hcm:BehaviorAndPhysiology"
+      },
+      "rdfs:label": "has circadian rhythm",
+      "rdfs:range": {
+        "@id": "hcm:CircadianRhythm"
+      }
+    },
+    {
       "@id": "hcm:hasDescription",
       "@type": "owl:DatatypeProperty",
       "rdfs:label": "has description"
@@ -1575,7 +1848,27 @@
     {
       "@id": "hcm:hasDimensions",
       "@type": "owl:ObjectProperty",
-      "rdfs:label": "has dimensions"
+      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
+      "ns1:IAO_0000115": "Relates a physical space or enclosure to its dimensions record.",
+      "rdfs:comment": "Links a physical space or enclosure to its dimensions record.",
+      "rdfs:label": "has dimensions",
+      "rdfs:range": {
+        "@id": "hcm:Dimensions"
+      }
+    },
+    {
+      "@id": "hcm:hasEnclosure",
+      "@type": "owl:ObjectProperty",
+      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
+      "ns1:IAO_0000115": "Relates a system to the enclosure that is part of it.",
+      "rdfs:comment": "Links a system to its enclosure.",
+      "rdfs:domain": {
+        "@id": "hcm:System"
+      },
+      "rdfs:label": "has enclosure",
+      "rdfs:range": {
+        "@id": "hcm:Enclosure"
+      }
     },
     {
       "@id": "hcm:hasEnclosureIdentifier",
@@ -1593,9 +1886,51 @@
       "rdfs:label": "has environment"
     },
     {
+      "@id": "hcm:hasEnvironmentalEnrichment",
+      "@type": "owl:DatatypeProperty",
+      "dcterms:source": "HCMO active ABox examples.",
+      "ns1:IAO_0000115": "Boolean flag indicating whether environmental enrichment is provided in a legacy need profile.",
+      "rdfs:comment": "Boolean flag indicating whether environmental enrichment is provided in a legacy need profile.",
+      "rdfs:domain": {
+        "@id": "hcm:NeedsSequence"
+      },
+      "rdfs:label": "has environmental enrichment",
+      "rdfs:range": {
+        "@id": "xsd:boolean"
+      }
+    },
+    {
       "@id": "hcm:hasFileFormat",
       "@type": "owl:DatatypeProperty",
       "rdfs:label": "has file format"
+    },
+    {
+      "@id": "hcm:hasFood",
+      "@type": "owl:DatatypeProperty",
+      "dcterms:source": "HCMO active ABox examples.",
+      "ns1:IAO_0000115": "Boolean flag indicating whether food is provided in a legacy need profile.",
+      "rdfs:comment": "Boolean flag indicating whether food is provided in a legacy need profile.",
+      "rdfs:domain": {
+        "@id": "hcm:NeedsSequence"
+      },
+      "rdfs:label": "has food",
+      "rdfs:range": {
+        "@id": "xsd:boolean"
+      }
+    },
+    {
+      "@id": "hcm:hasHardware",
+      "@type": "owl:ObjectProperty",
+      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
+      "ns1:IAO_0000115": "Relates a system to a hardware component that is part of it.",
+      "rdfs:comment": "Links a system to its hardware component.",
+      "rdfs:domain": {
+        "@id": "hcm:System"
+      },
+      "rdfs:label": "has hardware",
+      "rdfs:range": {
+        "@id": "hcm:Hardware"
+      }
     },
     {
       "@id": "hcm:hasManufacturer",
@@ -1621,14 +1956,99 @@
       "rdfs:label": "has numeric value"
     },
     {
+      "@id": "hcm:hasProperty",
+      "@type": "owl:ObjectProperty",
+      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
+      "ns1:IAO_0000115": "Deprecated legacy relation from an observation window to an observation condition.",
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated legacy relation from an observation window to an observation condition.",
+      "rdfs:domain": {
+        "@id": "hcm:ObservationWindow"
+      },
+      "rdfs:label": "has property",
+      "rdfs:range": {
+        "@id": "hcm:LimitedInteractionWithHumans"
+      }
+    },
+    {
       "@id": "hcm:hasResult",
       "@type": "owl:ObjectProperty",
       "rdfs:label": "has result"
     },
     {
+      "@id": "hcm:hasSafetyFromThreat",
+      "@type": "owl:DatatypeProperty",
+      "dcterms:source": "HCMO active ABox examples.",
+      "ns1:IAO_0000115": "Boolean flag indicating whether safety from threat is provided in a legacy need profile.",
+      "rdfs:comment": "Boolean flag indicating whether safety from threat is provided in a legacy need profile.",
+      "rdfs:domain": {
+        "@id": "hcm:NeedsSequence"
+      },
+      "rdfs:label": "has safety from threat",
+      "rdfs:range": {
+        "@id": "xsd:boolean"
+      }
+    },
+    {
       "@id": "hcm:hasSamplingRate",
       "@type": "owl:DatatypeProperty",
       "rdfs:label": "has sampling rate"
+    },
+    {
+      "@id": "hcm:hasSensor",
+      "@type": "owl:ObjectProperty",
+      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
+      "ns1:IAO_0000115": "Relates a system to a sensor associated with it.",
+      "rdfs:comment": "Relates a system to a sensor associated with it.",
+      "rdfs:domain": {
+        "@id": "hcm:System"
+      },
+      "rdfs:label": "has sensor",
+      "rdfs:range": {
+        "@id": "hcm:Sensor"
+      }
+    },
+    {
+      "@id": "hcm:hasSocialContacts",
+      "@type": "owl:DatatypeProperty",
+      "dcterms:source": "HCMO active ABox examples.",
+      "ns1:IAO_0000115": "Boolean flag indicating whether social contacts are provided in a legacy need profile.",
+      "rdfs:comment": "Boolean flag indicating whether social contacts are provided in a legacy need profile.",
+      "rdfs:domain": {
+        "@id": "hcm:NeedsSequence"
+      },
+      "rdfs:label": "has social contacts",
+      "rdfs:range": {
+        "@id": "xsd:boolean"
+      }
+    },
+    {
+      "@id": "hcm:hasSoftware",
+      "@type": "owl:ObjectProperty",
+      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
+      "ns1:IAO_0000115": "Relates a system to a software component that is part of it.",
+      "rdfs:comment": "Links a system to its software component.",
+      "rdfs:domain": {
+        "@id": "hcm:System"
+      },
+      "rdfs:label": "has software",
+      "rdfs:range": {
+        "@id": "hcm:Software"
+      }
+    },
+    {
+      "@id": "hcm:hasSpaceRegion",
+      "@type": "owl:ObjectProperty",
+      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
+      "ns1:IAO_0000115": "Relates an enclosure to the physical space it contains or bounds.",
+      "rdfs:comment": "Links an enclosure to the physical space it contains or bounds.",
+      "rdfs:domain": {
+        "@id": "hcm:Enclosure"
+      },
+      "rdfs:label": "has space region",
+      "rdfs:range": {
+        "@id": "hcm:PhysicalSpace"
+      }
     },
     {
       "@id": "hcm:hasStoragePath",
@@ -1651,14 +2071,98 @@
       "rdfs:label": "has version"
     },
     {
+      "@id": "hcm:hasWater",
+      "@type": "owl:DatatypeProperty",
+      "dcterms:source": "HCMO active ABox examples.",
+      "ns1:IAO_0000115": "Boolean flag indicating whether water is provided in a legacy need profile.",
+      "rdfs:comment": "Boolean flag indicating whether water is provided in a legacy need profile.",
+      "rdfs:domain": {
+        "@id": "hcm:NeedsSequence"
+      },
+      "rdfs:label": "has water",
+      "rdfs:range": {
+        "@id": "xsd:boolean"
+      }
+    },
+    {
+      "@id": "hcm:height",
+      "@type": "owl:DatatypeProperty",
+      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
+      "ns1:IAO_0000115": "A height magnitude for a dimensions record.",
+      "rdfs:comment": "Height magnitude for a dimensions record.",
+      "rdfs:domain": {
+        "@id": "hcm:Dimensions"
+      },
+      "rdfs:label": "height",
+      "rdfs:range": {
+        "@id": "xsd:decimal"
+      }
+    },
+    {
       "@id": "hcm:installedIn",
       "@type": "owl:ObjectProperty",
       "rdfs:label": "installed in"
     },
     {
+      "@id": "hcm:isDisplayedInside",
+      "@type": "owl:ObjectProperty",
+      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
+      "ns1:IAO_0000115": "Relates a behavior or physiology process to the enclosure where it occurs.",
+      "rdfs:comment": "Relates a behavior or physiology process to the enclosure where it occurs.",
+      "rdfs:domain": {
+        "@id": "hcm:BehaviorAndPhysiology"
+      },
+      "rdfs:label": "is displayed inside",
+      "rdfs:range": {
+        "@id": "hcm:Enclosure"
+      }
+    },
+    {
+      "@id": "hcm:isExtendable",
+      "@type": "owl:DatatypeProperty",
+      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
+      "ns1:IAO_0000115": "A boolean indicating whether an observation window is extendable.",
+      "rdfs:comment": "Whether the observation window is extendable.",
+      "rdfs:domain": {
+        "@id": "hcm:ObservationWindow"
+      },
+      "rdfs:label": "is extendable",
+      "rdfs:range": {
+        "@id": "xsd:boolean"
+      }
+    },
+    {
       "@id": "hcm:isOccupied",
       "@type": "owl:DatatypeProperty",
       "rdfs:label": "is occupied"
+    },
+    {
+      "@id": "hcm:length",
+      "@type": "owl:DatatypeProperty",
+      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
+      "ns1:IAO_0000115": "A length magnitude for a dimensions record.",
+      "rdfs:comment": "Length magnitude for a dimensions record.",
+      "rdfs:domain": {
+        "@id": "hcm:Dimensions"
+      },
+      "rdfs:label": "length",
+      "rdfs:range": {
+        "@id": "xsd:decimal"
+      }
+    },
+    {
+      "@id": "hcm:livesIn",
+      "@type": "owl:ObjectProperty",
+      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
+      "ns1:IAO_0000115": "Relates an animal to the enclosure it lives in.",
+      "rdfs:comment": "Relates an animal to the enclosure it lives in.",
+      "rdfs:domain": {
+        "@id": "hcm:Animal"
+      },
+      "rdfs:label": "lives in",
+      "rdfs:range": {
+        "@id": "hcm:Enclosure"
+      }
     },
     {
       "@id": "hcm:locatedIn",
@@ -1669,6 +2173,90 @@
       "@id": "hcm:monitoredBy",
       "@type": "owl:ObjectProperty",
       "rdfs:label": "monitored by"
+    },
+    {
+      "@id": "hcm:producedBy",
+      "@type": "owl:ObjectProperty",
+      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
+      "ns1:IAO_0000115": "Relates a system to the supplier or laboratory that produced it.",
+      "rdfs:comment": "Links a system to the supplier or laboratory that produced it.",
+      "rdfs:domain": {
+        "@id": "hcm:System"
+      },
+      "rdfs:label": "produced by",
+      "rdfs:range": {
+        "@id": "hcm:Supplier"
+      }
+    },
+    {
+      "@id": "hcm:protocolReference",
+      "@type": "owl:DatatypeProperty",
+      "dcterms:source": "HCMO user-submission form mapping.",
+      "ns1:IAO_0000115": "Textual protocol, SOP, DOI, or approval reference.",
+      "rdfs:comment": "Textual protocol, SOP, DOI, or approval reference.",
+      "rdfs:domain": {
+        "@id": "hcm:Protocol"
+      },
+      "rdfs:label": "protocol reference",
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "hcm:provides",
+      "@type": "owl:ObjectProperty",
+      "dcterms:source": "HCMO active ABox examples.",
+      "ns1:IAO_0000115": "Relates an enclosure to a need profile it provides.",
+      "rdfs:comment": "Relates an enclosure to a need profile it provides.",
+      "rdfs:domain": {
+        "@id": "hcm:Enclosure"
+      },
+      "rdfs:label": "provides",
+      "rdfs:range": {
+        "@id": "hcm:NeedsSequence"
+      }
+    },
+    {
+      "@id": "hcm:requiresToThrive",
+      "@type": "owl:ObjectProperty",
+      "dcterms:source": "HCMO active ABox examples.",
+      "ns1:IAO_0000115": "Relates an animal to the need profile it requires.",
+      "rdfs:comment": "Relates an animal to the need profile it requires.",
+      "rdfs:domain": {
+        "@id": "hcm:Animal"
+      },
+      "rdfs:label": "requires to thrive",
+      "rdfs:range": {
+        "@id": "hcm:NeedsSequence"
+      }
+    },
+    {
+      "@id": "hcm:unit",
+      "@type": "owl:DatatypeProperty",
+      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
+      "ns1:IAO_0000115": "A unit label for dimensions values.",
+      "rdfs:comment": "Unit label for dimensions values.",
+      "rdfs:domain": {
+        "@id": "hcm:Dimensions"
+      },
+      "rdfs:label": "unit",
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "hcm:width",
+      "@type": "owl:DatatypeProperty",
+      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
+      "ns1:IAO_0000115": "A width magnitude for a dimensions record.",
+      "rdfs:comment": "Width magnitude for a dimensions record.",
+      "rdfs:domain": {
+        "@id": "hcm:Dimensions"
+      },
+      "rdfs:label": "width",
+      "rdfs:range": {
+        "@id": "xsd:decimal"
+      }
     },
     {
       "@id": "https://orcid.org/0000-0002-2923-9790",

@@ -1,0 +1,52 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ex: <https://w3id.org/hcmo/id/example-submission/> .
+@prefix hcm: <https://w3id.org/hcmo/ontology/hcm#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:system-example-hcm a hcm:System ;
+  rdfs:label "Example HCM system submission" ;
+  rdfs:comment "Example generated from the HCMO contribution form pattern." ;
+  dcterms:contributor ex:contributor-jane-doe ;
+  dcterms:format "CSV" ;
+  dcterms:source "https://example.org/hcm-system" ;
+  dcterms:type "Commercial system" ;
+  hcm:hasEnclosure ex:enclosure-example-hcm ;
+  hcm:hasHardware ex:hw-example-unit ;
+  hcm:hasSensor ex:sensor-ir-camera ;
+  hcm:hasSoftware ex:sw-example-app ;
+  hcm:producedBy ex:supplier-example-vendor .
+
+ex:supplier-example-vendor a hcm:Supplier ;
+  rdfs:label "Example Vendor" .
+
+ex:hw-example-unit a hcm:Hardware ;
+  rdfs:label "Example control unit" .
+
+ex:sw-example-app a hcm:Software ;
+  rdfs:label "Example analytics app" .
+
+ex:enclosure-example-hcm a hcm:Enclosure ;
+  dcterms:type "Retrofit module for standard cage" ;
+  hcm:hasSpaceRegion ex:space-example-hcm .
+
+ex:space-example-hcm a hcm:PhysicalSpace ;
+  rdfs:label "Example HCM system submission enclosure space" ;
+  hcm:hasDimensions ex:dimensions-example-hcm .
+
+ex:dimensions-example-hcm a hcm:Dimensions ;
+  hcm:height "20.0"^^xsd:decimal ;
+  hcm:length "45.0"^^xsd:decimal ;
+  hcm:unit "cm" ;
+  hcm:width "30.0"^^xsd:decimal .
+
+ex:sensor-ir-camera a hcm:Sensor ;
+  rdfs:label "IR camera" ;
+  dcterms:type "Infrared video sensor" .
+
+ex:contributor-jane-doe a schema:Person ;
+  schema:affiliation "Example Institute" ;
+  schema:email "jane@example.org" ;
+  schema:name "Jane Doe" ;
+  schema:roleName "Researcher / PI" .

@@ -692,6 +692,7 @@
           <span class="tabs" role="tablist">
             <button type="button" class="tab" data-view="md" aria-selected="true" role="tab">Summary</button>
             <button type="button" class="tab" data-view="json" aria-selected="false" role="tab">JSON</button>
+            <button type="button" class="tab" data-view="ttl" aria-selected="false" role="tab">Turtle</button>
           </span>
         </div>
         <pre class="out" id="out"></pre>
@@ -821,7 +822,7 @@
     { key: "sysName", label: "System name", test: function () { return !!val("sysName"); } },
     { key: "vendor", label: "Vendor / developer", test: function () { return !!val("vendor"); } },
     { key: "dims", label: "Enclosure dimensions", test: function () { return val("encW") && val("encL") && val("encH"); } },
-    { key: "sensor", label: "At least one sensor", test: function () { return collectRows("sensorRows", ["sensor_name", "sensor_type"]).length > 0; } }
+    { key: "sensor", label: "At least one named sensor", test: function () { return collectRows("sensorRows", ["sensor_name", "sensor_type"]).some(function (s) { return !!s.sensor_name; }); } }
   ];
   function updateProgress() {
     var done = REQUIRED.filter(function (r) { return r.test(); });
@@ -882,6 +883,98 @@
   }
 
   function line(label, value) { return value ? ("- **" + label + ":** " + value + "\n") : ""; }
+  function ensureTrailingIri(value) {
+    if (!value) return "https://w3id.org/hcmo/id/";
+    return /[\/#]$/.test(value) ? value : value + "/";
+  }
+  function iri(base, id) { return "<" + ensureTrailingIri(base) + encodeURIComponent(id || "unnamed") + ">"; }
+  function lit(value, datatype) {
+    var v = String(value == null ? "" : value).replace(/\\/g, "\\\\").replace(/"/g, '\\"').replace(/\r?\n/g, "\\n");
+    return datatype ? "\"" + v + "\"^^" + datatype : "\"" + v + "\"";
+  }
+  function addTriple(lines, s, p, o) { if (o !== "" && o != null) lines.push(s + " " + p + " " + o + " ."); }
+  function addLiteral(lines, s, p, value, datatype) { if (value) addTriple(lines, s, p, lit(value, datatype)); }
+  function toTurtle(d) {
+    var base = ensureTrailingIri(d.identifiers.baseIri);
+    var system = iri(base, d.identifiers.systemId);
+    var hardware = iri(base, d.identifiers.hardwareId);
+    var software = iri(base, d.identifiers.softwareId);
+    var supplier = iri(base, d.identifiers.supplierId);
+    var enclosure = iri(base, "enclosure-" + slug(d.system.name || "system"));
+    var physicalSpace = iri(base, "space-" + slug(d.system.name || "system"));
+    var dimensions = iri(base, "dimensions-" + slug(d.system.name || "system"));
+    var contributor = iri(base, "contributor-" + slug(d.contributor.name || d.contributor.email || "anonymous"));
+    var lines = [
+      "@prefix hcm: <https://w3id.org/hcmo/ontology/hcm#> .",
+      "@prefix dcterms: <http://purl.org/dc/terms/> .",
+      "@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .",
+      "@prefix schema: <https://schema.org/> .",
+      "@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .",
+      ""
+    ];
+
+    addTriple(lines, system, "a", "hcm:System");
+    addLiteral(lines, system, "rdfs:label", d.system.name);
+    addLiteral(lines, system, "rdfs:comment", d.system.description);
+    addLiteral(lines, system, "dcterms:type", d.system.type);
+    d.system.modality.forEach(function (m) { addLiteral(lines, system, "dcterms:type", m); });
+    addLiteral(lines, system, "dcterms:source", d.system.url);
+    addTriple(lines, system, "hcm:producedBy", supplier);
+    addTriple(lines, system, "hcm:hasHardware", hardware);
+    addTriple(lines, system, "hcm:hasSoftware", software);
+    addTriple(lines, system, "hcm:hasEnclosure", enclosure);
+    addTriple(lines, system, "dcterms:contributor", contributor);
+    d.dataOutput.formats.forEach(function (f) { addLiteral(lines, system, "dcterms:format", f); });
+    d.dataOutput.datasetLinks.forEach(function (link) { addLiteral(lines, system, "dcterms:source", link); });
+
+    addTriple(lines, supplier, "a", "hcm:Supplier");
+    addLiteral(lines, supplier, "rdfs:label", d.system.vendor);
+
+    addTriple(lines, hardware, "a", "hcm:Hardware");
+    addLiteral(lines, hardware, "rdfs:label", d.hardwareSoftware.hardware);
+    addLiteral(lines, hardware, "rdfs:comment", d.hardwareSoftware.interoperability);
+
+    addTriple(lines, software, "a", "hcm:Software");
+    addLiteral(lines, software, "rdfs:label", d.hardwareSoftware.software);
+
+    addTriple(lines, enclosure, "a", "hcm:Enclosure");
+    addLiteral(lines, enclosure, "dcterms:type", d.enclosure.type);
+    addLiteral(lines, enclosure, "rdfs:comment", d.enclosure.fit);
+    addTriple(lines, enclosure, "hcm:hasSpaceRegion", physicalSpace);
+
+    addTriple(lines, physicalSpace, "a", "hcm:PhysicalSpace");
+    addLiteral(lines, physicalSpace, "rdfs:label", (d.system.name || "system") + " enclosure space");
+    addTriple(lines, physicalSpace, "hcm:hasDimensions", dimensions);
+
+    addTriple(lines, dimensions, "a", "hcm:Dimensions");
+    addLiteral(lines, dimensions, "hcm:width", d.enclosure.width, "xsd:decimal");
+    addLiteral(lines, dimensions, "hcm:length", d.enclosure.length, "xsd:decimal");
+    addLiteral(lines, dimensions, "hcm:height", d.enclosure.height, "xsd:decimal");
+    addLiteral(lines, dimensions, "hcm:unit", d.enclosure.unit);
+
+    addTriple(lines, contributor, "a", "schema:Person");
+    addLiteral(lines, contributor, "schema:name", d.contributor.name);
+    addLiteral(lines, contributor, "schema:email", d.contributor.email);
+    addLiteral(lines, contributor, "schema:affiliation", d.contributor.organization);
+    addLiteral(lines, contributor, "schema:roleName", d.contributor.role);
+
+    d.sensors.forEach(function (sensor, index) {
+      var node = iri(base, "sensor-" + (index + 1) + "-" + slug(sensor.sensor_name || "sensor"));
+      addTriple(lines, system, "hcm:hasSensor", node);
+      addTriple(lines, node, "a", "hcm:Sensor");
+      addLiteral(lines, node, "rdfs:label", sensor.sensor_name);
+      addLiteral(lines, node, "dcterms:type", sensor.sensor_type);
+    });
+    d.actuators.forEach(function (actuator, index) {
+      var node = iri(base, "actuator-" + (index + 1) + "-" + slug(actuator.actuator_name || "actuator"));
+      addTriple(lines, system, "hcm:hasActuator", node);
+      addTriple(lines, node, "a", "hcm:Actuator");
+      addLiteral(lines, node, "rdfs:label", actuator.actuator_name);
+      addLiteral(lines, node, "dcterms:type", actuator.actuator_type);
+    });
+
+    return lines.join("\n") + "\n";
+  }
   function toMarkdown(d) {
     var m = "# HCMO system contribution\n\n";
     m += "## Contributor\n";
@@ -920,12 +1013,13 @@
   }
 
   /* ---------- render / actions ---------- */
-  var current = { md: "", json: "" };
+  var current = { md: "", json: "", ttl: "" };
   function generate(scrollTo) {
     var missing = updateProgress();
     var d = build();
     current.md = toMarkdown(d);
     current.json = JSON.stringify(d, null, 2);
+    current.ttl = toTurtle(d);
     var res = $("#result"); res.hidden = false;
     var st = $("#status");
     if (missing.length) { st.className = "status warn"; st.textContent = "⚠ " + missing.length + " required field(s) still empty — you can still send"; }
@@ -934,7 +1028,7 @@
     if (scrollTo && window.matchMedia("(max-width: 979px)").matches) res.scrollIntoView({ behavior: "smooth", block: "start" });
     return d;
   }
-  function showView(v) { $("#out").textContent = v === "json" ? current.json : current.md; }
+  function showView(v) { $("#out").textContent = v === "json" ? current.json : (v === "ttl" ? current.ttl : current.md); }
   $$(".tab").forEach(function (t) {
     t.addEventListener("click", function () {
       $$(".tab").forEach(function (x) { x.setAttribute("aria-selected", "false"); });
@@ -962,7 +1056,7 @@
   $("#dlBtn").addEventListener("click", function () {
     var d = generate(false);
     var name = "hcmo-" + slug(d.system.name || "system") + ".md";
-    var blob = new Blob([current.md + "\n\n<!-- machine-readable -->\n```json\n" + current.json + "\n```\n"], { type: "text/markdown" });
+    var blob = new Blob([current.md + "\n\n<!-- machine-readable JSON -->\n```json\n" + current.json + "\n```\n\n<!-- fuseki-ready turtle -->\n```turtle\n" + current.ttl + "\n```\n"], { type: "text/markdown" });
     var a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name; a.click();
     setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000); toast("Downloaded " + name);
   });

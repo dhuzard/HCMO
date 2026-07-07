@@ -4,11 +4,15 @@ Auto-derived from `dist/profile.json` (regenerate: `python tooling/build.py`).
 Per project policy, missing labels and definitions are **not fabricated** — they are
 listed here for the ontology authors to fill in.
 
-## Missing `rdfs:label` (1)
+## Missing `rdfs:label` (5)
 
 - `https://w3id.org/hcmo/ontology/hcm/obs#`
+- `http://purl.org/dc/elements/1.1/creator`
+- `http://purl.org/dc/elements/1.1/description`
+- `http://purl.org/dc/elements/1.1/title`
+- `http://www.w3.org/2002/07/owl#versionInfo`
 
-## Missing definition / `rdfs:comment` (143)
+## Missing definition / `rdfs:comment` (144)
 
 Every authored term currently lacks a definition. Add `rdfs:comment` (and/or
 `IAO:0000115`) to each term in `ontology/modules/*.ttl`.

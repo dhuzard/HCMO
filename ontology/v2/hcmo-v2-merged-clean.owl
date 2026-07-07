@@ -1,0 +1,998 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:mod="https://w3id.org/mod#"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:schema="https://schema.org/"
+>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b37">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="http://www.w3.org/ns/sosa/usedProcedure"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#assignedToEnclosure">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>assigned to enclosure</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#hasName">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has name</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/env#hasGasConcentrationProfile">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>has gas concentration profile</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b47">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="http://www.w3.org/ns/sosa/observedProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b44">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="http://www.w3.org/ns/sosa/observedProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#hasWeightObservation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>has weight observation</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/env#AmmoniaConcentration">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>ammonia concentration</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b16">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="http://www.w3.org/ns/sosa/observedProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b31">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm#hasManufacturer"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#hasSensorTechnology">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has sensor technology</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.owl-ontologies.com/UNKNOWN#hasEnrichmentReq">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>has enrichment req</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#hasCategory">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has category</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b41">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm/bio#hasSpecies"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b40">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm/bio#hasStrain"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b61">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm#hasWidth"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#installedIn">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>installed in</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#supportsEnclosure">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>supports enclosure</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b6">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://www.w3.org/ns/sosa/hasResult"/>
+    <owl:someValuesFrom rdf:resource="https://w3id.org/hcmo/ontology/hcm/obs#QuantityValue"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/env#LightCycle">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Light Cycle</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/env#hasThriveProfile">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>has thrive profile</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/env#hasDarkPhaseStart">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has dark phase start</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.owl-ontologies.com/UNKNOWN#hasSensors">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>has sensors</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/env#hasEnvironment">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>has environment</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#HealthStatusObservation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Health Status Observation</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b15"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b5">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://www.w3.org/ns/sosa/hasFeatureOfInterest"/>
+    <owl:someValuesFrom rdf:resource="https://w3id.org/hcmo/ontology/hcm/bio#Subject"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#Enclosure">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>enclosure</rdfs:label>
+    <rdfs:domain rdf:resource="https://w3id.org/hcmo/ontology/hcm#MonitoredEnclosure"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/env#CarbonDioxideConcentration">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>carbon dioxide concentration</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#MonitoredEnclosure">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Monitored Enclosure</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b24"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b25"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b26"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b27"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b28"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b29"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b30"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b31"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b32"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b33"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b34"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b35"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b36"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b37"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b38"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b39"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b40"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b41"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b42"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b43"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b44"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b45"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b46"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b47"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b48"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b49"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b50"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b51"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b52"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b53"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b54"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b55"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b56"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b57"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b58"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b59"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b60"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b61"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b62"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b63"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b64"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b65"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b66"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#isCalibrated">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>is calibrated</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://orcid.org/0000-0003-2204-2466">
+    <rdf:type rdf:resource="https://schema.org/Person"/>
+    <schema:name>Gaoussou Sanou</schema:name>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b63">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm#hasHeight"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.owl-ontologies.com/UNKNOWN#hasType">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has type</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <dc:description>Ontology for home-cage monitoring of laboratory animals</dc:description>
+    <dc:title>Home-Cage Monitoring Ontology</dc:title>
+    <dcterms:creator rdf:resource="https://orcid.org/0000-0002-2923-9790"/>
+    <dcterms:creator rdf:resource="https://orcid.org/0000-0002-6085-6818"/>
+    <dcterms:creator rdf:resource="https://orcid.org/0000-0002-9116-6692"/>
+    <dcterms:creator rdf:resource="https://orcid.org/0000-0003-2204-2466"/>
+    <dcterms:creator rdf:resource="https://orcid.org/0000-0003-4820-7951"/>
+    <dcterms:creator rdf:resource="https://orcid.org/0009-0008-0575-8490"/>
+    <dcterms:creator rdf:resource="https://orcid.org/0009-0008-2489-8106"/>
+    <owl:versionIRI rdf:resource="https://w3id.org/hcmo/ontology/hcm/0.0.1"/>
+    <owl:versionInfo>0.0.1</owl:versionInfo>
+    <mod:createdWith rdf:resource="https://chowlk.linkeddata.es/"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b55">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm#hasUnit"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#WeightObservation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Weight Observation</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b16"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b17"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b18"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b19"/>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/hcmo/ontology/hcm/obs#ObservationResult"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b25">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm#isOperational"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b26">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm#isOccupied"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b49">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="http://www.w3.org/ns/sosa/resultTime"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b50">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="http://www.w3.org/ns/sosa/usedProcedure"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#hasSafetyRequirement">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has safety requirement</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b23">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#installedIn"/>
+    <owl:someValuesFrom rdf:resource="https://w3id.org/hcmo/ontology/hcm#MonitoredEnclosure"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#hasFloorArea">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has floor area</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://orcid.org/0000-0002-2923-9790">
+    <rdf:type rdf:resource="https://schema.org/Person"/>
+    <schema:name>Pierre Larmande</schema:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/env#hasGasType">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has gas type</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b19">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="http://www.w3.org/ns/sosa/resultTime"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/semts/ontology/120#TimeSeriesSegment">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Time Series Segment</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b20"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b21"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b24">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#ThriveProfile"/>
+    <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#hasThriveProfile"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#hasBehaviorType">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has behavior type</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b7">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://w3id.org/semts/ontology/120#generated"/>
+    <owl:someValuesFrom rdf:resource="https://w3id.org/semts/ontology/120#TimeSeriesSegment"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b48">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="http://www.w3.org/ns/sosa/hasResult"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/elements/1.1/description">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#hasDimensions">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>has dimensions</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#hasUnit">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has unit</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b27">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="http://www.w3.org/2006/time#hasBeginning"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b10">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="http://www.w3.org/ns/sosa/usedProcedure"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b36">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="http://www.w3.org/ns/sosa/phenomenonTime"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#CategoricalResult">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Categorical Result</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b53">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm/obs#hasNumericValue"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b57">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm/obs#hasConfidenceScore"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/env#LightIntensity">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>light intensity</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#EnvironmentObservation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Environment Observation</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b12"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b13"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b14"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#hasDescription">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has description</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#hasHeight">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has height</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b30">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm#hasEnclosureIdentifier"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b20">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://w3id.org/semts/ontology/120#during"/>
+    <owl:someValuesFrom rdf:resource="http://www.w3.org/2006/time#TemporalEntity"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#hasStoragePath">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has storage path</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/semts/ontology/120#generated">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>generated</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/env#hasDarkPhaseDuration">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has dark phase duration</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b22">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#Sensor"/>
+    <owl:onProperty rdf:resource="http://www.w3.org/ns/sosa/madeBySensor"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#hasMonitoredAnimals">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>has monitored animals</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b4">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://www.w3.org/ns/sosa/hasResult"/>
+    <owl:someValuesFrom rdf:resource="https://w3id.org/hcmo/ontology/hcm/obs#BehaviorResult"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/semts/ontology/120#title">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>title</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2006/time#TemporalEntity">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Temporal Entity</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b42">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="http://www.w3.org/ns/sosa/resultTime"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/sosa/resultTime">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>result time</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#Software">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Software</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#hasManufacturer">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has manufacturer</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#hasModelNumber">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has model number</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/env#OxygenConcentration">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>oxygen concentration</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#hasInterval">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has interval</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b12">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://www.w3.org/ns/sosa/hasFeatureOfInterest"/>
+    <owl:someValuesFrom rdf:resource="https://w3id.org/hcmo/ontology/hcm#MonitoredEnclosure"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b32">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://w3id.org/hcmo/ontology/hcm/bio#ExperimentalGroup"/>
+    <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm/bio#belongsToGroup"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b3">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#LightCycle"/>
+    <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#hasLightCycle"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/elements/1.1/creator">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b35">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="http://www.w3.org/ns/sosa/resultTime"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b2">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#GasConcentrationProfile"/>
+    <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#hasGasConcentrationProfile"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b59">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#hasValue"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#LocationResultTable">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Location Result Table</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b6"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b7"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b8"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b9"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b10"/>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/hcmo/ontology/hcm/obs#ObservationResult"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/semts/ontology/120#dimensionUnit">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>dimension unit</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b65">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm#hasDimensions"/>
+    <owl:someValuesFrom rdf:resource="https://w3id.org/hcmo/ontology/hcm#EnclosureDimensions"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#HousingAssignment">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Housing Assignment</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b52">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm/obs#hasConfidenceScore"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.owl-ontologies.com/UNKNOWN#hasActuators">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>has actuators</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b34">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm#hasEnrichment"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/env#hasValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has value</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#Hardware">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Hardware</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/sosa/usedProcedure">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>used procedure</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#hasFileFormat">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has file format</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/env#MeasurementSpecification">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Measurement Specification</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://orcid.org/0000-0002-6085-6818">
+    <rdf:type rdf:resource="https://schema.org/Person"/>
+    <schema:name>Serge Sonfack Sounchio</schema:name>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b13">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://w3id.org/semts/ontology/120#DataDimension"/>
+    <owl:onProperty rdf:resource="https://w3id.org/semts/ontology/120#hasDimension"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#StudyFactors">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Study Factors</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/sosa/hasFeatureOfInterest">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>has feature of interest</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#ObservationResult">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Observation Result</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b22"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b18">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://www.w3.org/ns/sosa/hasFeatureOfInterest"/>
+    <owl:someValuesFrom rdf:resource="https://w3id.org/hcmo/ontology/hcm/bio#Subject"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#TimeSeries">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Time Series</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b15">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://www.w3.org/ns/sosa/hasFeatureOfInterest"/>
+    <owl:someValuesFrom rdf:resource="https://w3id.org/hcmo/ontology/hcm/bio#Subject"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b46">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="http://www.w3.org/ns/sosa/usedProcedure"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#hasEnclosureIdentifier">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has enclosure identifier</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b66">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#monitoredBy"/>
+    <owl:someValuesFrom rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#Sensor"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b14">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm/obs#hasCategory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#isOperational">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>is operational</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#hasDateOfBirth">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has date of birth</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b33">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm#locatedIn"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b54">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://w3id.org/hcmo/ontology/hcm/obs#HealthStatusObservation"/>
+    <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm/bio#hasHealthStatusObservation"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b1">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#MeasurementSpecification"/>
+    <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#hasMeasurementSpec"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.owl-ontologies.com/UNKNOWN#captures">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>captures</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#hasLength">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has length</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b56">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm/obs#hasBehaviorType"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#hasSensorType">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has sensor type</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#hasBiologicalSex">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has biological sex</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#BehaviorObservation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Behavior Observation</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b4"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b5"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#hasCapacity">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has capacity</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/sosa/phenomenonTime">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>phenomenon time</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#hasHousingAssignment">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>has housing assignment</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b45">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm/obs#hasInterval"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2006/time#hasEnd">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has end</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://orcid.org/0000-0003-4820-7951">
+    <rdf:type rdf:resource="https://schema.org/Person"/>
+    <schema:name>Damien Huzard</schema:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#hasBehaviorObservation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>has behavior observation</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#occursIn">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>occurs in</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.owl-ontologies.com/UNKNOWN#partOF">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>part o f</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b51">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm/obs#hasHealthStatusTerm"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b29">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="http://www.w3.org/2006/time#inXSDDateTime"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#hasEnrichmentType">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has enrichment type</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#hasDimUnit">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has dim unit</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/env#RelativeHumidity">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>relative humidity</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/env#GasConcentrationProfile">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Gas Concentration Profile</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b62">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm#hasLength"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#Subject">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Subject</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b11"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b64">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm#hasDimUnit"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b17">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="http://www.w3.org/ns/sosa/usedProcedure"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#communicatesWith">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>communicates with</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#hasProtocol">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has protocol</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/semts/ontology/120#DataDimension">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Data Dimension</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#GasConcentrationObservation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Gas Concentration Observation</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b9">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="http://www.w3.org/ns/sosa/phenomenonTime"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#hasFacilityType">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has facility type</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#hasMember">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>has member</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2006/time#hasBeginning">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has beginning</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b43">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://w3id.org/hcmo/ontology/hcm/obs#WeightObservation"/>
+    <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm/bio#hasWeightObservation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/env#hasDuskDuration">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has dusk duration</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#hasVersion">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has version</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/env#hasMeasurementSpec">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>has measurement spec</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b39">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm/bio#hasBiologicalSex"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#hasFirmware">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has firmware</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b60">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm#hasUnit"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#hasTreatment">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has treatment</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b28">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="http://www.w3.org/2006/time#hasEnd"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/semts/ontology/120#during">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>during</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/sosa/madeObservation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>made observation</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/env#AmbientTemperature">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>ambient temperature</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#hasSensorIdentifier">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has sensor identifier</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/env#hasLightCycle">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>has light cycle</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#QuantityValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Quantity Value</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#locatedIn">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>located in</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/env#ThriveProfile">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Thrive Profile</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#hasWaterRequirement">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has water requirement</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#ExperimentalGroup">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Experimental Group</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#hasResult">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>has result</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#hasNumericValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has numeric value</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#BehaviorResult">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Behavior Result</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#hasFoodRequirement">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has food requirement</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b21">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://w3id.org/semts/ontology/120#isPartOf"/>
+    <owl:someValuesFrom rdf:resource="https://w3id.org/hcmo/ontology/hcm/obs#EnvironmentObservation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/env#EnvironmentProfile">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Environment Profile</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b1"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b2"/>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b3"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/env#hasDawnDuration">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has dawn duration</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#hasSamplingRate">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has sampling rate</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b11">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://w3id.org/hcmo/ontology/hcm/obs#BehaviorObservation"/>
+    <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm/bio#hasBehaviorObservation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/elements/1.1/title">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/semts/ontology/120#isPartOf">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>is part of</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b58">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#hasGasType"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#hasConfidenceScore">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has confidence score</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/sosa/hasResult">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>has result</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#belongsToGroup">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>belongs to group</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#monitoredBy">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>monitored by</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/semts/ontology/120#hasDimension">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>has dimension</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#runsOn">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>runs on</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/sosa/observedProperty">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>observed property</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://orcid.org/0009-0008-0575-8490">
+    <rdf:type rdf:resource="https://schema.org/Person"/>
+    <schema:name>Antoine Toffano</schema:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://orcid.org/0009-0008-2489-8106">
+    <rdf:type rdf:resource="https://schema.org/Person"/>
+    <schema:name>Cyril Gilbert</schema:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#Sensor">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Sensor</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b23"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#hasEnrichment">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>has enrichment</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b8">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="http://www.w3.org/ns/sosa/resultTime"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n6dd991ea98ca4f0397dc6914cefa1441b38">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+    <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm/bio#hasDateOfBirth"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#hasSocialRequirement">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has social requirement</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#Enrichment">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Enrichment</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#hasHealthStatusObservation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>has health status observation</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/sosa/madeBySensor">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>made by sensor</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#EnclosureDimensions">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Enclosure Dimensions</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/env#LightState">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>light state</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://orcid.org/0000-0002-9116-6692">
+    <rdf:type rdf:resource="https://schema.org/Person"/>
+    <schema:name>Konstantin Todorov</schema:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#hasWidth">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has width</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2006/time#inXSDDateTime">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>in x s d date time</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.owl-ontologies.com/UNKNOWN#hasCondition">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>has condition</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#isOccupied">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>is occupied</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/env#EnvironmentalProperty">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Environmental Property</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#hasSpecies">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has species</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#hasHealthStatusTerm">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has health status term</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/env#hasLightPhaseDuration">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has light phase duration</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#hasStrain">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>has strain</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#versionInfo">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+</rdf:RDF>

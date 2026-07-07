@@ -39,4 +39,5 @@ queries:
 
 examples:
   - examples/abox-minimal.ttl
+  - examples/user-submission.ttl
   - examples/abox-edge-cases.ttl

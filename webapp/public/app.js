@@ -31,6 +31,7 @@
     "hasActuator": "hcm:hasActuator",
     "communicatesWith": "hcm:communicatesWith",
     "hasDimensions": "hcm:hasDimensions",
+    "hasSpaceRegion": "hcm:hasSpaceRegion",
     "hasFood": "hcm:hasFood",
     "hasWater": "hcm:hasWater",
     "hasSocialContacts": "hcm:hasSocialContacts",
@@ -276,6 +277,7 @@ function buildGraph(data) {
   const protocolIri = `${base}${protocolId}`;
   const enclosureIri = `${base}${enclosureId}`;
   const needsIri = `${base}${enclosureId}_Needs`;
+  const physicalSpaceIri = `${base}${enclosureId}_Space`;
   const dimensionsIri = `${base}${enclosureId}_Dims`;
   const operatorContactIri = operatorContact ? `${base}${systemId}_Contact` : undefined;
   const dataProductsIri = dataProductLinks ? `${base}${systemId}_DataProducts` : undefined;
@@ -290,11 +292,12 @@ function buildGraph(data) {
   const graph = [];
 
   const optionalLabel = (label) => (label ? { label } : {});
+  const requiredLabel = (label, fallback) => ({ label: label || fallback });
 
   const systemNode = {
     '@id': systemIri,
     '@type': 'System',
-    ...optionalLabel(systemLabel),
+    ...requiredLabel(systemLabel, systemId),
     hasEnclosure: { '@id': enclosureIri },
     hasHardware: { '@id': hardwareIri },
     hasSoftware: { '@id': softwareIri },
@@ -320,20 +323,20 @@ function buildGraph(data) {
   graph.push({
     '@id': hardwareIri,
     '@type': 'Hardware',
-    ...optionalLabel(hardwareLabel),
+    ...requiredLabel(hardwareLabel, hardwareId),
     communicatesWith: { '@id': softwareIri }
   });
 
   graph.push({
     '@id': softwareIri,
     '@type': 'Software',
-    ...optionalLabel(softwareLabel)
+    ...requiredLabel(softwareLabel, softwareId)
   });
 
   const supplierNode = {
     '@id': supplierIri,
     '@type': 'Supplier',
-    ...optionalLabel(supplierLabel)
+    ...requiredLabel(supplierLabel, supplierId)
   };
   if (operatorContactIri) {
     supplierNode.hasProperty = { '@id': operatorContactIri };
@@ -364,12 +367,19 @@ function buildGraph(data) {
     '@type': 'Enclosure',
     ...optionalLabel(enclosureLabel),
     provides: { '@id': needsIri },
-    hasDimensions: { '@id': dimensionsIri }
+    hasSpaceRegion: { '@id': physicalSpaceIri }
   };
   if (dataProductsIri) {
     enclosureNode.hasProperty = { '@id': dataProductsIri };
   }
   graph.push(enclosureNode);
+
+  graph.push({
+    '@id': physicalSpaceIri,
+    '@type': 'PhysicalSpace',
+    label: `${enclosureLabel || enclosureId} interior space`,
+    hasDimensions: { '@id': dimensionsIri }
+  });
 
   graph.push({
     '@id': animalIri,
@@ -434,7 +444,7 @@ function buildGraph(data) {
     graph.push({
       '@id': `${base}${sensor.id}`,
       '@type': 'Sensor',
-      ...optionalLabel(sensor.label),
+      ...requiredLabel(sensor.label, sensor.id),
       captures: { '@id': behaviorIri }
     });
   });
@@ -443,7 +453,7 @@ function buildGraph(data) {
     graph.push({
       '@id': `${base}${actuator.id}`,
       '@type': 'Actuator',
-      ...optionalLabel(actuator.label),
+      ...requiredLabel(actuator.label, actuator.id),
       elicits: { '@id': behaviorIri }
     });
   });
