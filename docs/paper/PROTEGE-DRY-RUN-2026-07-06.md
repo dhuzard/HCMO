@@ -35,6 +35,8 @@ Results:
 
 ## HermiT reasoner result
 
+### Draft merged graph
+
 Tool path: `owlready2` HermiT runner, after converting
 `ontology/v2/hcmo-v2-merged.ttl` to temporary RDF/XML.
 
@@ -50,6 +52,21 @@ Result:
 
 HermiT command completed successfully in about 2 seconds. No unsatisfiable
 classes were reported.
+
+### Clean BioPortal/Protege graph
+
+Source: `ontology/v2/hcmo-v2-merged-clean.owl`.
+
+Result:
+
+| Check | Result |
+|---|---:|
+| Loaded classes | 30 |
+| Inconsistent classes | 0 |
+
+HermiT command completed successfully in about 3 seconds. No unsatisfiable
+classes were reported. This clean graph excludes `hcm-placeholders.ttl`, so it
+is the preferred file for Protege/BioPortal review.
 
 Remaining placeholders:
 

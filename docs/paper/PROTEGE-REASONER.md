@@ -2,7 +2,9 @@
 
 Status: working protocol for Cyril's post-meeting task.
 
-Source to test: `ontology/v2/hcmo-v2-merged.ttl` on `main`.
+Primary source to test: `ontology/v2/hcmo-v2-merged-clean.owl` on `main`.
+
+Review source with placeholders, if needed: `ontology/v2/hcmo-v2-merged.ttl`.
 
 ## Goal
 
@@ -13,7 +15,7 @@ validation pass.
 ## Protocol
 
 1. Open Protege.
-2. Load `ontology/v2/hcmo-v2-merged.ttl`.
+2. Load `ontology/v2/hcmo-v2-merged-clean.owl`.
 3. Confirm that the ontology IRI is `https://w3id.org/hcmo/ontology/hcm`.
 4. Start with ELK if available for a fast classification pass.
 5. Run HermiT for the stricter OWL DL consistency check.
@@ -26,8 +28,9 @@ validation pass.
 
 ## Expected current caveats
 
-The v2 graph is still a draft. Seven placeholders remain isolated in
-`ontology/v2/modules/hcm-placeholders.ttl`:
+The v2 draft graph still has seven placeholders isolated in
+`ontology/v2/modules/hcm-placeholders.ttl`, but the clean BioPortal/Protege file
+excludes them:
 
 - `UNKNOWN:captures`
 - `UNKNOWN:hasActuators`
@@ -37,8 +40,8 @@ The v2 graph is still a draft. Seven placeholders remain isolated in
 - `UNKNOWN:hasType`
 - `UNKNOWN:partOF`
 
-These should be commented/debugged if they cause reasoner warnings, but they
-should not be silently renamed or re-modeled without a modeling decision.
+These should be commented/debugged in the draft graph, but they should not be
+silently renamed or re-modeled without a modeling decision.
 
 ## Why no SHACL for now
 
@@ -63,5 +66,5 @@ Create a short report after the Protege pass with:
 - list of unsatisfiable classes, or "none";
 - notes on warnings/debugging decisions.
 
-Pre-check and HermiT result started at
+Pre-check and HermiT results started at
 `docs/paper/PROTEGE-DRY-RUN-2026-07-06.md`.
