@@ -3,6 +3,8 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
 @prefix hcm:  <https://w3id.org/hcmo/ontology/hcm#> .
+@prefix hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#> .
+@prefix hcm-env: <https://w3id.org/hcmo/ontology/hcm/env#> .
 
 # 1) ObservationWindow duration constraint: > 24h
 hcm:ObservationWindowShape a sh:NodeShape ;
@@ -127,4 +129,39 @@ hcm:ActuatorShape a sh:NodeShape ;
     sh:path rdfs:label ;
     sh:datatype xsd:string ;
     sh:minCount 1 ;
+  ] .
+
+hcm:SubjectSubmissionShape a sh:NodeShape ;
+  sh:targetClass hcm-bio:Subject ;
+  sh:property [
+    sh:path rdfs:label ;
+    sh:datatype xsd:string ;
+    sh:minCount 1 ;
+  ] ;
+  sh:property [
+    sh:path hcm:hasCapacity ;
+    sh:datatype xsd:integer ;
+    sh:minInclusive 1 ;
+    sh:maxCount 1 ;
+  ] .
+
+hcm:MeasurementSpecificationShape a sh:NodeShape ;
+  sh:targetClass hcm-env:MeasurementSpecification ;
+  sh:property [
+    sh:path rdfs:label ;
+    sh:datatype xsd:string ;
+    sh:minCount 1 ;
+  ] .
+
+hcm:DataProductShape a sh:NodeShape ;
+  sh:targetClass hcm:DataProduct ;
+  sh:property [
+    sh:path rdfs:label ;
+    sh:datatype xsd:string ;
+    sh:minCount 1 ;
+  ] ;
+  sh:property [
+    sh:path hcm:hasFileFormat ;
+    sh:datatype xsd:string ;
+    sh:minCount 0 ;
   ] .

@@ -30,8 +30,26 @@ projection.
 | `actuators[].actuator_name` | `hcm:Actuator` subject `rdfs:label`; system `hcm:hasActuator` | object + annotation | Optional. |
 | `actuators[].actuator_type` | actuator `dcterms:type` | datatype literal | Temporary type literal. |
 | `dataOutput.formats[]` | `dcterms:format` on system | datatype literal | Repeatable output-format values. |
-| `dataOutput.datasetLinks[]` | `dcterms:source` on system | datatype literal | Dataset links are not yet separate dataset nodes. |
+| `dataOutput.datasetLinks[]` | `dcterms:source` on system; `hcm:hasStoragePath` on data product | datatype literal | Also used to populate the `hcm:DataProduct` node. |
 | `contributor.*` | `schema:Person` linked with `dcterms:contributor` | object + schema literals | Submission provenance, not an HCMO domain claim. |
+| `animals.species` | `hcm-bio:Subject` + `hcm-bio:hasSpecies` | datatype literal | Modeled as a supported subject profile, not a concrete study animal. |
+| `animals.strain` | `hcm-bio:hasStrain` | datatype literal | Free text until a strain vocabulary is chosen. |
+| `animals.sex` | `hcm-bio:hasBiologicalSex` | datatype literal | UI controlled values, still literal. |
+| `animals.housing` | subject-profile `rdfs:comment` | annotation literal | No precise housing-assignment object is minted yet. |
+| `animals.perCage` | `hcm:hasCapacity` | datatype literal, `xsd:integer` when numeric | Non-numeric ranges stay out of the canonical triple. |
+| `animals.cages` | `dcterms:extent` | datatype literal | Represents scale/cage count text. |
+| `measurements.parameters[].param_name` | `hcm-env:MeasurementSpecification` + `rdfs:label` | object + annotation | One measurement-specification node per row. |
+| `measurements.parameters[].param_unit` | `hcm-env:hasUnit` | datatype literal | Unit text is not normalized to QUDT/OM yet. |
+| `measurements.parameters[].param_rate` | `hcm:hasSamplingRate` | datatype literal | Free text rate such as `4 Hz` or `30 fps`. |
+| `measurements.behaviors` | `hcm:BehaviorAndPhysiology` + `rdfs:comment`; sensors `hcm:captures` behavior profile | object + annotation | Free-text behavior profile, not controlled behavior terms. |
+| `measurements.circadian` | `hcm:CircadianRhythm` + `rdfs:label` | object + annotation | Linked from the behavior profile. |
+| `recording.duration` | `hcm:ObservationWindow` + `hcm:durationHours` | object + `xsd:decimal` | Emitted only when duration is parseable and greater than 24 hours. |
+| `recording.mode` | observation-window `dcterms:type` | datatype literal | UI controlled values, still literal. |
+| `recording.extendable` | `hcm:isExtendable` | datatype literal, `xsd:boolean` | Emitted only for yes/no values. |
+| `dataOutput.sampling` | `hcm:hasSamplingRate` on `hcm:DataProduct` | datatype literal | Free-text rate. |
+| `dataOutput.volume` | `hcm:hasDescription` on `hcm:DataProduct` | datatype literal | Free-text volume description. |
+| `dataOutput.schema` | `rdfs:comment` on `hcm:DataProduct` | annotation literal | Stores pasted header/field list pending schema modeling. |
+| `dataOutput.license` | `dcterms:license` on `hcm:DataProduct` | datatype literal | Literal until licenses are normalized to IRIs. |
 
 ## Staging fields not yet projected to Turtle
 
@@ -40,12 +58,8 @@ These fields remain in JSON/Markdown until the ontology pattern is confirmed:
 | Form field / JSON path | Reason |
 |---|---|
 | `contributor.consent` | Administrative consent, not a domain ontology fact. |
-| `animals.*` | The form describes supported species/cohorts, not a concrete animal instance. |
-| `measurements.parameters[]` | Needs a measurement-specification pattern before canonical RDF. |
-| `measurements.behaviors` | Needs behavior term normalization or an observation/result pattern. |
-| `measurements.circadian` | Current active ontology lacks a finalized circadian concept pattern. |
-| `recording.*` | Duration is free text and needs normalization before `hcm:ObservationWindow`. |
-| `dataOutput.sampling`, `dataOutput.volume`, `dataOutput.schema`, `dataOutput.license` | Dataset/profile metadata pattern still pending. |
+| non-numeric `animals.perCage` | Cannot safely cast to `xsd:integer`; retained in JSON/Markdown. |
+| unparseable or <=24h `recording.duration` | Current SHACL requires `hcm:ObservationWindow` duration to be greater than 24 hours. |
 | `extra.gaps`, `extra.notes` | Curation notes, not canonical ABox assertions. |
 
 ## Catalog distinction

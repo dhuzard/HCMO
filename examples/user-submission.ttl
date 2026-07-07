@@ -1,6 +1,8 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix ex: <https://w3id.org/hcmo/id/example-submission/> .
 @prefix hcm: <https://w3id.org/hcmo/ontology/hcm#> .
+@prefix hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#> .
+@prefix hcm-env: <https://w3id.org/hcmo/ontology/hcm/env#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -10,12 +12,16 @@ ex:system-example-hcm a hcm:System ;
   rdfs:comment "Example generated from the HCMO contribution form pattern." ;
   dcterms:contributor ex:contributor-jane-doe ;
   dcterms:format "CSV" ;
+  dcterms:relation ex:data-product-example-hcm ;
   dcterms:source "https://example.org/hcm-system" ;
+  dcterms:subject ex:subject-profile-example-hcm ;
+  dcterms:temporal ex:observation-window-example-hcm ;
   dcterms:type "Commercial system" ;
   hcm:hasEnclosure ex:enclosure-example-hcm ;
   hcm:hasHardware ex:hw-example-unit ;
   hcm:hasSensor ex:sensor-ir-camera ;
   hcm:hasSoftware ex:sw-example-app ;
+  hcm-env:hasMeasurementSpec ex:measurement-spec-activity ;
   hcm:producedBy ex:supplier-example-vendor .
 
 ex:supplier-example-vendor a hcm:Supplier ;
@@ -43,7 +49,45 @@ ex:dimensions-example-hcm a hcm:Dimensions ;
 
 ex:sensor-ir-camera a hcm:Sensor ;
   rdfs:label "IR camera" ;
-  dcterms:type "Infrared video sensor" .
+  dcterms:type "Infrared video sensor" ;
+  hcm:captures ex:behavior-profile-example-hcm .
+
+ex:subject-profile-example-hcm a hcm-bio:Subject ;
+  rdfs:label "Example HCM system submission supported subject profile" ;
+  rdfs:comment "Group housed" ;
+  dcterms:extent "12 cages" ;
+  hcm:hasCapacity "4"^^xsd:integer ;
+  hcm-bio:hasBiologicalSex "Female" ;
+  hcm-bio:hasSpecies "Mus musculus" ;
+  hcm-bio:hasStrain "C57BL/6J" .
+
+ex:behavior-profile-example-hcm a hcm:BehaviorAndPhysiology ;
+  rdfs:label "Example HCM system submission behavior profile" ;
+  rdfs:comment "Activity and exploration bouts" ;
+  hcm:hasCircadianRhythm ex:circadian-profile-example-hcm .
+
+ex:circadian-profile-example-hcm a hcm:CircadianRhythm ;
+  rdfs:label "Nocturnal peak" .
+
+ex:measurement-spec-activity a hcm-env:MeasurementSpecification ;
+  rdfs:label "Activity index" ;
+  hcm:hasSamplingRate "4 Hz" ;
+  hcm-env:hasUnit "count" .
+
+ex:observation-window-example-hcm a hcm:ObservationWindow ;
+  rdfs:label "Example HCM system submission observation window" ;
+  dcterms:type "Continuous" ;
+  hcm:durationHours "48"^^xsd:decimal ;
+  hcm:isExtendable "true"^^xsd:boolean .
+
+ex:data-product-example-hcm a hcm:DataProduct ;
+  rdfs:label "Example HCM system submission data output" ;
+  rdfs:comment "timestamp,cage_id,activity_index" ;
+  dcterms:license "CC BY 4.0" ;
+  hcm:hasDescription "4 MB/cage/day" ;
+  hcm:hasFileFormat "CSV" ;
+  hcm:hasSamplingRate "4 Hz" ;
+  hcm:hasStoragePath "https://example.org/hcm-system/day-01.csv" .
 
 ex:contributor-jane-doe a schema:Person ;
   schema:affiliation "Example Institute" ;
