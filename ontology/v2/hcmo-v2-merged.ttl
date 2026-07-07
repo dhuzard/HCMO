@@ -60,9 +60,8 @@ owl:versionInfo a owl:AnnotationProperty .
     owl:versionInfo "0.0.1" ;
     mod:createdWith <https://chowlk.linkeddata.es/> .
 
-hcm:Enclosure a owl:DatatypeProperty ;
-    rdfs:label "enclosure" ;
-    rdfs:domain hcm:MonitoredEnclosure .
+hcm:Enclosure a owl:Class ;
+    rdfs:label "Enclosure" .
 
 hcm:Enrichment a owl:Class ;
     rdfs:label "Enrichment" .
@@ -237,10 +236,10 @@ semts:title a owl:DatatypeProperty ;
 time:TemporalEntity a owl:Class ;
     rdfs:label "Temporal Entity" .
 
-time:hasBeginning a owl:DatatypeProperty ;
+time:hasBeginning a owl:ObjectProperty ;
     rdfs:label "has beginning" .
 
-time:hasEnd a owl:DatatypeProperty ;
+time:hasEnd a owl:ObjectProperty ;
     rdfs:label "has end" .
 
 time:inXSDDateTime a owl:DatatypeProperty ;

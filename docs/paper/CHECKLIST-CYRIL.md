@@ -40,11 +40,11 @@
 | 13 | Ontologie | Nettoyer termes Chowlk temporaires | Oui | 🟡 | `docs/paper/PLACEHOLDER-MAP.md`, `ontology/v2/modules/hcm-placeholders.ttl` | v2 réduit à 7 placeholders; doublons sûrs, tech metadata/support terms, light-cycle env terms, bio social requirement et core facility/husbandry attributes résolus. Reste à mint/drop les termes ambigus avant promotion. |
 | 14 | Ontologie | Exemples d'instances représentatifs | Oui | ⛔ | `sections/03-requirements.md` | Scénario HCM complet; ABox synthétiques après T0. |
 | 15 | Ontologie | Requêtes SPARQL des competency questions | Oui | ⛔ | `sections/03-requirements.md` | CQ1–CQ6 définies; requêtes après T0 (renvoient 0 actuellement). |
-| 16 | Ontologie | SHACL valides/invalides | Oui | ⛔ | — | Bloqué T0 (shapes ciblent les termes legacy). |
+| 16 | Ontologie | SHACL valides/invalides | Oui | ⏸ | `docs/paper/PROTEGE-REASONER.md` | Reporté après décision de réunion: d'abord raisonneur OWL dans Protégé sur v2; SHACL seulement après gel/promotion des termes v2. |
 | 17 | Ontologie | Lancer OOPS! + noter problèmes | Oui | ⛔ | — | Bloqué T0. |
 | 18 | Évaluation | Définir les competency questions de l'article | Oui | ✅ | `sections/03-requirements.md` | CQ1–CQ6 + mapping R1–R8. |
 | 19 | Évaluation | Chaque requête répond à une CQ | Oui | ⛔ | — | Bloqué T0 (besoin de la V1 + requêtes). |
-| 20 | Évaluation | Bilan OOPS!/SHACL/WIDOCO | Oui | 🟡 | `sections/06-evaluation.md` | WIDOCO ✅; OOPS!/SHACL bloqués T0. |
+| 20 | Évaluation | Bilan OOPS!/SHACL/WIDOCO | Oui | 🟡 | `sections/06-evaluation.md`, `docs/paper/PROTEGE-REASONER.md` | WIDOCO ✅; prochaine preuve qualité = raisonneur Protégé sur v2. SHACL reporté. |
 | 21 | Ontologie | Documentation WIDOCO | Oui | ✅ | `README.md` → <https://dhuzard.github.io/HCMO/index-en.html> | Lien ajouté au README. |
 | 22 | Availability | Dépôt GitHub propre & compréhensible | Oui | 🟡 | `README.md`, `ontology/v2/README.md`, `docs/paper/TODO.md` | README enrichi; v2 documentée; nettoyage global et promotion restent en cours. |
 | 23 | Availability | Release versionnée figée | Oui | ⬜ | `TODO.md` (T9) | À cadrer sur la version citée. |
