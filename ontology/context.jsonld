@@ -30,7 +30,7 @@
     "hasSensor":     "hcm:hasSensor",
     "hasActuator":   "hcm:hasActuator",
     "communicatesWith": "hcm:communicatesWith",
+    "hasSpaceRegion": "hcm:hasSpaceRegion",
     "hasDimensions": "hcm:hasDimensions"
   }
 }
-

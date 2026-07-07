@@ -8,6 +8,21 @@ folder is a **parallel proposal** implementing the re-modularisation decided in
 untouched so both can be compared. **Promote only after co-author validation**,
 then delete `ontology/modules/` and repoint the tooling (see *Promotion* below).
 
+## BioPortal review files
+
+Use the clean generated files for BioPortal submission/review. They merge the v2
+modules but intentionally exclude `hcm-placeholders.ttl`, so unresolved
+`UNKNOWN:`/placeholder terms are not submitted:
+
+- Turtle: `https://raw.githubusercontent.com/dhuzard/HCMO/main/ontology/v2/hcmo-v2-merged-clean.ttl`
+- RDF/XML: `https://raw.githubusercontent.com/dhuzard/HCMO/main/ontology/v2/hcmo-v2-merged-clean.owl`
+
+Regenerate them with:
+
+```bash
+python tooling/build_v2_clean.py
+```
+
 ## What changed vs the current 4-module version
 
 **5 modules** (was core/bio/env/obs): `hcm` **core = enclosure only** · `bio` ·
@@ -35,7 +50,9 @@ ontology/v2/
     hcm-env.ttl           # profiles, specs, environmental properties
     hcm-tech.ttl          # Sensor/Hardware/Software/TimeSeries (NEW namespace …/hcm/tech#)
     hcm-placeholders.ttl  # 7 UNKNOWN:/ns: terms still awaiting definition-or-drop (T4/T5)
-  hcmo-v2-merged.ttl      # merged graph (595 triples) for quick review
+  hcmo-v2-merged.ttl      # merged graph (565 triples) for quick review, includes placeholders
+  hcmo-v2-merged-clean.ttl # BioPortal Turtle graph (551 triples), excludes placeholders
+  hcmo-v2-merged-clean.owl # BioPortal RDF/XML graph (551 triples), excludes placeholders
   README.md               # this file
 ```
 

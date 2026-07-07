@@ -3,6 +3,8 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
 @prefix hcm:  <https://w3id.org/hcmo/ontology/hcm#> .
+@prefix hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#> .
+@prefix hcm-env: <https://w3id.org/hcmo/ontology/hcm/env#> .
 
 # 1) ObservationWindow duration constraint: > 24h
 hcm:ObservationWindowShape a sh:NodeShape ;
@@ -25,25 +27,46 @@ hcm:DimensionsShape a sh:NodeShape ;
   sh:property [
     sh:path hcm:width ;
     sh:datatype xsd:decimal ;
+    sh:minExclusive 0 ;
     sh:minCount 1 ;
     sh:maxCount 1 ;
   ] ;
   sh:property [
     sh:path hcm:length ;
     sh:datatype xsd:decimal ;
+    sh:minExclusive 0 ;
     sh:minCount 1 ;
     sh:maxCount 1 ;
   ] ;
   sh:property [
     sh:path hcm:height ;
     sh:datatype xsd:decimal ;
+    sh:minExclusive 0 ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] ;
+  sh:property [
+    sh:path hcm:unit ;
+    sh:datatype xsd:string ;
     sh:minCount 1 ;
     sh:maxCount 1 ;
   ] .
 
-# 3) System must have enclosure/hardware/software (>=1 each)
+# 3) System submission core: class assertion plus component links for Fuseki intake
 hcm:SystemShape a sh:NodeShape ;
   sh:targetClass hcm:System ;
+  sh:property [
+    sh:path rdfs:label ;
+    sh:datatype xsd:string ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] ;
+  sh:property [
+    sh:path hcm:producedBy ;
+    sh:class hcm:Supplier ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] ;
   sh:property [
     sh:path hcm:hasEnclosure ;
     sh:class hcm:Enclosure ;
@@ -58,13 +81,87 @@ hcm:SystemShape a sh:NodeShape ;
     sh:path hcm:hasSoftware ;
     sh:class hcm:Software ;
     sh:minCount 1 ;
+  ] ;
+  sh:property [
+    sh:path hcm:hasSensor ;
+    sh:class hcm:Sensor ;
+    sh:minCount 1 ;
   ] .
 
-# (Optional) Enclosure should have a space region
+# 4) Enclosure should have a space region with dimensions
 hcm:EnclosureShape a sh:NodeShape ;
   sh:targetClass hcm:Enclosure ;
   sh:property [
     sh:path hcm:hasSpaceRegion ;
     sh:class hcm:PhysicalSpace ;
     sh:minCount 1 ;
+  ] .
+
+hcm:PhysicalSpaceShape a sh:NodeShape ;
+  sh:targetClass hcm:PhysicalSpace ;
+  sh:property [
+    sh:path hcm:hasDimensions ;
+    sh:class hcm:Dimensions ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] .
+
+hcm:SupplierShape a sh:NodeShape ;
+  sh:targetClass hcm:Supplier ;
+  sh:property [
+    sh:path rdfs:label ;
+    sh:datatype xsd:string ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] .
+
+hcm:SensorShape a sh:NodeShape ;
+  sh:targetClass hcm:Sensor ;
+  sh:property [
+    sh:path rdfs:label ;
+    sh:datatype xsd:string ;
+    sh:minCount 1 ;
+  ] .
+
+hcm:ActuatorShape a sh:NodeShape ;
+  sh:targetClass hcm:Actuator ;
+  sh:property [
+    sh:path rdfs:label ;
+    sh:datatype xsd:string ;
+    sh:minCount 1 ;
+  ] .
+
+hcm:SubjectSubmissionShape a sh:NodeShape ;
+  sh:targetClass hcm-bio:Subject ;
+  sh:property [
+    sh:path rdfs:label ;
+    sh:datatype xsd:string ;
+    sh:minCount 1 ;
+  ] ;
+  sh:property [
+    sh:path hcm:hasCapacity ;
+    sh:datatype xsd:integer ;
+    sh:minInclusive 1 ;
+    sh:maxCount 1 ;
+  ] .
+
+hcm:MeasurementSpecificationShape a sh:NodeShape ;
+  sh:targetClass hcm-env:MeasurementSpecification ;
+  sh:property [
+    sh:path rdfs:label ;
+    sh:datatype xsd:string ;
+    sh:minCount 1 ;
+  ] .
+
+hcm:DataProductShape a sh:NodeShape ;
+  sh:targetClass hcm:DataProduct ;
+  sh:property [
+    sh:path rdfs:label ;
+    sh:datatype xsd:string ;
+    sh:minCount 1 ;
+  ] ;
+  sh:property [
+    sh:path hcm:hasFileFormat ;
+    sh:datatype xsd:string ;
+    sh:minCount 0 ;
   ] .

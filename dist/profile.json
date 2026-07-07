@@ -29,9 +29,49 @@
       "label": "Temporal Entity"
     },
     {
+      "comment": "A device that elicits or perturbs behavior or physiology.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#Actuator",
+      "label": "Actuator"
+    },
+    {
+      "comment": "An experimental animal housed in an enclosure.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#Animal",
+      "label": "Animal"
+    },
+    {
+      "comment": "Observed behavioral or physiological process displayed by an animal.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#BehaviorAndPhysiology",
+      "label": "Behavior and Physiology"
+    },
+    {
       "comment": null,
       "iri": "https://w3id.org/hcmo/ontology/hcm#CategoricalResult",
       "label": "Categorical Result"
+    },
+    {
+      "comment": "A circadian rhythm associated with a behavior or physiology process.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#CircadianRhythm",
+      "label": "Circadian Rhythm"
+    },
+    {
+      "comment": "Contact detail associated with a submitted system or supplier.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#ContactPoint",
+      "label": "Contact Point"
+    },
+    {
+      "comment": "Data artifact or link associated with a submitted system.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#DataProduct",
+      "label": "Data Product"
+    },
+    {
+      "comment": "Geometric dimensions of a physical space or enclosure.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#Dimensions",
+      "label": "Dimensions"
+    },
+    {
+      "comment": "A physical housing enclosure used as part of a home-cage monitoring system.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#Enclosure",
+      "label": "Enclosure"
     },
     {
       "comment": null,
@@ -39,14 +79,24 @@
       "label": "Enrichment"
     },
     {
-      "comment": null,
+      "comment": "Physical computing hardware component of a home-cage monitoring system.",
       "iri": "https://w3id.org/hcmo/ontology/hcm#Hardware",
       "label": "Hardware"
+    },
+    {
+      "comment": "A condition indicating minimal human interference during observation.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#LimitedInteractionWithHumans",
+      "label": "Limited Interaction With Humans"
     },
     {
       "comment": null,
       "iri": "https://w3id.org/hcmo/ontology/hcm#MonitoredEnclosure",
       "label": "Monitored Enclosure"
+    },
+    {
+      "comment": "Legacy boolean need-profile record used by current examples; prefer a future object-based need profile for richer modeling.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#NeedsSequence",
+      "label": "Needs Sequence"
     },
     {
       "comment": null,
@@ -59,6 +109,21 @@
       "label": "Observation Result"
     },
     {
+      "comment": "An observation time window for behavior capture.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#ObservationWindow",
+      "label": "Observation Window"
+    },
+    {
+      "comment": "A spatial region associated with an enclosure.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#PhysicalSpace",
+      "label": "Physical Space"
+    },
+    {
+      "comment": "A protocol, SOP, or approval reference governing a system submission.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#Protocol",
+      "label": "Protocol"
+    },
+    {
       "comment": null,
       "iri": "https://w3id.org/hcmo/ontology/hcm#QuantityValue",
       "label": "Quantity Value"
@@ -69,7 +134,7 @@
       "label": "Sensor"
     },
     {
-      "comment": null,
+      "comment": "Software component of a home-cage monitoring system.",
       "iri": "https://w3id.org/hcmo/ontology/hcm#Software",
       "label": "Software"
     },
@@ -82,6 +147,21 @@
       "comment": null,
       "iri": "https://w3id.org/hcmo/ontology/hcm#StudyFactors",
       "label": "Study Factors"
+    },
+    {
+      "comment": "Commercial supplier or laboratory providing the system.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#Supplier",
+      "label": "Supplier"
+    },
+    {
+      "comment": "A home-cage monitoring system comprising an enclosure, hardware, and software.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#System",
+      "label": "System"
+    },
+    {
+      "comment": "Deprecated; use hcm:ObservationWindow.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#TimeInterval",
+      "label": "Time Interval"
     },
     {
       "comment": null,
@@ -181,10 +261,10 @@
   ],
   "counts": {
     "annotation_properties": 4,
-    "classes": 31,
-    "datatype_properties": 74,
-    "object_properties": 39,
-    "triples": 617
+    "classes": 47,
+    "datatype_properties": 85,
+    "object_properties": 59,
+    "triples": 933
   },
   "datatype_properties": [
     {
@@ -378,9 +458,9 @@
       "label": "used procedure"
     },
     {
-      "comment": null,
-      "iri": "https://w3id.org/hcmo/ontology/hcm#Enclosure",
-      "label": "enclosure"
+      "comment": "Duration of an observation window in hours.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#durationHours",
+      "label": "duration hours"
     },
     {
       "comment": null,
@@ -413,9 +493,19 @@
       "label": "has environment"
     },
     {
+      "comment": "Boolean flag indicating whether environmental enrichment is provided in a legacy need profile.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#hasEnvironmentalEnrichment",
+      "label": "has environmental enrichment"
+    },
+    {
       "comment": null,
       "iri": "https://w3id.org/hcmo/ontology/hcm#hasFileFormat",
       "label": "has file format"
+    },
+    {
+      "comment": "Boolean flag indicating whether food is provided in a legacy need profile.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#hasFood",
+      "label": "has food"
     },
     {
       "comment": null,
@@ -438,9 +528,19 @@
       "label": "has numeric value"
     },
     {
+      "comment": "Boolean flag indicating whether safety from threat is provided in a legacy need profile.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#hasSafetyFromThreat",
+      "label": "has safety from threat"
+    },
+    {
       "comment": null,
       "iri": "https://w3id.org/hcmo/ontology/hcm#hasSamplingRate",
       "label": "has sampling rate"
+    },
+    {
+      "comment": "Boolean flag indicating whether social contacts are provided in a legacy need profile.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#hasSocialContacts",
+      "label": "has social contacts"
     },
     {
       "comment": null,
@@ -458,14 +558,49 @@
       "label": "has version"
     },
     {
+      "comment": "Boolean flag indicating whether water is provided in a legacy need profile.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#hasWater",
+      "label": "has water"
+    },
+    {
+      "comment": "Height magnitude for a dimensions record.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#height",
+      "label": "height"
+    },
+    {
+      "comment": "Whether the observation window is extendable.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#isExtendable",
+      "label": "is extendable"
+    },
+    {
       "comment": null,
       "iri": "https://w3id.org/hcmo/ontology/hcm#isOccupied",
       "label": "is occupied"
     },
     {
+      "comment": "Length magnitude for a dimensions record.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#length",
+      "label": "length"
+    },
+    {
       "comment": null,
       "iri": "https://w3id.org/hcmo/ontology/hcm#locatedIn",
       "label": "located in"
+    },
+    {
+      "comment": "Textual protocol, SOP, DOI, or approval reference.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#protocolReference",
+      "label": "protocol reference"
+    },
+    {
+      "comment": "Unit label for dimensions values.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#unit",
+      "label": "unit"
+    },
+    {
+      "comment": "Width magnitude for a dimensions record.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#width",
+      "label": "width"
     },
     {
       "comment": null,
@@ -616,14 +751,89 @@
       "label": "observed property"
     },
     {
-      "comment": null,
+      "comment": "Relates a sensor to a behavior or physiology process it captures.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#captures",
+      "label": "captures"
+    },
+    {
+      "comment": "Relates a system to an animal or animal record it collects information on.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#collectsInfoOn",
+      "label": "collects info on"
+    },
+    {
+      "comment": "Relates hardware to software that it communicates with.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#communicatesWith",
+      "label": "communicates with"
+    },
+    {
+      "comment": "Relates an animal to a behavior or physiology process it displays.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#displays",
+      "label": "displays"
+    },
+    {
+      "comment": "Relates an actuator to a behavior or physiology process it elicits or perturbs.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#elicits",
+      "label": "elicits"
+    },
+    {
+      "comment": "Deprecated legacy relation from a behavior process to a sufficient observation window.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#extendsEnoughToCapture",
+      "label": "extends enough to capture"
+    },
+    {
+      "comment": "Relates a system submission to a governing protocol or SOP reference.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#followsProtocol",
+      "label": "follows protocol"
+    },
+    {
+      "comment": "Relates a system to an actuator associated with it.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#hasActuator",
+      "label": "has actuator"
+    },
+    {
+      "comment": "Relates a behavior or physiology process to its circadian rhythm.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#hasCircadianRhythm",
+      "label": "has circadian rhythm"
+    },
+    {
+      "comment": "Links a physical space or enclosure to its dimensions record.",
       "iri": "https://w3id.org/hcmo/ontology/hcm#hasDimensions",
       "label": "has dimensions"
+    },
+    {
+      "comment": "Links a system to its enclosure.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#hasEnclosure",
+      "label": "has enclosure"
+    },
+    {
+      "comment": "Links a system to its hardware component.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#hasHardware",
+      "label": "has hardware"
+    },
+    {
+      "comment": "Deprecated legacy relation from an observation window to an observation condition.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#hasProperty",
+      "label": "has property"
     },
     {
       "comment": null,
       "iri": "https://w3id.org/hcmo/ontology/hcm#hasResult",
       "label": "has result"
+    },
+    {
+      "comment": "Relates a system to a sensor associated with it.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#hasSensor",
+      "label": "has sensor"
+    },
+    {
+      "comment": "Links a system to its software component.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#hasSoftware",
+      "label": "has software"
+    },
+    {
+      "comment": "Links an enclosure to the physical space it contains or bounds.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#hasSpaceRegion",
+      "label": "has space region"
     },
     {
       "comment": null,
@@ -636,9 +846,34 @@
       "label": "installed in"
     },
     {
+      "comment": "Relates a behavior or physiology process to the enclosure where it occurs.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#isDisplayedInside",
+      "label": "is displayed inside"
+    },
+    {
+      "comment": "Relates an animal to the enclosure it lives in.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#livesIn",
+      "label": "lives in"
+    },
+    {
       "comment": null,
       "iri": "https://w3id.org/hcmo/ontology/hcm#monitoredBy",
       "label": "monitored by"
+    },
+    {
+      "comment": "Links a system to the supplier or laboratory that produced it.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#producedBy",
+      "label": "produced by"
+    },
+    {
+      "comment": "Relates an enclosure to a need profile it provides.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#provides",
+      "label": "provides"
+    },
+    {
+      "comment": "Relates an animal to the need profile it requires.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#requiresToThrive",
+      "label": "requires to thrive"
     },
     {
       "comment": null,

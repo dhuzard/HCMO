@@ -13,6 +13,11 @@ dataset or code; **P3** = component/toolchain useful for context or mocks.
 
 `slug` = suggested folder name. Fill profiles using [`LLM-RESEARCH-PROMPT.md`](LLM-RESEARCH-PROMPT.md).
 
+Fuseki loading: regenerate [`catalog.ttl`](catalog.ttl) from this table with
+`python tooling/export_hcm_catalog.py`. The Turtle file is an ABox export: catalog
+rows become RDF instances with `rdf:type`, object-property links, and literal
+values.
+
 ## Commercial HCM platforms
 
 | System | Vendor | Modality | Key measured parameters | Data / links | Prio | slug |

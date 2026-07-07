@@ -18,6 +18,9 @@ queries (`queries/`) against payloads that resemble what each real system produc
 hcm-systems/
   README.md                 # this file
   CATALOG.md                # master index of systems extracted from the literature
+  catalog.ttl               # generated sparse RDF catalog for Fuseki lookup
+  FORM-FIELD-MAPPING.md     # contribution form to RDF mapping
+  FUSEKI-LOADING.md         # named-graph loading workflow
   REFERENCES.md             # papers/patents/standards to dig into, grouped by modality
   LLM-RESEARCH-PROMPT.md    # reusable prompt to research each system with an LLM
   contribute/               # public, static form for system owners to submit their system + data
@@ -52,6 +55,10 @@ hcm-systems/
    output schema, plus any real export you can share under `datasets/real/`.
 6. When the schema is clear, author a matching HCMO ABox under `../../examples/` and
    note the class/property mapping in the system `README.md`.
+
+For graph ingestion, use [`FORM-FIELD-MAPPING.md`](FORM-FIELD-MAPPING.md) to review
+the form-to-RDF projection and [`FUSEKI-LOADING.md`](FUSEKI-LOADING.md) for the
+Fuseki named-graph workflow.
 
 ## Data hygiene
 
