@@ -98,6 +98,30 @@ Manual visual inspection of the class/property tree remains to be completed in
 the Protege UI, but the clean OWL file opens successfully in Protege and does
 not raise a load failure in the Protege log.
 
+Manual UI checks completed from Protege:
+
+- `hcm:MonitoredEnclosure` appears in the class hierarchy.
+- `hcm:Enclosure` appears in the class hierarchy.
+- `time:hasBeginning` appears in the object property hierarchy as `has
+  beginning`.
+- The class hierarchy was switched to `Inferred` after HermiT classification.
+- No class was observed under `owl:Nothing` in the inferred hierarchy.
+- The Protege status bar showed the reasoner as active before it was stopped
+  manually after the check.
+
+Manual HermiT run from the Protege UI:
+
+- HermiT was started from the Protege reasoner menu.
+- Protege log entry: `Running Reasoner`.
+- Precomputed inferences included class hierarchy, object property hierarchy,
+  data property hierarchy, class assertions, object property assertions, and
+  same individuals.
+- Protege log entry: `Ontologies processed in 479 ms by HermiT`.
+
+No Protege log entry indicating an ontology load failure or reasoner failure was
+observed during this manual UI pass. No unsatisfiable class was observed in the
+Protege UI.
+
 Remaining placeholders:
 
 - `UNKNOWN:captures`
