@@ -68,6 +68,36 @@ HermiT command completed successfully in about 3 seconds. No unsatisfiable
 classes were reported. This clean graph excludes `hcm-placeholders.ttl`, so it
 is the preferred file for Protege/BioPortal review.
 
+### Protege Desktop open check
+
+Date: 2026-07-08.
+
+Tool: Protege Desktop 5.6.9, installed as a portable Windows distribution in
+`C:\Users\cyril\Downloads\Protege-5.6.9-win\Protege-5.6.9`.
+
+Source opened:
+`ontology/v2/hcmo-v2-merged-clean.owl`.
+
+Protege log evidence:
+
+- Protege processed the command-line argument for
+  `ontology/v2/hcmo-v2-merged-clean.owl`.
+- OWL API version reported by Protege: `4.5.29.2024-05-13T12:11:03Z`.
+- Protege loaded the ontology from the local file path.
+- Loading for ontology and imports closure completed successfully in 5525 ms.
+- ELK reasoner plugin was available: `0.6.0`.
+- HermiT reasoner plugin was available: `1.4.3.456`.
+
+Warnings observed in the Protege log were network-related auto-update/cache
+warnings, not ontology parsing errors:
+
+- plugin auto-update registry connection timeout;
+- OBO Foundry registry connection timeout, followed by cached registry load.
+
+Manual visual inspection of the class/property tree remains to be completed in
+the Protege UI, but the clean OWL file opens successfully in Protege and does
+not raise a load failure in the Protege log.
+
 Remaining placeholders:
 
 - `UNKNOWN:captures`

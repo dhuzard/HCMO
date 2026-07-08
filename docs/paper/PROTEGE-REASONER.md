@@ -1,8 +1,10 @@
 # Protege reasoner check for HCMO v2
 
-Status: working protocol for Cyril's post-meeting task.
+Status: reproducible reasoner check in place; Protege Desktop open check
+recorded; visual class/property-tree inspection still to complete.
 
-Primary source to test: `ontology/v2/hcmo-v2-merged-clean.owl` on `main`.
+Primary source to test in Protege:
+`ontology/v2/hcmo-v2-merged-clean.owl`.
 
 Review source with placeholders, if needed: `ontology/v2/hcmo-v2-merged.ttl`.
 
@@ -12,19 +14,29 @@ Open the v2 merged ontology in Protege and run an OWL reasoner to check logical
 coherence before promotion. This is an ontology-level check, not a data-shape
 validation pass.
 
+Current Protege result: Protege Desktop 5.6.9 opens the clean artifact and
+reports successful ontology/imports-closure loading in its log.
+
+Current automated result: the clean artifact loads 31 classes, contains no
+`UNKNOWN:` IRIs, and HermiT reports 0 inconsistent classes.
+
 ## Protocol
 
 1. Open Protege.
 2. Load `ontology/v2/hcmo-v2-merged-clean.owl`.
 3. Confirm that the ontology IRI is `https://w3id.org/hcmo/ontology/hcm`.
-4. Start with ELK if available for a fast classification pass.
-5. Run HermiT for the stricter OWL DL consistency check.
-6. Record:
+4. Confirm that the class hierarchy shows `hcm:MonitoredEnclosure` and
+   `hcm:Enclosure` as classes, not properties.
+5. Confirm that `time:hasBeginning` and `time:hasEnd` appear as object
+   properties.
+6. Start with ELK if available for a fast classification pass.
+7. Run HermiT for the stricter OWL DL consistency check.
+8. Record:
    - whether the ontology is consistent;
    - any unsatisfiable classes;
    - unexpected inferred superclass/subclass placements;
    - parse/import warnings shown by Protege;
-   - any issue linked to the remaining `UNKNOWN:` placeholders.
+   - whether any `UNKNOWN:` placeholders appear in the loaded clean file.
 
 ## Reproducible command-line check
 
@@ -43,6 +55,18 @@ python tooling/reason_v2.py --build-clean --java-memory 512
 
 The command fails if the clean artifact contains `UNKNOWN:` IRIs or if HermiT
 reports inconsistent classes.
+
+Current command-line result:
+
+| Check | Result |
+|---|---:|
+| RDF triples in clean OWL | 550 |
+| Declared OWL classes | 31 |
+| Object properties | 43 |
+| Datatype properties | 52 |
+| `UNKNOWN:` IRIs | 0 |
+| Classes loaded by HermiT | 31 |
+| Inconsistent classes | 0 |
 
 ## Expected current caveats
 
@@ -68,10 +92,11 @@ cardinalities for records, numeric ranges, and valid/invalid example ABoxes.
 The current SHACL shapes, examples, and competency queries still target the
 legacy/live term set, while `ontology/v2/` is a draft re-modularisation.
 
-Running SHACL now would mostly test stale shapes against a moving ontology.
-For this stage, the priority is OWL consistency in Protege. SHACL should be
-re-authored after the v2 terms are promoted or frozen enough to become the
-validation target.
+Running SHACL now would mostly test stale shapes against a moving ontology, and
+any failures would mix two different questions: "is the ontology logically
+coherent?" and "do our future data-entry rules match v2?". For this stage, the
+priority is OWL consistency in Protege. SHACL should be re-authored after the v2
+terms are promoted or frozen enough to become the validation target.
 
 ## Output to archive
 
