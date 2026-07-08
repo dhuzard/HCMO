@@ -213,6 +213,9 @@
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm#hasFloorArea">
     <rdfs:label>has floor area</rdfs:label>
   </owl:DatatypeProperty>
+  <owl:Class rdf:about="https://w3id.org/hcmo/ontology/hcm#Enclosure">
+    <rdfs:label>Enclosure</rdfs:label>
+  </owl:Class>
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm#hasSafetyRequirement">
     <rdfs:label>has safety requirement</rdfs:label>
   </owl:DatatypeProperty>
@@ -248,10 +251,6 @@
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#hasSensorIdentifier">
     <rdfs:label>has sensor identifier</rdfs:label>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm#Enclosure">
-    <rdfs:domain rdf:resource="https://w3id.org/hcmo/ontology/hcm#MonitoredEnclosure"/>
-    <rdfs:label>enclosure</rdfs:label>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm#hasFoodRequirement">
     <rdfs:label>has food requirement</rdfs:label>
@@ -568,6 +567,9 @@
   <owl:Class rdf:about="http://www.w3.org/2006/time#TemporalEntity">
     <rdfs:label>Temporal Entity</rdfs:label>
   </owl:Class>
+  <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#hasBeginning">
+    <rdfs:label>has beginning</rdfs:label>
+  </owl:ObjectProperty>
   <owl:Class rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#Sensor">
     <rdfs:label>Sensor</rdfs:label>
     <rdfs:subClassOf>
@@ -650,9 +652,9 @@
       </owl:Restriction>
     </rdfs:subClassOf>
   </owl:Class>
-  <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#hasEnd">
+  <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#hasEnd">
     <rdfs:label>has end</rdfs:label>
-  </owl:DatatypeProperty>
+  </owl:ObjectProperty>
   <owl:Class rdf:about="https://w3id.org/hcmo/ontology/hcm/env#ThriveProfile">
     <rdfs:label>Thrive Profile</rdfs:label>
   </owl:Class>
@@ -761,9 +763,6 @@
   <owl:Class rdf:about="https://w3id.org/hcmo/ontology/hcm/env#GasConcentrationProfile">
     <rdfs:label>Gas Concentration Profile</rdfs:label>
   </owl:Class>
-  <owl:DatatypeProperty rdf:about="http://www.w3.org/2006/time#hasBeginning">
-    <rdfs:label>has beginning</rdfs:label>
-  </owl:DatatypeProperty>
   <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm#hasDimensions">
     <rdfs:label>has dimensions</rdfs:label>
   </owl:ObjectProperty>

@@ -26,6 +26,24 @@ validation pass.
    - parse/import warnings shown by Protege;
    - any issue linked to the remaining `UNKNOWN:` placeholders.
 
+## Reproducible command-line check
+
+The same HermiT-family consistency check is available without opening Protege:
+
+```bash
+pip install -r tooling/reasoning-requirements.txt
+python tooling/reason_v2.py --build-clean --java-memory 2000
+```
+
+On local 32-bit Java, use a smaller heap:
+
+```bash
+python tooling/reason_v2.py --build-clean --java-memory 512
+```
+
+The command fails if the clean artifact contains `UNKNOWN:` IRIs or if HermiT
+reports inconsistent classes.
+
 ## Expected current caveats
 
 The v2 draft graph still has seven placeholders isolated in

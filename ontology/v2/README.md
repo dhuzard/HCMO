@@ -51,8 +51,8 @@ ontology/v2/
     hcm-tech.ttl          # Sensor/Hardware/Software/TimeSeries (NEW namespace …/hcm/tech#)
     hcm-placeholders.ttl  # 7 UNKNOWN:/ns: terms still awaiting definition-or-drop (T4/T5)
   hcmo-v2-merged.ttl      # merged graph (565 triples) for quick review, includes placeholders
-  hcmo-v2-merged-clean.ttl # BioPortal Turtle graph (551 triples), excludes placeholders
-  hcmo-v2-merged-clean.owl # BioPortal RDF/XML graph (551 triples), excludes placeholders
+  hcmo-v2-merged-clean.ttl # BioPortal Turtle graph (550 triples), excludes placeholders
+  hcmo-v2-merged-clean.owl # BioPortal RDF/XML graph (550 triples), excludes placeholders
   README.md               # this file
 ```
 

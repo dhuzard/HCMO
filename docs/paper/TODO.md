@@ -67,7 +67,7 @@ column and append to the **Change log** whenever something moves.
 
 | Date | Change | By |
 |------|--------|----|
-| 2026-07-07 | **Clean v2 reasoner pass** — synced Damien's clean BioPortal files, parsed clean TTL/RDFXML, and ran HermiT on `hcmo-v2-merged-clean.owl`; 30 classes loaded, 0 inconsistent classes. | Codex |
+| 2026-07-08 | **Clean v2 reasoner automation** — added reproducible HermiT tooling/CI for `hcmo-v2-merged-clean.owl`, regenerated clean BioPortal files from modules, and confirmed 31 classes loaded with 0 inconsistent classes. | Codex |
 | 2026-07-06 | **Meeting follow-up** — main is now the working branch; Cyril task captured as Protege reasoner check on v2, with SHACL deferred until v2 terms are frozen/promoted. | Codex |
 | 2026-07-06 | **Protege pre-check** — parsed v2 merged TTL and recorded OWL typing sanity checks; no obvious restriction/property typing errors found, with `hcm:Enclosure`, OWL-Time beginning/end, and `hasCondition` flagged for manual Protege inspection. | Codex |
 | 2026-07-06 | **Protege debug pass** — restored `hcm:Enclosure` as a class from legacy HCMO and corrected OWL-Time `hasBeginning`/`hasEnd` to object properties. | Codex |

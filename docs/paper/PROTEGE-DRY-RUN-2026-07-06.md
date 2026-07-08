@@ -61,7 +61,7 @@ Result:
 
 | Check | Result |
 |---|---:|
-| Loaded classes | 30 |
+| Loaded classes | 31 |
 | Inconsistent classes | 0 |
 
 HermiT command completed successfully in about 3 seconds. No unsatisfiable
