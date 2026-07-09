@@ -1,6 +1,8 @@
 # 6. Evaluation
 
-- Pitfall scan: OOPS! (report + how pitfalls were addressed).
+- Pitfall scan: OOPS! report archived at
+  `docs/paper/evaluation/OOPS-REPORT-2026-07-10.md`; remaining findings need
+  triage before the final paper claims.
 - FAIRness: FOOPS! v0.4.0 on `ontology/v2/hcmo-v2-merged-clean.owl`
   improved from 0.49444446 to 1.0 after adding ontology-header FAIR metadata,
   v2 term definitions, and canonical logo metadata. See
