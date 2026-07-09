@@ -200,6 +200,10 @@
   <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#occursIn">
     <rdfs:label>occurs in</rdfs:label>
   </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#hasActuator">
+    <rdfs:label>has actuator</rdfs:label>
+    <rdfs:range rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#Actuator"/>
+  </owl:ObjectProperty>
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#hasSensorType">
     <rdfs:label>has sensor type</rdfs:label>
   </owl:DatatypeProperty>
@@ -261,11 +265,17 @@
   <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/env#LightState">
     <rdfs:label>light state</rdfs:label>
   </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm#hasEnrichmentRequirement">
+    <rdfs:label>has enrichment requirement</rdfs:label>
+  </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#hasSamplingRate">
     <rdfs:label>has sampling rate</rdfs:label>
   </owl:DatatypeProperty>
   <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#hasHousingAssignment">
     <rdfs:label>has housing assignment</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#captures">
+    <rdfs:label>captures</rdfs:label>
   </owl:ObjectProperty>
   <owl:Class rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#Software">
     <rdfs:label>Software</rdfs:label>
@@ -281,6 +291,9 @@
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#hasTreatment">
     <rdfs:label>has treatment</rdfs:label>
   </owl:DatatypeProperty>
+  <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#hasCondition">
+    <rdfs:label>has condition</rdfs:label>
+  </owl:ObjectProperty>
   <owl:AnnotationProperty rdf:about="http://www.w3.org/2002/07/owl#versionInfo"/>
   <owl:Class rdf:about="https://w3id.org/hcmo/ontology/hcm#MonitoredEnclosure">
     <rdfs:label>Monitored Enclosure</rdfs:label>
@@ -570,6 +583,9 @@
   <owl:ObjectProperty rdf:about="http://www.w3.org/2006/time#hasBeginning">
     <rdfs:label>has beginning</rdfs:label>
   </owl:ObjectProperty>
+  <owl:Class rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#Actuator">
+    <rdfs:label>Actuator</rdfs:label>
+  </owl:Class>
   <owl:Class rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#Sensor">
     <rdfs:label>Sensor</rdfs:label>
     <rdfs:subClassOf>

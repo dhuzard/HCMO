@@ -68,6 +68,22 @@ HermiT command completed successfully in about 3 seconds. No unsatisfiable
 classes were reported. This clean graph excludes `hcm-placeholders.ttl`, so it
 is the preferred file for Protege/BioPortal review.
 
+### Post-cleanup clean graph
+
+Date: 2026-07-09.
+
+Source: `ontology/v2/hcmo-v2-merged-clean.owl`, after applying the final v2
+placeholder cleanup proposal.
+
+| Check | Result |
+|---|---:|
+| RDF triples | 561 |
+| Loaded classes | 32 |
+| Active `UNKNOWN:` IRIs | 0 |
+| Inconsistent classes | 0 |
+
+HermiT completed successfully and reported no unsatisfiable classes.
+
 ### Protege Desktop open check
 
 Date: 2026-07-08.
@@ -124,13 +140,12 @@ Protege UI.
 
 Remaining placeholders:
 
-- `UNKNOWN:captures`
-- `UNKNOWN:hasActuators`
-- `UNKNOWN:hasCondition`
-- `UNKNOWN:hasEnrichmentReq`
-- `UNKNOWN:hasSensors`
-- `UNKNOWN:hasType`
-- `UNKNOWN:partOF`
+Resolved on 2026-07-09 in the v2 draft branch. No active `UNKNOWN:` placeholders
+remain in `ontology/v2/modules/hcm-placeholders.ttl`; the former placeholders
+were mapped to `hcm-tech:captures`, `hcm-tech:hasActuator` /
+`hcm-tech:Actuator`, existing `hcm-tech:monitoredBy`,
+`hcm-obs:hasCondition`, `hcm:hasEnrichmentRequirement`, or dropped/deferred
+where they were generic/typo placeholders.
 
 ## Items to inspect in Protege
 
@@ -144,10 +159,9 @@ points that should be inspected during the Protege reasoner/debug pass.
 2. Resolved after pre-check: `time:hasBeginning` and `time:hasEnd` were restored
    as `owl:ObjectProperty`, matching OWL-Time relation semantics.
 
-3. `UNKNOWN:hasCondition` remains a modeling decision.
-   Legacy HCMO used `hcm:hasCondition` as an object property on observation
-   windows, not as a simple environmental literal. Do not mint this as an
-   `env` datatype property without deciding the observation-condition model.
+3. Resolved after placeholder cleanup: `UNKNOWN:hasCondition` was restored as
+   `hcm-obs:hasCondition`, following the legacy HCMO observation-condition
+   precedent and avoiding an environmental datatype interpretation.
 
 4. Environmental measured-property terms (`hcm-env:AmbientTemperature`,
    `RelativeHumidity`, gas concentrations, `LightIntensity`, `LightState`) are

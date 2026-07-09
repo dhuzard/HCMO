@@ -51,6 +51,9 @@ hcm:Enclosure a owl:Class ;
 hcm:Enrichment a owl:Class ;
     rdfs:label "Enrichment" .
 
+hcm:hasEnrichmentRequirement a owl:DatatypeProperty ;
+    rdfs:label "has enrichment requirement" .
+
 hcm:hasCapacity a owl:DatatypeProperty ;
     rdfs:label "has capacity" .
 

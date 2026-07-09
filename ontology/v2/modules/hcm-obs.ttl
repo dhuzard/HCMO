@@ -85,6 +85,9 @@ hcm-obs:WeightObservation a owl:Class ;
 hcm-obs:hasBehaviorType a owl:DatatypeProperty ;
     rdfs:label "has behavior type" .
 
+hcm-obs:hasCondition a owl:ObjectProperty ;
+    rdfs:label "has condition" .
+
 hcm-obs:hasConfidenceScore a owl:DatatypeProperty ;
     rdfs:label "has confidence score" .
 

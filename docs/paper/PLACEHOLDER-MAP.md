@@ -1,8 +1,9 @@
 # HCMO v2 placeholder cleanup map
 
-Status: working map for T4. This file records how each remaining
-`UNKNOWN:`/placeholder term in `ontology/v2/modules/hcm-placeholders.ttl` should
-be handled before promotion. The goal is to avoid silently minting weak terms.
+Status: applied cleanup map for T4. This file records how each former
+`UNKNOWN:`/placeholder term in `ontology/v2/modules/hcm-placeholders.ttl` was
+handled on the v2 review branch. The goal is to make the semantic decisions
+auditable before co-author sign-off.
 
 ## Already resolved in v2
 
@@ -34,15 +35,16 @@ be handled before promotion. The goal is to avoid silently minting weak terms.
 | `UNKNOWN:hasWaterReq` | Mint as `hcm:hasWaterRequirement` | Husbandry requirement literal. |
 | `UNKNOWN:supportsEnclosure` | Mint as `hcm-tech:supportsEnclosure` | Device/system support relation to enclosure. |
 
-## Remaining placeholders by proposed action
+## Former remaining placeholders by action
 
-## Recommended decisions for co-author review
+## Applied decisions for co-author review
 
-These are proposed decisions, not yet applied to the RDF modules. They are
-grounded in the v2 module split, existing v2 terms, and legacy HCMO where a
-clear precedent exists.
+These decisions have been applied to the v2 RDF modules on the review branch,
+but should still be confirmed by co-authors before promotion. They are grounded
+in the v2 module split, existing v2 terms, and legacy HCMO where a clear
+precedent exists.
 
-| Placeholder | Recommended action | Target term | Module | Confidence | Rationale |
+| Placeholder | Applied action | Target term | Module | Confidence | Rationale |
 |---|---|---|---|---|---|
 | `UNKNOWN:captures` | Restore/mint as a tech relation | `hcm-tech:captures` | `tech` | high | Legacy HCMO already had `hcm:captures` for a sensor capturing behaviour/physiology signals. In v2, sensors live in `tech`, so the relation belongs with the device layer. Keep separate from SOSA until we decide whether the object is a signal, behaviour, observed property, or observation. |
 | `UNKNOWN:hasActuators` | Replace plural placeholder with singular relation and add/restore actuator class | `hcm-tech:hasActuator` + `hcm-tech:Actuator` | `tech` | high | Legacy HCMO had `hcm:Actuator` and `hcm:hasActuator`. In v2, hardware/sensors/software are in `tech`; actuator should follow the device-layer pattern. Use singular property naming. |
@@ -52,15 +54,15 @@ clear precedent exists.
 | `UNKNOWN:partOF` | Do not keep typo; replace with a normal part-whole property only if still needed | `hcm:partOf` or an imported standard relation | `core` | medium | The placeholder is a casing/typo artifact. If no current class restriction needs it, drop it; otherwise use `hcm:partOf` for consistency or adopt a standard part-whole relation as a separate modeling decision. |
 | `UNKNOWN:hasType` | Drop/defer; do not mint | none | none | high | Too generic to be semantically useful. Replace case-by-case with specific properties such as `hasSensorType`, `hasEnrichmentType`, controlled vocabulary links, or class membership. |
 
-Suggested implementation order:
+Implementation notes:
 
-1. Safe tech restorations: `captures`, `hasActuator`, `Actuator`.
-2. Remove or map duplicate sensor relation: `hasSensors`.
-3. Literal enrichment requirement if co-authors accept the existing requirement
+1. Safe tech restorations applied: `captures`, `hasActuator`, `Actuator`.
+2. Duplicate sensor relation mapped to existing `hcm-tech:monitoredBy`.
+3. Literal enrichment requirement added following the existing requirement
    pattern.
-4. Defer `hasCondition` and `partOF` only if the meeting cannot decide the
-   condition model or part-whole relation.
-5. Drop `hasType` unless a specific source use case is provided.
+4. `hasCondition` restored in `obs`; its target condition model can still be
+   refined later.
+5. `hasType` and typo `partOF` were not minted as active terms.
 
 ### Mint in `tech`
 

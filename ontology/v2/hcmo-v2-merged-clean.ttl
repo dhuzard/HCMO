@@ -52,6 +52,9 @@ hcm:hasCapacity a owl:DatatypeProperty ;
 hcm:hasDescription a owl:DatatypeProperty ;
     rdfs:label "has description" .
 
+hcm:hasEnrichmentRequirement a owl:DatatypeProperty ;
+    rdfs:label "has enrichment requirement" .
+
 hcm:hasEnrichmentType a owl:DatatypeProperty ;
     rdfs:label "has enrichment type" .
 
@@ -177,6 +180,9 @@ hcm-obs:LocationResultTable a owl:Class ;
             owl:onProperty sosa:phenomenonTime ],
         hcm-obs:ObservationResult .
 
+hcm-obs:hasCondition a owl:ObjectProperty ;
+    rdfs:label "has condition" .
+
 hcm-obs:hasResult a owl:ObjectProperty ;
     rdfs:label "has result" .
 
@@ -192,8 +198,15 @@ hcm-tech:Software a owl:Class ;
 hcm-tech:TimeSeries a owl:Class ;
     rdfs:label "Time Series" .
 
+hcm-tech:captures a owl:ObjectProperty ;
+    rdfs:label "captures" .
+
 hcm-tech:communicatesWith a owl:ObjectProperty ;
     rdfs:label "communicates with" .
+
+hcm-tech:hasActuator a owl:ObjectProperty ;
+    rdfs:label "has actuator" ;
+    rdfs:range hcm-tech:Actuator .
 
 hcm-tech:hasFileFormat a owl:DatatypeProperty ;
     rdfs:label "has file format" .
@@ -432,6 +445,9 @@ hcm-obs:hasInterval a owl:DatatypeProperty ;
 
 hcm-obs:hasNumericValue a owl:DatatypeProperty ;
     rdfs:label "has numeric value" .
+
+hcm-tech:Actuator a owl:Class ;
+    rdfs:label "Actuator" .
 
 hcm-tech:installedIn a owl:ObjectProperty ;
     rdfs:label "installed in" .

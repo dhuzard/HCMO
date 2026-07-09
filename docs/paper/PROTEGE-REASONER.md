@@ -1,7 +1,7 @@
 # Protege reasoner check for HCMO v2
 
-Status: reproducible reasoner check in place; Protege Desktop open check
-recorded; visual class/property-tree inspection still to complete.
+Status: reproducible reasoner check in place; Protege Desktop open check and
+manual HermiT UI pass recorded.
 
 Primary source to test in Protege:
 `ontology/v2/hcmo-v2-merged-clean.owl`.
@@ -17,7 +17,7 @@ validation pass.
 Current Protege result: Protege Desktop 5.6.9 opens the clean artifact and
 reports successful ontology/imports-closure loading in its log.
 
-Current automated result: the clean artifact loads 31 classes, contains no
+Current automated result: the clean artifact loads 32 classes, contains no
 `UNKNOWN:` IRIs, and HermiT reports 0 inconsistent classes.
 
 ## Protocol
@@ -60,30 +60,20 @@ Current command-line result:
 
 | Check | Result |
 |---|---:|
-| RDF triples in clean OWL | 550 |
-| Declared OWL classes | 31 |
-| Object properties | 43 |
-| Datatype properties | 52 |
+| RDF triples in clean OWL | 561 |
+| Declared OWL classes | 32 |
+| Object properties | 46 |
+| Datatype properties | 53 |
 | `UNKNOWN:` IRIs | 0 |
-| Classes loaded by HermiT | 31 |
+| Classes loaded by HermiT | 32 |
 | Inconsistent classes | 0 |
 
 ## Expected current caveats
 
-The v2 draft graph still has seven placeholders isolated in
-`ontology/v2/modules/hcm-placeholders.ttl`, but the clean BioPortal/Protege file
-excludes them:
-
-- `UNKNOWN:captures`
-- `UNKNOWN:hasActuators`
-- `UNKNOWN:hasCondition`
-- `UNKNOWN:hasEnrichmentReq`
-- `UNKNOWN:hasSensors`
-- `UNKNOWN:hasType`
-- `UNKNOWN:partOF`
-
-These should be commented/debugged in the draft graph, but they should not be
-silently renamed or re-modeled without a modeling decision.
+The former seven v2 placeholders have been resolved in the draft modules and no
+`UNKNOWN:` IRIs remain in either the merged draft or the clean Protege file.
+These changes are applied on the review branch and should be confirmed by
+co-authors before promotion.
 
 ## Why no SHACL for now
 

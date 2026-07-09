@@ -1,8 +1,9 @@
-@prefix UNKNOWN: <http://www.owl-ontologies.com/UNKNOWN#> .
+@prefix drop: <urn:hcmo:dropped-placeholder#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix hcm: <https://w3id.org/hcm/> .
 @prefix hcm-bio: <https://w3id.org/hcm/bio/> .
 @prefix hcm-env: <https://w3id.org/hcm/env/> .
+@prefix hcm-tech: <https://w3id.org/hcm/tech/> .
 @prefix hcm-obs: <https://w3id.org/hcm/obs/> .
 @prefix mod: <https://w3id.org/mod#> .
 @prefix ns: <http://www.owl-ontologies.com/ns#> .
@@ -19,97 +20,97 @@ dc:description a owl:AnnotationProperty .
 
 dc:title a owl:AnnotationProperty .
 
-UNKNOWN:captures a owl:DatatypeProperty ;
+hcm-tech:captures a owl:ObjectProperty ;
     rdfs:label "captures" .
 
-UNKNOWN:communicatesWith a owl:ObjectProperty ;
+hcm-tech:communicatesWith a owl:ObjectProperty ;
     rdfs:label "communicates with" .
 
-UNKNOWN:hasActuators a owl:DatatypeProperty ;
+hcm-tech:hasActuator a owl:ObjectProperty ;
     rdfs:label "has actuators" .
 
-UNKNOWN:hasCondition a owl:DatatypeProperty ;
+hcm-obs:hasCondition a owl:ObjectProperty ;
     rdfs:label "has condition" .
 
-UNKNOWN:hasDarkPhaseDuration a owl:DatatypeProperty ;
+hcm-env:hasDarkPhaseDuration a owl:DatatypeProperty ;
     rdfs:label "has dark phase duration" .
 
-UNKNOWN:hasDarkPhaseStart a owl:DatatypeProperty ;
+hcm-env:hasDarkPhaseStart a owl:DatatypeProperty ;
     rdfs:label "has dark phase start" .
 
-UNKNOWN:hasDawnDuration a owl:DatatypeProperty ;
+hcm-env:hasDawnDuration a owl:DatatypeProperty ;
     rdfs:label "has dawn duration" .
 
-UNKNOWN:hasDuskDuration a owl:DatatypeProperty ;
+hcm-env:hasDuskDuration a owl:DatatypeProperty ;
     rdfs:label "has dusk duration" .
 
-UNKNOWN:hasEnrichmentReq a owl:ObjectProperty ;
+hcm:hasEnrichmentRequirement a owl:DatatypeProperty ;
     rdfs:label "has enrichment req" .
 
-UNKNOWN:hasEnrichmentType a owl:DatatypeProperty ;
+hcm:hasEnrichmentType a owl:DatatypeProperty ;
     rdfs:label "has enrichment type" .
 
-UNKNOWN:hasFacilityType a owl:DatatypeProperty ;
+hcm:hasFacilityType a owl:DatatypeProperty ;
     rdfs:label "has facility type" .
 
-UNKNOWN:hasFirmware a owl:DatatypeProperty ;
+hcm-tech:hasFirmware a owl:DatatypeProperty ;
     rdfs:label "has firmware" .
 
-UNKNOWN:hasFloorArea a owl:DatatypeProperty ;
+hcm:hasFloorArea a owl:DatatypeProperty ;
     rdfs:label "has floor area" .
 
-UNKNOWN:hasFoodReq a owl:DatatypeProperty ;
+hcm:hasFoodRequirement a owl:DatatypeProperty ;
     rdfs:label "has food req" .
 
-UNKNOWN:hasLightPhaseDuration a owl:DatatypeProperty ;
+hcm-env:hasLightPhaseDuration a owl:DatatypeProperty ;
     rdfs:label "has light phase duration" .
 
-UNKNOWN:hasModelNumber a owl:DatatypeProperty ;
+hcm-tech:hasModelNumber a owl:DatatypeProperty ;
     rdfs:label "has model number" .
 
-UNKNOWN:hasName a owl:DatatypeProperty ;
+hcm:hasName a owl:DatatypeProperty ;
     rdfs:label "has name" .
 
-UNKNOWN:hasProtocol a owl:DatatypeProperty ;
+hcm-tech:hasProtocol a owl:DatatypeProperty ;
     rdfs:label "has protocol" .
 
-UNKNOWN:hasSafetyReq a owl:DatatypeProperty ;
+hcm:hasSafetyRequirement a owl:DatatypeProperty ;
     rdfs:label "has safety req" .
 
-UNKNOWN:hasSamplingRate a owl:DatatypeProperty ;
+hcm-tech:hasSamplingRate a owl:DatatypeProperty ;
     rdfs:label "has sampling rate" .
 
-UNKNOWN:hasSensorIdentifier a owl:DatatypeProperty ;
+hcm-tech:hasSensorIdentifier a owl:DatatypeProperty ;
     rdfs:label "has sensor identifier" .
 
-UNKNOWN:hasSensorTechnology a owl:DatatypeProperty ;
+hcm-tech:hasSensorTechnology a owl:DatatypeProperty ;
     rdfs:label "has sensor technology" .
 
-UNKNOWN:hasSensorType a owl:DatatypeProperty ;
+hcm-tech:hasSensorType a owl:DatatypeProperty ;
     rdfs:label "has sensor type" .
 
-UNKNOWN:hasSensors a owl:ObjectProperty ;
+hcm-tech:monitoredBy a owl:ObjectProperty ;
     rdfs:label "has sensors" .
 
-UNKNOWN:hasSocialReq a owl:DatatypeProperty ;
+hcm-bio:hasSocialRequirement a owl:DatatypeProperty ;
     rdfs:label "has social req" .
 
-UNKNOWN:hasType a owl:DatatypeProperty ;
+drop:hasType a owl:DatatypeProperty ;
     rdfs:label "has type" .
 
-UNKNOWN:hasWaterReq a owl:DatatypeProperty ;
+hcm:hasWaterRequirement a owl:DatatypeProperty ;
     rdfs:label "has water req" .
 
-UNKNOWN:isCalibrated a owl:DatatypeProperty ;
+hcm-tech:isCalibrated a owl:DatatypeProperty ;
     rdfs:label "is calibrated" .
 
-UNKNOWN:partOF a owl:DatatypeProperty ;
+drop:partOF a owl:DatatypeProperty ;
     rdfs:label "part o f" .
 
-UNKNOWN:runsOn a owl:ObjectProperty ;
+hcm-tech:runsOn a owl:ObjectProperty ;
     rdfs:label "runs on" .
 
-UNKNOWN:supportsEnclosure a owl:ObjectProperty ;
+hcm-tech:supportsEnclosure a owl:ObjectProperty ;
     rdfs:label "supports enclosure" .
 
 ns:objectProperty a owl:ObjectProperty ;
@@ -269,10 +270,10 @@ semts:dimensionUnit a owl:DatatypeProperty ;
 semts:title a owl:DatatypeProperty ;
     rdfs:label "title" .
 
-UNKNOWN:isOccupied a owl:DatatypeProperty ;
+hcm:isOccupied a owl:DatatypeProperty ;
     rdfs:label "is occupied" .
 
-UNKNOWN:isOperational a owl:DatatypeProperty ;
+hcm:isOperational a owl:DatatypeProperty ;
     rdfs:label "is operational" .
 
 time:TemporalEntity a owl:Class ;
@@ -546,10 +547,10 @@ hcm:MonitoredEnclosure a owl:Class ;
             owl:onProperty sosa:madeObservation ],
         [ a owl:Restriction ;
             owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty UNKNOWN:isOperational ],
+            owl:onProperty hcm:isOperational ],
         [ a owl:Restriction ;
             owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty UNKNOWN:isOccupied ],
+            owl:onProperty hcm:isOccupied ],
         [ a owl:Restriction ;
             owl:cardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty time:hasBeginning ],
