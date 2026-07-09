@@ -51,6 +51,8 @@ mod:status a owl:AnnotationProperty .
 
 owl:versionInfo a owl:AnnotationProperty .
 
+schema:logo a owl:AnnotationProperty .
+
 vann:preferredNamespacePrefix a owl:AnnotationProperty .
 
 vann:preferredNamespaceUri a owl:AnnotationProperty .
@@ -82,6 +84,7 @@ sosa:madeBySensor a owl:ObjectProperty ;
     dcterms:source <https://github.com/dhuzard/HCMO> ;
     owl:versionIRI <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
     owl:versionInfo "0.0.1" ;
+    schema:logo <https://raw.githubusercontent.com/dhuzard/HCMO/main/HCMO-logo3.png> ;
     mod:createdWith <https://chowlk.linkeddata.es/> ;
     mod:status "draft" ;
     vann:preferredNamespacePrefix "hcm" ;

@@ -94,6 +94,7 @@
     <vann:preferredNamespaceUri>https://w3id.org/hcmo/ontology/hcm#</vann:preferredNamespaceUri>
     <owl:versionIRI rdf:resource="https://w3id.org/hcmo/ontology/hcm/0.0.1"/>
     <owl:versionInfo>0.0.1</owl:versionInfo>
+    <schema:logo rdf:resource="https://raw.githubusercontent.com/dhuzard/HCMO/main/HCMO-logo3.png"/>
     <mod:createdWith rdf:resource="https://chowlk.linkeddata.es/"/>
     <mod:status>draft</mod:status>
   </owl:Ontology>
@@ -374,6 +375,7 @@
   <owl:ObjectProperty rdf:about="http://www.w3.org/ns/sosa/madeObservation">
     <rdfs:label>made observation</rdfs:label>
   </owl:ObjectProperty>
+  <owl:AnnotationProperty rdf:about="https://schema.org/logo"/>
   <owl:AnnotationProperty rdf:about="http://purl.org/ontology/bibo/doi"/>
   <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/title"/>
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#hasTreatment">

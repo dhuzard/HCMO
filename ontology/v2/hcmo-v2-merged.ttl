@@ -52,6 +52,8 @@ owl:versionInfo a owl:AnnotationProperty .
 sosa:madeObservation a owl:ObjectProperty ;
     rdfs:label "made observation" .
 
+schema:logo a owl:AnnotationProperty .
+
 <https://w3id.org/hcmo/ontology/hcm> a owl:Ontology ;
     dc:description "Ontology for home-cage monitoring of laboratory animals" ;
     dc:title "Home-Cage Monitoring Ontology" ;
@@ -75,6 +77,7 @@ sosa:madeObservation a owl:ObjectProperty ;
     vann:preferredNamespaceUri "https://w3id.org/hcmo/ontology/hcm#" ;
     owl:versionIRI <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
     owl:versionInfo "0.0.1" ;
+    schema:logo <https://raw.githubusercontent.com/dhuzard/HCMO/main/HCMO-logo3.png> ;
     mod:createdWith <https://chowlk.linkeddata.es/> ;
     mod:status "draft" .
 
