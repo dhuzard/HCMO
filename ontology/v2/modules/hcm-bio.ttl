@@ -8,56 +8,73 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
 hcm-bio:ExperimentalGroup a owl:Class ;
-    rdfs:label "Experimental Group" .
+    rdfs:label "Experimental Group" ;
+    rdfs:comment "A group of biological subjects sharing an experimental condition, treatment, or study role." .
 
 hcm-bio:HousingAssignment a owl:Class ;
-    rdfs:label "Housing Assignment" .
+    rdfs:label "Housing Assignment" ;
+    rdfs:comment "A record assigning a subject or group to an enclosure in a study or housing context." .
 
 hcm-bio:StudyFactors a owl:Class ;
-    rdfs:label "Study Factors" .
+    rdfs:label "Study Factors" ;
+    rdfs:comment "A collection of experimental or husbandry factors that may affect subjects, housing, or observations." .
 
 hcm-bio:Subject a owl:Class ;
     rdfs:label "Subject" ;
+    rdfs:comment "A biological individual, such as a laboratory animal, observed in a home-cage monitoring context." ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom hcm-obs:BehaviorObservation ;
             owl:onProperty hcm-bio:hasBehaviorObservation ] .
 
 hcm-bio:assignedToEnclosure a owl:ObjectProperty ;
-    rdfs:label "assigned to enclosure" .
+    rdfs:label "assigned to enclosure" ;
+    rdfs:comment "Relates a housing assignment to the enclosure or monitored enclosure involved in that assignment." .
 
 hcm-bio:belongsToGroup a owl:ObjectProperty ;
-    rdfs:label "belongs to group" .
+    rdfs:label "belongs to group" ;
+    rdfs:comment "Relates a subject, assignment, or monitored enclosure context to an experimental group." .
 
 hcm-bio:hasBiologicalSex a owl:DatatypeProperty ;
-    rdfs:label "has biological sex" .
+    rdfs:label "has biological sex" ;
+    rdfs:comment "Records the biological sex reported for a subject." .
 
 hcm-bio:hasDateOfBirth a owl:DatatypeProperty ;
-    rdfs:label "has date of birth" .
+    rdfs:label "has date of birth" ;
+    rdfs:comment "Records the date of birth reported for a subject." .
 
 hcm-bio:hasHealthStatusObservation a owl:ObjectProperty ;
-    rdfs:label "has health status observation" .
+    rdfs:label "has health status observation" ;
+    rdfs:comment "Relates a subject to a health-status observation about that subject." .
 
 hcm-bio:hasHousingAssignment a owl:ObjectProperty ;
-    rdfs:label "has housing assignment" .
+    rdfs:label "has housing assignment" ;
+    rdfs:comment "Relates a subject or group to a housing assignment record." .
 
 hcm-bio:hasMember a owl:ObjectProperty ;
-    rdfs:label "has member" .
+    rdfs:label "has member" ;
+    rdfs:comment "Relates an experimental group to a subject that is a member of the group." .
 
 hcm-bio:hasSpecies a owl:DatatypeProperty ;
-    rdfs:label "has species" .
+    rdfs:label "has species" ;
+    rdfs:comment "Records the species name or identifier reported for a subject." .
 
 hcm-bio:hasSocialRequirement a owl:DatatypeProperty ;
-    rdfs:label "has social requirement" .
+    rdfs:label "has social requirement" ;
+    rdfs:comment "Records a social housing or care requirement for a subject or experimental group." .
 
 hcm-bio:hasStrain a owl:DatatypeProperty ;
-    rdfs:label "has strain" .
+    rdfs:label "has strain" ;
+    rdfs:comment "Records the strain, line, or breed reported for a subject." .
 
 hcm-bio:hasTreatment a owl:DatatypeProperty ;
-    rdfs:label "has treatment" .
+    rdfs:label "has treatment" ;
+    rdfs:comment "Records a treatment, intervention, or experimental condition assigned to a subject or group." .
 
 hcm-bio:hasWeightObservation a owl:ObjectProperty ;
-    rdfs:label "has weight observation" .
+    rdfs:label "has weight observation" ;
+    rdfs:comment "Relates a subject to a weight observation about that subject." .
 
 hcm-bio:hasBehaviorObservation a owl:ObjectProperty ;
-    rdfs:label "has behavior observation" .
+    rdfs:label "has behavior observation" ;
+    rdfs:comment "Relates a subject to a behavior observation about that subject." .
 

@@ -13,6 +13,7 @@
 
 hcm-obs:BehaviorObservation a owl:Class ;
     rdfs:label "Behavior Observation" ;
+    rdfs:comment "A SOSA-style observation about the behavior of a subject in a home-cage monitoring context." ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty sosa:hasResult ;
             owl:someValuesFrom hcm-obs:BehaviorResult ],
@@ -21,13 +22,16 @@ hcm-obs:BehaviorObservation a owl:Class ;
             owl:someValuesFrom hcm-bio:Subject ] .
 
 hcm-obs:BehaviorResult a owl:Class ;
-    rdfs:label "Behavior Result" .
+    rdfs:label "Behavior Result" ;
+    rdfs:comment "An observation result representing a detected, classified, or recorded behavior." .
 
 hcm-obs:CategoricalResult a owl:Class ;
-    rdfs:label "Categorical Result" .
+    rdfs:label "Categorical Result" ;
+    rdfs:comment "An observation result represented by a category rather than a numeric value." .
 
 hcm-obs:EnvironmentObservation a owl:Class ;
     rdfs:label "Environment Observation" ;
+    rdfs:comment "A SOSA-style observation about an environmental property of a monitored enclosure." ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty sosa:hasFeatureOfInterest ;
             owl:someValuesFrom hcm:MonitoredEnclosure ],
@@ -39,16 +43,19 @@ hcm-obs:EnvironmentObservation a owl:Class ;
             owl:onProperty hcm-obs:hasCategory ] .
 
 hcm-obs:GasConcentrationObservation a owl:Class ;
-    rdfs:label "Gas Concentration Observation" .
+    rdfs:label "Gas Concentration Observation" ;
+    rdfs:comment "An environment observation measuring or reporting the concentration of a gas." .
 
 hcm-obs:HealthStatusObservation a owl:Class ;
     rdfs:label "Health Status Observation" ;
+    rdfs:comment "A SOSA-style observation about the health status of a biological subject." ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty sosa:hasFeatureOfInterest ;
             owl:someValuesFrom hcm-bio:Subject ] .
 
 hcm-obs:LocationResultTable a owl:Class ;
     rdfs:label "Location Result Table" ;
+    rdfs:comment "A tabular observation result containing location values or generated time-series segments." ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty sosa:hasResult ;
             owl:someValuesFrom hcm-obs:QuantityValue ],
@@ -68,6 +75,7 @@ hcm-obs:LocationResultTable a owl:Class ;
 
 hcm-obs:WeightObservation a owl:Class ;
     rdfs:label "Weight Observation" ;
+    rdfs:comment "A SOSA-style observation reporting the body weight of a biological subject." ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:cardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty sosa:observedProperty ],
@@ -83,37 +91,48 @@ hcm-obs:WeightObservation a owl:Class ;
         hcm-obs:ObservationResult .
 
 hcm-obs:hasBehaviorType a owl:DatatypeProperty ;
-    rdfs:label "has behavior type" .
+    rdfs:label "has behavior type" ;
+    rdfs:comment "Records the behavior type or behavior category associated with a behavior observation or result." .
 
 hcm-obs:hasCondition a owl:ObjectProperty ;
-    rdfs:label "has condition" .
+    rdfs:label "has condition" ;
+    rdfs:comment "Relates an observation to the condition under which it was made or interpreted." .
 
 hcm-obs:hasConfidenceScore a owl:DatatypeProperty ;
-    rdfs:label "has confidence score" .
+    rdfs:label "has confidence score" ;
+    rdfs:comment "Records a numeric confidence score associated with an observation or inferred result." .
 
 hcm-obs:hasHealthStatusTerm a owl:DatatypeProperty ;
-    rdfs:label "has health status term" .
+    rdfs:label "has health status term" ;
+    rdfs:comment "Records a textual or coded health-status term associated with a health-status observation." .
 
 hcm-obs:hasInterval a owl:DatatypeProperty ;
-    rdfs:label "has interval" .
+    rdfs:label "has interval" ;
+    rdfs:comment "Records a time interval or duration associated with an observation or result." .
 
 hcm-obs:hasNumericValue a owl:DatatypeProperty ;
-    rdfs:label "has numeric value" .
+    rdfs:label "has numeric value" ;
+    rdfs:comment "Records the numeric value of a quantity result or measurement." .
 
 hcm-obs:occursIn a owl:ObjectProperty ;
-    rdfs:label "occurs in" .
+    rdfs:label "occurs in" ;
+    rdfs:comment "Relates an observation, result, or event to the enclosure or context in which it occurs." .
 
 hcm-obs:QuantityValue a owl:Class ;
-    rdfs:label "Quantity Value" .
+    rdfs:label "Quantity Value" ;
+    rdfs:comment "An observation result that represents a quantitative value, typically with a numeric value and unit." .
 
 hcm-obs:hasCategory a owl:DatatypeProperty ;
-    rdfs:label "has category" .
+    rdfs:label "has category" ;
+    rdfs:comment "Records the category assigned to a categorical observation or result." .
 
 hcm-obs:hasResult a owl:ObjectProperty ;
-    rdfs:label "has result" .
+    rdfs:label "has result" ;
+    rdfs:comment "Relates an HCMO observation to its observation result." .
 
 hcm-obs:ObservationResult a owl:Class ;
     rdfs:label "Observation Result" ;
+    rdfs:comment "A result produced by an observation, optionally linked to the sensor that made or generated it." ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom hcm-tech:Sensor ;
             owl:onProperty sosa:madeBySensor ] .

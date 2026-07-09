@@ -27,12 +27,12 @@ column and append to the **Change log** whenever something moves.
 | ID | Task | Status | Notes |
 |----|------|--------|-------|
 | T4 | Replace/remove **Chowlk placeholders** (`UNKNOWN:*`, `ns:Class2`, `ns:objectProperty`, `xsd:boolean/integer` as properties) | ☑ | v2 active placeholders reduced from 32 to 0 on the review branch. Former ambiguous placeholders were mapped, restored from legacy precedent, or dropped/deferred with rationale in `docs/paper/PLACEHOLDER-MAP.md`. Co-author sign-off still needed before promotion. |
-| T5 | Add **labels + `rdfs:comment`/IAO definitions** for all terms | ☐ | 143 terms lack comments; 1 lacks a label. |
+| T5 | Add **labels + `rdfs:comment`/IAO definitions** for all terms | ◐ | v2 now has `rdfs:comment` definitions for all 111 FOOPS-assessed terms; FOOPS `VOC4` passes. Live `ontology/modules/` still needs reconciliation/promotion, and co-authors should review definition wording. |
 | T6 | **Re-author SHACL shapes, examples & competency queries** against the clean V1 term set | ☐ | Deferred after the 2026-07-06 meeting: SHACL waits until v2 terms are frozen/promoted; current shapes target legacy terms. |
 | T6b | **Host a public SPARQL endpoint** (HITL R3) | ☐ | Strongest availability story; depends on T0. |
 | T7 | Write **lab-maintained** governance/versioning policy (Huzard team, GitHub, SemVer+versionIRI; TEATIME = feedback channel) | ☐ | HITL R3. Feeds §7. |
 | T7b | **Drop MAPP branding** in paper docs (done) + reconcile repo branding (`hcmo.yaml` title, README) separately | ◐ | HCMO branding applied to v2 ontology header and `version_rapport` figure sources. Live manifest/README/dist still need reconciliation at promotion. |
-| T8 | Run **quality evaluation**: OOPS!, FOOPS! (FAIR), reasoner (HermiT/ELK), pySHACL, CQ results — archive reports | ◐ | Protege 5.6.9 opens `ontology/v2/hcmo-v2-merged-clean.owl`; HermiT command-line check passes with 32 classes and 0 inconsistent classes. OOPS! + FOOPS! reports still pending; SHACL/CQ deferred until v2 promotion. See `docs/paper/PROTEGE-REASONER.md`. |
+| T8 | Run **quality evaluation**: OOPS!, FOOPS! (FAIR), reasoner (HermiT/ELK), pySHACL, CQ results — archive reports | ◐ | Protege 5.6.9 opens `ontology/v2/hcmo-v2-merged-clean.owl`; HermiT passes with 32 classes and 0 inconsistent classes. FOOPS v0.4.0 improved from 0.49444446 to 1.0 after metadata, definition, and logo fixes. OOPS! pending; SHACL/CQ deferred until v2 promotion. See `docs/paper/PROTEGE-REASONER.md` and `docs/paper/FOOPS-REPORT-2026-07-09.md`. |
 | T9 | Cut a **tagged release** (e.g. `v0.x`) + refreshed Zenodo DOI matching the paper | ☐ | Canonical citation. |
 
 ## Phase 2 — Write the paper
@@ -68,6 +68,9 @@ column and append to the **Change log** whenever something moves.
 
 | Date | Change | By |
 |------|--------|----|
+| 2026-07-09 | **FOOPS logo metadata closed** — added `HCMO-logo3.png` to the README and `schema:logo` to the v2 ontology header; regenerated v2 artifacts and FOOPS now scores 1.0 on the clean OWL artifact. | Codex |
+| 2026-07-09 | **FOOPS VOC4 definition gap closed for v2** — added conservative `rdfs:comment` definitions to all 111 FOOPS-assessed v2 terms, regenerated v2 artifacts, and raised FOOPS from 0.92222226 to 0.9888889; only logo metadata remains. | Codex |
+| 2026-07-09 | **FOOPS FAIR assessment applied to v2** — ran FOOPS v0.4.0 on `ontology/v2/hcmo-v2-merged-clean.owl`, raised the score from 0.49444446 to 0.92222226 by adding ontology-header metadata, regenerated v2 artifacts, and archived baseline/post-fix reports. | Codex |
 | 2026-07-09 | **Checklist/RDF intake update** — mirrored the merged HermiT + placeholder status, added FOOPS! and the w3id-v2 follow-up to tracking, made form Turtle emit explicit `rdf:type`, and added a DVC profile ABox organized as class, object-property, and literal triples. | Codex |
 | 2026-07-09 | **Applied final v2 placeholder cleanup** — replaced the remaining active v2 `UNKNOWN:` placeholders with proposed module terms or existing relations, regenerated v2 merged/clean artifacts, and confirmed HermiT still reports 0 inconsistent classes. | Codex |
 | 2026-07-09 | **Placeholder decision proposal** — expanded `PLACEHOLDER-MAP.md` with recommended actions for the 7 remaining v2 `UNKNOWN:` placeholders, including confidence levels and rationale grounded in v2 modules and legacy HCMO precedent. | Codex |

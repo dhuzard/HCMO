@@ -4,6 +4,10 @@
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-blue.svg)](LICENSE)
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.18925285-blue.svg)](https://doi.org/10.5281/zenodo.18925285)
 
+<p align="center">
+  <img src="HCMO-logo3.png" alt="HCMO logo" width="720">
+</p>
+
 HCMO is an ontology for **home-cage monitoring** of laboratory animals. It models
 monitored enclosures, biological subjects and experimental groups, the
 environment and its measurements, observations and results, and the sensors,
@@ -23,6 +27,7 @@ JSON-LD context.
 | **Version**               | `0.0.1` (versionIRI `…/hcm/0.0.1`)                                                     |
 | **Prefix**                | `hcm`                                                                                     |
 | **License**               | CC BY 4.0                                                                                   |
+| **Logo**                  | [`HCMO-logo3.png`](HCMO-logo3.png)                                                        |
 | **Release manifest**      | [`hcmo.yaml`](hcmo.yaml)                                                                   |
 | **Documentation**         | [https://dhuzard.github.io/HCMO/index-en.html](https://dhuzard.github.io/HCMO/index-en.html) |
 
