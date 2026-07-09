@@ -35,6 +35,8 @@ Results:
 
 ## HermiT reasoner result
 
+### Draft merged graph
+
 Tool path: `owlready2` HermiT runner, after converting
 `ontology/v2/hcmo-v2-merged.ttl` to temporary RDF/XML.
 
@@ -51,15 +53,99 @@ Result:
 HermiT command completed successfully in about 2 seconds. No unsatisfiable
 classes were reported.
 
+### Clean BioPortal/Protege graph
+
+Source: `ontology/v2/hcmo-v2-merged-clean.owl`.
+
+Result:
+
+| Check | Result |
+|---|---:|
+| Loaded classes | 31 |
+| Inconsistent classes | 0 |
+
+HermiT command completed successfully in about 3 seconds. No unsatisfiable
+classes were reported. This clean graph excludes `hcm-placeholders.ttl`, so it
+is the preferred file for Protege/BioPortal review.
+
+### Post-cleanup clean graph
+
+Date: 2026-07-09.
+
+Source: `ontology/v2/hcmo-v2-merged-clean.owl`, after applying the final v2
+placeholder cleanup proposal.
+
+| Check | Result |
+|---|---:|
+| RDF triples | 561 |
+| Loaded classes | 32 |
+| Active `UNKNOWN:` IRIs | 0 |
+| Inconsistent classes | 0 |
+
+HermiT completed successfully and reported no unsatisfiable classes.
+
+### Protege Desktop open check
+
+Date: 2026-07-08.
+
+Tool: Protege Desktop 5.6.9, installed as a portable Windows distribution in
+`C:\Users\cyril\Downloads\Protege-5.6.9-win\Protege-5.6.9`.
+
+Source opened:
+`ontology/v2/hcmo-v2-merged-clean.owl`.
+
+Protege log evidence:
+
+- Protege processed the command-line argument for
+  `ontology/v2/hcmo-v2-merged-clean.owl`.
+- OWL API version reported by Protege: `4.5.29.2024-05-13T12:11:03Z`.
+- Protege loaded the ontology from the local file path.
+- Loading for ontology and imports closure completed successfully in 5525 ms.
+- ELK reasoner plugin was available: `0.6.0`.
+- HermiT reasoner plugin was available: `1.4.3.456`.
+
+Warnings observed in the Protege log were network-related auto-update/cache
+warnings, not ontology parsing errors:
+
+- plugin auto-update registry connection timeout;
+- OBO Foundry registry connection timeout, followed by cached registry load.
+
+Manual visual inspection of the class/property tree remains to be completed in
+the Protege UI, but the clean OWL file opens successfully in Protege and does
+not raise a load failure in the Protege log.
+
+Manual UI checks completed from Protege:
+
+- `hcm:MonitoredEnclosure` appears in the class hierarchy.
+- `hcm:Enclosure` appears in the class hierarchy.
+- `time:hasBeginning` appears in the object property hierarchy as `has
+  beginning`.
+- The class hierarchy was switched to `Inferred` after HermiT classification.
+- No class was observed under `owl:Nothing` in the inferred hierarchy.
+- The Protege status bar showed the reasoner as active before it was stopped
+  manually after the check.
+
+Manual HermiT run from the Protege UI:
+
+- HermiT was started from the Protege reasoner menu.
+- Protege log entry: `Running Reasoner`.
+- Precomputed inferences included class hierarchy, object property hierarchy,
+  data property hierarchy, class assertions, object property assertions, and
+  same individuals.
+- Protege log entry: `Ontologies processed in 479 ms by HermiT`.
+
+No Protege log entry indicating an ontology load failure or reasoner failure was
+observed during this manual UI pass. No unsatisfiable class was observed in the
+Protege UI.
+
 Remaining placeholders:
 
-- `UNKNOWN:captures`
-- `UNKNOWN:hasActuators`
-- `UNKNOWN:hasCondition`
-- `UNKNOWN:hasEnrichmentReq`
-- `UNKNOWN:hasSensors`
-- `UNKNOWN:hasType`
-- `UNKNOWN:partOF`
+Resolved on 2026-07-09 in the v2 draft branch. No active `UNKNOWN:` placeholders
+remain in `ontology/v2/modules/hcm-placeholders.ttl`; the former placeholders
+were mapped to `hcm-tech:captures`, `hcm-tech:hasActuator` /
+`hcm-tech:Actuator`, existing `hcm-tech:monitoredBy`,
+`hcm-obs:hasCondition`, `hcm:hasEnrichmentRequirement`, or dropped/deferred
+where they were generic/typo placeholders.
 
 ## Items to inspect in Protege
 
@@ -73,10 +159,9 @@ points that should be inspected during the Protege reasoner/debug pass.
 2. Resolved after pre-check: `time:hasBeginning` and `time:hasEnd` were restored
    as `owl:ObjectProperty`, matching OWL-Time relation semantics.
 
-3. `UNKNOWN:hasCondition` remains a modeling decision.
-   Legacy HCMO used `hcm:hasCondition` as an object property on observation
-   windows, not as a simple environmental literal. Do not mint this as an
-   `env` datatype property without deciding the observation-condition model.
+3. Resolved after placeholder cleanup: `UNKNOWN:hasCondition` was restored as
+   `hcm-obs:hasCondition`, following the legacy HCMO observation-condition
+   precedent and avoiding an environmental datatype interpretation.
 
 4. Environmental measured-property terms (`hcm-env:AmbientTemperature`,
    `RelativeHumidity`, gas concentrations, `LightIntensity`, `LightState`) are

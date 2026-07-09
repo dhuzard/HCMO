@@ -11,8 +11,8 @@ then delete `ontology/modules/` and repoint the tooling (see *Promotion* below).
 ## BioPortal review files
 
 Use the clean generated files for BioPortal submission/review. They merge the v2
-modules but intentionally exclude `hcm-placeholders.ttl`, so unresolved
-`UNKNOWN:`/placeholder terms are not submitted:
+source modules and exclude `hcm-placeholders.ttl`, which is now an empty
+quarantine file retained only for audit/history:
 
 - Turtle: `https://raw.githubusercontent.com/dhuzard/HCMO/main/ontology/v2/hcmo-v2-merged-clean.ttl`
 - RDF/XML: `https://raw.githubusercontent.com/dhuzard/HCMO/main/ontology/v2/hcmo-v2-merged-clean.owl`
@@ -49,22 +49,23 @@ ontology/v2/
     hcm-obs.ttl           # observations + ALL results
     hcm-env.ttl           # profiles, specs, environmental properties
     hcm-tech.ttl          # Sensor/Hardware/Software/TimeSeries (NEW namespace …/hcm/tech#)
-    hcm-placeholders.ttl  # 7 UNKNOWN:/ns: terms still awaiting definition-or-drop (T4/T5)
-  hcmo-v2-merged.ttl      # merged graph (565 triples) for quick review, includes placeholders
-  hcmo-v2-merged-clean.ttl # BioPortal Turtle graph (551 triples), excludes placeholders
-  hcmo-v2-merged-clean.owl # BioPortal RDF/XML graph (551 triples), excludes placeholders
+    hcm-placeholders.ttl  # empty quarantine file; no active UNKNOWN terms
+  hcmo-v2-merged.ttl      # merged graph (561 triples) for quick review
+  hcmo-v2-merged-clean.ttl # BioPortal Turtle graph (561 triples)
+  hcmo-v2-merged-clean.owl # BioPortal RDF/XML graph (561 triples)
   README.md               # this file
 ```
 
 Term counts (HCMO + reused scaffolding): core 7 cls / bio 4 / obs 10 / env 6 /
-tech 4; 7 placeholders isolated. All files parse clean.
+tech 5. No active `UNKNOWN:` placeholders remain in v2. All files parse clean.
 
 ## Still pending (not addressed by re-modularisation)
 
 - **Units**: `hcm:hasUnit` is a temporary stub — replace with **QUDT/OM** once the
   vocabulary is chosen (Q21). `hasValue`/`hasNumericValue` are follow-on candidates.
-- **7 placeholders** in `hcm-placeholders.ttl` — define or drop (T4), then add
-  `rdfs:comment` definitions to every term (T5).
+- **Placeholder cleanup validation**: the former 7 remaining placeholders have
+  been replaced, mapped to existing terms, or dropped in the v2 draft. Co-author
+  validation is still requested before promotion.
 - **Branding**: the v2 ontology header now uses HCMO; reconcile the remaining repository-level branding separately (T7b).
 - **Device-manufacturer** property (M5 split) not yet minted; enclosure keeps
   `hcm:hasManufacturer`.

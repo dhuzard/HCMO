@@ -37,7 +37,7 @@
 | 10 | Ontologie | Stabiliser classes & propriétés centrales | Oui | 🟡 | `ontology/v2/`, `docs/paper/MODULE-MAP.md` | v2 5 modules construit et nettoyé légèrement; reste à promouvoir officiellement puis traiter placeholders/unités/définitions. |
 | 11 | Ontologie | Labels + commentaires entités principales | Oui | ⛔ | `AUDIT.md` | **0 `rdfs:comment`** dans le dépôt actuel → V1. |
 | 12 | Ontologie | Vérifier modules Turtle/OWL exportés | Oui | 🟡 | `ontology/v2/README.md`, `ontology/v2/hcmo-v2-merged.ttl` | Modules v2 + merged TTL parsés avec rdflib; live build/CI pas encore repointés. |
-| 13 | Ontologie | Nettoyer termes Chowlk temporaires | Oui | 🟡 | `docs/paper/PLACEHOLDER-MAP.md`, `ontology/v2/modules/hcm-placeholders.ttl` | v2 réduit à 7 placeholders; doublons sûrs, tech metadata/support terms, light-cycle env terms, bio social requirement et core facility/husbandry attributes résolus. Reste à mint/drop les termes ambigus avant promotion. |
+| 13 | Ontologie | Nettoyer termes Chowlk temporaires | Oui | 🟢 | `docs/paper/PLACEHOLDER-MAP.md`, `ontology/v2/modules/hcm-placeholders.ttl` | v2 active placeholders reduced to 0 on the review branch. Final cleanup should be reviewed by co-authors before promotion. |
 | 14 | Ontologie | Exemples d'instances représentatifs | Oui | ⛔ | `sections/03-requirements.md` | Scénario HCM complet; ABox synthétiques après T0. |
 | 15 | Ontologie | Requêtes SPARQL des competency questions | Oui | ⛔ | `sections/03-requirements.md` | CQ1–CQ6 définies; requêtes après T0 (renvoient 0 actuellement). |
 | 16 | Ontologie | SHACL valides/invalides | Oui | ⏸ | `docs/paper/PROTEGE-REASONER.md` | Reporté après décision de réunion: d'abord raisonneur OWL dans Protégé sur v2; SHACL seulement après gel/promotion des termes v2. |

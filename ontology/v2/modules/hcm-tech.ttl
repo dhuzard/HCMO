@@ -9,6 +9,9 @@
 hcm-tech:Hardware a owl:Class ;
     rdfs:label "Hardware" .
 
+hcm-tech:Actuator a owl:Class ;
+    rdfs:label "Actuator" .
+
 hcm-tech:Sensor a owl:Class ;
     rdfs:label "Sensor" ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -56,6 +59,13 @@ hcm-tech:isCalibrated a owl:DatatypeProperty ;
 
 hcm-tech:communicatesWith a owl:ObjectProperty ;
     rdfs:label "communicates with" .
+
+hcm-tech:captures a owl:ObjectProperty ;
+    rdfs:label "captures" .
+
+hcm-tech:hasActuator a owl:ObjectProperty ;
+    rdfs:label "has actuator" ;
+    rdfs:range hcm-tech:Actuator .
 
 hcm-tech:monitoredBy a owl:ObjectProperty ;
     rdfs:label "monitored by" .

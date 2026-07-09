@@ -40,9 +40,8 @@ sosa:madeObservation a owl:ObjectProperty ;
     owl:versionInfo "0.0.1" ;
     mod:createdWith <https://chowlk.linkeddata.es/> .
 
-hcm:Enclosure a owl:DatatypeProperty ;
-    rdfs:label "enclosure" ;
-    rdfs:domain hcm:MonitoredEnclosure .
+hcm:Enclosure a owl:Class ;
+    rdfs:label "Enclosure" .
 
 hcm:Enrichment a owl:Class ;
     rdfs:label "Enrichment" .
@@ -52,6 +51,9 @@ hcm:hasCapacity a owl:DatatypeProperty ;
 
 hcm:hasDescription a owl:DatatypeProperty ;
     rdfs:label "has description" .
+
+hcm:hasEnrichmentRequirement a owl:DatatypeProperty ;
+    rdfs:label "has enrichment requirement" .
 
 hcm:hasEnrichmentType a owl:DatatypeProperty ;
     rdfs:label "has enrichment type" .
@@ -178,6 +180,9 @@ hcm-obs:LocationResultTable a owl:Class ;
             owl:onProperty sosa:phenomenonTime ],
         hcm-obs:ObservationResult .
 
+hcm-obs:hasCondition a owl:ObjectProperty ;
+    rdfs:label "has condition" .
+
 hcm-obs:hasResult a owl:ObjectProperty ;
     rdfs:label "has result" .
 
@@ -193,8 +198,15 @@ hcm-tech:Software a owl:Class ;
 hcm-tech:TimeSeries a owl:Class ;
     rdfs:label "Time Series" .
 
+hcm-tech:captures a owl:ObjectProperty ;
+    rdfs:label "captures" .
+
 hcm-tech:communicatesWith a owl:ObjectProperty ;
     rdfs:label "communicates with" .
+
+hcm-tech:hasActuator a owl:ObjectProperty ;
+    rdfs:label "has actuator" ;
+    rdfs:range hcm-tech:Actuator .
 
 hcm-tech:hasFileFormat a owl:DatatypeProperty ;
     rdfs:label "has file format" .
@@ -244,10 +256,10 @@ semts:title a owl:DatatypeProperty ;
 time:TemporalEntity a owl:Class ;
     rdfs:label "Temporal Entity" .
 
-time:hasBeginning a owl:DatatypeProperty ;
+time:hasBeginning a owl:ObjectProperty ;
     rdfs:label "has beginning" .
 
-time:hasEnd a owl:DatatypeProperty ;
+time:hasEnd a owl:ObjectProperty ;
     rdfs:label "has end" .
 
 time:inXSDDateTime a owl:DatatypeProperty ;
@@ -434,6 +446,9 @@ hcm-obs:hasInterval a owl:DatatypeProperty ;
 hcm-obs:hasNumericValue a owl:DatatypeProperty ;
     rdfs:label "has numeric value" .
 
+hcm-tech:Actuator a owl:Class ;
+    rdfs:label "Actuator" .
+
 hcm-tech:installedIn a owl:ObjectProperty ;
     rdfs:label "installed in" .
 
@@ -466,30 +481,6 @@ semts:isPartOf a owl:ObjectProperty ;
 
 sosa:phenomenonTime a owl:ObjectProperty ;
     rdfs:label "phenomenon time" .
-
-hcm:hasUnit a owl:DatatypeProperty ;
-    rdfs:label "has unit" .
-
-hcm-obs:ObservationResult a owl:Class ;
-    rdfs:label "Observation Result" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom hcm-tech:Sensor ;
-            owl:onProperty sosa:madeBySensor ] .
-
-hcm-obs:hasConfidenceScore a owl:DatatypeProperty ;
-    rdfs:label "has confidence score" .
-
-hcm-tech:Sensor a owl:Class ;
-    rdfs:label "Sensor" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty hcm-tech:installedIn ;
-            owl:someValuesFrom hcm:MonitoredEnclosure ] .
-
-sosa:hasResult a owl:ObjectProperty ;
-    rdfs:label "has result" .
-
-sosa:observedProperty a owl:ObjectProperty ;
-    rdfs:label "observed property" .
 
 hcm:MonitoredEnclosure a owl:Class ;
     rdfs:label "Monitored Enclosure" ;
@@ -622,6 +613,30 @@ hcm:MonitoredEnclosure a owl:Class ;
         [ a owl:Restriction ;
             owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty sosa:resultTime ] .
+
+hcm:hasUnit a owl:DatatypeProperty ;
+    rdfs:label "has unit" .
+
+hcm-obs:ObservationResult a owl:Class ;
+    rdfs:label "Observation Result" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom hcm-tech:Sensor ;
+            owl:onProperty sosa:madeBySensor ] .
+
+hcm-obs:hasConfidenceScore a owl:DatatypeProperty ;
+    rdfs:label "has confidence score" .
+
+hcm-tech:Sensor a owl:Class ;
+    rdfs:label "Sensor" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty hcm-tech:installedIn ;
+            owl:someValuesFrom hcm:MonitoredEnclosure ] .
+
+sosa:hasResult a owl:ObjectProperty ;
+    rdfs:label "has result" .
+
+sosa:observedProperty a owl:ObjectProperty ;
+    rdfs:label "observed property" .
 
 hcm-bio:Subject a owl:Class ;
     rdfs:label "Subject" ;

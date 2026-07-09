@@ -104,6 +104,6 @@ empty `…/hcm/obs#` property (blank label) · duplicate `UNKNOWN:hasName` (real
 - **bio**: none remaining
 - **generic → redefine/drop**: `hasType`
 
-> 7 placeholders remain after the v2 cleanup passes. All are `UNKNOWN:`/`ns:` today; each becomes a real term in the module above
+> Updated 2026-07-09: no active `UNKNOWN:` placeholders remain in the v2 draft branch. Former remaining placeholders were mapped to module terms, existing relations, or dropped/deferred with rationale in `PLACEHOLDER-MAP.md`.
 > (with label + `rdfs:comment`, T5) or is dropped. Note the tech bucket dominates — the rationale for Q19
 > (a `tech` module quarantines this debt).
