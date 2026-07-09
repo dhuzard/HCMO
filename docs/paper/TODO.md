@@ -67,6 +67,7 @@ column and append to the **Change log** whenever something moves.
 
 | Date | Change | By |
 |------|--------|----|
+| 2026-07-09 | **Placeholder decision proposal** — expanded `PLACEHOLDER-MAP.md` with recommended actions for the 7 remaining v2 `UNKNOWN:` placeholders, including confidence levels and rationale grounded in v2 modules and legacy HCMO precedent. | Codex |
 | 2026-07-09 | **Figure placeholder alignment** — refreshed `version_rapport.drawio` and `.drawio.xml` labels so the only `UNKNOWN:` terms still visible in the figure are the 7 placeholders currently isolated in `ontology/v2/modules/hcm-placeholders.ttl`. | Codex |
 | 2026-07-08 | **Protege Desktop open check** — installed Protege 5.6.9 portable, opened `ontology/v2/hcmo-v2-merged-clean.owl`, and recorded successful ontology/imports-closure loading from the Protege log; only network auto-update/cache warnings observed. | Codex |
 | 2026-07-08 | **Clean v2 reasoner automation** — added reproducible HermiT tooling/CI for `hcmo-v2-merged-clean.owl`, regenerated clean BioPortal files from modules, and confirmed 31 classes loaded with 0 inconsistent classes. | Codex |
