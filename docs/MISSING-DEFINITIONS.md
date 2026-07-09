@@ -17,6 +17,15 @@ listed here for the ontology authors to fill in.
 Every authored term currently lacks a definition. Add `rdfs:comment` (and/or
 `IAO:0000115`) to each term in `ontology/modules/*.ttl`.
 
+## V2 draft FOOPS definition gap (111)
+
+FOOPS v0.4.0 on `ontology/v2/hcmo-v2-merged-clean.owl` (2026-07-09) found
+definitions for 0/111 assessed v2 terms. The complete affected-element list is
+archived in `docs/paper/FOOPS-REPORT-2026-07-09.after-metadata.json` under
+`VOC4`. Add author-reviewed `rdfs:comment` and/or `IAO:0000115` definitions in
+`ontology/v2/modules/*.ttl` before v2 promotion; do not generate definitions
+from labels.
+
 ## Chowlk placeholder / likely-erroneous terms (43)
 
 These come from the Chowlk diagram export and are almost certainly not intended

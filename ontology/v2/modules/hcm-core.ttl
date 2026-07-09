@@ -3,6 +3,7 @@
 #
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix bibo: <http://purl.org/ontology/bibo/> .
 @prefix hcm: <https://w3id.org/hcmo/ontology/hcm#> .
 @prefix hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#> .
 @prefix hcm-env: <https://w3id.org/hcmo/ontology/hcm/env#> .
@@ -15,7 +16,10 @@
 @prefix semts: <https://w3id.org/semts/ontology/120#> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
 @prefix time: <http://www.w3.org/2006/time#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bibo:doi a owl:AnnotationProperty .
 
 dc:creator a owl:AnnotationProperty .
 
@@ -23,7 +27,33 @@ dc:description a owl:AnnotationProperty .
 
 dc:title a owl:AnnotationProperty .
 
+dcterms:bibliographicCitation a owl:AnnotationProperty .
+
+dcterms:created a owl:AnnotationProperty .
+
+dcterms:creator a owl:AnnotationProperty .
+
+dcterms:identifier a owl:AnnotationProperty .
+
+dcterms:issued a owl:AnnotationProperty .
+
+dcterms:license a owl:AnnotationProperty .
+
+dcterms:modified a owl:AnnotationProperty .
+
+dcterms:publisher a owl:AnnotationProperty .
+
+dcterms:source a owl:AnnotationProperty .
+
+mod:createdWith a owl:AnnotationProperty .
+
+mod:status a owl:AnnotationProperty .
+
 owl:versionInfo a owl:AnnotationProperty .
+
+vann:preferredNamespacePrefix a owl:AnnotationProperty .
+
+vann:preferredNamespaceUri a owl:AnnotationProperty .
 
 sosa:hasFeatureOfInterest a owl:ObjectProperty ;
     rdfs:label "has feature of interest" .
@@ -34,6 +64,9 @@ sosa:madeBySensor a owl:ObjectProperty ;
 <https://w3id.org/hcmo/ontology/hcm> a owl:Ontology ;
     dc:description "Ontology for home-cage monitoring of laboratory animals" ;
     dc:title "Home-Cage Monitoring Ontology" ;
+    bibo:doi "10.5281/zenodo.18925285" ;
+    dcterms:bibliographicCitation "The Home-Cage Monitoring Ontology (HCMO), version 0.0.1. Zenodo. https://doi.org/10.5281/zenodo.18925285" ;
+    dcterms:created "2026-03-09"^^xsd:date ;
     dcterms:creator <https://orcid.org/0000-0002-2923-9790>,
         <https://orcid.org/0000-0002-6085-6818>,
         <https://orcid.org/0000-0002-9116-6692>,
@@ -41,9 +74,18 @@ sosa:madeBySensor a owl:ObjectProperty ;
         <https://orcid.org/0000-0003-4820-7951>,
         <https://orcid.org/0009-0008-0575-8490>,
         <https://orcid.org/0009-0008-2489-8106> ;
+    dcterms:identifier "https://doi.org/10.5281/zenodo.18925285" ;
+    dcterms:issued "2026-03-09"^^xsd:date ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:modified "2026-07-09"^^xsd:date ;
+    dcterms:publisher "Huzard group" ;
+    dcterms:source <https://github.com/dhuzard/HCMO> ;
     owl:versionIRI <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
     owl:versionInfo "0.0.1" ;
-    mod:createdWith <https://chowlk.linkeddata.es/> .
+    mod:createdWith <https://chowlk.linkeddata.es/> ;
+    mod:status "draft" ;
+    vann:preferredNamespacePrefix "hcm" ;
+    vann:preferredNamespaceUri "https://w3id.org/hcmo/ontology/hcm#" .
 
 hcm:Enclosure a owl:Class ;
     rdfs:label "Enclosure" .

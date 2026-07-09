@@ -5,9 +5,11 @@
   xmlns:mod="https://w3id.org/mod#"
   xmlns:dc="http://purl.org/dc/elements/1.1/"
   xmlns:schema="https://schema.org/"
+  xmlns:vann="http://purl.org/vocab/vann/"
+  xmlns:dcterms="http://purl.org/dc/terms/"
   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:bibo="http://purl.org/ontology/bibo/"
 >
   <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#hasMember">
     <rdfs:label>has member</rdfs:label>
@@ -24,6 +26,8 @@
   <owl:Ontology rdf:about="https://w3id.org/hcmo/ontology/hcm">
     <dc:description>Ontology for home-cage monitoring of laboratory animals</dc:description>
     <dc:title>Home-Cage Monitoring Ontology</dc:title>
+    <dcterms:bibliographicCitation>The Home-Cage Monitoring Ontology (HCMO), version 0.0.1. Zenodo. https://doi.org/10.5281/zenodo.18925285</dcterms:bibliographicCitation>
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-03-09</dcterms:created>
     <dcterms:creator>
       <schema:Person rdf:about="https://orcid.org/0000-0002-2923-9790">
         <schema:name>Pierre Larmande</schema:name>
@@ -59,9 +63,19 @@
         <schema:name>Cyril Gilbert</schema:name>
       </schema:Person>
     </dcterms:creator>
+    <dcterms:identifier>https://doi.org/10.5281/zenodo.18925285</dcterms:identifier>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-03-09</dcterms:issued>
+    <dcterms:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-07-09</dcterms:modified>
+    <dcterms:publisher>Huzard group</dcterms:publisher>
+    <dcterms:source rdf:resource="https://github.com/dhuzard/HCMO"/>
+    <bibo:doi>10.5281/zenodo.18925285</bibo:doi>
+    <vann:preferredNamespacePrefix>hcm</vann:preferredNamespacePrefix>
+    <vann:preferredNamespaceUri>https://w3id.org/hcmo/ontology/hcm#</vann:preferredNamespaceUri>
     <owl:versionIRI rdf:resource="https://w3id.org/hcmo/ontology/hcm/0.0.1"/>
     <owl:versionInfo>0.0.1</owl:versionInfo>
     <mod:createdWith rdf:resource="https://chowlk.linkeddata.es/"/>
+    <mod:status>draft</mod:status>
   </owl:Ontology>
   <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/env#AmmoniaConcentration">
     <rdfs:label>ammonia concentration</rdfs:label>
@@ -149,12 +163,14 @@
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#hasSocialRequirement">
     <rdfs:label>has social requirement</rdfs:label>
   </owl:DatatypeProperty>
+  <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/created"/>
   <owl:Class rdf:about="https://w3id.org/hcmo/ontology/hcm#Enrichment">
     <rdfs:label>Enrichment</rdfs:label>
   </owl:Class>
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#isCalibrated">
     <rdfs:label>is calibrated</rdfs:label>
   </owl:DatatypeProperty>
+  <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/source"/>
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#hasStoragePath">
     <rdfs:label>has storage path</rdfs:label>
   </owl:DatatypeProperty>
@@ -164,6 +180,7 @@
   <owl:Class rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#Hardware">
     <rdfs:label>Hardware</rdfs:label>
   </owl:Class>
+  <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/modified"/>
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#hasFirmware">
     <rdfs:label>has firmware</rdfs:label>
   </owl:DatatypeProperty>
@@ -200,6 +217,7 @@
   <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#occursIn">
     <rdfs:label>occurs in</rdfs:label>
   </owl:ObjectProperty>
+  <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/creator"/>
   <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#hasActuator">
     <rdfs:label>has actuator</rdfs:label>
     <rdfs:range rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#Actuator"/>
@@ -214,6 +232,7 @@
   <owl:Class rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#HousingAssignment">
     <rdfs:label>Housing Assignment</rdfs:label>
   </owl:Class>
+  <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/license"/>
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm#hasFloorArea">
     <rdfs:label>has floor area</rdfs:label>
   </owl:DatatypeProperty>
@@ -244,18 +263,23 @@
   <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#supportsEnclosure">
     <rdfs:label>supports enclosure</rdfs:label>
   </owl:ObjectProperty>
+  <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespaceUri"/>
   <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/env#CarbonDioxideConcentration">
     <rdfs:label>carbon dioxide concentration</rdfs:label>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#runsOn">
     <rdfs:label>runs on</rdfs:label>
   </owl:ObjectProperty>
+  <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/identifier"/>
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm#hasCapacity">
     <rdfs:label>has capacity</rdfs:label>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#hasSensorIdentifier">
     <rdfs:label>has sensor identifier</rdfs:label>
   </owl:DatatypeProperty>
+  <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix"/>
+  <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/issued"/>
+  <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/publisher"/>
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm#hasFoodRequirement">
     <rdfs:label>has food requirement</rdfs:label>
   </owl:DatatypeProperty>
@@ -274,6 +298,7 @@
   <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#hasHousingAssignment">
     <rdfs:label>has housing assignment</rdfs:label>
   </owl:ObjectProperty>
+  <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/bibliographicCitation"/>
   <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#captures">
     <rdfs:label>captures</rdfs:label>
   </owl:ObjectProperty>
@@ -287,6 +312,7 @@
   <owl:ObjectProperty rdf:about="http://www.w3.org/ns/sosa/madeObservation">
     <rdfs:label>made observation</rdfs:label>
   </owl:ObjectProperty>
+  <owl:AnnotationProperty rdf:about="http://purl.org/ontology/bibo/doi"/>
   <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/title"/>
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#hasTreatment">
     <rdfs:label>has treatment</rdfs:label>
@@ -294,7 +320,9 @@
   <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#hasCondition">
     <rdfs:label>has condition</rdfs:label>
   </owl:ObjectProperty>
+  <owl:AnnotationProperty rdf:about="https://w3id.org/mod#createdWith"/>
   <owl:AnnotationProperty rdf:about="http://www.w3.org/2002/07/owl#versionInfo"/>
+  <owl:AnnotationProperty rdf:about="https://w3id.org/mod#status"/>
   <owl:Class rdf:about="https://w3id.org/hcmo/ontology/hcm#MonitoredEnclosure">
     <rdfs:label>Monitored Enclosure</rdfs:label>
     <rdfs:subClassOf>

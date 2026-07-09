@@ -16,10 +16,10 @@
 |---|---|
 | Total | 44 |
 | ✅ Fait | 25 |
-| 🟡 En cours | 6 |
+| 🟡 En cours | 7 |
 | ⏸ Reporté | 1 |
 | ⛔ Bloqué (T0) | 4 |
-| ⬜ À faire | 8 |
+| ⬜ À faire | 7 |
 | Obligatoires restantes (non-Fait) | ~16 |
 
 ## Items
@@ -42,10 +42,10 @@
 | 14 | Ontologie | Exemples d'instances représentatifs | Oui | 🟡 | `examples/user-submission.ttl`, `examples/dvc-tecniplast.ttl`, `docs/hcm-systems/FORM-FIELD-MAPPING.md` | Formulaire + DVC organisés en triples RDF: `rdf:type`, liens instance-instance, et valeurs littérales. Il reste à produire les exemples SHACL v2 complets après promotion. |
 | 15 | Ontologie | Requêtes SPARQL des competency questions | Oui | ⛔ | `sections/03-requirements.md` | CQ1–CQ6 définies; requêtes après T0 (renvoient 0 actuellement). |
 | 16 | Ontologie | SHACL valides/invalides | Oui | ⏸ | `docs/paper/PROTEGE-REASONER.md` | Reporté après décision de réunion: d'abord raisonneur OWL dans Protégé sur v2; SHACL seulement après gel/promotion des termes v2. |
-| 17 | Ontologie | Lancer OOPS! + FOOPS! FAIR ontology assessment + noter problèmes | Oui | ⬜ | `sections/06-evaluation.md` | À lancer sur le clean v2 ou la release promue; archiver scores et actions correctives. |
+| 17 | Ontologie | Lancer OOPS! + FOOPS! FAIR ontology assessment + noter problèmes | Oui | 🟡 | `docs/paper/FOOPS-REPORT-2026-07-09.md`, `sections/06-evaluation.md` | FOOPS v0.4.0 lancé sur le clean v2: score 0.49444446 → 0.92222226 après métadonnées. Reste OOPS!, plus les gaps FOOPS logo et définitions (111 termes). |
 | 18 | Évaluation | Définir les competency questions de l'article | Oui | ✅ | `sections/03-requirements.md` | CQ1–CQ6 + mapping R1–R8. |
 | 19 | Évaluation | Chaque requête répond à une CQ | Oui | ⛔ | — | Bloqué T0 (besoin de la V1 + requêtes). |
-| 20 | Évaluation | Bilan OOPS!/FOOPS!/SHACL/WIDOCO/HermiT | Oui | 🟡 | `sections/06-evaluation.md`, `docs/paper/PROTEGE-REASONER.md` | WIDOCO ✅; HermiT ✅; OOPS! + FOOPS! à exécuter; SHACL reporté jusqu'au gel/promotion des termes v2. |
+| 20 | Évaluation | Bilan OOPS!/FOOPS!/SHACL/WIDOCO/HermiT | Oui | 🟡 | `sections/06-evaluation.md`, `docs/paper/PROTEGE-REASONER.md`, `docs/paper/FOOPS-REPORT-2026-07-09.md` | WIDOCO ✅; HermiT ✅; FOOPS ✅ (0.92222226 après correction metadata); OOPS! à exécuter; SHACL reporté jusqu'au gel/promotion des termes v2. |
 | 21 | Ontologie | Documentation WIDOCO | Oui | ✅ | `README.md` → <https://dhuzard.github.io/HCMO/index-en.html> | Lien ajouté au README. |
 | 22 | Availability | Dépôt GitHub propre & compréhensible | Oui | 🟡 | `README.md`, `ontology/v2/README.md`, `docs/paper/TODO.md` | README enrichi; v2 documentée; nettoyage global et promotion restent en cours. |
 | 23 | Availability | Release versionnée figée | Oui | ⬜ | `TODO.md` (T9) | À cadrer sur la version citée. |
@@ -75,11 +75,11 @@
 Abstract + §1 Introduction + §2 Related work + §3 Requirements + §5
 Engineering/Availability + §7 Impact + §8 Conclusion are **drafted** in
 `docs/paper/sections/`. **§4 Resource description** and **§6 Evaluation** are the
-only sections still incomplete; §6 now has HermiT evidence and OOPS!/FOOPS!
-tracking, while final SHACL/CQ claims still depend on v2 promotion.
+only sections still incomplete; §6 now has HermiT and FOOPS evidence, while
+OOPS! plus final SHACL/CQ claims still depend on v2 promotion.
 
 ## The remaining blocker
 Items **11, 15, 19, 42** still wait on the promoted clean ontology and the
-paper-ready v2 release alignment. Item **13** is done, HermiT evidence is
-recorded, and item **17** now explicitly includes **FOOPS!** for FAIR ontology
-assessment. Item **27 (w3id)** is live but reopened as a v2 release follow-up.
+paper-ready v2 release alignment. Item **13** is done, HermiT and FOOPS evidence
+are recorded, and item **17** remains in progress until OOPS! is also archived.
+Item **27 (w3id)** is live but reopened as a v2 release follow-up.
