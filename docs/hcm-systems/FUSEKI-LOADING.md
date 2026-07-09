@@ -16,7 +16,10 @@ python tooling/validate.py
 `dist/hcmo.ttl` is the ontology graph. `docs/hcm-systems/catalog.ttl` is the
 generated sparse catalog graph. User submissions are Turtle files generated from
 the contribution form or curated into the same pattern as
-`examples/user-submission.ttl`.
+`examples/user-submission.ttl`. The DVC worked example has a profile-level ABox at
+`examples/dvc-tecniplast.ttl`; it is source-backed RDF instance data, but it is
+not yet a full SHACL submission because the local profile does not assert cage
+dimensions.
 
 ## Suggested named graphs
 
@@ -27,6 +30,7 @@ submissions can be updated independently:
 |---|---|---|
 | `https://w3id.org/hcmo/graph/ontology` | `dist/hcmo.ttl` | Active HCMO ontology. |
 | `https://w3id.org/hcmo/graph/catalog` | `docs/hcm-systems/catalog.ttl` | Sparse HCM system/product/software/component catalog. |
+| `https://w3id.org/hcmo/graph/examples/dvc-tecniplast` | `examples/dvc-tecniplast.ttl` | Source-backed DVC system profile ABox. |
 | `https://w3id.org/hcmo/graph/submissions` | curated submission `.ttl` files | Complete user-submitted system ABox records. |
 
 ## Example load commands
@@ -39,6 +43,9 @@ tdb2.tdbloader --loc .\fuseki-data\hcmo `
 
 tdb2.tdbloader --loc .\fuseki-data\hcmo `
   --graph=https://w3id.org/hcmo/graph/catalog docs\hcm-systems\catalog.ttl
+
+tdb2.tdbloader --loc .\fuseki-data\hcmo `
+  --graph=https://w3id.org/hcmo/graph/examples/dvc-tecniplast examples\dvc-tecniplast.ttl
 
 tdb2.tdbloader --loc .\fuseki-data\hcmo `
   --graph=https://w3id.org/hcmo/graph/submissions examples\user-submission.ttl

@@ -8,18 +8,19 @@
 > Google Sheet directly (read-only access), so copy the **Statut / Lien-preuve /
 > Commentaire** columns below back into the sheet.
 >
-> **Statut legend:** ✅ Fait · 🟡 En cours · ⛔ Bloqué (needs clean V1 = T0) · ⬜ À faire
-> **Last synced:** 2026-07-03 (branch `claude/resource-paper-draft`)
+> **Statut legend:** ✅ Fait · 🟡 En cours · ⏸ Reporté · ⛔ Bloqué (needs clean V1 = T0) · ⬜ À faire
+> **Last synced:** 2026-07-09 (branch `main`)
 
 ## Progress snapshot
 | Indicateur | Valeur |
 |---|---|
 | Total | 44 |
-| ✅ Fait | 23 |
+| ✅ Fait | 25 |
 | 🟡 En cours | 6 |
-| ⛔ Bloqué (T0) | 8 |
-| ⬜ À faire | 7 |
-| Obligatoires restantes (non-Fait) | ~20 |
+| ⏸ Reporté | 1 |
+| ⛔ Bloqué (T0) | 4 |
+| ⬜ À faire | 8 |
+| Obligatoires restantes (non-Fait) | ~16 |
 
 ## Items
 
@@ -34,24 +35,24 @@
 | 7 | Related work | 5–10 resource papers d'ontologies comparables | Oui | ✅ | `docs/paper/notes/resource-papers/README.md` | 5 resource papers comparables identifiés avec source et critères de comparaison pour HCMO : metadata, availability, figures, CQ/SPARQL, évaluation. |
 | 8 | Related work | Guidelines / best practices publication ontologie | Oui | ✅ | `CALL-REQUIREMENTS.md`, `references.bib` | WIDOCO, OOPS!, FAIR, w3id, Zenodo, LOT/SAMOD. |
 | 9 | Related work | Tableau critères ESWC vs ISWC | Oui | ✅ | `README.md`, `CALL-REQUIREMENTS.md` | Format, anonymat, pages, availability. |
-| 10 | Ontologie | Stabiliser classes & propriétés centrales | Oui | 🟡 | `ontology/v2/`, `docs/paper/MODULE-MAP.md` | v2 5 modules construit et nettoyé légèrement; reste à promouvoir officiellement puis traiter placeholders/unités/définitions. |
+| 10 | Ontologie | Stabiliser classes & propriétés centrales | Oui | 🟡 | `ontology/v2/`, `docs/paper/MODULE-MAP.md` | v2 5 modules construit et placeholders nettoyés; reste à promouvoir officiellement puis traiter unités/définitions. |
 | 11 | Ontologie | Labels + commentaires entités principales | Oui | ⛔ | `AUDIT.md` | **0 `rdfs:comment`** dans le dépôt actuel → V1. |
-| 12 | Ontologie | Vérifier modules Turtle/OWL exportés | Oui | 🟡 | `ontology/v2/README.md`, `ontology/v2/hcmo-v2-merged.ttl` | Modules v2 + merged TTL parsés avec rdflib; live build/CI pas encore repointés. |
-| 13 | Ontologie | Nettoyer termes Chowlk temporaires | Oui | 🟢 | `docs/paper/PLACEHOLDER-MAP.md`, `ontology/v2/modules/hcm-placeholders.ttl` | v2 active placeholders reduced to 0 on the review branch. Final cleanup should be reviewed by co-authors before promotion. |
-| 14 | Ontologie | Exemples d'instances représentatifs | Oui | ⛔ | `sections/03-requirements.md` | Scénario HCM complet; ABox synthétiques après T0. |
+| 12 | Ontologie | Vérifier modules Turtle/OWL exportés | Oui | ✅ | `ontology/v2/README.md`, `ontology/v2/hcmo-v2-merged-clean.owl`, `docs/paper/PROTEGE-REASONER.md` | Modules v2 + clean OWL parsés; HermiT passe avec 32 classes et 0 classe incohérente. Live build/CI à repointer à la promotion. |
+| 13 | Ontologie | Nettoyer termes Chowlk temporaires | Oui | ✅ | `docs/paper/PLACEHOLDER-MAP.md`, `ontology/v2/modules/hcm-placeholders.ttl` | Placeholders actifs v2 réduits à 0; cleanup final appliqué et documenté. Validation co-auteurs encore utile avant promotion. |
+| 14 | Ontologie | Exemples d'instances représentatifs | Oui | 🟡 | `examples/user-submission.ttl`, `examples/dvc-tecniplast.ttl`, `docs/hcm-systems/FORM-FIELD-MAPPING.md` | Formulaire + DVC organisés en triples RDF: `rdf:type`, liens instance-instance, et valeurs littérales. Il reste à produire les exemples SHACL v2 complets après promotion. |
 | 15 | Ontologie | Requêtes SPARQL des competency questions | Oui | ⛔ | `sections/03-requirements.md` | CQ1–CQ6 définies; requêtes après T0 (renvoient 0 actuellement). |
 | 16 | Ontologie | SHACL valides/invalides | Oui | ⏸ | `docs/paper/PROTEGE-REASONER.md` | Reporté après décision de réunion: d'abord raisonneur OWL dans Protégé sur v2; SHACL seulement après gel/promotion des termes v2. |
-| 17 | Ontologie | Lancer OOPS! + noter problèmes | Oui | ⛔ | — | Bloqué T0. |
+| 17 | Ontologie | Lancer OOPS! + FOOPS! FAIR ontology assessment + noter problèmes | Oui | ⬜ | `sections/06-evaluation.md` | À lancer sur le clean v2 ou la release promue; archiver scores et actions correctives. |
 | 18 | Évaluation | Définir les competency questions de l'article | Oui | ✅ | `sections/03-requirements.md` | CQ1–CQ6 + mapping R1–R8. |
 | 19 | Évaluation | Chaque requête répond à une CQ | Oui | ⛔ | — | Bloqué T0 (besoin de la V1 + requêtes). |
-| 20 | Évaluation | Bilan OOPS!/SHACL/WIDOCO | Oui | 🟡 | `sections/06-evaluation.md`, `docs/paper/PROTEGE-REASONER.md` | WIDOCO ✅; prochaine preuve qualité = raisonneur Protégé sur v2. SHACL reporté. |
+| 20 | Évaluation | Bilan OOPS!/FOOPS!/SHACL/WIDOCO/HermiT | Oui | 🟡 | `sections/06-evaluation.md`, `docs/paper/PROTEGE-REASONER.md` | WIDOCO ✅; HermiT ✅; OOPS! + FOOPS! à exécuter; SHACL reporté jusqu'au gel/promotion des termes v2. |
 | 21 | Ontologie | Documentation WIDOCO | Oui | ✅ | `README.md` → <https://dhuzard.github.io/HCMO/index-en.html> | Lien ajouté au README. |
 | 22 | Availability | Dépôt GitHub propre & compréhensible | Oui | 🟡 | `README.md`, `ontology/v2/README.md`, `docs/paper/TODO.md` | README enrichi; v2 documentée; nettoyage global et promotion restent en cours. |
 | 23 | Availability | Release versionnée figée | Oui | ⬜ | `TODO.md` (T9) | À cadrer sur la version citée. |
 | 24 | Availability | DOI Zenodo | Oui | ✅ | `CITATION.cff` → 10.5281/zenodo.18925285 | Existe; à refigers sur la release du papier (T9). |
 | 25 | Availability | Vérifier la licence | Oui | ✅ | `LICENSE`, `README.md` | CC BY 4.0 (fichier vérifié). ⚠ **Consentement des co-auteurs à confirmer** (CC BY 4.0 vs CC0) — voir OPEN-QUESTIONS Q19 / TODO T23b. |
 | 26 | Availability | CITATION.cff | Oui | ✅ | `CITATION.cff` | Présent + ORCIDs ajoutés. |
-| 27 | Availability | Namespace persistant w3id | Oui | ✅ | <https://github.com/perma-id/w3id.org/pull/6261>, <https://w3id.org/hcmo/ontology/hcm> | PR w3id merged le 2026-06-30 ; namespace HCMO accepté. À vérifier ensuite avec la release finale. |
+| 27 | Availability | Namespace persistant w3id | Oui | 🟡 | <https://github.com/perma-id/w3id.org/pull/6261>, <https://w3id.org/hcmo/ontology/hcm> | Namespace HCMO live depuis le 2026-06-30. Follow-up ajouté: mettre à jour le w3id pour la version v2/release promue, sans changer l'IRI de base. |
 | 28 | Availability | README : comment utiliser l'ontologie | Oui | ✅ | `README.md` | Quickstart + "Consuming the ontology". |
 | 29 | Availability | Release/doc/DOI = même version | Oui | ⬜ | `TODO.md` (T9) | À faire au moment de la release. |
 | 30 | Availability | Section Availability prête à coller | Oui | ✅ | `sections/05-availability.md`, `metadata/resource-metadata.md` | GitHub/DOI/licence/docs/examples/queries. |
@@ -74,11 +75,11 @@
 Abstract + §1 Introduction + §2 Related work + §3 Requirements + §5
 Engineering/Availability + §7 Impact + §8 Conclusion are **drafted** in
 `docs/paper/sections/`. **§4 Resource description** and **§6 Evaluation** are the
-only sections still missing — both **blocked on the clean V1 (T0)**.
+only sections still incomplete; §6 now has HermiT evidence and OOPS!/FOOPS!
+tracking, while final SHACL/CQ claims still depend on v2 promotion.
 
-## The one blocker driving most ⛔ items
-Items **11, 14–17, 19, 42** still wait on the promoted clean ontology (see
-`ontology/v2/` and `AUDIT.md`). Item **10** has moved from blocked to in progress
-because the v2 modular draft is now the working artifact; item **13** is also in
-progress via `PLACEHOLDER-MAP.md`. Item **27 (w3id)** is done; **23/29 (release
-alignment)** proceed after promotion.
+## The remaining blocker
+Items **11, 15, 19, 42** still wait on the promoted clean ontology and the
+paper-ready v2 release alignment. Item **13** is done, HermiT evidence is
+recorded, and item **17** now explicitly includes **FOOPS!** for FAIR ontology
+assessment. Item **27 (w3id)** is live but reopened as a v2 release follow-up.

@@ -938,13 +938,14 @@
       "@prefix hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#> .",
       "@prefix hcm-env: <https://w3id.org/hcmo/ontology/hcm/env#> .",
       "@prefix dcterms: <http://purl.org/dc/terms/> .",
+      "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .",
       "@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .",
       "@prefix schema: <https://schema.org/> .",
       "@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .",
       ""
     ];
 
-    addTriple(lines, system, "a", "hcm:System");
+    addTriple(lines, system, "rdf:type", "hcm:System");
     addLiteral(lines, system, "rdfs:label", d.system.name);
     addLiteral(lines, system, "rdfs:comment", d.system.description);
     addLiteral(lines, system, "dcterms:type", d.system.type);
@@ -962,39 +963,39 @@
     d.dataOutput.formats.forEach(function (f) { addLiteral(lines, system, "dcterms:format", f); });
     d.dataOutput.datasetLinks.forEach(function (link) { addLiteral(lines, system, "dcterms:source", link); });
 
-    addTriple(lines, supplier, "a", "hcm:Supplier");
+    addTriple(lines, supplier, "rdf:type", "hcm:Supplier");
     addLiteral(lines, supplier, "rdfs:label", d.system.vendor);
 
-    addTriple(lines, hardware, "a", "hcm:Hardware");
+    addTriple(lines, hardware, "rdf:type", "hcm:Hardware");
     addLiteral(lines, hardware, "rdfs:label", d.hardwareSoftware.hardware);
     addLiteral(lines, hardware, "rdfs:comment", d.hardwareSoftware.interoperability);
 
-    addTriple(lines, software, "a", "hcm:Software");
+    addTriple(lines, software, "rdf:type", "hcm:Software");
     addLiteral(lines, software, "rdfs:label", d.hardwareSoftware.software);
 
-    addTriple(lines, enclosure, "a", "hcm:Enclosure");
+    addTriple(lines, enclosure, "rdf:type", "hcm:Enclosure");
     addLiteral(lines, enclosure, "dcterms:type", d.enclosure.type);
     addLiteral(lines, enclosure, "rdfs:comment", d.enclosure.fit);
     addTriple(lines, enclosure, "hcm:hasSpaceRegion", physicalSpace);
 
-    addTriple(lines, physicalSpace, "a", "hcm:PhysicalSpace");
+    addTriple(lines, physicalSpace, "rdf:type", "hcm:PhysicalSpace");
     addLiteral(lines, physicalSpace, "rdfs:label", (d.system.name || "system") + " enclosure space");
     addTriple(lines, physicalSpace, "hcm:hasDimensions", dimensions);
 
-    addTriple(lines, dimensions, "a", "hcm:Dimensions");
+    addTriple(lines, dimensions, "rdf:type", "hcm:Dimensions");
     addLiteral(lines, dimensions, "hcm:width", d.enclosure.width, "xsd:decimal");
     addLiteral(lines, dimensions, "hcm:length", d.enclosure.length, "xsd:decimal");
     addLiteral(lines, dimensions, "hcm:height", d.enclosure.height, "xsd:decimal");
     addLiteral(lines, dimensions, "hcm:unit", d.enclosure.unit);
 
-    addTriple(lines, contributor, "a", "schema:Person");
+    addTriple(lines, contributor, "rdf:type", "schema:Person");
     addLiteral(lines, contributor, "schema:name", d.contributor.name);
     addLiteral(lines, contributor, "schema:email", d.contributor.email);
     addLiteral(lines, contributor, "schema:affiliation", d.contributor.organization);
     addLiteral(lines, contributor, "schema:roleName", d.contributor.role);
 
     if (hasAnyValue(d.animals)) {
-      addTriple(lines, subject, "a", "hcm-bio:Subject");
+      addTriple(lines, subject, "rdf:type", "hcm-bio:Subject");
       addLiteral(lines, subject, "rdfs:label", (d.system.name || "system") + " supported subject profile");
       addLiteral(lines, subject, "hcm-bio:hasSpecies", d.animals.species);
       addLiteral(lines, subject, "hcm-bio:hasStrain", d.animals.strain);
@@ -1005,12 +1006,12 @@
     }
 
     if (d.measurements.behaviors || d.measurements.circadian) {
-      addTriple(lines, behavior, "a", "hcm:BehaviorAndPhysiology");
+      addTriple(lines, behavior, "rdf:type", "hcm:BehaviorAndPhysiology");
       addLiteral(lines, behavior, "rdfs:label", (d.system.name || "system") + " behavior profile");
       addLiteral(lines, behavior, "rdfs:comment", d.measurements.behaviors);
       if (d.measurements.circadian) {
         addTriple(lines, behavior, "hcm:hasCircadianRhythm", circadian);
-        addTriple(lines, circadian, "a", "hcm:CircadianRhythm");
+        addTriple(lines, circadian, "rdf:type", "hcm:CircadianRhythm");
         addLiteral(lines, circadian, "rdfs:label", d.measurements.circadian);
       }
     }
@@ -1019,7 +1020,7 @@
       if (!param.param_name && !param.param_unit && !param.param_rate) return;
       var node = iri(base, "measurement-spec-" + (index + 1) + "-" + slug(param.param_name || "parameter"));
       addTriple(lines, system, "hcm-env:hasMeasurementSpec", node);
-      addTriple(lines, node, "a", "hcm-env:MeasurementSpecification");
+      addTriple(lines, node, "rdf:type", "hcm-env:MeasurementSpecification");
       addLiteral(lines, node, "rdfs:label", param.param_name);
       addLiteral(lines, node, "hcm-env:hasUnit", param.param_unit);
       addLiteral(lines, node, "hcm:hasSamplingRate", param.param_rate);
@@ -1028,7 +1029,7 @@
     var durationHours = parseDurationHours(d.recording.duration);
     if (durationHours && durationHours > 24) {
       addTriple(lines, system, "dcterms:temporal", observationWindow);
-      addTriple(lines, observationWindow, "a", "hcm:ObservationWindow");
+      addTriple(lines, observationWindow, "rdf:type", "hcm:ObservationWindow");
       addLiteral(lines, observationWindow, "rdfs:label", (d.system.name || "system") + " observation window");
       addLiteral(lines, observationWindow, "hcm:durationHours", String(durationHours), "xsd:decimal");
       addLiteral(lines, observationWindow, "hcm:isExtendable", booleanLiteral(d.recording.extendable), "xsd:boolean");
@@ -1036,7 +1037,7 @@
     }
 
     if (d.dataOutput.sampling || d.dataOutput.volume || d.dataOutput.schema || d.dataOutput.license || d.dataOutput.formats.length || d.dataOutput.datasetLinks.length) {
-      addTriple(lines, dataProduct, "a", "hcm:DataProduct");
+      addTriple(lines, dataProduct, "rdf:type", "hcm:DataProduct");
       addLiteral(lines, dataProduct, "rdfs:label", (d.system.name || "system") + " data output");
       d.dataOutput.formats.forEach(function (f) { addLiteral(lines, dataProduct, "hcm:hasFileFormat", f); });
       addLiteral(lines, dataProduct, "hcm:hasSamplingRate", d.dataOutput.sampling);
@@ -1049,7 +1050,7 @@
     d.sensors.forEach(function (sensor, index) {
       var node = iri(base, "sensor-" + (index + 1) + "-" + slug(sensor.sensor_name || "sensor"));
       addTriple(lines, system, "hcm:hasSensor", node);
-      addTriple(lines, node, "a", "hcm:Sensor");
+      addTriple(lines, node, "rdf:type", "hcm:Sensor");
       addLiteral(lines, node, "rdfs:label", sensor.sensor_name);
       addLiteral(lines, node, "dcterms:type", sensor.sensor_type);
       if (d.measurements.behaviors || d.measurements.circadian) addTriple(lines, node, "hcm:captures", behavior);
@@ -1057,7 +1058,7 @@
     d.actuators.forEach(function (actuator, index) {
       var node = iri(base, "actuator-" + (index + 1) + "-" + slug(actuator.actuator_name || "actuator"));
       addTriple(lines, system, "hcm:hasActuator", node);
-      addTriple(lines, node, "a", "hcm:Actuator");
+      addTriple(lines, node, "rdf:type", "hcm:Actuator");
       addLiteral(lines, node, "rdfs:label", actuator.actuator_name);
       addLiteral(lines, node, "dcterms:type", actuator.actuator_type);
     });

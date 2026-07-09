@@ -1,0 +1,149 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dvc: <https://w3id.org/hcmo/id/dvc-tecniplast/> .
+@prefix hcm: <https://w3id.org/hcmo/ontology/hcm#> .
+@prefix hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#> .
+@prefix hcm-env: <https://w3id.org/hcmo/ontology/hcm/env#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Instance-class triples: each resource is explicitly typed with rdf:type.
+
+dvc:system rdf:type hcm:System .
+dvc:tecniplast rdf:type hcm:Supplier .
+dvc:rack-controller rdf:type hcm:Hardware .
+dvc:dvc-analytics rdf:type hcm:Software .
+dvc:cage rdf:type hcm:Enclosure .
+dvc:capacitive-electrode-board rdf:type hcm:Sensor .
+dvc:rack-environment-monitor rdf:type hcm:Sensor .
+dvc:activity-profile rdf:type hcm:BehaviorAndPhysiology .
+dvc:circadian-profile rdf:type hcm:CircadianRhythm .
+dvc:seven-day-window rdf:type hcm:ObservationWindow .
+dvc:data-product rdf:type hcm:DataProduct .
+dvc:mouse-subject-profile rdf:type hcm-bio:Subject .
+dvc:group-housed-cage-profile rdf:type hcm-bio:ExperimentalGroup .
+dvc:measurement-activation-density rdf:type hcm-env:MeasurementSpecification .
+dvc:measurement-bedding-status rdf:type hcm-env:MeasurementSpecification .
+dvc:measurement-rack-temperature rdf:type hcm-env:MeasurementSpecification .
+dvc:measurement-rack-humidity rdf:type hcm-env:MeasurementSpecification .
+
+# Instance-instance triples: object-property links between resources.
+
+dvc:system
+  hcm:producedBy dvc:tecniplast ;
+  hcm:hasHardware dvc:rack-controller ;
+  hcm:hasSoftware dvc:dvc-analytics ;
+  hcm:hasEnclosure dvc:cage ;
+  hcm:hasSensor dvc:capacitive-electrode-board,
+    dvc:rack-environment-monitor ;
+  hcm-env:hasMeasurementSpec dvc:measurement-activation-density,
+    dvc:measurement-bedding-status,
+    dvc:measurement-rack-temperature,
+    dvc:measurement-rack-humidity ;
+  dcterms:relation dvc:data-product ;
+  dcterms:subject dvc:mouse-subject-profile,
+    dvc:group-housed-cage-profile ;
+  dcterms:temporal dvc:seven-day-window .
+
+dvc:rack-controller hcm:communicatesWith dvc:dvc-analytics .
+
+dvc:capacitive-electrode-board
+  hcm:captures dvc:activity-profile ;
+  dcterms:relation dvc:measurement-activation-density,
+    dvc:measurement-bedding-status .
+
+dvc:rack-environment-monitor
+  dcterms:relation dvc:measurement-rack-temperature,
+    dvc:measurement-rack-humidity .
+
+dvc:activity-profile
+  hcm:hasCircadianRhythm dvc:circadian-profile ;
+  hcm:extendsEnoughToCapture dvc:seven-day-window .
+
+# Instance-data triples: literals carried by data or annotation properties.
+
+dvc:system
+  rdfs:label "DVC (Digital Ventilated Cage)" ;
+  rdfs:comment "Profile-level HCMO ABox for the Tecniplast DVC reference example; concrete enclosure dimensions are not asserted because they are not recorded in the local DVC profile." ;
+  dcterms:type "Electrical-capacitance home-cage monitoring system" ;
+  dcterms:source "https://doi.org/10.1016/j.heliyon.2019.e01454" ;
+  dcterms:source "https://doi.org/10.1038/s41598-025-87530-6" ;
+  hcm:hasDescription "Capacitive electrode array under an IVC cage; DVC Analytics exports activity, bedding status, and rack environment measurements." .
+
+dvc:tecniplast
+  rdfs:label "Tecniplast S.p.A." .
+
+dvc:rack-controller
+  rdfs:label "DVC rack controller" ;
+  rdfs:comment "Hardware layer coordinating cage-level DVC sensor boards." .
+
+dvc:dvc-analytics
+  rdfs:label "DVC Analytics" ;
+  rdfs:comment "Cloud software used for acquisition, visualization, export, and proprietary ALI/BSI derivation." .
+
+dvc:cage
+  rdfs:label "DVC monitored IVC cage" ;
+  rdfs:comment "Standard IVC cage monitored by an externally mounted DVC sensing board; dimensions are intentionally not asserted in this profile graph." ;
+  dcterms:type "Individually ventilated cage with external DVC board" .
+
+dvc:capacitive-electrode-board
+  rdfs:label "DVC capacitive electrode board" ;
+  dcterms:type "12-electrode capacitive sensing board" ;
+  hcm:hasSamplingRate "4 Hz" ;
+  hcm:hasDescription "Capacitance-based cage-level sensing board mounted under the cage." .
+
+dvc:rack-environment-monitor
+  rdfs:label "DVC rack environmental monitor" ;
+  dcterms:type "Rack temperature and relative-humidity monitor" ;
+  hcm:hasDescription "Rack-level environmental context channel." .
+
+dvc:activity-profile
+  rdfs:label "DVC activity and locomotion profile" ;
+  rdfs:comment "Cage-level activity profile including activation density and derived Animal Locomotion Index outputs." .
+
+dvc:circadian-profile
+  rdfs:label "DVC circadian activity profile" ;
+  rdfs:comment "Circadian summaries derived from DVC activity exports." .
+
+dvc:seven-day-window
+  rdfs:label "DVC mock-trace observation window" ;
+  hcm:durationHours "168"^^xsd:decimal ;
+  hcm:isExtendable "true"^^xsd:boolean ;
+  dcterms:type "Continuous 7-day mock trace window" .
+
+dvc:data-product
+  rdfs:label "DVC CSV export data product" ;
+  rdfs:comment "Profile graph for the real cohort export and synthetic mock traces in the DVC example folder." ;
+  hcm:hasFileFormat "CSV" ;
+  hcm:hasSamplingRate "4 Hz raw stream; 1 minute binned example exports" ;
+  hcm:hasStoragePath "docs/hcm-systems/systems/DVC_Tecniplast/datasets/real/Cohort7623_animal_loc__index_smoothed.csv" ;
+  hcm:hasStoragePath "docs/hcm-systems/systems/DVC_Tecniplast/datasets/mock/mock_B6_M_animal_loc__index_smoothed.csv" .
+
+dvc:mouse-subject-profile
+  rdfs:label "DVC supported mouse subject profile" ;
+  rdfs:comment "DVC literature in the local profile supports mouse use; individual attribution is direct only for single-housed cages." ;
+  hcm-bio:hasSpecies "Mus musculus" .
+
+dvc:group-housed-cage-profile
+  rdfs:label "DVC group-housed cage profile" ;
+  rdfs:comment "Group-housed DVC signals are cage-level aggregate measurements rather than native per-animal tracks." .
+
+dvc:measurement-activation-density
+  rdfs:label "Activation density / Animal Locomotion Index" ;
+  hcm-env:hasUnit "percent" ;
+  hcm:hasSamplingRate "4 Hz raw; binned in CSV exports" .
+
+dvc:measurement-bedding-status
+  rdfs:label "Bedding Status Index" ;
+  hcm-env:hasUnit "arbitrary unit" ;
+  hcm:hasSamplingRate "binned in CSV exports" .
+
+dvc:measurement-rack-temperature
+  rdfs:label "Rack temperature" ;
+  hcm-env:hasUnit "degree Celsius" ;
+  hcm:hasSamplingRate "continuous; exact export rate not asserted" .
+
+dvc:measurement-rack-humidity
+  rdfs:label "Rack relative humidity" ;
+  hcm-env:hasUnit "percent relative humidity" ;
+  hcm:hasSamplingRate "continuous; exact export rate not asserted" .

@@ -1,7 +1,7 @@
 # HCMO Resource Paper — TODO & change tracking
 
 **Status legend:** ☐ todo · ◐ in progress · ☑ done · ⚠ blocked
-**Last updated:** 2026-07-03
+**Last updated:** 2026-07-09
 
 This is the single source of truth for paper progress. Update the **status**
 column and append to the **Change log** whenever something moves.
@@ -15,6 +15,7 @@ column and append to the **Change log** whenever something moves.
 | T0 | **Clean ontology artifact for paper/release** — v2 draft now exists in `ontology/v2/`; official promotion still waits on co-author sign-off and cleanup gates. | Damien/Cyril/Codex | ◐ | `ontology/v2/` is the reviewed path forward. Live `ontology/modules/`, `dist/`, shapes/examples/queries still point to the old export until promotion. |
 | T1 | ~~Lock venue~~ → **ESWC 2027 Resources Track, 15 pp** (HITL R1) | — | ☑ | Re-confirm dates/template when CfP opens. |
 | T2 | ~~Create the w3id PURL redirect~~ → **live**: `https://w3id.org/hcmo/ontology/hcm#` resolves (303 → docs site) | — | ☑ | **Availability hard gate cleared.** [w3id PR #6261](https://github.com/perma-id/w3id.org/pull/6261) merged 2026-06-30; verified 2026-07-03. Re-check with the paper-matching release (T9). |
+| T2b | **Update w3id for the promoted v2 ontology** while keeping the base ontology IRI stable. | — | ☐ | After v2 promotion/release, update the perma-id redirect/content negotiation targets to the v2 documentation and distributions; do not re-mint term IRIs. |
 | T3 | Create Overleaf project from **LNCS** template; mirror `sections/` | — | ☐ | Keep authors **named** (single-anonymous). |
 | T3b | **Re-modularise** to the **DECIDED** R5 shape (2026-07-03): **5 modules — `hcm` core = enclosure only · `bio` · `obs` (observations + results) · `env` · `tech`**. `HousingAssignment` → bio (out of obs); `EnclosureDimensions` → core; all result/value classes → obs; `Sensor/Hardware/Software/TimeSeries` → new `tech` (`…/hcm/tech#`). Supersedes bio/housing/env/tech. | — | ◐ | **Draft built and lightly cleaned in `ontology/v2/`** (parallel, not yet wired to build/CI). Commits `d1fd21e` + `3fc46a4` apply co-author-review cleanup and figure-label alignment. Awaiting Damien validation before replacing `ontology/modules/`. Spec: `docs/paper/MODULE-MAP.md`. |
 | T3c | **Decide which module owns the bio↔obs linking properties** (Subject→observation vs Observation→subject). The two modules are mutually dependent; **accept the bio/obs cycle for V1 knowingly** (harmless in the merged graph; blocks strict `owl:imports` layering only). | — | ☑ | Decision applied in v2 and documented in `docs/ARCHITECTURE.md`/`MODEL.md`: subject-to-observation convenience links stay in `bio`; observation-to-subject semantics use SOSA `hasFeatureOfInterest` in `obs`. |
@@ -31,7 +32,7 @@ column and append to the **Change log** whenever something moves.
 | T6b | **Host a public SPARQL endpoint** (HITL R3) | ☐ | Strongest availability story; depends on T0. |
 | T7 | Write **lab-maintained** governance/versioning policy (Huzard team, GitHub, SemVer+versionIRI; TEATIME = feedback channel) | ☐ | HITL R3. Feeds §7. |
 | T7b | **Drop MAPP branding** in paper docs (done) + reconcile repo branding (`hcmo.yaml` title, README) separately | ◐ | HCMO branding applied to v2 ontology header and `version_rapport` figure sources. Live manifest/README/dist still need reconciliation at promotion. |
-| T8 | Run **quality evaluation**: OOPS!, FOOPS! (FAIR), reasoner (HermiT/ELK), pySHACL, CQ results — archive reports | ◐ | Protege 5.6.9 opens `ontology/v2/hcmo-v2-merged-clean.owl`; HermiT command-line check passes with 32 classes and 0 inconsistent classes. SHACL deferred. See `docs/paper/PROTEGE-REASONER.md`. |
+| T8 | Run **quality evaluation**: OOPS!, FOOPS! (FAIR), reasoner (HermiT/ELK), pySHACL, CQ results — archive reports | ◐ | Protege 5.6.9 opens `ontology/v2/hcmo-v2-merged-clean.owl`; HermiT command-line check passes with 32 classes and 0 inconsistent classes. OOPS! + FOOPS! reports still pending; SHACL/CQ deferred until v2 promotion. See `docs/paper/PROTEGE-REASONER.md`. |
 | T9 | Cut a **tagged release** (e.g. `v0.x`) + refreshed Zenodo DOI matching the paper | ☐ | Canonical citation. |
 
 ## Phase 2 — Write the paper
@@ -67,6 +68,7 @@ column and append to the **Change log** whenever something moves.
 
 | Date | Change | By |
 |------|--------|----|
+| 2026-07-09 | **Checklist/RDF intake update** — mirrored the merged HermiT + placeholder status, added FOOPS! and the w3id-v2 follow-up to tracking, made form Turtle emit explicit `rdf:type`, and added a DVC profile ABox organized as class, object-property, and literal triples. | Codex |
 | 2026-07-09 | **Applied final v2 placeholder cleanup** — replaced the remaining active v2 `UNKNOWN:` placeholders with proposed module terms or existing relations, regenerated v2 merged/clean artifacts, and confirmed HermiT still reports 0 inconsistent classes. | Codex |
 | 2026-07-09 | **Placeholder decision proposal** — expanded `PLACEHOLDER-MAP.md` with recommended actions for the 7 remaining v2 `UNKNOWN:` placeholders, including confidence levels and rationale grounded in v2 modules and legacy HCMO precedent. | Codex |
 | 2026-07-09 | **Figure placeholder alignment** — refreshed `version_rapport.drawio` and `.drawio.xml` labels again after the final cleanup, so the diagram no longer presents active v2 `UNKNOWN:` placeholders. | Codex |

@@ -21,6 +21,8 @@ schema exactly.
 DVC_Tecniplast/
   README.md                    ← this file
   dvc-system-profile.md        ← full source-cited profile (9 sections + Sources)
+  ../../../../examples/dvc-tecniplast.ttl
+                               ← profile-level RDF ABox graph
   datasets/
     real/                      ← real cohort-7623 export + data dictionary
       Cohort7623_animal_loc__index_smoothed.csv
@@ -39,6 +41,11 @@ DVC_Tecniplast/
   citations.
 - **Real data + schema:** [`datasets/real/README.md`](datasets/real/README.md).
 - **Mock traces + generator:** [`datasets/mock/README.md`](datasets/mock/README.md).
+- **RDF ABox profile:** [`../../../../examples/dvc-tecniplast.ttl`](../../../../examples/dvc-tecniplast.ttl)
+  organizes the DVC example as explicit `rdf:type` assertions,
+  instance-to-instance object-property links, and instance-to-literal data values.
+  It intentionally does not assert enclosure dimensions because they are not
+  recorded in this local profile.
 
 ## HCMO mapping (highlights)
 
