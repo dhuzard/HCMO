@@ -4,12 +4,27 @@ This document maps the static contribution form to RDF triples for Fuseki intake
 The form JSON remains staging data; the Turtle view is the first canonical ABox
 projection.
 
+## Triple categories
+
+The Turtle projection is organized as ordinary RDF instance data:
+
+- **Instance -> class:** every minted resource gets an explicit `rdf:type`
+  assertion, for example `hcm:System`, `hcm:Sensor`, `hcm:DataProduct`, or
+  `hcm-env:MeasurementSpecification`.
+- **Instance -> instance:** links are emitted with object properties whose object
+  is an IRI, for example `hcm:producedBy`, `hcm:hasHardware`, `hcm:hasSensor`,
+  `hcm:hasSpaceRegion`, `hcm-env:hasMeasurementSpec`, `hcm:captures`,
+  `dcterms:relation`, `dcterms:subject`, and `dcterms:temporal`.
+- **Instance -> data value:** literal fields use datatype or annotation
+  properties, with typed literals where the form can safely parse the value
+  (`xsd:decimal`, `xsd:integer`, `xsd:boolean`).
+
 ## Core submission graph
 
 | Form field / JSON path | RDF target | Triple kind | Notes |
 |---|---|---|---|
 | `identifiers.baseIri` | subject IRI base | IRI policy | Used to mint all submitted resources. |
-| `identifiers.systemId` | `hcm:System` subject | `rdf:type` | Main submitted monitoring-system instance. |
+| `identifiers.systemId` | `hcm:System` subject | `rdf:type` | Main submitted monitoring-system instance. Turtle emits explicit `rdf:type`, not the `a` shorthand. |
 | `system.name` | `rdfs:label` on system | annotation literal | Required for submission validation. |
 | `system.description` | `rdfs:comment` on system | annotation literal | Free-text system description. |
 | `system.type` | `dcterms:type` on system | datatype literal | UI-controlled but not yet a SKOS concept. |
@@ -29,9 +44,11 @@ projection.
 | `sensors[].sensor_type` | sensor `dcterms:type` | datatype literal | Temporary type literal. |
 | `actuators[].actuator_name` | `hcm:Actuator` subject `rdfs:label`; system `hcm:hasActuator` | object + annotation | Optional. |
 | `actuators[].actuator_type` | actuator `dcterms:type` | datatype literal | Temporary type literal. |
-| `dataOutput.formats[]` | `dcterms:format` on system | datatype literal | Repeatable output-format values. |
+| any `dataOutput.*` value | system `dcterms:relation` `hcm:DataProduct` | object | A data-product node is minted only when the submission includes output metadata. |
+| `dataOutput.formats[]` | `dcterms:format` on system; `hcm:hasFileFormat` on data product | datatype literal | Repeatable output-format values. |
 | `dataOutput.datasetLinks[]` | `dcterms:source` on system; `hcm:hasStoragePath` on data product | datatype literal | Also used to populate the `hcm:DataProduct` node. |
 | `contributor.*` | `schema:Person` linked with `dcterms:contributor` | object + schema literals | Submission provenance, not an HCMO domain claim. |
+| any `animals.*` value | system `dcterms:subject` `hcm-bio:Subject` | object | Represents a supported subject profile for the system, not a concrete study animal. |
 | `animals.species` | `hcm-bio:Subject` + `hcm-bio:hasSpecies` | datatype literal | Modeled as a supported subject profile, not a concrete study animal. |
 | `animals.strain` | `hcm-bio:hasStrain` | datatype literal | Free text until a strain vocabulary is chosen. |
 | `animals.sex` | `hcm-bio:hasBiologicalSex` | datatype literal | UI controlled values, still literal. |
@@ -43,7 +60,7 @@ projection.
 | `measurements.parameters[].param_rate` | `hcm:hasSamplingRate` | datatype literal | Free text rate such as `4 Hz` or `30 fps`. |
 | `measurements.behaviors` | `hcm:BehaviorAndPhysiology` + `rdfs:comment`; sensors `hcm:captures` behavior profile | object + annotation | Free-text behavior profile, not controlled behavior terms. |
 | `measurements.circadian` | `hcm:CircadianRhythm` + `rdfs:label` | object + annotation | Linked from the behavior profile. |
-| `recording.duration` | `hcm:ObservationWindow` + `hcm:durationHours` | object + `xsd:decimal` | Emitted only when duration is parseable and greater than 24 hours. |
+| `recording.duration` | system `dcterms:temporal` `hcm:ObservationWindow`; window `hcm:durationHours` | object + `xsd:decimal` | Emitted only when duration is parseable and greater than 24 hours. |
 | `recording.mode` | observation-window `dcterms:type` | datatype literal | UI controlled values, still literal. |
 | `recording.extendable` | `hcm:isExtendable` | datatype literal, `xsd:boolean` | Emitted only for yes/no values. |
 | `dataOutput.sampling` | `hcm:hasSamplingRate` on `hcm:DataProduct` | datatype literal | Free-text rate. |
