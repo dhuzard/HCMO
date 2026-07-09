@@ -2,9 +2,9 @@
 
 - Pitfall scan: OOPS! (report + how pitfalls were addressed).
 - FAIRness: FOOPS! v0.4.0 on `ontology/v2/hcmo-v2-merged-clean.owl`
-  improved from 0.49444446 to 0.92222226 after adding ontology-header FAIR
-  metadata. Remaining findings: no canonical logo metadata and 0/111 v2 terms
-  with definitions. See `docs/paper/FOOPS-REPORT-2026-07-09.md`.
+  improved from 0.49444446 to 0.9888889 after adding ontology-header FAIR
+  metadata and v2 term definitions. Remaining finding: no canonical logo
+  metadata. See `docs/paper/FOOPS-REPORT-2026-07-09.md`.
 - Logical quality: Protege/HermiT pass on
   `ontology/v2/hcmo-v2-merged-clean.owl` — 32 classes loaded, 0 inconsistent
   classes, no `UNKNOWN:` IRIs. See `docs/paper/PROTEGE-REASONER.md`.

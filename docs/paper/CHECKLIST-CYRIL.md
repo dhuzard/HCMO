@@ -16,9 +16,9 @@
 |---|---|
 | Total | 44 |
 | ✅ Fait | 25 |
-| 🟡 En cours | 7 |
+| 🟡 En cours | 8 |
 | ⏸ Reporté | 1 |
-| ⛔ Bloqué (T0) | 4 |
+| ⛔ Bloqué (T0) | 3 |
 | ⬜ À faire | 7 |
 | Obligatoires restantes (non-Fait) | ~16 |
 
@@ -36,16 +36,16 @@
 | 8 | Related work | Guidelines / best practices publication ontologie | Oui | ✅ | `CALL-REQUIREMENTS.md`, `references.bib` | WIDOCO, OOPS!, FAIR, w3id, Zenodo, LOT/SAMOD. |
 | 9 | Related work | Tableau critères ESWC vs ISWC | Oui | ✅ | `README.md`, `CALL-REQUIREMENTS.md` | Format, anonymat, pages, availability. |
 | 10 | Ontologie | Stabiliser classes & propriétés centrales | Oui | 🟡 | `ontology/v2/`, `docs/paper/MODULE-MAP.md` | v2 5 modules construit et placeholders nettoyés; reste à promouvoir officiellement puis traiter unités/définitions. |
-| 11 | Ontologie | Labels + commentaires entités principales | Oui | ⛔ | `AUDIT.md` | **0 `rdfs:comment`** dans le dépôt actuel → V1. |
+| 11 | Ontologie | Labels + commentaires entités principales | Oui | 🟡 | `ontology/v2/modules/*.ttl`, `docs/paper/FOOPS-REPORT-2026-07-09.md` | v2: 111/111 termes évalués par FOOPS ont maintenant un `rdfs:comment`; revue co-auteurs + promotion live encore nécessaires. |
 | 12 | Ontologie | Vérifier modules Turtle/OWL exportés | Oui | ✅ | `ontology/v2/README.md`, `ontology/v2/hcmo-v2-merged-clean.owl`, `docs/paper/PROTEGE-REASONER.md` | Modules v2 + clean OWL parsés; HermiT passe avec 32 classes et 0 classe incohérente. Live build/CI à repointer à la promotion. |
 | 13 | Ontologie | Nettoyer termes Chowlk temporaires | Oui | ✅ | `docs/paper/PLACEHOLDER-MAP.md`, `ontology/v2/modules/hcm-placeholders.ttl` | Placeholders actifs v2 réduits à 0; cleanup final appliqué et documenté. Validation co-auteurs encore utile avant promotion. |
 | 14 | Ontologie | Exemples d'instances représentatifs | Oui | 🟡 | `examples/user-submission.ttl`, `examples/dvc-tecniplast.ttl`, `docs/hcm-systems/FORM-FIELD-MAPPING.md` | Formulaire + DVC organisés en triples RDF: `rdf:type`, liens instance-instance, et valeurs littérales. Il reste à produire les exemples SHACL v2 complets après promotion. |
 | 15 | Ontologie | Requêtes SPARQL des competency questions | Oui | ⛔ | `sections/03-requirements.md` | CQ1–CQ6 définies; requêtes après T0 (renvoient 0 actuellement). |
 | 16 | Ontologie | SHACL valides/invalides | Oui | ⏸ | `docs/paper/PROTEGE-REASONER.md` | Reporté après décision de réunion: d'abord raisonneur OWL dans Protégé sur v2; SHACL seulement après gel/promotion des termes v2. |
-| 17 | Ontologie | Lancer OOPS! + FOOPS! FAIR ontology assessment + noter problèmes | Oui | 🟡 | `docs/paper/FOOPS-REPORT-2026-07-09.md`, `sections/06-evaluation.md` | FOOPS v0.4.0 lancé sur le clean v2: score 0.49444446 → 0.92222226 après métadonnées. Reste OOPS!, plus les gaps FOOPS logo et définitions (111 termes). |
+| 17 | Ontologie | Lancer OOPS! + FOOPS! FAIR ontology assessment + noter problèmes | Oui | 🟡 | `docs/paper/FOOPS-REPORT-2026-07-09.md`, `sections/06-evaluation.md` | FOOPS v0.4.0 lancé sur le clean v2: score 0.49444446 → 0.9888889 après métadonnées + définitions. Reste OOPS! et le logo FOOPS. |
 | 18 | Évaluation | Définir les competency questions de l'article | Oui | ✅ | `sections/03-requirements.md` | CQ1–CQ6 + mapping R1–R8. |
 | 19 | Évaluation | Chaque requête répond à une CQ | Oui | ⛔ | — | Bloqué T0 (besoin de la V1 + requêtes). |
-| 20 | Évaluation | Bilan OOPS!/FOOPS!/SHACL/WIDOCO/HermiT | Oui | 🟡 | `sections/06-evaluation.md`, `docs/paper/PROTEGE-REASONER.md`, `docs/paper/FOOPS-REPORT-2026-07-09.md` | WIDOCO ✅; HermiT ✅; FOOPS ✅ (0.92222226 après correction metadata); OOPS! à exécuter; SHACL reporté jusqu'au gel/promotion des termes v2. |
+| 20 | Évaluation | Bilan OOPS!/FOOPS!/SHACL/WIDOCO/HermiT | Oui | 🟡 | `sections/06-evaluation.md`, `docs/paper/PROTEGE-REASONER.md`, `docs/paper/FOOPS-REPORT-2026-07-09.md` | WIDOCO ✅; HermiT ✅; FOOPS ✅ (0.9888889; seul logo manquant); OOPS! à exécuter; SHACL reporté jusqu'au gel/promotion des termes v2. |
 | 21 | Ontologie | Documentation WIDOCO | Oui | ✅ | `README.md` → <https://dhuzard.github.io/HCMO/index-en.html> | Lien ajouté au README. |
 | 22 | Availability | Dépôt GitHub propre & compréhensible | Oui | 🟡 | `README.md`, `ontology/v2/README.md`, `docs/paper/TODO.md` | README enrichi; v2 documentée; nettoyage global et promotion restent en cours. |
 | 23 | Availability | Release versionnée figée | Oui | ⬜ | `TODO.md` (T9) | À cadrer sur la version citée. |
@@ -79,7 +79,8 @@ only sections still incomplete; §6 now has HermiT and FOOPS evidence, while
 OOPS! plus final SHACL/CQ claims still depend on v2 promotion.
 
 ## The remaining blocker
-Items **11, 15, 19, 42** still wait on the promoted clean ontology and the
-paper-ready v2 release alignment. Item **13** is done, HermiT and FOOPS evidence
-are recorded, and item **17** remains in progress until OOPS! is also archived.
-Item **27 (w3id)** is live but reopened as a v2 release follow-up.
+Items **15, 19, 42** still wait on the promoted clean ontology and the
+paper-ready v2 release alignment. Item **11** now has v2 definitions but still
+needs co-author review and promotion. Item **13** is done, HermiT and FOOPS
+evidence are recorded, and item **17** remains in progress until OOPS! is also
+archived. Item **27 (w3id)** is live but reopened as a v2 release follow-up.

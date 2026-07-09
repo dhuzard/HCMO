@@ -50,16 +50,16 @@ ontology/v2/
     hcm-env.ttl           # profiles, specs, environmental properties
     hcm-tech.ttl          # Sensor/Hardware/Software/TimeSeries (NEW namespace …/hcm/tech#)
     hcm-placeholders.ttl  # empty quarantine file; no active UNKNOWN terms
-  hcmo-v2-merged.ttl      # merged graph (587 triples) for quick review
-  hcmo-v2-merged-clean.ttl # BioPortal Turtle graph (587 triples)
-  hcmo-v2-merged-clean.owl # BioPortal RDF/XML graph (587 triples)
+  hcmo-v2-merged.ttl      # merged graph (698 triples) for quick review
+  hcmo-v2-merged-clean.ttl # BioPortal Turtle graph (698 triples)
+  hcmo-v2-merged-clean.owl # BioPortal RDF/XML graph (698 triples)
   README.md               # this file
 ```
 
-The generated merged/clean graphs currently contain 587 triples after adding
-FAIR ontology-header metadata. Term counts (HCMO + reused scaffolding): core 7
-cls / bio 4 / obs 10 / env 6 / tech 5. No active `UNKNOWN:` placeholders remain
-in v2. All files parse clean.
+The generated merged/clean graphs currently contain 698 triples after adding
+FAIR ontology-header metadata and `rdfs:comment` definitions. Term counts (HCMO
++ reused scaffolding): core 7 cls / bio 4 / obs 10 / env 6 / tech 5. No active
+`UNKNOWN:` placeholders remain in v2. All files parse clean.
 
 ## Still pending (not addressed by re-modularisation)
 
