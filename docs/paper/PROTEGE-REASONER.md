@@ -60,7 +60,7 @@ Current command-line result:
 
 | Check | Result |
 |---|---:|
-| RDF triples in clean OWL | 768 |
+| RDF triples in clean OWL | 803 |
 | Declared OWL classes | 33 |
 | Object properties | 46 |
 | Datatype properties | 54 |

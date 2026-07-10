@@ -116,7 +116,9 @@ hcm:hasEnrichmentRequirement a owl:DatatypeProperty ;
 
 hcm:hasCapacity a owl:DatatypeProperty ;
     rdfs:label "has capacity" ;
-    rdfs:comment "Records the intended capacity of an enclosure, such as the number of animals it can house." .
+    rdfs:comment "Records the intended capacity of an enclosure, such as the number of animals it can house." ;
+    rdfs:domain hcm:Enclosure ;
+    rdfs:range xsd:string .
 
 hcm:hasDescription a owl:DatatypeProperty ;
     rdfs:label "has description" ;
@@ -135,11 +137,14 @@ hcm:hasName a owl:DatatypeProperty ;
 
 hcm:isOccupied a owl:DatatypeProperty ;
     rdfs:label "is occupied" ;
-    rdfs:comment "Indicates whether an enclosure is currently occupied by animals." .
+    rdfs:comment "Indicates whether an enclosure is currently occupied by animals." ;
+    rdfs:domain hcm:MonitoredEnclosure ;
+    rdfs:range xsd:boolean .
 
 hcm:isOperational a owl:DatatypeProperty ;
     rdfs:label "is operational" ;
-    rdfs:comment "Indicates whether a monitored enclosure or monitoring component is currently operational." .
+    rdfs:comment "Indicates whether a monitored enclosure or monitoring component is currently operational." ;
+    rdfs:range xsd:boolean .
 
 semts:DataDimension a owl:Class ;
     rdfs:label "Data Dimension" ;
@@ -226,7 +231,8 @@ hcm:EnclosureDimensions a owl:Class ;
 
 hcm:hasDimUnit a owl:DatatypeProperty ;
     rdfs:label "has dim unit" ;
-    rdfs:comment "Records the unit used for enclosure dimension values." .
+    rdfs:comment "Records the unit used for enclosure dimension values." ;
+    rdfs:range xsd:string .
 
 hcm:hasDimensions a owl:ObjectProperty ;
     rdfs:label "has dimensions" ;
@@ -236,7 +242,8 @@ hcm:hasDimensions a owl:ObjectProperty ;
 
 hcm:hasEnclosureIdentifier a owl:DatatypeProperty ;
     rdfs:label "has enclosure identifier" ;
-    rdfs:comment "Records the identifier assigned to an enclosure or monitored enclosure." .
+    rdfs:comment "Records the identifier assigned to an enclosure or monitored enclosure." ;
+    rdfs:range xsd:string .
 
 hcm:hasEnrichment a owl:ObjectProperty ;
     rdfs:label "has enrichment" ;
@@ -254,7 +261,8 @@ hcm:hasFacilityType a owl:DatatypeProperty ;
 
 hcm:hasFloorArea a owl:DatatypeProperty ;
     rdfs:label "has floor area" ;
-    rdfs:comment "Records the floor area value for an enclosure or dimensions record." .
+    rdfs:comment "Records the floor area value for an enclosure or dimensions record." ;
+    rdfs:range xsd:decimal .
 
 hcm:hasFoodRequirement a owl:DatatypeProperty ;
     rdfs:label "has food requirement" ;
@@ -262,11 +270,13 @@ hcm:hasFoodRequirement a owl:DatatypeProperty ;
 
 hcm:hasHeight a owl:DatatypeProperty ;
     rdfs:label "has height" ;
-    rdfs:comment "Records the height value of an enclosure or dimensions record." .
+    rdfs:comment "Records the height value of an enclosure or dimensions record." ;
+    rdfs:range xsd:decimal .
 
 hcm:hasLength a owl:DatatypeProperty ;
     rdfs:label "has length" ;
-    rdfs:comment "Records the length value of an enclosure or dimensions record." .
+    rdfs:comment "Records the length value of an enclosure or dimensions record." ;
+    rdfs:range xsd:decimal .
 
 hcm:hasManufacturer a owl:DatatypeProperty ;
     rdfs:label "has manufacturer" ;
@@ -282,7 +292,8 @@ hcm:hasWaterRequirement a owl:DatatypeProperty ;
 
 hcm:hasWidth a owl:DatatypeProperty ;
     rdfs:label "has width" ;
-    rdfs:comment "Records the width value of an enclosure or dimensions record." .
+    rdfs:comment "Records the width value of an enclosure or dimensions record." ;
+    rdfs:range xsd:decimal .
 
 hcm:locatedIn a owl:ObjectProperty ;
     rdfs:label "located in" ;

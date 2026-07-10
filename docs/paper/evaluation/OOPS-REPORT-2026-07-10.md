@@ -11,7 +11,7 @@ the clean Protege/BioPortal artifact with no active `UNKNOWN:` placeholders.
 
 ## Validation Context
 
-- HermiT on `ontology/v2/hcmo-v2-merged-clean.owl`: 768 triples, 33 classes,
+- HermiT on `ontology/v2/hcmo-v2-merged-clean.owl`: 803 triples, 33 classes,
   0 `UNKNOWN:` IRIs, 0 inconsistent classes.
 - `tooling/validate.py`: PASS.
 - FOOPS: reported as 1.0 after metadata, definitions, and logo updates.
@@ -21,7 +21,7 @@ the clean Protege/BioPortal artifact with no active `UNKNOWN:` placeholders.
 | Code | Pitfall | Importance | Affected elements | Initial interpretation |
 |---|---|---:|---:|---|
 | P10 | Missing disjointness | Important | n/a | Expected modeling decision; do not add broad disjointness without review. |
-| P11 | Missing domain or range in properties | Important | 94 | Real but should be handled carefully; domain/range axioms affect inference. |
+| P11 | Missing domain or range in properties | Important | 87 | Real but should be handled carefully; domain/range axioms affect inference. |
 | P13 | Inverse relationships not explicitly declared | Minor | 46 | Mostly optional; add inverses only when useful and semantically safe. |
 | P22 | Using different naming conventions | Minor | 1 group | Low-priority warning from mixed local names. |
 
@@ -46,6 +46,8 @@ driven filler axioms.
   using `owl:equivalentProperty`.
 - P34 removed by declaring `schema:Person` as an `owl:Class` and declaring
   `schema:name` as the metadata property used for contributors.
+- P11 reduced from 94 to 87 by adding conservative domain/range axioms only
+  where they do not distort HermiT classification.
 
 ## Remaining Findings and Why They Are Not Bulk-fixed
 
@@ -53,7 +55,7 @@ driven filler axioms.
   disjointness only where domain experts are certain that classes cannot
   overlap. Adding broad disjointness just to satisfy OOPS would make the model
   brittle.
-- P11: OOPS still reports 94 properties without both domain and range. This is
+- P11: OOPS still reports 87 properties without both domain and range. This is
   a real modeling task, but it should be handled in a dedicated domain/range
   policy pass. Adding generic `owl:Thing` domains/ranges would make OOPS quieter
   without improving HCMO.

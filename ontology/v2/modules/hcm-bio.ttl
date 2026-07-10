@@ -45,15 +45,18 @@ hcm-bio:belongsToGroup a owl:ObjectProperty ;
 
 hcm-bio:hasBiologicalSex a owl:DatatypeProperty ;
     rdfs:label "has biological sex" ;
-    rdfs:comment "Records the biological sex reported for a subject." .
+    rdfs:comment "Records the biological sex reported for a subject." ;
+    rdfs:range xsd:string .
 
 hcm-bio:hasDateOfBirth a owl:DatatypeProperty ;
     rdfs:label "has date of birth" ;
-    rdfs:comment "Records the date of birth reported for a subject." .
+    rdfs:comment "Records the date of birth reported for a subject." ;
+    rdfs:range xsd:string .
 
 hcm-bio:hasHealthStatusObservation a owl:ObjectProperty ;
     rdfs:label "has health status observation" ;
-    rdfs:comment "Relates a subject to a health-status observation about that subject." .
+    rdfs:comment "Relates a subject to a health-status observation about that subject." ;
+    rdfs:range hcm-obs:HealthStatusObservation .
 
 hcm-bio:hasHousingAssignment a owl:ObjectProperty ;
     rdfs:label "has housing assignment" ;
@@ -62,11 +65,13 @@ hcm-bio:hasHousingAssignment a owl:ObjectProperty ;
 
 hcm-bio:hasMember a owl:ObjectProperty ;
     rdfs:label "has member" ;
-    rdfs:comment "Relates an experimental group to a subject that is a member of the group." .
+    rdfs:comment "Relates an experimental group to a subject that is a member of the group." ;
+    rdfs:range hcm-bio:Subject .
 
 hcm-bio:hasSpecies a owl:DatatypeProperty ;
     rdfs:label "has species" ;
-    rdfs:comment "Records the species name or identifier reported for a subject." .
+    rdfs:comment "Records the species name or identifier reported for a subject." ;
+    rdfs:range xsd:string .
 
 hcm-bio:hasSocialRequirement a owl:DatatypeProperty ;
     rdfs:label "has social requirement" ;
@@ -74,7 +79,8 @@ hcm-bio:hasSocialRequirement a owl:DatatypeProperty ;
 
 hcm-bio:hasStrain a owl:DatatypeProperty ;
     rdfs:label "has strain" ;
-    rdfs:comment "Records the strain, line, or breed reported for a subject." .
+    rdfs:comment "Records the strain, line, or breed reported for a subject." ;
+    rdfs:range xsd:string .
 
 hcm-bio:hasTreatment a owl:DatatypeProperty ;
     rdfs:label "has treatment" ;
@@ -82,9 +88,11 @@ hcm-bio:hasTreatment a owl:DatatypeProperty ;
 
 hcm-bio:hasWeightObservation a owl:ObjectProperty ;
     rdfs:label "has weight observation" ;
-    rdfs:comment "Relates a subject to a weight observation about that subject." .
+    rdfs:comment "Relates a subject to a weight observation about that subject." ;
+    rdfs:range hcm-obs:WeightObservation .
 
 hcm-bio:hasBehaviorObservation a owl:ObjectProperty ;
     rdfs:label "has behavior observation" ;
-    rdfs:comment "Relates a subject to a behavior observation about that subject." .
+    rdfs:comment "Relates a subject to a behavior observation about that subject." ;
+    rdfs:range hcm-obs:BehaviorObservation .
 

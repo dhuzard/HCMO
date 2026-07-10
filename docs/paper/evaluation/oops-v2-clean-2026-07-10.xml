@@ -10,7 +10,7 @@
 <oops:Code>P11</oops:Code><oops:Name>Missing domain or range in properties</oops:Name>
 <oops:Description>Object and/or datatype properties without domain or range (or none of them) are included in the ontology. 	</oops:Description>
 <oops:Importance>Important</oops:Importance>
-<oops:NumberAffectedElements>94</oops:NumberAffectedElements>
+<oops:NumberAffectedElements>87</oops:NumberAffectedElements>
 <oops:Affects>
 <oops:AffectedElement>https://w3id.org/semts/ontology/120#generated</oops:AffectedElement>
 <oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/env#OxygenConcentration</oops:AffectedElement>
@@ -54,9 +54,7 @@
 <oops:AffectedElement>http://www.w3.org/ns/sosa/hasResult</oops:AffectedElement>
 <oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/bio#hasBehaviorObservation</oops:AffectedElement>
 <oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm#hasDescription</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/tech#hasSensorType</oops:AffectedElement>
 <oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/env#hasLightPhaseDuration</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/tech#hasSensorIdentifier</oops:AffectedElement>
 <oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/tech#hasFileFormat</oops:AffectedElement>
 <oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/obs#hasHealthStatusTerm</oops:AffectedElement>
 <oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm#hasFacilityType</oops:AffectedElement>
@@ -65,7 +63,6 @@
 <oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm#hasFoodRequirement</oops:AffectedElement>
 <oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/env#hasDuskDuration</oops:AffectedElement>
 <oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm#hasManufacturer</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm#hasCapacity</oops:AffectedElement>
 <oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/tech#hasModelNumber</oops:AffectedElement>
 <oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm#hasEnrichmentRequirement</oops:AffectedElement>
 <oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/bio#hasSpecies</oops:AffectedElement>
@@ -78,11 +75,8 @@
 <oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/bio#hasDateOfBirth</oops:AffectedElement>
 <oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/tech#hasStoragePath</oops:AffectedElement>
 <oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/bio#hasTreatment</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/tech#isCalibrated</oops:AffectedElement>
 <oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/env#hasDarkPhaseDuration</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/tech#hasSamplingRate</oops:AffectedElement>
 <oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm#hasLength</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/tech#hasSensorTechnology</oops:AffectedElement>
 <oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/tech#hasFirmware</oops:AffectedElement>
 <oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm#hasUnit</oops:AffectedElement>
 <oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/env#hasGasType</oops:AffectedElement>
@@ -94,10 +88,9 @@
 <oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/obs#hasConfidenceScore</oops:AffectedElement>
 <oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm#hasFloorArea</oops:AffectedElement>
 <oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/env#hasDarkPhaseStart</oops:AffectedElement>
-<oops:AffectedElement>http://www.w3.org/ns/sosa/resultTime</oops:AffectedElement>
 <oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm#hasDimUnit</oops:AffectedElement>
+<oops:AffectedElement>http://www.w3.org/ns/sosa/resultTime</oops:AffectedElement>
 <oops:AffectedElement>https://w3id.org/semts/ontology/120#dimensionUnit</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm#isOccupied</oops:AffectedElement>
 <oops:AffectedElement>https://w3id.org/semts/ontology/120#title</oops:AffectedElement>
 <oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/obs#hasInterval</oops:AffectedElement>
 <oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/bio#hasSocialRequirement</oops:AffectedElement>

@@ -42,10 +42,10 @@
 | 14 | Ontologie | Exemples d'instances représentatifs | Oui | 🟡 | `examples/user-submission.ttl`, `examples/dvc-tecniplast.ttl`, `docs/hcm-systems/FORM-FIELD-MAPPING.md` | Formulaire + DVC organisés en triples RDF: `rdf:type`, liens instance-instance, et valeurs littérales. Il reste à produire les exemples SHACL v2 complets après promotion. |
 | 15 | Ontologie | Requêtes SPARQL des competency questions | Oui | ⛔ | `sections/03-requirements.md` | CQ1–CQ6 définies; requêtes après T0 (renvoient 0 actuellement). |
 | 16 | Ontologie | SHACL valides/invalides | Oui | ⏸ | `docs/paper/PROTEGE-REASONER.md` | Reporté après décision de réunion: d'abord raisonneur OWL dans Protégé sur v2; SHACL seulement après gel/promotion des termes v2. |
-| 17 | Ontologie | Lancer OOPS! + FOOPS! FAIR ontology assessment + noter problèmes | Oui | 🟡 | `docs/paper/FOOPS-REPORT-2026-07-09.md`, `docs/paper/evaluation/OOPS-REPORT-2026-07-10.md`, `sections/06-evaluation.md` | FOOPS v0.4.0 lancé sur le clean v2: score 0.49444446 → 1.0 après métadonnées, définitions et logo. OOPS! relancé post-FOOPS; P04/P08/P12/P34 corrigés, P10/P11/P13/P22 documentés. |
+| 17 | Ontologie | Lancer OOPS! + FOOPS! FAIR ontology assessment + noter problèmes | Oui | 🟡 | `docs/paper/FOOPS-REPORT-2026-07-09.md`, `docs/paper/evaluation/OOPS-REPORT-2026-07-10.md`, `sections/06-evaluation.md` | FOOPS v0.4.0 lancé sur le clean v2: score 0.49444446 → 1.0 après métadonnées, définitions et logo. OOPS! relancé post-FOOPS; P04/P08/P12/P34 corrigés, P11 réduit de 94 à 87, P10/P11/P13/P22 documentés. |
 | 18 | Évaluation | Définir les competency questions de l'article | Oui | ✅ | `sections/03-requirements.md` | CQ1–CQ6 + mapping R1–R8. |
 | 19 | Évaluation | Chaque requête répond à une CQ | Oui | ⛔ | — | Bloqué T0 (besoin de la V1 + requêtes). |
-| 20 | Évaluation | Bilan OOPS!/FOOPS!/SHACL/WIDOCO/HermiT | Oui | 🟡 | `sections/06-evaluation.md`, `docs/paper/PROTEGE-REASONER.md`, `docs/paper/FOOPS-REPORT-2026-07-09.md`, `docs/paper/evaluation/OOPS-REPORT-2026-07-10.md` | WIDOCO ✅; HermiT ✅; FOOPS ✅ (1.0); OOPS! ✅ report archived, findings to triage; SHACL reporté jusqu'au gel/promotion des termes v2. |
+| 20 | Évaluation | Bilan OOPS!/FOOPS!/SHACL/WIDOCO/HermiT | Oui | 🟡 | `sections/06-evaluation.md`, `docs/paper/PROTEGE-REASONER.md`, `docs/paper/FOOPS-REPORT-2026-07-09.md`, `docs/paper/evaluation/OOPS-REPORT-2026-07-10.md` | WIDOCO ✅; HermiT ✅; FOOPS ✅ (1.0); OOPS! ✅ report archived, safe fixes applied, P11 reduced to 87; SHACL reporté jusqu'au gel/promotion des termes v2. |
 | 21 | Ontologie | Documentation WIDOCO | Oui | ✅ | `README.md` → <https://dhuzard.github.io/HCMO/index-en.html> | Lien ajouté au README. |
 | 22 | Availability | Dépôt GitHub propre & compréhensible | Oui | 🟡 | `README.md`, `ontology/v2/README.md`, `docs/paper/TODO.md` | README enrichi; v2 documentée; nettoyage global et promotion restent en cours. |
 | 23 | Availability | Release versionnée figée | Oui | ⬜ | `TODO.md` (T9) | À cadrer sur la version citée. |
@@ -75,12 +75,13 @@
 Abstract + §1 Introduction + §2 Related work + §3 Requirements + §5
 Engineering/Availability + §7 Impact + §8 Conclusion are **drafted** in
 `docs/paper/sections/`. **§4 Resource description** and **§6 Evaluation** are the
-only sections still incomplete; §6 now has HermiT and FOOPS evidence, while
-OOPS! plus final SHACL/CQ claims still depend on v2 promotion.
+only sections still incomplete; §6 now has HermiT, FOOPS, and OOPS evidence,
+while final SHACL/CQ claims still depend on v2 promotion.
 
 ## The remaining blocker
 Items **15, 19, 42** still wait on the promoted clean ontology and the
 paper-ready v2 release alignment. Item **11** now has v2 definitions but still
-needs co-author review and promotion. Item **13** is done, HermiT and FOOPS
-evidence are recorded, and item **17** remains in progress until OOPS! is also
-archived. Item **27 (w3id)** is live but reopened as a v2 release follow-up.
+needs co-author review and promotion. Item **13** is done, HermiT, FOOPS, and
+OOPS evidence are recorded, and item **17** remains in progress for the
+remaining OOPS modeling-policy findings. Item **27 (w3id)** is live but reopened
+as a v2 release follow-up.

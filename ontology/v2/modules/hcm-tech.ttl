@@ -6,6 +6,7 @@
 @prefix hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 hcm-tech:Hardware a owl:Class ;
     rdfs:label "Hardware" ;
@@ -55,19 +56,27 @@ hcm-tech:hasProtocol a owl:DatatypeProperty ;
 
 hcm-tech:hasSamplingRate a owl:DatatypeProperty ;
     rdfs:label "has sampling rate" ;
-    rdfs:comment "Records the rate at which a sensor or data stream is sampled." .
+    rdfs:comment "Records the rate at which a sensor or data stream is sampled." ;
+    rdfs:domain hcm-tech:Sensor ;
+    rdfs:range xsd:string .
 
 hcm-tech:hasSensorIdentifier a owl:DatatypeProperty ;
     rdfs:label "has sensor identifier" ;
-    rdfs:comment "Records an identifier assigned to a sensor." .
+    rdfs:comment "Records an identifier assigned to a sensor." ;
+    rdfs:domain hcm-tech:Sensor ;
+    rdfs:range xsd:string .
 
 hcm-tech:hasSensorTechnology a owl:DatatypeProperty ;
     rdfs:label "has sensor technology" ;
-    rdfs:comment "Records the sensing technology or modality used by a sensor." .
+    rdfs:comment "Records the sensing technology or modality used by a sensor." ;
+    rdfs:domain hcm-tech:Sensor ;
+    rdfs:range xsd:string .
 
 hcm-tech:hasSensorType a owl:DatatypeProperty ;
     rdfs:label "has sensor type" ;
-    rdfs:comment "Records the functional type or category of a sensor." .
+    rdfs:comment "Records the functional type or category of a sensor." ;
+    rdfs:domain hcm-tech:Sensor ;
+    rdfs:range xsd:string .
 
 hcm-tech:hasStoragePath a owl:DatatypeProperty ;
     rdfs:label "has storage path" ;
@@ -79,7 +88,9 @@ hcm-tech:hasVersion a owl:DatatypeProperty ;
 
 hcm-tech:isCalibrated a owl:DatatypeProperty ;
     rdfs:label "is calibrated" ;
-    rdfs:comment "Indicates whether a sensor or device has been calibrated." .
+    rdfs:comment "Indicates whether a sensor or device has been calibrated." ;
+    rdfs:domain hcm-tech:Sensor ;
+    rdfs:range xsd:boolean .
 
 hcm-tech:communicatesWith a owl:ObjectProperty ;
     rdfs:label "communicates with" ;
@@ -100,7 +111,8 @@ hcm-tech:monitoredBy a owl:ObjectProperty ;
 
 hcm-tech:installedIn a owl:ObjectProperty ;
     rdfs:label "installed in" ;
-    rdfs:comment "Relates a sensor or technical component to the monitored enclosure or setup in which it is installed." .
+    rdfs:comment "Relates a sensor or technical component to the monitored enclosure or setup in which it is installed." ;
+    rdfs:range hcm:MonitoredEnclosure .
 
 hcm-tech:runsOn a owl:ObjectProperty ;
     rdfs:label "runs on" ;

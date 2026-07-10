@@ -94,7 +94,8 @@ hcm-obs:WeightObservation a owl:Class ;
 
 hcm-obs:hasBehaviorType a owl:DatatypeProperty ;
     rdfs:label "has behavior type" ;
-    rdfs:comment "Records the behavior type or behavior category associated with a behavior observation or result." .
+    rdfs:comment "Records the behavior type or behavior category associated with a behavior observation or result." ;
+    rdfs:range xsd:string .
 
 hcm-obs:hasCondition a owl:ObjectProperty ;
     rdfs:label "has condition" ;
@@ -102,11 +103,13 @@ hcm-obs:hasCondition a owl:ObjectProperty ;
 
 hcm-obs:hasConfidenceScore a owl:DatatypeProperty ;
     rdfs:label "has confidence score" ;
-    rdfs:comment "Records a numeric confidence score associated with an observation or inferred result." .
+    rdfs:comment "Records a numeric confidence score associated with an observation or inferred result." ;
+    rdfs:range xsd:decimal .
 
 hcm-obs:hasHealthStatusTerm a owl:DatatypeProperty ;
     rdfs:label "has health status term" ;
-    rdfs:comment "Records a textual or coded health-status term associated with a health-status observation." .
+    rdfs:comment "Records a textual or coded health-status term associated with a health-status observation." ;
+    rdfs:range xsd:string .
 
 hcm-obs:hasInterval a owl:DatatypeProperty ;
     rdfs:label "has interval" ;
@@ -114,7 +117,8 @@ hcm-obs:hasInterval a owl:DatatypeProperty ;
 
 hcm-obs:hasNumericValue a owl:DatatypeProperty ;
     rdfs:label "has numeric value" ;
-    rdfs:comment "Records the numeric value of a quantity result or measurement." .
+    rdfs:comment "Records the numeric value of a quantity result or measurement." ;
+    rdfs:range xsd:decimal .
 
 hcm-obs:occursIn a owl:ObjectProperty ;
     rdfs:label "occurs in" ;
@@ -126,7 +130,8 @@ hcm-obs:QuantityValue a owl:Class ;
 
 hcm-obs:hasCategory a owl:DatatypeProperty ;
     rdfs:label "has category" ;
-    rdfs:comment "Records the category assigned to a categorical observation or result." .
+    rdfs:comment "Records the category assigned to a categorical observation or result." ;
+    rdfs:range xsd:string .
 
 hcm-obs:hasResult a owl:ObjectProperty ;
     rdfs:label "has result" ;
