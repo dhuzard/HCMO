@@ -6,6 +6,7 @@
 @prefix hcm-obs: <https://w3id.org/hcmo/ontology/hcm/obs#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 hcm-bio:ExperimentalGroup a owl:Class ;
     rdfs:label "Experimental Group" ;
@@ -13,11 +14,17 @@ hcm-bio:ExperimentalGroup a owl:Class ;
 
 hcm-bio:HousingAssignment a owl:Class ;
     rdfs:label "Housing Assignment" ;
-    rdfs:comment "A record assigning a subject or group to an enclosure in a study or housing context." .
+    rdfs:comment "A record assigning a subject or group to an enclosure in a study or housing context." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty hcm-bio:assignedToEnclosure ;
+            owl:someValuesFrom hcm:MonitoredEnclosure ] .
 
 hcm-bio:StudyFactors a owl:Class ;
     rdfs:label "Study Factors" ;
-    rdfs:comment "A collection of experimental or husbandry factors that may affect subjects, housing, or observations." .
+    rdfs:comment "A collection of experimental or husbandry factors that may affect subjects, housing, or observations." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty hcm-bio:hasTreatment ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ] .
 
 hcm-bio:Subject a owl:Class ;
     rdfs:label "Subject" ;
@@ -28,7 +35,9 @@ hcm-bio:Subject a owl:Class ;
 
 hcm-bio:assignedToEnclosure a owl:ObjectProperty ;
     rdfs:label "assigned to enclosure" ;
-    rdfs:comment "Relates a housing assignment to the enclosure or monitored enclosure involved in that assignment." .
+    rdfs:comment "Relates a housing assignment to the enclosure or monitored enclosure involved in that assignment." ;
+    rdfs:domain hcm-bio:HousingAssignment ;
+    rdfs:range hcm:MonitoredEnclosure .
 
 hcm-bio:belongsToGroup a owl:ObjectProperty ;
     rdfs:label "belongs to group" ;
@@ -48,7 +57,8 @@ hcm-bio:hasHealthStatusObservation a owl:ObjectProperty ;
 
 hcm-bio:hasHousingAssignment a owl:ObjectProperty ;
     rdfs:label "has housing assignment" ;
-    rdfs:comment "Relates a subject or group to a housing assignment record." .
+    rdfs:comment "Relates a subject or group to a housing assignment record." ;
+    rdfs:range hcm-bio:HousingAssignment .
 
 hcm-bio:hasMember a owl:ObjectProperty ;
     rdfs:label "has member" ;

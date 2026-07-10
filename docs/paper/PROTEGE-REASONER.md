@@ -17,7 +17,7 @@ validation pass.
 Current Protege result: Protege Desktop 5.6.9 opens the clean artifact and
 reports successful ontology/imports-closure loading in its log.
 
-Current automated result: the clean artifact loads 32 classes, contains no
+Current automated result: the clean artifact loads 33 classes, contains no
 `UNKNOWN:` IRIs, and HermiT reports 0 inconsistent classes.
 
 ## Protocol
@@ -60,20 +60,21 @@ Current command-line result:
 
 | Check | Result |
 |---|---:|
-| RDF triples in clean OWL | 700 |
-| Declared OWL classes | 32 |
+| RDF triples in clean OWL | 768 |
+| Declared OWL classes | 33 |
 | Object properties | 46 |
-| Datatype properties | 53 |
+| Datatype properties | 54 |
 | `UNKNOWN:` IRIs | 0 |
-| Classes loaded by HermiT | 32 |
+| Classes loaded by HermiT | 33 |
 | Inconsistent classes | 0 |
 
 ## Expected current caveats
 
 The former seven v2 placeholders have been resolved in the draft modules and no
 `UNKNOWN:` IRIs remain in either the merged draft or the clean Protege file.
-These changes are applied on the review branch and should be confirmed by
-co-authors before promotion.
+The clean v2 artifact also includes OOPS-driven fixes for untyped
+`schema:Person`, reused-vocabulary annotations, and the `hcm-obs:hasResult` /
+`sosa:hasResult` alignment.
 
 ## Why no SHACL for now
 

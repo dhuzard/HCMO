@@ -50,9 +50,16 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
 owl:versionInfo a owl:AnnotationProperty .
 
 sosa:madeObservation a owl:ObjectProperty ;
-    rdfs:label "made observation" .
+    rdfs:label "made observation" ;
+    rdfs:comment "SOSA relation linking a sensor to an observation it made." .
 
 schema:logo a owl:AnnotationProperty .
+
+schema:name a owl:DatatypeProperty ;
+    rdfs:label "name" ;
+    rdfs:comment "Schema.org property used to record contributor names in HCMO ontology metadata." ;
+    rdfs:domain schema:Person ;
+    rdfs:range xsd:string .
 
 <https://w3id.org/hcmo/ontology/hcm> a owl:Ontology ;
     dc:description "Ontology for home-cage monitoring of laboratory animals" ;
@@ -80,14 +87,6 @@ schema:logo a owl:AnnotationProperty .
     schema:logo <https://raw.githubusercontent.com/dhuzard/HCMO/main/HCMO-logo3.png> ;
     mod:createdWith <https://chowlk.linkeddata.es/> ;
     mod:status "draft" .
-
-hcm:Enclosure a owl:Class ;
-    rdfs:label "Enclosure" ;
-    rdfs:comment "A physical housing enclosure used as part of a home-cage monitoring system." .
-
-hcm:Enrichment a owl:Class ;
-    rdfs:label "Enrichment" ;
-    rdfs:comment "A material, structure, or intervention provided within an enclosure to support animal welfare or experimental conditions." .
 
 hcm:hasCapacity a owl:DatatypeProperty ;
     rdfs:label "has capacity" ;
@@ -119,7 +118,9 @@ hcm:hasFoodRequirement a owl:DatatypeProperty ;
 
 hcm:hasMonitoredAnimals a owl:ObjectProperty ;
     rdfs:label "has monitored animals" ;
-    rdfs:comment "Relates a monitored enclosure to the biological subjects housed or tracked within it." .
+    rdfs:comment "Relates a monitored enclosure to the biological subjects housed or tracked within it." ;
+    rdfs:domain hcm:MonitoredEnclosure ;
+    rdfs:range hcm-bio:Subject .
 
 hcm:hasName a owl:DatatypeProperty ;
     rdfs:label "has name" ;
@@ -134,21 +135,17 @@ hcm:hasWaterRequirement a owl:DatatypeProperty ;
     rdfs:label "has water requirement" ;
     rdfs:comment "Records a textual or coded water-provision requirement for an enclosure or subject group." .
 
-hcm-bio:HousingAssignment a owl:Class ;
-    rdfs:label "Housing Assignment" ;
-    rdfs:comment "A record assigning a subject or group to an enclosure in a study or housing context." .
-
 hcm-bio:StudyFactors a owl:Class ;
     rdfs:label "Study Factors" ;
-    rdfs:comment "A collection of experimental or husbandry factors that may affect subjects, housing, or observations." .
-
-hcm-bio:assignedToEnclosure a owl:ObjectProperty ;
-    rdfs:label "assigned to enclosure" ;
-    rdfs:comment "Relates a housing assignment to the enclosure or monitored enclosure involved in that assignment." .
+    rdfs:comment "A collection of experimental or husbandry factors that may affect subjects, housing, or observations." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm-bio:hasTreatment ] .
 
 hcm-bio:hasHousingAssignment a owl:ObjectProperty ;
     rdfs:label "has housing assignment" ;
-    rdfs:comment "Relates a subject or group to a housing assignment record." .
+    rdfs:comment "Relates a subject or group to a housing assignment record." ;
+    rdfs:range hcm-bio:HousingAssignment .
 
 hcm-bio:hasMember a owl:ObjectProperty ;
     rdfs:label "has member" ;
@@ -158,21 +155,20 @@ hcm-bio:hasSocialRequirement a owl:DatatypeProperty ;
     rdfs:label "has social requirement" ;
     rdfs:comment "Records a social housing or care requirement for a subject or experimental group." .
 
-hcm-bio:hasTreatment a owl:DatatypeProperty ;
-    rdfs:label "has treatment" ;
-    rdfs:comment "Records a treatment, intervention, or experimental condition assigned to a subject or group." .
-
 hcm-env:AmbientTemperature a owl:ObjectProperty ;
     rdfs:label "ambient temperature" ;
-    rdfs:comment "Relates an environmental profile, specification, or observation to the environmental property representing ambient temperature." .
+    rdfs:comment "Relates an environmental profile, specification, or observation to the environmental property representing ambient temperature." ;
+    rdfs:range hcm-env:EnvironmentalProperty .
 
 hcm-env:AmmoniaConcentration a owl:ObjectProperty ;
     rdfs:label "ammonia concentration" ;
-    rdfs:comment "Relates an environmental profile, specification, or observation to the environmental property representing ammonia concentration." .
+    rdfs:comment "Relates an environmental profile, specification, or observation to the environmental property representing ammonia concentration." ;
+    rdfs:range hcm-env:EnvironmentalProperty .
 
 hcm-env:CarbonDioxideConcentration a owl:ObjectProperty ;
     rdfs:label "carbon dioxide concentration" ;
-    rdfs:comment "Relates an environmental profile, specification, or observation to the environmental property representing carbon dioxide concentration." .
+    rdfs:comment "Relates an environmental profile, specification, or observation to the environmental property representing carbon dioxide concentration." ;
+    rdfs:range hcm-env:EnvironmentalProperty .
 
 hcm-env:EnvironmentProfile a owl:Class ;
     rdfs:label "Environment Profile" ;
@@ -187,25 +183,25 @@ hcm-env:EnvironmentProfile a owl:Class ;
             owl:allValuesFrom hcm-env:GasConcentrationProfile ;
             owl:onProperty hcm-env:hasGasConcentrationProfile ] .
 
-hcm-env:EnvironmentalProperty a owl:Class ;
-    rdfs:label "Environmental Property" ;
-    rdfs:comment "An environmental parameter that may be measured, specified, or controlled in a home-cage monitoring context." .
-
 hcm-env:LightIntensity a owl:ObjectProperty ;
     rdfs:label "light intensity" ;
-    rdfs:comment "Relates an environmental profile, specification, or observation to the environmental property representing light intensity." .
+    rdfs:comment "Relates an environmental profile, specification, or observation to the environmental property representing light intensity." ;
+    rdfs:range hcm-env:EnvironmentalProperty .
 
 hcm-env:LightState a owl:ObjectProperty ;
     rdfs:label "light state" ;
-    rdfs:comment "Relates an environmental profile, specification, or observation to the environmental property representing light state." .
+    rdfs:comment "Relates an environmental profile, specification, or observation to the environmental property representing light state." ;
+    rdfs:range hcm-env:EnvironmentalProperty .
 
 hcm-env:OxygenConcentration a owl:ObjectProperty ;
     rdfs:label "oxygen concentration" ;
-    rdfs:comment "Relates an environmental profile, specification, or observation to the environmental property representing oxygen concentration." .
+    rdfs:comment "Relates an environmental profile, specification, or observation to the environmental property representing oxygen concentration." ;
+    rdfs:range hcm-env:EnvironmentalProperty .
 
 hcm-env:RelativeHumidity a owl:ObjectProperty ;
     rdfs:label "relative humidity" ;
-    rdfs:comment "Relates an environmental profile, specification, or observation to the environmental property representing relative humidity." .
+    rdfs:comment "Relates an environmental profile, specification, or observation to the environmental property representing relative humidity." ;
+    rdfs:range hcm-env:EnvironmentalProperty .
 
 hcm-env:hasDarkPhaseDuration a owl:DatatypeProperty ;
     rdfs:label "has dark phase duration" ;
@@ -233,11 +229,13 @@ hcm-env:hasLightPhaseDuration a owl:DatatypeProperty ;
 
 hcm-obs:CategoricalResult a owl:Class ;
     rdfs:label "Categorical Result" ;
-    rdfs:comment "An observation result represented by a category rather than a numeric value." .
+    rdfs:comment "An observation result represented by a category rather than a numeric value." ;
+    rdfs:subClassOf hcm-obs:ObservationResult .
 
 hcm-obs:GasConcentrationObservation a owl:Class ;
     rdfs:label "Gas Concentration Observation" ;
-    rdfs:comment "An environment observation measuring or reporting the concentration of a gas." .
+    rdfs:comment "An environment observation measuring or reporting the concentration of a gas." ;
+    rdfs:subClassOf hcm-obs:EnvironmentObservation .
 
 hcm-obs:LocationResultTable a owl:Class ;
     rdfs:label "Location Result Table" ;
@@ -265,23 +263,17 @@ hcm-obs:hasCondition a owl:ObjectProperty ;
 
 hcm-obs:hasResult a owl:ObjectProperty ;
     rdfs:label "has result" ;
-    rdfs:comment "Relates an HCMO observation to its observation result." .
+    rdfs:comment "Relates an HCMO observation to its observation result." ;
+    owl:equivalentProperty sosa:hasResult .
 
 hcm-obs:occursIn a owl:ObjectProperty ;
     rdfs:label "occurs in" ;
     rdfs:comment "Relates an observation, result, or event to the enclosure or context in which it occurs." .
 
-hcm-tech:Hardware a owl:Class ;
-    rdfs:label "Hardware" ;
-    rdfs:comment "Physical computing hardware component of a home-cage monitoring system." .
-
-hcm-tech:Software a owl:Class ;
-    rdfs:label "Software" ;
-    rdfs:comment "Software component used to acquire, process, store, or analyse home-cage monitoring data." .
-
 hcm-tech:TimeSeries a owl:Class ;
     rdfs:label "Time Series" ;
-    rdfs:comment "An ordered sequence of time-indexed measurements or outputs produced in a monitoring workflow." .
+    rdfs:comment "An ordered sequence of time-indexed measurements or outputs produced in a monitoring workflow." ;
+    rdfs:subClassOf hcm-obs:ObservationResult .
 
 hcm-tech:captures a owl:ObjectProperty ;
     rdfs:label "captures" ;
@@ -340,38 +332,37 @@ hcm-tech:isCalibrated a owl:DatatypeProperty ;
     rdfs:label "is calibrated" ;
     rdfs:comment "Indicates whether a sensor or device has been calibrated." .
 
-hcm-tech:runsOn a owl:ObjectProperty ;
-    rdfs:label "runs on" ;
-    rdfs:comment "Relates software to the hardware or platform on which it executes." .
-
-hcm-tech:supportsEnclosure a owl:ObjectProperty ;
-    rdfs:label "supports enclosure" ;
-    rdfs:comment "Relates a technical component or system to the monitored enclosure that it supports." .
-
 mod:createdWith a owl:AnnotationProperty .
 
 mod:status a owl:AnnotationProperty .
 
 semts:dimensionUnit a owl:DatatypeProperty ;
-    rdfs:label "dimension unit" .
+    rdfs:label "dimension unit" ;
+    rdfs:comment "SEMTS property recording the unit associated with a data dimension." .
 
 semts:title a owl:DatatypeProperty ;
-    rdfs:label "title" .
+    rdfs:label "title" ;
+    rdfs:comment "SEMTS property recording a title for a data artifact or dimension." .
 
 time:TemporalEntity a owl:Class ;
-    rdfs:label "Temporal Entity" .
+    rdfs:label "Temporal Entity" ;
+    rdfs:comment "OWL-Time class used for temporal entities referenced by HCMO observations and time-series segments." .
 
 time:hasBeginning a owl:ObjectProperty ;
-    rdfs:label "has beginning" .
+    rdfs:label "has beginning" ;
+    rdfs:comment "OWL-Time relation linking a temporal entity or monitoring interval to its beginning." .
 
 time:hasEnd a owl:ObjectProperty ;
-    rdfs:label "has end" .
+    rdfs:label "has end" ;
+    rdfs:comment "OWL-Time relation linking a temporal entity or monitoring interval to its end." .
 
 time:inXSDDateTime a owl:DatatypeProperty ;
-    rdfs:label "in x s d date time" .
+    rdfs:label "in x s d date time" ;
+    rdfs:comment "OWL-Time datatype property recording a date-time literal." .
 
 sosa:madeBySensor a owl:ObjectProperty ;
-    rdfs:label "made by sensor" .
+    rdfs:label "made by sensor" ;
+    rdfs:comment "SOSA relation linking an observation to the sensor that made it." .
 
 <https://orcid.org/0000-0002-2923-9790> a schema:Person ;
     schema:name "Pierre Larmande" .
@@ -394,9 +385,9 @@ sosa:madeBySensor a owl:ObjectProperty ;
 <https://orcid.org/0009-0008-2489-8106> a schema:Person ;
     schema:name "Cyril Gilbert" .
 
-hcm:EnclosureDimensions a owl:Class ;
-    rdfs:label "Enclosure Dimensions" ;
-    rdfs:comment "A dimensions record describing the physical size of an enclosure." .
+hcm:Enrichment a owl:Class ;
+    rdfs:label "Enrichment" ;
+    rdfs:comment "A material, structure, or intervention provided within an enclosure to support animal welfare or experimental conditions." .
 
 hcm:hasDimUnit a owl:DatatypeProperty ;
     rdfs:label "has dim unit" ;
@@ -404,7 +395,9 @@ hcm:hasDimUnit a owl:DatatypeProperty ;
 
 hcm:hasDimensions a owl:ObjectProperty ;
     rdfs:label "has dimensions" ;
-    rdfs:comment "Links a physical space or enclosure to its dimensions record." .
+    rdfs:comment "Links a physical space or enclosure to its dimensions record." ;
+    rdfs:domain hcm:Enclosure ;
+    rdfs:range hcm:EnclosureDimensions .
 
 hcm:hasEnclosureIdentifier a owl:DatatypeProperty ;
     rdfs:label "has enclosure identifier" ;
@@ -412,7 +405,9 @@ hcm:hasEnclosureIdentifier a owl:DatatypeProperty ;
 
 hcm:hasEnrichment a owl:ObjectProperty ;
     rdfs:label "has enrichment" ;
-    rdfs:comment "Relates an enclosure or monitored enclosure to an enrichment present or specified for it." .
+    rdfs:comment "Relates an enclosure or monitored enclosure to an enrichment present or specified for it." ;
+    rdfs:domain hcm:Enclosure ;
+    rdfs:range hcm:Enrichment .
 
 hcm:hasHeight a owl:DatatypeProperty ;
     rdfs:label "has height" ;
@@ -446,6 +441,12 @@ hcm-bio:ExperimentalGroup a owl:Class ;
     rdfs:label "Experimental Group" ;
     rdfs:comment "A group of biological subjects sharing an experimental condition, treatment, or study role." .
 
+hcm-bio:assignedToEnclosure a owl:ObjectProperty ;
+    rdfs:label "assigned to enclosure" ;
+    rdfs:comment "Relates a housing assignment to the enclosure or monitored enclosure involved in that assignment." ;
+    rdfs:domain hcm-bio:HousingAssignment ;
+    rdfs:range hcm:MonitoredEnclosure .
+
 hcm-bio:belongsToGroup a owl:ObjectProperty ;
     rdfs:label "belongs to group" ;
     rdfs:comment "Relates a subject, assignment, or monitored enclosure context to an experimental group." .
@@ -473,6 +474,10 @@ hcm-bio:hasSpecies a owl:DatatypeProperty ;
 hcm-bio:hasStrain a owl:DatatypeProperty ;
     rdfs:label "has strain" ;
     rdfs:comment "Records the strain, line, or breed reported for a subject." .
+
+hcm-bio:hasTreatment a owl:DatatypeProperty ;
+    rdfs:label "has treatment" ;
+    rdfs:comment "Records a treatment, intervention, or experimental condition assigned to a subject or group." .
 
 hcm-bio:hasWeightObservation a owl:ObjectProperty ;
     rdfs:label "has weight observation" ;
@@ -532,19 +537,6 @@ hcm-obs:BehaviorResult a owl:Class ;
     rdfs:label "Behavior Result" ;
     rdfs:comment "An observation result representing a detected, classified, or recorded behavior." .
 
-hcm-obs:EnvironmentObservation a owl:Class ;
-    rdfs:label "Environment Observation" ;
-    rdfs:comment "A SOSA-style observation about an environmental property of a monitored enclosure." ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty sosa:hasFeatureOfInterest ;
-            owl:someValuesFrom hcm:MonitoredEnclosure ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom semts:DataDimension ;
-            owl:onProperty semts:hasDimension ],
-        [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm-obs:hasCategory ] .
-
 hcm-obs:HealthStatusObservation a owl:Class ;
     rdfs:label "Health Status Observation" ;
     rdfs:comment "A SOSA-style observation about the health status of a biological subject." ;
@@ -597,6 +589,13 @@ hcm-tech:Actuator a owl:Class ;
     rdfs:label "Actuator" ;
     rdfs:comment "A device that elicits or perturbs behavior, physiology, or the monitored environment." .
 
+hcm-tech:Software a owl:Class ;
+    rdfs:label "Software" ;
+    rdfs:comment "Software component used to acquire, process, store, or analyse home-cage monitoring data." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty hcm-tech:runsOn ;
+            owl:someValuesFrom hcm-tech:Hardware ] .
+
 hcm-tech:installedIn a owl:ObjectProperty ;
     rdfs:label "installed in" ;
     rdfs:comment "Relates a sensor or technical component to the monitored enclosure or setup in which it is installed." .
@@ -605,11 +604,24 @@ hcm-tech:monitoredBy a owl:ObjectProperty ;
     rdfs:label "monitored by" ;
     rdfs:comment "Relates a monitored enclosure, subject, process, or property to the sensor or monitoring component observing it." .
 
+hcm-tech:runsOn a owl:ObjectProperty ;
+    rdfs:label "runs on" ;
+    rdfs:comment "Relates software to the hardware or platform on which it executes." ;
+    rdfs:domain hcm-tech:Software ;
+    rdfs:range hcm-tech:Hardware .
+
+hcm-tech:supportsEnclosure a owl:ObjectProperty ;
+    rdfs:label "supports enclosure" ;
+    rdfs:comment "Relates a technical component or system to the monitored enclosure that it supports." ;
+    rdfs:range hcm:MonitoredEnclosure .
+
 semts:DataDimension a owl:Class ;
-    rdfs:label "Data Dimension" .
+    rdfs:label "Data Dimension" ;
+    rdfs:comment "SEMTS class used for dimensions of time-series or tabular data generated by an HCMO observation." .
 
 semts:TimeSeriesSegment a owl:Class ;
     rdfs:label "Time Series Segment" ;
+    rdfs:comment "SEMTS class used for a segment of time-series data generated by a monitoring output." ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty semts:isPartOf ;
             owl:someValuesFrom hcm-obs:EnvironmentObservation ],
@@ -618,19 +630,108 @@ semts:TimeSeriesSegment a owl:Class ;
             owl:someValuesFrom time:TemporalEntity ] .
 
 semts:during a owl:ObjectProperty ;
-    rdfs:label "during" .
+    rdfs:label "during" ;
+    rdfs:comment "SEMTS relation linking a data segment to the temporal entity during which it occurs." .
 
 semts:generated a owl:ObjectProperty ;
-    rdfs:label "generated" .
+    rdfs:label "generated" ;
+    rdfs:comment "SEMTS relation linking a result artifact to generated data such as a time-series segment." .
 
 semts:hasDimension a owl:ObjectProperty ;
-    rdfs:label "has dimension" .
+    rdfs:label "has dimension" ;
+    rdfs:comment "SEMTS relation linking a data artifact or observation to one of its data dimensions." .
 
 semts:isPartOf a owl:ObjectProperty ;
-    rdfs:label "is part of" .
+    rdfs:label "is part of" ;
+    rdfs:comment "SEMTS relation linking a data segment or artifact to the larger artifact it is part of." .
 
 sosa:phenomenonTime a owl:ObjectProperty ;
-    rdfs:label "phenomenon time" .
+    rdfs:label "phenomenon time" ;
+    rdfs:comment "SOSA relation linking an observation to the time that the observed phenomenon occurred." .
+
+hcm:EnclosureDimensions a owl:Class ;
+    rdfs:label "Enclosure Dimensions" ;
+    rdfs:comment "A dimensions record describing the physical size of an enclosure." .
+
+hcm:hasUnit a owl:DatatypeProperty ;
+    rdfs:label "has unit" ;
+    rdfs:comment "Records the measurement unit associated with a quantitative value." .
+
+hcm-bio:HousingAssignment a owl:Class ;
+    rdfs:label "Housing Assignment" ;
+    rdfs:comment "A record assigning a subject or group to an enclosure in a study or housing context." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty hcm-bio:assignedToEnclosure ;
+            owl:someValuesFrom hcm:MonitoredEnclosure ] .
+
+hcm-obs:EnvironmentObservation a owl:Class ;
+    rdfs:label "Environment Observation" ;
+    rdfs:comment "A SOSA-style observation about an environmental property of a monitored enclosure." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty sosa:hasFeatureOfInterest ;
+            owl:someValuesFrom hcm:MonitoredEnclosure ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom semts:DataDimension ;
+            owl:onProperty semts:hasDimension ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty hcm-obs:hasCategory ] .
+
+hcm-obs:hasConfidenceScore a owl:DatatypeProperty ;
+    rdfs:label "has confidence score" ;
+    rdfs:comment "Records a numeric confidence score associated with an observation or inferred result." .
+
+hcm-tech:Hardware a owl:Class ;
+    rdfs:label "Hardware" ;
+    rdfs:comment "Physical computing hardware component of a home-cage monitoring system." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty hcm-tech:supportsEnclosure ;
+            owl:someValuesFrom hcm:MonitoredEnclosure ] .
+
+hcm-tech:Sensor a owl:Class ;
+    rdfs:label "Sensor" ;
+    rdfs:comment "A device that captures signals related to behavior, physiology, or enclosure environment." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty hcm-tech:installedIn ;
+            owl:someValuesFrom hcm:MonitoredEnclosure ] .
+
+sosa:observedProperty a owl:ObjectProperty ;
+    rdfs:label "observed property" ;
+    rdfs:comment "SOSA relation linking an observation to the property being observed." .
+
+hcm:Enclosure a owl:Class ;
+    rdfs:label "Enclosure" ;
+    rdfs:comment "A physical housing enclosure used as part of a home-cage monitoring system." .
+
+sosa:hasFeatureOfInterest a owl:ObjectProperty ;
+    rdfs:label "has feature of interest" ;
+    rdfs:comment "SOSA relation linking an observation to the entity, system, or feature being observed." .
+
+sosa:hasResult a owl:ObjectProperty ;
+    rdfs:label "has result" ;
+    rdfs:comment "SOSA relation linking an observation to its result." .
+
+hcm-bio:Subject a owl:Class ;
+    rdfs:label "Subject" ;
+    rdfs:comment "A biological individual, such as a laboratory animal, observed in a home-cage monitoring context." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom hcm-obs:BehaviorObservation ;
+            owl:onProperty hcm-bio:hasBehaviorObservation ] .
+
+hcm-obs:ObservationResult a owl:Class ;
+    rdfs:label "Observation Result" ;
+    rdfs:comment "A result produced by an observation, optionally linked to the sensor that made or generated it." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom hcm-tech:Sensor ;
+            owl:onProperty sosa:madeBySensor ] .
+
+sosa:resultTime a owl:DatatypeProperty ;
+    rdfs:label "result time" ;
+    rdfs:comment "SOSA property recording the instant at which an observation result became available." .
+
+sosa:usedProcedure a owl:ObjectProperty ;
+    rdfs:label "used procedure" ;
+    rdfs:comment "SOSA relation linking an observation to the procedure used to make it." .
 
 hcm:MonitoredEnclosure a owl:Class ;
     rdfs:label "Monitored Enclosure" ;
@@ -763,49 +864,14 @@ hcm:MonitoredEnclosure a owl:Class ;
             owl:onProperty hcm:hasUnit ],
         [ a owl:Restriction ;
             owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty sosa:resultTime ] .
+            owl:onProperty sosa:resultTime ],
+        hcm:Enclosure .
 
-hcm:hasUnit a owl:DatatypeProperty ;
-    rdfs:label "has unit" ;
-    rdfs:comment "Records the measurement unit associated with a quantitative value." .
+hcm-env:EnvironmentalProperty a owl:Class ;
+    rdfs:label "Environmental Property" ;
+    rdfs:comment "An environmental parameter that may be measured, specified, or controlled in a home-cage monitoring context." .
 
-hcm-obs:ObservationResult a owl:Class ;
-    rdfs:label "Observation Result" ;
-    rdfs:comment "A result produced by an observation, optionally linked to the sensor that made or generated it." ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom hcm-tech:Sensor ;
-            owl:onProperty sosa:madeBySensor ] .
-
-hcm-obs:hasConfidenceScore a owl:DatatypeProperty ;
-    rdfs:label "has confidence score" ;
-    rdfs:comment "Records a numeric confidence score associated with an observation or inferred result." .
-
-hcm-tech:Sensor a owl:Class ;
-    rdfs:label "Sensor" ;
-    rdfs:comment "A device that captures signals related to behavior, physiology, or enclosure environment." ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty hcm-tech:installedIn ;
-            owl:someValuesFrom hcm:MonitoredEnclosure ] .
-
-sosa:hasResult a owl:ObjectProperty ;
-    rdfs:label "has result" .
-
-sosa:observedProperty a owl:ObjectProperty ;
-    rdfs:label "observed property" .
-
-hcm-bio:Subject a owl:Class ;
-    rdfs:label "Subject" ;
-    rdfs:comment "A biological individual, such as a laboratory animal, observed in a home-cage monitoring context." ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom hcm-obs:BehaviorObservation ;
-            owl:onProperty hcm-bio:hasBehaviorObservation ] .
-
-sosa:hasFeatureOfInterest a owl:ObjectProperty ;
-    rdfs:label "has feature of interest" .
-
-sosa:resultTime a owl:DatatypeProperty ;
-    rdfs:label "result time" .
-
-sosa:usedProcedure a owl:ObjectProperty ;
-    rdfs:label "used procedure" .
+schema:Person a owl:Class ;
+    rdfs:label "Person" ;
+    rdfs:comment "Schema.org class used to identify HCMO contributors in ontology metadata." .
 

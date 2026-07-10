@@ -2,13 +2,17 @@
 # Generated for co-author review; see docs/paper/MODULE-MAP.md. Namespace policy: …/hcm/tech#.
 #
 @prefix hcm: <https://w3id.org/hcmo/ontology/hcm#> .
+@prefix hcm-obs: <https://w3id.org/hcmo/ontology/hcm/obs#> .
 @prefix hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
 hcm-tech:Hardware a owl:Class ;
     rdfs:label "Hardware" ;
-    rdfs:comment "Physical computing hardware component of a home-cage monitoring system." .
+    rdfs:comment "Physical computing hardware component of a home-cage monitoring system." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty hcm-tech:supportsEnclosure ;
+            owl:someValuesFrom hcm:MonitoredEnclosure ] .
 
 hcm-tech:Actuator a owl:Class ;
     rdfs:label "Actuator" ;
@@ -23,11 +27,15 @@ hcm-tech:Sensor a owl:Class ;
 
 hcm-tech:Software a owl:Class ;
     rdfs:label "Software" ;
-    rdfs:comment "Software component used to acquire, process, store, or analyse home-cage monitoring data." .
+    rdfs:comment "Software component used to acquire, process, store, or analyse home-cage monitoring data." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty hcm-tech:runsOn ;
+            owl:someValuesFrom hcm-tech:Hardware ] .
 
 hcm-tech:TimeSeries a owl:Class ;
     rdfs:label "Time Series" ;
-    rdfs:comment "An ordered sequence of time-indexed measurements or outputs produced in a monitoring workflow." .
+    rdfs:comment "An ordered sequence of time-indexed measurements or outputs produced in a monitoring workflow." ;
+    rdfs:subClassOf hcm-obs:ObservationResult .
 
 hcm-tech:hasFileFormat a owl:DatatypeProperty ;
     rdfs:label "has file format" ;
@@ -96,9 +104,12 @@ hcm-tech:installedIn a owl:ObjectProperty ;
 
 hcm-tech:runsOn a owl:ObjectProperty ;
     rdfs:label "runs on" ;
-    rdfs:comment "Relates software to the hardware or platform on which it executes." .
+    rdfs:comment "Relates software to the hardware or platform on which it executes." ;
+    rdfs:domain hcm-tech:Software ;
+    rdfs:range hcm-tech:Hardware .
 
 hcm-tech:supportsEnclosure a owl:ObjectProperty ;
     rdfs:label "supports enclosure" ;
-    rdfs:comment "Relates a technical component or system to the monitored enclosure that it supports." .
+    rdfs:comment "Relates a technical component or system to the monitored enclosure that it supports." ;
+    rdfs:range hcm:MonitoredEnclosure .
 

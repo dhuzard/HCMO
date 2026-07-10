@@ -27,7 +27,8 @@ hcm-obs:BehaviorResult a owl:Class ;
 
 hcm-obs:CategoricalResult a owl:Class ;
     rdfs:label "Categorical Result" ;
-    rdfs:comment "An observation result represented by a category rather than a numeric value." .
+    rdfs:comment "An observation result represented by a category rather than a numeric value." ;
+    rdfs:subClassOf hcm-obs:ObservationResult .
 
 hcm-obs:EnvironmentObservation a owl:Class ;
     rdfs:label "Environment Observation" ;
@@ -44,7 +45,8 @@ hcm-obs:EnvironmentObservation a owl:Class ;
 
 hcm-obs:GasConcentrationObservation a owl:Class ;
     rdfs:label "Gas Concentration Observation" ;
-    rdfs:comment "An environment observation measuring or reporting the concentration of a gas." .
+    rdfs:comment "An environment observation measuring or reporting the concentration of a gas." ;
+    rdfs:subClassOf hcm-obs:EnvironmentObservation .
 
 hcm-obs:HealthStatusObservation a owl:Class ;
     rdfs:label "Health Status Observation" ;
@@ -128,7 +130,8 @@ hcm-obs:hasCategory a owl:DatatypeProperty ;
 
 hcm-obs:hasResult a owl:ObjectProperty ;
     rdfs:label "has result" ;
-    rdfs:comment "Relates an HCMO observation to its observation result." .
+    rdfs:comment "Relates an HCMO observation to its observation result." ;
+    owl:equivalentProperty sosa:hasResult .
 
 hcm-obs:ObservationResult a owl:Class ;
     rdfs:label "Observation Result" ;

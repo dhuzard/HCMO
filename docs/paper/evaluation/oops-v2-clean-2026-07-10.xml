@@ -1,52 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <oops:OOPSResponse xmlns:oops="http://www.oeg-upm.net/oops">
 <oops:Pitfall>
-<oops:Code>P04</oops:Code><oops:Name>Creating unconnected ontology elements</oops:Name>
-<oops:Description>Ontology elements (classes, object properties and datatype properties) are created isolated, with no relation to the rest of the ontology.	</oops:Description>
-<oops:Importance>Minor</oops:Importance>
-<oops:NumberAffectedElements>10</oops:NumberAffectedElements>
-<oops:Affects>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/obs#CategoricalResult</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/tech#Software</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/bio#StudyFactors</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm#Enrichment</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/tech#Hardware</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/obs#GasConcentrationObservation</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/tech#TimeSeries</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/env#EnvironmentalProperty</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm#Enclosure</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/bio#HousingAssignment</oops:AffectedElement>
-</oops:Affects>
-</oops:Pitfall>
-<oops:Pitfall>
-<oops:Code>P08</oops:Code><oops:Name>Missing annotations</oops:Name>
-<oops:Description>This pitfall consists in creating an ontology element and failing to provide human readable annotations attached to it. Consequently, ontology elements lack annotation properties that label them (e.g. rdfs:label, lemon:LexicalEntry, skos:prefLabel or skos:altLabel) or that define them (e.g. rdfs:comment or dc:description). This pitfall is related to the guidelines provided in [5].	</oops:Description>
-<oops:Importance>Minor</oops:Importance>
-<oops:NumberAffectedElements>20</oops:NumberAffectedElements>
-<oops:Affects>
-<oops:AffectedElement>https://w3id.org/semts/ontology/120#DataDimension</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/semts/ontology/120#TimeSeriesSegment</oops:AffectedElement>
-<oops:AffectedElement>http://www.w3.org/2006/time#TemporalEntity</oops:AffectedElement>
-<oops:AffectedElement>http://www.w3.org/ns/sosa/hasResult</oops:AffectedElement>
-<oops:AffectedElement>http://www.w3.org/2006/time#hasEnd</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/semts/ontology/120#isPartOf</oops:AffectedElement>
-<oops:AffectedElement>http://www.w3.org/ns/sosa/usedProcedure</oops:AffectedElement>
-<oops:AffectedElement>http://www.w3.org/ns/sosa/phenomenonTime</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/semts/ontology/120#hasDimension</oops:AffectedElement>
-<oops:AffectedElement>http://www.w3.org/ns/sosa/observedProperty</oops:AffectedElement>
-<oops:AffectedElement>http://www.w3.org/ns/sosa/hasFeatureOfInterest</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/semts/ontology/120#during</oops:AffectedElement>
-<oops:AffectedElement>http://www.w3.org/ns/sosa/madeBySensor</oops:AffectedElement>
-<oops:AffectedElement>http://www.w3.org/ns/sosa/madeObservation</oops:AffectedElement>
-<oops:AffectedElement>http://www.w3.org/2006/time#hasBeginning</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/semts/ontology/120#generated</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/semts/ontology/120#title</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/semts/ontology/120#dimensionUnit</oops:AffectedElement>
-<oops:AffectedElement>http://www.w3.org/ns/sosa/resultTime</oops:AffectedElement>
-<oops:AffectedElement>http://www.w3.org/2006/time#inXSDDateTime</oops:AffectedElement>
-</oops:Affects>
-</oops:Pitfall>
-<oops:Pitfall>
 <oops:Code>P10</oops:Code><oops:Name>Missing disjointness</oops:Name>
 <oops:Description>The ontology lacks disjoint axioms between classes or between properties that should be defined as disjoint. This pitfall is related with the guidelines provided in [6], [2] and [7].	</oops:Description>
 <oops:Importance>Important</oops:Importance>
@@ -56,7 +10,7 @@
 <oops:Code>P11</oops:Code><oops:Name>Missing domain or range in properties</oops:Name>
 <oops:Description>Object and/or datatype properties without domain or range (or none of them) are included in the ontology. 	</oops:Description>
 <oops:Importance>Important</oops:Importance>
-<oops:NumberAffectedElements>99</oops:NumberAffectedElements>
+<oops:NumberAffectedElements>94</oops:NumberAffectedElements>
 <oops:Affects>
 <oops:AffectedElement>https://w3id.org/semts/ontology/120#generated</oops:AffectedElement>
 <oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/env#OxygenConcentration</oops:AffectedElement>
@@ -68,15 +22,11 @@
 <oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/obs#occursIn</oops:AffectedElement>
 <oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/tech#captures</oops:AffectedElement>
 <oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/bio#hasWeightObservation</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/tech#runsOn</oops:AffectedElement>
 <oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/obs#hasResult</oops:AffectedElement>
 <oops:AffectedElement>http://www.w3.org/ns/sosa/madeBySensor</oops:AffectedElement>
 <oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/tech#installedIn</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm#hasDimensions</oops:AffectedElement>
 <oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/tech#hasActuator</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm#hasMonitoredAnimals</oops:AffectedElement>
 <oops:AffectedElement>https://w3id.org/semts/ontology/120#during</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm#hasEnrichment</oops:AffectedElement>
 <oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/env#hasEnvironment</oops:AffectedElement>
 <oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/tech#communicatesWith</oops:AffectedElement>
 <oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/obs#hasCondition</oops:AffectedElement>
@@ -85,7 +35,6 @@
 <oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/tech#supportsEnclosure</oops:AffectedElement>
 <oops:AffectedElement>http://www.w3.org/ns/sosa/observedProperty</oops:AffectedElement>
 <oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/bio#hasMember</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/bio#assignedToEnclosure</oops:AffectedElement>
 <oops:AffectedElement>https://w3id.org/semts/ontology/120#hasDimension</oops:AffectedElement>
 <oops:AffectedElement>http://www.w3.org/ns/sosa/phenomenonTime</oops:AffectedElement>
 <oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/env#hasGasConcentrationProfile</oops:AffectedElement>
@@ -160,18 +109,6 @@
 </oops:Affects>
 </oops:Pitfall>
 <oops:Pitfall>
-<oops:Code>P12</oops:Code><oops:Name>Equivalent properties not explicitly declared</oops:Name>
-<oops:Description>The ontology lacks information about equivalent properties (owl:equivalentProperty) in the cases of duplicated relationships and/or attributes.	</oops:Description>
-<oops:Importance>Important</oops:Importance>
-<oops:NumberAffectedElements>1</oops:NumberAffectedElements>
-<oops:Affects>
-<oops:MightBeEquivalentProperty>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/obs#hasResult</oops:AffectedElement>
-<oops:AffectedElement>http://www.w3.org/ns/sosa/hasResult</oops:AffectedElement>
-</oops:MightBeEquivalentProperty>
-</oops:Affects>
-</oops:Pitfall>
-<oops:Pitfall>
 <oops:Code>P13</oops:Code><oops:Name>Inverse relationships not explicitly declared</oops:Name>
 <oops:Description>This pitfall appears when any relationship (except for those that are defined as symmetric properties using owl:SymmetricProperty) does not have an inverse relationship (owl:inverseOf) defined within the ontology.	</oops:Description>
 <oops:Importance>Minor</oops:Importance>
@@ -235,16 +172,6 @@
 <oops:Affects>
 <oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/bio#hasHousingAssignment</oops:AffectedElement>
 <oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/env#CarbonDioxideConcentration</oops:AffectedElement>
-</oops:Affects>
-</oops:Pitfall>
-<oops:Pitfall>
-<oops:Code>P34</oops:Code><oops:Name>Untyped class</oops:Name>
-<oops:Description>An ontology element is used as a class without having been explicitly declared as such using the primitives owl:Class or rdfs:Class. This pitfall is related with the common problems listed in [8].	</oops:Description>
-<oops:Importance>Important</oops:Importance>
-<oops:NumberAffectedElements>1</oops:NumberAffectedElements>
-<oops:Affects>
-<oops:AffectedElement>https://schema.org/Person</oops:AffectedElement>
-<oops:AffectedElement>https://schema.org/Person</oops:AffectedElement>
 </oops:Affects>
 </oops:Pitfall>
 </oops:OOPSResponse>

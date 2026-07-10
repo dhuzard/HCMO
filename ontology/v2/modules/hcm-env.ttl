@@ -7,15 +7,18 @@
 
 hcm-env:AmbientTemperature a owl:ObjectProperty ;
     rdfs:label "ambient temperature" ;
-    rdfs:comment "Relates an environmental profile, specification, or observation to the environmental property representing ambient temperature." .
+    rdfs:comment "Relates an environmental profile, specification, or observation to the environmental property representing ambient temperature." ;
+    rdfs:range hcm-env:EnvironmentalProperty .
 
 hcm-env:AmmoniaConcentration a owl:ObjectProperty ;
     rdfs:label "ammonia concentration" ;
-    rdfs:comment "Relates an environmental profile, specification, or observation to the environmental property representing ammonia concentration." .
+    rdfs:comment "Relates an environmental profile, specification, or observation to the environmental property representing ammonia concentration." ;
+    rdfs:range hcm-env:EnvironmentalProperty .
 
 hcm-env:CarbonDioxideConcentration a owl:ObjectProperty ;
     rdfs:label "carbon dioxide concentration" ;
-    rdfs:comment "Relates an environmental profile, specification, or observation to the environmental property representing carbon dioxide concentration." .
+    rdfs:comment "Relates an environmental profile, specification, or observation to the environmental property representing carbon dioxide concentration." ;
+    rdfs:range hcm-env:EnvironmentalProperty .
 
 hcm-env:EnvironmentProfile a owl:Class ;
     rdfs:label "Environment Profile" ;
@@ -36,19 +39,23 @@ hcm-env:EnvironmentalProperty a owl:Class ;
 
 hcm-env:LightIntensity a owl:ObjectProperty ;
     rdfs:label "light intensity" ;
-    rdfs:comment "Relates an environmental profile, specification, or observation to the environmental property representing light intensity." .
+    rdfs:comment "Relates an environmental profile, specification, or observation to the environmental property representing light intensity." ;
+    rdfs:range hcm-env:EnvironmentalProperty .
 
 hcm-env:LightState a owl:ObjectProperty ;
     rdfs:label "light state" ;
-    rdfs:comment "Relates an environmental profile, specification, or observation to the environmental property representing light state." .
+    rdfs:comment "Relates an environmental profile, specification, or observation to the environmental property representing light state." ;
+    rdfs:range hcm-env:EnvironmentalProperty .
 
 hcm-env:OxygenConcentration a owl:ObjectProperty ;
     rdfs:label "oxygen concentration" ;
-    rdfs:comment "Relates an environmental profile, specification, or observation to the environmental property representing oxygen concentration." .
+    rdfs:comment "Relates an environmental profile, specification, or observation to the environmental property representing oxygen concentration." ;
+    rdfs:range hcm-env:EnvironmentalProperty .
 
 hcm-env:RelativeHumidity a owl:ObjectProperty ;
     rdfs:label "relative humidity" ;
-    rdfs:comment "Relates an environmental profile, specification, or observation to the environmental property representing relative humidity." .
+    rdfs:comment "Relates an environmental profile, specification, or observation to the environmental property representing relative humidity." ;
+    rdfs:range hcm-env:EnvironmentalProperty .
 
 hcm-env:ThriveProfile a owl:Class ;
     rdfs:label "Thrive Profile" ;
