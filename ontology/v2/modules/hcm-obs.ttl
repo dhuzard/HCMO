@@ -113,7 +113,8 @@ hcm-obs:hasHealthStatusTerm a owl:DatatypeProperty ;
 
 hcm-obs:hasInterval a owl:DatatypeProperty ;
     rdfs:label "has interval" ;
-    rdfs:comment "Records a time interval or duration associated with an observation or result." .
+    rdfs:comment "Records a time interval or duration associated with an observation or result." ;
+    rdfs:range xsd:string .
 
 hcm-obs:hasNumericValue a owl:DatatypeProperty ;
     rdfs:label "has numeric value" ;
@@ -136,6 +137,7 @@ hcm-obs:hasCategory a owl:DatatypeProperty ;
 hcm-obs:hasResult a owl:ObjectProperty ;
     rdfs:label "has result" ;
     rdfs:comment "Relates an HCMO observation to its observation result." ;
+    rdfs:range hcm-obs:ObservationResult ;
     owl:equivalentProperty sosa:hasResult .
 
 hcm-obs:ObservationResult a owl:Class ;

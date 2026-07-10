@@ -2,8 +2,10 @@
 # Generated for co-author review; see docs/paper/MODULE-MAP.md. Namespace policy: …/hcm/env#.
 #
 @prefix hcm-env: <https://w3id.org/hcmo/ontology/hcm/env#> .
+@prefix hcm: <https://w3id.org/hcmo/ontology/hcm#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 hcm-env:AmbientTemperature a owl:ObjectProperty ;
     rdfs:label "ambient temperature" ;
@@ -67,35 +69,49 @@ hcm-env:hasEnvironment a owl:ObjectProperty ;
 
 hcm-env:hasDarkPhaseDuration a owl:DatatypeProperty ;
     rdfs:label "has dark phase duration" ;
-    rdfs:comment "Records the duration of the dark phase in a light cycle." .
+    rdfs:comment "Records the duration of the dark phase in a light cycle." ;
+    rdfs:domain hcm-env:LightCycle ;
+    rdfs:range xsd:string .
 
 hcm-env:hasDarkPhaseStart a owl:DatatypeProperty ;
     rdfs:label "has dark phase start" ;
-    rdfs:comment "Records the start time of the dark phase in a light cycle." .
+    rdfs:comment "Records the start time of the dark phase in a light cycle." ;
+    rdfs:domain hcm-env:LightCycle ;
+    rdfs:range xsd:string .
 
 hcm-env:hasDawnDuration a owl:DatatypeProperty ;
     rdfs:label "has dawn duration" ;
-    rdfs:comment "Records the duration of the dawn transition in a light cycle." .
+    rdfs:comment "Records the duration of the dawn transition in a light cycle." ;
+    rdfs:domain hcm-env:LightCycle ;
+    rdfs:range xsd:string .
 
 hcm-env:hasDuskDuration a owl:DatatypeProperty ;
     rdfs:label "has dusk duration" ;
-    rdfs:comment "Records the duration of the dusk transition in a light cycle." .
+    rdfs:comment "Records the duration of the dusk transition in a light cycle." ;
+    rdfs:domain hcm-env:LightCycle ;
+    rdfs:range xsd:string .
 
 hcm-env:hasGasType a owl:DatatypeProperty ;
     rdfs:label "has gas type" ;
-    rdfs:comment "Records the gas type measured or specified in a gas concentration profile or observation." .
+    rdfs:comment "Records the gas type measured or specified in a gas concentration profile or observation." ;
+    rdfs:range xsd:string .
 
 hcm-env:hasLightPhaseDuration a owl:DatatypeProperty ;
     rdfs:label "has light phase duration" ;
-    rdfs:comment "Records the duration of the light phase in a light cycle." .
+    rdfs:comment "Records the duration of the light phase in a light cycle." ;
+    rdfs:domain hcm-env:LightCycle ;
+    rdfs:range xsd:string .
 
 hcm-env:hasThriveProfile a owl:ObjectProperty ;
     rdfs:label "has thrive profile" ;
-    rdfs:comment "Relates a monitored enclosure to the thrive profile that specifies suitable husbandry or environmental conditions." .
+    rdfs:comment "Relates a monitored enclosure to the thrive profile that specifies suitable husbandry or environmental conditions." ;
+    rdfs:domain hcm:MonitoredEnclosure ;
+    rdfs:range hcm-env:ThriveProfile .
 
 hcm-env:hasValue a owl:DatatypeProperty ;
     rdfs:label "has value" ;
-    rdfs:comment "Records a literal value for an environmental measurement or specification." .
+    rdfs:comment "Records a literal value for an environmental measurement or specification." ;
+    rdfs:range xsd:string .
 
 hcm-env:GasConcentrationProfile a owl:Class ;
     rdfs:label "Gas Concentration Profile" ;
@@ -111,13 +127,19 @@ hcm-env:MeasurementSpecification a owl:Class ;
 
 hcm-env:hasGasConcentrationProfile a owl:ObjectProperty ;
     rdfs:label "has gas concentration profile" ;
-    rdfs:comment "Relates an environment profile to a gas concentration profile." .
+    rdfs:comment "Relates an environment profile to a gas concentration profile." ;
+    rdfs:domain hcm-env:EnvironmentProfile ;
+    rdfs:range hcm-env:GasConcentrationProfile .
 
 hcm-env:hasLightCycle a owl:ObjectProperty ;
     rdfs:label "has light cycle" ;
-    rdfs:comment "Relates an environment profile to a light cycle." .
+    rdfs:comment "Relates an environment profile to a light cycle." ;
+    rdfs:domain hcm-env:EnvironmentProfile ;
+    rdfs:range hcm-env:LightCycle .
 
 hcm-env:hasMeasurementSpec a owl:ObjectProperty ;
     rdfs:label "has measurement spec" ;
-    rdfs:comment "Relates an environment profile to a measurement specification." .
+    rdfs:comment "Relates an environment profile to a measurement specification." ;
+    rdfs:domain hcm-env:EnvironmentProfile ;
+    rdfs:range hcm-env:MeasurementSpecification .
 

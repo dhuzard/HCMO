@@ -41,7 +41,8 @@ hcm-bio:assignedToEnclosure a owl:ObjectProperty ;
 
 hcm-bio:belongsToGroup a owl:ObjectProperty ;
     rdfs:label "belongs to group" ;
-    rdfs:comment "Relates a subject, assignment, or monitored enclosure context to an experimental group." .
+    rdfs:comment "Relates a subject, assignment, or monitored enclosure context to an experimental group." ;
+    rdfs:range hcm-bio:ExperimentalGroup .
 
 hcm-bio:hasBiologicalSex a owl:DatatypeProperty ;
     rdfs:label "has biological sex" ;
@@ -75,7 +76,10 @@ hcm-bio:hasSpecies a owl:DatatypeProperty ;
 
 hcm-bio:hasSocialRequirement a owl:DatatypeProperty ;
     rdfs:label "has social requirement" ;
-    rdfs:comment "Records a social housing or care requirement for a subject or experimental group." .
+    rdfs:comment "Records a social housing or care requirement for a subject or experimental group." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( hcm-bio:Subject hcm-bio:ExperimentalGroup ) ] ;
+    rdfs:range xsd:string .
 
 hcm-bio:hasStrain a owl:DatatypeProperty ;
     rdfs:label "has strain" ;
@@ -84,7 +88,10 @@ hcm-bio:hasStrain a owl:DatatypeProperty ;
 
 hcm-bio:hasTreatment a owl:DatatypeProperty ;
     rdfs:label "has treatment" ;
-    rdfs:comment "Records a treatment, intervention, or experimental condition assigned to a subject or group." .
+    rdfs:comment "Records a treatment, intervention, or experimental condition assigned to a subject or group." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( hcm-bio:Subject hcm-bio:ExperimentalGroup hcm-bio:StudyFactors ) ] ;
+    rdfs:range xsd:string .
 
 hcm-bio:hasWeightObservation a owl:ObjectProperty ;
     rdfs:label "has weight observation" ;

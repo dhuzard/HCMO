@@ -112,7 +112,9 @@ hcm:Enrichment a owl:Class ;
 
 hcm:hasEnrichmentRequirement a owl:DatatypeProperty ;
     rdfs:label "has enrichment requirement" ;
-    rdfs:comment "Records a textual or coded enrichment requirement for an enclosure or monitored enclosure." .
+    rdfs:comment "Records a textual or coded enrichment requirement for an enclosure or monitored enclosure." ;
+    rdfs:domain hcm:Enclosure ;
+    rdfs:range xsd:string .
 
 hcm:hasCapacity a owl:DatatypeProperty ;
     rdfs:label "has capacity" ;
@@ -253,46 +255,69 @@ hcm:hasEnrichment a owl:ObjectProperty ;
 
 hcm:hasEnrichmentType a owl:DatatypeProperty ;
     rdfs:label "has enrichment type" ;
-    rdfs:comment "Records the type or category of enrichment associated with an enclosure." .
+    rdfs:comment "Records the type or category of enrichment associated with an enclosure." ;
+    rdfs:domain hcm:Enrichment ;
+    rdfs:range xsd:string .
 
 hcm:hasFacilityType a owl:DatatypeProperty ;
     rdfs:label "has facility type" ;
-    rdfs:comment "Records the type of facility or housing area associated with an enclosure." .
+    rdfs:comment "Records the type of facility or housing area associated with an enclosure." ;
+    rdfs:domain hcm:Enclosure ;
+    rdfs:range xsd:string .
 
 hcm:hasFloorArea a owl:DatatypeProperty ;
     rdfs:label "has floor area" ;
     rdfs:comment "Records the floor area value for an enclosure or dimensions record." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( hcm:Enclosure hcm:EnclosureDimensions ) ] ;
     rdfs:range xsd:decimal .
 
 hcm:hasFoodRequirement a owl:DatatypeProperty ;
     rdfs:label "has food requirement" ;
-    rdfs:comment "Records a textual or coded food-provision requirement for an enclosure or subject group." .
+    rdfs:comment "Records a textual or coded food-provision requirement for an enclosure or subject group." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( hcm:Enclosure hcm-bio:ExperimentalGroup ) ] ;
+    rdfs:range xsd:string .
 
 hcm:hasHeight a owl:DatatypeProperty ;
     rdfs:label "has height" ;
     rdfs:comment "Records the height value of an enclosure or dimensions record." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( hcm:Enclosure hcm:EnclosureDimensions ) ] ;
     rdfs:range xsd:decimal .
 
 hcm:hasLength a owl:DatatypeProperty ;
     rdfs:label "has length" ;
     rdfs:comment "Records the length value of an enclosure or dimensions record." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( hcm:Enclosure hcm:EnclosureDimensions ) ] ;
     rdfs:range xsd:decimal .
 
 hcm:hasManufacturer a owl:DatatypeProperty ;
     rdfs:label "has manufacturer" ;
-    rdfs:comment "Records the manufacturer name for an enclosure, device, or system component." .
+    rdfs:comment "Records the manufacturer name for an enclosure, device, or system component." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( hcm:Enclosure hcm-tech:Hardware hcm-tech:Sensor hcm-tech:Actuator ) ] ;
+    rdfs:range xsd:string .
 
 hcm:hasSafetyRequirement a owl:DatatypeProperty ;
     rdfs:label "has safety requirement" ;
-    rdfs:comment "Records a textual or coded safety requirement for an enclosure or monitoring setup." .
+    rdfs:comment "Records a textual or coded safety requirement for an enclosure or monitoring setup." ;
+    rdfs:domain hcm:Enclosure ;
+    rdfs:range xsd:string .
 
 hcm:hasWaterRequirement a owl:DatatypeProperty ;
     rdfs:label "has water requirement" ;
-    rdfs:comment "Records a textual or coded water-provision requirement for an enclosure or subject group." .
+    rdfs:comment "Records a textual or coded water-provision requirement for an enclosure or subject group." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( hcm:Enclosure hcm-bio:ExperimentalGroup ) ] ;
+    rdfs:range xsd:string .
 
 hcm:hasWidth a owl:DatatypeProperty ;
     rdfs:label "has width" ;
     rdfs:comment "Records the width value of an enclosure or dimensions record." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( hcm:Enclosure hcm:EnclosureDimensions ) ] ;
     rdfs:range xsd:decimal .
 
 hcm:locatedIn a owl:ObjectProperty ;
@@ -313,11 +338,13 @@ sosa:observedProperty a owl:ObjectProperty ;
 
 hcm:hasUnit a owl:DatatypeProperty ;
     rdfs:label "has unit" ;
-    rdfs:comment "Records the measurement unit associated with a quantitative value." .
+    rdfs:comment "Records the measurement unit associated with a quantitative value." ;
+    rdfs:range xsd:string .
 
 sosa:resultTime a owl:DatatypeProperty ;
     rdfs:label "result time" ;
-    rdfs:comment "SOSA property recording the instant at which an observation result became available." .
+    rdfs:comment "SOSA property recording the instant at which an observation result became available." ;
+    rdfs:range xsd:dateTime .
 
 sosa:usedProcedure a owl:ObjectProperty ;
     rdfs:label "used procedure" ;

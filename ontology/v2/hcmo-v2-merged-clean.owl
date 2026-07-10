@@ -7,9 +7,9 @@
   xmlns:dcterms="http://purl.org/dc/terms/"
   xmlns:bibo="http://purl.org/ontology/bibo/"
   xmlns:schema="https://schema.org/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
   xmlns:mod="https://w3id.org/mod#"
   xmlns:dc="http://purl.org/dc/elements/1.1/"
-  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
   <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#hasMember">
     <rdfs:comment>Relates an experimental group to a subject that is a member of the group.</rdfs:comment>
@@ -18,25 +18,33 @@
   </owl:ObjectProperty>
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/env#hasDarkPhaseStart">
     <rdfs:comment>Records the start time of the dark phase in a light cycle.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#LightCycle"/>
     <rdfs:label>has dark phase start</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/env#hasDuskDuration">
     <rdfs:comment>Records the duration of the dusk transition in a light cycle.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#LightCycle"/>
     <rdfs:label>has dusk duration</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
   <owl:Class rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#GasConcentrationObservation">
     <rdfs:comment>An environment observation measuring or reporting the concentration of a gas.</rdfs:comment>
     <rdfs:label>Gas Concentration Observation</rdfs:label>
     <rdfs:subClassOf rdf:resource="https://w3id.org/hcmo/ontology/hcm/obs#EnvironmentObservation"/>
   </owl:Class>
-  <owl:Class rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#TimeSeries">
-    <rdfs:comment>An ordered sequence of time-indexed measurements or outputs produced in a monitoring workflow.</rdfs:comment>
-    <rdfs:label>Time Series</rdfs:label>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/hcmo/ontology/hcm/obs#ObservationResult"/>
-  </owl:Class>
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#hasSocialRequirement">
     <rdfs:comment>Records a social housing or care requirement for a subject or experimental group.</rdfs:comment>
+    <rdfs:domain>
+      <owl:Class rdf:nodeID="cb1115a255d433c6bff843e452cb7e991a3eff0105d837455c2a3b6ca85c557bf53">
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#Subject"/>
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#ExperimentalGroup"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
     <rdfs:label>has social requirement</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm#hasDescription">
     <rdfs:comment>Provides a textual description for an HCMO resource.</rdfs:comment>
@@ -102,12 +110,37 @@
     <mod:createdWith rdf:resource="https://chowlk.linkeddata.es/"/>
     <mod:status>draft</mod:status>
   </owl:Ontology>
+  <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm#hasSafetyRequirement">
+    <rdfs:comment>Records a textual or coded safety requirement for an enclosure or monitoring setup.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/hcmo/ontology/hcm#Enclosure"/>
+    <rdfs:label>has safety requirement</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/env#hasDarkPhaseDuration">
+    <rdfs:comment>Records the duration of the dark phase in a light cycle.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#LightCycle"/>
+    <rdfs:label>has dark phase duration</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm#hasWaterRequirement">
+    <rdfs:comment>Records a textual or coded water-provision requirement for an enclosure or subject group.</rdfs:comment>
+    <rdfs:domain>
+      <owl:Class rdf:nodeID="cb1daff8145eb0aacf74cc4b5794de73b46d52271e008bd1e3f8f49ee05aee7e196">
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#Enclosure"/>
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#ExperimentalGroup"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:label>has water requirement</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/description"/>
   <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/env#AmmoniaConcentration">
     <rdfs:comment>Relates an environmental profile, specification, or observation to the environmental property representing ammonia concentration.</rdfs:comment>
     <rdfs:label>ammonia concentration</rdfs:label>
     <rdfs:range rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#EnvironmentalProperty"/>
   </owl:ObjectProperty>
-  <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/description"/>
   <owl:Class rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#CategoricalResult">
     <rdfs:comment>An observation result represented by a category rather than a numeric value.</rdfs:comment>
     <rdfs:label>Categorical Result</rdfs:label>
@@ -115,30 +148,10 @@
   </owl:Class>
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/env#hasLightPhaseDuration">
     <rdfs:comment>Records the duration of the light phase in a light cycle.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#LightCycle"/>
     <rdfs:label>has light phase duration</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:Class rdf:about="https://w3id.org/hcmo/ontology/hcm/env#EnvironmentProfile">
-    <rdfs:comment>A structured profile describing environmental conditions or requirements for a monitored enclosure.</rdfs:comment>
-    <rdfs:label>Environment Profile</rdfs:label>
-    <rdfs:subClassOf>
-      <owl:Restriction rdf:nodeID="cb16ecbbc8bf4babbcae00a50aaf1e70557b2dd74f57693930fbe651ab1ed75e499">
-        <owl:allValuesFrom rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#MeasurementSpecification"/>
-        <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#hasMeasurementSpec"/>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction rdf:nodeID="cb2e2fa47f588537ba27e3abfcc8b262b6966da498cb153e5c1b0723f614306e65e">
-        <owl:allValuesFrom rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#LightCycle"/>
-        <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#hasLightCycle"/>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction rdf:nodeID="cb31ec00e8f513a21d68d42624c813702e50432d44c14388830a884954919fce391">
-        <owl:allValuesFrom rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#GasConcentrationProfile"/>
-        <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#hasGasConcentrationProfile"/>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-  </owl:Class>
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm#hasCapacity">
     <rdfs:comment>Records the intended capacity of an enclosure, such as the number of animals it can house.</rdfs:comment>
     <rdfs:domain rdf:resource="https://w3id.org/hcmo/ontology/hcm#Enclosure"/>
@@ -147,7 +160,28 @@
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/env#hasDawnDuration">
     <rdfs:comment>Records the duration of the dawn transition in a light cycle.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#LightCycle"/>
     <rdfs:label>has dawn duration</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#hasStoragePath">
+    <rdfs:comment>Records a path or locator for stored data, software, or time-series resources.</rdfs:comment>
+    <rdfs:domain>
+      <owl:Class rdf:nodeID="cb12fcca9b5b6c59e8b5690d755186459786db0dcfd60292bedca97561e34069e49">
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#Software"/>
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#TimeSeries"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:label>has storage path</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm#hasEnrichmentRequirement">
+    <rdfs:comment>Records a textual or coded enrichment requirement for an enclosure or monitored enclosure.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/hcmo/ontology/hcm#Enclosure"/>
+    <rdfs:label>has enrichment requirement</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#hasSamplingRate">
     <rdfs:comment>Records the rate at which a sensor or data stream is sampled.</rdfs:comment>
@@ -155,23 +189,18 @@
     <rdfs:label>has sampling rate</rdfs:label>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:Class rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#StudyFactors">
-    <rdfs:comment>A collection of experimental or husbandry factors that may affect subjects, housing, or observations.</rdfs:comment>
-    <rdfs:label>Study Factors</rdfs:label>
-    <rdfs:subClassOf>
-      <owl:Restriction rdf:nodeID="cb1d08c559ba497ad59c67752997aa5dff00af19a964f826017caf6cd06a9584999">
-        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
-        <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm/bio#hasTreatment"/>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/env#hasDarkPhaseDuration">
-    <rdfs:comment>Records the duration of the dark phase in a light cycle.</rdfs:comment>
-    <rdfs:label>has dark phase duration</rdfs:label>
-  </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#hasFileFormat">
     <rdfs:comment>Records the file format of a data, software, or time-series artifact.</rdfs:comment>
+    <rdfs:domain>
+      <owl:Class rdf:nodeID="cbfa9b7dd071d46a9a787b3894afbb8121b5d9492d01c56fb4f476889e0b35a2f6">
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#Software"/>
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#TimeSeries"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
     <rdfs:label>has file format</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
   <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/env#LightIntensity">
     <rdfs:comment>Relates an environmental profile, specification, or observation to the environmental property representing light intensity.</rdfs:comment>
@@ -180,7 +209,9 @@
   </owl:ObjectProperty>
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm#hasFacilityType">
     <rdfs:comment>Records the type of facility or housing area associated with an enclosure.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/hcmo/ontology/hcm#Enclosure"/>
     <rdfs:label>has facility type</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
   <owl:Class rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#LocationResultTable">
     <rdfs:comment>A tabular observation result containing location values or generated time-series segments.</rdfs:comment>
@@ -219,7 +250,17 @@
   </owl:Class>
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#hasProtocol">
     <rdfs:comment>Records the communication, acquisition, or processing protocol used by a technical component.</rdfs:comment>
+    <rdfs:domain>
+      <owl:Class rdf:nodeID="cb11170b7809fcd504d44ccf3c0b834a3102986118c0c3072743172d407c0292c74">
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#Hardware"/>
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#Sensor"/>
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#Software"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
     <rdfs:label>has protocol</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
   <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/env#OxygenConcentration">
     <rdfs:comment>Relates an environmental profile, specification, or observation to the environmental property representing oxygen concentration.</rdfs:comment>
@@ -227,6 +268,12 @@
     <rdfs:range rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#EnvironmentalProperty"/>
   </owl:ObjectProperty>
   <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/created"/>
+  <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm#hasEnrichmentType">
+    <rdfs:comment>Records the type or category of enrichment associated with an enclosure.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/hcmo/ontology/hcm#Enrichment"/>
+    <rdfs:label>has enrichment type</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#isCalibrated">
     <rdfs:comment>Indicates whether a sensor or device has been calibrated.</rdfs:comment>
     <rdfs:domain rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#Sensor"/>
@@ -234,13 +281,10 @@
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
   </owl:DatatypeProperty>
   <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/source"/>
-  <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#hasStoragePath">
-    <rdfs:comment>Records a path or locator for stored data, software, or time-series resources.</rdfs:comment>
-    <rdfs:label>has storage path</rdfs:label>
-  </owl:DatatypeProperty>
   <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#hasResult">
     <rdfs:comment>Relates an HCMO observation to its observation result.</rdfs:comment>
     <rdfs:label>has result</rdfs:label>
+    <rdfs:range rdf:resource="https://w3id.org/hcmo/ontology/hcm/obs#ObservationResult"/>
     <owl:equivalentProperty>
       <owl:ObjectProperty rdf:about="http://www.w3.org/ns/sosa/hasResult">
         <rdfs:comment>SOSA relation linking an observation to its result.</rdfs:comment>
@@ -263,11 +307,43 @@
   <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/modified"/>
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#hasFirmware">
     <rdfs:comment>Records the firmware identifier or version installed on a hardware or sensor component.</rdfs:comment>
+    <rdfs:domain>
+      <owl:Class rdf:nodeID="cb158cd912b9563b2ebf3368cb1eada29bbabb854ee0688d727a096249875e86445">
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#Hardware"/>
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#Sensor"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
     <rdfs:label>has firmware</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm#hasFloorArea">
+    <rdfs:comment>Records the floor area value for an enclosure or dimensions record.</rdfs:comment>
+    <rdfs:domain>
+      <owl:Class rdf:nodeID="cb120751e7b77afe33fab2ec82d40c9a4a2b09a8e813d32895e87de7a6fc7749598">
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#Enclosure"/>
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#EnclosureDimensions"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:label>has floor area</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#hasModelNumber">
     <rdfs:comment>Records the manufacturer model number for a hardware, sensor, or actuator component.</rdfs:comment>
+    <rdfs:domain>
+      <owl:Class rdf:nodeID="cb172a8e6b8446fb51cc8b2f52c6f5e72e4dbb1d19ca6e34f46fd40d44748f1bb18">
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#Hardware"/>
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#Sensor"/>
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#Actuator"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
     <rdfs:label>has model number</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
   <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#communicatesWith">
     <rdfs:comment>Relates a technical component to another hardware or software component with which it exchanges data or commands.</rdfs:comment>
@@ -289,7 +365,18 @@
   </owl:ObjectProperty>
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#hasVersion">
     <rdfs:comment>Records a version string for software, firmware, hardware, or data artifacts.</rdfs:comment>
+    <rdfs:domain>
+      <owl:Class rdf:nodeID="cbeae3a7314fa9152c7a038bca3f00cbcecd01cd7dca2bd2650f111d3c3d0ce06e">
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#Hardware"/>
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#Sensor"/>
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#Software"/>
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#TimeSeries"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
     <rdfs:label>has version</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
   <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#hasCondition">
     <rdfs:comment>Relates an observation to the condition under which it was made or interpreted.</rdfs:comment>
@@ -310,15 +397,11 @@
     <rdfs:comment>SEMTS property recording the unit associated with a data dimension.</rdfs:comment>
     <rdfs:label>dimension unit</rdfs:label>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm#hasEnrichmentType">
-    <rdfs:comment>Records the type or category of enrichment associated with an enclosure.</rdfs:comment>
-    <rdfs:label>has enrichment type</rdfs:label>
-  </owl:DatatypeProperty>
+  <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/creator"/>
   <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#occursIn">
     <rdfs:comment>Relates an observation, result, or event to the enclosure or context in which it occurs.</rdfs:comment>
     <rdfs:label>occurs in</rdfs:label>
   </owl:ObjectProperty>
-  <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/creator"/>
   <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#hasActuator">
     <rdfs:comment>Relates a monitoring setup or technical component to an actuator associated with it.</rdfs:comment>
     <rdfs:label>has actuator</rdfs:label>
@@ -336,20 +419,11 @@
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
   <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/license"/>
-  <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm#hasFloorArea">
-    <rdfs:comment>Records the floor area value for an enclosure or dimensions record.</rdfs:comment>
-    <rdfs:label>has floor area</rdfs:label>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-  </owl:DatatypeProperty>
   <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/env#RelativeHumidity">
     <rdfs:comment>Relates an environmental profile, specification, or observation to the environmental property representing relative humidity.</rdfs:comment>
     <rdfs:label>relative humidity</rdfs:label>
     <rdfs:range rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#EnvironmentalProperty"/>
   </owl:ObjectProperty>
-  <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm#hasSafetyRequirement">
-    <rdfs:comment>Records a textual or coded safety requirement for an enclosure or monitoring setup.</rdfs:comment>
-    <rdfs:label>has safety requirement</rdfs:label>
-  </owl:DatatypeProperty>
   <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#captures">
     <rdfs:comment>Relates a sensor or monitoring component to the behavior, physiology, environment, or signal it captures.</rdfs:comment>
     <rdfs:label>captures</rdfs:label>
@@ -369,22 +443,23 @@
     <rdfs:label>has environment</rdfs:label>
   </owl:ObjectProperty>
   <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespaceUri"/>
+  <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm#hasFoodRequirement">
+    <rdfs:comment>Records a textual or coded food-provision requirement for an enclosure or subject group.</rdfs:comment>
+    <rdfs:domain>
+      <owl:Class rdf:nodeID="cb13bdf13a95ca6d304992a802d3315fe24c25e0f98e2d0ccc4f7cfd003728dc46b">
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#Enclosure"/>
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#ExperimentalGroup"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:label>has food requirement</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
   <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/identifier"/>
   <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix"/>
   <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/issued"/>
   <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/publisher"/>
-  <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm#hasFoodRequirement">
-    <rdfs:comment>Records a textual or coded food-provision requirement for an enclosure or subject group.</rdfs:comment>
-    <rdfs:label>has food requirement</rdfs:label>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm#hasWaterRequirement">
-    <rdfs:comment>Records a textual or coded water-provision requirement for an enclosure or subject group.</rdfs:comment>
-    <rdfs:label>has water requirement</rdfs:label>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm#hasEnrichmentRequirement">
-    <rdfs:comment>Records a textual or coded enrichment requirement for an enclosure or monitored enclosure.</rdfs:comment>
-    <rdfs:label>has enrichment requirement</rdfs:label>
-  </owl:DatatypeProperty>
   <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/bibliographicCitation"/>
   <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/creator"/>
   <owl:AnnotationProperty rdf:about="https://schema.org/logo"/>
@@ -671,6 +746,11 @@
     <rdfs:label>has health status observation</rdfs:label>
     <rdfs:range rdf:resource="https://w3id.org/hcmo/ontology/hcm/obs#HealthStatusObservation"/>
   </owl:ObjectProperty>
+  <owl:Class rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#TimeSeries">
+    <rdfs:comment>An ordered sequence of time-indexed measurements or outputs produced in a monitoring workflow.</rdfs:comment>
+    <rdfs:label>Time Series</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/hcmo/ontology/hcm/obs#ObservationResult"/>
+  </owl:Class>
   <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#assignedToEnclosure">
     <rdfs:comment>Relates a housing assignment to the enclosure or monitored enclosure involved in that assignment.</rdfs:comment>
     <rdfs:domain rdf:resource="https://w3id.org/hcmo/ontology/hcm/bio#HousingAssignment"/>
@@ -728,11 +808,43 @@
       </owl:Restriction>
     </rdfs:subClassOf>
   </owl:Class>
+  <owl:Class rdf:about="https://w3id.org/hcmo/ontology/hcm/env#EnvironmentProfile">
+    <rdfs:comment>A structured profile describing environmental conditions or requirements for a monitored enclosure.</rdfs:comment>
+    <rdfs:label>Environment Profile</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="cb16ecbbc8bf4babbcae00a50aaf1e70557b2dd74f57693930fbe651ab1ed75e499">
+        <owl:allValuesFrom rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#MeasurementSpecification"/>
+        <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#hasMeasurementSpec"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="cb2e2fa47f588537ba27e3abfcc8b262b6966da498cb153e5c1b0723f614306e65e">
+        <owl:allValuesFrom rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#LightCycle"/>
+        <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#hasLightCycle"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="cb31ec00e8f513a21d68d42624c813702e50432d44c14388830a884954919fce391">
+        <owl:allValuesFrom rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#GasConcentrationProfile"/>
+        <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#hasGasConcentrationProfile"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
   <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#installedIn">
     <rdfs:comment>Relates a sensor or technical component to the monitored enclosure or setup in which it is installed.</rdfs:comment>
     <rdfs:label>installed in</rdfs:label>
     <rdfs:range rdf:resource="https://w3id.org/hcmo/ontology/hcm#MonitoredEnclosure"/>
   </owl:ObjectProperty>
+  <owl:Class rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#StudyFactors">
+    <rdfs:comment>A collection of experimental or husbandry factors that may affect subjects, housing, or observations.</rdfs:comment>
+    <rdfs:label>Study Factors</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="cb1d08c559ba497ad59c67752997aa5dff00af19a964f826017caf6cd06a9584999">
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+        <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm/bio#hasTreatment"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#hasSpecies">
     <rdfs:comment>Records the species name or identifier reported for a subject.</rdfs:comment>
     <rdfs:label>has species</rdfs:label>
@@ -746,6 +858,11 @@
     <rdfs:comment>OWL-Time relation linking a temporal entity or monitoring interval to its beginning.</rdfs:comment>
     <rdfs:label>has beginning</rdfs:label>
   </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/env#hasValue">
+    <rdfs:comment>Records a literal value for an environmental measurement or specification.</rdfs:comment>
+    <rdfs:label>has value</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
   <owl:Class rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#Actuator">
     <rdfs:comment>A device that elicits or perturbs behavior, physiology, or the monitored environment.</rdfs:comment>
     <rdfs:label>Actuator</rdfs:label>
@@ -774,12 +891,27 @@
   </owl:ObjectProperty>
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm#hasWidth">
     <rdfs:comment>Records the width value of an enclosure or dimensions record.</rdfs:comment>
+    <rdfs:domain>
+      <owl:Class rdf:nodeID="cb1a3dbeced000884057f06065f6eee834813678a88bd70c9aa95196e1f7d82ecb1">
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#Enclosure"/>
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#EnclosureDimensions"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
     <rdfs:label>has width</rdfs:label>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
   </owl:DatatypeProperty>
+  <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#belongsToGroup">
+    <rdfs:comment>Relates a subject, assignment, or monitored enclosure context to an experimental group.</rdfs:comment>
+    <rdfs:label>belongs to group</rdfs:label>
+    <rdfs:range rdf:resource="https://w3id.org/hcmo/ontology/hcm/bio#ExperimentalGroup"/>
+  </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/env#hasGasConcentrationProfile">
     <rdfs:comment>Relates an environment profile to a gas concentration profile.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#EnvironmentProfile"/>
     <rdfs:label>has gas concentration profile</rdfs:label>
+    <rdfs:range rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#GasConcentrationProfile"/>
   </owl:ObjectProperty>
   <owl:Class rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#WeightObservation">
     <rdfs:comment>A SOSA-style observation reporting the body weight of a biological subject.</rdfs:comment>
@@ -810,6 +942,19 @@
     </rdfs:subClassOf>
     <rdfs:subClassOf rdf:resource="https://w3id.org/hcmo/ontology/hcm/obs#ObservationResult"/>
   </owl:Class>
+  <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm#hasLength">
+    <rdfs:comment>Records the length value of an enclosure or dimensions record.</rdfs:comment>
+    <rdfs:domain>
+      <owl:Class rdf:nodeID="cb152003df36c8e5e0407921f62732f51ffd1e63f378472a47267f582d52bb8cbdf">
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#Enclosure"/>
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#EnclosureDimensions"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:label>has length</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </owl:DatatypeProperty>
   <owl:Class rdf:about="https://w3id.org/hcmo/ontology/hcm/env#EnvironmentalProperty">
     <rdfs:comment>An environmental parameter that may be measured, specified, or controlled in a home-cage monitoring context.</rdfs:comment>
     <rdfs:label>Environmental Property</rdfs:label>
@@ -829,9 +974,26 @@
       </owl:Restriction>
     </rdfs:subClassOf>
   </owl:Class>
+  <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/env#hasLightCycle">
+    <rdfs:comment>Relates an environment profile to a light cycle.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#EnvironmentProfile"/>
+    <rdfs:label>has light cycle</rdfs:label>
+    <rdfs:range rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#LightCycle"/>
+  </owl:ObjectProperty>
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm#hasManufacturer">
     <rdfs:comment>Records the manufacturer name for an enclosure, device, or system component.</rdfs:comment>
+    <rdfs:domain>
+      <owl:Class rdf:nodeID="cb10240603d9fa14fe5277de5b3d9433c451a08c96cd5968d72c434d6fa3d76c55c">
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#Enclosure"/>
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#Hardware"/>
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#Sensor"/>
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#Actuator"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
     <rdfs:label>has manufacturer</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
   <owl:Class rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#EnvironmentObservation">
     <rdfs:comment>A SOSA-style observation about an environmental property of a monitored enclosure.</rdfs:comment>
@@ -880,10 +1042,12 @@
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/env#hasGasType">
     <rdfs:comment>Records the gas type measured or specified in a gas concentration profile or observation.</rdfs:comment>
     <rdfs:label>has gas type</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm#hasUnit">
     <rdfs:comment>Records the measurement unit associated with a quantitative value.</rdfs:comment>
     <rdfs:label>has unit</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
   <owl:Class rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#ExperimentalGroup">
     <rdfs:comment>A group of biological subjects sharing an experimental condition, treatment, or study role.</rdfs:comment>
@@ -894,18 +1058,11 @@
     <rdfs:label>has date of birth</rdfs:label>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#belongsToGroup">
-    <rdfs:comment>Relates a subject, assignment, or monitored enclosure context to an experimental group.</rdfs:comment>
-    <rdfs:label>belongs to group</rdfs:label>
-  </owl:ObjectProperty>
-  <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm#hasLength">
-    <rdfs:comment>Records the length value of an enclosure or dimensions record.</rdfs:comment>
-    <rdfs:label>has length</rdfs:label>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-  </owl:DatatypeProperty>
   <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/env#hasThriveProfile">
     <rdfs:comment>Relates a monitored enclosure to the thrive profile that specifies suitable husbandry or environmental conditions.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/hcmo/ontology/hcm#MonitoredEnclosure"/>
     <rdfs:label>has thrive profile</rdfs:label>
+    <rdfs:range rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#ThriveProfile"/>
   </owl:ObjectProperty>
   <owl:Class rdf:about="https://w3id.org/hcmo/ontology/hcm/env#LightCycle">
     <rdfs:comment>A description of the timing and transitions of light and dark phases in an enclosure environment.</rdfs:comment>
@@ -927,6 +1084,12 @@
       </owl:Restriction>
     </rdfs:subClassOf>
   </owl:Class>
+  <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/env#hasMeasurementSpec">
+    <rdfs:comment>Relates an environment profile to a measurement specification.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#EnvironmentProfile"/>
+    <rdfs:label>has measurement spec</rdfs:label>
+    <rdfs:range rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#MeasurementSpecification"/>
+  </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://www.w3.org/ns/sosa/madeBySensor">
     <rdfs:comment>SOSA relation linking an observation to the sensor that made it.</rdfs:comment>
     <rdfs:label>made by sensor</rdfs:label>
@@ -968,6 +1131,7 @@
   <owl:DatatypeProperty rdf:about="http://www.w3.org/ns/sosa/resultTime">
     <rdfs:comment>SOSA property recording the instant at which an observation result became available.</rdfs:comment>
     <rdfs:label>result time</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
   </owl:DatatypeProperty>
   <owl:Class rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#HealthStatusObservation">
     <rdfs:comment>A SOSA-style observation about the health status of a biological subject.</rdfs:comment>
@@ -981,6 +1145,14 @@
   </owl:Class>
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm#hasHeight">
     <rdfs:comment>Records the height value of an enclosure or dimensions record.</rdfs:comment>
+    <rdfs:domain>
+      <owl:Class rdf:nodeID="cba9df1c8e8bbf6de641380b4c3ceab3fc94f54e6348b21403155ada2826d61c90">
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#Enclosure"/>
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#EnclosureDimensions"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
     <rdfs:label>has height</rdfs:label>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
   </owl:DatatypeProperty>
@@ -996,6 +1168,7 @@
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#hasInterval">
     <rdfs:comment>Records a time interval or duration associated with an observation or result.</rdfs:comment>
     <rdfs:label>has interval</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#hasConfidenceScore">
     <rdfs:comment>Records a numeric confidence score associated with an observation or inferred result.</rdfs:comment>
@@ -1010,14 +1183,6 @@
     <rdfs:comment>A physical housing enclosure used as part of a home-cage monitoring system.</rdfs:comment>
     <rdfs:label>Enclosure</rdfs:label>
   </owl:Class>
-  <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/env#hasMeasurementSpec">
-    <rdfs:comment>Relates an environment profile to a measurement specification.</rdfs:comment>
-    <rdfs:label>has measurement spec</rdfs:label>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/env#hasLightCycle">
-    <rdfs:comment>Relates an environment profile to a light cycle.</rdfs:comment>
-    <rdfs:label>has light cycle</rdfs:label>
-  </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#monitoredBy">
     <rdfs:comment>Relates a monitored enclosure, subject, process, or property to the sensor or monitoring component observing it.</rdfs:comment>
     <rdfs:label>monitored by</rdfs:label>
@@ -1078,10 +1243,6 @@
     <rdfs:comment>A specification describing how an environmental property is measured, represented, or constrained.</rdfs:comment>
     <rdfs:label>Measurement Specification</rdfs:label>
   </owl:Class>
-  <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/env#hasValue">
-    <rdfs:comment>Records a literal value for an environmental measurement or specification.</rdfs:comment>
-    <rdfs:label>has value</rdfs:label>
-  </owl:DatatypeProperty>
   <owl:ObjectProperty rdf:about="http://www.w3.org/ns/sosa/hasFeatureOfInterest">
     <rdfs:comment>SOSA relation linking an observation to the entity, system, or feature being observed.</rdfs:comment>
     <rdfs:label>has feature of interest</rdfs:label>
@@ -1095,12 +1256,22 @@
     <rdfs:label>has health status term</rdfs:label>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#hasTreatment">
+    <rdfs:comment>Records a treatment, intervention, or experimental condition assigned to a subject or group.</rdfs:comment>
+    <rdfs:domain>
+      <owl:Class rdf:nodeID="cb191bf2104e6785d148d8f5f49a8d83b482a21359312a9519e1b5262f5e65a1764">
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#Subject"/>
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#ExperimentalGroup"/>
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#StudyFactors"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:label>has treatment</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
   <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm#locatedIn">
     <rdfs:comment>Relates an enclosure or monitored enclosure to the facility, room, rack, or other location in which it is situated.</rdfs:comment>
     <rdfs:label>located in</rdfs:label>
   </owl:ObjectProperty>
-  <owl:DatatypeProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#hasTreatment">
-    <rdfs:comment>Records a treatment, intervention, or experimental condition assigned to a subject or group.</rdfs:comment>
-    <rdfs:label>has treatment</rdfs:label>
-  </owl:DatatypeProperty>
 </rdf:RDF>

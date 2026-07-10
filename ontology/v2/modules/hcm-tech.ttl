@@ -40,19 +40,31 @@ hcm-tech:TimeSeries a owl:Class ;
 
 hcm-tech:hasFileFormat a owl:DatatypeProperty ;
     rdfs:label "has file format" ;
-    rdfs:comment "Records the file format of a data, software, or time-series artifact." .
+    rdfs:comment "Records the file format of a data, software, or time-series artifact." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( hcm-tech:Software hcm-tech:TimeSeries ) ] ;
+    rdfs:range xsd:string .
 
 hcm-tech:hasFirmware a owl:DatatypeProperty ;
     rdfs:label "has firmware" ;
-    rdfs:comment "Records the firmware identifier or version installed on a hardware or sensor component." .
+    rdfs:comment "Records the firmware identifier or version installed on a hardware or sensor component." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( hcm-tech:Hardware hcm-tech:Sensor ) ] ;
+    rdfs:range xsd:string .
 
 hcm-tech:hasModelNumber a owl:DatatypeProperty ;
     rdfs:label "has model number" ;
-    rdfs:comment "Records the manufacturer model number for a hardware, sensor, or actuator component." .
+    rdfs:comment "Records the manufacturer model number for a hardware, sensor, or actuator component." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( hcm-tech:Hardware hcm-tech:Sensor hcm-tech:Actuator ) ] ;
+    rdfs:range xsd:string .
 
 hcm-tech:hasProtocol a owl:DatatypeProperty ;
     rdfs:label "has protocol" ;
-    rdfs:comment "Records the communication, acquisition, or processing protocol used by a technical component." .
+    rdfs:comment "Records the communication, acquisition, or processing protocol used by a technical component." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( hcm-tech:Hardware hcm-tech:Sensor hcm-tech:Software ) ] ;
+    rdfs:range xsd:string .
 
 hcm-tech:hasSamplingRate a owl:DatatypeProperty ;
     rdfs:label "has sampling rate" ;
@@ -80,11 +92,17 @@ hcm-tech:hasSensorType a owl:DatatypeProperty ;
 
 hcm-tech:hasStoragePath a owl:DatatypeProperty ;
     rdfs:label "has storage path" ;
-    rdfs:comment "Records a path or locator for stored data, software, or time-series resources." .
+    rdfs:comment "Records a path or locator for stored data, software, or time-series resources." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( hcm-tech:Software hcm-tech:TimeSeries ) ] ;
+    rdfs:range xsd:string .
 
 hcm-tech:hasVersion a owl:DatatypeProperty ;
     rdfs:label "has version" ;
-    rdfs:comment "Records a version string for software, firmware, hardware, or data artifacts." .
+    rdfs:comment "Records a version string for software, firmware, hardware, or data artifacts." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( hcm-tech:Hardware hcm-tech:Sensor hcm-tech:Software hcm-tech:TimeSeries ) ] ;
+    rdfs:range xsd:string .
 
 hcm-tech:isCalibrated a owl:DatatypeProperty ;
     rdfs:label "is calibrated" ;
