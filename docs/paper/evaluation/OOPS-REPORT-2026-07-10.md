@@ -91,5 +91,18 @@ An attempted `owl:inverseOf` assertion between the SOSA `madeBySensor` and
 clean v2 artifact contains 1210 triples. HermiT still reports
 0 inconsistent classes and `tooling/validate.py` passes. A local rdflib check
 for properties without both `rdfs:domain` and `rdfs:range` reports 31 remaining
-properties. This is not an official OOPS REST result; the OOPS service must be
-rerun manually or from a public artifact to archive the final scanner output.
+properties.
+
+## Official public-artifact rerun, 2026-07-15
+
+OOPS was then rerun against the clean OWL file fetched from the public
+`cyril/oops-evaluation` GitHub branch. The XML output is archived as
+`docs/paper/evaluation/oops-v2-clean-2026-07-15.xml`.
+
+| Code | Name | Severity | Affected | Status |
+|---|---|---:|---:|---|
+| P11 | Missing domain or range in properties | Important | 31 | Reduced substantially; remaining cases require modeling review, not blanket `owl:Thing` fixes. |
+| P13 | Inverse relationships not explicitly declared | Minor | 45 | Documented modeling choice; add inverses only when a real bidirectional relation is needed. |
+| P22 | Using different naming conventions in the ontology | Minor | 1 | Scanner noise from mixed reused/local naming styles; no IRI rename proposed. |
+
+No critical OOPS pitfalls remain in this rerun.
