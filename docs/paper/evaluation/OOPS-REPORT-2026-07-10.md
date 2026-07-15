@@ -81,12 +81,14 @@ After the archived OOPS REST run above, a further local pass added:
 
 - minimal disjointness already present in the legacy ontology
   (`Sensor` disjoint with `Actuator`; `Hardware` disjoint with `Software`);
-- `owl:inverseOf` for the SOSA `madeBySensor` / `madeObservation` pair;
 - `owl:SymmetricProperty` on `hcm-tech:communicatesWith`;
 - additional conservative domain/range axioms for environmental, SEMTS, and
   technical relations.
 
-The resulting clean v2 artifact contains 1212 triples. HermiT still reports
+An attempted `owl:inverseOf` assertion between the SOSA `madeBySensor` and
+`madeObservation` properties was rejected by the OOPS REST scanner as P05
+(`Defining wrong inverse relationships`) and was removed again. The resulting
+clean v2 artifact contains 1210 triples. HermiT still reports
 0 inconsistent classes and `tooling/validate.py` passes. A local rdflib check
 for properties without both `rdfs:domain` and `rdfs:range` reports 31 remaining
 properties. This is not an official OOPS REST result; the OOPS service must be

@@ -50,6 +50,13 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
 
 owl:versionInfo a owl:AnnotationProperty .
 
+sosa:madeObservation a owl:ObjectProperty ;
+    rdfs:label "made observation" ;
+    rdfs:comment "SOSA relation linking a sensor to an observation it made." ;
+    rdfs:domain hcm-tech:Sensor ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( hcm-obs:BehaviorObservation hcm-obs:EnvironmentObservation hcm-obs:HealthStatusObservation hcm-obs:WeightObservation ) ] .
+
 schema:logo a owl:AnnotationProperty .
 
 schema:name a owl:DatatypeProperty ;
@@ -423,13 +430,12 @@ time:inXSDDateTime a owl:DatatypeProperty ;
     rdfs:label "in x s d date time" ;
     rdfs:comment "OWL-Time datatype property recording a date-time literal." .
 
-sosa:madeObservation a owl:ObjectProperty ;
-    rdfs:label "made observation" ;
-    rdfs:comment "SOSA relation linking a sensor to an observation it made." ;
-    rdfs:domain hcm-tech:Sensor ;
-    rdfs:range [ a owl:Class ;
-            owl:unionOf ( hcm-obs:BehaviorObservation hcm-obs:EnvironmentObservation hcm-obs:HealthStatusObservation hcm-obs:WeightObservation ) ] ;
-    owl:inverseOf sosa:madeBySensor .
+sosa:madeBySensor a owl:ObjectProperty ;
+    rdfs:label "made by sensor" ;
+    rdfs:comment "SOSA relation linking an observation to the sensor that made it." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( hcm-obs:BehaviorObservation hcm-obs:EnvironmentObservation hcm-obs:HealthStatusObservation hcm-obs:WeightObservation hcm-obs:ObservationResult ) ] ;
+    rdfs:range hcm-tech:Sensor .
 
 <https://orcid.org/0000-0002-2923-9790> a schema:Person ;
     schema:name "Pierre Larmande" .
@@ -706,14 +712,6 @@ semts:isPartOf a owl:ObjectProperty ;
 time:TemporalEntity a owl:Class ;
     rdfs:label "Temporal Entity" ;
     rdfs:comment "OWL-Time class used for temporal entities referenced by HCMO observations and time-series segments." .
-
-sosa:madeBySensor a owl:ObjectProperty ;
-    rdfs:label "made by sensor" ;
-    rdfs:comment "SOSA relation linking an observation to the sensor that made it." ;
-    rdfs:domain [ a owl:Class ;
-            owl:unionOf ( hcm-obs:BehaviorObservation hcm-obs:EnvironmentObservation hcm-obs:HealthStatusObservation hcm-obs:WeightObservation hcm-obs:ObservationResult ) ] ;
-    rdfs:range hcm-tech:Sensor ;
-    owl:inverseOf sosa:madeObservation .
 
 sosa:phenomenonTime a owl:ObjectProperty ;
     rdfs:label "phenomenon time" ;

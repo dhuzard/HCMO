@@ -80,8 +80,7 @@ sosa:madeBySensor a owl:ObjectProperty ;
     rdfs:comment "SOSA relation linking an observation to the sensor that made it." ;
     rdfs:domain [ a owl:Class ;
             owl:unionOf ( hcm-obs:BehaviorObservation hcm-obs:EnvironmentObservation hcm-obs:HealthStatusObservation hcm-obs:WeightObservation hcm-obs:ObservationResult ) ] ;
-    rdfs:range hcm-tech:Sensor ;
-    owl:inverseOf sosa:madeObservation .
+    rdfs:range hcm-tech:Sensor .
 
 <https://w3id.org/hcmo/ontology/hcm> a owl:Ontology ;
     dc:description "Ontology for home-cage monitoring of laboratory animals" ;
@@ -223,8 +222,7 @@ sosa:madeObservation a owl:ObjectProperty ;
     rdfs:comment "SOSA relation linking a sensor to an observation it made." ;
     rdfs:domain hcm-tech:Sensor ;
     rdfs:range [ a owl:Class ;
-            owl:unionOf ( hcm-obs:BehaviorObservation hcm-obs:EnvironmentObservation hcm-obs:HealthStatusObservation hcm-obs:WeightObservation ) ] ;
-    owl:inverseOf sosa:madeBySensor .
+            owl:unionOf ( hcm-obs:BehaviorObservation hcm-obs:EnvironmentObservation hcm-obs:HealthStatusObservation hcm-obs:WeightObservation ) ] .
 
 sosa:phenomenonTime a owl:ObjectProperty ;
     rdfs:label "phenomenon time" ;

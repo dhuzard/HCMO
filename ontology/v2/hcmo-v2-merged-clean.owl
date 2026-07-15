@@ -354,6 +354,21 @@
     <rdfs:label>has model number</rdfs:label>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
+  <owl:ObjectProperty rdf:about="http://www.w3.org/ns/sosa/madeObservation">
+    <rdfs:comment>SOSA relation linking a sensor to an observation it made.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#Sensor"/>
+    <rdfs:label>made observation</rdfs:label>
+    <rdfs:range>
+      <owl:Class rdf:nodeID="cb23655b2534600e406dae07c41d669fc07b55c5eede05676ca4527a745dcf3748e">
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#BehaviorObservation"/>
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#EnvironmentObservation"/>
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#HealthStatusObservation"/>
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#WeightObservation"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+  </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/env#CarbonDioxideConcentration">
     <rdfs:comment>Relates an environmental profile, specification, or observation to the environmental property representing carbon dioxide concentration.</rdfs:comment>
     <rdfs:domain>
@@ -860,40 +875,6 @@
     <rdfs:label>is part of</rdfs:label>
     <rdfs:range rdf:resource="https://w3id.org/hcmo/ontology/hcm/obs#EnvironmentObservation"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://www.w3.org/ns/sosa/madeBySensor">
-    <rdfs:comment>SOSA relation linking an observation to the sensor that made it.</rdfs:comment>
-    <rdfs:domain>
-      <owl:Class rdf:nodeID="cb89c96de6e26a0b027bd108e622750eec11a0f4cb495bdf7b52dbd3c6781f5fa8">
-        <owl:unionOf rdf:parseType="Collection">
-          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#BehaviorObservation"/>
-          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#EnvironmentObservation"/>
-          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#HealthStatusObservation"/>
-          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#WeightObservation"/>
-          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#ObservationResult"/>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:domain>
-    <rdfs:label>made by sensor</rdfs:label>
-    <rdfs:range rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#Sensor"/>
-    <owl:inverseOf>
-      <owl:ObjectProperty rdf:about="http://www.w3.org/ns/sosa/madeObservation">
-        <rdfs:comment>SOSA relation linking a sensor to an observation it made.</rdfs:comment>
-        <rdfs:domain rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#Sensor"/>
-        <rdfs:label>made observation</rdfs:label>
-        <rdfs:range>
-          <owl:Class rdf:nodeID="cb23655b2534600e406dae07c41d669fc07b55c5eede05676ca4527a745dcf3748e">
-            <owl:unionOf rdf:parseType="Collection">
-              <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#BehaviorObservation"/>
-              <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#EnvironmentObservation"/>
-              <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#HealthStatusObservation"/>
-              <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#WeightObservation"/>
-            </owl:unionOf>
-          </owl:Class>
-        </rdfs:range>
-        <owl:inverseOf rdf:resource="http://www.w3.org/ns/sosa/madeBySensor"/>
-      </owl:ObjectProperty>
-    </owl:inverseOf>
-  </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#assignedToEnclosure">
     <rdfs:comment>Relates a housing assignment to the enclosure or monitored enclosure involved in that assignment.</rdfs:comment>
     <rdfs:domain rdf:resource="https://w3id.org/hcmo/ontology/hcm/bio#HousingAssignment"/>
@@ -1214,6 +1195,22 @@
     <rdfs:label>has confidence score</rdfs:label>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
   </owl:DatatypeProperty>
+  <owl:ObjectProperty rdf:about="http://www.w3.org/ns/sosa/madeBySensor">
+    <rdfs:comment>SOSA relation linking an observation to the sensor that made it.</rdfs:comment>
+    <rdfs:domain>
+      <owl:Class rdf:nodeID="cb89c96de6e26a0b027bd108e622750eec11a0f4cb495bdf7b52dbd3c6781f5fa8">
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#BehaviorObservation"/>
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#EnvironmentObservation"/>
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#HealthStatusObservation"/>
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#WeightObservation"/>
+          <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#ObservationResult"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:label>made by sensor</rdfs:label>
+    <rdfs:range rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#Sensor"/>
+  </owl:ObjectProperty>
   <owl:Class rdf:about="https://schema.org/Person">
     <rdfs:comment>Schema.org class used to identify HCMO contributors in ontology metadata.</rdfs:comment>
     <rdfs:label>Person</rdfs:label>
