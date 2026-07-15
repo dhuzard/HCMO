@@ -242,8 +242,7 @@ sosa:hasResult a owl:ObjectProperty ;
     rdfs:label "has result" ;
     rdfs:comment "SOSA relation linking an observation to its result." ;
     rdfs:domain hcm-obs:ObservationContext ;
-    rdfs:range hcm-obs:ObservationResult ;
-    owl:inverseOf hcm-obs:isResultOf .
+    rdfs:range hcm-obs:ObservationResult .
 
 sosa:madeObservation a owl:ObjectProperty ;
     rdfs:label "made observation" ;
@@ -257,8 +256,7 @@ sosa:phenomenonTime a owl:ObjectProperty ;
     rdfs:label "phenomenon time" ;
     rdfs:comment "SOSA relation linking an observation to the time that the observed phenomenon occurred." ;
     rdfs:domain hcm-obs:ObservationContext ;
-    rdfs:range time:TemporalEntity ;
-    owl:inverseOf hcm-obs:isPhenomenonTimeOf .
+    rdfs:range time:TemporalEntity .
 
 <https://orcid.org/0000-0002-2923-9790> a schema:Person ;
     schema:name "Pierre Larmande" .
@@ -477,8 +475,7 @@ sosa:observedProperty a owl:ObjectProperty ;
     rdfs:label "observed property" ;
     rdfs:comment "SOSA relation linking an observation to the property being observed." ;
     rdfs:domain hcm-obs:ObservationContext ;
-    rdfs:range hcm-obs:ObservableProperty ;
-    owl:inverseOf hcm-obs:isObservedPropertyOf .
+    rdfs:range hcm-obs:ObservableProperty .
 
 hcm:hasUnit a owl:DatatypeProperty ;
     rdfs:label "has unit" ;
@@ -498,8 +495,7 @@ sosa:usedProcedure a owl:ObjectProperty ;
     rdfs:label "used procedure" ;
     rdfs:comment "SOSA relation linking an observation to the procedure used to make it." ;
     rdfs:domain hcm-obs:ObservationContext ;
-    rdfs:range hcm-env:MeasurementSpecification ;
-    owl:inverseOf hcm-obs:isUsedProcedureOf .
+    rdfs:range hcm-env:MeasurementSpecification .
 
 hcm:MonitoredEnclosure a owl:Class ;
     rdfs:label "Monitored Enclosure" ;

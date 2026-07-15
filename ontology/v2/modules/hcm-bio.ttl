@@ -70,8 +70,7 @@ hcm-bio:hasHealthStatusObservation a owl:ObjectProperty ;
     rdfs:label "has health status observation" ;
     rdfs:comment "Relates a subject to a health-status observation about that subject." ;
     rdfs:domain hcm-bio:SubjectObservationBearer ;
-    rdfs:range hcm-obs:HealthStatusObservation ;
-    owl:inverseOf hcm-bio:isHealthStatusObservationOf .
+    rdfs:range hcm-obs:HealthStatusObservation .
 
 hcm-bio:hasHousingAssignment a owl:ObjectProperty ;
     rdfs:label "has housing assignment" ;
@@ -120,15 +119,13 @@ hcm-bio:hasWeightObservation a owl:ObjectProperty ;
     rdfs:label "has weight observation" ;
     rdfs:comment "Relates a subject to a weight observation about that subject." ;
     rdfs:domain hcm-bio:SubjectObservationBearer ;
-    rdfs:range hcm-obs:WeightObservation ;
-    owl:inverseOf hcm-bio:isWeightObservationOf .
+    rdfs:range hcm-obs:WeightObservation .
 
 hcm-bio:hasBehaviorObservation a owl:ObjectProperty ;
     rdfs:label "has behavior observation" ;
     rdfs:comment "Relates a subject to a behavior observation about that subject." ;
     rdfs:domain hcm-bio:SubjectObservationBearer ;
-    rdfs:range hcm-obs:BehaviorObservation ;
-    owl:inverseOf hcm-bio:isBehaviorObservationOf .
+    rdfs:range hcm-obs:BehaviorObservation .
 
 hcm-bio:hasAssignedHousing a owl:ObjectProperty ;
     rdfs:label "has assigned housing" ;
@@ -145,20 +142,6 @@ hcm-bio:hasGroupContext a owl:ObjectProperty ;
             owl:unionOf ( hcm-bio:Subject hcm-bio:HousingAssignment hcm:MonitoredEnclosure ) ] ;
     owl:inverseOf hcm-bio:belongsToGroup .
 
-hcm-bio:isBehaviorObservationOf a owl:ObjectProperty ;
-    rdfs:label "is behavior observation of" ;
-    rdfs:comment "Inverse relation from a behavior observation to the subject it observes." ;
-    rdfs:domain hcm-obs:BehaviorObservation ;
-    rdfs:range hcm-bio:SubjectObservationBearer ;
-    owl:inverseOf hcm-bio:hasBehaviorObservation .
-
-hcm-bio:isHealthStatusObservationOf a owl:ObjectProperty ;
-    rdfs:label "is health status observation of" ;
-    rdfs:comment "Inverse relation from a health-status observation to the subject it observes." ;
-    rdfs:domain hcm-obs:HealthStatusObservation ;
-    rdfs:range hcm-bio:SubjectObservationBearer ;
-    owl:inverseOf hcm-bio:hasHealthStatusObservation .
-
 hcm-bio:isHousingAssignmentOf a owl:ObjectProperty ;
     rdfs:label "is housing assignment of" ;
     rdfs:comment "Inverse relation from a housing assignment record to the subject or group it assigns." ;
@@ -174,10 +157,4 @@ hcm-bio:isMemberOf a owl:ObjectProperty ;
     rdfs:range hcm-bio:ExperimentalGroup ;
     owl:inverseOf hcm-bio:hasMember .
 
-hcm-bio:isWeightObservationOf a owl:ObjectProperty ;
-    rdfs:label "is weight observation of" ;
-    rdfs:comment "Inverse relation from a weight observation to the subject it observes." ;
-    rdfs:domain hcm-obs:WeightObservation ;
-    rdfs:range hcm-bio:SubjectObservationBearer ;
-    owl:inverseOf hcm-bio:hasWeightObservation .
 
