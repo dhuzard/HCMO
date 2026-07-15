@@ -241,8 +241,7 @@ time:inXSDDateTime a owl:DatatypeProperty ;
 sosa:hasResult a owl:ObjectProperty ;
     rdfs:label "has result" ;
     rdfs:comment "SOSA relation linking an observation to its result." ;
-    rdfs:domain [ a owl:Class ;
-            owl:unionOf ( hcm:MonitoredEnclosure hcm-obs:BehaviorObservation hcm-obs:EnvironmentObservation hcm-obs:HealthStatusObservation hcm-obs:WeightObservation ) ] ;
+    rdfs:domain hcm-obs:ObservationContext ;
     rdfs:range hcm-obs:ObservationResult ;
     owl:inverseOf hcm-obs:isResultOf .
 
@@ -257,8 +256,7 @@ sosa:madeObservation a owl:ObjectProperty ;
 sosa:phenomenonTime a owl:ObjectProperty ;
     rdfs:label "phenomenon time" ;
     rdfs:comment "SOSA relation linking an observation to the time that the observed phenomenon occurred." ;
-    rdfs:domain [ a owl:Class ;
-            owl:unionOf ( hcm:MonitoredEnclosure hcm-obs:BehaviorObservation hcm-obs:EnvironmentObservation hcm-obs:HealthStatusObservation hcm-obs:WeightObservation hcm-obs:ObservationResult ) ] ;
+    rdfs:domain hcm-obs:ObservationContext ;
     rdfs:range time:TemporalEntity ;
     owl:inverseOf hcm-obs:isPhenomenonTimeOf .
 
@@ -478,10 +476,8 @@ semts:isPartOf a owl:ObjectProperty ;
 sosa:observedProperty a owl:ObjectProperty ;
     rdfs:label "observed property" ;
     rdfs:comment "SOSA relation linking an observation to the property being observed." ;
-    rdfs:domain [ a owl:Class ;
-            owl:unionOf ( hcm:MonitoredEnclosure hcm-obs:BehaviorObservation hcm-obs:EnvironmentObservation hcm-obs:HealthStatusObservation hcm-obs:WeightObservation ) ] ;
-    rdfs:range [ a owl:Class ;
-            owl:unionOf ( hcm-env:EnvironmentalProperty hcm-obs:ObservationResult ) ] ;
+    rdfs:domain hcm-obs:ObservationContext ;
+    rdfs:range hcm-obs:ObservableProperty ;
     owl:inverseOf hcm-obs:isObservedPropertyOf .
 
 hcm:hasUnit a owl:DatatypeProperty ;
@@ -501,8 +497,7 @@ sosa:resultTime a owl:DatatypeProperty ;
 sosa:usedProcedure a owl:ObjectProperty ;
     rdfs:label "used procedure" ;
     rdfs:comment "SOSA relation linking an observation to the procedure used to make it." ;
-    rdfs:domain [ a owl:Class ;
-            owl:unionOf ( hcm:MonitoredEnclosure hcm-obs:BehaviorObservation hcm-obs:EnvironmentObservation hcm-obs:HealthStatusObservation hcm-obs:WeightObservation hcm-obs:ObservationResult ) ] ;
+    rdfs:domain hcm-obs:ObservationContext ;
     rdfs:range hcm-env:MeasurementSpecification ;
     owl:inverseOf hcm-obs:isUsedProcedureOf .
 

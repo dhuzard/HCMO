@@ -522,14 +522,14 @@ hcm-bio:isBehaviorObservationOf a owl:ObjectProperty ;
     rdfs:label "is behavior observation of" ;
     rdfs:comment "Inverse relation from a behavior observation to the subject it observes." ;
     rdfs:domain hcm-obs:BehaviorObservation ;
-    rdfs:range hcm-bio:Subject ;
+    rdfs:range hcm-bio:SubjectObservationBearer ;
     owl:inverseOf hcm-bio:hasBehaviorObservation .
 
 hcm-bio:isHealthStatusObservationOf a owl:ObjectProperty ;
     rdfs:label "is health status observation of" ;
     rdfs:comment "Inverse relation from a health-status observation to the subject it observes." ;
     rdfs:domain hcm-obs:HealthStatusObservation ;
-    rdfs:range hcm-bio:Subject ;
+    rdfs:range hcm-bio:SubjectObservationBearer ;
     owl:inverseOf hcm-bio:hasHealthStatusObservation .
 
 hcm-bio:isHousingAssignmentOf a owl:ObjectProperty ;
@@ -551,7 +551,7 @@ hcm-bio:isWeightObservationOf a owl:ObjectProperty ;
     rdfs:label "is weight observation of" ;
     rdfs:comment "Inverse relation from a weight observation to the subject it observes." ;
     rdfs:domain hcm-obs:WeightObservation ;
-    rdfs:range hcm-bio:Subject ;
+    rdfs:range hcm-bio:SubjectObservationBearer ;
     owl:inverseOf hcm-bio:hasWeightObservation .
 
 hcm-env:hasAmbientTemperature a owl:ObjectProperty ;
@@ -788,8 +788,7 @@ hcm-obs:hasOccurrence a owl:ObjectProperty ;
 hcm-obs:hasResult a owl:ObjectProperty ;
     rdfs:label "has result" ;
     rdfs:comment "Relates an HCMO observation to its observation result." ;
-    rdfs:domain [ a owl:Class ;
-            owl:unionOf ( hcm:MonitoredEnclosure hcm-obs:BehaviorObservation hcm-obs:EnvironmentObservation hcm-obs:HealthStatusObservation hcm-obs:WeightObservation ) ] ;
+    rdfs:domain hcm-obs:ObservationContext ;
     rdfs:range hcm-obs:ObservationResult ;
     owl:equivalentProperty sosa:hasResult ;
     owl:inverseOf hcm-obs:isResultOf .
@@ -814,26 +813,22 @@ hcm-obs:isFeatureOfInterestOf a owl:ObjectProperty ;
 hcm-obs:isObservedPropertyOf a owl:ObjectProperty ;
     rdfs:label "is observed property of" ;
     rdfs:comment "Inverse relation from an observed property to the observation that observes it." ;
-    rdfs:domain [ a owl:Class ;
-            owl:unionOf ( hcm-env:EnvironmentalProperty hcm-obs:ObservationResult ) ] ;
-    rdfs:range [ a owl:Class ;
-            owl:unionOf ( hcm-obs:BehaviorObservation hcm-obs:EnvironmentObservation hcm-obs:HealthStatusObservation hcm-obs:WeightObservation ) ] ;
+    rdfs:domain hcm-obs:ObservableProperty ;
+    rdfs:range hcm-obs:ObservationContext ;
     owl:inverseOf sosa:observedProperty .
 
 hcm-obs:isPhenomenonTimeOf a owl:ObjectProperty ;
     rdfs:label "is phenomenon time of" ;
     rdfs:comment "Inverse relation from a temporal entity to the observation or result whose phenomenon time it is." ;
     rdfs:domain time:TemporalEntity ;
-    rdfs:range [ a owl:Class ;
-            owl:unionOf ( hcm-obs:BehaviorObservation hcm-obs:EnvironmentObservation hcm-obs:HealthStatusObservation hcm-obs:WeightObservation hcm-obs:ObservationResult ) ] ;
+    rdfs:range hcm-obs:ObservationContext ;
     owl:inverseOf sosa:phenomenonTime .
 
 hcm-obs:isUsedProcedureOf a owl:ObjectProperty ;
     rdfs:label "is used procedure of" ;
     rdfs:comment "Inverse relation from a measurement specification or procedure to the observation that used it." ;
     rdfs:domain hcm-env:MeasurementSpecification ;
-    rdfs:range [ a owl:Class ;
-            owl:unionOf ( hcm-obs:BehaviorObservation hcm-obs:EnvironmentObservation hcm-obs:HealthStatusObservation hcm-obs:WeightObservation hcm-obs:ObservationResult ) ] ;
+    rdfs:range hcm-obs:ObservationContext ;
     owl:inverseOf sosa:usedProcedure .
 
 hcm-obs:occursIn a owl:ObjectProperty ;
@@ -1012,24 +1007,21 @@ hcm-bio:belongsToGroup a owl:ObjectProperty ;
 hcm-bio:hasBehaviorObservation a owl:ObjectProperty ;
     rdfs:label "has behavior observation" ;
     rdfs:comment "Relates a subject to a behavior observation about that subject." ;
-    rdfs:domain [ a owl:Class ;
-            owl:unionOf ( hcm-bio:Subject hcm:MonitoredEnclosure ) ] ;
+    rdfs:domain hcm-bio:SubjectObservationBearer ;
     rdfs:range hcm-obs:BehaviorObservation ;
     owl:inverseOf hcm-bio:isBehaviorObservationOf .
 
 hcm-bio:hasHealthStatusObservation a owl:ObjectProperty ;
     rdfs:label "has health status observation" ;
     rdfs:comment "Relates a subject to a health-status observation about that subject." ;
-    rdfs:domain [ a owl:Class ;
-            owl:unionOf ( hcm-bio:Subject hcm:MonitoredEnclosure ) ] ;
+    rdfs:domain hcm-bio:SubjectObservationBearer ;
     rdfs:range hcm-obs:HealthStatusObservation ;
     owl:inverseOf hcm-bio:isHealthStatusObservationOf .
 
 hcm-bio:hasWeightObservation a owl:ObjectProperty ;
     rdfs:label "has weight observation" ;
     rdfs:comment "Relates a subject to a weight observation about that subject." ;
-    rdfs:domain [ a owl:Class ;
-            owl:unionOf ( hcm-bio:Subject hcm:MonitoredEnclosure ) ] ;
+    rdfs:domain hcm-bio:SubjectObservationBearer ;
     rdfs:range hcm-obs:WeightObservation ;
     owl:inverseOf hcm-bio:isWeightObservationOf .
 
@@ -1065,6 +1057,10 @@ hcm-obs:BehaviorResult a owl:Class ;
     rdfs:label "Behavior Result" ;
     rdfs:comment "An observation result representing a detected, classified, or recorded behavior." .
 
+hcm-obs:ObservableProperty a owl:Class ;
+    rdfs:label "Observable Property" ;
+    rdfs:comment "A property, result, or parameter that can be used as the observed property of an HCMO observation." .
+
 hcm-obs:ObservationCondition a owl:Class ;
     rdfs:label "Observation Condition" ;
     rdfs:comment "A condition, state, or contextual qualifier under which an observation was made or interpreted." .
@@ -1080,8 +1076,7 @@ hcm-obs:isResultOf a owl:ObjectProperty ;
     rdfs:label "is result of" ;
     rdfs:comment "Inverse relation from an observation result to the observation that produced it." ;
     rdfs:domain hcm-obs:ObservationResult ;
-    rdfs:range [ a owl:Class ;
-            owl:unionOf ( hcm-obs:BehaviorObservation hcm-obs:EnvironmentObservation hcm-obs:HealthStatusObservation hcm-obs:WeightObservation ) ] ;
+    rdfs:range hcm-obs:ObservationContext ;
     owl:inverseOf sosa:hasResult,
         hcm-obs:hasResult .
 
@@ -1148,8 +1143,7 @@ semts:isPartOf a owl:ObjectProperty ;
 sosa:phenomenonTime a owl:ObjectProperty ;
     rdfs:label "phenomenon time" ;
     rdfs:comment "SOSA relation linking an observation to the time that the observed phenomenon occurred." ;
-    rdfs:domain [ a owl:Class ;
-            owl:unionOf ( hcm:MonitoredEnclosure hcm-obs:BehaviorObservation hcm-obs:EnvironmentObservation hcm-obs:HealthStatusObservation hcm-obs:WeightObservation hcm-obs:ObservationResult ) ] ;
+    rdfs:domain hcm-obs:ObservationContext ;
     rdfs:range time:TemporalEntity ;
     owl:inverseOf hcm-obs:isPhenomenonTimeOf .
 
@@ -1173,10 +1167,8 @@ hcm-tech:TimeSeries a owl:Class ;
 sosa:observedProperty a owl:ObjectProperty ;
     rdfs:label "observed property" ;
     rdfs:comment "SOSA relation linking an observation to the property being observed." ;
-    rdfs:domain [ a owl:Class ;
-            owl:unionOf ( hcm:MonitoredEnclosure hcm-obs:BehaviorObservation hcm-obs:EnvironmentObservation hcm-obs:HealthStatusObservation hcm-obs:WeightObservation ) ] ;
-    rdfs:range [ a owl:Class ;
-            owl:unionOf ( hcm-env:EnvironmentalProperty hcm-obs:ObservationResult ) ] ;
+    rdfs:domain hcm-obs:ObservationContext ;
+    rdfs:range hcm-obs:ObservableProperty ;
     owl:inverseOf hcm-obs:isObservedPropertyOf .
 
 hcm-env:GasConcentrationProfile a owl:Class ;
@@ -1195,8 +1187,7 @@ sosa:hasFeatureOfInterest a owl:ObjectProperty ;
 sosa:hasResult a owl:ObjectProperty ;
     rdfs:label "has result" ;
     rdfs:comment "SOSA relation linking an observation to its result." ;
-    rdfs:domain [ a owl:Class ;
-            owl:unionOf ( hcm:MonitoredEnclosure hcm-obs:BehaviorObservation hcm-obs:EnvironmentObservation hcm-obs:HealthStatusObservation hcm-obs:WeightObservation ) ] ;
+    rdfs:domain hcm-obs:ObservationContext ;
     rdfs:range hcm-obs:ObservationResult ;
     owl:inverseOf hcm-obs:isResultOf .
 
@@ -1214,8 +1205,7 @@ semts:DataDimension a owl:Class ;
 sosa:usedProcedure a owl:ObjectProperty ;
     rdfs:label "used procedure" ;
     rdfs:comment "SOSA relation linking an observation to the procedure used to make it." ;
-    rdfs:domain [ a owl:Class ;
-            owl:unionOf ( hcm:MonitoredEnclosure hcm-obs:BehaviorObservation hcm-obs:EnvironmentObservation hcm-obs:HealthStatusObservation hcm-obs:WeightObservation hcm-obs:ObservationResult ) ] ;
+    rdfs:domain hcm-obs:ObservationContext ;
     rdfs:range hcm-env:MeasurementSpecification ;
     owl:inverseOf hcm-obs:isUsedProcedureOf .
 
@@ -1225,6 +1215,10 @@ hcm-bio:HousingAssignment a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty hcm-bio:assignedToEnclosure ;
             owl:someValuesFrom hcm:MonitoredEnclosure ] .
+
+hcm-bio:SubjectObservationBearer a owl:Class ;
+    rdfs:label "Subject Observation Bearer" ;
+    rdfs:comment "A subject-level or enclosure-level entity that can bear observations about animals housed or monitored in it." .
 
 schema:Person a owl:Class ;
     rdfs:label "Person" ;
@@ -1248,6 +1242,10 @@ semts:TimeSeriesSegment a owl:Class ;
             owl:onProperty semts:during ;
             owl:someValuesFrom time:TemporalEntity ] .
 
+hcm-obs:ObservationContext a owl:Class ;
+    rdfs:label "Observation Context" ;
+    rdfs:comment "An observation-like context, including observations, results, or monitored-enclosure contexts that currently carry observation restrictions in the v2 draft." .
+
 hcm-tech:Actuator a owl:Class ;
     rdfs:label "Actuator" ;
     rdfs:comment "A device that elicits or perturbs behavior, physiology, or the monitored environment." .
@@ -1260,6 +1258,34 @@ time:TemporalEntity a owl:Class ;
     rdfs:label "Temporal Entity" ;
     rdfs:comment "OWL-Time class used for temporal entities referenced by HCMO observations and time-series segments." .
 
+hcm-obs:WeightObservation a owl:Class ;
+    rdfs:label "Weight Observation" ;
+    rdfs:comment "A SOSA-style observation reporting the body weight of a biological subject." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty sosa:usedProcedure ],
+        [ a owl:Restriction ;
+            owl:onProperty sosa:hasFeatureOfInterest ;
+            owl:someValuesFrom hcm-bio:Subject ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty sosa:observedProperty ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty sosa:resultTime ],
+        hcm-obs:ObservationResult .
+
+hcm-env:EnvironmentalProperty a owl:Class ;
+    rdfs:label "Environmental Property" ;
+    rdfs:comment "An environmental parameter that may be measured, specified, or controlled in a home-cage monitoring context." .
+
+hcm-obs:HealthStatusObservation a owl:Class ;
+    rdfs:label "Health Status Observation" ;
+    rdfs:comment "A SOSA-style observation about the health status of a biological subject." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty sosa:hasFeatureOfInterest ;
+            owl:someValuesFrom hcm-bio:Subject ] .
+
 hcm-tech:Software a owl:Class ;
     rdfs:label "Software" ;
     rdfs:comment "Software component used to acquire, process, store, or analyse home-cage monitoring data." ;
@@ -1267,9 +1293,22 @@ hcm-tech:Software a owl:Class ;
             owl:onProperty hcm-tech:runsOn ;
             owl:someValuesFrom hcm-tech:Hardware ] .
 
-hcm-env:EnvironmentalProperty a owl:Class ;
-    rdfs:label "Environmental Property" ;
-    rdfs:comment "An environmental parameter that may be measured, specified, or controlled in a home-cage monitoring context." .
+hcm-obs:BehaviorObservation a owl:Class ;
+    rdfs:label "Behavior Observation" ;
+    rdfs:comment "A SOSA-style observation about the behavior of a subject in a home-cage monitoring context." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty sosa:hasFeatureOfInterest ;
+            owl:someValuesFrom hcm-bio:Subject ],
+        [ a owl:Restriction ;
+            owl:onProperty sosa:hasResult ;
+            owl:someValuesFrom hcm-obs:BehaviorResult ] .
+
+hcm-bio:Subject a owl:Class ;
+    rdfs:label "Subject" ;
+    rdfs:comment "A biological individual, such as a laboratory animal, observed in a home-cage monitoring context." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom hcm-obs:BehaviorObservation ;
+            owl:onProperty hcm-bio:hasBehaviorObservation ] .
 
 hcm-env:MeasurementSpecification a owl:Class ;
     rdfs:label "Measurement Specification" ;
@@ -1299,47 +1338,6 @@ hcm-env:EnvironmentProfile a owl:Class ;
         [ a owl:Restriction ;
             owl:allValuesFrom hcm-env:GasConcentrationProfile ;
             owl:onProperty hcm-env:hasGasConcentrationProfile ] .
-
-hcm-obs:WeightObservation a owl:Class ;
-    rdfs:label "Weight Observation" ;
-    rdfs:comment "A SOSA-style observation reporting the body weight of a biological subject." ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty sosa:usedProcedure ],
-        [ a owl:Restriction ;
-            owl:onProperty sosa:hasFeatureOfInterest ;
-            owl:someValuesFrom hcm-bio:Subject ],
-        [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty sosa:observedProperty ],
-        [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty sosa:resultTime ],
-        hcm-obs:ObservationResult .
-
-hcm-obs:HealthStatusObservation a owl:Class ;
-    rdfs:label "Health Status Observation" ;
-    rdfs:comment "A SOSA-style observation about the health status of a biological subject." ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty sosa:hasFeatureOfInterest ;
-            owl:someValuesFrom hcm-bio:Subject ] .
-
-hcm-obs:BehaviorObservation a owl:Class ;
-    rdfs:label "Behavior Observation" ;
-    rdfs:comment "A SOSA-style observation about the behavior of a subject in a home-cage monitoring context." ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty sosa:hasFeatureOfInterest ;
-            owl:someValuesFrom hcm-bio:Subject ],
-        [ a owl:Restriction ;
-            owl:onProperty sosa:hasResult ;
-            owl:someValuesFrom hcm-obs:BehaviorResult ] .
-
-hcm-bio:Subject a owl:Class ;
-    rdfs:label "Subject" ;
-    rdfs:comment "A biological individual, such as a laboratory animal, observed in a home-cage monitoring context." ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom hcm-obs:BehaviorObservation ;
-            owl:onProperty hcm-bio:hasBehaviorObservation ] .
 
 hcm-tech:Sensor a owl:Class ;
     rdfs:label "Sensor" ;

@@ -26,6 +26,10 @@ hcm-bio:StudyFactors a owl:Class ;
             owl:onProperty hcm-bio:hasTreatment ;
             owl:maxCardinality "1"^^xsd:nonNegativeInteger ] .
 
+hcm-bio:SubjectObservationBearer a owl:Class ;
+    rdfs:label "Subject Observation Bearer" ;
+    rdfs:comment "A subject-level or enclosure-level entity that can bear observations about animals housed or monitored in it." .
+
 hcm-bio:Subject a owl:Class ;
     rdfs:label "Subject" ;
     rdfs:comment "A biological individual, such as a laboratory animal, observed in a home-cage monitoring context." ;
@@ -65,8 +69,7 @@ hcm-bio:hasDateOfBirth a owl:DatatypeProperty ;
 hcm-bio:hasHealthStatusObservation a owl:ObjectProperty ;
     rdfs:label "has health status observation" ;
     rdfs:comment "Relates a subject to a health-status observation about that subject." ;
-    rdfs:domain [ a owl:Class ;
-            owl:unionOf ( hcm-bio:Subject hcm:MonitoredEnclosure ) ] ;
+    rdfs:domain hcm-bio:SubjectObservationBearer ;
     rdfs:range hcm-obs:HealthStatusObservation ;
     owl:inverseOf hcm-bio:isHealthStatusObservationOf .
 
@@ -116,16 +119,14 @@ hcm-bio:hasTreatment a owl:DatatypeProperty ;
 hcm-bio:hasWeightObservation a owl:ObjectProperty ;
     rdfs:label "has weight observation" ;
     rdfs:comment "Relates a subject to a weight observation about that subject." ;
-    rdfs:domain [ a owl:Class ;
-            owl:unionOf ( hcm-bio:Subject hcm:MonitoredEnclosure ) ] ;
+    rdfs:domain hcm-bio:SubjectObservationBearer ;
     rdfs:range hcm-obs:WeightObservation ;
     owl:inverseOf hcm-bio:isWeightObservationOf .
 
 hcm-bio:hasBehaviorObservation a owl:ObjectProperty ;
     rdfs:label "has behavior observation" ;
     rdfs:comment "Relates a subject to a behavior observation about that subject." ;
-    rdfs:domain [ a owl:Class ;
-            owl:unionOf ( hcm-bio:Subject hcm:MonitoredEnclosure ) ] ;
+    rdfs:domain hcm-bio:SubjectObservationBearer ;
     rdfs:range hcm-obs:BehaviorObservation ;
     owl:inverseOf hcm-bio:isBehaviorObservationOf .
 
@@ -148,14 +149,14 @@ hcm-bio:isBehaviorObservationOf a owl:ObjectProperty ;
     rdfs:label "is behavior observation of" ;
     rdfs:comment "Inverse relation from a behavior observation to the subject it observes." ;
     rdfs:domain hcm-obs:BehaviorObservation ;
-    rdfs:range hcm-bio:Subject ;
+    rdfs:range hcm-bio:SubjectObservationBearer ;
     owl:inverseOf hcm-bio:hasBehaviorObservation .
 
 hcm-bio:isHealthStatusObservationOf a owl:ObjectProperty ;
     rdfs:label "is health status observation of" ;
     rdfs:comment "Inverse relation from a health-status observation to the subject it observes." ;
     rdfs:domain hcm-obs:HealthStatusObservation ;
-    rdfs:range hcm-bio:Subject ;
+    rdfs:range hcm-bio:SubjectObservationBearer ;
     owl:inverseOf hcm-bio:hasHealthStatusObservation .
 
 hcm-bio:isHousingAssignmentOf a owl:ObjectProperty ;
@@ -177,6 +178,6 @@ hcm-bio:isWeightObservationOf a owl:ObjectProperty ;
     rdfs:label "is weight observation of" ;
     rdfs:comment "Inverse relation from a weight observation to the subject it observes." ;
     rdfs:domain hcm-obs:WeightObservation ;
-    rdfs:range hcm-bio:Subject ;
+    rdfs:range hcm-bio:SubjectObservationBearer ;
     owl:inverseOf hcm-bio:hasWeightObservation .
 
