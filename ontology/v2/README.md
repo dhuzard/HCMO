@@ -50,13 +50,13 @@ ontology/v2/
     hcm-env.ttl           # profiles, specs, environmental properties
     hcm-tech.ttl          # Sensor/Hardware/Software/TimeSeries (NEW namespace …/hcm/tech#)
     hcm-placeholders.ttl  # empty quarantine file; no active UNKNOWN terms
-  hcmo-v2-merged.ttl      # merged graph (966 triples) for quick review
-  hcmo-v2-merged-clean.ttl # BioPortal Turtle graph (966 triples)
-  hcmo-v2-merged-clean.owl # BioPortal RDF/XML graph (966 triples)
+  hcmo-v2-merged.ttl      # merged graph (1212 triples) for quick review
+  hcmo-v2-merged-clean.ttl # BioPortal Turtle graph (1212 triples)
+  hcmo-v2-merged-clean.owl # BioPortal RDF/XML graph (1212 triples)
   README.md               # this file
 ```
 
-The generated merged/clean graphs currently contain 966 triples after adding
+The generated merged/clean graphs currently contain 1212 triples after adding
 FAIR ontology-header metadata, `rdfs:comment` definitions, logo metadata, and
 conservative domain/range axioms for the OOPS review. Multi-context domains use
 `owl:unionOf` when a single domain would be too restrictive.

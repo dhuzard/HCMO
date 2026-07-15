@@ -42,6 +42,8 @@ hcm-bio:assignedToEnclosure a owl:ObjectProperty ;
 hcm-bio:belongsToGroup a owl:ObjectProperty ;
     rdfs:label "belongs to group" ;
     rdfs:comment "Relates a subject, assignment, or monitored enclosure context to an experimental group." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( hcm-bio:Subject hcm-bio:HousingAssignment hcm:MonitoredEnclosure ) ] ;
     rdfs:range hcm-bio:ExperimentalGroup .
 
 hcm-bio:hasBiologicalSex a owl:DatatypeProperty ;
@@ -67,6 +69,7 @@ hcm-bio:hasHousingAssignment a owl:ObjectProperty ;
 hcm-bio:hasMember a owl:ObjectProperty ;
     rdfs:label "has member" ;
     rdfs:comment "Relates an experimental group to a subject that is a member of the group." ;
+    rdfs:domain hcm-bio:ExperimentalGroup ;
     rdfs:range hcm-bio:Subject .
 
 hcm-bio:hasSpecies a owl:DatatypeProperty ;

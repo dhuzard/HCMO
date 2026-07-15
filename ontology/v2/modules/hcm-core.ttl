@@ -69,11 +69,19 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
 
 sosa:hasFeatureOfInterest a owl:ObjectProperty ;
     rdfs:label "has feature of interest" ;
-    rdfs:comment "SOSA relation linking an observation to the entity, system, or feature being observed." .
+    rdfs:comment "SOSA relation linking an observation to the entity, system, or feature being observed." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( hcm-obs:BehaviorObservation hcm-obs:EnvironmentObservation hcm-obs:HealthStatusObservation hcm-obs:WeightObservation ) ] ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( hcm:MonitoredEnclosure hcm-bio:Subject ) ] .
 
 sosa:madeBySensor a owl:ObjectProperty ;
     rdfs:label "made by sensor" ;
-    rdfs:comment "SOSA relation linking an observation to the sensor that made it." .
+    rdfs:comment "SOSA relation linking an observation to the sensor that made it." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( hcm-obs:BehaviorObservation hcm-obs:EnvironmentObservation hcm-obs:HealthStatusObservation hcm-obs:WeightObservation hcm-obs:ObservationResult ) ] ;
+    rdfs:range hcm-tech:Sensor ;
+    owl:inverseOf sosa:madeObservation .
 
 <https://w3id.org/hcmo/ontology/hcm> a owl:Ontology ;
     dc:description "Ontology for home-cage monitoring of laboratory animals" ;
@@ -146,6 +154,8 @@ hcm:isOccupied a owl:DatatypeProperty ;
 hcm:isOperational a owl:DatatypeProperty ;
     rdfs:label "is operational" ;
     rdfs:comment "Indicates whether a monitored enclosure or monitoring component is currently operational." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( hcm:MonitoredEnclosure hcm-tech:Hardware hcm-tech:Sensor hcm-tech:Actuator hcm-tech:Software ) ] ;
     rdfs:range xsd:boolean .
 
 semts:DataDimension a owl:Class ;
@@ -164,19 +174,29 @@ semts:TimeSeriesSegment a owl:Class ;
 
 semts:dimensionUnit a owl:DatatypeProperty ;
     rdfs:label "dimension unit" ;
-    rdfs:comment "SEMTS property recording the unit associated with a data dimension." .
+    rdfs:comment "SEMTS property recording the unit associated with a data dimension." ;
+    rdfs:domain semts:DataDimension ;
+    rdfs:range xsd:string .
 
 semts:generated a owl:ObjectProperty ;
     rdfs:label "generated" ;
-    rdfs:comment "SEMTS relation linking a result artifact to generated data such as a time-series segment." .
+    rdfs:comment "SEMTS relation linking a result artifact to generated data such as a time-series segment." ;
+    rdfs:domain hcm-obs:ObservationResult ;
+    rdfs:range semts:TimeSeriesSegment .
 
 semts:hasDimension a owl:ObjectProperty ;
     rdfs:label "has dimension" ;
-    rdfs:comment "SEMTS relation linking a data artifact or observation to one of its data dimensions." .
+    rdfs:comment "SEMTS relation linking a data artifact or observation to one of its data dimensions." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( hcm-obs:EnvironmentObservation hcm-obs:ObservationResult ) ] ;
+    rdfs:range semts:DataDimension .
 
 semts:title a owl:DatatypeProperty ;
     rdfs:label "title" ;
-    rdfs:comment "SEMTS property recording a title for a data artifact or dimension." .
+    rdfs:comment "SEMTS property recording a title for a data artifact or dimension." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( semts:DataDimension semts:TimeSeriesSegment hcm-obs:ObservationResult ) ] ;
+    rdfs:range xsd:string .
 
 time:TemporalEntity a owl:Class ;
     rdfs:label "Temporal Entity" ;
@@ -200,7 +220,11 @@ sosa:hasResult a owl:ObjectProperty ;
 
 sosa:madeObservation a owl:ObjectProperty ;
     rdfs:label "made observation" ;
-    rdfs:comment "SOSA relation linking a sensor to an observation it made." .
+    rdfs:comment "SOSA relation linking a sensor to an observation it made." ;
+    rdfs:domain hcm-tech:Sensor ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( hcm-obs:BehaviorObservation hcm-obs:EnvironmentObservation hcm-obs:HealthStatusObservation hcm-obs:WeightObservation ) ] ;
+    owl:inverseOf sosa:madeBySensor .
 
 sosa:phenomenonTime a owl:ObjectProperty ;
     rdfs:label "phenomenon time" ;
@@ -234,6 +258,8 @@ hcm:EnclosureDimensions a owl:Class ;
 hcm:hasDimUnit a owl:DatatypeProperty ;
     rdfs:label "has dim unit" ;
     rdfs:comment "Records the unit used for enclosure dimension values." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( hcm:Enclosure hcm:EnclosureDimensions ) ] ;
     rdfs:range xsd:string .
 
 hcm:hasDimensions a owl:ObjectProperty ;
@@ -245,6 +271,7 @@ hcm:hasDimensions a owl:ObjectProperty ;
 hcm:hasEnclosureIdentifier a owl:DatatypeProperty ;
     rdfs:label "has enclosure identifier" ;
     rdfs:comment "Records the identifier assigned to an enclosure or monitored enclosure." ;
+    rdfs:domain hcm:Enclosure ;
     rdfs:range xsd:string .
 
 hcm:hasEnrichment a owl:ObjectProperty ;
@@ -326,11 +353,15 @@ hcm:locatedIn a owl:ObjectProperty ;
 
 semts:during a owl:ObjectProperty ;
     rdfs:label "during" ;
-    rdfs:comment "SEMTS relation linking a data segment to the temporal entity during which it occurs." .
+    rdfs:comment "SEMTS relation linking a data segment to the temporal entity during which it occurs." ;
+    rdfs:domain semts:TimeSeriesSegment ;
+    rdfs:range time:TemporalEntity .
 
 semts:isPartOf a owl:ObjectProperty ;
     rdfs:label "is part of" ;
-    rdfs:comment "SEMTS relation linking a data segment or artifact to the larger artifact it is part of." .
+    rdfs:comment "SEMTS relation linking a data segment or artifact to the larger artifact it is part of." ;
+    rdfs:domain semts:TimeSeriesSegment ;
+    rdfs:range hcm-obs:EnvironmentObservation .
 
 sosa:observedProperty a owl:ObjectProperty ;
     rdfs:label "observed property" ;

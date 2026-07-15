@@ -4,7 +4,9 @@
   `docs/paper/evaluation/OOPS-REPORT-2026-07-10.md`; P04/P08/P12/P34 were
   addressed, P11 was reduced from 94 to 59 by conservative domain/range
   additions, including `owl:unionOf` domains for explicitly multi-context
-  properties, and P10/P11/P13/P22 remain documented modeling-policy findings.
+  properties. A 2026-07-15 local follow-up reduces the domain/range gap to
+  31 properties by local rdflib counting; an official OOPS rerun is still
+  needed to archive the final scanner output.
 - FAIRness: FOOPS! v0.4.0 on `ontology/v2/hcmo-v2-merged-clean.owl`
   improved from 0.49444446 to 1.0 after adding ontology-header FAIR metadata,
   v2 term definitions, and canonical logo metadata. See

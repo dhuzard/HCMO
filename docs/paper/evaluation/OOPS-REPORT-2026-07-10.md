@@ -74,3 +74,20 @@ driven filler axioms.
   it term-by-term, with HermiT checks after each batch.
 - Keep P10/P13 as documented modeling choices unless a concrete use case
   requires disjointness or inverse properties.
+
+## Follow-up local pass, 2026-07-15
+
+After the archived OOPS REST run above, a further local pass added:
+
+- minimal disjointness already present in the legacy ontology
+  (`Sensor` disjoint with `Actuator`; `Hardware` disjoint with `Software`);
+- `owl:inverseOf` for the SOSA `madeBySensor` / `madeObservation` pair;
+- `owl:SymmetricProperty` on `hcm-tech:communicatesWith`;
+- additional conservative domain/range axioms for environmental, SEMTS, and
+  technical relations.
+
+The resulting clean v2 artifact contains 1212 triples. HermiT still reports
+0 inconsistent classes and `tooling/validate.py` passes. A local rdflib check
+for properties without both `rdfs:domain` and `rdfs:range` reports 31 remaining
+properties. This is not an official OOPS REST result; the OOPS service must be
+rerun manually or from a public artifact to archive the final scanner output.

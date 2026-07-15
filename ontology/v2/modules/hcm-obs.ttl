@@ -123,7 +123,10 @@ hcm-obs:hasNumericValue a owl:DatatypeProperty ;
 
 hcm-obs:occursIn a owl:ObjectProperty ;
     rdfs:label "occurs in" ;
-    rdfs:comment "Relates an observation, result, or event to the enclosure or context in which it occurs." .
+    rdfs:comment "Relates an observation, result, or event to the enclosure or context in which it occurs." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( hcm-obs:BehaviorObservation hcm-obs:EnvironmentObservation hcm-obs:HealthStatusObservation hcm-obs:WeightObservation hcm-obs:ObservationResult ) ] ;
+    rdfs:range hcm:MonitoredEnclosure .
 
 hcm-obs:QuantityValue a owl:Class ;
     rdfs:label "Quantity Value" ;
