@@ -61,12 +61,12 @@ Current command-line result:
 
 | Check | Result |
 |---|---:|
-| RDF triples in clean OWL | 1210 |
-| RDF `owl:Class` declarations | 72 |
-| Object properties | 46 |
+| RDF triples in clean OWL | 1926 |
+| RDF `owl:Class` declarations | 123 |
+| Object properties | 81 |
 | Datatype properties | 54 |
 | `UNKNOWN:` IRIs | 0 |
-| Named classes loaded by HermiT | 33 |
+| Named classes loaded by HermiT | 38 |
 | Inconsistent classes | 0 |
 
 ## Expected current caveats

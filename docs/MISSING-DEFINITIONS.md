@@ -82,7 +82,7 @@ review and either re-map to real IRIs or remove at the source module:
 ## Other modeling issues to review
 
 - v2 restored `hcm:Enclosure` as an `owl:Class`; the live/legacy audit should be refreshed after v2 promotion.
-- v2 keeps `hcm-env:AmbientTemperature`, `AmmoniaConcentration`, `CarbonDioxideConcentration`, `OxygenConcentration`, `RelativeHumidity`, `LightIntensity`, and `LightState` as environmental object properties by the `docs/paper/MODULE-MAP.md` placement decision.
+- v2 normalizes the environmental object properties as lower-camel relation names: `hcm-env:hasAmbientTemperature`, `hasAmmoniaConcentration`, `hasCarbonDioxideConcentration`, `hasOxygenConcentration`, `hasRelativeHumidity`, `hasLightIntensity`, and `hasLightState`.
 - `sosa:hasResult` and `sosa:observedProperty` are each declared as BOTH `owl:ObjectProperty` and `owl:DatatypeProperty`.
 - `hcm:OWL-Timeintervaltable`, `hcm:Structural&LocationTable` have spreadsheet-derived names (auto-labels "O W L- Timeintervaltable", "Structural& Location Table").
 - `hcm-obs:` (the bare namespace IRI `https://w3id.org/hcmo/ontology/hcm/obs#`) is declared an `owl:ObjectProperty` with an empty label.

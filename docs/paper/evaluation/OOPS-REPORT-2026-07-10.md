@@ -87,11 +87,12 @@ After the archived OOPS REST run above, a further local pass added:
 
 An attempted `owl:inverseOf` assertion between the SOSA `madeBySensor` and
 `madeObservation` properties was rejected by the OOPS REST scanner as P05
-(`Defining wrong inverse relationships`) and was removed again. The resulting
-clean v2 artifact contains 1210 triples. HermiT still reports
-0 inconsistent classes and `tooling/validate.py` passes. A local rdflib check
-for properties without both `rdfs:domain` and `rdfs:range` reports 31 remaining
-properties.
+(`Defining wrong inverse relationships`) and was removed again. Follow-up work
+added named context classes, completed conservative domain/range axioms, and
+normalized v2 environmental property names. The resulting clean v2 artifact
+contains 1926 triples. HermiT still reports 0 inconsistent classes and
+`tooling/validate.py` passes. A local rdflib check for properties without both
+`rdfs:domain` and `rdfs:range` reports 0 remaining properties.
 
 ## Official public-artifact rerun, 2026-07-15
 
@@ -101,8 +102,7 @@ OOPS was then rerun against the clean OWL file fetched from the public
 
 | Code | Name | Severity | Affected | Status |
 |---|---|---:|---:|---|
-| P11 | Missing domain or range in properties | Important | 31 | Reduced substantially; remaining cases require modeling review, not blanket `owl:Thing` fixes. |
-| P13 | Inverse relationships not explicitly declared | Minor | 45 | Documented modeling choice; add inverses only when a real bidirectional relation is needed. |
-| P22 | Using different naming conventions in the ontology | Minor | 1 | Scanner noise from mixed reused/local naming styles; no IRI rename proposed. |
+| P13 | Inverse relationships not explicitly declared | Minor | 8 | Remaining inverses were intentionally not asserted because OOPS classifies the candidate inverse pairs as P05 critical. |
 
-No critical OOPS pitfalls remain in this rerun.
+No critical or important OOPS pitfalls remain in this rerun. P11 and P22 are
+closed.
