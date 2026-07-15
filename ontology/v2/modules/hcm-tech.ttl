@@ -123,39 +123,97 @@ hcm-tech:communicatesWith a owl:ObjectProperty,
 
 hcm-tech:captures a owl:ObjectProperty ;
     rdfs:label "captures" ;
-    rdfs:comment "Relates a sensor or monitoring component to the behavior, physiology, environment, or signal it captures." .
+    rdfs:comment "Relates a sensor or monitoring component to the behavior, physiology, environment, or signal it captures." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( hcm-tech:Sensor hcm-tech:Hardware hcm-tech:Software ) ] ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( hcm-obs:BehaviorObservation hcm-obs:EnvironmentObservation hcm-obs:HealthStatusObservation hcm-obs:WeightObservation hcm-obs:ObservationResult ) ] ;
+    owl:inverseOf hcm-tech:isCapturedBy .
 
 hcm-tech:hasActuator a owl:ObjectProperty ;
     rdfs:label "has actuator" ;
     rdfs:comment "Relates a monitoring setup or technical component to an actuator associated with it." ;
     rdfs:domain [ a owl:Class ;
             owl:unionOf ( hcm:MonitoredEnclosure hcm-tech:Hardware hcm-tech:Sensor ) ] ;
-    rdfs:range hcm-tech:Actuator .
+    rdfs:range hcm-tech:Actuator ;
+    owl:inverseOf hcm-tech:isActuatorOf .
 
 hcm-tech:monitoredBy a owl:ObjectProperty ;
     rdfs:label "monitored by" ;
     rdfs:comment "Relates a monitored enclosure, subject, process, or property to the sensor or monitoring component observing it." ;
     rdfs:domain [ a owl:Class ;
             owl:unionOf ( hcm:MonitoredEnclosure hcm-obs:ObservationResult ) ] ;
-    rdfs:range hcm-tech:Sensor .
+    rdfs:range hcm-tech:Sensor ;
+    owl:inverseOf hcm-tech:monitors .
 
 hcm-tech:installedIn a owl:ObjectProperty ;
     rdfs:label "installed in" ;
     rdfs:comment "Relates a sensor or technical component to the monitored enclosure or setup in which it is installed." ;
     rdfs:domain [ a owl:Class ;
             owl:unionOf ( hcm-tech:Sensor hcm-tech:Hardware ) ] ;
-    rdfs:range hcm:MonitoredEnclosure .
+    rdfs:range hcm:MonitoredEnclosure ;
+    owl:inverseOf hcm-tech:hasInstalledComponent .
 
 hcm-tech:runsOn a owl:ObjectProperty ;
     rdfs:label "runs on" ;
     rdfs:comment "Relates software to the hardware or platform on which it executes." ;
     rdfs:domain hcm-tech:Software ;
-    rdfs:range hcm-tech:Hardware .
+    rdfs:range hcm-tech:Hardware ;
+    owl:inverseOf hcm-tech:runsSoftware .
 
 hcm-tech:supportsEnclosure a owl:ObjectProperty ;
     rdfs:label "supports enclosure" ;
     rdfs:comment "Relates a technical component or system to the monitored enclosure that it supports." ;
     rdfs:domain [ a owl:Class ;
             owl:unionOf ( hcm-tech:Hardware hcm-tech:Sensor hcm-tech:Software ) ] ;
-    rdfs:range hcm:MonitoredEnclosure .
+    rdfs:range hcm:MonitoredEnclosure ;
+    owl:inverseOf hcm-tech:isSupportedBy .
+
+hcm-tech:hasInstalledComponent a owl:ObjectProperty ;
+    rdfs:label "has installed component" ;
+    rdfs:comment "Inverse relation from a monitored enclosure to a sensor or hardware component installed in it." ;
+    rdfs:domain hcm:MonitoredEnclosure ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( hcm-tech:Sensor hcm-tech:Hardware ) ] ;
+    owl:inverseOf hcm-tech:installedIn .
+
+hcm-tech:isActuatorOf a owl:ObjectProperty ;
+    rdfs:label "is actuator of" ;
+    rdfs:comment "Inverse relation from an actuator to the monitoring setup or technical component associated with it." ;
+    rdfs:domain hcm-tech:Actuator ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( hcm:MonitoredEnclosure hcm-tech:Hardware hcm-tech:Sensor ) ] ;
+    owl:inverseOf hcm-tech:hasActuator .
+
+hcm-tech:isCapturedBy a owl:ObjectProperty ;
+    rdfs:label "is captured by" ;
+    rdfs:comment "Inverse relation from an observation, result, or signal-like output to the sensor or monitoring component that captures it." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( hcm-obs:BehaviorObservation hcm-obs:EnvironmentObservation hcm-obs:HealthStatusObservation hcm-obs:WeightObservation hcm-obs:ObservationResult ) ] ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( hcm-tech:Sensor hcm-tech:Hardware hcm-tech:Software ) ] ;
+    owl:inverseOf hcm-tech:captures .
+
+hcm-tech:isSupportedBy a owl:ObjectProperty ;
+    rdfs:label "is supported by" ;
+    rdfs:comment "Inverse relation from a monitored enclosure to a technical component or system that supports it." ;
+    rdfs:domain hcm:MonitoredEnclosure ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( hcm-tech:Hardware hcm-tech:Sensor hcm-tech:Software ) ] ;
+    owl:inverseOf hcm-tech:supportsEnclosure .
+
+hcm-tech:monitors a owl:ObjectProperty ;
+    rdfs:label "monitors" ;
+    rdfs:comment "Inverse relation from a sensor to the enclosure or observation result that it monitors." ;
+    rdfs:domain hcm-tech:Sensor ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( hcm:MonitoredEnclosure hcm-obs:ObservationResult ) ] ;
+    owl:inverseOf hcm-tech:monitoredBy .
+
+hcm-tech:runsSoftware a owl:ObjectProperty ;
+    rdfs:label "runs software" ;
+    rdfs:comment "Inverse relation from hardware to software that runs on it." ;
+    rdfs:domain hcm-tech:Hardware ;
+    rdfs:range hcm-tech:Software ;
+    owl:inverseOf hcm-tech:runsOn .
 
