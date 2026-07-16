@@ -1,6 +1,5 @@
 {
   "@context": {
-    "UNKNOWN": "http://www.owl-ontologies.com/UNKNOWN#",
     "brick": "https://brickschema.org/schema/Brick#",
     "csvw": "http://www.w3.org/ns/csvw#",
     "dc": "http://purl.org/dc/elements/1.1/",
@@ -15,9 +14,9 @@
     "hcm-bio": "https://w3id.org/hcmo/ontology/hcm/bio#",
     "hcm-env": "https://w3id.org/hcmo/ontology/hcm/env#",
     "hcm-obs": "https://w3id.org/hcmo/ontology/hcm/obs#",
+    "hcm-tech": "https://w3id.org/hcmo/ontology/hcm/tech#",
     "mod": "https://w3id.org/mod#",
-    "ns": "http://www.owl-ontologies.com/ns#",
-    "ns1": "http://purl.obolibrary.org/obo/",
+    "ns1": "http://purl.org/ontology/bibo/",
     "odrl": "http://www.w3.org/ns/odrl/2/",
     "org": "http://www.w3.org/ns/org#",
     "owl": "http://www.w3.org/2002/07/owl#",
@@ -40,172 +39,138 @@
   },
   "@graph": [
     {
-      "@id": "UNKNOWN:captures",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "captures"
-    },
-    {
-      "@id": "UNKNOWN:communicatesWith",
-      "@type": "owl:ObjectProperty",
-      "rdfs:label": "communicates with"
-    },
-    {
-      "@id": "UNKNOWN:hasActuators",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has actuators"
-    },
-    {
-      "@id": "UNKNOWN:hasCondition",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has condition"
-    },
-    {
-      "@id": "UNKNOWN:hasDarkPhaseDuration",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has dark phase duration"
-    },
-    {
-      "@id": "UNKNOWN:hasDarkPhaseStart",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has dark phase start"
-    },
-    {
-      "@id": "UNKNOWN:hasDawnDuration",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has dawn duration"
-    },
-    {
-      "@id": "UNKNOWN:hasDuskDuration",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has dusk duration"
-    },
-    {
-      "@id": "UNKNOWN:hasEnrichmentReq",
-      "@type": "owl:ObjectProperty",
-      "rdfs:label": "has enrichment req"
-    },
-    {
-      "@id": "UNKNOWN:hasEnrichmentType",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has enrichment type"
-    },
-    {
-      "@id": "UNKNOWN:hasFacilityType",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has facility type"
-    },
-    {
-      "@id": "UNKNOWN:hasFirmware",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has firmware"
-    },
-    {
-      "@id": "UNKNOWN:hasFloorArea",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has floor area"
-    },
-    {
-      "@id": "UNKNOWN:hasFoodReq",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has food req"
-    },
-    {
-      "@id": "UNKNOWN:hasLightPhaseDuration",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has light phase duration"
-    },
-    {
-      "@id": "UNKNOWN:hasModelNumber",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has model number"
-    },
-    {
-      "@id": "UNKNOWN:hasName",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has name",
-      "rdfs:range": {
-        "@id": "xsd:string"
+      "@id": "_:cb1115a255d433c6bff843e452cb7e991a3eff0105d837455c2a3b6ca85c557bf53",
+      "@type": "owl:Class",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "hcm-bio:Subject"
+          },
+          {
+            "@id": "hcm-bio:ExperimentalGroup"
+          }
+        ]
       }
     },
     {
-      "@id": "UNKNOWN:hasProtocol",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has protocol"
+      "@id": "_:cb11170b7809fcd504d44ccf3c0b834a3102986118c0c3072743172d407c0292c74",
+      "@type": "owl:Class",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "hcm-tech:Hardware"
+          },
+          {
+            "@id": "hcm-tech:Sensor"
+          },
+          {
+            "@id": "hcm-tech:Software"
+          }
+        ]
+      }
     },
     {
-      "@id": "UNKNOWN:hasSafetyReq",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has safety req"
+      "@id": "_:cb117924e50c2c64c53c39c30f238998341fb79810495ffdb7e760c10eb169b7eb0",
+      "@type": "owl:Class",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "hcm-env:EnvironmentProfile"
+          },
+          {
+            "@id": "hcm-env:MeasurementSpecification"
+          },
+          {
+            "@id": "hcm-obs:EnvironmentObservation"
+          }
+        ]
+      }
     },
     {
-      "@id": "UNKNOWN:hasSamplingRate",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has sampling rate"
+      "@id": "_:cb12fcca9b5b6c59e8b5690d755186459786db0dcfd60292bedca97561e34069e49",
+      "@type": "owl:Class",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "hcm-tech:Software"
+          },
+          {
+            "@id": "hcm-tech:TimeSeries"
+          }
+        ]
+      }
     },
     {
-      "@id": "UNKNOWN:hasSensorIdentifier",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has sensor identifier"
+      "@id": "_:cb14ccc5381614bd2702e680cd5017ab8c29074d78e837713f9b9700a85f81f49d5",
+      "@type": "owl:Class",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "hcm-env:EnvironmentProfile"
+          },
+          {
+            "@id": "hcm-env:MeasurementSpecification"
+          },
+          {
+            "@id": "hcm-obs:EnvironmentObservation"
+          }
+        ]
+      }
     },
     {
-      "@id": "UNKNOWN:hasSensorTechnology",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has sensor technology"
+      "@id": "_:cb1524fa29b4e64d37b381f0d9aa40550d4d7b7e2404df7ed01e089d8e15ada8072",
+      "@type": "owl:Class",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "hcm-env:EnvironmentProfile"
+          },
+          {
+            "@id": "hcm-env:MeasurementSpecification"
+          },
+          {
+            "@id": "hcm-obs:EnvironmentObservation"
+          }
+        ]
+      }
     },
     {
-      "@id": "UNKNOWN:hasSensorType",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has sensor type"
+      "@id": "_:cb158cd912b9563b2ebf3368cb1eada29bbabb854ee0688d727a096249875e86445",
+      "@type": "owl:Class",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "hcm-tech:Hardware"
+          },
+          {
+            "@id": "hcm-tech:Sensor"
+          }
+        ]
+      }
     },
     {
-      "@id": "UNKNOWN:hasSensors",
-      "@type": "owl:ObjectProperty",
-      "rdfs:label": "has sensors"
+      "@id": "_:cb15a41efc8b4077324df6a17af6a0b8a57ef9c0f9397b181823f1f117efc820b2b",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "hcm-bio:Subject"
+      },
+      "owl:onProperty": {
+        "@id": "hcm:hasMonitoredAnimals"
+      }
     },
     {
-      "@id": "UNKNOWN:hasSocialReq",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has social req"
-    },
-    {
-      "@id": "UNKNOWN:hasType",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has type"
-    },
-    {
-      "@id": "UNKNOWN:hasWaterReq",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has water req"
-    },
-    {
-      "@id": "UNKNOWN:isCalibrated",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "is calibrated"
-    },
-    {
-      "@id": "UNKNOWN:isOccupied",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "is occupied"
-    },
-    {
-      "@id": "UNKNOWN:isOperational",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "is operational"
-    },
-    {
-      "@id": "UNKNOWN:partOF",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "part o f"
-    },
-    {
-      "@id": "UNKNOWN:runsOn",
-      "@type": "owl:ObjectProperty",
-      "rdfs:label": "runs on"
-    },
-    {
-      "@id": "UNKNOWN:supportsEnclosure",
-      "@type": "owl:ObjectProperty",
-      "rdfs:label": "supports enclosure"
+      "@id": "_:cb16d6e8ffe5d223218a28922ba7a439def1b4ab44417fce6742af984053e4ac90b",
+      "@type": "owl:Class",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "hcm-env:MeasurementSpecification"
+          },
+          {
+            "@id": "hcm-env:GasConcentrationProfile"
+          }
+        ]
+      }
     },
     {
       "@id": "_:cb16ecbbc8bf4babbcae00a50aaf1e70557b2dd74f57693930fbe651ab1ed75e499",
@@ -218,181 +183,174 @@
       }
     },
     {
-      "@id": "_:cb1927685761ff8827d6b6aa29d9020102456bb3441f2299305340b361363817349",
-      "@type": "owl:Restriction",
-      "owl:maxCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "hcm:hasEnrichment"
+      "@id": "_:cb172a8e6b8446fb51cc8b2f52c6f5e72e4dbb1d19ca6e34f46fd40d44748f1bb18",
+      "@type": "owl:Class",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "hcm-tech:Hardware"
+          },
+          {
+            "@id": "hcm-tech:Sensor"
+          },
+          {
+            "@id": "hcm-tech:Actuator"
+          }
+        ]
       }
     },
     {
-      "@id": "_:cb1973efc7f24e152ca98a85ff21b8c66dd7e164ae7d89060a391a90f98e4f00834",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "hcm-bio:ExperimentalGroup"
-      },
-      "owl:onProperty": {
-        "@id": "hcm-bio:belongsToGroup"
+      "@id": "_:cb17ad6286b123b9fa07137bf966c553f1814948a54e422ad0586fa744f575f091e",
+      "@type": "owl:Class",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "hcm-bio:Subject"
+          },
+          {
+            "@id": "hcm-bio:ExperimentalGroup"
+          }
+        ]
       }
     },
     {
-      "@id": "_:cb1a90ed890653fe72b8d32c4bb3dbcb89d9ee3d9ab3d4df5d9718ba4f815cd0026",
-      "@type": "owl:Restriction",
-      "owl:maxCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "hcm-bio:hasDateOfBirth"
+      "@id": "_:cb17c254b984a90c8183c6f725eb25517f536736328c9f2ee3c9372c156e7edeadb",
+      "@type": "owl:Class",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "hcm-env:EnvironmentProfile"
+          },
+          {
+            "@id": "hcm-env:MeasurementSpecification"
+          },
+          {
+            "@id": "hcm-obs:EnvironmentObservation"
+          }
+        ]
       }
     },
     {
-      "@id": "_:cb1c5bbc312c209a6d7eef16c3c2f52d97874a671aee6ea73072b4c3cb2b173550a",
-      "@type": "owl:Restriction",
-      "owl:maxCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "sosa:usedProcedure"
-      }
-    },
-    {
-      "@id": "_:cb1c6209d70f4dd2ceb16dd9d8f6476809887e6a6da14c9a4c3df6d47d2cfdb2c93",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "sosa:hasResult"
-      },
-      "owl:someValuesFrom": {
-        "@id": "hcm:QuantityValue"
-      }
-    },
-    {
-      "@id": "_:cb1cbec2fd56adf1343104a4df6f2cbf012fa125c5fbdf9f77966a47b5eaabea2bd",
+      "@id": "_:cb1927c465fe67d6061244df711e478e344fe04c3c7a8f4c8877d678c13a7c536b2",
       "@type": "owl:Restriction",
       "owl:allValuesFrom": {
-        "@id": "hcm:Software"
+        "@id": "hcm-tech:Sensor"
       },
       "owl:onProperty": {
-        "@id": "sosa:madeObservation"
+        "@id": "hcm-tech:monitoredBy"
       }
     },
     {
-      "@id": "_:cb1d6c4a41f125665e0df383a2aae3138b07c974ca163e3afba45c78cce31b4f03a",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "hcm-obs:HealthStatusObservation"
-      },
-      "owl:onProperty": {
-        "@id": "hcm-bio:hasHealthStatusObservation"
+      "@id": "_:cb19cc26842b4d43d7644c652f0bc8fcf7b35f26d8fef8ab732ab4e06cf58ce5bf9",
+      "@type": "owl:Class",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "hcm-tech:Hardware"
+          },
+          {
+            "@id": "hcm-tech:Software"
+          }
+        ]
       }
     },
     {
-      "@id": "_:cb1da4fbb00363561c187566c823203a6e42cca371704b8b94c82a13d18cb7a794b",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "hcm:MonitoredEnclosure"
-      },
-      "owl:onProperty": {
-        "@id": "hcm-obs:occursIn"
+      "@id": "_:cb1a19a3b35ad14c3b180e811bc6a7ea1e20d6cd1706210bc625b8a036c26baeff9",
+      "@type": "owl:Class",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "hcm-env:EnvironmentProfile"
+          },
+          {
+            "@id": "hcm-env:MeasurementSpecification"
+          },
+          {
+            "@id": "hcm-obs:EnvironmentObservation"
+          }
+        ]
       }
     },
     {
-      "@id": "_:cb1e697da0cefc2b314e99623a172106d09203b61fc3e682563705d450d5f309633",
+      "@id": "_:cb1aff4143a61d5e0e68bea795a51a6f4670f444ed25906a5531b6734b72f7127c2",
+      "@type": "owl:Class",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "hcm-bio:Subject"
+          },
+          {
+            "@id": "hcm-bio:ExperimentalGroup"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "_:cb1b5e7ce0a8702fc2e5ad885d909ee8fad903adad8453dd1e674f16403e06d74be",
+      "@type": "owl:Class",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "hcm-obs:BehaviorObservation"
+          },
+          {
+            "@id": "hcm-obs:BehaviorResult"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "_:cb1cb06e96e9caf6ed3eb5396f63ba5beca267e783a500e2618cb5a7d826093bc01",
       "@type": "owl:Restriction",
       "owl:onProperty": {
         "@id": "sosa:hasFeatureOfInterest"
       },
       "owl:someValuesFrom": {
-        "@id": "hcm:MonitoredEnclosure"
+        "@id": "hcm-bio:Subject"
       }
     },
     {
-      "@id": "_:cb2043b433cdffe56fa47ef8847b63bcdded0854f7ed5917917d25a1b0a6c30d575",
-      "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "hcm-env:hasDimUnit"
-      }
-    },
-    {
-      "@id": "_:cb20b5fbc13dbf2fcef35fde99b83b06bc78d7926e4be85341c89cfd043951e95eb",
-      "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "hcm-obs:hasBehaviorType"
-      }
-    },
-    {
-      "@id": "_:cb20c5d90ca86337f59e02fa1177387d13aeed4c83be434edb8c1b9e51b97b59495",
+      "@id": "_:cb1dbcdbe983794c781380180cd607eb825b3464bd7c64f921004ca2c66885ad233",
       "@type": "owl:Restriction",
       "owl:allValuesFrom": {
-        "@id": "hcm-obs:WeightObservation"
+        "@id": "hcm-env:EnvironmentProfile"
       },
       "owl:onProperty": {
-        "@id": "hcm-bio:hasWeightObservation"
+        "@id": "hcm-env:hasEnvironment"
       }
     },
     {
-      "@id": "_:cb20ea496cf91397e2867d45ed26571ccd08545093a3b8641019363b9a72d09604f",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "hcm-obs:assignedToEnclosure"
-      },
-      "owl:someValuesFrom": {
-        "@id": "hcm:MonitoredEnclosure"
+      "@id": "_:cb1f49fbc3aeedef75c8c11c4375f3384937b804548ac7363db11e69c2387cf6df0",
+      "@type": "owl:Class",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "hcm-obs:QuantityValue"
+          },
+          {
+            "@id": "hcm-env:MeasurementSpecification"
+          }
+        ]
       }
     },
     {
-      "@id": "_:cb211885c064c38010b5c9e5f507eeb78dbf7bacecb2060d337a7bc09e9c1c10cb3",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "hcm:Sensor"
-      },
-      "owl:onProperty": {
-        "@id": "sosa:madeBySensor"
-      }
-    },
-    {
-      "@id": "_:cb213c3039824c882634fbf71fe0e22bd258b5d93df7d6853268f57baf9db27f4d8",
-      "@type": "owl:Restriction",
-      "owl:maxCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "sosa:usedProcedure"
-      }
-    },
-    {
-      "@id": "_:cb214e980bee92cb86d9169602c4236921015bdf27ebcafaebe10f81ce936181cbe",
-      "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "hcm:hasNumericValue"
-      }
-    },
-    {
-      "@id": "_:cb216f109f59fb468f03e703e030fbf6d56c793a69f11dcd5509b0865f71b56f96c",
-      "@type": "owl:Restriction",
-      "owl:maxCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "hcm-obs:hasInterval"
+      "@id": "_:cb1f6413380c1436625d8de27ba53397f8929f5cf2bdec67e4f547b0b9a42f48c1d",
+      "@type": "owl:Class",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "hcm-tech:Hardware"
+          },
+          {
+            "@id": "hcm-tech:Sensor"
+          },
+          {
+            "@id": "hcm-tech:Actuator"
+          },
+          {
+            "@id": "hcm-tech:Software"
+          }
+        ]
       }
     },
     {
@@ -406,306 +364,74 @@
       }
     },
     {
-      "@id": "_:cb221a87613428ee40729d72e9323deea8c100a084286bb47a6e83fbce24b278918",
+      "@id": "_:cb223541e6c8837b0bc004de83d581e98eec444b1ca17686e81c542e48a9f548b5a",
       "@type": "owl:Restriction",
       "owl:onProperty": {
-        "@id": "semts:isPartOf"
+        "@id": "sosa:hasResult"
       },
       "owl:someValuesFrom": {
-        "@id": "hcm-obs:EnvironmentObservation"
+        "@id": "hcm-obs:BehaviorResult"
       }
     },
     {
-      "@id": "_:cb225c9f5f7824a6a8b82aae62045dcf26839c603e83d594fb19bb7746b86b5c502",
+      "@id": "_:cb22d894ff4a94c7483bcc777cf759fd77d9867ed06c0efd14366bc202bf46926c2",
+      "@type": "owl:Class",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "hcm-env:EnvironmentProfile"
+          },
+          {
+            "@id": "hcm-env:MeasurementSpecification"
+          },
+          {
+            "@id": "hcm-obs:EnvironmentObservation"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "_:cb24ee396c4f454f68146208eee51dff0131921b34f2d7e1eb48515bbabc9495923",
       "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
+      "owl:allValuesFrom": {
+        "@id": "semts:TimeSeriesSegment"
       },
-      "owl:onProperty": {
-        "@id": "time:hasBeginning"
-      }
-    },
-    {
-      "@id": "_:cb228ca3e3639350133de69ae7435c5aae60c18afdbbaf077616ec879686cbd47b6",
-      "@type": "owl:Restriction",
-      "owl:maxCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "sosa:usedProcedure"
-      }
-    },
-    {
-      "@id": "_:cb229ef9fc57589b3ccd728294c472d9bbae120f2f2267b9ba4cf37a3759315db6e",
-      "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "hcm-env:hasValue"
-      }
-    },
-    {
-      "@id": "_:cb22c0391c4877a1584fd21ce01322dcfd292e66fbe955d82098202a9de1601901d",
-      "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "sosa:observedProperty"
-      }
-    },
-    {
-      "@id": "_:cb22c364d8c23f537299ceead79ba735ddcd95ba8f9e30158af533c4793161b2790",
-      "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "hcm-env:hasWidth"
-      }
-    },
-    {
-      "@id": "_:cb22ef2312a2ddf97e18a300707bd37aebba84aa72070d0837fbde8b6f8c4246be6",
-      "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "hcm-bio:hasStrain"
-      }
-    },
-    {
-      "@id": "_:cb235b155aa71695d0cdd93aaf393585639bf6c08f6637c9f8f24040dc65f77dc71",
-      "@type": "owl:Restriction",
       "owl:onProperty": {
         "@id": "semts:generated"
-      },
-      "owl:someValuesFrom": {
-        "@id": "semts:TimeSeriesSegment"
       }
     },
     {
-      "@id": "_:cb23a563cae74ca8a10ceef7d2c9e81d2304d6c0c89d3d47c3fb4313333b320745b",
+      "@id": "_:cb26978189250ed068b04ef0a0b569d53c2b0035d4155ed1ea3de336fa1ed427763",
       "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "hcm:EnclosureDimensions"
+      },
       "owl:onProperty": {
         "@id": "hcm:hasDimensions"
-      },
-      "owl:someValuesFrom": {
-        "@id": "hcm-env:EnclosureDimensions"
       }
     },
     {
-      "@id": "_:cb2420cc9b490a099dc0bbae0ab1419a25c5519a364f51619529b717a033d0d07e9",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "hcm:monitoredBy"
-      },
-      "owl:someValuesFrom": {
-        "@id": "hcm:Sensor"
-      }
-    },
-    {
-      "@id": "_:cb243daf9f190ac627a317f602bad7d4109f509c798041749cf5ec1351c6aa9ca71",
-      "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "sosa:hasResult"
-      }
-    },
-    {
-      "@id": "_:cb24555ccdb52389da884b899e01d8ca40dae566944a86a022a06cd49171a0ecf95",
-      "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "hcm:hasEnclosureIdentifier"
-      }
-    },
-    {
-      "@id": "_:cb248f9b61c229158e9e4e4121f752d569499b2bbb93e2206c7829b04696b6b03e9",
-      "@type": "owl:Restriction",
-      "owl:maxCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "hcm-obs:hasConfidenceScore"
-      }
-    },
-    {
-      "@id": "_:cb2570ca9e5240d4e7484e0da717fe20cb6b6c3f895cd15afe23e4525c367454596",
-      "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "hcm:hasUnit"
-      }
-    },
-    {
-      "@id": "_:cb25aa469254d6bd3180558fe608a3b0d7d98ad54f269db63042313ca7832dbe9cb",
+      "@id": "_:cb26e636e4a84f06a35594b5efcccb5718e560b4bfba6191d03263f411d3e6c13cc",
       "@type": "owl:Restriction",
       "owl:onProperty": {
         "@id": "sosa:hasResult"
       },
       "owl:someValuesFrom": {
-        "@id": "hcm:MonitoredEnclosure"
+        "@id": "hcm-obs:QuantityValue"
       }
     },
     {
-      "@id": "_:cb25b4872a2b3f75e22a0e8cd01ca9d052cc468816c30a3a44a0f74be0ba61bc1dd",
-      "@type": "owl:Restriction",
-      "owl:maxCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "UNKNOWN:isOccupied"
-      }
-    },
-    {
-      "@id": "_:cb25b69c955f6865744754ffa8a883465f5ec8ecfa28eef3beda758ebac5f3cb363",
-      "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "hcm-env:hasHeight"
-      }
-    },
-    {
-      "@id": "_:cb2625d47294f6f94d6512d3fe7e510c07ba3cde7a9d62cefe10dc92e974450a548",
-      "@type": "owl:Restriction",
-      "owl:maxCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "sosa:usedProcedure"
-      }
-    },
-    {
-      "@id": "_:cb26797f51830125a49be427bb4573b4e6f92ffd6e8d793493bac6c0102b71ba536",
-      "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "hcm-env:hasLength"
-      }
-    },
-    {
-      "@id": "_:cb26c5c6d9ff16d82f61f5e0dabe72cde65bd209041d31a12dc42fef0e54bdc68e9",
-      "@type": "owl:Restriction",
-      "owl:maxCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "hcm:hasManufacturer"
-      }
-    },
-    {
-      "@id": "_:cb27387af8085cff1f6752dac96aba861922ac9e5cebe1c270c9a14a3948ce17eb5",
-      "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "hcm-obs:hasHealthStatusTerm"
-      }
-    },
-    {
-      "@id": "_:cb275620c6dff59a4d98d9c77ee498298c8bb420a14e28aba13cc4015545f084d4b",
-      "@type": "owl:Restriction",
-      "owl:maxCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "sosa:resultTime"
-      }
-    },
-    {
-      "@id": "_:cb279afe8fb2783e427d7255cea8822c32dadb3151a4b67ed16c99aa9bd98d962e5",
+      "@id": "_:cb2744715a5674a8723c3581b657b57be0585e966b99b6d281ff2fa940935400cd3",
       "@type": "owl:Restriction",
       "owl:onProperty": {
-        "@id": "hcm-obs:"
+        "@id": "sosa:hasFeatureOfInterest"
       },
       "owl:someValuesFrom": {
         "@id": "hcm-bio:Subject"
       }
     },
     {
-      "@id": "_:cb279facac6802559b1e5843845a9a8081a1e20b1e06713f4628592affded027023",
-      "@type": "owl:Restriction",
-      "owl:maxCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "hcm-bio:hasBiologicalSex"
-      }
-    },
-    {
       "@id": "_:cb27c0602fc017ef96f10218279064da39c79b36fadbd5c1f4b7bbe7e8378d570d2",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "sosa:hasFeatureOfInterest"
-      },
-      "owl:someValuesFrom": {
-        "@id": "hcm:MonitoredEnclosure"
-      }
-    },
-    {
-      "@id": "_:cb27cd55df4aa24314b2e3834501529d36abe8656fcda4805f3617bd3d72f61ff4b",
-      "@type": "owl:Restriction",
-      "owl:maxCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "UNKNOWN:isOperational"
-      }
-    },
-    {
-      "@id": "_:cb28298578685294227561c08271167ef54e7ad9b57fd2459eb9dc075ee9f1f4a41",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "hcm:MonitoredEnclosure"
-      },
-      "owl:onProperty": {
-        "@id": "hcm:hasThriveProfile"
-      }
-    },
-    {
-      "@id": "_:cb28701b5e157d96d26c98a02e9717ec9dcaabc0a0a8656362e2128d68fd1ba4d6f",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "hcm-bio:hasMember"
-      },
-      "owl:someValuesFrom": {
-        "@id": "hcm:MonitoredEnclosure"
-      }
-    },
-    {
-      "@id": "_:cb28fd80643ba5dcb64c19aa810b1c26c447fa6507b89c7276a97fd5b9433dce705",
       "@type": "owl:Restriction",
       "owl:onProperty": {
         "@id": "sosa:hasFeatureOfInterest"
@@ -725,153 +451,13 @@
       }
     },
     {
-      "@id": "_:cb29a2f214ce867bdc6cf30c5adbaee367b764279879daf92980586a3219d87003f",
-      "@type": "owl:Restriction",
-      "owl:maxCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "sosa:usedProcedure"
-      }
-    },
-    {
-      "@id": "_:cb29b5a7645fd8984a84c49affcaa63c6f18b9f4da7b671adb32923b9ea5533c969",
-      "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "time:inXSDDateTime"
-      }
-    },
-    {
-      "@id": "_:cb29f631a1e1ddefea1cd55c2f5651ea48738876b06f0839a7de4752c27379d50ae",
-      "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "hcm-bio:hasSpecies"
-      }
-    },
-    {
-      "@id": "_:cb2a0271aea9afea29988e53244ff29673a2c17452638249aa8081a584a00d6def5",
+      "@id": "_:cb2c85423b11c3882a7b16642ff1e482506431b0d742ab1502a033f5ed64335a7eb",
       "@type": "owl:Restriction",
       "owl:onProperty": {
-        "@id": "semts:during"
-      },
-      "owl:someValuesFrom": {
-        "@id": "time:TemporalEntity"
-      }
-    },
-    {
-      "@id": "_:cb2ab287032cc092e8991f0a9710beae0ddec77c31a30a2d47104ba0eb50a1e5e49",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "hcm-bio:hasHousingAssignment"
+        "@id": "hcm-tech:installedIn"
       },
       "owl:someValuesFrom": {
         "@id": "hcm:MonitoredEnclosure"
-      }
-    },
-    {
-      "@id": "_:cb2beae0614d71c8a66e20252bbf3c3d08a1255c8fa49a7320045aa11de43602639",
-      "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "hcm-env:hasGasType"
-      }
-    },
-    {
-      "@id": "_:cb2bfb8e405e0591d76833a8d21df5aed61aa65dcf0bbe377e40cb49c3a3451c214",
-      "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "hcm-env:hasUnit"
-      }
-    },
-    {
-      "@id": "_:cb2c8a515db14e003835f5da1ace7ebb6d5c20de5b9849ffee3647f9bc2a8dee05b",
-      "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "sosa:observedProperty"
-      }
-    },
-    {
-      "@id": "_:cb2ca654dfbeca396ef86be334e0872ac9538d0f51817155382a30c1b6a9fcc86ce",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "hcm:installedIn"
-      },
-      "owl:someValuesFrom": {
-        "@id": "hcm:MonitoredEnclosure"
-      }
-    },
-    {
-      "@id": "_:cb2d87087917684ff357d14ba264ff56a3652b44841b690be6e0fbc520a1a523ff7",
-      "@type": "owl:Restriction",
-      "owl:maxCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "sosa:resultTime"
-      }
-    },
-    {
-      "@id": "_:cb2dc3b86a4731b74949eb1f7191c93f189703108bcf6ebe715d46cfa1782c709cf",
-      "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "time:hasEnd"
-      }
-    },
-    {
-      "@id": "_:cb2dcc5311d8d231ad6e90bc31eb5cee9606dc0e46e3f55e214eb2f274bac9faa26",
-      "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "sosa:resultTime"
-      }
-    },
-    {
-      "@id": "_:cb2e130268b383065b6b9c1b7d49cfb81c6c918b9df727e364784bbb9a57101f6e2",
-      "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "sosa:phenomenonTime"
-      }
-    },
-    {
-      "@id": "_:cb2e1900f348b6f0afd39ce135b5872b8f8694b1d6fc387f170b3309b9a9e615caf",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "hcm:MonitoredEnclosure"
-      },
-      "owl:onProperty": {
-        "@id": "hcm-bio:hasBehaviorObservation"
       }
     },
     {
@@ -885,47 +471,13 @@
       }
     },
     {
-      "@id": "_:cb2e433199239f5dcd71b67060da183432e1e56b5de0dceed5ac2ba2e4492e9d613",
+      "@id": "_:cb30d62455af54dc4e3801cb2a6f6817e6c81cb8e179cf761050e455a30070ab0bf",
       "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
+      "owl:allValuesFrom": {
+        "@id": "hcm-obs:BehaviorObservation"
       },
       "owl:onProperty": {
-        "@id": "hcm:locatedIn"
-      }
-    },
-    {
-      "@id": "_:cb30076effeadd82c73dd612772bdc92cd5948277974c22a19a5c3d104d02153b52",
-      "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "sosa:observedProperty"
-      }
-    },
-    {
-      "@id": "_:cb30b0e66152b553c0bc674274cb6f43bc14d51d961e2c5e8e45ca8890fd05b9083",
-      "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "hcm:hasCategory"
-      }
-    },
-    {
-      "@id": "_:cb31d6d145648ef6fd8c5236b9100c8b3979b4ec391f4e726585cd56ad8577eaf1e",
-      "@type": "owl:Restriction",
-      "owl:maxCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "hcm-obs:hasConfidenceScore"
+        "@id": "hcm-bio:hasBehaviorObservation"
       }
     },
     {
@@ -939,46 +491,96 @@
       }
     },
     {
-      "@id": "_:cb3443ea1aeaf5bc012a939fa0ca36e5334608af80c46843aa1c837f65b2c4be98e",
+      "@id": "_:cb342ea5d5df770e534e0ab266af2e5a6347ce553ca0ecad94b35064c9536dececc",
       "@type": "owl:Restriction",
       "owl:cardinality": {
         "@type": "xsd:nonNegativeInteger",
         "@value": "1"
       },
       "owl:onProperty": {
-        "@id": "sosa:phenomenonTime"
+        "@id": "hcm-obs:hasCategory"
       }
     },
     {
-      "@id": "_:cb349d56aa825b7bbc86ddbd15fd51df5cbbcde11ed994fd9a4a67a7bc34b1bf880",
-      "@type": "owl:Restriction",
-      "owl:maxCardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "sosa:resultTime"
+      "@id": "_:cb971add8ad812460906e5db16397e56dc883bd46dfd66e8d960f178f6f38754ae",
+      "@type": "owl:Class",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "hcm-tech:Hardware"
+          },
+          {
+            "@id": "hcm-tech:Sensor"
+          },
+          {
+            "@id": "hcm-tech:Actuator"
+          },
+          {
+            "@id": "hcm-tech:Software"
+          }
+        ]
       }
     },
     {
-      "@id": "_:cb35eef0ccdc1f41d378bcf8b48f7bece8c69df20e69bd7b7331a507b80c792936b",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "hcm:hasResult"
-      },
-      "owl:someValuesFrom": {
-        "@id": "hcm:MonitoredEnclosure"
+      "@id": "_:cbe4f216cdd845e4f52471f31d47e589fe9037e88906ff208f6bccce056437eca3",
+      "@type": "owl:Class",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "hcm-tech:Sensor"
+          },
+          {
+            "@id": "hcm-tech:TimeSeries"
+          }
+        ]
       }
     },
     {
-      "@id": "_:cb37966b5341a8908d54b4796ca6b8cd0639ce85a692e985eeecdac19303f7cfa64",
-      "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "sosa:resultTime"
+      "@id": "_:cbeae3a7314fa9152c7a038bca3f00cbcecd01cd7dca2bd2650f111d3c3d0ce06e",
+      "@type": "owl:Class",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "hcm-tech:Hardware"
+          },
+          {
+            "@id": "hcm-tech:Software"
+          },
+          {
+            "@id": "hcm-tech:TimeSeries"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "_:cbf2b41321935bb0b77525cee56ddc080bd16b81af7005a5aca7fc5c1d4991b213",
+      "@type": "owl:Class",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "hcm-env:EnvironmentProfile"
+          },
+          {
+            "@id": "hcm-env:MeasurementSpecification"
+          },
+          {
+            "@id": "hcm-obs:EnvironmentObservation"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "_:cbfa9b7dd071d46a9a787b3894afbb8121b5d9492d01c56fb4f476889e0b35a2f6",
+      "@type": "owl:Class",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "hcm-tech:Software"
+          },
+          {
+            "@id": "hcm-tech:TimeSeries"
+          }
+        ]
       }
     },
     {
@@ -994,96 +596,291 @@
       "@type": "owl:AnnotationProperty"
     },
     {
+      "@id": "dcterms:bibliographicCitation",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "dcterms:created",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "dcterms:creator",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "dcterms:identifier",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "dcterms:issued",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "dcterms:license",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "dcterms:modified",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "dcterms:publisher",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "dcterms:source",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
       "@id": "hcm-bio:ExperimentalGroup",
       "@type": "owl:Class",
-      "rdfs:label": "Experimental Group"
+      "rdfs:comment": "A group of biological subjects sharing an experimental condition, treatment, or study role.",
+      "rdfs:label": "Experimental Group",
+      "rdfs:subClassOf": {
+        "@id": "http://purl.obolibrary.org/obo/BFO_0000027"
+      }
+    },
+    {
+      "@id": "hcm-bio:HousingAssignment",
+      "@type": "owl:Class",
+      "rdfs:comment": "A record assigning a subject or group to an enclosure in a study or housing context.",
+      "rdfs:label": "Housing Assignment",
+      "rdfs:subClassOf": {
+        "@id": "http://purl.obolibrary.org/obo/IAO_0000030"
+      }
+    },
+    {
+      "@id": "hcm-bio:StudyFactors",
+      "@type": "owl:Class",
+      "rdfs:comment": "An independent variable that an investigation is designed to vary systematically in order to determine its effect on subjects or observations.",
+      "rdfs:label": "Study Factor",
+      "rdfs:subClassOf": {
+        "@id": "http://purl.obolibrary.org/obo/IAO_0000030"
+      }
     },
     {
       "@id": "hcm-bio:Subject",
       "@type": "owl:Class",
+      "rdfs:comment": "A biological individual, such as a laboratory animal, observed in a home-cage monitoring context.",
       "rdfs:label": "Subject",
-      "rdfs:subClassOf": {
-        "@id": "_:cb2e1900f348b6f0afd39ce135b5872b8f8694b1d6fc387f170b3309b9a9e615caf"
+      "rdfs:subClassOf": [
+        {
+          "@id": "_:cb30d62455af54dc4e3801cb2a6f6817e6c81cb8e179cf761050e455a30070ab0bf"
+        },
+        {
+          "@id": "http://purl.obolibrary.org/obo/BFO_0000040"
+        }
+      ]
+    },
+    {
+      "@id": "hcm-bio:assignedToEnclosure",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": "Relates a housing assignment to the enclosure or monitored enclosure involved in that assignment.",
+      "rdfs:domain": {
+        "@id": "hcm-bio:HousingAssignment"
+      },
+      "rdfs:label": "assigned to enclosure",
+      "rdfs:range": {
+        "@id": "hcm:Enclosure"
       }
     },
     {
       "@id": "hcm-bio:belongsToGroup",
       "@type": "owl:ObjectProperty",
-      "rdfs:label": "belongs to group"
+      "rdfs:comment": "Relates a subject to an experimental group of which it is a member.",
+      "rdfs:domain": {
+        "@id": "hcm-bio:Subject"
+      },
+      "rdfs:label": "belongs to group",
+      "rdfs:range": {
+        "@id": "hcm-bio:ExperimentalGroup"
+      }
     },
     {
       "@id": "hcm-bio:hasBehaviorObservation",
       "@type": "owl:ObjectProperty",
-      "rdfs:label": "has behavior observation"
+      "rdfs:comment": "Relates a subject to a behavior observation about that subject.",
+      "rdfs:domain": {
+        "@id": "hcm-bio:Subject"
+      },
+      "rdfs:label": "has behavior observation",
+      "rdfs:range": {
+        "@id": "hcm-obs:BehaviorObservation"
+      }
     },
     {
       "@id": "hcm-bio:hasBiologicalSex",
       "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has biological sex"
+      "rdfs:comment": "Records the biological sex reported for a subject.",
+      "rdfs:domain": {
+        "@id": "hcm-bio:Subject"
+      },
+      "rdfs:label": "has biological sex",
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
     },
     {
       "@id": "hcm-bio:hasDateOfBirth",
       "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has date of birth"
+      "rdfs:comment": "Records the date of birth reported for a subject.",
+      "rdfs:domain": {
+        "@id": "hcm-bio:Subject"
+      },
+      "rdfs:label": "has date of birth",
+      "rdfs:range": {
+        "@id": "xsd:date"
+      }
     },
     {
       "@id": "hcm-bio:hasHealthStatusObservation",
       "@type": "owl:ObjectProperty",
-      "rdfs:label": "has health status observation"
+      "rdfs:comment": "Relates a subject to a health-status observation about that subject.",
+      "rdfs:domain": {
+        "@id": "hcm-bio:Subject"
+      },
+      "rdfs:label": "has health status observation",
+      "rdfs:range": {
+        "@id": "hcm-obs:HealthStatusObservation"
+      }
     },
     {
       "@id": "hcm-bio:hasHousingAssignment",
       "@type": "owl:ObjectProperty",
-      "rdfs:label": "has housing assignment"
+      "rdfs:comment": "Relates a subject or experimental group to a housing assignment record.",
+      "rdfs:domain": {
+        "@id": "_:cb17ad6286b123b9fa07137bf966c553f1814948a54e422ad0586fa744f575f091e"
+      },
+      "rdfs:label": "has housing assignment",
+      "rdfs:range": {
+        "@id": "hcm-bio:HousingAssignment"
+      }
     },
     {
       "@id": "hcm-bio:hasMember",
       "@type": "owl:ObjectProperty",
-      "rdfs:label": "has member"
+      "rdfs:comment": "Relates an experimental group to a subject that is a member of the group.",
+      "rdfs:domain": {
+        "@id": "hcm-bio:ExperimentalGroup"
+      },
+      "rdfs:label": "has member",
+      "rdfs:range": {
+        "@id": "hcm-bio:Subject"
+      }
+    },
+    {
+      "@id": "hcm-bio:hasSocialRequirement",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": "Records a social housing or care requirement for a subject or experimental group.",
+      "rdfs:domain": {
+        "@id": "_:cb1115a255d433c6bff843e452cb7e991a3eff0105d837455c2a3b6ca85c557bf53"
+      },
+      "rdfs:label": "has social requirement",
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
     },
     {
       "@id": "hcm-bio:hasSpecies",
       "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has species"
+      "rdfs:comment": "Records the species name or identifier reported for a subject.",
+      "rdfs:domain": {
+        "@id": "hcm-bio:Subject"
+      },
+      "rdfs:label": "has species",
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
     },
     {
       "@id": "hcm-bio:hasStrain",
       "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has strain"
+      "rdfs:comment": "Records the strain, line, or breed reported for a subject.",
+      "rdfs:domain": {
+        "@id": "hcm-bio:Subject"
+      },
+      "rdfs:label": "has strain",
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
     },
     {
       "@id": "hcm-bio:hasTreatment",
       "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has treatment"
+      "rdfs:comment": "Records a treatment, intervention, or experimental condition assigned to a subject or group.",
+      "rdfs:domain": {
+        "@id": "_:cb1aff4143a61d5e0e68bea795a51a6f4670f444ed25906a5531b6734b72f7127c2"
+      },
+      "rdfs:label": "has treatment",
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
     },
     {
       "@id": "hcm-bio:hasWeightObservation",
       "@type": "owl:ObjectProperty",
-      "rdfs:label": "has weight observation"
+      "rdfs:comment": "Relates a subject to a weight observation about that subject.",
+      "rdfs:domain": {
+        "@id": "hcm-bio:Subject"
+      },
+      "rdfs:label": "has weight observation",
+      "rdfs:range": {
+        "@id": "hcm-obs:WeightObservation"
+      }
     },
     {
       "@id": "hcm-env:AmbientTemperature",
       "@type": "owl:ObjectProperty",
-      "rdfs:label": "ambient temperature"
+      "rdfs:comment": "Relates an environmental profile, specification, or observation to the environmental property representing ambient temperature.",
+      "rdfs:domain": {
+        "@id": "_:cb1a19a3b35ad14c3b180e811bc6a7ea1e20d6cd1706210bc625b8a036c26baeff9"
+      },
+      "rdfs:label": "ambient temperature",
+      "rdfs:range": {
+        "@id": "hcm-env:EnvironmentalProperty"
+      }
     },
     {
       "@id": "hcm-env:AmmoniaConcentration",
       "@type": "owl:ObjectProperty",
-      "rdfs:label": "ammonia concentration"
+      "rdfs:comment": "Relates an environmental profile, specification, or observation to the environmental property representing ammonia concentration.",
+      "rdfs:domain": {
+        "@id": "_:cb17c254b984a90c8183c6f725eb25517f536736328c9f2ee3c9372c156e7edeadb"
+      },
+      "rdfs:label": "ammonia concentration",
+      "rdfs:range": {
+        "@id": "hcm-env:EnvironmentalProperty"
+      }
     },
     {
       "@id": "hcm-env:CarbonDioxideConcentration",
       "@type": "owl:ObjectProperty",
-      "rdfs:label": "carbon dioxide concentration"
+      "rdfs:comment": "Relates an environmental profile, specification, or observation to the environmental property representing carbon dioxide concentration.",
+      "rdfs:domain": {
+        "@id": "_:cb117924e50c2c64c53c39c30f238998341fb79810495ffdb7e760c10eb169b7eb0"
+      },
+      "rdfs:label": "carbon dioxide concentration",
+      "rdfs:range": {
+        "@id": "hcm-env:EnvironmentalProperty"
+      }
     },
     {
       "@id": "hcm-env:EnclosureDimensions",
       "@type": "owl:Class",
+      "dcterms:isReplacedBy": {
+        "@id": "hcm:EnclosureDimensions"
+      },
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated HCMO 0.0.1 term retained for backward compatibility.",
       "rdfs:label": "Enclosure Dimensions"
     },
     {
       "@id": "hcm-env:EnvironmentProfile",
       "@type": "owl:Class",
+      "rdfs:comment": "A structured profile describing environmental conditions or requirements for a monitored enclosure.",
       "rdfs:label": "Environment Profile",
       "rdfs:subClassOf": [
         {
@@ -1094,130 +891,358 @@
         },
         {
           "@id": "_:cb31ec00e8f513a21d68d42624c813702e50432d44c14388830a884954919fce391"
+        },
+        {
+          "@id": "http://purl.obolibrary.org/obo/IAO_0000030"
         }
       ]
     },
     {
       "@id": "hcm-env:EnvironmentalProperty",
       "@type": "owl:Class",
-      "rdfs:label": "Environmental Property"
+      "rdfs:comment": "An environmental parameter that may be measured, specified, or controlled in a home-cage monitoring context.",
+      "rdfs:label": "Environmental Property",
+      "rdfs:subClassOf": [
+        {
+          "@id": "http://purl.obolibrary.org/obo/BFO_0000019"
+        },
+        {
+          "@id": "sosa:Property"
+        }
+      ]
     },
     {
       "@id": "hcm-env:GasConcentrationProfile",
       "@type": "owl:Class",
-      "rdfs:label": "Gas Concentration Profile"
+      "rdfs:comment": "A profile describing concentrations of gases relevant to the monitored enclosure environment.",
+      "rdfs:label": "Gas Concentration Profile",
+      "rdfs:subClassOf": {
+        "@id": "http://purl.obolibrary.org/obo/IAO_0000030"
+      }
     },
     {
       "@id": "hcm-env:LightCycle",
       "@type": "owl:Class",
-      "rdfs:label": "Light Cycle"
+      "rdfs:comment": "A description of the timing and transitions of light and dark phases in an enclosure environment.",
+      "rdfs:label": "Light Cycle",
+      "rdfs:subClassOf": {
+        "@id": "http://purl.obolibrary.org/obo/IAO_0000030"
+      }
     },
     {
       "@id": "hcm-env:LightIntensity",
       "@type": "owl:ObjectProperty",
-      "rdfs:label": "light intensity"
+      "rdfs:comment": "Relates an environmental profile, specification, or observation to the environmental property representing light intensity.",
+      "rdfs:domain": {
+        "@id": "_:cb1524fa29b4e64d37b381f0d9aa40550d4d7b7e2404df7ed01e089d8e15ada8072"
+      },
+      "rdfs:label": "light intensity",
+      "rdfs:range": {
+        "@id": "hcm-env:EnvironmentalProperty"
+      }
     },
     {
       "@id": "hcm-env:LightState",
       "@type": "owl:ObjectProperty",
-      "rdfs:label": "light state"
+      "rdfs:comment": "Relates an environmental profile, specification, or observation to the environmental property representing light state.",
+      "rdfs:domain": {
+        "@id": "_:cb14ccc5381614bd2702e680cd5017ab8c29074d78e837713f9b9700a85f81f49d5"
+      },
+      "rdfs:label": "light state",
+      "rdfs:range": {
+        "@id": "hcm-env:EnvironmentalProperty"
+      }
     },
     {
       "@id": "hcm-env:MeasurementSpecification",
       "@type": "owl:Class",
-      "rdfs:label": "Measurement Specification"
+      "rdfs:comment": "A specification describing how an environmental property is measured, represented, or constrained.",
+      "rdfs:label": "Measurement Specification",
+      "rdfs:subClassOf": {
+        "@id": "http://purl.obolibrary.org/obo/IAO_0000030"
+      }
     },
     {
       "@id": "hcm-env:OxygenConcentration",
       "@type": "owl:ObjectProperty",
-      "rdfs:label": "oxygen concentration"
+      "rdfs:comment": "Relates an environmental profile, specification, or observation to the environmental property representing oxygen concentration.",
+      "rdfs:domain": {
+        "@id": "_:cb22d894ff4a94c7483bcc777cf759fd77d9867ed06c0efd14366bc202bf46926c2"
+      },
+      "rdfs:label": "oxygen concentration",
+      "rdfs:range": {
+        "@id": "hcm-env:EnvironmentalProperty"
+      }
     },
     {
       "@id": "hcm-env:RelativeHumidity",
       "@type": "owl:ObjectProperty",
-      "rdfs:label": "relative humidity"
+      "rdfs:comment": "Relates an environmental profile, specification, or observation to the environmental property representing relative humidity.",
+      "rdfs:domain": {
+        "@id": "_:cbf2b41321935bb0b77525cee56ddc080bd16b81af7005a5aca7fc5c1d4991b213"
+      },
+      "rdfs:label": "relative humidity",
+      "rdfs:range": {
+        "@id": "hcm-env:EnvironmentalProperty"
+      }
     },
     {
       "@id": "hcm-env:ThriveProfile",
       "@type": "owl:Class",
-      "rdfs:label": "Thrive Profile"
+      "rdfs:comment": "A welfare or husbandry profile describing environmental conditions intended to support animal thriving.",
+      "rdfs:label": "Thrive Profile",
+      "rdfs:subClassOf": {
+        "@id": "http://purl.obolibrary.org/obo/IAO_0000030"
+      }
+    },
+    {
+      "@id": "hcm-env:hasDarkPhaseDuration",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": "Records the duration of the dark phase in a light cycle.",
+      "rdfs:domain": {
+        "@id": "hcm-env:LightCycle"
+      },
+      "rdfs:label": "has dark phase duration",
+      "rdfs:range": {
+        "@id": "xsd:duration"
+      }
+    },
+    {
+      "@id": "hcm-env:hasDarkPhaseStart",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": "Records the start time of the dark phase in a light cycle.",
+      "rdfs:domain": {
+        "@id": "hcm-env:LightCycle"
+      },
+      "rdfs:label": "has dark phase start",
+      "rdfs:range": {
+        "@id": "xsd:time"
+      }
+    },
+    {
+      "@id": "hcm-env:hasDawnDuration",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": "Records the duration of the dawn transition in a light cycle.",
+      "rdfs:domain": {
+        "@id": "hcm-env:LightCycle"
+      },
+      "rdfs:label": "has dawn duration",
+      "rdfs:range": {
+        "@id": "xsd:duration"
+      }
     },
     {
       "@id": "hcm-env:hasDimUnit",
       "@type": "owl:DatatypeProperty",
+      "dcterms:isReplacedBy": {
+        "@id": "hcm:hasDimUnit"
+      },
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated HCMO 0.0.1 term retained for backward compatibility.",
       "rdfs:label": "has dim unit"
+    },
+    {
+      "@id": "hcm-env:hasDuskDuration",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": "Records the duration of the dusk transition in a light cycle.",
+      "rdfs:domain": {
+        "@id": "hcm-env:LightCycle"
+      },
+      "rdfs:label": "has dusk duration",
+      "rdfs:range": {
+        "@id": "xsd:duration"
+      }
+    },
+    {
+      "@id": "hcm-env:hasEnvironment",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": "Relates an enclosure to a structured environment profile.",
+      "rdfs:domain": {
+        "@id": "hcm:Enclosure"
+      },
+      "rdfs:label": "has environment",
+      "rdfs:range": {
+        "@id": "hcm-env:EnvironmentProfile"
+      }
     },
     {
       "@id": "hcm-env:hasGasConcentrationProfile",
       "@type": "owl:ObjectProperty",
-      "rdfs:label": "has gas concentration profile"
+      "rdfs:comment": "Relates an environment profile to a gas concentration profile.",
+      "rdfs:domain": {
+        "@id": "hcm-env:EnvironmentProfile"
+      },
+      "rdfs:label": "has gas concentration profile",
+      "rdfs:range": {
+        "@id": "hcm-env:GasConcentrationProfile"
+      }
     },
     {
       "@id": "hcm-env:hasGasType",
       "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has gas type"
+      "rdfs:comment": "Records the gas type measured or specified in a gas concentration profile.",
+      "rdfs:domain": {
+        "@id": "hcm-env:GasConcentrationProfile"
+      },
+      "rdfs:label": "has gas type",
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
     },
     {
       "@id": "hcm-env:hasHeight",
       "@type": "owl:DatatypeProperty",
+      "dcterms:isReplacedBy": {
+        "@id": "hcm:hasHeight"
+      },
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated HCMO 0.0.1 term retained for backward compatibility.",
       "rdfs:label": "has height"
     },
     {
       "@id": "hcm-env:hasLength",
       "@type": "owl:DatatypeProperty",
+      "dcterms:isReplacedBy": {
+        "@id": "hcm:hasLength"
+      },
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated HCMO 0.0.1 term retained for backward compatibility.",
       "rdfs:label": "has length"
     },
     {
       "@id": "hcm-env:hasLightCycle",
       "@type": "owl:ObjectProperty",
-      "rdfs:label": "has light cycle"
+      "rdfs:comment": "Relates an environment profile to a light cycle.",
+      "rdfs:domain": {
+        "@id": "hcm-env:EnvironmentProfile"
+      },
+      "rdfs:label": "has light cycle",
+      "rdfs:range": {
+        "@id": "hcm-env:LightCycle"
+      }
+    },
+    {
+      "@id": "hcm-env:hasLightPhaseDuration",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": "Records the duration of the light phase in a light cycle.",
+      "rdfs:domain": {
+        "@id": "hcm-env:LightCycle"
+      },
+      "rdfs:label": "has light phase duration",
+      "rdfs:range": {
+        "@id": "xsd:duration"
+      }
     },
     {
       "@id": "hcm-env:hasMeasurementSpec",
       "@type": "owl:ObjectProperty",
-      "rdfs:label": "has measurement spec"
+      "rdfs:comment": "Relates an environment profile to a measurement specification.",
+      "rdfs:domain": {
+        "@id": "hcm-env:EnvironmentProfile"
+      },
+      "rdfs:label": "has measurement spec",
+      "rdfs:range": {
+        "@id": "hcm-env:MeasurementSpecification"
+      }
+    },
+    {
+      "@id": "hcm-env:hasThriveProfile",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": "Relates a monitored enclosure to the thrive profile that specifies suitable husbandry or environmental conditions.",
+      "rdfs:domain": {
+        "@id": "hcm:MonitoredEnclosure"
+      },
+      "rdfs:label": "has thrive profile",
+      "rdfs:range": {
+        "@id": "hcm-env:ThriveProfile"
+      }
     },
     {
       "@id": "hcm-env:hasUnit",
       "@type": "owl:DatatypeProperty",
+      "dcterms:isReplacedBy": {
+        "@id": "hcm:hasUnit"
+      },
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated duplicate; use the consolidated hcm:hasUnit property for quantitative results and measurement specifications.",
       "rdfs:label": "has unit"
     },
     {
       "@id": "hcm-env:hasValue",
       "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has value"
+      "rdfs:comment": "Records a literal value for an environmental measurement or specification.",
+      "rdfs:domain": {
+        "@id": "_:cb16d6e8ffe5d223218a28922ba7a439def1b4ab44417fce6742af984053e4ac90b"
+      },
+      "rdfs:label": "has value",
+      "rdfs:range": {
+        "@id": "rdfs:Literal"
+      }
     },
     {
       "@id": "hcm-env:hasWidth",
       "@type": "owl:DatatypeProperty",
+      "dcterms:isReplacedBy": {
+        "@id": "hcm:hasWidth"
+      },
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated HCMO 0.0.1 term retained for backward compatibility.",
       "rdfs:label": "has width"
-    },
-    {
-      "@id": "hcm-obs:",
-      "@type": "owl:ObjectProperty",
-      "rdfs:label": ""
     },
     {
       "@id": "hcm-obs:BehaviorObservation",
       "@type": "owl:Class",
+      "rdfs:comment": "A SOSA-style observation about the behavior of a subject in a home-cage monitoring context.",
       "rdfs:label": "Behavior Observation",
       "rdfs:subClassOf": [
         {
           "@id": "_:cb218c99c91cf3e0b0a8925ac09fea216aa607246eb25cd992b4aa36ee74c89203c"
         },
         {
-          "@id": "_:cb25aa469254d6bd3180558fe608a3b0d7d98ad54f269db63042313ca7832dbe9cb"
+          "@id": "_:cb223541e6c8837b0bc004de83d581e98eec444b1ca17686e81c542e48a9f548b5a"
+        },
+        {
+          "@id": "sosa:Observation"
         }
       ]
     },
     {
       "@id": "hcm-obs:BehaviorResult",
       "@type": "owl:Class",
-      "rdfs:label": "Behavior Result"
+      "rdfs:comment": "An observation result representing a detected, classified, or recorded behavior.",
+      "rdfs:label": "Behavior Result",
+      "rdfs:subClassOf": {
+        "@id": "hcm-obs:ObservationResult"
+      }
+    },
+    {
+      "@id": "hcm-obs:CategoricalResult",
+      "@type": "owl:Class",
+      "rdfs:comment": "An observation result represented by a category rather than a numeric value.",
+      "rdfs:label": "Categorical Result",
+      "rdfs:subClassOf": {
+        "@id": "hcm-obs:ObservationResult"
+      }
     },
     {
       "@id": "hcm-obs:EnvironmentObservation",
       "@type": "owl:Class",
+      "rdfs:comment": "A SOSA-style observation about an environmental property of a monitored enclosure.",
       "rdfs:label": "Environment Observation",
       "rdfs:subClassOf": [
         {
@@ -1227,724 +1252,1200 @@
           "@id": "_:cb292f05ec450fc6b455d93d6292541a53b1a1cd3155aacb4242171eeebaf9f3064"
         },
         {
-          "@id": "_:cb30b0e66152b553c0bc674274cb6f43bc14d51d961e2c5e8e45ca8890fd05b9083"
+          "@id": "_:cb342ea5d5df770e534e0ab266af2e5a6347ce553ca0ecad94b35064c9536dececc"
+        },
+        {
+          "@id": "sosa:Observation"
         }
       ]
     },
     {
       "@id": "hcm-obs:GasConcentrationObservation",
       "@type": "owl:Class",
-      "rdfs:label": "Gas Concentration Observation"
+      "rdfs:comment": "An environment observation measuring or reporting the concentration of a gas.",
+      "rdfs:label": "Gas Concentration Observation",
+      "rdfs:subClassOf": {
+        "@id": "hcm-obs:EnvironmentObservation"
+      }
     },
     {
       "@id": "hcm-obs:HealthStatusObservation",
       "@type": "owl:Class",
+      "rdfs:comment": "A SOSA-style observation about the health status of a biological subject.",
       "rdfs:label": "Health Status Observation",
-      "rdfs:subClassOf": {
-        "@id": "_:cb1e697da0cefc2b314e99623a172106d09203b61fc3e682563705d450d5f309633"
-      }
+      "rdfs:subClassOf": [
+        {
+          "@id": "_:cb1cb06e96e9caf6ed3eb5396f63ba5beca267e783a500e2618cb5a7d826093bc01"
+        },
+        {
+          "@id": "sosa:Observation"
+        }
+      ]
     },
     {
       "@id": "hcm-obs:HousingAssignment",
       "@type": "owl:Class",
+      "dcterms:isReplacedBy": {
+        "@id": "hcm-bio:HousingAssignment"
+      },
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated HCMO 0.0.1 term retained for backward compatibility.",
       "rdfs:label": "Housing Assignment"
+    },
+    {
+      "@id": "hcm-obs:LocationResultTable",
+      "@type": "owl:Class",
+      "rdfs:comment": "A tabular observation result containing location values or generated time-series segments.",
+      "rdfs:label": "Location Result Table",
+      "rdfs:subClassOf": [
+        {
+          "@id": "_:cb24ee396c4f454f68146208eee51dff0131921b34f2d7e1eb48515bbabc9495923"
+        },
+        {
+          "@id": "hcm-obs:ObservationResult"
+        }
+      ]
+    },
+    {
+      "@id": "hcm-obs:ObservationResult",
+      "@type": "owl:Class",
+      "rdfs:comment": "An information artifact produced as the result of a home-cage monitoring observation.",
+      "rdfs:label": "Observation Result",
+      "rdfs:subClassOf": [
+        {
+          "@id": "http://purl.obolibrary.org/obo/IAO_0000030"
+        },
+        {
+          "@id": "sosa:Result"
+        }
+      ]
+    },
+    {
+      "@id": "hcm-obs:QuantityValue",
+      "@type": "owl:Class",
+      "rdfs:comment": "An observation result that represents a quantitative value, typically with a numeric value and unit.",
+      "rdfs:label": "Quantity Value",
+      "rdfs:subClassOf": {
+        "@id": "hcm-obs:ObservationResult"
+      }
     },
     {
       "@id": "hcm-obs:WeightObservation",
       "@type": "owl:Class",
+      "rdfs:comment": "A SOSA-style observation reporting the body weight of a biological subject.",
       "rdfs:label": "Weight Observation",
       "rdfs:subClassOf": [
         {
-          "@id": "_:cb2625d47294f6f94d6512d3fe7e510c07ba3cde7a9d62cefe10dc92e974450a548"
+          "@id": "_:cb26e636e4a84f06a35594b5efcccb5718e560b4bfba6191d03263f411d3e6c13cc"
         },
         {
-          "@id": "_:cb28fd80643ba5dcb64c19aa810b1c26c447fa6507b89c7276a97fd5b9433dce705"
+          "@id": "_:cb2744715a5674a8723c3581b657b57be0585e966b99b6d281ff2fa940935400cd3"
         },
         {
-          "@id": "_:cb2c8a515db14e003835f5da1ace7ebb6d5c20de5b9849ffee3647f9bc2a8dee05b"
-        },
-        {
-          "@id": "_:cb37966b5341a8908d54b4796ca6b8cd0639ce85a692e985eeecdac19303f7cfa64"
-        },
-        {
-          "@id": "hcm:ObservationResult"
+          "@id": "sosa:Observation"
         }
       ]
     },
     {
       "@id": "hcm-obs:assignedToEnclosure",
       "@type": "owl:ObjectProperty",
+      "dcterms:isReplacedBy": {
+        "@id": "hcm-bio:assignedToEnclosure"
+      },
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated HCMO 0.0.1 term retained for backward compatibility.",
       "rdfs:label": "assigned to enclosure"
     },
     {
       "@id": "hcm-obs:hasBehaviorType",
       "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has behavior type"
+      "rdfs:comment": "Records the behavior type or behavior category associated with a behavior observation or result.",
+      "rdfs:domain": {
+        "@id": "_:cb1b5e7ce0a8702fc2e5ad885d909ee8fad903adad8453dd1e674f16403e06d74be"
+      },
+      "rdfs:label": "has behavior type",
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "hcm-obs:hasCategory",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": "Records the category assigned to a categorical observation or result.",
+      "rdfs:domain": {
+        "@id": "hcm-obs:CategoricalResult"
+      },
+      "rdfs:label": "has category",
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "hcm-obs:hasCondition",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": "Relates an observation to the condition under which it was made or interpreted; the condition model is intentionally left open.",
+      "rdfs:domain": {
+        "@id": "sosa:Observation"
+      },
+      "rdfs:label": "has condition",
+      "rdfs:range": {
+        "@id": "owl:Thing"
+      }
     },
     {
       "@id": "hcm-obs:hasConfidenceScore",
       "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has confidence score"
+      "rdfs:comment": "Records a numeric confidence score associated with an observation result.",
+      "rdfs:domain": {
+        "@id": "hcm-obs:ObservationResult"
+      },
+      "rdfs:label": "has confidence score",
+      "rdfs:range": {
+        "@id": "xsd:decimal"
+      }
     },
     {
       "@id": "hcm-obs:hasHealthStatusTerm",
       "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has health status term"
+      "rdfs:comment": "Records a textual or coded health-status term associated with a health-status observation.",
+      "rdfs:domain": {
+        "@id": "hcm-obs:HealthStatusObservation"
+      },
+      "rdfs:label": "has health status term",
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
     },
     {
       "@id": "hcm-obs:hasInterval",
       "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has interval"
+      "rdfs:comment": "Records a duration associated with an observation; use sosa:phenomenonTime for a temporal entity.",
+      "rdfs:domain": {
+        "@id": "sosa:Observation"
+      },
+      "rdfs:label": "has interval",
+      "rdfs:range": {
+        "@id": "xsd:duration"
+      }
+    },
+    {
+      "@id": "hcm-obs:hasNumericValue",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": "Records the numeric value of a quantity result or measurement.",
+      "rdfs:domain": {
+        "@id": "hcm-obs:QuantityValue"
+      },
+      "rdfs:label": "has numeric value",
+      "rdfs:range": {
+        "@id": "xsd:decimal"
+      }
     },
     {
       "@id": "hcm-obs:occursIn",
       "@type": "owl:ObjectProperty",
-      "rdfs:label": "occurs in"
+      "rdfs:comment": "Relates an observation to the enclosure in which it occurs.",
+      "rdfs:domain": {
+        "@id": "sosa:Observation"
+      },
+      "rdfs:label": "occurs in",
+      "rdfs:range": {
+        "@id": "hcm:Enclosure"
+      }
+    },
+    {
+      "@id": "hcm-tech:Actuator",
+      "@type": "owl:Class",
+      "rdfs:comment": "A device that elicits or perturbs behavior, physiology, or the monitored environment.",
+      "rdfs:label": "Actuator",
+      "rdfs:subClassOf": [
+        {
+          "@id": "http://purl.obolibrary.org/obo/BFO_0000040"
+        },
+        {
+          "@id": "sosa:Actuator"
+        }
+      ]
+    },
+    {
+      "@id": "hcm-tech:Hardware",
+      "@type": "owl:Class",
+      "rdfs:comment": "Physical computing hardware component of a home-cage monitoring system.",
+      "rdfs:label": "Hardware",
+      "rdfs:subClassOf": {
+        "@id": "http://purl.obolibrary.org/obo/BFO_0000040"
+      }
+    },
+    {
+      "@id": "hcm-tech:Sensor",
+      "@type": "owl:Class",
+      "rdfs:comment": "A device that captures signals related to behavior, physiology, or enclosure environment.",
+      "rdfs:label": "Sensor",
+      "rdfs:subClassOf": [
+        {
+          "@id": "_:cb2c85423b11c3882a7b16642ff1e482506431b0d742ab1502a033f5ed64335a7eb"
+        },
+        {
+          "@id": "http://purl.obolibrary.org/obo/BFO_0000040"
+        },
+        {
+          "@id": "sosa:Sensor"
+        }
+      ]
+    },
+    {
+      "@id": "hcm-tech:Software",
+      "@type": "owl:Class",
+      "rdfs:comment": "Software component used to acquire, process, store, or analyse home-cage monitoring data.",
+      "rdfs:label": "Software",
+      "rdfs:subClassOf": {
+        "@id": "http://purl.obolibrary.org/obo/IAO_0000030"
+      }
+    },
+    {
+      "@id": "hcm-tech:TimeSeries",
+      "@type": "owl:Class",
+      "rdfs:comment": "An ordered sequence of time-indexed measurements or outputs produced in a monitoring workflow.",
+      "rdfs:label": "Time Series",
+      "rdfs:subClassOf": {
+        "@id": "http://purl.obolibrary.org/obo/IAO_0000030"
+      }
+    },
+    {
+      "@id": "hcm-tech:captures",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": "Relates a sensor to the property it observes or captures.",
+      "rdfs:domain": {
+        "@id": "hcm-tech:Sensor"
+      },
+      "rdfs:label": "captures",
+      "rdfs:range": {
+        "@id": "sosa:Property"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "sosa:observes"
+      }
+    },
+    {
+      "@id": "hcm-tech:communicatesWith",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": "Relates a technical component to another hardware or software component with which it exchanges data or commands.",
+      "rdfs:domain": {
+        "@id": "_:cb971add8ad812460906e5db16397e56dc883bd46dfd66e8d960f178f6f38754ae"
+      },
+      "rdfs:label": "communicates with",
+      "rdfs:range": {
+        "@id": "_:cb1f6413380c1436625d8de27ba53397f8929f5cf2bdec67e4f547b0b9a42f48c1d"
+      }
+    },
+    {
+      "@id": "hcm-tech:hasActuator",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": "Relates a monitored enclosure to an actuator associated with it.",
+      "rdfs:domain": {
+        "@id": "hcm:MonitoredEnclosure"
+      },
+      "rdfs:label": "has actuator",
+      "rdfs:range": {
+        "@id": "hcm-tech:Actuator"
+      }
+    },
+    {
+      "@id": "hcm-tech:hasFileFormat",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": "Records the file format of a software or time-series artifact.",
+      "rdfs:domain": {
+        "@id": "_:cbfa9b7dd071d46a9a787b3894afbb8121b5d9492d01c56fb4f476889e0b35a2f6"
+      },
+      "rdfs:label": "has file format",
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "hcm-tech:hasFirmware",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": "Records the firmware identifier or version installed on a hardware or sensor component.",
+      "rdfs:domain": {
+        "@id": "_:cb158cd912b9563b2ebf3368cb1eada29bbabb854ee0688d727a096249875e86445"
+      },
+      "rdfs:label": "has firmware",
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "hcm-tech:hasModelNumber",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": "Records the manufacturer model number for a hardware, sensor, or actuator component.",
+      "rdfs:domain": {
+        "@id": "_:cb172a8e6b8446fb51cc8b2f52c6f5e72e4dbb1d19ca6e34f46fd40d44748f1bb18"
+      },
+      "rdfs:label": "has model number",
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "hcm-tech:hasProtocol",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": "Records the communication, acquisition, or processing protocol used by a technical component.",
+      "rdfs:domain": {
+        "@id": "_:cb11170b7809fcd504d44ccf3c0b834a3102986118c0c3072743172d407c0292c74"
+      },
+      "rdfs:label": "has protocol",
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "hcm-tech:hasSamplingRate",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": "Records the rate at which a sensor or data stream is sampled, including its unit.",
+      "rdfs:domain": {
+        "@id": "_:cbe4f216cdd845e4f52471f31d47e589fe9037e88906ff208f6bccce056437eca3"
+      },
+      "rdfs:label": "has sampling rate",
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "hcm-tech:hasSensorIdentifier",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": "Records an identifier assigned to a sensor.",
+      "rdfs:domain": {
+        "@id": "hcm-tech:Sensor"
+      },
+      "rdfs:label": "has sensor identifier",
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "hcm-tech:hasSensorTechnology",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": "Records the sensing technology or modality used by a sensor.",
+      "rdfs:domain": {
+        "@id": "hcm-tech:Sensor"
+      },
+      "rdfs:label": "has sensor technology",
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "hcm-tech:hasSensorType",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": "Records the functional type or category of a sensor.",
+      "rdfs:domain": {
+        "@id": "hcm-tech:Sensor"
+      },
+      "rdfs:label": "has sensor type",
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "hcm-tech:hasStoragePath",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": "Records a path or locator for stored data, software, or time-series resources.",
+      "rdfs:domain": {
+        "@id": "_:cb12fcca9b5b6c59e8b5690d755186459786db0dcfd60292bedca97561e34069e49"
+      },
+      "rdfs:label": "has storage path",
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "hcm-tech:hasVersion",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": "Records a version string for software, firmware, hardware, or data artifacts.",
+      "rdfs:domain": {
+        "@id": "_:cbeae3a7314fa9152c7a038bca3f00cbcecd01cd7dca2bd2650f111d3c3d0ce06e"
+      },
+      "rdfs:label": "has version",
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "hcm-tech:installedIn",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": "Relates a sensor to the monitored enclosure in which it is installed.",
+      "rdfs:domain": {
+        "@id": "hcm-tech:Sensor"
+      },
+      "rdfs:label": "installed in",
+      "rdfs:range": {
+        "@id": "hcm:MonitoredEnclosure"
+      }
+    },
+    {
+      "@id": "hcm-tech:isCalibrated",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": "Indicates whether a sensor or device has been calibrated.",
+      "rdfs:domain": {
+        "@id": "hcm-tech:Sensor"
+      },
+      "rdfs:label": "is calibrated",
+      "rdfs:range": {
+        "@id": "xsd:boolean"
+      }
+    },
+    {
+      "@id": "hcm-tech:monitoredBy",
+      "@type": "owl:ObjectProperty",
+      "owl:inverseOf": {
+        "@id": "hcm-tech:installedIn"
+      },
+      "rdfs:comment": "Relates a monitored enclosure to a sensor installed in or monitoring it.",
+      "rdfs:domain": {
+        "@id": "hcm:MonitoredEnclosure"
+      },
+      "rdfs:label": "monitored by",
+      "rdfs:range": {
+        "@id": "hcm-tech:Sensor"
+      }
+    },
+    {
+      "@id": "hcm-tech:runsOn",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": "Relates software to the hardware or platform on which it executes.",
+      "rdfs:domain": {
+        "@id": "hcm-tech:Software"
+      },
+      "rdfs:label": "runs on",
+      "rdfs:range": {
+        "@id": "hcm-tech:Hardware"
+      }
+    },
+    {
+      "@id": "hcm-tech:supportsEnclosure",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": "Relates a technical component to the monitored enclosure that it supports.",
+      "rdfs:domain": {
+        "@id": "_:cb19cc26842b4d43d7644c652f0bc8fcf7b35f26d8fef8ab732ab4e06cf58ce5bf9"
+      },
+      "rdfs:label": "supports enclosure",
+      "rdfs:range": {
+        "@id": "hcm:MonitoredEnclosure"
+      }
     },
     {
       "@id": "hcm:Actuator",
       "@type": "owl:Class",
-      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
-      "ns1:IAO_0000115": "A device that elicits or perturbs behavior or physiology.",
-      "rdfs:comment": "A device that elicits or perturbs behavior or physiology.",
+      "dcterms:isReplacedBy": {
+        "@id": "hcm-tech:Actuator"
+      },
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. A device that elicits or perturbs behavior or physiology.",
       "rdfs:label": "Actuator"
     },
     {
       "@id": "hcm:Animal",
       "@type": "owl:Class",
-      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
-      "ns1:IAO_0000115": "An experimental animal housed in an enclosure.",
-      "rdfs:comment": "An experimental animal housed in an enclosure.",
+      "dcterms:isReplacedBy": {
+        "@id": "hcm-bio:Subject"
+      },
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. An experimental animal housed in an enclosure.",
       "rdfs:label": "Animal"
     },
     {
       "@id": "hcm:BehaviorAndPhysiology",
       "@type": "owl:Class",
-      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
-      "ns1:IAO_0000115": "An observed behavioral or physiological process displayed by an animal.",
-      "rdfs:comment": "Observed behavioral or physiological process displayed by an animal.",
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. Observed behavioral or physiological process displayed by an animal.",
       "rdfs:label": "Behavior and Physiology"
     },
     {
       "@id": "hcm:CategoricalResult",
       "@type": "owl:Class",
+      "dcterms:isReplacedBy": {
+        "@id": "hcm-obs:CategoricalResult"
+      },
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated HCMO 0.0.1 term retained for backward compatibility.",
       "rdfs:label": "Categorical Result"
     },
     {
       "@id": "hcm:CircadianRhythm",
       "@type": "owl:Class",
-      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
-      "ns1:IAO_0000115": "A circadian rhythm associated with a behavior or physiology process.",
-      "rdfs:comment": "A circadian rhythm associated with a behavior or physiology process.",
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. A circadian rhythm associated with a behavior or physiology process.",
       "rdfs:label": "Circadian Rhythm"
     },
     {
       "@id": "hcm:ContactPoint",
       "@type": "owl:Class",
-      "dcterms:source": "HCMO user-submission form mapping.",
-      "ns1:IAO_0000115": "Contact detail associated with a submitted system or supplier.",
-      "rdfs:comment": "Contact detail associated with a submitted system or supplier.",
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. Contact detail associated with a submitted system or supplier.",
       "rdfs:label": "Contact Point"
     },
     {
       "@id": "hcm:DataProduct",
       "@type": "owl:Class",
-      "dcterms:source": "HCMO user-submission form mapping.",
-      "ns1:IAO_0000115": "Data artifact or link associated with a submitted system.",
-      "rdfs:comment": "Data artifact or link associated with a submitted system.",
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. Data artifact or link associated with a submitted system.",
       "rdfs:label": "Data Product"
     },
     {
       "@id": "hcm:Dimensions",
       "@type": "owl:Class",
-      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
-      "ns1:IAO_0000115": "Geometric dimensions of a physical space or enclosure.",
-      "rdfs:comment": "Geometric dimensions of a physical space or enclosure.",
+      "dcterms:isReplacedBy": {
+        "@id": "hcm:EnclosureDimensions"
+      },
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. Geometric dimensions of a physical space or enclosure.",
       "rdfs:label": "Dimensions"
     },
     {
       "@id": "hcm:Enclosure",
       "@type": "owl:Class",
-      "dcterms:source": "HCMO active ABox examples and user-submission form mapping.",
-      "ns1:IAO_0000115": "A physical housing enclosure used as part of a home-cage monitoring system.",
       "rdfs:comment": "A physical housing enclosure used as part of a home-cage monitoring system.",
-      "rdfs:label": "Enclosure"
+      "rdfs:label": "Enclosure",
+      "rdfs:subClassOf": {
+        "@id": "http://purl.obolibrary.org/obo/BFO_0000040"
+      }
+    },
+    {
+      "@id": "hcm:EnclosureDimensions",
+      "@type": "owl:Class",
+      "rdfs:comment": "A dimensions record describing the physical size of an enclosure.",
+      "rdfs:label": "Enclosure Dimensions",
+      "rdfs:subClassOf": {
+        "@id": "http://purl.obolibrary.org/obo/IAO_0000030"
+      }
     },
     {
       "@id": "hcm:Enrichment",
       "@type": "owl:Class",
-      "rdfs:label": "Enrichment"
+      "rdfs:comment": "A material or structure provided within an enclosure to support animal welfare or experimental conditions.",
+      "rdfs:label": "Enrichment",
+      "rdfs:subClassOf": {
+        "@id": "http://purl.obolibrary.org/obo/BFO_0000040"
+      }
     },
     {
       "@id": "hcm:Hardware",
       "@type": "owl:Class",
-      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
-      "ns1:IAO_0000115": "Physical computing hardware component of a home-cage monitoring system.",
-      "rdfs:comment": "Physical computing hardware component of a home-cage monitoring system.",
+      "dcterms:isReplacedBy": {
+        "@id": "hcm-tech:Hardware"
+      },
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. Physical computing hardware component of a home-cage monitoring system.",
       "rdfs:label": "Hardware"
     },
     {
       "@id": "hcm:LimitedInteractionWithHumans",
       "@type": "owl:Class",
-      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
-      "ns1:IAO_0000115": "A condition indicating minimal human interference during observation.",
-      "rdfs:comment": "A condition indicating minimal human interference during observation.",
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. A condition indicating minimal human interference during observation.",
       "rdfs:label": "Limited Interaction With Humans"
     },
     {
       "@id": "hcm:MonitoredEnclosure",
       "@type": "owl:Class",
+      "rdfs:comment": "A physical enclosure equipped for the longitudinal monitoring of housed biological subjects.",
       "rdfs:label": "Monitored Enclosure",
       "rdfs:subClassOf": [
         {
-          "@id": "_:cb1927685761ff8827d6b6aa29d9020102456bb3441f2299305340b361363817349"
+          "@id": "_:cb15a41efc8b4077324df6a17af6a0b8a57ef9c0f9397b181823f1f117efc820b2b"
         },
         {
-          "@id": "_:cb1973efc7f24e152ca98a85ff21b8c66dd7e164ae7d89060a391a90f98e4f00834"
+          "@id": "_:cb1927c465fe67d6061244df711e478e344fe04c3c7a8f4c8877d678c13a7c536b2"
         },
         {
-          "@id": "_:cb1a90ed890653fe72b8d32c4bb3dbcb89d9ee3d9ab3d4df5d9718ba4f815cd0026"
+          "@id": "_:cb1dbcdbe983794c781380180cd607eb825b3464bd7c64f921004ca2c66885ad233"
         },
         {
-          "@id": "_:cb1c5bbc312c209a6d7eef16c3c2f52d97874a671aee6ea73072b4c3cb2b173550a"
+          "@id": "_:cb26978189250ed068b04ef0a0b569d53c2b0035d4155ed1ea3de336fa1ed427763"
         },
         {
-          "@id": "_:cb1cbec2fd56adf1343104a4df6f2cbf012fa125c5fbdf9f77966a47b5eaabea2bd"
-        },
-        {
-          "@id": "_:cb1d6c4a41f125665e0df383a2aae3138b07c974ca163e3afba45c78cce31b4f03a"
-        },
-        {
-          "@id": "_:cb1da4fbb00363561c187566c823203a6e42cca371704b8b94c82a13d18cb7a794b"
-        },
-        {
-          "@id": "_:cb2043b433cdffe56fa47ef8847b63bcdded0854f7ed5917917d25a1b0a6c30d575"
-        },
-        {
-          "@id": "_:cb20b5fbc13dbf2fcef35fde99b83b06bc78d7926e4be85341c89cfd043951e95eb"
-        },
-        {
-          "@id": "_:cb20c5d90ca86337f59e02fa1177387d13aeed4c83be434edb8c1b9e51b97b59495"
-        },
-        {
-          "@id": "_:cb20ea496cf91397e2867d45ed26571ccd08545093a3b8641019363b9a72d09604f"
-        },
-        {
-          "@id": "_:cb213c3039824c882634fbf71fe0e22bd258b5d93df7d6853268f57baf9db27f4d8"
-        },
-        {
-          "@id": "_:cb214e980bee92cb86d9169602c4236921015bdf27ebcafaebe10f81ce936181cbe"
-        },
-        {
-          "@id": "_:cb216f109f59fb468f03e703e030fbf6d56c793a69f11dcd5509b0865f71b56f96c"
-        },
-        {
-          "@id": "_:cb225c9f5f7824a6a8b82aae62045dcf26839c603e83d594fb19bb7746b86b5c502"
-        },
-        {
-          "@id": "_:cb229ef9fc57589b3ccd728294c472d9bbae120f2f2267b9ba4cf37a3759315db6e"
-        },
-        {
-          "@id": "_:cb22c0391c4877a1584fd21ce01322dcfd292e66fbe955d82098202a9de1601901d"
-        },
-        {
-          "@id": "_:cb22c364d8c23f537299ceead79ba735ddcd95ba8f9e30158af533c4793161b2790"
-        },
-        {
-          "@id": "_:cb22ef2312a2ddf97e18a300707bd37aebba84aa72070d0837fbde8b6f8c4246be6"
-        },
-        {
-          "@id": "_:cb23a563cae74ca8a10ceef7d2c9e81d2304d6c0c89d3d47c3fb4313333b320745b"
-        },
-        {
-          "@id": "_:cb2420cc9b490a099dc0bbae0ab1419a25c5519a364f51619529b717a033d0d07e9"
-        },
-        {
-          "@id": "_:cb243daf9f190ac627a317f602bad7d4109f509c798041749cf5ec1351c6aa9ca71"
-        },
-        {
-          "@id": "_:cb24555ccdb52389da884b899e01d8ca40dae566944a86a022a06cd49171a0ecf95"
-        },
-        {
-          "@id": "_:cb248f9b61c229158e9e4e4121f752d569499b2bbb93e2206c7829b04696b6b03e9"
-        },
-        {
-          "@id": "_:cb2570ca9e5240d4e7484e0da717fe20cb6b6c3f895cd15afe23e4525c367454596"
-        },
-        {
-          "@id": "_:cb25b4872a2b3f75e22a0e8cd01ca9d052cc468816c30a3a44a0f74be0ba61bc1dd"
-        },
-        {
-          "@id": "_:cb25b69c955f6865744754ffa8a883465f5ec8ecfa28eef3beda758ebac5f3cb363"
-        },
-        {
-          "@id": "_:cb26797f51830125a49be427bb4573b4e6f92ffd6e8d793493bac6c0102b71ba536"
-        },
-        {
-          "@id": "_:cb26c5c6d9ff16d82f61f5e0dabe72cde65bd209041d31a12dc42fef0e54bdc68e9"
-        },
-        {
-          "@id": "_:cb27387af8085cff1f6752dac96aba861922ac9e5cebe1c270c9a14a3948ce17eb5"
-        },
-        {
-          "@id": "_:cb275620c6dff59a4d98d9c77ee498298c8bb420a14e28aba13cc4015545f084d4b"
-        },
-        {
-          "@id": "_:cb279afe8fb2783e427d7255cea8822c32dadb3151a4b67ed16c99aa9bd98d962e5"
-        },
-        {
-          "@id": "_:cb279facac6802559b1e5843845a9a8081a1e20b1e06713f4628592affded027023"
-        },
-        {
-          "@id": "_:cb27cd55df4aa24314b2e3834501529d36abe8656fcda4805f3617bd3d72f61ff4b"
-        },
-        {
-          "@id": "_:cb28298578685294227561c08271167ef54e7ad9b57fd2459eb9dc075ee9f1f4a41"
-        },
-        {
-          "@id": "_:cb28701b5e157d96d26c98a02e9717ec9dcaabc0a0a8656362e2128d68fd1ba4d6f"
-        },
-        {
-          "@id": "_:cb29a2f214ce867bdc6cf30c5adbaee367b764279879daf92980586a3219d87003f"
-        },
-        {
-          "@id": "_:cb29b5a7645fd8984a84c49affcaa63c6f18b9f4da7b671adb32923b9ea5533c969"
-        },
-        {
-          "@id": "_:cb29f631a1e1ddefea1cd55c2f5651ea48738876b06f0839a7de4752c27379d50ae"
-        },
-        {
-          "@id": "_:cb2ab287032cc092e8991f0a9710beae0ddec77c31a30a2d47104ba0eb50a1e5e49"
-        },
-        {
-          "@id": "_:cb2beae0614d71c8a66e20252bbf3c3d08a1255c8fa49a7320045aa11de43602639"
-        },
-        {
-          "@id": "_:cb2bfb8e405e0591d76833a8d21df5aed61aa65dcf0bbe377e40cb49c3a3451c214"
-        },
-        {
-          "@id": "_:cb2dc3b86a4731b74949eb1f7191c93f189703108bcf6ebe715d46cfa1782c709cf"
-        },
-        {
-          "@id": "_:cb2dcc5311d8d231ad6e90bc31eb5cee9606dc0e46e3f55e214eb2f274bac9faa26"
-        },
-        {
-          "@id": "_:cb2e130268b383065b6b9c1b7d49cfb81c6c918b9df727e364784bbb9a57101f6e2"
-        },
-        {
-          "@id": "_:cb2e433199239f5dcd71b67060da183432e1e56b5de0dceed5ac2ba2e4492e9d613"
-        },
-        {
-          "@id": "_:cb30076effeadd82c73dd612772bdc92cd5948277974c22a19a5c3d104d02153b52"
-        },
-        {
-          "@id": "_:cb31d6d145648ef6fd8c5236b9100c8b3979b4ec391f4e726585cd56ad8577eaf1e"
-        },
-        {
-          "@id": "_:cb349d56aa825b7bbc86ddbd15fd51df5cbbcde11ed994fd9a4a67a7bc34b1bf880"
-        },
-        {
-          "@id": "hcm:MonitoredEnclosure"
-        },
-        {
-          "@id": "hcm:ObservationResult"
+          "@id": "hcm:Enclosure"
         }
       ]
     },
     {
       "@id": "hcm:NeedsSequence",
       "@type": "owl:Class",
-      "dcterms:source": "HCMO active ABox examples.",
-      "ns1:IAO_0000115": "Legacy boolean need-profile record used by current examples.",
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
       "owl:deprecated": true,
-      "rdfs:comment": "Legacy boolean need-profile record used by current examples; prefer a future object-based need profile for richer modeling.",
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. Legacy boolean need-profile record used by current examples; prefer a future object-based need profile for richer modeling.",
       "rdfs:label": "Needs Sequence"
     },
     {
       "@id": "hcm:OWL-Timeintervaltable",
       "@type": "owl:Class",
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated invalid Chowlk/spreadsheet artifact; it never denoted a defined OWL-Time interval table and has no replacement.",
       "rdfs:label": "O W L- Timeintervaltable"
     },
     {
       "@id": "hcm:ObservationResult",
       "@type": "owl:Class",
-      "rdfs:label": "Observation Result",
-      "rdfs:subClassOf": [
-        {
-          "@id": "_:cb211885c064c38010b5c9e5f507eeb78dbf7bacecb2060d337a7bc09e9c1c10cb3"
-        },
-        {
-          "@id": "_:cb35eef0ccdc1f41d378bcf8b48f7bece8c69df20e69bd7b7331a507b80c792936b"
-        }
-      ]
+      "dcterms:isReplacedBy": {
+        "@id": "hcm-obs:ObservationResult"
+      },
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated HCMO 0.0.1 term retained for backward compatibility.",
+      "rdfs:label": "Observation Result"
     },
     {
       "@id": "hcm:ObservationWindow",
       "@type": "owl:Class",
-      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
-      "ns1:IAO_0000115": "An observation time window for behavior capture.",
-      "rdfs:comment": "An observation time window for behavior capture.",
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. An observation time window for behavior capture.",
       "rdfs:label": "Observation Window"
     },
     {
       "@id": "hcm:PhysicalSpace",
       "@type": "owl:Class",
-      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
-      "ns1:IAO_0000115": "A spatial region associated with an enclosure.",
-      "rdfs:comment": "A spatial region associated with an enclosure.",
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. A spatial region associated with an enclosure.",
       "rdfs:label": "Physical Space"
     },
     {
       "@id": "hcm:Protocol",
       "@type": "owl:Class",
-      "dcterms:source": "HCMO user-submission form mapping.",
-      "ns1:IAO_0000115": "A protocol, SOP, or approval reference governing a system submission.",
-      "rdfs:comment": "A protocol, SOP, or approval reference governing a system submission.",
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. A protocol, SOP, or approval reference governing a system submission.",
       "rdfs:label": "Protocol"
     },
     {
       "@id": "hcm:QuantityValue",
       "@type": "owl:Class",
+      "dcterms:isReplacedBy": {
+        "@id": "hcm-obs:QuantityValue"
+      },
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated HCMO 0.0.1 term retained for backward compatibility.",
       "rdfs:label": "Quantity Value"
     },
     {
       "@id": "hcm:Sensor",
       "@type": "owl:Class",
-      "rdfs:label": "Sensor",
-      "rdfs:subClassOf": {
-        "@id": "_:cb2ca654dfbeca396ef86be334e0872ac9538d0f51817155382a30c1b6a9fcc86ce"
-      }
+      "dcterms:isReplacedBy": {
+        "@id": "hcm-tech:Sensor"
+      },
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated HCMO 0.0.1 term retained for backward compatibility.",
+      "rdfs:label": "Sensor"
     },
     {
       "@id": "hcm:Software",
       "@type": "owl:Class",
-      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
-      "ns1:IAO_0000115": "Software component of a home-cage monitoring system.",
-      "rdfs:comment": "Software component of a home-cage monitoring system.",
+      "dcterms:isReplacedBy": {
+        "@id": "hcm-tech:Software"
+      },
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. Software component of a home-cage monitoring system.",
       "rdfs:label": "Software"
     },
     {
       "@id": "hcm:Structural&LocationTable",
       "@type": "owl:Class",
-      "rdfs:label": "Structural& Location Table",
-      "rdfs:subClassOf": [
-        {
-          "@id": "_:cb1c6209d70f4dd2ceb16dd9d8f6476809887e6a6da14c9a4c3df6d47d2cfdb2c93"
-        },
-        {
-          "@id": "_:cb228ca3e3639350133de69ae7435c5aae60c18afdbbaf077616ec879686cbd47b6"
-        },
-        {
-          "@id": "_:cb235b155aa71695d0cdd93aaf393585639bf6c08f6637c9f8f24040dc65f77dc71"
-        },
-        {
-          "@id": "_:cb2d87087917684ff357d14ba264ff56a3652b44841b690be6e0fbc520a1a523ff7"
-        },
-        {
-          "@id": "_:cb3443ea1aeaf5bc012a939fa0ca36e5334608af80c46843aa1c837f65b2c4be98e"
-        },
-        {
-          "@id": "hcm:ObservationResult"
-        }
-      ]
+      "dcterms:isReplacedBy": {
+        "@id": "hcm-obs:LocationResultTable"
+      },
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated spreadsheet-derived result-table term; use hcm-obs:LocationResultTable.",
+      "rdfs:label": "Structural& Location Table"
     },
     {
       "@id": "hcm:StudyFactors",
       "@type": "owl:Class",
-      "rdfs:label": "Study Factors",
-      "rdfs:subClassOf": {
-        "@id": "hcm:MonitoredEnclosure"
-      }
+      "dcterms:isReplacedBy": {
+        "@id": "hcm-bio:StudyFactors"
+      },
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated HCMO 0.0.1 term retained for backward compatibility.",
+      "rdfs:label": "Study Factors"
     },
     {
       "@id": "hcm:Supplier",
       "@type": "owl:Class",
-      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
-      "ns1:IAO_0000115": "A commercial supplier or laboratory providing the system.",
-      "rdfs:comment": "Commercial supplier or laboratory providing the system.",
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. Commercial supplier or laboratory providing the system.",
       "rdfs:label": "Supplier"
     },
     {
       "@id": "hcm:System",
       "@type": "owl:Class",
-      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
-      "ns1:IAO_0000115": "A home-cage monitoring system comprising an enclosure, hardware, and software.",
-      "rdfs:comment": "A home-cage monitoring system comprising an enclosure, hardware, and software.",
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. This aggregate system concept has no exact replacement: migrate its enclosure, hardware, software, sensor, and actuator components separately.",
       "rdfs:label": "System"
     },
     {
       "@id": "hcm:TimeInterval",
       "@type": "owl:Class",
-      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
-      "ns1:IAO_0000115": "Deprecated; use hcm:ObservationWindow.",
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
       "owl:deprecated": true,
-      "rdfs:comment": "Deprecated; use hcm:ObservationWindow.",
-      "rdfs:label": "Time Interval",
-      "rdfs:subClassOf": {
-        "@id": "hcm:ObservationWindow"
-      }
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. Deprecated; use hcm:ObservationWindow.",
+      "rdfs:label": "Time Interval"
     },
     {
       "@id": "hcm:TimeSeries",
       "@type": "owl:Class",
+      "dcterms:isReplacedBy": {
+        "@id": "hcm-tech:TimeSeries"
+      },
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated HCMO 0.0.1 term retained for backward compatibility.",
       "rdfs:label": "Time Series"
     },
     {
       "@id": "hcm:captures",
       "@type": "owl:ObjectProperty",
-      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
-      "ns1:IAO_0000115": "Relates a sensor to a behavior or physiology process it captures.",
-      "rdfs:comment": "Relates a sensor to a behavior or physiology process it captures.",
-      "rdfs:domain": {
-        "@id": "hcm:Sensor"
+      "dcterms:isReplacedBy": {
+        "@id": "hcm-tech:captures"
       },
-      "rdfs:label": "captures",
-      "rdfs:range": {
-        "@id": "hcm:BehaviorAndPhysiology"
-      }
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. Relates a sensor to a behavior or physiology process it captures.",
+      "rdfs:label": "captures"
     },
     {
       "@id": "hcm:collectsInfoOn",
       "@type": "owl:ObjectProperty",
-      "dcterms:source": "HCMO active ABox examples and user-submission form mapping.",
-      "ns1:IAO_0000115": "Relates a system to an animal or animal record it collects information on.",
-      "rdfs:comment": "Relates a system to an animal or animal record it collects information on.",
-      "rdfs:domain": {
-        "@id": "hcm:System"
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
       },
-      "rdfs:label": "collects info on",
-      "rdfs:range": {
-        "@id": "hcm:Animal"
-      }
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0 with no exact replacement. Use hcm:hasMonitoredAnimals for enclosure occupancy and sosa:hasFeatureOfInterest for the subject of a specific observation.",
+      "rdfs:label": "collects info on"
     },
     {
       "@id": "hcm:communicatesWith",
       "@type": "owl:ObjectProperty",
-      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
-      "ns1:IAO_0000115": "Relates hardware to software that it communicates with.",
-      "rdfs:comment": "Relates hardware to software that it communicates with.",
-      "rdfs:domain": {
-        "@id": "hcm:Hardware"
+      "dcterms:isReplacedBy": {
+        "@id": "hcm-tech:communicatesWith"
       },
-      "rdfs:label": "communicates with",
-      "rdfs:range": {
-        "@id": "hcm:Software"
-      }
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. Relates hardware to software that it communicates with.",
+      "rdfs:label": "communicates with"
     },
     {
       "@id": "hcm:displays",
       "@type": "owl:ObjectProperty",
-      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
-      "ns1:IAO_0000115": "Relates an animal to a behavior or physiology process it displays.",
-      "rdfs:comment": "Relates an animal to a behavior or physiology process it displays.",
-      "rdfs:domain": {
-        "@id": "hcm:Animal"
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
       },
-      "rdfs:label": "displays",
-      "rdfs:range": {
-        "@id": "hcm:BehaviorAndPhysiology"
-      }
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. Relates an animal to a behavior or physiology process it displays.",
+      "rdfs:label": "displays"
     },
     {
       "@id": "hcm:durationHours",
       "@type": "owl:DatatypeProperty",
-      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
-      "ns1:IAO_0000115": "A duration value in hours for an observation window.",
-      "rdfs:comment": "Duration of an observation window in hours.",
-      "rdfs:domain": {
-        "@id": "hcm:ObservationWindow"
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
       },
-      "rdfs:label": "duration hours",
-      "rdfs:range": {
-        "@id": "xsd:decimal"
-      }
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. Duration of an observation window in hours.",
+      "rdfs:label": "duration hours"
     },
     {
       "@id": "hcm:elicits",
       "@type": "owl:ObjectProperty",
-      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
-      "ns1:IAO_0000115": "Relates an actuator to a behavior or physiology process it elicits or perturbs.",
-      "rdfs:comment": "Relates an actuator to a behavior or physiology process it elicits or perturbs.",
-      "rdfs:domain": {
-        "@id": "hcm:Actuator"
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
       },
-      "rdfs:label": "elicits",
-      "rdfs:range": {
-        "@id": "hcm:BehaviorAndPhysiology"
-      }
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. Relates an actuator to a behavior or physiology process it elicits or perturbs.",
+      "rdfs:label": "elicits"
     },
     {
       "@id": "hcm:extendsEnoughToCapture",
       "@type": "owl:ObjectProperty",
-      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
-      "ns1:IAO_0000115": "Deprecated legacy relation from a behavior process to a sufficient observation window.",
-      "owl:deprecated": true,
-      "rdfs:comment": "Deprecated legacy relation from a behavior process to a sufficient observation window.",
-      "rdfs:domain": {
-        "@id": "hcm:BehaviorAndPhysiology"
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
       },
-      "rdfs:label": "extends enough to capture",
-      "rdfs:range": {
-        "@id": "hcm:ObservationWindow"
-      }
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. Deprecated legacy relation from a behavior process to a sufficient observation window.",
+      "rdfs:label": "extends enough to capture"
     },
     {
       "@id": "hcm:followsProtocol",
       "@type": "owl:ObjectProperty",
-      "dcterms:source": "HCMO user-submission form mapping.",
-      "ns1:IAO_0000115": "Relates a system submission to a governing protocol or SOP reference.",
-      "rdfs:comment": "Relates a system submission to a governing protocol or SOP reference.",
-      "rdfs:domain": {
-        "@id": "hcm:System"
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
       },
-      "rdfs:label": "follows protocol",
-      "rdfs:range": {
-        "@id": "hcm:Protocol"
-      }
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. Relates a system submission to a governing protocol or SOP reference.",
+      "rdfs:label": "follows protocol"
     },
     {
       "@id": "hcm:hasActuator",
       "@type": "owl:ObjectProperty",
-      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
-      "ns1:IAO_0000115": "Relates a system to an actuator associated with it.",
-      "rdfs:comment": "Relates a system to an actuator associated with it.",
-      "rdfs:domain": {
-        "@id": "hcm:System"
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
       },
-      "rdfs:label": "has actuator",
-      "rdfs:range": {
-        "@id": "hcm:Actuator"
-      }
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0 with no context-free replacement because its subject was an aggregate system. For an actuator associated with a monitored enclosure, use hcm-tech:hasActuator.",
+      "rdfs:label": "has actuator"
     },
     {
       "@id": "hcm:hasCapacity",
       "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has capacity"
+      "rdfs:comment": "Records the intended capacity of an enclosure, such as the number of animals it can house.",
+      "rdfs:domain": {
+        "@id": "hcm:Enclosure"
+      },
+      "rdfs:label": "has capacity",
+      "rdfs:range": {
+        "@id": "xsd:nonNegativeInteger"
+      }
     },
     {
       "@id": "hcm:hasCategory",
       "@type": "owl:DatatypeProperty",
+      "dcterms:isReplacedBy": {
+        "@id": "hcm-obs:hasCategory"
+      },
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated HCMO 0.0.1 term retained for backward compatibility.",
       "rdfs:label": "has category"
     },
     {
       "@id": "hcm:hasCircadianRhythm",
       "@type": "owl:ObjectProperty",
-      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
-      "ns1:IAO_0000115": "Relates a behavior or physiology process to its circadian rhythm.",
-      "rdfs:comment": "Relates a behavior or physiology process to its circadian rhythm.",
-      "rdfs:domain": {
-        "@id": "hcm:BehaviorAndPhysiology"
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
       },
-      "rdfs:label": "has circadian rhythm",
-      "rdfs:range": {
-        "@id": "hcm:CircadianRhythm"
-      }
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. Relates a behavior or physiology process to its circadian rhythm.",
+      "rdfs:label": "has circadian rhythm"
     },
     {
       "@id": "hcm:hasDescription",
       "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has description"
+      "rdfs:comment": "Provides a textual description for an HCMO resource.",
+      "rdfs:domain": {
+        "@id": "owl:Thing"
+      },
+      "rdfs:label": "has description",
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "hcm:hasDimUnit",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": "Records the unit used for enclosure dimension values.",
+      "rdfs:domain": {
+        "@id": "hcm:EnclosureDimensions"
+      },
+      "rdfs:label": "has dim unit",
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
     },
     {
       "@id": "hcm:hasDimensions",
       "@type": "owl:ObjectProperty",
-      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
-      "ns1:IAO_0000115": "Relates a physical space or enclosure to its dimensions record.",
-      "rdfs:comment": "Links a physical space or enclosure to its dimensions record.",
+      "rdfs:comment": "Links an enclosure to its dimensions record.",
+      "rdfs:domain": {
+        "@id": "hcm:Enclosure"
+      },
       "rdfs:label": "has dimensions",
       "rdfs:range": {
-        "@id": "hcm:Dimensions"
+        "@id": "hcm:EnclosureDimensions"
       }
     },
     {
       "@id": "hcm:hasEnclosure",
       "@type": "owl:ObjectProperty",
-      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
-      "ns1:IAO_0000115": "Relates a system to the enclosure that is part of it.",
-      "rdfs:comment": "Links a system to its enclosure.",
-      "rdfs:domain": {
-        "@id": "hcm:System"
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
       },
-      "rdfs:label": "has enclosure",
-      "rdfs:range": {
-        "@id": "hcm:Enclosure"
-      }
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. Links a system to its enclosure.",
+      "rdfs:label": "has enclosure"
     },
     {
       "@id": "hcm:hasEnclosureIdentifier",
       "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has enclosure identifier"
+      "rdfs:comment": "Records the identifier assigned to an enclosure or monitored enclosure.",
+      "rdfs:domain": {
+        "@id": "hcm:Enclosure"
+      },
+      "rdfs:label": "has enclosure identifier",
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
     },
     {
       "@id": "hcm:hasEnrichment",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": "Relates an enclosure or monitored enclosure to an enrichment present or specified for it.",
+      "rdfs:domain": {
+        "@id": "hcm:Enclosure"
+      },
+      "rdfs:label": "has enrichment",
+      "rdfs:range": {
+        "@id": "hcm:Enrichment"
+      }
+    },
+    {
+      "@id": "hcm:hasEnrichmentRequirement",
       "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has enrichment"
+      "rdfs:comment": "Records a textual or coded enrichment requirement for an enclosure or monitored enclosure.",
+      "rdfs:domain": {
+        "@id": "hcm:Enclosure"
+      },
+      "rdfs:label": "has enrichment requirement",
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "hcm:hasEnrichmentType",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": "Records the type or category of enrichment associated with an enrichment resource.",
+      "rdfs:domain": {
+        "@id": "hcm:Enrichment"
+      },
+      "rdfs:label": "has enrichment type",
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
     },
     {
       "@id": "hcm:hasEnvironment",
       "@type": "owl:DatatypeProperty",
+      "dcterms:isReplacedBy": {
+        "@id": "hcm-env:hasEnvironment"
+      },
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated datatype-property artifact. Use hcm-env:hasEnvironment to link an enclosure to a structured environment profile; existing literal values require curation.",
       "rdfs:label": "has environment"
     },
     {
       "@id": "hcm:hasEnvironmentalEnrichment",
       "@type": "owl:DatatypeProperty",
-      "dcterms:source": "HCMO active ABox examples.",
-      "ns1:IAO_0000115": "Boolean flag indicating whether environmental enrichment is provided in a legacy need profile.",
-      "rdfs:comment": "Boolean flag indicating whether environmental enrichment is provided in a legacy need profile.",
-      "rdfs:domain": {
-        "@id": "hcm:NeedsSequence"
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
       },
-      "rdfs:label": "has environmental enrichment",
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. Boolean flag indicating whether environmental enrichment is provided in a legacy need profile.",
+      "rdfs:label": "has environmental enrichment"
+    },
+    {
+      "@id": "hcm:hasFacilityType",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": "Records the type of facility or housing area associated with an enclosure.",
+      "rdfs:domain": {
+        "@id": "hcm:Enclosure"
+      },
+      "rdfs:label": "has facility type",
       "rdfs:range": {
-        "@id": "xsd:boolean"
+        "@id": "xsd:string"
       }
     },
     {
       "@id": "hcm:hasFileFormat",
       "@type": "owl:DatatypeProperty",
+      "dcterms:isReplacedBy": {
+        "@id": "hcm-tech:hasFileFormat"
+      },
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated HCMO 0.0.1 term retained for backward compatibility.",
       "rdfs:label": "has file format"
+    },
+    {
+      "@id": "hcm:hasFloorArea",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": "Records the floor area value for an enclosure dimensions record.",
+      "rdfs:domain": {
+        "@id": "hcm:EnclosureDimensions"
+      },
+      "rdfs:label": "has floor area",
+      "rdfs:range": {
+        "@id": "xsd:decimal"
+      }
     },
     {
       "@id": "hcm:hasFood",
       "@type": "owl:DatatypeProperty",
-      "dcterms:source": "HCMO active ABox examples.",
-      "ns1:IAO_0000115": "Boolean flag indicating whether food is provided in a legacy need profile.",
-      "rdfs:comment": "Boolean flag indicating whether food is provided in a legacy need profile.",
-      "rdfs:domain": {
-        "@id": "hcm:NeedsSequence"
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
       },
-      "rdfs:label": "has food",
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. Boolean flag indicating whether food is provided in a legacy need profile.",
+      "rdfs:label": "has food"
+    },
+    {
+      "@id": "hcm:hasFoodRequirement",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": "Records a textual or coded food-provision requirement for an enclosure.",
+      "rdfs:domain": {
+        "@id": "hcm:Enclosure"
+      },
+      "rdfs:label": "has food requirement",
       "rdfs:range": {
-        "@id": "xsd:boolean"
+        "@id": "xsd:string"
       }
     },
     {
       "@id": "hcm:hasHardware",
       "@type": "owl:ObjectProperty",
-      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
-      "ns1:IAO_0000115": "Relates a system to a hardware component that is part of it.",
-      "rdfs:comment": "Links a system to its hardware component.",
-      "rdfs:domain": {
-        "@id": "hcm:System"
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
       },
-      "rdfs:label": "has hardware",
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. Links a system to its hardware component.",
+      "rdfs:label": "has hardware"
+    },
+    {
+      "@id": "hcm:hasHeight",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": "Records the height value of an enclosure dimensions record.",
+      "rdfs:domain": {
+        "@id": "hcm:EnclosureDimensions"
+      },
+      "rdfs:label": "has height",
       "rdfs:range": {
-        "@id": "hcm:Hardware"
+        "@id": "xsd:decimal"
+      }
+    },
+    {
+      "@id": "hcm:hasLength",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": "Records the length value of an enclosure dimensions record.",
+      "rdfs:domain": {
+        "@id": "hcm:EnclosureDimensions"
+      },
+      "rdfs:label": "has length",
+      "rdfs:range": {
+        "@id": "xsd:decimal"
       }
     },
     {
       "@id": "hcm:hasManufacturer",
       "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has manufacturer"
+      "rdfs:comment": "Records the manufacturer name for an enclosure.",
+      "rdfs:domain": {
+        "@id": "hcm:Enclosure"
+      },
+      "rdfs:label": "has manufacturer",
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
     },
     {
       "@id": "hcm:hasMonitoredAnimals",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has monitored animals"
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": "Relates a monitored enclosure to the biological subjects housed or tracked within it.",
+      "rdfs:domain": {
+        "@id": "hcm:MonitoredEnclosure"
+      },
+      "rdfs:label": "has monitored animals",
+      "rdfs:range": {
+        "@id": "hcm-bio:Subject"
+      }
     },
     {
       "@id": "hcm:hasName",
       "@type": "owl:DatatypeProperty",
+      "rdfs:comment": "Records a human-readable name for an HCMO resource.",
+      "rdfs:domain": {
+        "@id": "owl:Thing"
+      },
       "rdfs:label": "has name",
       "rdfs:range": {
         "@id": "xsd:string"
@@ -1953,310 +2454,379 @@
     {
       "@id": "hcm:hasNumericValue",
       "@type": "owl:DatatypeProperty",
+      "dcterms:isReplacedBy": {
+        "@id": "hcm-obs:hasNumericValue"
+      },
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated HCMO 0.0.1 term retained for backward compatibility.",
       "rdfs:label": "has numeric value"
     },
     {
       "@id": "hcm:hasProperty",
       "@type": "owl:ObjectProperty",
-      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
-      "ns1:IAO_0000115": "Deprecated legacy relation from an observation window to an observation condition.",
-      "owl:deprecated": true,
-      "rdfs:comment": "Deprecated legacy relation from an observation window to an observation condition.",
-      "rdfs:domain": {
-        "@id": "hcm:ObservationWindow"
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
       },
-      "rdfs:label": "has property",
-      "rdfs:range": {
-        "@id": "hcm:LimitedInteractionWithHumans"
-      }
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. Deprecated legacy relation from an observation window to an observation condition.",
+      "rdfs:label": "has property"
     },
     {
       "@id": "hcm:hasResult",
       "@type": "owl:ObjectProperty",
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0 with no equivalence assertion because legacy restrictions used this relation in the reverse of the SOSA observation-to-result direction. Model current observations with sosa:hasResult.",
       "rdfs:label": "has result"
     },
     {
       "@id": "hcm:hasSafetyFromThreat",
       "@type": "owl:DatatypeProperty",
-      "dcterms:source": "HCMO active ABox examples.",
-      "ns1:IAO_0000115": "Boolean flag indicating whether safety from threat is provided in a legacy need profile.",
-      "rdfs:comment": "Boolean flag indicating whether safety from threat is provided in a legacy need profile.",
-      "rdfs:domain": {
-        "@id": "hcm:NeedsSequence"
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
       },
-      "rdfs:label": "has safety from threat",
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. Boolean flag indicating whether safety from threat is provided in a legacy need profile.",
+      "rdfs:label": "has safety from threat"
+    },
+    {
+      "@id": "hcm:hasSafetyRequirement",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": "Records a textual or coded safety requirement for an enclosure.",
+      "rdfs:domain": {
+        "@id": "hcm:Enclosure"
+      },
+      "rdfs:label": "has safety requirement",
       "rdfs:range": {
-        "@id": "xsd:boolean"
+        "@id": "xsd:string"
       }
     },
     {
       "@id": "hcm:hasSamplingRate",
       "@type": "owl:DatatypeProperty",
+      "dcterms:isReplacedBy": {
+        "@id": "hcm-tech:hasSamplingRate"
+      },
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated HCMO 0.0.1 term retained for backward compatibility.",
       "rdfs:label": "has sampling rate"
     },
     {
       "@id": "hcm:hasSensor",
       "@type": "owl:ObjectProperty",
-      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
-      "ns1:IAO_0000115": "Relates a system to a sensor associated with it.",
-      "rdfs:comment": "Relates a system to a sensor associated with it.",
-      "rdfs:domain": {
-        "@id": "hcm:System"
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
       },
-      "rdfs:label": "has sensor",
-      "rdfs:range": {
-        "@id": "hcm:Sensor"
-      }
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0 with no context-free replacement because its subject was an aggregate system. For a sensor monitoring an enclosure, use hcm-tech:monitoredBy and its inverse hcm-tech:installedIn.",
+      "rdfs:label": "has sensor"
     },
     {
       "@id": "hcm:hasSocialContacts",
       "@type": "owl:DatatypeProperty",
-      "dcterms:source": "HCMO active ABox examples.",
-      "ns1:IAO_0000115": "Boolean flag indicating whether social contacts are provided in a legacy need profile.",
-      "rdfs:comment": "Boolean flag indicating whether social contacts are provided in a legacy need profile.",
-      "rdfs:domain": {
-        "@id": "hcm:NeedsSequence"
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
       },
-      "rdfs:label": "has social contacts",
-      "rdfs:range": {
-        "@id": "xsd:boolean"
-      }
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. Boolean flag indicating whether social contacts are provided in a legacy need profile.",
+      "rdfs:label": "has social contacts"
     },
     {
       "@id": "hcm:hasSoftware",
       "@type": "owl:ObjectProperty",
-      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
-      "ns1:IAO_0000115": "Relates a system to a software component that is part of it.",
-      "rdfs:comment": "Links a system to its software component.",
-      "rdfs:domain": {
-        "@id": "hcm:System"
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
       },
-      "rdfs:label": "has software",
-      "rdfs:range": {
-        "@id": "hcm:Software"
-      }
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. Links a system to its software component.",
+      "rdfs:label": "has software"
     },
     {
       "@id": "hcm:hasSpaceRegion",
       "@type": "owl:ObjectProperty",
-      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
-      "ns1:IAO_0000115": "Relates an enclosure to the physical space it contains or bounds.",
-      "rdfs:comment": "Links an enclosure to the physical space it contains or bounds.",
-      "rdfs:domain": {
-        "@id": "hcm:Enclosure"
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
       },
-      "rdfs:label": "has space region",
-      "rdfs:range": {
-        "@id": "hcm:PhysicalSpace"
-      }
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. Links an enclosure to the physical space it contains or bounds.",
+      "rdfs:label": "has space region"
     },
     {
       "@id": "hcm:hasStoragePath",
       "@type": "owl:DatatypeProperty",
+      "dcterms:isReplacedBy": {
+        "@id": "hcm-tech:hasStoragePath"
+      },
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated HCMO 0.0.1 term retained for backward compatibility.",
       "rdfs:label": "has storage path"
     },
     {
       "@id": "hcm:hasThriveProfile",
       "@type": "owl:ObjectProperty",
+      "dcterms:isReplacedBy": {
+        "@id": "hcm-env:hasThriveProfile"
+      },
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated HCMO 0.0.1 term retained for backward compatibility.",
       "rdfs:label": "has thrive profile"
     },
     {
       "@id": "hcm:hasUnit",
       "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has unit"
+      "rdfs:comment": "Records the measurement unit associated with a quantitative observation result or measurement specification.",
+      "rdfs:domain": {
+        "@id": "_:cb1f49fbc3aeedef75c8c11c4375f3384937b804548ac7363db11e69c2387cf6df0"
+      },
+      "rdfs:label": "has unit",
+      "rdfs:range": {
+        "@id": "xsd:string"
+      }
     },
     {
       "@id": "hcm:hasVersion",
       "@type": "owl:DatatypeProperty",
+      "dcterms:isReplacedBy": {
+        "@id": "hcm-tech:hasVersion"
+      },
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated HCMO 0.0.1 term retained for backward compatibility.",
       "rdfs:label": "has version"
     },
     {
       "@id": "hcm:hasWater",
       "@type": "owl:DatatypeProperty",
-      "dcterms:source": "HCMO active ABox examples.",
-      "ns1:IAO_0000115": "Boolean flag indicating whether water is provided in a legacy need profile.",
-      "rdfs:comment": "Boolean flag indicating whether water is provided in a legacy need profile.",
-      "rdfs:domain": {
-        "@id": "hcm:NeedsSequence"
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
       },
-      "rdfs:label": "has water",
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. Boolean flag indicating whether water is provided in a legacy need profile.",
+      "rdfs:label": "has water"
+    },
+    {
+      "@id": "hcm:hasWaterRequirement",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": "Records a textual or coded water-provision requirement for an enclosure.",
+      "rdfs:domain": {
+        "@id": "hcm:Enclosure"
+      },
+      "rdfs:label": "has water requirement",
       "rdfs:range": {
-        "@id": "xsd:boolean"
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "hcm:hasWidth",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": "Records the width value of an enclosure dimensions record.",
+      "rdfs:domain": {
+        "@id": "hcm:EnclosureDimensions"
+      },
+      "rdfs:label": "has width",
+      "rdfs:range": {
+        "@id": "xsd:decimal"
       }
     },
     {
       "@id": "hcm:height",
       "@type": "owl:DatatypeProperty",
-      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
-      "ns1:IAO_0000115": "A height magnitude for a dimensions record.",
-      "rdfs:comment": "Height magnitude for a dimensions record.",
-      "rdfs:domain": {
-        "@id": "hcm:Dimensions"
+      "dcterms:isReplacedBy": {
+        "@id": "hcm:hasHeight"
       },
-      "rdfs:label": "height",
-      "rdfs:range": {
-        "@id": "xsd:decimal"
-      }
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. Height magnitude for a dimensions record.",
+      "rdfs:label": "height"
     },
     {
       "@id": "hcm:installedIn",
       "@type": "owl:ObjectProperty",
+      "dcterms:isReplacedBy": {
+        "@id": "hcm-tech:installedIn"
+      },
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated HCMO 0.0.1 term retained for backward compatibility.",
       "rdfs:label": "installed in"
     },
     {
       "@id": "hcm:isDisplayedInside",
       "@type": "owl:ObjectProperty",
-      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
-      "ns1:IAO_0000115": "Relates a behavior or physiology process to the enclosure where it occurs.",
-      "rdfs:comment": "Relates a behavior or physiology process to the enclosure where it occurs.",
-      "rdfs:domain": {
-        "@id": "hcm:BehaviorAndPhysiology"
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
       },
-      "rdfs:label": "is displayed inside",
-      "rdfs:range": {
-        "@id": "hcm:Enclosure"
-      }
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. Relates a behavior or physiology process to the enclosure where it occurs.",
+      "rdfs:label": "is displayed inside"
     },
     {
       "@id": "hcm:isExtendable",
       "@type": "owl:DatatypeProperty",
-      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
-      "ns1:IAO_0000115": "A boolean indicating whether an observation window is extendable.",
-      "rdfs:comment": "Whether the observation window is extendable.",
-      "rdfs:domain": {
-        "@id": "hcm:ObservationWindow"
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
       },
-      "rdfs:label": "is extendable",
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. Whether the observation window is extendable.",
+      "rdfs:label": "is extendable"
+    },
+    {
+      "@id": "hcm:isOccupied",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": "Indicates whether an enclosure is currently occupied by animals.",
+      "rdfs:domain": {
+        "@id": "hcm:Enclosure"
+      },
+      "rdfs:label": "is occupied",
       "rdfs:range": {
         "@id": "xsd:boolean"
       }
     },
     {
-      "@id": "hcm:isOccupied",
+      "@id": "hcm:isOperational",
       "@type": "owl:DatatypeProperty",
-      "rdfs:label": "is occupied"
+      "rdfs:comment": "Indicates whether a monitored enclosure is currently operational.",
+      "rdfs:domain": {
+        "@id": "hcm:MonitoredEnclosure"
+      },
+      "rdfs:label": "is operational",
+      "rdfs:range": {
+        "@id": "xsd:boolean"
+      }
     },
     {
       "@id": "hcm:length",
       "@type": "owl:DatatypeProperty",
-      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
-      "ns1:IAO_0000115": "A length magnitude for a dimensions record.",
-      "rdfs:comment": "Length magnitude for a dimensions record.",
-      "rdfs:domain": {
-        "@id": "hcm:Dimensions"
+      "dcterms:isReplacedBy": {
+        "@id": "hcm:hasLength"
       },
-      "rdfs:label": "length",
-      "rdfs:range": {
-        "@id": "xsd:decimal"
-      }
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. Length magnitude for a dimensions record.",
+      "rdfs:label": "length"
     },
     {
       "@id": "hcm:livesIn",
       "@type": "owl:ObjectProperty",
-      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
-      "ns1:IAO_0000115": "Relates an animal to the enclosure it lives in.",
-      "rdfs:comment": "Relates an animal to the enclosure it lives in.",
-      "rdfs:domain": {
-        "@id": "hcm:Animal"
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
       },
-      "rdfs:label": "lives in",
-      "rdfs:range": {
-        "@id": "hcm:Enclosure"
-      }
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. Relates an animal to the enclosure it lives in.",
+      "rdfs:label": "lives in"
     },
     {
       "@id": "hcm:locatedIn",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "located in"
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": "Relates an enclosure or monitored enclosure to the facility, room, rack, or other place in which it is situated.",
+      "rdfs:domain": {
+        "@id": "hcm:Enclosure"
+      },
+      "rdfs:label": "located in",
+      "rdfs:range": {
+        "@id": "schema:Place"
+      }
     },
     {
       "@id": "hcm:monitoredBy",
       "@type": "owl:ObjectProperty",
+      "dcterms:isReplacedBy": {
+        "@id": "hcm-tech:monitoredBy"
+      },
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated HCMO 0.0.1 term retained for backward compatibility.",
       "rdfs:label": "monitored by"
     },
     {
       "@id": "hcm:producedBy",
       "@type": "owl:ObjectProperty",
-      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
-      "ns1:IAO_0000115": "Relates a system to the supplier or laboratory that produced it.",
-      "rdfs:comment": "Links a system to the supplier or laboratory that produced it.",
-      "rdfs:domain": {
-        "@id": "hcm:System"
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
       },
-      "rdfs:label": "produced by",
-      "rdfs:range": {
-        "@id": "hcm:Supplier"
-      }
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. Links a system to the supplier or laboratory that produced it.",
+      "rdfs:label": "produced by"
     },
     {
       "@id": "hcm:protocolReference",
       "@type": "owl:DatatypeProperty",
-      "dcterms:source": "HCMO user-submission form mapping.",
-      "ns1:IAO_0000115": "Textual protocol, SOP, DOI, or approval reference.",
-      "rdfs:comment": "Textual protocol, SOP, DOI, or approval reference.",
-      "rdfs:domain": {
-        "@id": "hcm:Protocol"
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
       },
-      "rdfs:label": "protocol reference",
-      "rdfs:range": {
-        "@id": "xsd:string"
-      }
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. Textual protocol, SOP, DOI, or approval reference.",
+      "rdfs:label": "protocol reference"
     },
     {
       "@id": "hcm:provides",
       "@type": "owl:ObjectProperty",
-      "dcterms:source": "HCMO active ABox examples.",
-      "ns1:IAO_0000115": "Relates an enclosure to a need profile it provides.",
-      "rdfs:comment": "Relates an enclosure to a need profile it provides.",
-      "rdfs:domain": {
-        "@id": "hcm:Enclosure"
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
       },
-      "rdfs:label": "provides",
-      "rdfs:range": {
-        "@id": "hcm:NeedsSequence"
-      }
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. Relates an enclosure to a need profile it provides.",
+      "rdfs:label": "provides"
     },
     {
       "@id": "hcm:requiresToThrive",
       "@type": "owl:ObjectProperty",
-      "dcterms:source": "HCMO active ABox examples.",
-      "ns1:IAO_0000115": "Relates an animal to the need profile it requires.",
-      "rdfs:comment": "Relates an animal to the need profile it requires.",
-      "rdfs:domain": {
-        "@id": "hcm:Animal"
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
       },
-      "rdfs:label": "requires to thrive",
-      "rdfs:range": {
-        "@id": "hcm:NeedsSequence"
-      }
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. Relates an animal to the need profile it requires.",
+      "rdfs:label": "requires to thrive"
     },
     {
       "@id": "hcm:unit",
       "@type": "owl:DatatypeProperty",
-      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
-      "ns1:IAO_0000115": "A unit label for dimensions values.",
-      "rdfs:comment": "Unit label for dimensions values.",
-      "rdfs:domain": {
-        "@id": "hcm:Dimensions"
+      "dcterms:isReplacedBy": {
+        "@id": "hcm:hasDimUnit"
       },
-      "rdfs:label": "unit",
-      "rdfs:range": {
-        "@id": "xsd:string"
-      }
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. Unit label for dimensions values.",
+      "rdfs:label": "unit"
     },
     {
       "@id": "hcm:width",
       "@type": "owl:DatatypeProperty",
-      "dcterms:source": "2022-04-28-hcm-OLOG_WEB_FRIENDLY",
-      "ns1:IAO_0000115": "A width magnitude for a dimensions record.",
-      "rdfs:comment": "Width magnitude for a dimensions record.",
-      "rdfs:domain": {
-        "@id": "hcm:Dimensions"
+      "dcterms:isReplacedBy": {
+        "@id": "hcm:hasWidth"
       },
-      "rdfs:label": "width",
-      "rdfs:range": {
-        "@id": "xsd:decimal"
-      }
+      "dcterms:source": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated in HCMO 0.1.0. Width magnitude for a dimensions record.",
+      "rdfs:label": "width"
     },
     {
       "@id": "https://orcid.org/0000-0002-2923-9790",
@@ -2296,8 +2866,13 @@
     {
       "@id": "https://w3id.org/hcmo/ontology/hcm",
       "@type": "owl:Ontology",
-      "dc:description": "Ontology for Monitoring and Analytics for Physiological Processes (MAPP)",
-      "dc:title": "MAPP Ontology",
+      "dc:description": "Ontology for home-cage monitoring of laboratory animals",
+      "dc:title": "Home-Cage Monitoring Ontology",
+      "dcterms:bibliographicCitation": "The Home-Cage Monitoring Ontology (HCMO). Zenodo. https://doi.org/10.5281/zenodo.18925285",
+      "dcterms:created": {
+        "@type": "xsd:date",
+        "@value": "2026-03-09"
+      },
       "dcterms:creator": [
         {
           "@id": "https://orcid.org/0000-0002-2923-9790"
@@ -2321,146 +2896,67 @@
           "@id": "https://orcid.org/0009-0008-2489-8106"
         }
       ],
+      "dcterms:identifier": "https://doi.org/10.5281/zenodo.18925285",
+      "dcterms:issued": {
+        "@type": "xsd:date",
+        "@value": "2026-03-09"
+      },
+      "dcterms:license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "dcterms:modified": {
+        "@type": "xsd:date",
+        "@value": "2026-07-16"
+      },
+      "dcterms:publisher": "Huzard group",
+      "dcterms:source": {
+        "@id": "https://github.com/dhuzard/HCMO"
+      },
       "mod:createdWith": {
         "@id": "https://chowlk.linkeddata.es/"
       },
-      "owl:versionIRI": {
+      "mod:status": "draft",
+      "ns1:doi": "10.5281/zenodo.18925285",
+      "owl:priorVersion": {
         "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
       },
-      "owl:versionInfo": "0.0.1"
+      "owl:versionIRI": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.1.0"
+      },
+      "owl:versionInfo": "0.1.0",
+      "schema:logo": {
+        "@id": "https://raw.githubusercontent.com/dhuzard/HCMO/main/HCMO-logo3.png"
+      },
+      "vann:preferredNamespacePrefix": "hcm",
+      "vann:preferredNamespaceUri": "https://w3id.org/hcmo/ontology/hcm#"
     },
     {
-      "@id": "ns:objectProperty",
-      "@type": "owl:ObjectProperty",
-      "rdfs:label": "object property"
+      "@id": "mod:createdWith",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "mod:status",
+      "@type": "owl:AnnotationProperty"
+    },
+    {
+      "@id": "ns1:doi",
+      "@type": "owl:AnnotationProperty"
     },
     {
       "@id": "owl:versionInfo",
       "@type": "owl:AnnotationProperty"
     },
     {
-      "@id": "semts:DataDimension",
-      "@type": "owl:Class",
-      "rdfs:label": "Data Dimension"
+      "@id": "schema:logo",
+      "@type": "owl:AnnotationProperty"
     },
     {
-      "@id": "semts:TimeSeriesSegment",
-      "@type": "owl:Class",
-      "rdfs:label": "Time Series Segment",
-      "rdfs:subClassOf": [
-        {
-          "@id": "_:cb221a87613428ee40729d72e9323deea8c100a084286bb47a6e83fbce24b278918"
-        },
-        {
-          "@id": "_:cb2a0271aea9afea29988e53244ff29673a2c17452638249aa8081a584a00d6def5"
-        }
-      ]
+      "@id": "vann:preferredNamespacePrefix",
+      "@type": "owl:AnnotationProperty"
     },
     {
-      "@id": "semts:dimensionUnit",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "dimension unit"
-    },
-    {
-      "@id": "semts:during",
-      "@type": "owl:ObjectProperty",
-      "rdfs:label": "during"
-    },
-    {
-      "@id": "semts:generated",
-      "@type": "owl:ObjectProperty",
-      "rdfs:label": "generated"
-    },
-    {
-      "@id": "semts:hasDimension",
-      "@type": "owl:ObjectProperty",
-      "rdfs:label": "has dimension"
-    },
-    {
-      "@id": "semts:isPartOf",
-      "@type": "owl:ObjectProperty",
-      "rdfs:label": "is part of"
-    },
-    {
-      "@id": "semts:title",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "title"
-    },
-    {
-      "@id": "sosa:hasFeatureOfInterest",
-      "@type": "owl:ObjectProperty",
-      "rdfs:label": "has feature of interest"
-    },
-    {
-      "@id": "sosa:hasResult",
-      "@type": [
-        "owl:DatatypeProperty",
-        "owl:ObjectProperty"
-      ],
-      "rdfs:label": "has result"
-    },
-    {
-      "@id": "sosa:madeBySensor",
-      "@type": "owl:ObjectProperty",
-      "rdfs:label": "made by sensor"
-    },
-    {
-      "@id": "sosa:madeObservation",
-      "@type": "owl:ObjectProperty",
-      "rdfs:label": "made observation"
-    },
-    {
-      "@id": "sosa:observedProperty",
-      "@type": [
-        "owl:DatatypeProperty",
-        "owl:ObjectProperty"
-      ],
-      "rdfs:label": "observed property"
-    },
-    {
-      "@id": "sosa:phenomenonTime",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "phenomenon time"
-    },
-    {
-      "@id": "sosa:resultTime",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "result time"
-    },
-    {
-      "@id": "sosa:usedProcedure",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "used procedure"
-    },
-    {
-      "@id": "time:TemporalEntity",
-      "@type": "owl:Class",
-      "rdfs:label": "Temporal Entity"
-    },
-    {
-      "@id": "time:hasBeginning",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has beginning"
-    },
-    {
-      "@id": "time:hasEnd",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "has end"
-    },
-    {
-      "@id": "time:inXSDDateTime",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "in x s d date time"
-    },
-    {
-      "@id": "xsd:boolean",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "boolean"
-    },
-    {
-      "@id": "xsd:integer",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:label": "integer"
+      "@id": "vann:preferredNamespaceUri",
+      "@type": "owl:AnnotationProperty"
     }
   ]
 }

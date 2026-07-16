@@ -1,0 +1,84 @@
+@prefix bioschemas: <https://bioschemas.org/> .
+@prefix ex: <https://example.org/hcmo/isa-crate/> .
+@prefix hcm: <https://w3id.org/hcmo/ontology/hcm#> .
+@prefix hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#> .
+@prefix hcm-obs: <https://w3id.org/hcmo/ontology/hcm/obs#> .
+@prefix hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+
+ex:investigation a schema:Dataset ;
+  schema:additionalType "Investigation" ;
+  schema:name "Example home-cage monitoring investigation" ;
+  schema:hasPart ex:study .
+
+ex:study a schema:Dataset ;
+  schema:additionalType "Study" ;
+  schema:name "Example longitudinal housing study" ;
+  schema:about ex:housing-process, ex:acquisition-process ;
+  schema:hasPart ex:assay .
+
+ex:assay a schema:Dataset ;
+  schema:additionalType "Assay" ;
+  schema:name "Home-cage activity assay" ;
+  schema:hasPart ex:activity-file .
+
+ex:animal-1 a bioschemas:Sample, hcm-bio:Subject ;
+  schema:additionalType "Source" ;
+  schema:name "animal-1" ;
+  rdfs:label "animal-1" ;
+  hcm-bio:hasSpecies "Mus musculus" ;
+  hcm-bio:hasHousingAssignment ex:assignment-1 .
+
+ex:assignment-1 a hcm-bio:HousingAssignment ;
+  hcm-bio:assignedToEnclosure ex:cage-12 .
+
+ex:cage-12 a hcm:MonitoredEnclosure ;
+  schema:name "Rack 3, cage 12" ;
+  rdfs:label "Rack 3, cage 12" ;
+  hcm:hasEnclosureIdentifier "rack-3-cage-12" ;
+  hcm:hasDimensions ex:cage-12-dimensions ;
+  hcm:hasMonitoredAnimals ex:animal-1 ;
+  hcm-tech:monitoredBy ex:sensor-1 .
+
+ex:cage-12-dimensions a hcm:EnclosureDimensions ;
+  hcm:hasWidth 20.0 ;
+  hcm:hasLength 36.0 ;
+  hcm:hasHeight 18.0 ;
+  hcm:hasDimUnit "cm" .
+
+ex:housing-protocol a bioschemas:LabProtocol ;
+  schema:name "Animal-to-cage allocation protocol" .
+
+ex:housing-process a bioschemas:LabProcess ;
+  schema:name "Allocate animal-1 to cage-12" ;
+  schema:object ex:animal-1 ;
+  schema:result ex:assignment-1 ;
+  bioschemas:executesLabProtocol ex:housing-protocol .
+
+ex:sensor-1 a hcm-tech:Sensor ;
+  schema:name "Infrared activity sensor" ;
+  rdfs:label "Infrared activity sensor" ;
+  hcm-tech:hasSensorIdentifier "ir-1" ;
+  hcm-tech:installedIn ex:cage-12 .
+
+ex:acquisition-process a bioschemas:LabProcess ;
+  schema:name "Acquire cage activity" ;
+  schema:object ex:animal-1 ;
+  schema:result ex:activity-file .
+
+ex:activity-observation a hcm-obs:BehaviorObservation ;
+  sosa:hasFeatureOfInterest ex:animal-1 ;
+  sosa:madeBySensor ex:sensor-1 ;
+  sosa:hasResult ex:activity-result ;
+  hcm-obs:occursIn ex:cage-12 .
+
+ex:activity-result a hcm-obs:BehaviorResult ;
+  hcm-obs:hasBehaviorType "locomotor activity" .
+
+ex:activity-file a schema:MediaObject, hcm-tech:TimeSeries ;
+  schema:name "cage-12-activity.csv" ;
+  schema:encodingFormat "text/csv" ;
+  hcm-tech:hasFileFormat "text/csv" ;
+  hcm-tech:hasStoragePath "data/cage-12-activity.csv" .

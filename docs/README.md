@@ -1,22 +1,17 @@
-# HCMO Ontology
+# HCMO documentation
 
-A professional, reusable ontology for Home-Cage Monitoring (HCMO).
+The Home-Cage Monitoring Ontology (HCMO) models monitored enclosures,
+animal-to-enclosure housing assignments, biological subjects and groups,
+environmental profiles, observations and results, sensors, actuators, software,
+and time-series data.
 
-- Core: classes and properties for systems, animals, enclosures, behaviors, sensors/actuators, time intervals, and needs.
-- Standards: aligns to SOSA/SSN, OWL-Time, PROV, BFO; optional QUDT/OM for units.
-- Validation: SHACL shapes for key constraints.
-- Examples: minimal ABox and edge-case dataset.
-- Queries: competency-question SPARQL files.
+- Ontology IRI: `https://w3id.org/hcmo/ontology/hcm`
+- Base namespace: `https://w3id.org/hcmo/ontology/hcm#`
+- Version IRI: `https://w3id.org/hcmo/ontology/hcm/0.1.0`
+- Standards: BFO/IAO upper anchors, SOSA/SSN observations and devices, and
+  OWL-Time temporal entities
+- Validation: `python tooling/build.py` followed by `python tooling/validate.py`
+- ISA integration note: [`ISA-RO-CRATE-MAPPING.md`](ISA-RO-CRATE-MAPPING.md)
 
-Quickstart
-- Load `ontology/hcm-metadata.ttl` (imports `hcm.ttl` and `hcm-align.ttl`) plus `shapes/hcm-shapes.ttl` into your triple store.
-- Add `examples/abox-minimal.ttl` and run queries in `queries/`.
-- Validate with pySHACL: see `tooling/validate.ps1`.
-
-IRI and Prefix
-- Base: `https://w3id.org/hcmo/ontology/hcm#`
-- Version: `https://w3id.org/hcmo/ontology/hcm/1.0.0`
-
-License
-- CC BY 4.0
-
+Load `dist/hcmo.ttl` or `dist/hcmo.owl`. The source of truth is
+`ontology/modules/*.ttl`; files under `dist/` are generated.

@@ -1,27 +1,27 @@
-# HCMO / MAPP ontology — hand-authored source module: hcm-core
-# Part of the MAPP (Monitoring and Analytics for Physiological Processes) ontology.
-# Namespace: https://w3id.org/hcmo/ontology/hcm# (+ /bio#, /env#, /obs# per module).
-# Contributors are recorded on the owl:Ontology header (dcterms:creator);
-# ORCID IRIs are used where known. Edit modules here; regenerate dist/ with:
-#   python tooling/build.py
+# HCMO 0.1.0 — core — the MonitoredEnclosure hub + reused-vocabulary scaffolding + ontology header
+# Promoted after expert review; see docs/paper/MODULE-MAP.md. Namespace policy: …/hcm#.
 #
-@prefix UNKNOWN: <http://www.owl-ontologies.com/UNKNOWN#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix bibo: <http://purl.org/ontology/bibo/> .
+@prefix BFO: <http://purl.obolibrary.org/obo/BFO_> .
 @prefix hcm: <https://w3id.org/hcmo/ontology/hcm#> .
 @prefix hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#> .
 @prefix hcm-env: <https://w3id.org/hcmo/ontology/hcm/env#> .
 @prefix hcm-obs: <https://w3id.org/hcmo/ontology/hcm/obs#> .
+@prefix hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#> .
 @prefix IAO: <http://purl.obolibrary.org/obo/IAO_> .
 @prefix mod: <https://w3id.org/mod#> .
-@prefix ns: <http://www.owl-ontologies.com/ns#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
 @prefix semts: <https://w3id.org/semts/ontology/120#> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
 @prefix time: <http://www.w3.org/2006/time#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bibo:doi a owl:AnnotationProperty .
 
 dc:creator a owl:AnnotationProperty .
 
@@ -29,124 +29,42 @@ dc:description a owl:AnnotationProperty .
 
 dc:title a owl:AnnotationProperty .
 
-hcm:StudyFactors a owl:Class ;
-    rdfs:label "Study Factors" ;
-    rdfs:subClassOf hcm:MonitoredEnclosure .
+dcterms:bibliographicCitation a owl:AnnotationProperty .
 
-UNKNOWN:captures a owl:DatatypeProperty ;
-    rdfs:label "captures" .
+dcterms:created a owl:AnnotationProperty .
 
-UNKNOWN:communicatesWith a owl:ObjectProperty ;
-    rdfs:label "communicates with" .
+dcterms:creator a owl:AnnotationProperty .
 
-UNKNOWN:hasActuators a owl:DatatypeProperty ;
-    rdfs:label "has actuators" .
+dcterms:identifier a owl:AnnotationProperty .
 
-UNKNOWN:hasCondition a owl:DatatypeProperty ;
-    rdfs:label "has condition" .
+dcterms:issued a owl:AnnotationProperty .
 
-UNKNOWN:hasDarkPhaseDuration a owl:DatatypeProperty ;
-    rdfs:label "has dark phase duration" .
+dcterms:license a owl:AnnotationProperty .
 
-UNKNOWN:hasDarkPhaseStart a owl:DatatypeProperty ;
-    rdfs:label "has dark phase start" .
+dcterms:modified a owl:AnnotationProperty .
 
-UNKNOWN:hasDawnDuration a owl:DatatypeProperty ;
-    rdfs:label "has dawn duration" .
+dcterms:publisher a owl:AnnotationProperty .
 
-UNKNOWN:hasDuskDuration a owl:DatatypeProperty ;
-    rdfs:label "has dusk duration" .
+dcterms:source a owl:AnnotationProperty .
 
-UNKNOWN:hasEnrichmentReq a owl:ObjectProperty ;
-    rdfs:label "has enrichment req" .
+mod:createdWith a owl:AnnotationProperty .
 
-UNKNOWN:hasEnrichmentType a owl:DatatypeProperty ;
-    rdfs:label "has enrichment type" .
-
-UNKNOWN:hasFacilityType a owl:DatatypeProperty ;
-    rdfs:label "has facility type" .
-
-UNKNOWN:hasFirmware a owl:DatatypeProperty ;
-    rdfs:label "has firmware" .
-
-UNKNOWN:hasFloorArea a owl:DatatypeProperty ;
-    rdfs:label "has floor area" .
-
-UNKNOWN:hasFoodReq a owl:DatatypeProperty ;
-    rdfs:label "has food req" .
-
-UNKNOWN:hasLightPhaseDuration a owl:DatatypeProperty ;
-    rdfs:label "has light phase duration" .
-
-UNKNOWN:hasModelNumber a owl:DatatypeProperty ;
-    rdfs:label "has model number" .
-
-UNKNOWN:hasName a owl:DatatypeProperty ;
-    rdfs:label "has name" ;
-    rdfs:range xsd:string .
-
-UNKNOWN:hasProtocol a owl:DatatypeProperty ;
-    rdfs:label "has protocol" .
-
-UNKNOWN:hasSafetyReq a owl:DatatypeProperty ;
-    rdfs:label "has safety req" .
-
-UNKNOWN:hasSamplingRate a owl:DatatypeProperty ;
-    rdfs:label "has sampling rate" .
-
-UNKNOWN:hasSensorIdentifier a owl:DatatypeProperty ;
-    rdfs:label "has sensor identifier" .
-
-UNKNOWN:hasSensorTechnology a owl:DatatypeProperty ;
-    rdfs:label "has sensor technology" .
-
-UNKNOWN:hasSensorType a owl:DatatypeProperty ;
-    rdfs:label "has sensor type" .
-
-UNKNOWN:hasSensors a owl:ObjectProperty ;
-    rdfs:label "has sensors" .
-
-UNKNOWN:hasSocialReq a owl:DatatypeProperty ;
-    rdfs:label "has social req" .
-
-UNKNOWN:hasType a owl:DatatypeProperty ;
-    rdfs:label "has type" .
-
-hcm:hasVersion a owl:DatatypeProperty ;
-    rdfs:label "has version" .
-
-UNKNOWN:hasWaterReq a owl:DatatypeProperty ;
-    rdfs:label "has water req" .
-
-UNKNOWN:isCalibrated a owl:DatatypeProperty ;
-    rdfs:label "is calibrated" .
-
-UNKNOWN:partOF a owl:DatatypeProperty ;
-    rdfs:label "part o f" .
-
-UNKNOWN:runsOn a owl:ObjectProperty ;
-    rdfs:label "runs on" .
-
-UNKNOWN:supportsEnclosure a owl:ObjectProperty ;
-    rdfs:label "supports enclosure" .
-
-ns:objectProperty a owl:ObjectProperty ;
-    rdfs:label "object property" .
-
-xsd:boolean a owl:DatatypeProperty ;
-    rdfs:label "boolean" .
-
-xsd:integer a owl:DatatypeProperty ;
-    rdfs:label "integer" .
+mod:status a owl:AnnotationProperty .
 
 owl:versionInfo a owl:AnnotationProperty .
 
-sosa:hasFeatureOfInterest a owl:ObjectProperty ;
-    rdfs:label "has feature of interest" .
+schema:logo a owl:AnnotationProperty .
+
+vann:preferredNamespacePrefix a owl:AnnotationProperty .
+
+vann:preferredNamespaceUri a owl:AnnotationProperty .
 
 <https://w3id.org/hcmo/ontology/hcm> a owl:Ontology ;
-    dc:description "Ontology for Monitoring and Analytics for Physiological Processes (MAPP)" ;
-    dc:title "MAPP Ontology" ;
+    dc:description "Ontology for home-cage monitoring of laboratory animals" ;
+    dc:title "Home-Cage Monitoring Ontology" ;
+    bibo:doi "10.5281/zenodo.18925285" ;
+    dcterms:bibliographicCitation "The Home-Cage Monitoring Ontology (HCMO). Zenodo. https://doi.org/10.5281/zenodo.18925285" ;
+    dcterms:created "2026-03-09"^^xsd:date ;
     dcterms:creator <https://orcid.org/0000-0002-2923-9790>,
         <https://orcid.org/0000-0002-6085-6818>,
         <https://orcid.org/0000-0002-9116-6692>,
@@ -154,208 +72,72 @@ sosa:hasFeatureOfInterest a owl:ObjectProperty ;
         <https://orcid.org/0000-0003-4820-7951>,
         <https://orcid.org/0009-0008-0575-8490>,
         <https://orcid.org/0009-0008-2489-8106> ;
-    owl:versionIRI <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
-    owl:versionInfo "0.0.1" ;
-    mod:createdWith <https://chowlk.linkeddata.es/> .
-
-hcm:CategoricalResult a owl:Class ;
-    rdfs:label "Categorical Result" .
-
-hcm:System a owl:Class ;
-    rdfs:label "System" ;
-    rdfs:comment "A home-cage monitoring system comprising an enclosure, hardware, and software." ;
-    IAO:0000115 "A home-cage monitoring system comprising an enclosure, hardware, and software." ;
-    dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+    dcterms:identifier "https://doi.org/10.5281/zenodo.18925285" ;
+    dcterms:issued "2026-03-09"^^xsd:date ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:modified "2026-07-16"^^xsd:date ;
+    dcterms:publisher "Huzard group" ;
+    dcterms:source <https://github.com/dhuzard/HCMO> ;
+    owl:priorVersion <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
+    owl:versionIRI <https://w3id.org/hcmo/ontology/hcm/0.1.0> ;
+    owl:versionInfo "0.1.0" ;
+    schema:logo <https://raw.githubusercontent.com/dhuzard/HCMO/main/HCMO-logo3.png> ;
+    mod:createdWith <https://chowlk.linkeddata.es/> ;
+    mod:status "draft" ;
+    vann:preferredNamespacePrefix "hcm" ;
+    vann:preferredNamespaceUri "https://w3id.org/hcmo/ontology/hcm#" .
 
 hcm:Enclosure a owl:Class ;
     rdfs:label "Enclosure" ;
     rdfs:comment "A physical housing enclosure used as part of a home-cage monitoring system." ;
-    IAO:0000115 "A physical housing enclosure used as part of a home-cage monitoring system." ;
-    dcterms:source "HCMO active ABox examples and user-submission form mapping." .
+    rdfs:subClassOf BFO:0000040 .
 
 hcm:Enrichment a owl:Class ;
-    rdfs:label "Enrichment" .
+    rdfs:label "Enrichment" ;
+    rdfs:comment "A material or structure provided within an enclosure to support animal welfare or experimental conditions." ;
+    rdfs:subClassOf BFO:0000040 .
 
-hcm:Hardware a owl:Class ;
-    rdfs:label "Hardware" ;
-    rdfs:comment "Physical computing hardware component of a home-cage monitoring system." ;
-    IAO:0000115 "Physical computing hardware component of a home-cage monitoring system." ;
-    dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
-
-hcm:OWL-Timeintervaltable a owl:Class ;
-    rdfs:label "O W L- Timeintervaltable" .
-
-hcm:PhysicalSpace a owl:Class ;
-    rdfs:label "Physical Space" ;
-    rdfs:comment "A spatial region associated with an enclosure." ;
-    IAO:0000115 "A spatial region associated with an enclosure." ;
-    dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
-
-hcm:Dimensions a owl:Class ;
-    rdfs:label "Dimensions" ;
-    rdfs:comment "Geometric dimensions of a physical space or enclosure." ;
-    IAO:0000115 "Geometric dimensions of a physical space or enclosure." ;
-    dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
-
-hcm:Actuator a owl:Class ;
-    rdfs:label "Actuator" ;
-    rdfs:comment "A device that elicits or perturbs behavior or physiology." ;
-    IAO:0000115 "A device that elicits or perturbs behavior or physiology." ;
-    dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
-
-hcm:Animal a owl:Class ;
-    rdfs:label "Animal" ;
-    rdfs:comment "An experimental animal housed in an enclosure." ;
-    IAO:0000115 "An experimental animal housed in an enclosure." ;
-    dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
-
-hcm:BehaviorAndPhysiology a owl:Class ;
-    rdfs:label "Behavior and Physiology" ;
-    rdfs:comment "Observed behavioral or physiological process displayed by an animal." ;
-    IAO:0000115 "An observed behavioral or physiological process displayed by an animal." ;
-    dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
-
-hcm:CircadianRhythm a owl:Class ;
-    rdfs:label "Circadian Rhythm" ;
-    rdfs:comment "A circadian rhythm associated with a behavior or physiology process." ;
-    IAO:0000115 "A circadian rhythm associated with a behavior or physiology process." ;
-    dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
-
-hcm:NeedsSequence a owl:Class ;
-    owl:deprecated "true"^^xsd:boolean ;
-    rdfs:label "Needs Sequence" ;
-    rdfs:comment "Legacy boolean need-profile record used by current examples; prefer a future object-based need profile for richer modeling." ;
-    IAO:0000115 "Legacy boolean need-profile record used by current examples." ;
-    dcterms:source "HCMO active ABox examples." .
-
-hcm:ObservationWindow a owl:Class ;
-    rdfs:label "Observation Window" ;
-    rdfs:comment "An observation time window for behavior capture." ;
-    IAO:0000115 "An observation time window for behavior capture." ;
-    dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
-
-hcm:TimeInterval a owl:Class ;
-    owl:deprecated "true"^^xsd:boolean ;
-    rdfs:subClassOf hcm:ObservationWindow ;
-    rdfs:label "Time Interval" ;
-    rdfs:comment "Deprecated; use hcm:ObservationWindow." ;
-    IAO:0000115 "Deprecated; use hcm:ObservationWindow." ;
-    dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
-
-hcm:LimitedInteractionWithHumans a owl:Class ;
-    rdfs:label "Limited Interaction With Humans" ;
-    rdfs:comment "A condition indicating minimal human interference during observation." ;
-    IAO:0000115 "A condition indicating minimal human interference during observation." ;
-    dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
-
-hcm:Protocol a owl:Class ;
-    rdfs:label "Protocol" ;
-    rdfs:comment "A protocol, SOP, or approval reference governing a system submission." ;
-    IAO:0000115 "A protocol, SOP, or approval reference governing a system submission." ;
-    dcterms:source "HCMO user-submission form mapping." .
-
-hcm:ContactPoint a owl:Class ;
-    rdfs:label "Contact Point" ;
-    rdfs:comment "Contact detail associated with a submitted system or supplier." ;
-    IAO:0000115 "Contact detail associated with a submitted system or supplier." ;
-    dcterms:source "HCMO user-submission form mapping." .
-
-hcm:DataProduct a owl:Class ;
-    rdfs:label "Data Product" ;
-    rdfs:comment "Data artifact or link associated with a submitted system." ;
-    IAO:0000115 "Data artifact or link associated with a submitted system." ;
-    dcterms:source "HCMO user-submission form mapping." .
-
-hcm:Supplier a owl:Class ;
-    rdfs:label "Supplier" ;
-    rdfs:comment "Commercial supplier or laboratory providing the system." ;
-    IAO:0000115 "A commercial supplier or laboratory providing the system." ;
-    dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
-
-<https://w3id.org/hcmo/ontology/hcm#Structural&LocationTable> a owl:Class ;
-    rdfs:label "Structural& Location Table" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty sosa:hasResult ;
-            owl:someValuesFrom hcm:QuantityValue ],
-        [ a owl:Restriction ;
-            owl:onProperty semts:generated ;
-            owl:someValuesFrom semts:TimeSeriesSegment ],
-        [ a owl:Restriction ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty sosa:resultTime ],
-        [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty sosa:phenomenonTime ],
-        [ a owl:Restriction ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty sosa:usedProcedure ],
-        hcm:ObservationResult .
-
-hcm:TimeSeries a owl:Class ;
-    rdfs:label "Time Series" .
+hcm:hasEnrichmentRequirement a owl:DatatypeProperty ;
+    rdfs:label "has enrichment requirement" ;
+    rdfs:comment "Records a textual or coded enrichment requirement for an enclosure or monitored enclosure." ;
+    rdfs:domain hcm:Enclosure ;
+    rdfs:range xsd:string .
 
 hcm:hasCapacity a owl:DatatypeProperty ;
-    rdfs:label "has capacity" .
-
-hcm:hasCategory a owl:DatatypeProperty ;
-    rdfs:label "has category" .
+    rdfs:label "has capacity" ;
+    rdfs:comment "Records the intended capacity of an enclosure, such as the number of animals it can house." ;
+    rdfs:domain hcm:Enclosure ;
+    rdfs:range xsd:nonNegativeInteger .
 
 hcm:hasDescription a owl:DatatypeProperty ;
-    rdfs:label "has description" .
+    rdfs:label "has description" ;
+    rdfs:comment "Provides a textual description for an HCMO resource." ;
+    rdfs:domain owl:Thing ;
+    rdfs:range xsd:string .
 
-hcm:hasEnvironment a owl:DatatypeProperty ;
-    rdfs:label "has environment" .
+hcm:hasMonitoredAnimals a owl:ObjectProperty ;
+    rdfs:label "has monitored animals" ;
+    rdfs:comment "Relates a monitored enclosure to the biological subjects housed or tracked within it." ;
+    rdfs:domain hcm:MonitoredEnclosure ;
+    rdfs:range hcm-bio:Subject .
 
-hcm:hasFileFormat a owl:DatatypeProperty ;
-    rdfs:label "has file format" .
-
-hcm:hasMonitoredAnimals a owl:DatatypeProperty ;
-    rdfs:label "has monitored animals" .
-
-hcm:hasSamplingRate a owl:DatatypeProperty ;
-    rdfs:label "has sampling rate" .
-
-hcm:hasStoragePath a owl:DatatypeProperty ;
-    rdfs:label "has storage path" .
+hcm:hasName a owl:DatatypeProperty ;
+    rdfs:label "has name" ;
+    rdfs:comment "Records a human-readable name for an HCMO resource." ;
+    rdfs:domain owl:Thing ;
+    rdfs:range xsd:string .
 
 hcm:isOccupied a owl:DatatypeProperty ;
-    rdfs:label "is occupied" .
+    rdfs:label "is occupied" ;
+    rdfs:comment "Indicates whether an enclosure is currently occupied by animals." ;
+    rdfs:domain hcm:Enclosure ;
+    rdfs:range xsd:boolean .
 
-semts:DataDimension a owl:Class ;
-    rdfs:label "Data Dimension" .
-
-semts:dimensionUnit a owl:DatatypeProperty ;
-    rdfs:label "dimension unit" .
-
-semts:hasDimension a owl:ObjectProperty ;
-    rdfs:label "has dimension" .
-
-semts:title a owl:DatatypeProperty ;
-    rdfs:label "title" .
-
-UNKNOWN:isOccupied a owl:DatatypeProperty ;
-    rdfs:label "is occupied" .
-
-UNKNOWN:isOperational a owl:DatatypeProperty ;
-    rdfs:label "is operational" .
-
-time:TemporalEntity a owl:Class ;
-    rdfs:label "Temporal Entity" .
-
-time:hasBeginning a owl:DatatypeProperty ;
-    rdfs:label "has beginning" .
-
-time:hasEnd a owl:DatatypeProperty ;
-    rdfs:label "has end" .
-
-time:inXSDDateTime a owl:DatatypeProperty ;
-    rdfs:label "in x s d date time" .
-
-sosa:madeBySensor a owl:ObjectProperty ;
-    rdfs:label "made by sensor" .
-
-sosa:madeObservation a owl:ObjectProperty ;
-    rdfs:label "made observation" .
+hcm:isOperational a owl:DatatypeProperty ;
+    rdfs:label "is operational" ;
+    rdfs:comment "Indicates whether a monitored enclosure is currently operational." ;
+    rdfs:domain hcm:MonitoredEnclosure ;
+    rdfs:range xsd:boolean .
 
 <https://orcid.org/0000-0002-2923-9790> a schema:Person ;
     schema:name "Pierre Larmande" .
@@ -378,513 +160,121 @@ sosa:madeObservation a owl:ObjectProperty ;
 <https://orcid.org/0009-0008-2489-8106> a schema:Person ;
     schema:name "Cyril Gilbert" .
 
-hcm:QuantityValue a owl:Class ;
-    rdfs:label "Quantity Value" .
+hcm:EnclosureDimensions a owl:Class ;
+    rdfs:label "Enclosure Dimensions" ;
+    rdfs:comment "A dimensions record describing the physical size of an enclosure." ;
+    rdfs:subClassOf IAO:0000030 .
 
-hcm:Software a owl:Class ;
-    rdfs:label "Software" ;
-    rdfs:comment "Software component of a home-cage monitoring system." ;
-    IAO:0000115 "Software component of a home-cage monitoring system." ;
-    dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
-
-hcm:hasEnclosure a owl:ObjectProperty ;
-    rdfs:label "has enclosure" ;
-    rdfs:domain hcm:System ;
-    rdfs:range hcm:Enclosure ;
-    rdfs:comment "Links a system to its enclosure." ;
-    IAO:0000115 "Relates a system to the enclosure that is part of it." ;
-    dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+hcm:hasDimUnit a owl:DatatypeProperty ;
+    rdfs:label "has dim unit" ;
+    rdfs:comment "Records the unit used for enclosure dimension values." ;
+    rdfs:domain hcm:EnclosureDimensions ;
+    rdfs:range xsd:string .
 
 hcm:hasDimensions a owl:ObjectProperty ;
     rdfs:label "has dimensions" ;
-    rdfs:range hcm:Dimensions ;
-    rdfs:comment "Links a physical space or enclosure to its dimensions record." ;
-    IAO:0000115 "Relates a physical space or enclosure to its dimensions record." ;
-    dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
-
-hcm:hasSpaceRegion a owl:ObjectProperty ;
-    rdfs:label "has space region" ;
+    rdfs:comment "Links an enclosure to its dimensions record." ;
     rdfs:domain hcm:Enclosure ;
-    rdfs:range hcm:PhysicalSpace ;
-    rdfs:comment "Links an enclosure to the physical space it contains or bounds." ;
-    IAO:0000115 "Relates an enclosure to the physical space it contains or bounds." ;
-    dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
-
-hcm:hasHardware a owl:ObjectProperty ;
-    rdfs:label "has hardware" ;
-    rdfs:domain hcm:System ;
-    rdfs:range hcm:Hardware ;
-    rdfs:comment "Links a system to its hardware component." ;
-    IAO:0000115 "Relates a system to a hardware component that is part of it." ;
-    dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
-
-hcm:hasSoftware a owl:ObjectProperty ;
-    rdfs:label "has software" ;
-    rdfs:domain hcm:System ;
-    rdfs:range hcm:Software ;
-    rdfs:comment "Links a system to its software component." ;
-    IAO:0000115 "Relates a system to a software component that is part of it." ;
-    dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
-
-hcm:producedBy a owl:ObjectProperty ;
-    rdfs:label "produced by" ;
-    rdfs:domain hcm:System ;
-    rdfs:range hcm:Supplier ;
-    rdfs:comment "Links a system to the supplier or laboratory that produced it." ;
-    IAO:0000115 "Relates a system to the supplier or laboratory that produced it." ;
-    dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
-
-hcm:hasSensor a owl:ObjectProperty ;
-    rdfs:label "has sensor" ;
-    rdfs:domain hcm:System ;
-    rdfs:range hcm:Sensor ;
-    rdfs:comment "Relates a system to a sensor associated with it." ;
-    IAO:0000115 "Relates a system to a sensor associated with it." ;
-    dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
-
-hcm:collectsInfoOn a owl:ObjectProperty ;
-    rdfs:label "collects info on" ;
-    rdfs:domain hcm:System ;
-    rdfs:range hcm:Animal ;
-    rdfs:comment "Relates a system to an animal or animal record it collects information on." ;
-    IAO:0000115 "Relates a system to an animal or animal record it collects information on." ;
-    dcterms:source "HCMO active ABox examples and user-submission form mapping." .
-
-hcm:followsProtocol a owl:ObjectProperty ;
-    rdfs:label "follows protocol" ;
-    rdfs:domain hcm:System ;
-    rdfs:range hcm:Protocol ;
-    rdfs:comment "Relates a system submission to a governing protocol or SOP reference." ;
-    IAO:0000115 "Relates a system submission to a governing protocol or SOP reference." ;
-    dcterms:source "HCMO user-submission form mapping." .
-
-hcm:livesIn a owl:ObjectProperty ;
-    rdfs:label "lives in" ;
-    rdfs:domain hcm:Animal ;
-    rdfs:range hcm:Enclosure ;
-    rdfs:comment "Relates an animal to the enclosure it lives in." ;
-    IAO:0000115 "Relates an animal to the enclosure it lives in." ;
-    dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
-
-hcm:requiresToThrive a owl:ObjectProperty ;
-    rdfs:label "requires to thrive" ;
-    rdfs:domain hcm:Animal ;
-    rdfs:range hcm:NeedsSequence ;
-    rdfs:comment "Relates an animal to the need profile it requires." ;
-    IAO:0000115 "Relates an animal to the need profile it requires." ;
-    dcterms:source "HCMO active ABox examples." .
-
-hcm:provides a owl:ObjectProperty ;
-    rdfs:label "provides" ;
-    rdfs:domain hcm:Enclosure ;
-    rdfs:range hcm:NeedsSequence ;
-    rdfs:comment "Relates an enclosure to a need profile it provides." ;
-    IAO:0000115 "Relates an enclosure to a need profile it provides." ;
-    dcterms:source "HCMO active ABox examples." .
-
-hcm:displays a owl:ObjectProperty ;
-    rdfs:label "displays" ;
-    rdfs:domain hcm:Animal ;
-    rdfs:range hcm:BehaviorAndPhysiology ;
-    rdfs:comment "Relates an animal to a behavior or physiology process it displays." ;
-    IAO:0000115 "Relates an animal to a behavior or physiology process it displays." ;
-    dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
-
-hcm:isDisplayedInside a owl:ObjectProperty ;
-    rdfs:label "is displayed inside" ;
-    rdfs:domain hcm:BehaviorAndPhysiology ;
-    rdfs:range hcm:Enclosure ;
-    rdfs:comment "Relates a behavior or physiology process to the enclosure where it occurs." ;
-    IAO:0000115 "Relates a behavior or physiology process to the enclosure where it occurs." ;
-    dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
-
-hcm:hasCircadianRhythm a owl:ObjectProperty ;
-    rdfs:label "has circadian rhythm" ;
-    rdfs:domain hcm:BehaviorAndPhysiology ;
-    rdfs:range hcm:CircadianRhythm ;
-    rdfs:comment "Relates a behavior or physiology process to its circadian rhythm." ;
-    IAO:0000115 "Relates a behavior or physiology process to its circadian rhythm." ;
-    dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
-
-hcm:extendsEnoughToCapture a owl:ObjectProperty ;
-    owl:deprecated "true"^^xsd:boolean ;
-    rdfs:label "extends enough to capture" ;
-    rdfs:domain hcm:BehaviorAndPhysiology ;
-    rdfs:range hcm:ObservationWindow ;
-    rdfs:comment "Deprecated legacy relation from a behavior process to a sufficient observation window." ;
-    IAO:0000115 "Deprecated legacy relation from a behavior process to a sufficient observation window." ;
-    dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
-
-hcm:hasProperty a owl:ObjectProperty ;
-    owl:deprecated "true"^^xsd:boolean ;
-    rdfs:label "has property" ;
-    rdfs:domain hcm:ObservationWindow ;
-    rdfs:range hcm:LimitedInteractionWithHumans ;
-    rdfs:comment "Deprecated legacy relation from an observation window to an observation condition." ;
-    IAO:0000115 "Deprecated legacy relation from an observation window to an observation condition." ;
-    dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
-
-hcm:captures a owl:ObjectProperty ;
-    rdfs:label "captures" ;
-    rdfs:domain hcm:Sensor ;
-    rdfs:range hcm:BehaviorAndPhysiology ;
-    rdfs:comment "Relates a sensor to a behavior or physiology process it captures." ;
-    IAO:0000115 "Relates a sensor to a behavior or physiology process it captures." ;
-    dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
-
-hcm:elicits a owl:ObjectProperty ;
-    rdfs:label "elicits" ;
-    rdfs:domain hcm:Actuator ;
-    rdfs:range hcm:BehaviorAndPhysiology ;
-    rdfs:comment "Relates an actuator to a behavior or physiology process it elicits or perturbs." ;
-    IAO:0000115 "Relates an actuator to a behavior or physiology process it elicits or perturbs." ;
-    dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
-
-hcm:communicatesWith a owl:ObjectProperty ;
-    rdfs:label "communicates with" ;
-    rdfs:domain hcm:Hardware ;
-    rdfs:range hcm:Software ;
-    rdfs:comment "Relates hardware to software that it communicates with." ;
-    IAO:0000115 "Relates hardware to software that it communicates with." ;
-    dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
-
-hcm:hasActuator a owl:ObjectProperty ;
-    rdfs:label "has actuator" ;
-    rdfs:domain hcm:System ;
-    rdfs:range hcm:Actuator ;
-    rdfs:comment "Relates a system to an actuator associated with it." ;
-    IAO:0000115 "Relates a system to an actuator associated with it." ;
-    dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
+    rdfs:range hcm:EnclosureDimensions .
 
 hcm:hasEnclosureIdentifier a owl:DatatypeProperty ;
-    rdfs:label "has enclosure identifier" .
-
-hcm:hasEnrichment a owl:DatatypeProperty ;
-    rdfs:label "has enrichment" .
-
-hcm:hasManufacturer a owl:DatatypeProperty ;
-    rdfs:label "has manufacturer" .
-
-hcm:hasName a owl:DatatypeProperty ;
-    rdfs:label "has name" ;
+    rdfs:label "has enclosure identifier" ;
+    rdfs:comment "Records the identifier assigned to an enclosure or monitored enclosure." ;
+    rdfs:domain hcm:Enclosure ;
     rdfs:range xsd:string .
 
-hcm:hasNumericValue a owl:DatatypeProperty ;
-    rdfs:label "has numeric value" .
+hcm:hasEnrichment a owl:ObjectProperty ;
+    rdfs:label "has enrichment" ;
+    rdfs:comment "Relates an enclosure or monitored enclosure to an enrichment present or specified for it." ;
+    rdfs:domain hcm:Enclosure ;
+    rdfs:range hcm:Enrichment .
 
-hcm:hasResult a owl:ObjectProperty ;
-    rdfs:label "has result" .
+hcm:hasEnrichmentType a owl:DatatypeProperty ;
+    rdfs:label "has enrichment type" ;
+    rdfs:comment "Records the type or category of enrichment associated with an enrichment resource." ;
+    rdfs:domain hcm:Enrichment ;
+    rdfs:range xsd:string .
 
-hcm:hasThriveProfile a owl:ObjectProperty ;
-    rdfs:label "has thrive profile" .
+hcm:hasFacilityType a owl:DatatypeProperty ;
+    rdfs:label "has facility type" ;
+    rdfs:comment "Records the type of facility or housing area associated with an enclosure." ;
+    rdfs:domain hcm:Enclosure ;
+    rdfs:range xsd:string .
+
+hcm:hasFloorArea a owl:DatatypeProperty ;
+    rdfs:label "has floor area" ;
+    rdfs:comment "Records the floor area value for an enclosure dimensions record." ;
+    rdfs:domain hcm:EnclosureDimensions ;
+    rdfs:range xsd:decimal .
+
+hcm:hasFoodRequirement a owl:DatatypeProperty ;
+    rdfs:label "has food requirement" ;
+    rdfs:comment "Records a textual or coded food-provision requirement for an enclosure." ;
+    rdfs:domain hcm:Enclosure ;
+    rdfs:range xsd:string .
+
+hcm:hasHeight a owl:DatatypeProperty ;
+    rdfs:label "has height" ;
+    rdfs:comment "Records the height value of an enclosure dimensions record." ;
+    rdfs:domain hcm:EnclosureDimensions ;
+    rdfs:range xsd:decimal .
+
+hcm:hasLength a owl:DatatypeProperty ;
+    rdfs:label "has length" ;
+    rdfs:comment "Records the length value of an enclosure dimensions record." ;
+    rdfs:domain hcm:EnclosureDimensions ;
+    rdfs:range xsd:decimal .
+
+hcm:hasManufacturer a owl:DatatypeProperty ;
+    rdfs:label "has manufacturer" ;
+    rdfs:comment "Records the manufacturer name for an enclosure." ;
+    rdfs:domain hcm:Enclosure ;
+    rdfs:range xsd:string .
+
+hcm:hasSafetyRequirement a owl:DatatypeProperty ;
+    rdfs:label "has safety requirement" ;
+    rdfs:comment "Records a textual or coded safety requirement for an enclosure." ;
+    rdfs:domain hcm:Enclosure ;
+    rdfs:range xsd:string .
+
+hcm:hasWaterRequirement a owl:DatatypeProperty ;
+    rdfs:label "has water requirement" ;
+    rdfs:comment "Records a textual or coded water-provision requirement for an enclosure." ;
+    rdfs:domain hcm:Enclosure ;
+    rdfs:range xsd:string .
+
+hcm:hasWidth a owl:DatatypeProperty ;
+    rdfs:label "has width" ;
+    rdfs:comment "Records the width value of an enclosure dimensions record." ;
+    rdfs:domain hcm:EnclosureDimensions ;
+    rdfs:range xsd:decimal .
+
+hcm:locatedIn a owl:ObjectProperty ;
+    rdfs:label "located in" ;
+    rdfs:comment "Relates an enclosure or monitored enclosure to the facility, room, rack, or other place in which it is situated." ;
+    rdfs:domain hcm:Enclosure ;
+    rdfs:range schema:Place .
 
 hcm:hasUnit a owl:DatatypeProperty ;
-    rdfs:label "has unit" .
-
-hcm:protocolReference a owl:DatatypeProperty ;
-    rdfs:label "protocol reference" ;
-    rdfs:domain hcm:Protocol ;
-    rdfs:range xsd:string ;
-    rdfs:comment "Textual protocol, SOP, DOI, or approval reference." ;
-    IAO:0000115 "Textual protocol, SOP, DOI, or approval reference." ;
-    dcterms:source "HCMO user-submission form mapping." .
-
-hcm:durationHours a owl:DatatypeProperty ;
-    rdfs:label "duration hours" ;
-    rdfs:domain hcm:ObservationWindow ;
-    rdfs:range xsd:decimal ;
-    rdfs:comment "Duration of an observation window in hours." ;
-    IAO:0000115 "A duration value in hours for an observation window." ;
-    dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
-
-hcm:isExtendable a owl:DatatypeProperty ;
-    rdfs:label "is extendable" ;
-    rdfs:domain hcm:ObservationWindow ;
-    rdfs:range xsd:boolean ;
-    rdfs:comment "Whether the observation window is extendable." ;
-    IAO:0000115 "A boolean indicating whether an observation window is extendable." ;
-    dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
-
-hcm:hasFood a owl:DatatypeProperty ;
-    rdfs:label "has food" ;
-    rdfs:domain hcm:NeedsSequence ;
-    rdfs:range xsd:boolean ;
-    rdfs:comment "Boolean flag indicating whether food is provided in a legacy need profile." ;
-    IAO:0000115 "Boolean flag indicating whether food is provided in a legacy need profile." ;
-    dcterms:source "HCMO active ABox examples." .
-
-hcm:hasWater a owl:DatatypeProperty ;
-    rdfs:label "has water" ;
-    rdfs:domain hcm:NeedsSequence ;
-    rdfs:range xsd:boolean ;
-    rdfs:comment "Boolean flag indicating whether water is provided in a legacy need profile." ;
-    IAO:0000115 "Boolean flag indicating whether water is provided in a legacy need profile." ;
-    dcterms:source "HCMO active ABox examples." .
-
-hcm:hasSocialContacts a owl:DatatypeProperty ;
-    rdfs:label "has social contacts" ;
-    rdfs:domain hcm:NeedsSequence ;
-    rdfs:range xsd:boolean ;
-    rdfs:comment "Boolean flag indicating whether social contacts are provided in a legacy need profile." ;
-    IAO:0000115 "Boolean flag indicating whether social contacts are provided in a legacy need profile." ;
-    dcterms:source "HCMO active ABox examples." .
-
-hcm:hasSafetyFromThreat a owl:DatatypeProperty ;
-    rdfs:label "has safety from threat" ;
-    rdfs:domain hcm:NeedsSequence ;
-    rdfs:range xsd:boolean ;
-    rdfs:comment "Boolean flag indicating whether safety from threat is provided in a legacy need profile." ;
-    IAO:0000115 "Boolean flag indicating whether safety from threat is provided in a legacy need profile." ;
-    dcterms:source "HCMO active ABox examples." .
-
-hcm:hasEnvironmentalEnrichment a owl:DatatypeProperty ;
-    rdfs:label "has environmental enrichment" ;
-    rdfs:domain hcm:NeedsSequence ;
-    rdfs:range xsd:boolean ;
-    rdfs:comment "Boolean flag indicating whether environmental enrichment is provided in a legacy need profile." ;
-    IAO:0000115 "Boolean flag indicating whether environmental enrichment is provided in a legacy need profile." ;
-    dcterms:source "HCMO active ABox examples." .
-
-hcm:width a owl:DatatypeProperty ;
-    rdfs:label "width" ;
-    rdfs:domain hcm:Dimensions ;
-    rdfs:range xsd:decimal ;
-    rdfs:comment "Width magnitude for a dimensions record." ;
-    IAO:0000115 "A width magnitude for a dimensions record." ;
-    dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
-
-hcm:length a owl:DatatypeProperty ;
-    rdfs:label "length" ;
-    rdfs:domain hcm:Dimensions ;
-    rdfs:range xsd:decimal ;
-    rdfs:comment "Length magnitude for a dimensions record." ;
-    IAO:0000115 "A length magnitude for a dimensions record." ;
-    dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
-
-hcm:height a owl:DatatypeProperty ;
-    rdfs:label "height" ;
-    rdfs:domain hcm:Dimensions ;
-    rdfs:range xsd:decimal ;
-    rdfs:comment "Height magnitude for a dimensions record." ;
-    IAO:0000115 "A height magnitude for a dimensions record." ;
-    dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
-
-hcm:unit a owl:DatatypeProperty ;
-    rdfs:label "unit" ;
-    rdfs:domain hcm:Dimensions ;
-    rdfs:range xsd:string ;
-    rdfs:comment "Unit label for dimensions values." ;
-    IAO:0000115 "A unit label for dimensions values." ;
-    dcterms:source "2022-04-28-hcm-OLOG_WEB_FRIENDLY" .
-
-hcm:installedIn a owl:ObjectProperty ;
-    rdfs:label "installed in" .
-
-hcm:locatedIn a owl:DatatypeProperty ;
-    rdfs:label "located in" .
-
-hcm:monitoredBy a owl:ObjectProperty ;
-    rdfs:label "monitored by" .
-
-semts:TimeSeriesSegment a owl:Class ;
-    rdfs:label "Time Series Segment" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty semts:during ;
-            owl:someValuesFrom time:TemporalEntity ],
-        [ a owl:Restriction ;
-            owl:onProperty semts:isPartOf ;
-            owl:someValuesFrom hcm-obs:EnvironmentObservation ] .
-
-semts:during a owl:ObjectProperty ;
-    rdfs:label "during" .
-
-semts:generated a owl:ObjectProperty ;
-    rdfs:label "generated" .
-
-semts:isPartOf a owl:ObjectProperty ;
-    rdfs:label "is part of" .
-
-sosa:hasResult a owl:DatatypeProperty,
-        owl:ObjectProperty ;
-    rdfs:label "has result" .
-
-sosa:observedProperty a owl:DatatypeProperty,
-        owl:ObjectProperty ;
-    rdfs:label "observed property" .
-
-sosa:phenomenonTime a owl:DatatypeProperty ;
-    rdfs:label "phenomenon time" .
-
-hcm:ObservationResult a owl:Class ;
-    rdfs:label "Observation Result" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty hcm:hasResult ;
-            owl:someValuesFrom hcm:MonitoredEnclosure ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom hcm:Sensor ;
-            owl:onProperty sosa:madeBySensor ] .
-
-hcm:Sensor a owl:Class ;
-    rdfs:label "Sensor" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty hcm:installedIn ;
-            owl:someValuesFrom hcm:MonitoredEnclosure ] .
-
-sosa:resultTime a owl:DatatypeProperty ;
-    rdfs:label "result time" .
-
-sosa:usedProcedure a owl:DatatypeProperty ;
-    rdfs:label "used procedure" .
+    rdfs:label "has unit" ;
+    rdfs:comment "Records the measurement unit associated with a quantitative observation result or measurement specification." ;
+    rdfs:domain [ a owl:Class ;
+        owl:unionOf ( hcm-obs:QuantityValue hcm-env:MeasurementSpecification ) ] ;
+    rdfs:range xsd:string .
 
 hcm:MonitoredEnclosure a owl:Class ;
     rdfs:label "Monitored Enclosure" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty hcm-bio:hasHousingAssignment ;
-            owl:someValuesFrom hcm:MonitoredEnclosure ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom hcm:MonitoredEnclosure ;
-            owl:onProperty hcm:hasThriveProfile ],
-        [ a owl:Restriction ;
-            owl:onProperty hcm-bio:hasMember ;
-            owl:someValuesFrom hcm:MonitoredEnclosure ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom hcm:Software ;
-            owl:onProperty sosa:madeObservation ],
-        [ a owl:Restriction ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty UNKNOWN:isOperational ],
-        [ a owl:Restriction ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty UNKNOWN:isOccupied ],
-        [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty time:hasBeginning ],
-        [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty time:hasEnd ],
-        [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty time:inXSDDateTime ],
-        [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm:hasEnclosureIdentifier ],
-        [ a owl:Restriction ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm:hasManufacturer ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom hcm-bio:ExperimentalGroup ;
-            owl:onProperty hcm-bio:belongsToGroup ],
-        [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm:locatedIn ],
-        [ a owl:Restriction ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm:hasEnrichment ],
-        [ a owl:Restriction ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty sosa:resultTime ],
-        [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty sosa:phenomenonTime ],
-        [ a owl:Restriction ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty sosa:usedProcedure ],
-        [ a owl:Restriction ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm-bio:hasDateOfBirth ],
-        [ a owl:Restriction ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm-bio:hasBiologicalSex ],
-        [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm-bio:hasStrain ],
-        [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm-bio:hasSpecies ],
-        [ a owl:Restriction ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty sosa:resultTime ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom hcm-obs:WeightObservation ;
-            owl:onProperty hcm-bio:hasWeightObservation ],
-        [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty sosa:observedProperty ],
-        [ a owl:Restriction ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm-obs:hasInterval ],
-        [ a owl:Restriction ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty sosa:usedProcedure ],
-        [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty sosa:observedProperty ],
-        [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty sosa:hasResult ],
-        [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty sosa:resultTime ],
-        [ a owl:Restriction ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty sosa:usedProcedure ],
-        [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm-obs:hasHealthStatusTerm ],
-        [ a owl:Restriction ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm-obs:hasConfidenceScore ],
-        [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm:hasNumericValue ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom hcm-obs:HealthStatusObservation ;
-            owl:onProperty hcm-bio:hasHealthStatusObservation ],
-        [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm:hasUnit ],
-        [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm-obs:hasBehaviorType ],
-        [ a owl:Restriction ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm-obs:hasConfidenceScore ],
-        [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm-env:hasGasType ],
-        [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm-env:hasValue ],
-        [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm-env:hasUnit ],
-        [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm-env:hasWidth ],
-        [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm-env:hasLength ],
-        [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm-env:hasHeight ],
-        [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm-env:hasDimUnit ],
-        [ a owl:Restriction ;
-            owl:onProperty hcm-obs: ;
-            owl:someValuesFrom hcm-bio:Subject ],
-        [ a owl:Restriction ;
-            owl:onProperty hcm-obs:assignedToEnclosure ;
-            owl:someValuesFrom hcm:MonitoredEnclosure ],
+    rdfs:comment "A physical enclosure equipped for the longitudinal monitoring of housed biological subjects." ;
+    rdfs:subClassOf hcm:Enclosure,
         [ a owl:Restriction ;
             owl:onProperty hcm:hasDimensions ;
-            owl:someValuesFrom hcm-env:EnclosureDimensions ],
+            owl:allValuesFrom hcm:EnclosureDimensions ],
         [ a owl:Restriction ;
-            owl:onProperty hcm:monitoredBy ;
-            owl:someValuesFrom hcm:Sensor ],
+            owl:onProperty hcm:hasMonitoredAnimals ;
+            owl:allValuesFrom hcm-bio:Subject ],
         [ a owl:Restriction ;
-            owl:allValuesFrom hcm:MonitoredEnclosure ;
-            owl:onProperty hcm-obs:occursIn ],
-        hcm:MonitoredEnclosure,
-        hcm:ObservationResult .
-
+            owl:onProperty hcm-env:hasEnvironment ;
+            owl:allValuesFrom hcm-env:EnvironmentProfile ],
+        [ a owl:Restriction ;
+            owl:onProperty hcm-tech:monitoredBy ;
+            owl:allValuesFrom hcm-tech:Sensor ] .

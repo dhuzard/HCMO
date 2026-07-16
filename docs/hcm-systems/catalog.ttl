@@ -265,7 +265,7 @@
     hcm:producedBy <https://w3id.org/hcmo/id/catalog/agent/de-chaumont-et-al> .
 
 <https://w3id.org/hcmo/id/catalog/system/metadatapp> a hcm:System ;
-    rdfs:label "Metadatapp (MAPP)" ;
+    rdfs:label "Metadatapp" ;
     dcterms:source "https://www.metadatapp.net" ;
     dcterms:subject "P2" ;
     dcterms:type "Metadata management (not a sensor)" ;

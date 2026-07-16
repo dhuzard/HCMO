@@ -1,27 +1,39 @@
-# HCMO / MAPP ontology — hand-authored source module: hcm-env
-# Part of the MAPP (Monitoring and Analytics for Physiological Processes) ontology.
-# Namespace: https://w3id.org/hcmo/ontology/hcm# (+ /bio#, /env#, /obs# per module).
-# Edit modules here; regenerate dist/ artifacts with: python tooling/build.py
+# HCMO 0.1.0 — env — environmental profiles, specifications, and properties
+# Promoted after expert review; see docs/paper/MODULE-MAP.md. Namespace policy: …/hcm/env#.
 #
+@prefix BFO: <http://purl.obolibrary.org/obo/BFO_> .
+@prefix hcm: <https://w3id.org/hcmo/ontology/hcm#> .
 @prefix hcm-env: <https://w3id.org/hcmo/ontology/hcm/env#> .
+@prefix hcm-obs: <https://w3id.org/hcmo/ontology/hcm/obs#> .
+@prefix IAO: <http://purl.obolibrary.org/obo/IAO_> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 hcm-env:AmbientTemperature a owl:ObjectProperty ;
-    rdfs:label "ambient temperature" .
+    rdfs:label "ambient temperature" ;
+    rdfs:comment "Relates an environmental profile, specification, or observation to the environmental property representing ambient temperature." ;
+    rdfs:domain [ a owl:Class ; owl:unionOf ( hcm-env:EnvironmentProfile hcm-env:MeasurementSpecification hcm-obs:EnvironmentObservation ) ] ;
+    rdfs:range hcm-env:EnvironmentalProperty .
 
 hcm-env:AmmoniaConcentration a owl:ObjectProperty ;
-    rdfs:label "ammonia concentration" .
+    rdfs:label "ammonia concentration" ;
+    rdfs:comment "Relates an environmental profile, specification, or observation to the environmental property representing ammonia concentration." ;
+    rdfs:domain [ a owl:Class ; owl:unionOf ( hcm-env:EnvironmentProfile hcm-env:MeasurementSpecification hcm-obs:EnvironmentObservation ) ] ;
+    rdfs:range hcm-env:EnvironmentalProperty .
 
 hcm-env:CarbonDioxideConcentration a owl:ObjectProperty ;
-    rdfs:label "carbon dioxide concentration" .
-
-hcm-env:EnclosureDimensions a owl:Class ;
-    rdfs:label "Enclosure Dimensions" .
+    rdfs:label "carbon dioxide concentration" ;
+    rdfs:comment "Relates an environmental profile, specification, or observation to the environmental property representing carbon dioxide concentration." ;
+    rdfs:domain [ a owl:Class ; owl:unionOf ( hcm-env:EnvironmentProfile hcm-env:MeasurementSpecification hcm-obs:EnvironmentObservation ) ] ;
+    rdfs:range hcm-env:EnvironmentalProperty .
 
 hcm-env:EnvironmentProfile a owl:Class ;
     rdfs:label "Environment Profile" ;
-    rdfs:subClassOf [ a owl:Restriction ;
+    rdfs:comment "A structured profile describing environmental conditions or requirements for a monitored enclosure." ;
+    rdfs:subClassOf IAO:0000030,
+        [ a owl:Restriction ;
             owl:allValuesFrom hcm-env:MeasurementSpecification ;
             owl:onProperty hcm-env:hasMeasurementSpec ],
         [ a owl:Restriction ;
@@ -32,59 +44,123 @@ hcm-env:EnvironmentProfile a owl:Class ;
             owl:onProperty hcm-env:hasLightCycle ] .
 
 hcm-env:EnvironmentalProperty a owl:Class ;
-    rdfs:label "Environmental Property" .
+    rdfs:label "Environmental Property" ;
+    rdfs:comment "An environmental parameter that may be measured, specified, or controlled in a home-cage monitoring context." ;
+    rdfs:subClassOf BFO:0000019, sosa:Property .
 
 hcm-env:LightIntensity a owl:ObjectProperty ;
-    rdfs:label "light intensity" .
+    rdfs:label "light intensity" ;
+    rdfs:comment "Relates an environmental profile, specification, or observation to the environmental property representing light intensity." ;
+    rdfs:domain [ a owl:Class ; owl:unionOf ( hcm-env:EnvironmentProfile hcm-env:MeasurementSpecification hcm-obs:EnvironmentObservation ) ] ;
+    rdfs:range hcm-env:EnvironmentalProperty .
 
 hcm-env:LightState a owl:ObjectProperty ;
-    rdfs:label "light state" .
+    rdfs:label "light state" ;
+    rdfs:comment "Relates an environmental profile, specification, or observation to the environmental property representing light state." ;
+    rdfs:domain [ a owl:Class ; owl:unionOf ( hcm-env:EnvironmentProfile hcm-env:MeasurementSpecification hcm-obs:EnvironmentObservation ) ] ;
+    rdfs:range hcm-env:EnvironmentalProperty .
 
 hcm-env:OxygenConcentration a owl:ObjectProperty ;
-    rdfs:label "oxygen concentration" .
+    rdfs:label "oxygen concentration" ;
+    rdfs:comment "Relates an environmental profile, specification, or observation to the environmental property representing oxygen concentration." ;
+    rdfs:domain [ a owl:Class ; owl:unionOf ( hcm-env:EnvironmentProfile hcm-env:MeasurementSpecification hcm-obs:EnvironmentObservation ) ] ;
+    rdfs:range hcm-env:EnvironmentalProperty .
 
 hcm-env:RelativeHumidity a owl:ObjectProperty ;
-    rdfs:label "relative humidity" .
+    rdfs:label "relative humidity" ;
+    rdfs:comment "Relates an environmental profile, specification, or observation to the environmental property representing relative humidity." ;
+    rdfs:domain [ a owl:Class ; owl:unionOf ( hcm-env:EnvironmentProfile hcm-env:MeasurementSpecification hcm-obs:EnvironmentObservation ) ] ;
+    rdfs:range hcm-env:EnvironmentalProperty .
 
 hcm-env:ThriveProfile a owl:Class ;
-    rdfs:label "Thrive Profile" .
+    rdfs:label "Thrive Profile" ;
+    rdfs:comment "A welfare or husbandry profile describing environmental conditions intended to support animal thriving." ;
+    rdfs:subClassOf IAO:0000030 .
+
+hcm-env:hasEnvironment a owl:ObjectProperty ;
+    rdfs:label "has environment" ;
+    rdfs:comment "Relates an enclosure to a structured environment profile." ;
+    rdfs:domain hcm:Enclosure ;
+    rdfs:range hcm-env:EnvironmentProfile .
+
+hcm-env:hasDarkPhaseDuration a owl:DatatypeProperty ;
+    rdfs:label "has dark phase duration" ;
+    rdfs:comment "Records the duration of the dark phase in a light cycle." ;
+    rdfs:domain hcm-env:LightCycle ;
+    rdfs:range xsd:duration .
+
+hcm-env:hasDarkPhaseStart a owl:DatatypeProperty ;
+    rdfs:label "has dark phase start" ;
+    rdfs:comment "Records the start time of the dark phase in a light cycle." ;
+    rdfs:domain hcm-env:LightCycle ;
+    rdfs:range xsd:time .
+
+hcm-env:hasDawnDuration a owl:DatatypeProperty ;
+    rdfs:label "has dawn duration" ;
+    rdfs:comment "Records the duration of the dawn transition in a light cycle." ;
+    rdfs:domain hcm-env:LightCycle ;
+    rdfs:range xsd:duration .
+
+hcm-env:hasDuskDuration a owl:DatatypeProperty ;
+    rdfs:label "has dusk duration" ;
+    rdfs:comment "Records the duration of the dusk transition in a light cycle." ;
+    rdfs:domain hcm-env:LightCycle ;
+    rdfs:range xsd:duration .
 
 hcm-env:hasGasType a owl:DatatypeProperty ;
-    rdfs:label "has gas type" .
+    rdfs:label "has gas type" ;
+    rdfs:comment "Records the gas type measured or specified in a gas concentration profile." ;
+    rdfs:domain hcm-env:GasConcentrationProfile ;
+    rdfs:range xsd:string .
 
-hcm-env:hasUnit a owl:DatatypeProperty ;
-    rdfs:label "has unit" .
+hcm-env:hasLightPhaseDuration a owl:DatatypeProperty ;
+    rdfs:label "has light phase duration" ;
+    rdfs:comment "Records the duration of the light phase in a light cycle." ;
+    rdfs:domain hcm-env:LightCycle ;
+    rdfs:range xsd:duration .
+
+hcm-env:hasThriveProfile a owl:ObjectProperty ;
+    rdfs:label "has thrive profile" ;
+    rdfs:comment "Relates a monitored enclosure to the thrive profile that specifies suitable husbandry or environmental conditions." ;
+    rdfs:domain hcm:MonitoredEnclosure ;
+    rdfs:range hcm-env:ThriveProfile .
 
 hcm-env:hasValue a owl:DatatypeProperty ;
-    rdfs:label "has value" .
-
-hcm-env:hasDimUnit a owl:DatatypeProperty ;
-    rdfs:label "has dim unit" .
-
-hcm-env:hasHeight a owl:DatatypeProperty ;
-    rdfs:label "has height" .
-
-hcm-env:hasLength a owl:DatatypeProperty ;
-    rdfs:label "has length" .
-
-hcm-env:hasWidth a owl:DatatypeProperty ;
-    rdfs:label "has width" .
+    rdfs:label "has value" ;
+    rdfs:comment "Records a literal value for an environmental measurement or specification." ;
+    rdfs:domain [ a owl:Class ; owl:unionOf ( hcm-env:MeasurementSpecification hcm-env:GasConcentrationProfile ) ] ;
+    rdfs:range rdfs:Literal .
 
 hcm-env:GasConcentrationProfile a owl:Class ;
-    rdfs:label "Gas Concentration Profile" .
+    rdfs:label "Gas Concentration Profile" ;
+    rdfs:comment "A profile describing concentrations of gases relevant to the monitored enclosure environment." ;
+    rdfs:subClassOf IAO:0000030 .
 
 hcm-env:LightCycle a owl:Class ;
-    rdfs:label "Light Cycle" .
+    rdfs:label "Light Cycle" ;
+    rdfs:comment "A description of the timing and transitions of light and dark phases in an enclosure environment." ;
+    rdfs:subClassOf IAO:0000030 .
 
 hcm-env:MeasurementSpecification a owl:Class ;
-    rdfs:label "Measurement Specification" .
+    rdfs:label "Measurement Specification" ;
+    rdfs:comment "A specification describing how an environmental property is measured, represented, or constrained." ;
+    rdfs:subClassOf IAO:0000030 .
 
 hcm-env:hasGasConcentrationProfile a owl:ObjectProperty ;
-    rdfs:label "has gas concentration profile" .
+    rdfs:label "has gas concentration profile" ;
+    rdfs:comment "Relates an environment profile to a gas concentration profile." ;
+    rdfs:domain hcm-env:EnvironmentProfile ;
+    rdfs:range hcm-env:GasConcentrationProfile .
 
 hcm-env:hasLightCycle a owl:ObjectProperty ;
-    rdfs:label "has light cycle" .
+    rdfs:label "has light cycle" ;
+    rdfs:comment "Relates an environment profile to a light cycle." ;
+    rdfs:domain hcm-env:EnvironmentProfile ;
+    rdfs:range hcm-env:LightCycle .
 
 hcm-env:hasMeasurementSpec a owl:ObjectProperty ;
-    rdfs:label "has measurement spec" .
+    rdfs:label "has measurement spec" ;
+    rdfs:comment "Relates an environment profile to a measurement specification." ;
+    rdfs:domain hcm-env:EnvironmentProfile ;
+    rdfs:range hcm-env:MeasurementSpecification .
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validation gate for the HCMO / MAPP ontology.
+"""Validation gate for the Home-Cage Monitoring Ontology (HCMO).
 
 Steps (any failure -> non-zero exit):
   1. Parse every TTL under ontology/, shapes/, examples/, and dist/.

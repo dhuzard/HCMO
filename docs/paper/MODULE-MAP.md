@@ -1,4 +1,8 @@
-# HCMO re-modularisation — term → module map (build spec for T3b)
+# HCMO re-modularisation — term → module map
+
+**Promotion status (2026-07-16): implemented.** The reviewed five-module design
+is now active in `ontology/modules/`, wired through `hcmo.yaml`, and regenerated
+in `dist/`. This document remains the decision record for the promotion.
 
 **Decided shape (HITL R5, 2026-07-03):** 5 modules
 `hcm` **core = enclosure only** · `bio` · `obs` (observations **+** results) · `env` · **`tech`** (new).
@@ -6,11 +10,11 @@
 - Namespaces: `…/hcm#` (core) · `…/hcm/bio#` · `…/hcm/obs#` · `…/hcm/env#` · `…/hcm/tech#` (new).
 - Decisions applied: results → obs (Q20); `tech` own module (Q19); `HousingAssignment` → bio (#2);
   `EnclosureDimensions` **and its dimension properties** → core (#3); QUDT/OM = open (Q21).
-- This is the spec, **not yet implemented**. All §6 micro-decisions **RESOLVED 2026-07-03**.
+- All §6 micro-decisions were resolved on 2026-07-03 and implemented in 0.1.0.
 - Placeholders (`UNKNOWN:` / `ns:` / `xsd:*`-as-property) are assigned to their likely module **and**
   flagged for T4 (define or drop). Reused external terms (§5) are **not** HCMO-minted and don't move.
 
-Source of truth for the inventory: `dist/profile.json` (31 classes · 39 obj · 74 data props).
+Source of truth for the current inventory: `dist/profile.json`.
 
 ---
 

@@ -1,8 +1,11 @@
 # HCMO contribution form field mapping
 
-This document maps the static contribution form to RDF triples for Fuseki intake.
-The form JSON remains staging data; the Turtle view is the first canonical ABox
-projection.
+This document records the static contribution form's legacy RDF projection.
+The JSON remains staging data. Its Turtle export still uses deprecated 0.0.1
+system-catalog terms and is therefore a compatibility export, not a canonical
+0.1.0 ABox. Use the examples in `examples/` for current HCMO data. Migrating
+the generic `System` and `DataProduct` form concepts needs a separate modeling
+decision; they must not be silently equated with enclosures or time series.
 
 ## Triple categories
 
