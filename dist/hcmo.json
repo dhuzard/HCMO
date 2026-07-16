@@ -491,17 +491,6 @@
       }
     },
     {
-      "@id": "_:cb342ea5d5df770e534e0ab266af2e5a6347ce553ca0ecad94b35064c9536dececc",
-      "@type": "owl:Restriction",
-      "owl:cardinality": {
-        "@type": "xsd:nonNegativeInteger",
-        "@value": "1"
-      },
-      "owl:onProperty": {
-        "@id": "hcm-obs:hasCategory"
-      }
-    },
-    {
       "@id": "_:cb971add8ad812460906e5db16397e56dc883bd46dfd66e8d960f178f6f38754ae",
       "@type": "owl:Class",
       "owl:unionOf": {
@@ -723,13 +712,13 @@
     {
       "@id": "hcm-bio:hasDateOfBirth",
       "@type": "owl:DatatypeProperty",
-      "rdfs:comment": "Records the date of birth reported for a subject.",
+      "rdfs:comment": "Records the date of birth reported for a subject. The xsd:date datatype is enforced by SHACL because it is outside the OWL 2 datatype map used by HCMO's reasoner.",
       "rdfs:domain": {
         "@id": "hcm-bio:Subject"
       },
       "rdfs:label": "has date of birth",
       "rdfs:range": {
-        "@id": "xsd:date"
+        "@id": "rdfs:Literal"
       }
     },
     {
@@ -998,37 +987,37 @@
     {
       "@id": "hcm-env:hasDarkPhaseDuration",
       "@type": "owl:DatatypeProperty",
-      "rdfs:comment": "Records the duration of the dark phase in a light cycle.",
+      "rdfs:comment": "Records the duration of the dark phase in a light cycle; xsd:duration is enforced by SHACL because that datatype is outside the OWL 2 datatype map.",
       "rdfs:domain": {
         "@id": "hcm-env:LightCycle"
       },
       "rdfs:label": "has dark phase duration",
       "rdfs:range": {
-        "@id": "xsd:duration"
+        "@id": "rdfs:Literal"
       }
     },
     {
       "@id": "hcm-env:hasDarkPhaseStart",
       "@type": "owl:DatatypeProperty",
-      "rdfs:comment": "Records the start time of the dark phase in a light cycle.",
+      "rdfs:comment": "Records the start time of the dark phase in a light cycle; xsd:time is enforced by SHACL because that datatype is outside the OWL 2 datatype map.",
       "rdfs:domain": {
         "@id": "hcm-env:LightCycle"
       },
       "rdfs:label": "has dark phase start",
       "rdfs:range": {
-        "@id": "xsd:time"
+        "@id": "rdfs:Literal"
       }
     },
     {
       "@id": "hcm-env:hasDawnDuration",
       "@type": "owl:DatatypeProperty",
-      "rdfs:comment": "Records the duration of the dawn transition in a light cycle.",
+      "rdfs:comment": "Records the duration of the dawn transition in a light cycle; xsd:duration is enforced by SHACL because that datatype is outside the OWL 2 datatype map.",
       "rdfs:domain": {
         "@id": "hcm-env:LightCycle"
       },
       "rdfs:label": "has dawn duration",
       "rdfs:range": {
-        "@id": "xsd:duration"
+        "@id": "rdfs:Literal"
       }
     },
     {
@@ -1047,13 +1036,13 @@
     {
       "@id": "hcm-env:hasDuskDuration",
       "@type": "owl:DatatypeProperty",
-      "rdfs:comment": "Records the duration of the dusk transition in a light cycle.",
+      "rdfs:comment": "Records the duration of the dusk transition in a light cycle; xsd:duration is enforced by SHACL because that datatype is outside the OWL 2 datatype map.",
       "rdfs:domain": {
         "@id": "hcm-env:LightCycle"
       },
       "rdfs:label": "has dusk duration",
       "rdfs:range": {
-        "@id": "xsd:duration"
+        "@id": "rdfs:Literal"
       }
     },
     {
@@ -1133,13 +1122,13 @@
     {
       "@id": "hcm-env:hasLightPhaseDuration",
       "@type": "owl:DatatypeProperty",
-      "rdfs:comment": "Records the duration of the light phase in a light cycle.",
+      "rdfs:comment": "Records the duration of the light phase in a light cycle; xsd:duration is enforced by SHACL because that datatype is outside the OWL 2 datatype map.",
       "rdfs:domain": {
         "@id": "hcm-env:LightCycle"
       },
       "rdfs:label": "has light phase duration",
       "rdfs:range": {
-        "@id": "xsd:duration"
+        "@id": "rdfs:Literal"
       }
     },
     {
@@ -1250,9 +1239,6 @@
         },
         {
           "@id": "_:cb292f05ec450fc6b455d93d6292541a53b1a1cd3155aacb4242171eeebaf9f3064"
-        },
-        {
-          "@id": "_:cb342ea5d5df770e534e0ab266af2e5a6347ce553ca0ecad94b35064c9536dececc"
         },
         {
           "@id": "sosa:Observation"
@@ -1377,7 +1363,7 @@
     {
       "@id": "hcm-obs:hasCategory",
       "@type": "owl:DatatypeProperty",
-      "rdfs:comment": "Records the category assigned to a categorical observation or result.",
+      "rdfs:comment": "Records the category assigned to a categorical observation result.",
       "rdfs:domain": {
         "@id": "hcm-obs:CategoricalResult"
       },
@@ -1425,13 +1411,13 @@
     {
       "@id": "hcm-obs:hasInterval",
       "@type": "owl:DatatypeProperty",
-      "rdfs:comment": "Records a duration associated with an observation; use sosa:phenomenonTime for a temporal entity.",
+      "rdfs:comment": "Records a duration associated with an observation; use sosa:phenomenonTime for a temporal entity. The xsd:duration datatype is enforced by SHACL because it is outside the OWL 2 datatype map.",
       "rdfs:domain": {
         "@id": "sosa:Observation"
       },
       "rdfs:label": "has interval",
       "rdfs:range": {
-        "@id": "xsd:duration"
+        "@id": "rdfs:Literal"
       }
     },
     {

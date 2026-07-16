@@ -53,9 +53,9 @@ hcm-bio:hasBiologicalSex a owl:DatatypeProperty ;
 
 hcm-bio:hasDateOfBirth a owl:DatatypeProperty ;
     rdfs:label "has date of birth" ;
-    rdfs:comment "Records the date of birth reported for a subject." ;
+    rdfs:comment "Records the date of birth reported for a subject. The xsd:date datatype is enforced by SHACL because it is outside the OWL 2 datatype map used by HCMO's reasoner." ;
     rdfs:domain hcm-bio:Subject ;
-    rdfs:range xsd:date .
+    rdfs:range rdfs:Literal .
 
 hcm-bio:hasHealthStatusObservation a owl:ObjectProperty ;
     rdfs:label "has health status observation" ;

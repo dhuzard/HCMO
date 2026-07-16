@@ -2,7 +2,8 @@
 """Validation gate for the Home-Cage Monitoring Ontology (HCMO).
 
 Steps (any failure -> non-zero exit):
-  1. Parse every TTL under ontology/, shapes/, examples/, and dist/.
+  1. Parse every TTL under ontology/, shapes/, and examples/, plus all generated
+     RDF distribution serializations declared in hcmo.yaml.
   2. Run pySHACL of shapes/ against each example. Examples whose name contains
      "edge" or "invalid" are NEGATIVE tests (expected to be non-conformant);
      all others are expected to conform.
@@ -38,15 +39,23 @@ def merged_graph(manifest: dict) -> Graph:
     return g
 
 
-def step_parse_all() -> tuple[bool, list[str]]:
+def step_parse_all(manifest: dict) -> tuple[bool, list[str]]:
     ok = True
     notes = []
-    patterns = ["ontology/**/*.ttl", "shapes/**/*.ttl", "examples/**/*.ttl", "dist/*.ttl"]
-    files = sorted({p for pat in patterns for p in glob.glob(str(ROOT / pat), recursive=True)})
-    for f in files:
+    patterns = ["ontology/**/*.ttl", "shapes/**/*.ttl", "examples/**/*.ttl"]
+    files = {Path(p) for pat in patterns for p in glob.glob(str(ROOT / pat), recursive=True)}
+    files.update(
+        {
+            ROOT / manifest["dist"]["merged_ttl"],
+            ROOT / manifest["dist"]["merged_owl"],
+            ROOT / manifest["dist"]["jsonld"],
+        }
+    )
+    formats = {".ttl": "turtle", ".owl": "xml", ".json": "json-ld"}
+    for f in sorted(files):
         rel = str(Path(f).relative_to(ROOT))
         try:
-            Graph().parse(f, format="turtle")
+            Graph().parse(f, format=formats[Path(f).suffix.lower()])
             notes.append(f"[OK]   parsed {rel}")
         except Exception as e:  # noqa: BLE001
             ok = False
@@ -105,8 +114,8 @@ def main() -> int:
     manifest = load_manifest()
     all_ok = True
 
-    print("== 1. Parse all TTL ==")
-    ok, notes = step_parse_all()
+    print("== 1. Parse ontology and generated RDF artifacts ==")
+    ok, notes = step_parse_all(manifest)
     print("\n".join(notes))
     all_ok &= ok
 

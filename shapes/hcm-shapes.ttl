@@ -53,6 +53,9 @@ hcm-bio:SubjectShape a sh:NodeShape ;
     sh:path hcm-bio:hasSpecies ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1
   ] ;
   sh:property [
+    sh:path hcm-bio:hasDateOfBirth ; sh:datatype xsd:date ; sh:maxCount 1
+  ] ;
+  sh:property [
     sh:path hcm-bio:hasHousingAssignment ; sh:class hcm-bio:HousingAssignment ; sh:minCount 1
   ] .
 
@@ -60,6 +63,24 @@ hcm-bio:HousingAssignmentShape a sh:NodeShape ;
   sh:targetClass hcm-bio:HousingAssignment ;
   sh:property [
     sh:path hcm-bio:assignedToEnclosure ; sh:class hcm:MonitoredEnclosure ; sh:minCount 1 ; sh:maxCount 1
+  ] .
+
+hcm-env:LightCycleShape a sh:NodeShape ;
+  sh:targetClass hcm-env:LightCycle ;
+  sh:property [
+    sh:path hcm-env:hasDarkPhaseDuration ; sh:datatype xsd:duration ; sh:maxCount 1
+  ] ;
+  sh:property [
+    sh:path hcm-env:hasDarkPhaseStart ; sh:datatype xsd:time ; sh:maxCount 1
+  ] ;
+  sh:property [
+    sh:path hcm-env:hasDawnDuration ; sh:datatype xsd:duration ; sh:maxCount 1
+  ] ;
+  sh:property [
+    sh:path hcm-env:hasDuskDuration ; sh:datatype xsd:duration ; sh:maxCount 1
+  ] ;
+  sh:property [
+    sh:path hcm-env:hasLightPhaseDuration ; sh:datatype xsd:duration ; sh:maxCount 1
   ] .
 
 hcm-tech:SensorShape a sh:NodeShape ;
@@ -96,6 +117,12 @@ hcm-obs:QuantityValueShape a sh:NodeShape ;
   ] ;
   sh:property [
     sh:path hcm:hasUnit ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1
+  ] .
+
+hcm-obs:ObservationIntervalShape a sh:NodeShape ;
+  sh:targetSubjectsOf hcm-obs:hasInterval ;
+  sh:property [
+    sh:path hcm-obs:hasInterval ; sh:datatype xsd:duration ; sh:maxCount 1
   ] .
 
 hcm-tech:TimeSeriesShape a sh:NodeShape ;

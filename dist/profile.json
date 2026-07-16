@@ -288,7 +288,7 @@
     "classes": 56,
     "datatype_properties": 73,
     "object_properties": 57,
-    "triples": 1241
+    "triples": 1237
   },
   "datatype_properties": [
     {
@@ -487,7 +487,7 @@
       "label": "has biological sex"
     },
     {
-      "comment": "Records the date of birth reported for a subject.",
+      "comment": "Records the date of birth reported for a subject. The xsd:date datatype is enforced by SHACL because it is outside the OWL 2 datatype map used by HCMO's reasoner.",
       "iri": "https://w3id.org/hcmo/ontology/hcm/bio#hasDateOfBirth",
       "label": "has date of birth"
     },
@@ -512,17 +512,17 @@
       "label": "has treatment"
     },
     {
-      "comment": "Records the duration of the dark phase in a light cycle.",
+      "comment": "Records the duration of the dark phase in a light cycle; xsd:duration is enforced by SHACL because that datatype is outside the OWL 2 datatype map.",
       "iri": "https://w3id.org/hcmo/ontology/hcm/env#hasDarkPhaseDuration",
       "label": "has dark phase duration"
     },
     {
-      "comment": "Records the start time of the dark phase in a light cycle.",
+      "comment": "Records the start time of the dark phase in a light cycle; xsd:time is enforced by SHACL because that datatype is outside the OWL 2 datatype map.",
       "iri": "https://w3id.org/hcmo/ontology/hcm/env#hasDarkPhaseStart",
       "label": "has dark phase start"
     },
     {
-      "comment": "Records the duration of the dawn transition in a light cycle.",
+      "comment": "Records the duration of the dawn transition in a light cycle; xsd:duration is enforced by SHACL because that datatype is outside the OWL 2 datatype map.",
       "iri": "https://w3id.org/hcmo/ontology/hcm/env#hasDawnDuration",
       "label": "has dawn duration"
     },
@@ -532,7 +532,7 @@
       "label": "has dim unit"
     },
     {
-      "comment": "Records the duration of the dusk transition in a light cycle.",
+      "comment": "Records the duration of the dusk transition in a light cycle; xsd:duration is enforced by SHACL because that datatype is outside the OWL 2 datatype map.",
       "iri": "https://w3id.org/hcmo/ontology/hcm/env#hasDuskDuration",
       "label": "has dusk duration"
     },
@@ -552,7 +552,7 @@
       "label": "has length"
     },
     {
-      "comment": "Records the duration of the light phase in a light cycle.",
+      "comment": "Records the duration of the light phase in a light cycle; xsd:duration is enforced by SHACL because that datatype is outside the OWL 2 datatype map.",
       "iri": "https://w3id.org/hcmo/ontology/hcm/env#hasLightPhaseDuration",
       "label": "has light phase duration"
     },
@@ -577,7 +577,7 @@
       "label": "has behavior type"
     },
     {
-      "comment": "Records the category assigned to a categorical observation or result.",
+      "comment": "Records the category assigned to a categorical observation result.",
       "iri": "https://w3id.org/hcmo/ontology/hcm/obs#hasCategory",
       "label": "has category"
     },
@@ -592,7 +592,7 @@
       "label": "has health status term"
     },
     {
-      "comment": "Records a duration associated with an observation; use sosa:phenomenonTime for a temporal entity.",
+      "comment": "Records a duration associated with an observation; use sosa:phenomenonTime for a temporal entity. The xsd:duration datatype is enforced by SHACL because it is outside the OWL 2 datatype map.",
       "iri": "https://w3id.org/hcmo/ontology/hcm/obs#hasInterval",
       "label": "has interval"
     },

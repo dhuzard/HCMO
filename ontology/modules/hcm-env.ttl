@@ -85,27 +85,27 @@ hcm-env:hasEnvironment a owl:ObjectProperty ;
 
 hcm-env:hasDarkPhaseDuration a owl:DatatypeProperty ;
     rdfs:label "has dark phase duration" ;
-    rdfs:comment "Records the duration of the dark phase in a light cycle." ;
+    rdfs:comment "Records the duration of the dark phase in a light cycle; xsd:duration is enforced by SHACL because that datatype is outside the OWL 2 datatype map." ;
     rdfs:domain hcm-env:LightCycle ;
-    rdfs:range xsd:duration .
+    rdfs:range rdfs:Literal .
 
 hcm-env:hasDarkPhaseStart a owl:DatatypeProperty ;
     rdfs:label "has dark phase start" ;
-    rdfs:comment "Records the start time of the dark phase in a light cycle." ;
+    rdfs:comment "Records the start time of the dark phase in a light cycle; xsd:time is enforced by SHACL because that datatype is outside the OWL 2 datatype map." ;
     rdfs:domain hcm-env:LightCycle ;
-    rdfs:range xsd:time .
+    rdfs:range rdfs:Literal .
 
 hcm-env:hasDawnDuration a owl:DatatypeProperty ;
     rdfs:label "has dawn duration" ;
-    rdfs:comment "Records the duration of the dawn transition in a light cycle." ;
+    rdfs:comment "Records the duration of the dawn transition in a light cycle; xsd:duration is enforced by SHACL because that datatype is outside the OWL 2 datatype map." ;
     rdfs:domain hcm-env:LightCycle ;
-    rdfs:range xsd:duration .
+    rdfs:range rdfs:Literal .
 
 hcm-env:hasDuskDuration a owl:DatatypeProperty ;
     rdfs:label "has dusk duration" ;
-    rdfs:comment "Records the duration of the dusk transition in a light cycle." ;
+    rdfs:comment "Records the duration of the dusk transition in a light cycle; xsd:duration is enforced by SHACL because that datatype is outside the OWL 2 datatype map." ;
     rdfs:domain hcm-env:LightCycle ;
-    rdfs:range xsd:duration .
+    rdfs:range rdfs:Literal .
 
 hcm-env:hasGasType a owl:DatatypeProperty ;
     rdfs:label "has gas type" ;
@@ -115,9 +115,9 @@ hcm-env:hasGasType a owl:DatatypeProperty ;
 
 hcm-env:hasLightPhaseDuration a owl:DatatypeProperty ;
     rdfs:label "has light phase duration" ;
-    rdfs:comment "Records the duration of the light phase in a light cycle." ;
+    rdfs:comment "Records the duration of the light phase in a light cycle; xsd:duration is enforced by SHACL because that datatype is outside the OWL 2 datatype map." ;
     rdfs:domain hcm-env:LightCycle ;
-    rdfs:range xsd:duration .
+    rdfs:range rdfs:Literal .
 
 hcm-env:hasThriveProfile a owl:ObjectProperty ;
     rdfs:label "has thrive profile" ;

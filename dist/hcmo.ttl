@@ -627,9 +627,9 @@ hcm-bio:hasBiologicalSex a owl:DatatypeProperty ;
 
 hcm-bio:hasDateOfBirth a owl:DatatypeProperty ;
     rdfs:label "has date of birth" ;
-    rdfs:comment "Records the date of birth reported for a subject." ;
+    rdfs:comment "Records the date of birth reported for a subject. The xsd:date datatype is enforced by SHACL because it is outside the OWL 2 datatype map used by HCMO's reasoner." ;
     rdfs:domain hcm-bio:Subject ;
-    rdfs:range xsd:date .
+    rdfs:range rdfs:Literal .
 
 hcm-bio:hasHealthStatusObservation a owl:ObjectProperty ;
     rdfs:label "has health status observation" ;
@@ -740,21 +740,21 @@ hcm-env:RelativeHumidity a owl:ObjectProperty ;
 
 hcm-env:hasDarkPhaseDuration a owl:DatatypeProperty ;
     rdfs:label "has dark phase duration" ;
-    rdfs:comment "Records the duration of the dark phase in a light cycle." ;
+    rdfs:comment "Records the duration of the dark phase in a light cycle; xsd:duration is enforced by SHACL because that datatype is outside the OWL 2 datatype map." ;
     rdfs:domain hcm-env:LightCycle ;
-    rdfs:range xsd:duration .
+    rdfs:range rdfs:Literal .
 
 hcm-env:hasDarkPhaseStart a owl:DatatypeProperty ;
     rdfs:label "has dark phase start" ;
-    rdfs:comment "Records the start time of the dark phase in a light cycle." ;
+    rdfs:comment "Records the start time of the dark phase in a light cycle; xsd:time is enforced by SHACL because that datatype is outside the OWL 2 datatype map." ;
     rdfs:domain hcm-env:LightCycle ;
-    rdfs:range xsd:time .
+    rdfs:range rdfs:Literal .
 
 hcm-env:hasDawnDuration a owl:DatatypeProperty ;
     rdfs:label "has dawn duration" ;
-    rdfs:comment "Records the duration of the dawn transition in a light cycle." ;
+    rdfs:comment "Records the duration of the dawn transition in a light cycle; xsd:duration is enforced by SHACL because that datatype is outside the OWL 2 datatype map." ;
     rdfs:domain hcm-env:LightCycle ;
-    rdfs:range xsd:duration .
+    rdfs:range rdfs:Literal .
 
 hcm-env:hasDimUnit a owl:DatatypeProperty ;
     rdfs:label "has dim unit" ;
@@ -765,9 +765,9 @@ hcm-env:hasDimUnit a owl:DatatypeProperty ;
 
 hcm-env:hasDuskDuration a owl:DatatypeProperty ;
     rdfs:label "has dusk duration" ;
-    rdfs:comment "Records the duration of the dusk transition in a light cycle." ;
+    rdfs:comment "Records the duration of the dusk transition in a light cycle; xsd:duration is enforced by SHACL because that datatype is outside the OWL 2 datatype map." ;
     rdfs:domain hcm-env:LightCycle ;
-    rdfs:range xsd:duration .
+    rdfs:range rdfs:Literal .
 
 hcm-env:hasGasType a owl:DatatypeProperty ;
     rdfs:label "has gas type" ;
@@ -791,9 +791,9 @@ hcm-env:hasLength a owl:DatatypeProperty ;
 
 hcm-env:hasLightPhaseDuration a owl:DatatypeProperty ;
     rdfs:label "has light phase duration" ;
-    rdfs:comment "Records the duration of the light phase in a light cycle." ;
+    rdfs:comment "Records the duration of the light phase in a light cycle; xsd:duration is enforced by SHACL because that datatype is outside the OWL 2 datatype map." ;
     rdfs:domain hcm-env:LightCycle ;
-    rdfs:range xsd:duration .
+    rdfs:range rdfs:Literal .
 
 hcm-env:hasUnit a owl:DatatypeProperty ;
     rdfs:label "has unit" ;
@@ -862,9 +862,9 @@ hcm-obs:hasHealthStatusTerm a owl:DatatypeProperty ;
 
 hcm-obs:hasInterval a owl:DatatypeProperty ;
     rdfs:label "has interval" ;
-    rdfs:comment "Records a duration associated with an observation; use sosa:phenomenonTime for a temporal entity." ;
+    rdfs:comment "Records a duration associated with an observation; use sosa:phenomenonTime for a temporal entity. The xsd:duration datatype is enforced by SHACL because it is outside the OWL 2 datatype map." ;
     rdfs:domain sosa:Observation ;
-    rdfs:range xsd:duration .
+    rdfs:range rdfs:Literal .
 
 hcm-obs:occursIn a owl:ObjectProperty ;
     rdfs:label "occurs in" ;
@@ -1045,6 +1045,12 @@ hcm-obs:WeightObservation a owl:Class ;
             owl:someValuesFrom hcm-bio:Subject ],
         sosa:Observation .
 
+hcm-obs:hasCategory a owl:DatatypeProperty ;
+    rdfs:label "has category" ;
+    rdfs:comment "Records the category assigned to a categorical observation result." ;
+    rdfs:domain hcm-obs:CategoricalResult ;
+    rdfs:range xsd:string .
+
 hcm-obs:hasNumericValue a owl:DatatypeProperty ;
     rdfs:label "has numeric value" ;
     rdfs:comment "Records the numeric value of a quantity result or measurement." ;
@@ -1147,12 +1153,6 @@ hcm-obs:HealthStatusObservation a owl:Class ;
             owl:someValuesFrom hcm-bio:Subject ],
         sosa:Observation .
 
-hcm-obs:hasCategory a owl:DatatypeProperty ;
-    rdfs:label "has category" ;
-    rdfs:comment "Records the category assigned to a categorical observation or result." ;
-    rdfs:domain hcm-obs:CategoricalResult ;
-    rdfs:range xsd:string .
-
 hcm-tech:monitoredBy a owl:ObjectProperty ;
     rdfs:label "monitored by" ;
     rdfs:comment "Relates a monitored enclosure to a sensor installed in or monitoring it." ;
@@ -1234,9 +1234,6 @@ hcm-obs:EnvironmentObservation a owl:Class ;
         [ a owl:Restriction ;
             owl:allValuesFrom semts:DataDimension ;
             owl:onProperty semts:hasDimension ],
-        [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm-obs:hasCategory ],
         sosa:Observation .
 
 hcm:EnclosureDimensions a owl:Class ;

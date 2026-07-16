@@ -39,6 +39,13 @@ while moved 0.0.1 IRIs are retained as deprecated mapped terms.
 - Re-authored SHACL shapes, ABox examples, JSON-LD context, and competency
   queries around the enclosure → housing assignment → subject pattern.
 - Switched RDF/XML generation to rdflib's collection-preserving serializer.
+- Repointed the automated HermiT check from the retired v2 review source tree
+  to the active generated release artifacts declared in `hcmo.yaml`.
+- Kept date, time, and duration lexical validation as SHACL constraints while
+  using OWL 2-compatible literal ranges in the ontology.
+- Removed a misplaced `hasCategory` cardinality restriction that caused every
+  environment observation, including gas-concentration observations, to be
+  inferred as a categorical result.
 
 ### Deprecated
 

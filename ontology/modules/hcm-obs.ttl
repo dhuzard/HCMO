@@ -42,10 +42,7 @@ hcm-obs:EnvironmentObservation a owl:Class ;
             owl:someValuesFrom hcm:MonitoredEnclosure ],
         [ a owl:Restriction ;
             owl:allValuesFrom semts:DataDimension ;
-            owl:onProperty semts:hasDimension ],
-        [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm-obs:hasCategory ] .
+            owl:onProperty semts:hasDimension ] .
 
 hcm-obs:GasConcentrationObservation a owl:Class ;
     rdfs:label "Gas Concentration Observation" ;
@@ -105,9 +102,9 @@ hcm-obs:hasHealthStatusTerm a owl:DatatypeProperty ;
 
 hcm-obs:hasInterval a owl:DatatypeProperty ;
     rdfs:label "has interval" ;
-    rdfs:comment "Records a duration associated with an observation; use sosa:phenomenonTime for a temporal entity." ;
+    rdfs:comment "Records a duration associated with an observation; use sosa:phenomenonTime for a temporal entity. The xsd:duration datatype is enforced by SHACL because it is outside the OWL 2 datatype map." ;
     rdfs:domain sosa:Observation ;
-    rdfs:range xsd:duration .
+    rdfs:range rdfs:Literal .
 
 hcm-obs:hasNumericValue a owl:DatatypeProperty ;
     rdfs:label "has numeric value" ;
@@ -128,7 +125,7 @@ hcm-obs:QuantityValue a owl:Class ;
 
 hcm-obs:hasCategory a owl:DatatypeProperty ;
     rdfs:label "has category" ;
-    rdfs:comment "Records the category assigned to a categorical observation or result." ;
+    rdfs:comment "Records the category assigned to a categorical observation result." ;
     rdfs:domain hcm-obs:CategoricalResult ;
     rdfs:range xsd:string .
 

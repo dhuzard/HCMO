@@ -17,6 +17,8 @@ coverage/
 
 # Python virtualenv
 .venv/
+__pycache__/
+*.py[cod]
 
 # WIDOCO documentation: generated HTML site + cached tool jar (published via CI)
 docs/widoco/
