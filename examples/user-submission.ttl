@@ -3,94 +3,60 @@
 @prefix hcm: <https://w3id.org/hcmo/ontology/hcm#> .
 @prefix hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#> .
 @prefix hcm-env: <https://w3id.org/hcmo/ontology/hcm/env#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-ex:system-example-hcm rdf:type hcm:System ;
-  rdfs:label "Example HCM system submission" ;
-  rdfs:comment "Example generated from the HCMO contribution form pattern." ;
+ex:enclosure-example-hcm a hcm:MonitoredEnclosure ;
+  rdfs:label "Example HCM enclosure submission" ;
+  rdfs:comment "Example generated from the HCMO contribution-form pattern." ;
   dcterms:contributor ex:contributor-jane-doe ;
-  dcterms:format "CSV" ;
   dcterms:relation ex:data-product-example-hcm ;
   dcterms:source "https://example.org/hcm-system" ;
-  dcterms:subject ex:subject-profile-example-hcm ;
-  dcterms:temporal ex:observation-window-example-hcm ;
-  dcterms:type "Commercial system" ;
-  hcm:hasEnclosure ex:enclosure-example-hcm ;
-  hcm:hasHardware ex:hw-example-unit ;
-  hcm:hasSensor ex:sensor-ir-camera ;
-  hcm:hasSoftware ex:sw-example-app ;
-  hcm-env:hasMeasurementSpec ex:measurement-spec-activity ;
-  hcm:producedBy ex:supplier-example-vendor .
+  hcm:hasEnclosureIdentifier "example-cage-01" ;
+  hcm:hasManufacturer "Example Vendor" ;
+  hcm:hasDimensions ex:dimensions-example-hcm ;
+  hcm:hasMonitoredAnimals ex:subject-example-hcm ;
+  hcm-env:hasEnvironment ex:environment-example-hcm ;
+  hcm-tech:monitoredBy ex:sensor-ir-camera .
 
-ex:supplier-example-vendor rdf:type hcm:Supplier ;
-  rdfs:label "Example Vendor" .
+ex:dimensions-example-hcm a hcm:EnclosureDimensions ;
+  hcm:hasHeight 20.0 ;
+  hcm:hasLength 45.0 ;
+  hcm:hasWidth 30.0 ;
+  hcm:hasDimUnit "cm" .
 
-ex:hw-example-unit rdf:type hcm:Hardware ;
-  rdfs:label "Example control unit" .
+ex:environment-example-hcm a hcm-env:EnvironmentProfile ;
+  hcm-env:hasMeasurementSpec ex:measurement-spec-activity .
 
-ex:sw-example-app rdf:type hcm:Software ;
-  rdfs:label "Example analytics app" .
+ex:measurement-spec-activity a hcm-env:MeasurementSpecification ;
+  rdfs:label "Activity index" .
 
-ex:enclosure-example-hcm rdf:type hcm:Enclosure ;
-  dcterms:type "Retrofit module for standard cage" ;
-  hcm:hasSpaceRegion ex:space-example-hcm .
+ex:sensor-ir-camera a hcm-tech:Sensor ;
+  rdfs:label "Infrared camera" ;
+  hcm-tech:hasSensorIdentifier "camera-01" ;
+  hcm-tech:hasSensorTechnology "infrared video" ;
+  hcm-tech:hasSamplingRate "4 Hz" ;
+  hcm-tech:installedIn ex:enclosure-example-hcm .
 
-ex:space-example-hcm rdf:type hcm:PhysicalSpace ;
-  rdfs:label "Example HCM system submission enclosure space" ;
-  hcm:hasDimensions ex:dimensions-example-hcm .
-
-ex:dimensions-example-hcm rdf:type hcm:Dimensions ;
-  hcm:height "20.0"^^xsd:decimal ;
-  hcm:length "45.0"^^xsd:decimal ;
-  hcm:unit "cm" ;
-  hcm:width "30.0"^^xsd:decimal .
-
-ex:sensor-ir-camera rdf:type hcm:Sensor ;
-  rdfs:label "IR camera" ;
-  dcterms:type "Infrared video sensor" ;
-  hcm:captures ex:behavior-profile-example-hcm .
-
-ex:subject-profile-example-hcm rdf:type hcm-bio:Subject ;
-  rdfs:label "Example HCM system submission supported subject profile" ;
-  rdfs:comment "Group housed" ;
-  dcterms:extent "12 cages" ;
-  hcm:hasCapacity "4"^^xsd:integer ;
-  hcm-bio:hasBiologicalSex "Female" ;
+ex:subject-example-hcm a hcm-bio:Subject ;
+  rdfs:label "Example mouse subject" ;
+  hcm-bio:hasBiologicalSex "female" ;
   hcm-bio:hasSpecies "Mus musculus" ;
-  hcm-bio:hasStrain "C57BL/6J" .
+  hcm-bio:hasStrain "C57BL/6J" ;
+  hcm-bio:hasHousingAssignment ex:housing-assignment-example-hcm .
 
-ex:behavior-profile-example-hcm rdf:type hcm:BehaviorAndPhysiology ;
-  rdfs:label "Example HCM system submission behavior profile" ;
-  rdfs:comment "Activity and exploration bouts" ;
-  hcm:hasCircadianRhythm ex:circadian-profile-example-hcm .
+ex:housing-assignment-example-hcm a hcm-bio:HousingAssignment ;
+  hcm-bio:assignedToEnclosure ex:enclosure-example-hcm .
 
-ex:circadian-profile-example-hcm rdf:type hcm:CircadianRhythm ;
-  rdfs:label "Nocturnal peak" .
-
-ex:measurement-spec-activity rdf:type hcm-env:MeasurementSpecification ;
-  rdfs:label "Activity index" ;
-  hcm:hasSamplingRate "4 Hz" ;
-  hcm-env:hasUnit "count" .
-
-ex:observation-window-example-hcm rdf:type hcm:ObservationWindow ;
-  rdfs:label "Example HCM system submission observation window" ;
-  dcterms:type "Continuous" ;
-  hcm:durationHours "48"^^xsd:decimal ;
-  hcm:isExtendable "true"^^xsd:boolean .
-
-ex:data-product-example-hcm rdf:type hcm:DataProduct ;
-  rdfs:label "Example HCM system submission data output" ;
-  rdfs:comment "timestamp,cage_id,activity_index" ;
+ex:data-product-example-hcm a hcm-tech:TimeSeries ;
+  rdfs:label "Example CSV activity output" ;
   dcterms:license "CC BY 4.0" ;
-  hcm:hasDescription "4 MB/cage/day" ;
-  hcm:hasFileFormat "CSV" ;
-  hcm:hasSamplingRate "4 Hz" ;
-  hcm:hasStoragePath "https://example.org/hcm-system/day-01.csv" .
+  hcm-tech:hasFileFormat "text/csv" ;
+  hcm-tech:hasSamplingRate "4 Hz" ;
+  hcm-tech:hasStoragePath "https://example.org/hcm-system/day-01.csv" .
 
-ex:contributor-jane-doe rdf:type schema:Person ;
+ex:contributor-jane-doe a schema:Person ;
   schema:affiliation "Example Institute" ;
   schema:email "jane@example.org" ;
   schema:name "Jane Doe" ;

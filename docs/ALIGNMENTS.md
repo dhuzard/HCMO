@@ -1,21 +1,35 @@
 # Alignments
 
-SOSA/SSN
-- `hcm:Sensor` ⊑ `sosa:Sensor`
-- `hcm:Actuator` ⊑ `sosa:Actuator`
-- `hcm:System` ⊑ `sosa:Platform`
-- `hcm:hasSensor` ⊑ `sosa:hosts`
+## Upper-level anchors
 
-OWL-Time
-- `hcm:ObservationWindow` ⊑ `time:TemporalEntity`
+- Physical enclosures, subjects, sensors, actuators, and hardware are anchored
+  under BFO material entities.
+- Experimental groups are BFO object aggregates.
+- Environmental properties are BFO qualities and `sosa:Property` instances.
+- Profiles, specifications, assignments, software, and recorded result/data
+  resources are anchored under the IAO information-content hierarchy.
 
-PROV and Agents
-- `hcm:producedBy` ⊑ `prov:wasAttributedTo`
-- `hcm:Supplier` ⊑ `prov:Agent`, `schema:Organization`
+## SOSA
 
-BFO
-- `hcm:BehaviorAndPhysiology` ⊑ `bfo:0000015` (process)
+- `hcm-tech:Sensor` is a subclass of `sosa:Sensor`.
+- `hcm-tech:Actuator` is a subclass of `sosa:Actuator`.
+- HCMO observation classes are subclasses of `sosa:Observation`.
+- HCMO result classes are subclasses of `sosa:Result`.
+- `hcm-tech:captures` is a subproperty of `sosa:observes`.
+- HCMO uses canonical `sosa:hasResult`, `sosa:madeBySensor`, and
+  `sosa:hasFeatureOfInterest`; it does not duplicate those relations.
 
-Units (QUDT/OM) – Roadmap
-- Keep datatype-based dimensions initially.
-- Future: model width/length/height as `qudt:QuantityValue` with `qudt:numericValue` and `qudt:unit` (e.g., `unit:CentiM`).
+SOSA roles are applied selectively. A domain class is not made a subclass of
+`sosa:FeatureOfInterest` merely because one of its instances can be observed.
+
+## OWL-Time
+
+Observation intervals are represented directly with `time:Interval` and
+`time:hasBeginning` / `time:hasEnd`. The former
+`hcm:OWL-Timeintervaltable` artifact is deprecated without replacement.
+
+## Units roadmap
+
+HCMO 0.1.0 retains datatype values plus explicit unit strings. Adopting QUDT or
+OM quantity-value patterns remains an open, separately reviewed modeling
+decision.

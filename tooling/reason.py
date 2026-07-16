@@ -1,25 +1,28 @@
 #!/usr/bin/env python3
-"""Run an OWL reasoner over the clean HCMO v2 artifact.
+"""Run HermiT over the active generated HCMO release artifacts.
 
-This is the reproducible counterpart to the Protege/HermiT check requested for
-the v2 review. It targets the clean BioPortal/Protege RDF/XML file, which is
-generated from ontology/v2/modules while excluding unresolved placeholders.
+The source paths come from ``hcmo.yaml`` so this check follows the same release
+contract as the build and validation gates. It rejects object/datatype punning,
+the retired UNKNOWN namespace, and inconsistent classes.
 """
 from __future__ import annotations
 
 import argparse
-import subprocess
-import sys
 from pathlib import Path
 
 import owlready2.reasoning as owl_reasoning
+import yaml
 from owlready2 import default_world, get_ontology, sync_reasoner
 from rdflib import Graph, URIRef
-from rdflib.namespace import RDF, OWL
+from rdflib.namespace import OWL, RDF
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_SOURCE = ROOT / "ontology" / "v2" / "hcmo-v2-merged-clean.owl"
-DEFAULT_TTL = ROOT / "ontology" / "v2" / "hcmo-v2-merged-clean.ttl"
+MANIFEST = ROOT / "hcmo.yaml"
+
+
+def load_paths() -> tuple[Path, Path]:
+    manifest = yaml.safe_load(MANIFEST.read_text(encoding="utf-8"))
+    return ROOT / manifest["dist"]["merged_owl"], ROOT / manifest["dist"]["merged_ttl"]
 
 
 def rel(path: Path) -> str:
@@ -27,11 +30,6 @@ def rel(path: Path) -> str:
         return path.resolve().relative_to(ROOT).as_posix()
     except ValueError:
         return str(path)
-
-
-def build_clean() -> None:
-    cmd = [sys.executable, str(ROOT / "tooling" / "build_v2_clean.py")]
-    subprocess.run(cmd, cwd=ROOT, check=True)
 
 
 def parse_graphs(source: Path, ttl: Path | None) -> tuple[int, int, int, int]:
@@ -44,7 +42,7 @@ def parse_graphs(source: Path, ttl: Path | None) -> tuple[int, int, int, int]:
     data_props = set(graph.subjects(RDF.type, OWL.DatatypeProperty))
     both = object_props & data_props
     if both:
-        values = ", ".join(sorted(str(x) for x in both))
+        values = ", ".join(sorted(str(value) for value in both))
         raise SystemExit(f"ERROR: properties typed both object and datatype: {values}")
     return len(graph), len(classes), len(object_props), len(data_props)
 
@@ -63,30 +61,25 @@ def count_unknown(source: Path) -> int:
 def run_hermit(source: Path, java_memory: int) -> list[str]:
     owl_reasoning.JAVA_MEMORY = java_memory
     ontology = get_ontology(str(source.resolve())).load()
-    loaded_classes = len(list(ontology.classes()))
-    print(f"Loaded classes: {loaded_classes}")
+    print(f"Loaded classes: {len(list(ontology.classes()))}")
     sync_reasoner(debug=1)
     return [cls.name for cls in default_world.inconsistent_classes()]
 
 
 def main() -> int:
+    default_source, default_ttl = load_paths()
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--source",
         type=Path,
-        default=DEFAULT_SOURCE,
-        help="Clean RDF/XML artifact to reason over.",
+        default=default_source,
+        help="Generated RDF/XML artifact to reason over.",
     )
     parser.add_argument(
         "--ttl",
         type=Path,
-        default=DEFAULT_TTL,
-        help="Optional clean Turtle artifact to parse as a companion check.",
-    )
-    parser.add_argument(
-        "--build-clean",
-        action="store_true",
-        help="Regenerate clean v2 artifacts before reasoning.",
+        default=default_ttl,
+        help="Optional generated Turtle artifact to parse as a companion check.",
     )
     parser.add_argument(
         "--java-memory",
@@ -96,13 +89,10 @@ def main() -> int:
     )
     args = parser.parse_args()
 
-    if args.build_clean:
-        build_clean()
-
     source = args.source if args.source.is_absolute() else ROOT / args.source
     ttl = args.ttl if args.ttl is None or args.ttl.is_absolute() else ROOT / args.ttl
     if not source.exists():
-        raise SystemExit(f"ERROR: source not found: {rel(source)}")
+        raise SystemExit(f"ERROR: source not found: {rel(source)}; run tooling/build.py first")
 
     triples, classes, object_props, data_props = parse_graphs(source, ttl)
     unknown_count = count_unknown(source)
@@ -119,7 +109,7 @@ def main() -> int:
         print(f"  - {name}")
 
     if unknown_count:
-        raise SystemExit("ERROR: clean artifact contains UNKNOWN placeholder IRIs")
+        raise SystemExit("ERROR: active artifact contains UNKNOWN placeholder IRIs")
     if inconsistent:
         raise SystemExit("ERROR: HermiT reported inconsistent classes")
     print("HermiT consistency check passed.")

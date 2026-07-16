@@ -10,7 +10,7 @@ Never "just edit labels". Treat every change as a semantic change unless proven 
 
 ## Repo map (authoritative paths)
 - Release manifest (the contract downstream tools read): `hcmo.yaml` — its **shape is an API**; keep it stable.
-- Hand-authored ontology source modules: `ontology/modules/*.ttl` (`hcm-core`, `hcm-bio`, `hcm-env`, `hcm-obs`).
+- Hand-authored ontology source modules: `ontology/modules/*.ttl` (`hcm-core`, `hcm-bio`, `hcm-env`, `hcm-obs`, `hcm-tech`, and the migration-only `hcm-compat`).
 - JSON-LD context: `ontology/context.jsonld`
 - Generated artifacts (**never hand-edit**): `dist/` (`hcmo.ttl` merged/canonical, `hcmo.owl`, `hcmo.json`, `profile.json`).
 - Shapes / constraints: `shapes/`
@@ -25,7 +25,7 @@ If these paths change, update this map and `hcmo.yaml` before editing.
 ## Namespace (authoritative)
 - Base namespace: `https://w3id.org/hcmo/ontology/hcm#`
 - Ontology IRI: `https://w3id.org/hcmo/ontology/hcm` · versionIRI `…/hcm/0.0.1`
-- Module sub-namespaces: `…/hcm/bio#`, `…/hcm/env#`, `…/hcm/obs#`
+- Module sub-namespaces: `…/hcm/bio#`, `…/hcm/env#`, `…/hcm/obs#`, `…/hcm/tech#`
 - Never re-mint IRIs for existing concepts. Deprecate instead. Keep the namespace exactly as authored; if it must change, call it out and bump `owl:versionIRI`.
 
 ## Ontology style & best practices (non-negotiable)

@@ -1,84 +1,49 @@
-# Ontology Architecture (Modular Plan)
+# Ontology architecture
 
-This document defines a modular architecture for HCMO so the core ontology
-stays stable while allowing optional, domain-specific extensions (e.g., animal
-taxa, anatomy, devices) to be connected safely.
+HCMO 0.1.0 is authored as five domain modules plus one migration-only
+compatibility module. The release manifest `hcmo.yaml` is the authoritative
+module list; `dist/` is generated from that manifest.
 
-## Goals
-- Keep the core stable and minimal.
-- Isolate alignments and domain extensions in separate modules.
-- Enable optional bridge modules to connect to external ontologies without
-  forcing those imports on all users.
+## Active modules
 
-## Current state
-- Core terms and axioms live in `ontology/hcm.ttl`.
-- External alignments live in `ontology/hcm-align.ttl`.
-- Metadata and imports live in `ontology/hcm-metadata.ttl`.
+- `ontology/modules/hcm-core.ttl` (`hcm:`): monitored enclosures, enclosure
+  dimensions, enrichment, and stable enclosure relations.
+- `ontology/modules/hcm-bio.ttl` (`hcm-bio:`): subjects, experimental groups,
+  study factors, and housing assignments.
+- `ontology/modules/hcm-env.ttl` (`hcm-env:`): environmental profiles,
+  environmental properties, light cycles, and measurement specifications.
+- `ontology/modules/hcm-obs.ttl` (`hcm-obs:`): SOSA observations and results.
+- `ontology/modules/hcm-tech.ttl` (`hcm-tech:`): sensors, actuators, hardware,
+  software, and time-series resources.
+- `ontology/modules/hcm-compat.ttl`: deprecated 0.0.1 HCMO IRIs and explicit
+  replacement mappings. New data must not use this vocabulary.
 
-## Target modular architecture
+The former `ontology/v2/` draft has been promoted into the active module set.
+Its old generated review artifacts remain only as historical evidence.
 
-### v2 review architecture (current paper track)
-The resource-paper draft currently uses a five-module proposal under
-`ontology/v2/`:
+## Dependency policy
 
-- `hcm` core: the monitored enclosure hub, dimensions, and stable enclosure
-  relations.
-- `bio`: biological subjects, experimental groups, study factors, and housing
-  assignments.
-- `obs`: observations and observation results.
-- `env`: environmental profiles, properties, and measurement specifications.
-- `tech`: sensors, hardware, software, and time-series/data-handling concerns.
+HCMO reuses external classes and properties by reference and does not redeclare
+them locally. The active ontology uses:
 
-This v2 proposal is intentionally staged in parallel until co-author validation.
-Once accepted, it should replace `ontology/modules/`, be wired into `hcmo.yaml`,
-and regenerate `dist/`.
+- BFO and IAO as upper-level anchors;
+- SOSA for observation, result, sensor, actuator, observed-property, and
+  feature-of-interest roles;
+- OWL-Time for temporal intervals;
+- Dublin Core Terms for ontology metadata and provenance.
 
-The v2 module graph knowingly accepts a small `bio` <-> `obs` cycle for V1:
-`bio` owns subject-side convenience links such as `hasWeightObservation`,
-`hasHealthStatusObservation`, and `hasBehaviorObservation`, while `obs` owns
-observation classes and uses SOSA `hasFeatureOfInterest` to point back to the
-biological subject being observed. This is harmless for the merged ontology and
-clear for users; it only means the modules are not a strict acyclic
-`owl:imports` stack.
+The `bio` and `obs` modules intentionally have a small semantic cycle:
+subject-side convenience properties live in `bio`, while observations point to
+their subject with `sosa:hasFeatureOfInterest`. HCMO is released as one merged
+graph, so this does not create an import-order dependency.
 
-### 1) Core module (authoritative, minimal)
-File: `ontology/hcm.ttl`
-Scope:
-- System composition (`hcm:System`, `hcm:hasEnclosure`, `hcm:hasSensor`, ...)
-- Physical space and dimensions
-- Time interval model
-- Behavior/physiology process
-- Needs (boolean decomposition)
+## Extension rules
 
-### 2) Alignment module (standards mapping only)
-File: `ontology/hcm-align.ttl`
-Scope:
-- SOSA/SSN, OWL-Time, PROV, BFO alignments
-- No local constraints or domain extensions
-
-### 3) Metadata module (ontology metadata + imports)
-File: `ontology/hcm-metadata.ttl`
-Scope:
-- Ontology identity, version IRI, licensing, and import list
-
-### 4) Bridge modules (optional, domain-specific alignments)
-Pattern: `ontology/hcm-bridge-<domain>.ttl`
-Scope:
-- Connect HCMO assets to external ontologies (taxa, anatomy, devices)
-- Keep all external imports and equivalences in these files
-Examples:
-- `ontology/hcm-bridge-animal.ttl` (animal taxa/anatomy)
-- Future: `ontology/hcm-bridge-device.ttl` (device registries)
-
-## Bridge module rules
-- Each bridge module must import `https://w3id.org/hcmo/ontology/hcm`.
-- External ontology imports must live ONLY in bridge modules.
-- Prefer `rdfs:subClassOf` or `skos:exactMatch` over `owl:equivalentClass`
-  unless the equivalence is defensible under reasoning.
-- Do not move or re-mint HCM IRIs when bridging.
-
-## Migration notes (future)
-If the core grows, consider splitting by domain:
-- `hcm-system.ttl`, `hcm-observation.ttl`, `hcm-assets.ttl`, `hcm-needs.ttl`
-This should be done with explicit import wiring and a single released entry
-point (metadata module).
+- Keep the core module limited to enclosure concepts shared across use cases.
+- Add each term to the module matching its namespace.
+- Put application-specific cardinality and intake rules in `shapes/`, not in
+  the domain class hierarchy.
+- Prefer a bridge document or module for ISA, QUDT/OM, taxon, and anatomy
+  mappings until an equivalence is justified.
+- Never re-mint a published HCMO IRI. Deprecate it and map a replacement when a
+  defensible replacement exists.

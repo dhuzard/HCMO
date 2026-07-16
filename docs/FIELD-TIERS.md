@@ -24,7 +24,7 @@ This inventory enumerates the fields used by the HCMO authoring form and classif
 | Interval ID | Identifier for the explicit time interval resource. | Mandatory to model the interval as a distinct node. | interval-001 | Non-empty string. | Links behaviours, sessions, and outputs temporally. |
 | Duration (hours) | Duration of the session in hours. | Required for SHACL constraints; ensures 24h maximum. | 24 | Numeric; must be <= 24. | Supports SLA reporting and throughput metrics. |
 | Extendable Flag | Boolean indicating whether the session can be extended. | Mandatory to capture limited interaction policy. | true | Must be true/false value. | Informs welfare and staffing decisions. |
-| Sensor Inventory | At least one sensor entry with identifier and label. | Required to satisfy SHACL `hcm:hasSensor` constraint. | IR_Sensor_1 | At least one sensor ID must be present. | Enables mapping of sensed signals to ontology nodes. |
+| Sensor Inventory | At least one sensor entry with identifier and label. | Required to satisfy the monitored-enclosure and sensor SHACL constraints. | IR_Sensor_1 | The enclosure uses `hcm-tech:monitoredBy`; each sensor needs `hcm-tech:hasSensorIdentifier` and inverse `hcm-tech:installedIn`. | Enables mapping of sensed signals to ontology nodes. |
 | Actuator Inventory | At least one actuator entry with identifier and label. | Required to represent actuators in the system. | Feeder_1 | At least one actuator ID must be present. | Supports intervention tracing and automation planning. |
 
 ## Recommended Fields

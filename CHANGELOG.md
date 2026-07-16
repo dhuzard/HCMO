@@ -1,7 +1,101 @@
 # Changelog
 
-All notable changes to the HCMO / MAPP ontology are documented here. Versions
+All notable changes to the Home-Cage Monitoring Ontology (HCMO) are documented here. Versions
 track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
+
+## [0.1.0] - 2026-07-16
+
+Expert-review cleanup and promotion of the modular HCMO term set. This is a
+pre-1.0 breaking release: the ontology IRI and base namespace are unchanged,
+while moved 0.0.1 IRIs are retained as deprecated mapped terms.
+
+### Added
+
+- `hcm-tech` module for sensors, actuators, hardware, software, and time-series
+  metadata.
+- `hcm-compat` module preserving valid published 0.0.1 HCMO IRIs with
+  `owl:deprecated true` and, where justified, `dcterms:isReplacedBy`.
+- BFO/IAO upper anchors for active domain classes and SOSA anchors for sensors,
+  actuators, observations, properties, and results.
+- Explicit `rdfs:domain` and `rdfs:range` axioms for every active HCMO object and
+  datatype property; generic `hasName`/`hasDescription` use `owl:Thing` domains.
+- ISA/ISA RO-Crate mapping guidance and an executable RDF bridge example for
+  animal sources, housing assignments, cages, sensors, observations, and files.
+
+### Changed
+
+- Corrected ontology title/description and repository branding from MAPP to
+  **Home-Cage Monitoring Ontology (HCMO)**.
+- Replaced the flattened `MonitoredEnclosure` restriction block with a coherent
+  hierarchy rooted in `hcm:Enclosure` and scoped links to dimensions, subjects,
+  environment profiles, and sensors.
+- Removed the invalid `StudyFactors rdfs:subClassOf MonitoredEnclosure` axiom;
+  study factors are now modeled as independent-variable information-content
+  entities, with the preferred singular label “Study Factor”.
+- Added definitions to all active terms and completed active property metadata.
+- Standardized observation/result modeling on SOSA, including canonical
+  `sosa:hasResult`; observation subclasses now anchor to `sosa:Observation` and
+  result subclasses to `sosa:Result`.
+- Re-authored SHACL shapes, ABox examples, JSON-LD context, and competency
+  queries around the enclosure → housing assignment → subject pattern.
+- Switched RDF/XML generation to rdflib's collection-preserving serializer.
+- Repointed the automated HermiT check from the retired v2 review source tree
+  to the active generated release artifacts declared in `hcmo.yaml`.
+- Kept date, time, and duration lexical validation as SHACL constraints while
+  using OWL 2-compatible literal ranges in the ontology.
+- Removed a misplaced `hasCategory` cardinality restriction that caused every
+  environment observation, including gas-concentration observations, to be
+  inferred as a categorical result.
+
+### Deprecated
+
+- `hcm:OWL-Timeintervaltable`: invalid Chowlk/spreadsheet artifact, with no
+  asserted replacement. SOSA temporal properties and OWL-Time entities are the
+  supported temporal model.
+- Local 0.0.1 duplicates such as `hcm:hasResult` and `hcm-env:hasUnit`. Use
+  canonical `sosa:hasResult` for new observations and consolidated
+  `hcm:hasUnit` for units; no equivalence is asserted for the directionally
+  inconsistent legacy `hcm:hasResult` relation.
+- Other superseded 0.0.1 terms listed in `ontology/modules/hcm-compat.ttl`.
+
+### Removed
+
+- Active `UNKNOWN:`/`ns:` placeholders, datatype IRIs misdeclared as properties,
+  and the dangling bare `https://w3id.org/hcmo/ontology/hcm/obs#` object property.
+  Their original source is retained under `ontology/legacy/mapp-0.0.1/`.
+
+### Renamed
+
+- `hcm:Actuator` -> `hcm-tech:Actuator`
+- `hcm:CategoricalResult` -> `hcm-obs:CategoricalResult`
+- `hcm:Dimensions` -> `hcm:EnclosureDimensions`
+- `hcm:Hardware` -> `hcm-tech:Hardware`
+- `hcm:ObservationResult` -> `hcm-obs:ObservationResult`
+- `hcm:QuantityValue` -> `hcm-obs:QuantityValue`
+- `hcm:Sensor` -> `hcm-tech:Sensor`
+- `hcm:Software` -> `hcm-tech:Software`
+- `hcm:Structural&LocationTable` -> `hcm-obs:LocationResultTable`
+- `hcm:StudyFactors` -> `hcm-bio:StudyFactors`
+- `hcm:TimeSeries` -> `hcm-tech:TimeSeries`
+- `hcm-env:EnclosureDimensions` -> `hcm:EnclosureDimensions`
+- `hcm-obs:HousingAssignment` -> `hcm-bio:HousingAssignment`
+- `hcm-obs:assignedToEnclosure` -> `hcm-bio:assignedToEnclosure`
+- `hcm:captures` -> `hcm-tech:captures`
+- `hcm:communicatesWith` -> `hcm-tech:communicatesWith`
+- `hcm:installedIn` -> `hcm-tech:installedIn`
+- `hcm:monitoredBy` -> `hcm-tech:monitoredBy`
+- `hcm:hasFileFormat` -> `hcm-tech:hasFileFormat`
+- `hcm:hasSamplingRate` -> `hcm-tech:hasSamplingRate`
+- `hcm:hasStoragePath` -> `hcm-tech:hasStoragePath`
+- `hcm:hasVersion` -> `hcm-tech:hasVersion`
+- `hcm:hasCategory` -> `hcm-obs:hasCategory`
+- `hcm:hasNumericValue` -> `hcm-obs:hasNumericValue`
+- `hcm:hasThriveProfile` -> `hcm-env:hasThriveProfile`
+- `hcm-env:hasDimUnit` -> `hcm:hasDimUnit`
+- `hcm-env:hasHeight` -> `hcm:hasHeight`
+- `hcm-env:hasLength` -> `hcm:hasLength`
+- `hcm-env:hasUnit` -> `hcm:hasUnit`
+- `hcm-env:hasWidth` -> `hcm:hasWidth`
 
 ## [0.0.1] - 2026-06-11
 

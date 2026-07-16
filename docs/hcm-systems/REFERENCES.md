@@ -73,7 +73,7 @@ with data. ⭐ = high priority for finding **actual datasets or data schemas** t
 ## Metadata / interoperability / standards (directly relevant to HCMO)
 - ⭐ **Bains RS, Huzard D, McCutcheon JE, Boguszewski P, Virag D, Restivo L, Lewejohann L, et al. (2025).** Too big to lose — a FAIR repository for biomedical data derived from home-cage monitoring. *OSF*. 10.31219/osf.io/fsg83_v1. — *HCM definition Olog + FAIR data model; core input for HCMO alignment.*
 - **TEATIME** (COST Action CA20135): HCM definition — https://www.cost-teatime.org/about/hcm-definition/ ; behaviour database — thebehaviourdatabase.org
-- **Metadatapp (MAPP)** — https://www.metadatapp.net
+- **Metadatapp** — https://www.metadatapp.net
 
 ## AI / method references (for derived observations & mock keypoint data)
 - Mathis A, et al. (2018) DeepLabCut. *Nat Neurosci* 21(9):1281–1289.

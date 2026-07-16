@@ -1,9 +1,10 @@
 PREFIX hcm: <https://w3id.org/hcmo/ontology/hcm#>
+PREFIX hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#>
 
-SELECT ?system ?sensor ?behavior
+SELECT ?enclosure ?sensor ?property
 WHERE {
-  ?system a hcm:System ; hcm:hasSensor ?sensor .
-  OPTIONAL { ?sensor hcm:captures ?behavior }
+  ?enclosure a hcm:MonitoredEnclosure ;
+             hcm-tech:monitoredBy ?sensor .
+  OPTIONAL { ?sensor hcm-tech:captures ?property }
 }
-ORDER BY ?system ?sensor
-
+ORDER BY ?enclosure ?sensor ?property

@@ -23,9 +23,8 @@ comparer, agréger ou partager les résultats entre dispositifs et entre
 laboratoires reste très difficile, au détriment de la science ouverte et des
 principes FAIR.
 
-HCMO (*Home-Cage Monitoring Ontology*), développée dans le cadre MAPP
-(*Monitoring and Analytics for Physiological Processes*), propose un modèle
-sémantique partagé pour ce domaine. Elle décrit les enceintes monitorées, les
+HCMO (*Home-Cage Monitoring Ontology*) propose un modèle sémantique partagé
+pour ce domaine. Elle décrit les enceintes monitorées, les
 sujets biologiques et groupes expérimentaux, l'environnement et ses mesures, les
 observations et résultats, ainsi que les capteurs, le matériel et les logiciels
 qui produisent les données. L'ontologie s'appuie sur les standards du Web

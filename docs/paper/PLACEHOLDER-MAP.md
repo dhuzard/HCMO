@@ -1,9 +1,9 @@
 # HCMO v2 placeholder cleanup map
 
-Status: applied cleanup map for T4. This file records how each former
-`UNKNOWN:`/placeholder term in `ontology/v2/modules/hcm-placeholders.ttl` was
-handled on the v2 review branch. The goal is to make the semantic decisions
-auditable before co-author sign-off.
+Status: implemented historical decision record for T4. This file records how
+each former `UNKNOWN:`/placeholder term from the v2 review source was handled.
+The resolved modules are now active in `ontology/modules/`; the original 0.0.1
+export is retained under `ontology/legacy/mapp-0.0.1/`.
 
 ## Already resolved in v2
 

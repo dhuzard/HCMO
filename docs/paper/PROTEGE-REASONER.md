@@ -1,103 +1,39 @@
-# Protege reasoner check for HCMO v2
+# Protégé and HermiT consistency check
 
-Status: reproducible reasoner check in place; Protege Desktop open check and
-manual HermiT UI pass recorded.
+Status: the automated reasoner targets the active HCMO release artifacts. The
+pre-promotion v2 results remain recorded below as historical evidence.
 
-Primary source to test in Protege:
-`ontology/v2/hcmo-v2-merged-clean.owl`.
+## Active release protocol
 
-Review source with placeholders, if needed: `ontology/v2/hcmo-v2-merged.ttl`.
-
-## Goal
-
-Open the v2 merged ontology in Protege and run an OWL reasoner to check logical
-coherence before promotion. This is an ontology-level check, not a data-shape
-validation pass.
-
-Current Protege result: Protege Desktop 5.6.9 opens the clean artifact and
-reports successful ontology/imports-closure loading in its log.
-
-Current automated result: the clean artifact loads 32 classes, contains no
-`UNKNOWN:` IRIs, and HermiT reports 0 inconsistent classes.
-
-## Protocol
-
-1. Open Protege.
-2. Load `ontology/v2/hcmo-v2-merged-clean.owl`.
-3. Confirm that the ontology IRI is `https://w3id.org/hcmo/ontology/hcm`.
-4. Confirm that the class hierarchy shows `hcm:MonitoredEnclosure` and
-   `hcm:Enclosure` as classes, not properties.
-5. Confirm that `time:hasBeginning` and `time:hasEnd` appear as object
-   properties.
-6. Start with ELK if available for a fast classification pass.
-7. Run HermiT for the stricter OWL DL consistency check.
-8. Record:
-   - whether the ontology is consistent;
-   - any unsatisfiable classes;
-   - unexpected inferred superclass/subclass placements;
-   - parse/import warnings shown by Protege;
-   - whether any `UNKNOWN:` placeholders appear in the loaded clean file.
-
-## Reproducible command-line check
-
-The same HermiT-family consistency check is available without opening Protege:
+1. Run `python tooling/build.py`.
+2. Open `dist/hcmo.owl` in Protégé.
+3. Confirm the ontology IRI is `https://w3id.org/hcmo/ontology/hcm` and the
+   version IRI matches `hcmo.yaml`.
+4. Run HermiT and record consistency, unsatisfiable classes, and warnings.
+5. Run the reproducible command-line check:
 
 ```bash
 pip install -r tooling/reasoning-requirements.txt
-python tooling/reason_v2.py --build-clean --java-memory 2000
+python tooling/reason.py --java-memory 2000
 ```
 
-On local 32-bit Java, use a smaller heap:
+On local 32-bit Java, use `--java-memory 512`.
 
-```bash
-python tooling/reason_v2.py --build-clean --java-memory 512
-```
+The command reads the generated RDF/XML and Turtle paths from `hcmo.yaml`,
+checks both serializations, rejects properties typed as both object and
+datatype properties, rejects active `UNKNOWN:` IRIs, and fails when HermiT
+reports an inconsistent class.
 
-The command fails if the clean artifact contains `UNKNOWN:` IRIs or if HermiT
-reports inconsistent classes.
+SHACL remains a separate data-quality gate and is run by
+`python tooling/validate.py` against the positive and negative ABox examples.
 
-Current command-line result:
+## Historical v2 review result
 
-| Check | Result |
-|---|---:|
-| RDF triples in clean OWL | 700 |
-| Declared OWL classes | 32 |
-| Object properties | 46 |
-| Datatype properties | 53 |
-| `UNKNOWN:` IRIs | 0 |
-| Classes loaded by HermiT | 32 |
-| Inconsistent classes | 0 |
+Before promotion, Protégé Desktop 5.6.9 and the command-line HermiT check were
+run on `ontology/v2/hcmo-v2-merged-clean.owl`. That snapshot contained 700 RDF
+triples and 32 declared classes; it loaded successfully, contained no active
+`UNKNOWN:` IRI, and HermiT reported zero inconsistent classes. The v2 files are
+now historical snapshots and are not build inputs.
 
-## Expected current caveats
-
-The former seven v2 placeholders have been resolved in the draft modules and no
-`UNKNOWN:` IRIs remain in either the merged draft or the clean Protege file.
-These changes are applied on the review branch and should be confirmed by
-co-authors before promotion.
-
-## Why no SHACL for now
-
-SHACL validates instance data and application constraints: required fields,
-cardinalities for records, numeric ranges, and valid/invalid example ABoxes.
-The current SHACL shapes, examples, and competency queries still target the
-legacy/live term set, while `ontology/v2/` is a draft re-modularisation.
-
-Running SHACL now would mostly test stale shapes against a moving ontology, and
-any failures would mix two different questions: "is the ontology logically
-coherent?" and "do our future data-entry rules match v2?". For this stage, the
-priority is OWL consistency in Protege. SHACL should be re-authored after the v2
-terms are promoted or frozen enough to become the validation target.
-
-## Output to archive
-
-Create a short report after the Protege pass with:
-
-- Protege version;
-- reasoner name and version if visible;
-- tested file path and git commit;
-- consistency result;
-- list of unsatisfiable classes, or "none";
-- notes on warnings/debugging decisions.
-
-Pre-check and HermiT results started at
+The earlier dry-run evidence is archived in
 `docs/paper/PROTEGE-DRY-RUN-2026-07-06.md`.
