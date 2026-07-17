@@ -17,8 +17,8 @@ validation pass.
 Current Protege result: Protege Desktop 5.6.9 opens the clean artifact and
 reports successful ontology/imports-closure loading in its log.
 
-Current automated result: the clean artifact contains 72 RDF `owl:Class`
-declarations, including anonymous domain-union classes; HermiT loads 33 named
+Current automated result: the clean artifact contains 123 RDF `owl:Class`
+declarations, including anonymous domain-union classes; HermiT loads 38 named
 classes, contains no `UNKNOWN:` IRIs, and reports 0 inconsistent classes.
 
 ## Protocol
