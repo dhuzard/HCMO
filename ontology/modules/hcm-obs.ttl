@@ -1,87 +1,136 @@
-# HCMO / MAPP ontology — hand-authored source module: hcm-obs
-# Part of the MAPP (Monitoring and Analytics for Physiological Processes) ontology.
-# Namespace: https://w3id.org/hcmo/ontology/hcm# (+ /bio#, /env#, /obs# per module).
-# Edit modules here; regenerate dist/ artifacts with: python tooling/build.py
+# HCMO 0.1.0 — obs — observations and results
+# Promoted after expert review; see docs/paper/MODULE-MAP.md. Namespace policy: …/hcm/obs#.
 #
 @prefix hcm: <https://w3id.org/hcmo/ontology/hcm#> .
 @prefix hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#> .
 @prefix hcm-obs: <https://w3id.org/hcmo/ontology/hcm/obs#> .
+@prefix hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#> .
+@prefix IAO: <http://purl.obolibrary.org/obo/IAO_> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix semts: <https://w3id.org/semts/ontology/120#> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-hcm-obs: a owl:ObjectProperty ;
-    rdfs:label "" .
-
 hcm-obs:BehaviorObservation a owl:Class ;
     rdfs:label "Behavior Observation" ;
-    rdfs:subClassOf [ a owl:Restriction ;
+    rdfs:comment "A SOSA-style observation about the behavior of a subject in a home-cage monitoring context." ;
+    rdfs:subClassOf sosa:Observation,
+        [ a owl:Restriction ;
             owl:onProperty sosa:hasResult ;
-            owl:someValuesFrom hcm:MonitoredEnclosure ],
+            owl:someValuesFrom hcm-obs:BehaviorResult ],
         [ a owl:Restriction ;
             owl:onProperty sosa:hasFeatureOfInterest ;
             owl:someValuesFrom hcm-bio:Subject ] .
 
 hcm-obs:BehaviorResult a owl:Class ;
-    rdfs:label "Behavior Result" .
+    rdfs:label "Behavior Result" ;
+    rdfs:comment "An observation result representing a detected, classified, or recorded behavior." ;
+    rdfs:subClassOf hcm-obs:ObservationResult .
+
+hcm-obs:CategoricalResult a owl:Class ;
+    rdfs:label "Categorical Result" ;
+    rdfs:comment "An observation result represented by a category rather than a numeric value." ;
+    rdfs:subClassOf hcm-obs:ObservationResult .
 
 hcm-obs:EnvironmentObservation a owl:Class ;
     rdfs:label "Environment Observation" ;
-    rdfs:subClassOf [ a owl:Restriction ;
+    rdfs:comment "A SOSA-style observation about an environmental property of a monitored enclosure." ;
+    rdfs:subClassOf sosa:Observation,
+        [ a owl:Restriction ;
             owl:onProperty sosa:hasFeatureOfInterest ;
             owl:someValuesFrom hcm:MonitoredEnclosure ],
         [ a owl:Restriction ;
             owl:allValuesFrom semts:DataDimension ;
-            owl:onProperty semts:hasDimension ],
-        [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty hcm:hasCategory ] .
+            owl:onProperty semts:hasDimension ] .
 
 hcm-obs:GasConcentrationObservation a owl:Class ;
-    rdfs:label "Gas Concentration Observation" .
+    rdfs:label "Gas Concentration Observation" ;
+    rdfs:comment "An environment observation measuring or reporting the concentration of a gas." ;
+    rdfs:subClassOf hcm-obs:EnvironmentObservation .
 
 hcm-obs:HealthStatusObservation a owl:Class ;
     rdfs:label "Health Status Observation" ;
-    rdfs:subClassOf [ a owl:Restriction ;
+    rdfs:comment "A SOSA-style observation about the health status of a biological subject." ;
+    rdfs:subClassOf sosa:Observation,
+        [ a owl:Restriction ;
             owl:onProperty sosa:hasFeatureOfInterest ;
-            owl:someValuesFrom hcm:MonitoredEnclosure ] .
+            owl:someValuesFrom hcm-bio:Subject ] .
 
-hcm-obs:HousingAssignment a owl:Class ;
-    rdfs:label "Housing Assignment" .
+hcm-obs:LocationResultTable a owl:Class ;
+    rdfs:label "Location Result Table" ;
+    rdfs:comment "A tabular observation result containing location values or generated time-series segments." ;
+    rdfs:subClassOf hcm-obs:ObservationResult,
+        [ a owl:Restriction ;
+            owl:onProperty semts:generated ;
+            owl:allValuesFrom semts:TimeSeriesSegment ] .
 
 hcm-obs:WeightObservation a owl:Class ;
     rdfs:label "Weight Observation" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty sosa:usedProcedure ],
+    rdfs:comment "A SOSA-style observation reporting the body weight of a biological subject." ;
+    rdfs:subClassOf sosa:Observation,
         [ a owl:Restriction ;
             owl:onProperty sosa:hasFeatureOfInterest ;
-            owl:someValuesFrom hcm:MonitoredEnclosure ],
+            owl:someValuesFrom hcm-bio:Subject ],
         [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty sosa:resultTime ],
-        [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty sosa:observedProperty ],
-        hcm:ObservationResult .
-
-hcm-obs:assignedToEnclosure a owl:ObjectProperty ;
-    rdfs:label "assigned to enclosure" .
+            owl:onProperty sosa:hasResult ;
+            owl:someValuesFrom hcm-obs:QuantityValue ] .
 
 hcm-obs:hasBehaviorType a owl:DatatypeProperty ;
-    rdfs:label "has behavior type" .
+    rdfs:label "has behavior type" ;
+    rdfs:comment "Records the behavior type or behavior category associated with a behavior observation or result." ;
+    rdfs:domain [ a owl:Class ; owl:unionOf ( hcm-obs:BehaviorObservation hcm-obs:BehaviorResult ) ] ;
+    rdfs:range xsd:string .
+
+hcm-obs:hasCondition a owl:ObjectProperty ;
+    rdfs:label "has condition" ;
+    rdfs:comment "Relates an observation to the condition under which it was made or interpreted; the condition model is intentionally left open." ;
+    rdfs:domain sosa:Observation ;
+    rdfs:range owl:Thing .
 
 hcm-obs:hasConfidenceScore a owl:DatatypeProperty ;
-    rdfs:label "has confidence score" .
+    rdfs:label "has confidence score" ;
+    rdfs:comment "Records a numeric confidence score associated with an observation result." ;
+    rdfs:domain hcm-obs:ObservationResult ;
+    rdfs:range xsd:decimal .
 
 hcm-obs:hasHealthStatusTerm a owl:DatatypeProperty ;
-    rdfs:label "has health status term" .
+    rdfs:label "has health status term" ;
+    rdfs:comment "Records a textual or coded health-status term associated with a health-status observation." ;
+    rdfs:domain hcm-obs:HealthStatusObservation ;
+    rdfs:range xsd:string .
 
 hcm-obs:hasInterval a owl:DatatypeProperty ;
-    rdfs:label "has interval" .
+    rdfs:label "has interval" ;
+    rdfs:comment "Records a duration associated with an observation; use sosa:phenomenonTime for a temporal entity. The xsd:duration datatype is enforced by SHACL because it is outside the OWL 2 datatype map." ;
+    rdfs:domain sosa:Observation ;
+    rdfs:range rdfs:Literal .
+
+hcm-obs:hasNumericValue a owl:DatatypeProperty ;
+    rdfs:label "has numeric value" ;
+    rdfs:comment "Records the numeric value of a quantity result or measurement." ;
+    rdfs:domain hcm-obs:QuantityValue ;
+    rdfs:range xsd:decimal .
 
 hcm-obs:occursIn a owl:ObjectProperty ;
-    rdfs:label "occurs in" .
+    rdfs:label "occurs in" ;
+    rdfs:comment "Relates an observation to the enclosure in which it occurs." ;
+    rdfs:domain sosa:Observation ;
+    rdfs:range hcm:Enclosure .
+
+hcm-obs:QuantityValue a owl:Class ;
+    rdfs:label "Quantity Value" ;
+    rdfs:comment "An observation result that represents a quantitative value, typically with a numeric value and unit." ;
+    rdfs:subClassOf hcm-obs:ObservationResult .
+
+hcm-obs:hasCategory a owl:DatatypeProperty ;
+    rdfs:label "has category" ;
+    rdfs:comment "Records the category assigned to a categorical observation result." ;
+    rdfs:domain hcm-obs:CategoricalResult ;
+    rdfs:range xsd:string .
+
+hcm-obs:ObservationResult a owl:Class ;
+    rdfs:label "Observation Result" ;
+    rdfs:comment "An information artifact produced as the result of a home-cage monitoring observation." ;
+    rdfs:subClassOf sosa:Result, IAO:0000030 .
 

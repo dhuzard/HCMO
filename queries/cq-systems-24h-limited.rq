@@ -1,17 +1,21 @@
-PREFIX hcm:  <https://w3id.org/hcmo/ontology/hcm#>
-PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+PREFIX hcm: <https://w3id.org/hcmo/ontology/hcm#>
+PREFIX hcm-obs: <https://w3id.org/hcmo/ontology/hcm/obs#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX time: <http://www.w3.org/2006/time#>
 
-SELECT DISTINCT ?system ?interval ?hours
+SELECT DISTINCT ?enclosure ?observation ?duration ?unit ?condition
 WHERE {
-  ?system a hcm:System ;
-          hcm:hasSensor ?sensor .
-  ?sensor hcm:captures ?beh .
-  ?beh a hcm:BehaviorAndPhysiology ;
-       hcm:extendsEnoughToCapture ?interval .
-  ?interval hcm:durationHours ?hours ;
-           hcm:hasProperty ?prop .
-  ?prop a hcm:LimitedInteractionWithHumans .
-  FILTER(?hours >= 24)
+  ?observation a hcm-obs:BehaviorObservation ;
+               hcm-obs:occursIn ?enclosure ;
+               hcm-obs:hasCondition ?condition ;
+               sosa:phenomenonTime ?interval .
+  ?enclosure a hcm:MonitoredEnclosure .
+  ?interval time:numericDuration ?duration ;
+            time:unitType ?unit .
+  VALUES (?unit ?minimum) {
+    (time:unitHour 24)
+    (time:unitDay 1)
+  }
+  FILTER (?duration >= ?minimum)
 }
-ORDER BY ?system
-
+ORDER BY ?enclosure ?observation

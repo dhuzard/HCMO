@@ -7,6 +7,8 @@ This folder contains the ontology source of truth. Generated files (`../dist/`) 
 - `modules/hcm-bio.ttl`  : biological subjects/groups (namespace `…/hcm/bio#`).
 - `modules/hcm-env.ttl`  : environment & measurement terms (namespace `…/hcm/env#`).
 - `modules/hcm-obs.ttl`  : observations & results (namespace `…/hcm/obs#`).
+- `modules/hcm-tech.ttl` : sensors, actuators, software, and data artifacts (namespace `…/hcm/tech#`).
+- `modules/hcm-compat.ttl`: deprecated 0.0.1 HCMO IRIs and explicit replacements; no new concepts.
 - `context.jsonld`       : JSON-LD context for application developers.
 - `legacy/`              : the previous HCMO 1.0.0 ontology (retained, not merged).
 
@@ -15,7 +17,7 @@ Module load order and all paths are declared in `../hcmo.yaml`.
 
 ## Namespaces
 - Base: `https://w3id.org/hcmo/ontology/hcm#` (ontology IRI `https://w3id.org/hcmo/ontology/hcm`).
-- Sub-namespaces are path segments: `…/hcm/bio#`, `…/hcm/env#`, `…/hcm/obs#`.
+- Sub-namespaces are path segments: `…/hcm/bio#`, `…/hcm/env#`, `…/hcm/obs#`, `…/hcm/tech#`.
 - Put each new term in the module matching its namespace.
 
 ## Required annotations (per entity)

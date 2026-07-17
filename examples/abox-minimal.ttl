@@ -1,81 +1,79 @@
-@prefix hcm:  <https://w3id.org/hcmo/ontology/hcm#> .
-@prefix ex:   <https://mfg.example.com/hcm/id/> .
+@prefix ex: <https://example.org/hcmo/minimal/> .
+@prefix hcm: <https://w3id.org/hcmo/ontology/hcm#> .
+@prefix hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#> .
+@prefix hcm-env: <https://w3id.org/hcmo/ontology/hcm/env#> .
+@prefix hcm-obs: <https://w3id.org/hcmo/ontology/hcm/obs#> .
+@prefix hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-ex:System_A a hcm:System ;
-  rdfs:label "System A (rack 3, cage 12)" ;
-  hcm:hasEnclosure ex:Enc_01 ;
-  hcm:hasHardware  ex:HW_01 ;
-  hcm:hasSoftware  ex:SW_01 ;
-  hcm:producedBy   ex:SupplierAcme ;
-  hcm:collectsInfoOn ex:Mouse_1 ;
-  hcm:hasSensor    ex:IR_Sensor_1 ;
-  hcm:hasActuator  ex:Feeder_1 ;
-  ex:ingestedAt    "2025-09-29T09:00:00Z"^^xsd:dateTime .
+ex:cage-12 a hcm:MonitoredEnclosure ;
+  rdfs:label "Rack 3, cage 12" ;
+  hcm:hasEnclosureIdentifier "rack-3-cage-12" ;
+  hcm:hasDimensions ex:cage-12-dimensions ;
+  hcm:hasMonitoredAnimals ex:mouse-1 ;
+  hcm-env:hasEnvironment ex:cage-12-environment ;
+  hcm-tech:monitoredBy ex:ir-sensor-1 .
 
-ex:SupplierAcme a hcm:Supplier ;
-  rdfs:label "Acme supply partners" .
+ex:cage-12-dimensions a hcm:EnclosureDimensions ;
+  hcm:hasWidth 30.0 ;
+  hcm:hasLength 45.0 ;
+  hcm:hasHeight 20.0 ;
+  hcm:hasDimUnit "cm" .
 
-ex:Mouse_1 a hcm:Animal ;
-  rdfs:label "Mouse 1 (study cohort alpha)" ;
-  hcm:livesIn ex:Enc_01 ;
-  hcm:requiresToThrive ex:Needs_Default ;
-  hcm:displays ex:Behav_Rec_1 .
+ex:cage-12-environment a hcm-env:EnvironmentProfile ;
+  hcm-env:hasMeasurementSpec ex:activity-specification .
 
-ex:Enc_01 a hcm:Enclosure ;
-  rdfs:label "Enclosure 01 (Rack 3 Cage 12)" ;
-  hcm:provides ex:Needs_Default ;
-  hcm:hasSpaceRegion ex:Space_01 .
+ex:activity-specification a hcm-env:MeasurementSpecification ;
+  rdfs:label "Activity index measurement specification" .
 
-ex:Space_01 a hcm:PhysicalSpace ;
-  rdfs:label "Enclosure 01 interior space" ;
-  hcm:hasDimensions ex:Dims_01 .
+ex:mouse-1 a hcm-bio:Subject ;
+  rdfs:label "Mouse 1" ;
+  hcm-bio:hasSpecies "Mus musculus" ;
+  hcm-bio:hasStrain "C57BL/6J" ;
+  hcm-bio:hasHousingAssignment ex:mouse-1-cage-12-assignment ;
+  hcm-bio:hasBehaviorObservation ex:observation-1 .
 
-ex:Dims_01 a hcm:Dimensions ;
-  rdfs:label "Cage interior dimensions" ;
-  hcm:width  30.0 ;
-  hcm:length 45.0 ;
-  hcm:height 20.0 ;
-  hcm:unit "cm" .
+ex:mouse-1-cage-12-assignment a hcm-bio:HousingAssignment ;
+  hcm-bio:assignedToEnclosure ex:cage-12 .
 
-ex:Needs_Default a hcm:NeedsSequence ;
-  rdfs:label "Baseline welfare requirements" ;
-  hcm:hasFood "true"^^xsd:boolean ;
-  hcm:hasWater "true"^^xsd:boolean ;
-  hcm:hasSocialContacts "true"^^xsd:boolean ;
-  hcm:hasSafetyFromThreat "true"^^xsd:boolean ;
-  hcm:hasEnvironmentalEnrichment "true"^^xsd:boolean .
+ex:ir-sensor-1 a hcm-tech:Sensor ;
+  rdfs:label "Left-wall infrared sensor" ;
+  hcm-tech:hasSensorIdentifier "ir-1" ;
+  hcm-tech:hasSensorType "infrared beam-break sensor" ;
+  hcm-tech:hasSamplingRate "4 Hz" ;
+  hcm-tech:installedIn ex:cage-12 ;
+  hcm-tech:captures ex:locomotor-activity .
 
-ex:Behav_Rec_1 a hcm:BehaviorAndPhysiology ;
-  rdfs:label "Exploration bouts (24h window)" ;
-  hcm:isDisplayedInside ex:Enc_01 ;
-  hcm:hasCircadianRhythm ex:CR_1 ;
-  hcm:extendsEnoughToCapture ex:TI_24h .
+ex:locomotor-activity a sosa:Property ;
+  rdfs:label "locomotor activity" .
 
-ex:CR_1 a hcm:CircadianRhythm ;
-  rdfs:label "Nocturnal peak" .
+ex:observation-1 a hcm-obs:BehaviorObservation ;
+  sosa:hasFeatureOfInterest ex:mouse-1 ;
+  sosa:madeBySensor ex:ir-sensor-1 ;
+  sosa:observedProperty ex:locomotor-activity ;
+  sosa:hasResult ex:behavior-result-1 ;
+  sosa:phenomenonTime ex:observation-interval-1 ;
+  hcm-obs:hasCondition ex:limited-human-interaction ;
+  hcm-obs:occursIn ex:cage-12 .
 
-ex:TI_24h a hcm:TimeInterval ;
-  rdfs:label "24-hour observation window" ;
-  hcm:durationHours 24.0 ;
-  hcm:isExtendable  "true"^^xsd:boolean ;
-  hcm:hasProperty   ex:LowHumanInteraction .
+ex:observation-interval-1 a time:Interval ;
+  time:numericDuration 24.0 ;
+  time:unitType time:unitHour ;
+  time:hasBeginning [ a time:Instant ;
+    time:inXSDDateTime "2026-07-01T08:00:00Z"^^xsd:dateTime ] ;
+  time:hasEnd [ a time:Instant ;
+    time:inXSDDateTime "2026-07-02T08:00:00Z"^^xsd:dateTime ] .
 
-ex:LowHumanInteraction a hcm:LimitedInteractionWithHumans ;
-  rdfs:label "Minimal human contact" .
+ex:limited-human-interaction rdfs:label "limited human interaction" .
 
-ex:IR_Sensor_1 a hcm:Sensor ;
-  rdfs:label "IR beam sensor (left wall)" ;
-  hcm:captures ex:Behav_Rec_1 .
+ex:behavior-result-1 a hcm-obs:BehaviorResult ;
+  hcm-obs:hasBehaviorType "exploration" ;
+  hcm-obs:hasConfidenceScore 0.95 .
 
-ex:Feeder_1 a hcm:Actuator ;
-  rdfs:label "Feeder 1 (pellet dispenser)" ;
-  hcm:elicits  ex:Behav_Rec_1 .
-
-ex:HW_01 a hcm:Hardware ;
-  rdfs:label "HW control board 01" ;
-  hcm:communicatesWith ex:SW_01 .
-
-ex:SW_01 a hcm:Software ;
-  rdfs:label "Telemetry service 01" .
+ex:activity-series a hcm-tech:TimeSeries ;
+  rdfs:label "Cage 12 activity series" ;
+  hcm-tech:hasFileFormat "text/csv" ;
+  hcm-tech:hasStoragePath "data/cage-12-activity.csv" .

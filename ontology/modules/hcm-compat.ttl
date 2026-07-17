@@ -1,0 +1,500 @@
+# HCMO 0.1.0 compatibility mappings for published 0.0.1 IRIs.
+# This module contains no new concepts. Invalid non-HCMO namespace artifacts are
+# archived under ontology/legacy/mapp-0.0.1 and are not part of this graph.
+
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/hcmo/ontology/hcm#Actuator> a <http://www.w3.org/2002/07/owl#Class> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "Actuator" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. A device that elicits or perturbs behavior or physiology." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
+    dcterms:isReplacedBy <https://w3id.org/hcmo/ontology/hcm/tech#Actuator> .
+
+<https://w3id.org/hcmo/ontology/hcm#Animal> a <http://www.w3.org/2002/07/owl#Class> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "Animal" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. An experimental animal housed in an enclosure." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
+    dcterms:isReplacedBy <https://w3id.org/hcmo/ontology/hcm/bio#Subject> .
+
+<https://w3id.org/hcmo/ontology/hcm#BehaviorAndPhysiology> a <http://www.w3.org/2002/07/owl#Class> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "Behavior and Physiology" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. Observed behavioral or physiological process displayed by an animal." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> .
+
+<https://w3id.org/hcmo/ontology/hcm#CategoricalResult> a <http://www.w3.org/2002/07/owl#Class> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "Categorical Result" ;
+    rdfs:comment "Deprecated HCMO 0.0.1 term retained for backward compatibility." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
+    dcterms:isReplacedBy <https://w3id.org/hcmo/ontology/hcm/obs#CategoricalResult> .
+
+<https://w3id.org/hcmo/ontology/hcm#CircadianRhythm> a <http://www.w3.org/2002/07/owl#Class> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "Circadian Rhythm" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. A circadian rhythm associated with a behavior or physiology process." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> .
+
+<https://w3id.org/hcmo/ontology/hcm#ContactPoint> a <http://www.w3.org/2002/07/owl#Class> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "Contact Point" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. Contact detail associated with a submitted system or supplier." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> .
+
+<https://w3id.org/hcmo/ontology/hcm#DataProduct> a <http://www.w3.org/2002/07/owl#Class> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "Data Product" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. Data artifact or link associated with a submitted system." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> .
+
+<https://w3id.org/hcmo/ontology/hcm#Dimensions> a <http://www.w3.org/2002/07/owl#Class> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "Dimensions" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. Geometric dimensions of a physical space or enclosure." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
+    dcterms:isReplacedBy <https://w3id.org/hcmo/ontology/hcm#EnclosureDimensions> .
+
+<https://w3id.org/hcmo/ontology/hcm#Hardware> a <http://www.w3.org/2002/07/owl#Class> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "Hardware" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. Physical computing hardware component of a home-cage monitoring system." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
+    dcterms:isReplacedBy <https://w3id.org/hcmo/ontology/hcm/tech#Hardware> .
+
+<https://w3id.org/hcmo/ontology/hcm#LimitedInteractionWithHumans> a <http://www.w3.org/2002/07/owl#Class> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "Limited Interaction With Humans" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. A condition indicating minimal human interference during observation." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> .
+
+<https://w3id.org/hcmo/ontology/hcm#NeedsSequence> a <http://www.w3.org/2002/07/owl#Class> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "Needs Sequence" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. Legacy boolean need-profile record used by current examples; prefer a future object-based need profile for richer modeling." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> .
+
+<https://w3id.org/hcmo/ontology/hcm#OWL-Timeintervaltable> a <http://www.w3.org/2002/07/owl#Class> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "O W L- Timeintervaltable" ;
+    rdfs:comment "Deprecated invalid Chowlk/spreadsheet artifact; it never denoted a defined OWL-Time interval table and has no replacement." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> .
+
+<https://w3id.org/hcmo/ontology/hcm#ObservationResult> a <http://www.w3.org/2002/07/owl#Class> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "Observation Result" ;
+    rdfs:comment "Deprecated HCMO 0.0.1 term retained for backward compatibility." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
+    dcterms:isReplacedBy <https://w3id.org/hcmo/ontology/hcm/obs#ObservationResult> .
+
+<https://w3id.org/hcmo/ontology/hcm#ObservationWindow> a <http://www.w3.org/2002/07/owl#Class> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "Observation Window" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. An observation time window for behavior capture." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> .
+
+<https://w3id.org/hcmo/ontology/hcm#PhysicalSpace> a <http://www.w3.org/2002/07/owl#Class> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "Physical Space" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. A spatial region associated with an enclosure." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> .
+
+<https://w3id.org/hcmo/ontology/hcm#Protocol> a <http://www.w3.org/2002/07/owl#Class> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "Protocol" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. A protocol, SOP, or approval reference governing a system submission." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> .
+
+<https://w3id.org/hcmo/ontology/hcm#QuantityValue> a <http://www.w3.org/2002/07/owl#Class> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "Quantity Value" ;
+    rdfs:comment "Deprecated HCMO 0.0.1 term retained for backward compatibility." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
+    dcterms:isReplacedBy <https://w3id.org/hcmo/ontology/hcm/obs#QuantityValue> .
+
+<https://w3id.org/hcmo/ontology/hcm#Sensor> a <http://www.w3.org/2002/07/owl#Class> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "Sensor" ;
+    rdfs:comment "Deprecated HCMO 0.0.1 term retained for backward compatibility." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
+    dcterms:isReplacedBy <https://w3id.org/hcmo/ontology/hcm/tech#Sensor> .
+
+<https://w3id.org/hcmo/ontology/hcm#Software> a <http://www.w3.org/2002/07/owl#Class> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "Software" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. Software component of a home-cage monitoring system." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
+    dcterms:isReplacedBy <https://w3id.org/hcmo/ontology/hcm/tech#Software> .
+
+<https://w3id.org/hcmo/ontology/hcm#Structural&LocationTable> a <http://www.w3.org/2002/07/owl#Class> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "Structural& Location Table" ;
+    rdfs:comment "Deprecated spreadsheet-derived result-table term; use hcm-obs:LocationResultTable." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
+    dcterms:isReplacedBy <https://w3id.org/hcmo/ontology/hcm/obs#LocationResultTable> .
+
+<https://w3id.org/hcmo/ontology/hcm#StudyFactors> a <http://www.w3.org/2002/07/owl#Class> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "Study Factors" ;
+    rdfs:comment "Deprecated HCMO 0.0.1 term retained for backward compatibility." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
+    dcterms:isReplacedBy <https://w3id.org/hcmo/ontology/hcm/bio#StudyFactors> .
+
+<https://w3id.org/hcmo/ontology/hcm#Supplier> a <http://www.w3.org/2002/07/owl#Class> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "Supplier" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. Commercial supplier or laboratory providing the system." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> .
+
+<https://w3id.org/hcmo/ontology/hcm#System> a <http://www.w3.org/2002/07/owl#Class> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "System" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. This aggregate system concept has no exact replacement: migrate its enclosure, hardware, software, sensor, and actuator components separately." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> .
+
+<https://w3id.org/hcmo/ontology/hcm#TimeInterval> a <http://www.w3.org/2002/07/owl#Class> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "Time Interval" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. Deprecated; use hcm:ObservationWindow." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> .
+
+<https://w3id.org/hcmo/ontology/hcm#TimeSeries> a <http://www.w3.org/2002/07/owl#Class> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "Time Series" ;
+    rdfs:comment "Deprecated HCMO 0.0.1 term retained for backward compatibility." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
+    dcterms:isReplacedBy <https://w3id.org/hcmo/ontology/hcm/tech#TimeSeries> .
+
+<https://w3id.org/hcmo/ontology/hcm#captures> a <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "captures" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. Relates a sensor to a behavior or physiology process it captures." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
+    dcterms:isReplacedBy <https://w3id.org/hcmo/ontology/hcm/tech#captures> .
+
+<https://w3id.org/hcmo/ontology/hcm#collectsInfoOn> a <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "collects info on" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0 with no exact replacement. Use hcm:hasMonitoredAnimals for enclosure occupancy and sosa:hasFeatureOfInterest for the subject of a specific observation." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> .
+
+<https://w3id.org/hcmo/ontology/hcm#communicatesWith> a <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "communicates with" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. Relates hardware to software that it communicates with." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
+    dcterms:isReplacedBy <https://w3id.org/hcmo/ontology/hcm/tech#communicatesWith> .
+
+<https://w3id.org/hcmo/ontology/hcm#displays> a <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "displays" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. Relates an animal to a behavior or physiology process it displays." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> .
+
+<https://w3id.org/hcmo/ontology/hcm#durationHours> a <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "duration hours" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. Duration of an observation window in hours." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> .
+
+<https://w3id.org/hcmo/ontology/hcm#elicits> a <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "elicits" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. Relates an actuator to a behavior or physiology process it elicits or perturbs." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> .
+
+<https://w3id.org/hcmo/ontology/hcm#extendsEnoughToCapture> a <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "extends enough to capture" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. Deprecated legacy relation from a behavior process to a sufficient observation window." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> .
+
+<https://w3id.org/hcmo/ontology/hcm#followsProtocol> a <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "follows protocol" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. Relates a system submission to a governing protocol or SOP reference." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> .
+
+<https://w3id.org/hcmo/ontology/hcm#hasActuator> a <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "has actuator" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0 with no context-free replacement because its subject was an aggregate system. For an actuator associated with a monitored enclosure, use hcm-tech:hasActuator." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> .
+
+<https://w3id.org/hcmo/ontology/hcm#hasCategory> a <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "has category" ;
+    rdfs:comment "Deprecated HCMO 0.0.1 term retained for backward compatibility." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
+    dcterms:isReplacedBy <https://w3id.org/hcmo/ontology/hcm/obs#hasCategory> .
+
+<https://w3id.org/hcmo/ontology/hcm#hasCircadianRhythm> a <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "has circadian rhythm" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. Relates a behavior or physiology process to its circadian rhythm." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> .
+
+<https://w3id.org/hcmo/ontology/hcm#hasEnclosure> a <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "has enclosure" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. Links a system to its enclosure." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> .
+
+<https://w3id.org/hcmo/ontology/hcm#hasEnvironment> a <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "has environment" ;
+    rdfs:comment "Deprecated datatype-property artifact. Use hcm-env:hasEnvironment to link an enclosure to a structured environment profile; existing literal values require curation." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
+    dcterms:isReplacedBy <https://w3id.org/hcmo/ontology/hcm/env#hasEnvironment> .
+
+<https://w3id.org/hcmo/ontology/hcm#hasEnvironmentalEnrichment> a <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "has environmental enrichment" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. Boolean flag indicating whether environmental enrichment is provided in a legacy need profile." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> .
+
+<https://w3id.org/hcmo/ontology/hcm#hasFileFormat> a <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "has file format" ;
+    rdfs:comment "Deprecated HCMO 0.0.1 term retained for backward compatibility." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
+    dcterms:isReplacedBy <https://w3id.org/hcmo/ontology/hcm/tech#hasFileFormat> .
+
+<https://w3id.org/hcmo/ontology/hcm#hasFood> a <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "has food" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. Boolean flag indicating whether food is provided in a legacy need profile." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> .
+
+<https://w3id.org/hcmo/ontology/hcm#hasHardware> a <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "has hardware" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. Links a system to its hardware component." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> .
+
+<https://w3id.org/hcmo/ontology/hcm#hasNumericValue> a <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "has numeric value" ;
+    rdfs:comment "Deprecated HCMO 0.0.1 term retained for backward compatibility." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
+    dcterms:isReplacedBy <https://w3id.org/hcmo/ontology/hcm/obs#hasNumericValue> .
+
+<https://w3id.org/hcmo/ontology/hcm#hasProperty> a <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "has property" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. Deprecated legacy relation from an observation window to an observation condition." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> .
+
+<https://w3id.org/hcmo/ontology/hcm#hasResult> a <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "has result" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0 with no equivalence assertion because legacy restrictions used this relation in the reverse of the SOSA observation-to-result direction. Model current observations with sosa:hasResult." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> .
+
+<https://w3id.org/hcmo/ontology/hcm#hasSafetyFromThreat> a <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "has safety from threat" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. Boolean flag indicating whether safety from threat is provided in a legacy need profile." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> .
+
+<https://w3id.org/hcmo/ontology/hcm#hasSamplingRate> a <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "has sampling rate" ;
+    rdfs:comment "Deprecated HCMO 0.0.1 term retained for backward compatibility." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
+    dcterms:isReplacedBy <https://w3id.org/hcmo/ontology/hcm/tech#hasSamplingRate> .
+
+<https://w3id.org/hcmo/ontology/hcm#hasSensor> a <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "has sensor" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0 with no context-free replacement because its subject was an aggregate system. For a sensor monitoring an enclosure, use hcm-tech:monitoredBy and its inverse hcm-tech:installedIn." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> .
+
+<https://w3id.org/hcmo/ontology/hcm#hasSocialContacts> a <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "has social contacts" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. Boolean flag indicating whether social contacts are provided in a legacy need profile." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> .
+
+<https://w3id.org/hcmo/ontology/hcm#hasSoftware> a <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "has software" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. Links a system to its software component." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> .
+
+<https://w3id.org/hcmo/ontology/hcm#hasSpaceRegion> a <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "has space region" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. Links an enclosure to the physical space it contains or bounds." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> .
+
+<https://w3id.org/hcmo/ontology/hcm#hasStoragePath> a <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "has storage path" ;
+    rdfs:comment "Deprecated HCMO 0.0.1 term retained for backward compatibility." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
+    dcterms:isReplacedBy <https://w3id.org/hcmo/ontology/hcm/tech#hasStoragePath> .
+
+<https://w3id.org/hcmo/ontology/hcm#hasThriveProfile> a <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "has thrive profile" ;
+    rdfs:comment "Deprecated HCMO 0.0.1 term retained for backward compatibility." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
+    dcterms:isReplacedBy <https://w3id.org/hcmo/ontology/hcm/env#hasThriveProfile> .
+
+<https://w3id.org/hcmo/ontology/hcm#hasVersion> a <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "has version" ;
+    rdfs:comment "Deprecated HCMO 0.0.1 term retained for backward compatibility." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
+    dcterms:isReplacedBy <https://w3id.org/hcmo/ontology/hcm/tech#hasVersion> .
+
+<https://w3id.org/hcmo/ontology/hcm#hasWater> a <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "has water" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. Boolean flag indicating whether water is provided in a legacy need profile." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> .
+
+<https://w3id.org/hcmo/ontology/hcm#height> a <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "height" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. Height magnitude for a dimensions record." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
+    dcterms:isReplacedBy <https://w3id.org/hcmo/ontology/hcm#hasHeight> .
+
+<https://w3id.org/hcmo/ontology/hcm#installedIn> a <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "installed in" ;
+    rdfs:comment "Deprecated HCMO 0.0.1 term retained for backward compatibility." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
+    dcterms:isReplacedBy <https://w3id.org/hcmo/ontology/hcm/tech#installedIn> .
+
+<https://w3id.org/hcmo/ontology/hcm#isDisplayedInside> a <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "is displayed inside" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. Relates a behavior or physiology process to the enclosure where it occurs." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> .
+
+<https://w3id.org/hcmo/ontology/hcm#isExtendable> a <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "is extendable" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. Whether the observation window is extendable." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> .
+
+<https://w3id.org/hcmo/ontology/hcm#length> a <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "length" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. Length magnitude for a dimensions record." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
+    dcterms:isReplacedBy <https://w3id.org/hcmo/ontology/hcm#hasLength> .
+
+<https://w3id.org/hcmo/ontology/hcm#livesIn> a <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "lives in" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. Relates an animal to the enclosure it lives in." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> .
+
+<https://w3id.org/hcmo/ontology/hcm#monitoredBy> a <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "monitored by" ;
+    rdfs:comment "Deprecated HCMO 0.0.1 term retained for backward compatibility." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
+    dcterms:isReplacedBy <https://w3id.org/hcmo/ontology/hcm/tech#monitoredBy> .
+
+<https://w3id.org/hcmo/ontology/hcm#producedBy> a <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "produced by" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. Links a system to the supplier or laboratory that produced it." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> .
+
+<https://w3id.org/hcmo/ontology/hcm#protocolReference> a <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "protocol reference" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. Textual protocol, SOP, DOI, or approval reference." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> .
+
+<https://w3id.org/hcmo/ontology/hcm#provides> a <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "provides" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. Relates an enclosure to a need profile it provides." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> .
+
+<https://w3id.org/hcmo/ontology/hcm#requiresToThrive> a <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "requires to thrive" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. Relates an animal to the need profile it requires." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> .
+
+<https://w3id.org/hcmo/ontology/hcm#unit> a <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "unit" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. Unit label for dimensions values." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
+    dcterms:isReplacedBy <https://w3id.org/hcmo/ontology/hcm#hasDimUnit> .
+
+<https://w3id.org/hcmo/ontology/hcm#width> a <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "width" ;
+    rdfs:comment "Deprecated in HCMO 0.1.0. Width magnitude for a dimensions record." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
+    dcterms:isReplacedBy <https://w3id.org/hcmo/ontology/hcm#hasWidth> .
+
+<https://w3id.org/hcmo/ontology/hcm/env#EnclosureDimensions> a <http://www.w3.org/2002/07/owl#Class> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "Enclosure Dimensions" ;
+    rdfs:comment "Deprecated HCMO 0.0.1 term retained for backward compatibility." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
+    dcterms:isReplacedBy <https://w3id.org/hcmo/ontology/hcm#EnclosureDimensions> .
+
+<https://w3id.org/hcmo/ontology/hcm/env#hasDimUnit> a <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "has dim unit" ;
+    rdfs:comment "Deprecated HCMO 0.0.1 term retained for backward compatibility." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
+    dcterms:isReplacedBy <https://w3id.org/hcmo/ontology/hcm#hasDimUnit> .
+
+<https://w3id.org/hcmo/ontology/hcm/env#hasHeight> a <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "has height" ;
+    rdfs:comment "Deprecated HCMO 0.0.1 term retained for backward compatibility." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
+    dcterms:isReplacedBy <https://w3id.org/hcmo/ontology/hcm#hasHeight> .
+
+<https://w3id.org/hcmo/ontology/hcm/env#hasLength> a <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "has length" ;
+    rdfs:comment "Deprecated HCMO 0.0.1 term retained for backward compatibility." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
+    dcterms:isReplacedBy <https://w3id.org/hcmo/ontology/hcm#hasLength> .
+
+<https://w3id.org/hcmo/ontology/hcm/env#hasUnit> a <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "has unit" ;
+    rdfs:comment "Deprecated duplicate; use the consolidated hcm:hasUnit property for quantitative results and measurement specifications." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
+    dcterms:isReplacedBy <https://w3id.org/hcmo/ontology/hcm#hasUnit> .
+
+<https://w3id.org/hcmo/ontology/hcm/env#hasWidth> a <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "has width" ;
+    rdfs:comment "Deprecated HCMO 0.0.1 term retained for backward compatibility." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
+    dcterms:isReplacedBy <https://w3id.org/hcmo/ontology/hcm#hasWidth> .
+
+<https://w3id.org/hcmo/ontology/hcm/obs#HousingAssignment> a <http://www.w3.org/2002/07/owl#Class> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "Housing Assignment" ;
+    rdfs:comment "Deprecated HCMO 0.0.1 term retained for backward compatibility." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
+    dcterms:isReplacedBy <https://w3id.org/hcmo/ontology/hcm/bio#HousingAssignment> .
+
+<https://w3id.org/hcmo/ontology/hcm/obs#assignedToEnclosure> a <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+    owl:deprecated "true"^^xsd:boolean ;
+    rdfs:label "assigned to enclosure" ;
+    rdfs:comment "Deprecated HCMO 0.0.1 term retained for backward compatibility." ;
+    dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
+    dcterms:isReplacedBy <https://w3id.org/hcmo/ontology/hcm/bio#assignedToEnclosure> .

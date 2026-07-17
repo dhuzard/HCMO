@@ -11,8 +11,7 @@
 HCMO is an ontology for **home-cage monitoring** of laboratory animals. It models
 monitored enclosures, biological subjects and experimental groups, the
 environment and its measurements, observations and results, and the sensors,
-hardware, and software that produce the data — under the **MAPP** framework
-(Monitoring and Analytics for Physiological Processes). The project ships as a
+hardware, and software that produce the data. The project ships as a
 standalone, tool-consumable package: a stable release manifest, modular Turtle
 sources, generated distributions, SHACL shapes, competency queries, and a
 JSON-LD context.
@@ -23,8 +22,8 @@ JSON-LD context.
 | ------------------------------- | ------------------------------------------------------------------------------------------- |
 | **Ontology IRI**          | `https://w3id.org/hcmo/ontology/hcm`                                                      |
 | **Base namespace**        | `https://w3id.org/hcmo/ontology/hcm#`                                                     |
-| **Module sub-namespaces** | `…/hcm/bio#`, `…/hcm/env#`, `…/hcm/obs#`                                           |
-| **Version**               | `0.0.1` (versionIRI `…/hcm/0.0.1`)                                                     |
+| **Module sub-namespaces** | `…/hcm/bio#`, `…/hcm/env#`, `…/hcm/obs#`, `…/hcm/tech#`                             |
+| **Version**               | `0.1.0` (versionIRI `…/hcm/0.1.0`)                                                     |
 | **Prefix**                | `hcm`                                                                                     |
 | **License**               | CC BY 4.0                                                                                   |
 | **Logo**                  | [`HCMO-logo3.png`](HCMO-logo3.png)                                                        |
@@ -45,8 +44,10 @@ ontology/
     hcm-bio.ttl                #   subjects, experimental groups        (…/hcm/bio#)
     hcm-env.ttl                #   environment & measurements           (…/hcm/env#)
     hcm-obs.ttl                #   observations & results               (…/hcm/obs#)
+    hcm-tech.ttl               #   sensors, devices, software & data    (…/hcm/tech#)
+    hcm-compat.ttl             #   deprecated 0.0.1 IRIs + replacements
   context.jsonld               # JSON-LD context for app developers
-  legacy/                      # previous HCMO 1.0.0 ontology (retained, not merged)
+  legacy/                      # previous HCMO 1.0.0 + HCMO/MAPP 0.0.1 sources (not merged)
 dist/                          # GENERATED — never hand-edit
   hcmo.ttl                     #   merged graph, canonical/sorted Turtle (reproducible)
   hcmo.owl                     #   merged graph, RDF/XML
@@ -117,25 +118,22 @@ definitions (see `docs/MISSING-DEFINITIONS.md`) render with empty descriptions.
 
 ## Status & known issues
 
-This is an early release (`0.0.1`) derived from a Chowlk diagram export.
-`docs/MISSING-DEFINITIONS.md` tracks the open data-quality work, including:
+HCMO `0.1.0` is the promoted modular cleanup of the early Chowlk-derived term
+set. Active classes and properties have labels, textual definitions, explicit
+upper/domain anchors, and property domain/range axioms. Invalid `UNKNOWN:` and
+bare-namespace artifacts are retained only in the archived 0.0.1 source; valid
+published 0.0.1 HCMO IRIs remain available as deprecated mapped terms.
 
-- Terms still lacking `rdfs:comment` definitions (labels are present).
-- Chowlk placeholder/erroneous terms preserved as authored (`UNKNOWN:*`,
-  `ns:Class2`, `xsd:boolean`/`xsd:integer` typed as properties) — to be re-mapped
-  or removed at the source.
-- `shapes/`, `examples/`, and `queries/` currently reference the legacy 1.0.0
-  term set and need re-authoring against the MAPP terms (competency queries
-  return 0 rows until then).
-
-Per project policy, missing labels and definitions are **listed, not fabricated**.
+The remaining modeling decisions are tracked in `docs/MISSING-DEFINITIONS.md`.
+Most notably, quantity/unit modeling is still a lightweight HCMO pattern pending
+a reviewed QUDT or OM alignment.
 
 ## Web authoring app (optional)
 
 A Node.js app under `webapp/` supports form-based authoring and a blueprint
 checklist. From `webapp/`: `npm install` then `npm run dev` (serves on
-`http://localhost:3000`); `npm test` runs the API/UI tests. The app predates the
-MAPP reorganization and targets the legacy term set.
+`http://localhost:3000`); `npm test` runs the API/UI tests. The app predates HCMO
+0.1.0 and its form mappings still require migration to the current model.
 
 ## Contributors
 

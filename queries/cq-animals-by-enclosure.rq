@@ -1,10 +1,15 @@
 PREFIX hcm: <https://w3id.org/hcmo/ontology/hcm#>
+PREFIX hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#>
 
-SELECT ?system ?enclosure (GROUP_CONCAT(?animal; separator=", ") AS ?animals)
+SELECT ?enclosure (GROUP_CONCAT(STR(?subject); separator=", ") AS ?subjects)
 WHERE {
-  ?system a hcm:System ; hcm:hasEnclosure ?enclosure .
-  OPTIONAL { ?animal a hcm:Animal ; hcm:livesIn ?enclosure . }
+  ?enclosure a hcm:MonitoredEnclosure .
+  OPTIONAL {
+    ?assignment a hcm-bio:HousingAssignment ;
+                hcm-bio:assignedToEnclosure ?enclosure .
+    ?subject a hcm-bio:Subject ;
+             hcm-bio:hasHousingAssignment ?assignment .
+  }
 }
-GROUP BY ?system ?enclosure
-ORDER BY ?system ?enclosure
-
+GROUP BY ?enclosure
+ORDER BY ?enclosure

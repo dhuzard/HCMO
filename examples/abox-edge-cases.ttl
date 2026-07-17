@@ -1,38 +1,41 @@
-@prefix hcm:  <https://w3id.org/hcmo/ontology/hcm#> .
-@prefix ex:   <https://example.org/id/> .
-@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex: <https://example.org/hcmo/invalid/> .
+@prefix hcm: <https://w3id.org/hcmo/ontology/hcm#> .
+@prefix hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#> .
+@prefix hcm-obs: <https://w3id.org/hcmo/ontology/hcm/obs#> .
+@prefix hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
 
-# 1) System without sensors (should fail SystemShape minCount on hasSensor)
-ex:System_NoSensor a hcm:System ;
-  hcm:hasEnclosure ex:Enc_NoSensor .
+# Missing identifier, sensor, and monitored subject.
+ex:enclosure-with-gaps a hcm:MonitoredEnclosure ;
+  rdfs:label "Incomplete enclosure" ;
+  hcm:hasDimensions ex:bad-dimensions .
 
-ex:Enc_NoSensor a hcm:Enclosure ;
-  hcm:hasDimensions ex:Dims_OK .
+# Invalid negative height.
+ex:bad-dimensions a hcm:EnclosureDimensions ;
+  hcm:hasWidth 30.0 ;
+  hcm:hasLength 45.0 ;
+  hcm:hasHeight -1.0 ;
+  hcm:hasDimUnit "cm" .
 
-ex:Dims_OK a hcm:Dimensions ;
-  hcm:width 30.0 ; hcm:length 45.0 ; hcm:height 20.0 ; hcm:unit "cm" .
+# Missing species and housing assignment.
+ex:subject-with-gaps a hcm-bio:Subject ;
+  rdfs:label "Incomplete subject" .
 
-# 2) TimeInterval at 23.5 hours (should fail minInclusive 24)
-ex:TI_TooShort a hcm:TimeInterval ;
-  hcm:durationHours 23.5 ;
-  hcm:isExtendable "true"^^xsd:boolean ;
-  hcm:hasProperty ex:LowHumanInteraction .
+# Missing enclosure target.
+ex:assignment-with-gaps a hcm-bio:HousingAssignment .
 
-ex:LowHumanInteraction a hcm:LimitedInteractionWithHumans .
+# Missing sensor identifier and installation link.
+ex:sensor-with-gaps a hcm-tech:Sensor ;
+  rdfs:label "Incomplete sensor" .
 
-# 3) Enclosure without dimensions (should fail EnclosureDimsShape)
-ex:Enc_NoDims a hcm:Enclosure .
+# Missing feature of interest, sensor, result, and enclosure context.
+ex:observation-with-gaps a hcm-obs:BehaviorObservation .
 
-# 4) Behavior missing isDisplayedInside (should fail BehaviorShape)
-ex:Behav_NoEnclosure a hcm:BehaviorAndPhysiology ;
-  hcm:extendsEnoughToCapture ex:TI_24h_OK .
+# Missing unit.
+ex:quantity-with-gaps a hcm-obs:QuantityValue ;
+  hcm-obs:hasNumericValue 12.0 .
 
-ex:TI_24h_OK a hcm:TimeInterval ;
-  hcm:durationHours 24.0 ;
-  hcm:isExtendable "false"^^xsd:boolean ;
-  hcm:hasProperty ex:LowHumanInteraction .
-
-# 5) Dimensions with negative height (should fail DimensionsShape)
-ex:Dims_Bad a hcm:Dimensions ;
-  hcm:width 30.0 ; hcm:length 45.0 ; hcm:height -1.0 ; hcm:unit "cm" .
-
+# Missing storage path.
+ex:series-with-gaps a hcm-tech:TimeSeries ;
+  hcm-tech:hasFileFormat "text/csv" .

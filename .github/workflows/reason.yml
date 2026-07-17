@@ -1,4 +1,4 @@
-name: Reason HCMO v2
+name: Reason HCMO
 
 on:
   pull_request:
@@ -22,5 +22,5 @@ jobs:
           java-version: '17'
       - name: Install reasoning dependencies
         run: pip install -r tooling/reasoning-requirements.txt
-      - name: Run clean v2 HermiT check
-        run: python tooling/reason_v2.py --build-clean --java-memory 2000
+      - name: Run active HCMO HermiT check
+        run: python tooling/reason.py --java-memory 2000

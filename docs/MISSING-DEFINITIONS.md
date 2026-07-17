@@ -1,88 +1,36 @@
-# Terms needing labels / definitions / cleanup
+# Definition and modeling-quality status
 
-Auto-derived from `dist/profile.json` (regenerate: `python tooling/build.py`).
-Per project policy, missing labels and definitions are **not fabricated** — they are
-listed here for the ontology authors to fill in.
+Generated-profile audit for HCMO 0.1.0. Regenerate the profile with
+`python tooling/build.py` before updating this report.
 
-## Missing `rdfs:label` (5)
+## Active-term metadata
 
-- `https://w3id.org/hcmo/ontology/hcm/obs#`
-- `http://purl.org/dc/elements/1.1/creator`
-- `http://purl.org/dc/elements/1.1/description`
-- `http://purl.org/dc/elements/1.1/title`
-- `http://www.w3.org/2002/07/owl#versionInfo`
+- Missing `rdfs:label`: **0**
+- Missing textual definition (`rdfs:comment` or `IAO:0000115`): **0**
+- Active object/datatype properties missing `rdfs:domain`: **0**
+- Active object/datatype properties missing `rdfs:range`: **0**
+- Active classes without an explicit named or restriction-based upper anchor:
+  **0**
 
-## Missing definition / `rdfs:comment` (144)
+## Resolved export artifacts
 
-Every authored term currently lacks a definition. Add `rdfs:comment` (and/or
-`IAO:0000115`) to each term in `ontology/modules/*.ttl`.
+`UNKNOWN:` terms, `ns:` placeholders, `xsd:boolean`/`xsd:integer` declarations
+as properties, and the bare `https://w3id.org/hcmo/ontology/hcm/obs#` property
+are not present in the active graph. They remain only in the archived 0.0.1
+source under `ontology/legacy/mapp-0.0.1/` for auditability.
 
-## V2 draft FOOPS definition gap (closed)
+`hcm:OWL-Timeintervaltable` is retained as a deprecated 0.0.1 IRI with an
+explicit note that it was an invalid Chowlk/spreadsheet artifact and has no
+asserted replacement. The valid temporal model uses SOSA temporal properties
+with OWL-Time temporal entities.
 
-FOOPS v0.4.0 on `ontology/v2/hcmo-v2-merged-clean.owl` (2026-07-09) found
-definitions for 0/111 assessed v2 terms before the definition pass. The v2
-source modules now include `rdfs:comment` definitions for all 111 assessed terms,
-and `VOC4` passes in `docs/paper/FOOPS-REPORT-2026-07-09.after-definitions.json`.
-Co-authors should still review wording before v2 promotion.
+## Open semantic decisions
 
-## Chowlk placeholder / likely-erroneous terms (43)
-
-These come from the Chowlk diagram export and are almost certainly not intended
-ontology terms. They are **preserved as authored** (not renamed/deleted per policy);
-review and either re-map to real IRIs or remove at the source module:
-
-- `http://www.owl-ontologies.com/UNKNOWN#*` — diagram nodes that never got a real namespace.
-- `http://www.owl-ontologies.com/ns#Class2`, `...#objectProperty` — placeholder stubs.
-- `xsd:boolean`, `xsd:integer` typed as `owl:DatatypeProperty` — these are datatypes, not properties.
-
-- `http://www.owl-ontologies.com/UNKNOWN#StudyFactors`  (label: 'Study Factors')
-- `http://www.owl-ontologies.com/ns#Class2`  (label: 'Class2')
-- `http://www.owl-ontologies.com/UNKNOWN#communicatesWith`  (label: 'communicates with')
-- `http://www.owl-ontologies.com/UNKNOWN#hasEnrichmentReq`  (label: 'has enrichment req')
-- `http://www.owl-ontologies.com/UNKNOWN#hasSensors`  (label: 'has sensors')
-- `http://www.owl-ontologies.com/UNKNOWN#runsOn`  (label: 'runs on')
-- `http://www.owl-ontologies.com/UNKNOWN#supportsEnclosure`  (label: 'supports enclosure')
-- `http://www.owl-ontologies.com/ns#objectProperty`  (label: 'object property')
-- `http://www.owl-ontologies.com/UNKNOWN#captures`  (label: 'captures')
-- `http://www.owl-ontologies.com/UNKNOWN#hasActuators`  (label: 'has actuators')
-- `http://www.owl-ontologies.com/UNKNOWN#hasCondition`  (label: 'has condition')
-- `http://www.owl-ontologies.com/UNKNOWN#hasDarkPhaseDuration`  (label: 'has dark phase duration')
-- `http://www.owl-ontologies.com/UNKNOWN#hasDarkPhaseStart`  (label: 'has dark phase start')
-- `http://www.owl-ontologies.com/UNKNOWN#hasDawnDuration`  (label: 'has dawn duration')
-- `http://www.owl-ontologies.com/UNKNOWN#hasDimUnit`  (label: 'has dim unit')
-- `http://www.owl-ontologies.com/UNKNOWN#hasDuskDuration`  (label: 'has dusk duration')
-- `http://www.owl-ontologies.com/UNKNOWN#hasEnrichmentType`  (label: 'has enrichment type')
-- `http://www.owl-ontologies.com/UNKNOWN#hasFacilityType`  (label: 'has facility type')
-- `http://www.owl-ontologies.com/UNKNOWN#hasFirmware`  (label: 'has firmware')
-- `http://www.owl-ontologies.com/UNKNOWN#hasFloorArea`  (label: 'has floor area')
-- `http://www.owl-ontologies.com/UNKNOWN#hasFoodReq`  (label: 'has food req')
-- `http://www.owl-ontologies.com/UNKNOWN#hasHeight`  (label: 'has height')
-- `http://www.owl-ontologies.com/UNKNOWN#hasLength`  (label: 'has length')
-- `http://www.owl-ontologies.com/UNKNOWN#hasLightPhaseDuration`  (label: 'has light phase duration')
-- `http://www.owl-ontologies.com/UNKNOWN#hasModelNumber`  (label: 'has model number')
-- `http://www.owl-ontologies.com/UNKNOWN#hasName`  (label: 'has name')
-- `http://www.owl-ontologies.com/UNKNOWN#hasProtocol`  (label: 'has protocol')
-- `http://www.owl-ontologies.com/UNKNOWN#hasSafetyReq`  (label: 'has safety req')
-- `http://www.owl-ontologies.com/UNKNOWN#hasSamplingRate`  (label: 'has sampling rate')
-- `http://www.owl-ontologies.com/UNKNOWN#hasSensorIdentifier`  (label: 'has sensor identifier')
-- `http://www.owl-ontologies.com/UNKNOWN#hasSensorTechnology`  (label: 'has sensor technology')
-- `http://www.owl-ontologies.com/UNKNOWN#hasSensorType`  (label: 'has sensor type')
-- `http://www.owl-ontologies.com/UNKNOWN#hasSocialReq`  (label: 'has social req')
-- `http://www.owl-ontologies.com/UNKNOWN#hasType`  (label: 'has type')
-- `http://www.owl-ontologies.com/UNKNOWN#hasVersion`  (label: 'has version')
-- `http://www.owl-ontologies.com/UNKNOWN#hasWaterReq`  (label: 'has water req')
-- `http://www.owl-ontologies.com/UNKNOWN#hasWidth`  (label: 'has width')
-- `http://www.owl-ontologies.com/UNKNOWN#isCalibrated`  (label: 'is calibrated')
-- `http://www.owl-ontologies.com/UNKNOWN#isOccupied`  (label: 'is occupied')
-- `http://www.owl-ontologies.com/UNKNOWN#isOperational`  (label: 'is operational')
-- `http://www.owl-ontologies.com/UNKNOWN#partOF`  (label: 'part o f')
-- `http://www.w3.org/2001/XMLSchema#boolean`  (label: 'boolean')
-- `http://www.w3.org/2001/XMLSchema#integer`  (label: 'integer')
-
-## Other modeling issues to review
-
-- v2 restored `hcm:Enclosure` as an `owl:Class`; the live/legacy audit should be refreshed after v2 promotion.
-- v2 normalizes the environmental object properties as lower-camel relation names: `hcm-env:hasAmbientTemperature`, `hasAmmoniaConcentration`, `hasCarbonDioxideConcentration`, `hasOxygenConcentration`, `hasRelativeHumidity`, `hasLightIntensity`, and `hasLightState`.
-- `sosa:hasResult` and `sosa:observedProperty` are each declared as BOTH `owl:ObjectProperty` and `owl:DatatypeProperty`.
-- `hcm:OWL-Timeintervaltable`, `hcm:Structural&LocationTable` have spreadsheet-derived names (auto-labels "O W L- Timeintervaltable", "Structural& Location Table").
-- `hcm-obs:` (the bare namespace IRI `https://w3id.org/hcmo/ontology/hcm/obs#`) is declared an `owl:ObjectProperty` with an empty label.
+- `hcm:hasUnit`, `hcm-obs:hasNumericValue`, and environmental literal values
+  remain a lightweight pattern pending a reviewed choice between QUDT and OM.
+- `hcm-obs:hasCondition` deliberately has `owl:Thing` as its range until an
+  experimental-condition model is selected with domain experts.
+- Deprecated 0.0.1 IRIs remain in `hcm-compat.ttl` for compatibility. Consumers
+  should follow `dcterms:isReplacedBy` where one is asserted, read the migration
+  note where no exact replacement exists, and should not mint new data with
+  deprecated terms.

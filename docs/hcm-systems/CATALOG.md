@@ -41,7 +41,7 @@ values.
 | **Sonotrack** | Metris | Acoustic (USV) | USV multi-channel recording | (named only) | P3 | `sonotrack` |
 | **Dodotronic** | Dodotronic | Acoustic (USV mics) | Ultrasonic microphones | (named only) | P3 | `dodotronic` |
 | **BatSound / Pettersson M500-USB** | Pettersson | Acoustic (USV, low-cost) | USV via "bat microphone" + Audacity | https://batsound.com/product-category/usbmicrophones/ | P3 | `batsound-pettersson` |
-| **Metadatapp (MAPP)** | Metadatapp / Neuronautix | Metadata management (not a sensor) | Unified metadata across project/mouse/data-publication | https://www.metadatapp.net | P2 | `metadatapp` |
+| **Metadatapp** | Metadatapp / Neuronautix | Metadata management (not a sensor) | Unified metadata across project/mouse/data-publication | https://www.metadatapp.net | P2 | `metadatapp` |
 
 ## Open-source / DIY systems
 

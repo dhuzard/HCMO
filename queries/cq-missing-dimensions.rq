@@ -2,8 +2,7 @@ PREFIX hcm: <https://w3id.org/hcmo/ontology/hcm#>
 
 SELECT ?enclosure
 WHERE {
-  ?enclosure a hcm:Enclosure .
-  FILTER NOT EXISTS { ?enclosure hcm:hasDimensions ?dims }
+  ?enclosure a hcm:MonitoredEnclosure .
+  FILTER NOT EXISTS { ?enclosure hcm:hasDimensions ?dimensions }
 }
 ORDER BY ?enclosure
-

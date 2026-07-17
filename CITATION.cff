@@ -4,8 +4,7 @@ title: "The Home-Cage Monitoring Ontology (HCMO)"
 abstract: >-
   An ontology for home-cage monitoring of laboratory animals, modeling
   monitored enclosures, subjects, environment and observation data, sensors and
-  hardware/software, in the MAPP (Monitoring and Analytics for Physiological
-  Processes) framework.
+  hardware and software in a shared, standards-aligned semantic model.
 type: dataset
 authors:
   - family-names: "Huzard"
@@ -29,9 +28,8 @@ authors:
   - family-names: "Toffano"
     given-names: "Antoine"
     orcid: "https://orcid.org/0009-0008-0575-8490"
-version: 0.1
+version: 0.1.0
 doi: 10.5281/zenodo.18925285
-date-released: 2026-03-09
 url: "https://github.com/dhuzard/HCMO"
 repository-code: "https://github.com/Neuronautix/HCMO"
 license: CC-BY-4.0

@@ -1,0 +1,150 @@
+# HCMO 0.1.0 — tech — sensors, actuators, software, hardware, and data artifacts
+# Promoted after expert review; see docs/paper/MODULE-MAP.md. Namespace policy: …/hcm/tech#.
+#
+@prefix hcm: <https://w3id.org/hcmo/ontology/hcm#> .
+@prefix hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#> .
+@prefix BFO: <http://purl.obolibrary.org/obo/BFO_> .
+@prefix IAO: <http://purl.obolibrary.org/obo/IAO_> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+hcm-tech:Hardware a owl:Class ;
+    rdfs:label "Hardware" ;
+    rdfs:comment "Physical computing hardware component of a home-cage monitoring system." ;
+    rdfs:subClassOf BFO:0000040 .
+
+hcm-tech:Actuator a owl:Class ;
+    rdfs:label "Actuator" ;
+    rdfs:comment "A device that elicits or perturbs behavior, physiology, or the monitored environment." ;
+    rdfs:subClassOf BFO:0000040, sosa:Actuator .
+
+hcm-tech:Sensor a owl:Class ;
+    rdfs:label "Sensor" ;
+    rdfs:comment "A device that captures signals related to behavior, physiology, or enclosure environment." ;
+    rdfs:subClassOf BFO:0000040, sosa:Sensor,
+        [ a owl:Restriction ;
+            owl:onProperty hcm-tech:installedIn ;
+            owl:someValuesFrom hcm:MonitoredEnclosure ] .
+
+hcm-tech:Software a owl:Class ;
+    rdfs:label "Software" ;
+    rdfs:comment "Software component used to acquire, process, store, or analyse home-cage monitoring data." ;
+    rdfs:subClassOf IAO:0000030 .
+
+hcm-tech:TimeSeries a owl:Class ;
+    rdfs:label "Time Series" ;
+    rdfs:comment "An ordered sequence of time-indexed measurements or outputs produced in a monitoring workflow." ;
+    rdfs:subClassOf IAO:0000030 .
+
+hcm-tech:hasFileFormat a owl:DatatypeProperty ;
+    rdfs:label "has file format" ;
+    rdfs:comment "Records the file format of a software or time-series artifact." ;
+    rdfs:domain [ a owl:Class ; owl:unionOf ( hcm-tech:Software hcm-tech:TimeSeries ) ] ;
+    rdfs:range xsd:string .
+
+hcm-tech:hasFirmware a owl:DatatypeProperty ;
+    rdfs:label "has firmware" ;
+    rdfs:comment "Records the firmware identifier or version installed on a hardware or sensor component." ;
+    rdfs:domain [ a owl:Class ; owl:unionOf ( hcm-tech:Hardware hcm-tech:Sensor ) ] ;
+    rdfs:range xsd:string .
+
+hcm-tech:hasModelNumber a owl:DatatypeProperty ;
+    rdfs:label "has model number" ;
+    rdfs:comment "Records the manufacturer model number for a hardware, sensor, or actuator component." ;
+    rdfs:domain [ a owl:Class ; owl:unionOf ( hcm-tech:Hardware hcm-tech:Sensor hcm-tech:Actuator ) ] ;
+    rdfs:range xsd:string .
+
+hcm-tech:hasProtocol a owl:DatatypeProperty ;
+    rdfs:label "has protocol" ;
+    rdfs:comment "Records the communication, acquisition, or processing protocol used by a technical component." ;
+    rdfs:domain [ a owl:Class ; owl:unionOf ( hcm-tech:Hardware hcm-tech:Sensor hcm-tech:Software ) ] ;
+    rdfs:range xsd:string .
+
+hcm-tech:hasSamplingRate a owl:DatatypeProperty ;
+    rdfs:label "has sampling rate" ;
+    rdfs:comment "Records the rate at which a sensor or data stream is sampled, including its unit." ;
+    rdfs:domain [ a owl:Class ; owl:unionOf ( hcm-tech:Sensor hcm-tech:TimeSeries ) ] ;
+    rdfs:range xsd:string .
+
+hcm-tech:hasSensorIdentifier a owl:DatatypeProperty ;
+    rdfs:label "has sensor identifier" ;
+    rdfs:comment "Records an identifier assigned to a sensor." ;
+    rdfs:domain hcm-tech:Sensor ;
+    rdfs:range xsd:string .
+
+hcm-tech:hasSensorTechnology a owl:DatatypeProperty ;
+    rdfs:label "has sensor technology" ;
+    rdfs:comment "Records the sensing technology or modality used by a sensor." ;
+    rdfs:domain hcm-tech:Sensor ;
+    rdfs:range xsd:string .
+
+hcm-tech:hasSensorType a owl:DatatypeProperty ;
+    rdfs:label "has sensor type" ;
+    rdfs:comment "Records the functional type or category of a sensor." ;
+    rdfs:domain hcm-tech:Sensor ;
+    rdfs:range xsd:string .
+
+hcm-tech:hasStoragePath a owl:DatatypeProperty ;
+    rdfs:label "has storage path" ;
+    rdfs:comment "Records a path or locator for stored data, software, or time-series resources." ;
+    rdfs:domain [ a owl:Class ; owl:unionOf ( hcm-tech:Software hcm-tech:TimeSeries ) ] ;
+    rdfs:range xsd:string .
+
+hcm-tech:hasVersion a owl:DatatypeProperty ;
+    rdfs:label "has version" ;
+    rdfs:comment "Records a version string for software, firmware, hardware, or data artifacts." ;
+    rdfs:domain [ a owl:Class ; owl:unionOf ( hcm-tech:Hardware hcm-tech:Software hcm-tech:TimeSeries ) ] ;
+    rdfs:range xsd:string .
+
+hcm-tech:isCalibrated a owl:DatatypeProperty ;
+    rdfs:label "is calibrated" ;
+    rdfs:comment "Indicates whether a sensor or device has been calibrated." ;
+    rdfs:domain hcm-tech:Sensor ;
+    rdfs:range xsd:boolean .
+
+hcm-tech:communicatesWith a owl:ObjectProperty ;
+    rdfs:label "communicates with" ;
+    rdfs:comment "Relates a technical component to another hardware or software component with which it exchanges data or commands." ;
+    rdfs:domain [ a owl:Class ; owl:unionOf ( hcm-tech:Hardware hcm-tech:Sensor hcm-tech:Actuator hcm-tech:Software ) ] ;
+    rdfs:range [ a owl:Class ; owl:unionOf ( hcm-tech:Hardware hcm-tech:Sensor hcm-tech:Actuator hcm-tech:Software ) ] .
+
+hcm-tech:captures a owl:ObjectProperty ;
+    rdfs:label "captures" ;
+    rdfs:comment "Relates a sensor to the property it observes or captures." ;
+    rdfs:domain hcm-tech:Sensor ;
+    rdfs:range sosa:Property ;
+    rdfs:subPropertyOf sosa:observes .
+
+hcm-tech:hasActuator a owl:ObjectProperty ;
+    rdfs:label "has actuator" ;
+    rdfs:comment "Relates a monitored enclosure to an actuator associated with it." ;
+    rdfs:domain hcm:MonitoredEnclosure ;
+    rdfs:range hcm-tech:Actuator .
+
+hcm-tech:monitoredBy a owl:ObjectProperty ;
+    rdfs:label "monitored by" ;
+    rdfs:comment "Relates a monitored enclosure to a sensor installed in or monitoring it." ;
+    rdfs:domain hcm:MonitoredEnclosure ;
+    rdfs:range hcm-tech:Sensor ;
+    owl:inverseOf hcm-tech:installedIn .
+
+hcm-tech:installedIn a owl:ObjectProperty ;
+    rdfs:label "installed in" ;
+    rdfs:comment "Relates a sensor to the monitored enclosure in which it is installed." ;
+    rdfs:domain hcm-tech:Sensor ;
+    rdfs:range hcm:MonitoredEnclosure .
+
+hcm-tech:runsOn a owl:ObjectProperty ;
+    rdfs:label "runs on" ;
+    rdfs:comment "Relates software to the hardware or platform on which it executes." ;
+    rdfs:domain hcm-tech:Software ;
+    rdfs:range hcm-tech:Hardware .
+
+hcm-tech:supportsEnclosure a owl:ObjectProperty ;
+    rdfs:label "supports enclosure" ;
+    rdfs:comment "Relates a technical component to the monitored enclosure that it supports." ;
+    rdfs:domain [ a owl:Class ; owl:unionOf ( hcm-tech:Hardware hcm-tech:Software ) ] ;
+    rdfs:range hcm:MonitoredEnclosure .
+
