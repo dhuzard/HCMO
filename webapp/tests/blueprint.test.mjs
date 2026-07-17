@@ -77,3 +77,16 @@ test('ethics notice remains visible in public/index.html', async () => {
   const html = await fs.readFile(new URL('../public/index.html', import.meta.url), 'utf8');
   assert.match(html, /placeholder <strong>\(O\)<\/strong>/, 'ethics placeholder should be referenced in the UI');
 });
+
+test('published contribution form exports current HCMO triples CSV', async () => {
+  const html = await fs.readFile(new URL('../../docs/hcm-systems/contribute/index.html', import.meta.url), 'utf8');
+
+  assert.match(html, /data-view="csv"/, 'triples CSV view should be available');
+  assert.match(html, /\["subject", "predicate", "object"\]/, 'CSV should expose the required triple columns');
+  assert.match(html, /hcm:MonitoredEnclosure/, 'main resource should use the active enclosure model');
+  assert.match(html, /hcm-tech:TimeSeries/, 'data output should use the active time-series class');
+  assert.match(html, /hcm-obs:hasCondition/, 'observation context should be projected explicitly');
+  assert.match(html, /sosa:hasResult/, 'observations and results should be distinct nodes');
+  assert.doesNotMatch(html, /name="sex"/, 'the contribution form should not collect biological sex');
+  assert.doesNotMatch(html, /addTriple\(lines, system, "rdf:type", "hcm:System"\)/, 'deprecated aggregate system typing should not be emitted');
+});

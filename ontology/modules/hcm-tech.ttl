@@ -1,4 +1,4 @@
-# HCMO 0.1.0 — tech — sensors, actuators, software, hardware, and data artifacts
+# HCMO 0.2.0 — tech — sensors, actuators, software, hardware, and data artifacts
 # Promoted after expert review; see docs/paper/MODULE-MAP.md. Namespace policy: …/hcm/tech#.
 #
 @prefix hcm: <https://w3id.org/hcmo/ontology/hcm#> .

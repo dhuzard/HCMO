@@ -1,4 +1,4 @@
-# HCMO 0.1.0 — env — environmental profiles, specifications, and properties
+# HCMO 0.2.0 — env — environmental profiles, specifications, and properties
 # Promoted after expert review; see docs/paper/MODULE-MAP.md. Namespace policy: …/hcm/env#.
 #
 @prefix BFO: <http://purl.obolibrary.org/obo/BFO_> .

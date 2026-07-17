@@ -1,4 +1,4 @@
-# HCMO 0.1.0 — obs — observations and results
+# HCMO 0.2.0 — obs — observations and results
 # Promoted after expert review; see docs/paper/MODULE-MAP.md. Namespace policy: …/hcm/obs#.
 #
 @prefix hcm: <https://w3id.org/hcmo/ontology/hcm#> .

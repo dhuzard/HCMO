@@ -1,4 +1,4 @@
-# HCMO 0.1.0 compatibility mappings for published 0.0.1 IRIs.
+# HCMO 0.2.0 compatibility mappings for published 0.0.1 IRIs.
 # This module contains no new concepts. Invalid non-HCMO namespace artifacts are
 # archived under ontology/legacy/mapp-0.0.1 and are not part of this graph.
 

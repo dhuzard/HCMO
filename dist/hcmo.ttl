@@ -1,6 +1,7 @@
 # DO NOT EDIT — GENERATED FILE.
 # Produced by tooling/build.py from ontology/modules/*.ttl.
 # Edit the modules and re-run `python tooling/build.py` to regenerate.
+@prefix bibo: <http://purl.org/ontology/bibo/> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix hcm: <https://w3id.org/hcmo/ontology/hcm#> .
@@ -9,7 +10,6 @@
 @prefix hcm-obs: <https://w3id.org/hcmo/ontology/hcm/obs#> .
 @prefix hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#> .
 @prefix mod: <https://w3id.org/mod#> .
-@prefix ns1: <http://purl.org/ontology/bibo/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -43,7 +43,7 @@ dcterms:publisher a owl:AnnotationProperty .
 
 dcterms:source a owl:AnnotationProperty .
 
-ns1:doi a owl:AnnotationProperty .
+bibo:doi a owl:AnnotationProperty .
 
 vann:preferredNamespacePrefix a owl:AnnotationProperty .
 
@@ -68,15 +68,16 @@ schema:logo a owl:AnnotationProperty .
     dcterms:identifier "https://doi.org/10.5281/zenodo.18925285" ;
     dcterms:issued "2026-03-09"^^xsd:date ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
-    dcterms:modified "2026-07-16"^^xsd:date ;
+    dcterms:modified "2026-07-17"^^xsd:date ;
     dcterms:publisher "Huzard group" ;
     dcterms:source <https://github.com/dhuzard/HCMO> ;
-    ns1:doi "10.5281/zenodo.18925285" ;
+    bibo:authorList ( <https://orcid.org/0000-0003-4820-7951> <https://orcid.org/0000-0002-9116-6692> <https://orcid.org/0009-0008-2489-8106> <https://orcid.org/0000-0002-2923-9790> <https://orcid.org/0000-0003-2204-2466> <https://orcid.org/0000-0002-6085-6818> <https://orcid.org/0009-0008-0575-8490> ) ;
+    bibo:doi "10.5281/zenodo.18925285" ;
     vann:preferredNamespacePrefix "hcm" ;
     vann:preferredNamespaceUri "https://w3id.org/hcmo/ontology/hcm#" ;
-    owl:priorVersion <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
-    owl:versionIRI <https://w3id.org/hcmo/ontology/hcm/0.1.0> ;
-    owl:versionInfo "0.1.0" ;
+    owl:priorVersion <https://w3id.org/hcmo/ontology/hcm/0.1.0> ;
+    owl:versionIRI <https://w3id.org/hcmo/ontology/hcm/0.2.0> ;
+    owl:versionInfo "0.2.0" ;
     schema:logo <https://raw.githubusercontent.com/dhuzard/HCMO/main/HCMO-logo3.png> ;
     mod:createdWith <https://chowlk.linkeddata.es/> ;
     mod:status "draft" .
@@ -940,27 +941,6 @@ mod:createdWith a owl:AnnotationProperty .
 
 mod:status a owl:AnnotationProperty .
 
-<https://orcid.org/0000-0002-2923-9790> a schema:Person ;
-    schema:name "Pierre Larmande" .
-
-<https://orcid.org/0000-0002-6085-6818> a schema:Person ;
-    schema:name "Serge Sonfack Sounchio" .
-
-<https://orcid.org/0000-0002-9116-6692> a schema:Person ;
-    schema:name "Konstantin Todorov" .
-
-<https://orcid.org/0000-0003-2204-2466> a schema:Person ;
-    schema:name "Gaoussou Sanou" .
-
-<https://orcid.org/0000-0003-4820-7951> a schema:Person ;
-    schema:name "Damien Huzard" .
-
-<https://orcid.org/0009-0008-0575-8490> a schema:Person ;
-    schema:name "Antoine Toffano" .
-
-<https://orcid.org/0009-0008-2489-8106> a schema:Person ;
-    schema:name "Cyril Gilbert" .
-
 hcm:hasDimensions a owl:ObjectProperty ;
     rdfs:label "has dimensions" ;
     rdfs:comment "Links an enclosure to its dimensions record." ;
@@ -1099,6 +1079,27 @@ hcm-tech:hasVersion a owl:DatatypeProperty ;
     rdfs:domain [ a owl:Class ;
             owl:unionOf ( hcm-tech:Hardware hcm-tech:Software hcm-tech:TimeSeries ) ] ;
     rdfs:range xsd:string .
+
+<https://orcid.org/0000-0002-2923-9790> a schema:Person ;
+    schema:name "Pierre Larmande" .
+
+<https://orcid.org/0000-0002-6085-6818> a schema:Person ;
+    schema:name "Serge Sonfack Sounchio" .
+
+<https://orcid.org/0000-0002-9116-6692> a schema:Person ;
+    schema:name "Konstantin Todorov" .
+
+<https://orcid.org/0000-0003-2204-2466> a schema:Person ;
+    schema:name "Gaoussou Sanou" .
+
+<https://orcid.org/0000-0003-4820-7951> a schema:Person ;
+    schema:name "Damien Huzard" .
+
+<https://orcid.org/0009-0008-0575-8490> a schema:Person ;
+    schema:name "Antoine Toffano" .
+
+<https://orcid.org/0009-0008-2489-8106> a schema:Person ;
+    schema:name "Cyril Gilbert" .
 
 hcm:Enrichment a owl:Class ;
     rdfs:label "Enrichment" ;

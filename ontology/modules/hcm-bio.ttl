@@ -1,4 +1,4 @@
-# HCMO 0.1.0 — bio — subjects, groups, housing assignments, and study factors
+# HCMO 0.2.0 — bio — subjects, groups, housing assignments, and study factors
 # Promoted after expert review; see docs/paper/MODULE-MAP.md. Namespace policy: …/hcm/bio#.
 #
 @prefix hcm: <https://w3id.org/hcmo/ontology/hcm#> .

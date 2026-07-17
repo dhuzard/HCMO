@@ -1,6 +1,6 @@
 # Ontology architecture
 
-HCMO 0.1.0 is authored as five domain modules plus one migration-only
+HCMO 0.2.0 is authored as five domain modules plus one migration-only
 compatibility module. The release manifest `hcmo.yaml` is the authoritative
 module list; `dist/` is generated from that manifest.
 
