@@ -23,7 +23,7 @@ JSON-LD context.
 | **Ontology IRI**          | `https://w3id.org/hcmo/ontology/hcm`                                                      |
 | **Base namespace**        | `https://w3id.org/hcmo/ontology/hcm#`                                                     |
 | **Module sub-namespaces** | `…/hcm/bio#`, `…/hcm/env#`, `…/hcm/obs#`, `…/hcm/tech#`                             |
-| **Version**               | `0.1.0` (versionIRI `…/hcm/0.1.0`)                                                     |
+| **Version**               | `0.2.0` (versionIRI `…/hcm/0.2.0`)                                                     |
 | **Prefix**                | `hcm`                                                                                     |
 | **License**               | CC BY 4.0                                                                                   |
 | **Logo**                  | [`HCMO-logo3.png`](HCMO-logo3.png)                                                        |
@@ -118,7 +118,7 @@ definitions (see `docs/MISSING-DEFINITIONS.md`) render with empty descriptions.
 
 ## Status & known issues
 
-HCMO `0.1.0` is the promoted modular cleanup of the early Chowlk-derived term
+HCMO `0.2.0` is the current modular release of the early Chowlk-derived term
 set. Active classes and properties have labels, textual definitions, explicit
 upper/domain anchors, and property domain/range axioms. Invalid `UNKNOWN:` and
 bare-namespace artifacts are retained only in the archived 0.0.1 source; valid
@@ -132,8 +132,9 @@ a reviewed QUDT or OM alignment.
 
 A Node.js app under `webapp/` supports form-based authoring and a blueprint
 checklist. From `webapp/`: `npm install` then `npm run dev` (serves on
-`http://localhost:3000`); `npm test` runs the API/UI tests. The app predates HCMO
-0.1.0 and its form mappings still require migration to the current model.
+`http://localhost:3000`); `npm test` runs the API/UI tests. The published
+contribution form under
+`docs/hcm-systems/contribute/` exports current-model Turtle and triple CSV.
 
 ## Contributors
 

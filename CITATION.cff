@@ -28,7 +28,7 @@ authors:
   - family-names: "Toffano"
     given-names: "Antoine"
     orcid: "https://orcid.org/0009-0008-0575-8490"
-version: 0.1.0
+version: 0.2.0
 doi: 10.5281/zenodo.18925285
 url: "https://github.com/dhuzard/HCMO"
 repository-code: "https://github.com/Neuronautix/HCMO"

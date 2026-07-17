@@ -6,11 +6,11 @@
 # in ontology/modules/ and regenerated artifacts in dist/.
 name: hcmo
 title: Home-Cage Monitoring Ontology
-version: 0.1.0
+version: 0.2.0
 namespace: https://w3id.org/hcmo/ontology/hcm#
 prefix: hcm
 ontology_iri: https://w3id.org/hcmo/ontology/hcm
-version_iri: https://w3id.org/hcmo/ontology/hcm/0.1.0
+version_iri: https://w3id.org/hcmo/ontology/hcm/0.2.0
 # Module sub-namespaces (path segments under the base):
 #   hcm-bio: https://w3id.org/hcmo/ontology/hcm/bio#
 #   hcm-env: https://w3id.org/hcmo/ontology/hcm/env#

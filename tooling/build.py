@@ -74,6 +74,7 @@ def bind_prefixes(g: Graph, manifest: dict) -> None:
     g.bind("rdfs", RDFS, replace=True)
     g.bind("dc", DC, replace=True)
     g.bind("dcterms", DCTERMS, replace=True)
+    g.bind("bibo", Namespace("http://purl.org/ontology/bibo/"), replace=True)
     g.bind("schema", Namespace("https://schema.org/"), replace=True)
     g.bind("skos", SKOS, replace=True)
     g.bind("sosa", Namespace("http://www.w3.org/ns/sosa/"), replace=True)

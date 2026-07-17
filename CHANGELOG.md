@@ -3,6 +3,44 @@
 All notable changes to the Home-Cage Monitoring Ontology (HCMO) are documented here. Versions
 track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
+## [0.2.0] - 2026-07-17
+
+Updated the public contribution workflow to emit current HCMO instance data and
+to capture conditions, explicit observation results, and richer time-series
+file metadata. The stable ontology and term namespaces are unchanged.
+
+### Added
+
+- Ordered `bibo:authorList` ontology metadata with Damien Huzard as first
+  author, while retaining the existing `dcterms:creator` assertions.
+- A triple CSV form view and download with `subject`, `predicate`, and `object`
+  columns, absolute IRIs, and RDF lexical literals.
+- A conditions/context form section projected through
+  `hcm-obs:hasCondition`.
+- Separate representative-result rows projected as SOSA observations and HCMO
+  quantitative, categorical, behavioral, or location-table results.
+- Time-series file name, version, format, sampling, volume, schema, license,
+  and storage-path capture using `hcm-tech:TimeSeries` and existing metadata
+  properties.
+
+### Changed
+
+- Advanced the release metadata and `owl:versionIRI` from `0.1.0` to `0.2.0`;
+  the base namespace remains `https://w3id.org/hcmo/ontology/hcm#`.
+- Migrated the contribution form's Turtle projection from deprecated 0.0.1
+  system-catalog terms to the active core, bio, env, obs, tech, and SOSA model.
+- Separated measurement parameters (`hcm-env:MeasurementSpecification`) from
+  observation results.
+
+### Removed
+
+- Biological-sex collection from the system contribution form. The ontology
+  term remains available for subject-level datasets; no term or IRI was deleted.
+
+### Renamed
+
+- None.
+
 ## [0.1.0] - 2026-07-16
 
 Expert-review cleanup and promotion of the modular HCMO term set. This is a

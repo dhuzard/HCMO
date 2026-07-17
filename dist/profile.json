@@ -288,7 +288,7 @@
     "classes": 56,
     "datatype_properties": 73,
     "object_properties": 57,
-    "triples": 1237
+    "triples": 1252
   },
   "datatype_properties": [
     {
@@ -946,6 +946,6 @@
     }
   ],
   "ontology_iri": "https://w3id.org/hcmo/ontology/hcm",
-  "version": "0.1.0",
-  "version_iri": "https://w3id.org/hcmo/ontology/hcm/0.1.0"
+  "version": "0.2.0",
+  "version_iri": "https://w3id.org/hcmo/ontology/hcm/0.2.0"
 }

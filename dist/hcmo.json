@@ -1,5 +1,6 @@
 {
   "@context": {
+    "bibo": "http://purl.org/ontology/bibo/",
     "brick": "https://brickschema.org/schema/Brick#",
     "csvw": "http://www.w3.org/ns/csvw#",
     "dc": "http://purl.org/dc/elements/1.1/",
@@ -16,7 +17,6 @@
     "hcm-obs": "https://w3id.org/hcmo/ontology/hcm/obs#",
     "hcm-tech": "https://w3id.org/hcmo/ontology/hcm/tech#",
     "mod": "https://w3id.org/mod#",
-    "ns1": "http://purl.org/ontology/bibo/",
     "odrl": "http://www.w3.org/ns/odrl/2/",
     "org": "http://www.w3.org/ns/org#",
     "owl": "http://www.w3.org/2002/07/owl#",
@@ -571,6 +571,10 @@
           }
         ]
       }
+    },
+    {
+      "@id": "bibo:doi",
+      "@type": "owl:AnnotationProperty"
     },
     {
       "@id": "dc:creator",
@@ -2852,6 +2856,32 @@
     {
       "@id": "https://w3id.org/hcmo/ontology/hcm",
       "@type": "owl:Ontology",
+      "bibo:authorList": {
+        "@list": [
+          {
+            "@id": "https://orcid.org/0000-0003-4820-7951"
+          },
+          {
+            "@id": "https://orcid.org/0000-0002-9116-6692"
+          },
+          {
+            "@id": "https://orcid.org/0009-0008-2489-8106"
+          },
+          {
+            "@id": "https://orcid.org/0000-0002-2923-9790"
+          },
+          {
+            "@id": "https://orcid.org/0000-0003-2204-2466"
+          },
+          {
+            "@id": "https://orcid.org/0000-0002-6085-6818"
+          },
+          {
+            "@id": "https://orcid.org/0009-0008-0575-8490"
+          }
+        ]
+      },
+      "bibo:doi": "10.5281/zenodo.18925285",
       "dc:description": "Ontology for home-cage monitoring of laboratory animals",
       "dc:title": "Home-Cage Monitoring Ontology",
       "dcterms:bibliographicCitation": "The Home-Cage Monitoring Ontology (HCMO). Zenodo. https://doi.org/10.5281/zenodo.18925285",
@@ -2892,7 +2922,7 @@
       },
       "dcterms:modified": {
         "@type": "xsd:date",
-        "@value": "2026-07-16"
+        "@value": "2026-07-17"
       },
       "dcterms:publisher": "Huzard group",
       "dcterms:source": {
@@ -2902,14 +2932,13 @@
         "@id": "https://chowlk.linkeddata.es/"
       },
       "mod:status": "draft",
-      "ns1:doi": "10.5281/zenodo.18925285",
       "owl:priorVersion": {
-        "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
-      },
-      "owl:versionIRI": {
         "@id": "https://w3id.org/hcmo/ontology/hcm/0.1.0"
       },
-      "owl:versionInfo": "0.1.0",
+      "owl:versionIRI": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.2.0"
+      },
+      "owl:versionInfo": "0.2.0",
       "schema:logo": {
         "@id": "https://raw.githubusercontent.com/dhuzard/HCMO/main/HCMO-logo3.png"
       },
@@ -2922,10 +2951,6 @@
     },
     {
       "@id": "mod:status",
-      "@type": "owl:AnnotationProperty"
-    },
-    {
-      "@id": "ns1:doi",
       "@type": "owl:AnnotationProperty"
     },
     {

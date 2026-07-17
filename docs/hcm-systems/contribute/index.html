@@ -244,7 +244,8 @@
     border-radius: var(--radius-sm); padding: .55rem;
   }
   .row--2 { grid-template-columns: 1.4fr 1fr auto; }
-  @media (max-width: 560px) { .row, .row--2 { grid-template-columns: 1fr 1fr; } .row .del, .row--2 .del { grid-column: 1 / -1; justify-self: end; } }
+  .row--4 { grid-template-columns: 1.2fr .9fr 1fr .7fr auto; }
+  @media (max-width: 560px) { .row, .row--2, .row--4 { grid-template-columns: 1fr 1fr; } .row .del, .row--2 .del, .row--4 .del { grid-column: 1 / -1; justify-self: end; } }
   .row input, .row select { background: var(--surface); }
   .del {
     border: none; background: transparent; color: var(--req-fg);
@@ -504,7 +505,7 @@
         <!-- 5. Animals -->
         <section class="card">
           <header><span class="card__num">05</span><h2>Animals / subjects</h2></header>
-          <div class="grid g3">
+          <div class="grid g2">
             <label class="field">
               <span class="lbl">Species <span class="tier tier--rec">Rec</span></span>
               <select name="species">
@@ -516,10 +517,6 @@
             <label class="field">
               <span class="lbl">Strain <span class="tier tier--opt">Opt</span></span>
               <input name="strain" placeholder="e.g. C57BL/6J" />
-            </label>
-            <label class="field">
-              <span class="lbl">Sex <span class="tier tier--opt">Opt</span></span>
-              <select name="sex"><option value="">Select…</option><option>Male</option><option>Female</option><option>Both</option><option>N/A</option></select>
             </label>
           </div>
           <div class="grid g3" style="margin-top:1rem">
@@ -538,12 +535,17 @@
           </div>
         </section>
 
-        <!-- 6. Measurements -->
+        <!-- 6. Parameters and results -->
         <section class="card">
-          <header><span class="card__num">06</span><h2>What it measures</h2></header>
-          <p class="card__hint">List the parameters your system produces. Add a row per parameter — units and sampling rate help us map to <code style="font-family:var(--font-mono)">hcm-env</code> / <code style="font-family:var(--font-mono)">hcm-obs</code>.</p>
+          <header><span class="card__num">06</span><h2>Parameters &amp; results</h2></header>
+          <p class="card__hint"><b>Parameters</b> describe what and how the system measures; <b>results</b> are values or categories produced by an observation. Keeping them separate maps cleanly to <code style="font-family:var(--font-mono)">hcm-env:MeasurementSpecification</code> and SOSA/HCMO result classes.</p>
+          <h3 style="margin-top:1rem">Measurement parameters</h3>
           <div class="rows" id="paramRows"></div>
           <button type="button" class="add" data-add="param">+ Add parameter</button>
+          <h3 style="margin-top:1.25rem">Observation results</h3>
+          <p class="card__hint">Add a representative output result. Quantitative values should be numeric; categorical and behavioural values may be text.</p>
+          <div class="rows" id="resultRows"></div>
+          <button type="button" class="add" data-add="result">+ Add result</button>
           <div class="grid g2" style="margin-top:1.1rem">
             <label class="field">
               <span class="lbl">Behaviours observed <span class="tier tier--rec">Rec</span></span>
@@ -556,9 +558,39 @@
           </div>
         </section>
 
-        <!-- 7. Sensors & actuators -->
+        <!-- 7. Conditions and context -->
         <section class="card">
-          <header><span class="card__num">07</span><h2>Sensors &amp; actuators</h2></header>
+          <header><span class="card__num">07</span><h2>Conditions &amp; context</h2></header>
+          <p class="card__hint">Describe the context under which observations and results should be interpreted. The export links this context to observations with <code style="font-family:var(--font-mono)">hcm-obs:hasCondition</code>.</p>
+          <div class="grid g2">
+            <label class="field">
+              <span class="lbl">Condition / context label <span class="tier tier--rec">Rec</span></span>
+              <input name="conditionLabel" placeholder="e.g. baseline, treatment week 2, standard housing" />
+            </label>
+            <label class="field">
+              <span class="lbl">Treatment / study context <span class="tier tier--opt">Opt</span></span>
+              <input name="treatmentContext" placeholder="e.g. vehicle control; post-surgery day 7" />
+            </label>
+          </div>
+          <div class="grid g2" style="margin-top:1rem">
+            <label class="field">
+              <span class="lbl">Environmental context <span class="tier tier--rec">Rec</span></span>
+              <input name="environmentContext" placeholder="e.g. 22 °C, 50% RH, lights off" />
+            </label>
+            <label class="field">
+              <span class="lbl">Human-interaction context <span class="tier tier--opt">Opt</span></span>
+              <input name="interactionContext" placeholder="e.g. undisturbed except weekly cage change" />
+            </label>
+          </div>
+          <label class="field" style="margin-top:1rem">
+            <span class="lbl">Additional context <span class="tier tier--opt">Opt</span></span>
+            <textarea name="conditionNotes" placeholder="Other experimental, husbandry, temporal, or interpretation conditions…"></textarea>
+          </label>
+        </section>
+
+        <!-- 8. Sensors & actuators -->
+        <section class="card">
+          <header><span class="card__num">08</span><h2>Sensors &amp; actuators</h2></header>
           <div class="field">
             <span class="lbl">Sensors <span class="tier tier--req">Required</span> <span class="sub">at least one</span></span>
             <div class="rows" id="sensorRows"></div>
@@ -571,9 +603,9 @@
           </div>
         </section>
 
-        <!-- 8. Observation window -->
+        <!-- 9. Observation window -->
         <section class="card">
-          <header><span class="card__num">08</span><h2>Recording window</h2></header>
+          <header><span class="card__num">09</span><h2>Recording window</h2></header>
           <div class="grid g3">
             <label class="field">
               <span class="lbl">Typical continuous duration <span class="tier tier--rec">Rec</span></span>
@@ -590,10 +622,20 @@
           </div>
         </section>
 
-        <!-- 9. Data output -->
+        <!-- 10. Data output -->
         <section class="card">
-          <header><span class="card__num">09</span><h2>Data output &amp; sharing</h2></header>
-          <p class="card__hint">This is the most useful part for validation — it lets us author faithful mock data and test the shapes.</p>
+          <header><span class="card__num">10</span><h2>Data output &amp; time series</h2></header>
+          <p class="card__hint">Describe the time-series artifact and its files. The export uses <code style="font-family:var(--font-mono)">hcm-tech:TimeSeries</code> with HCMO file-format, storage-path, sampling-rate, and version metadata.</p>
+          <div class="grid g2" style="margin-top:1rem">
+            <label class="field">
+              <span class="lbl">Time-series / file name <span class="tier tier--rec">Rec</span></span>
+              <input name="fileName" placeholder="e.g. cage12_activity_2026-07-17.csv" />
+            </label>
+            <label class="field">
+              <span class="lbl">Data version <span class="tier tier--opt">Opt</span></span>
+              <input name="dataVersion" placeholder="e.g. 1.2 or pipeline-2026.07" />
+            </label>
+          </div>
           <div class="field">
             <span class="lbl">File / data formats <span class="tier tier--rec">Rec</span></span>
             <div class="chips" data-multi="formats">
@@ -622,8 +664,8 @@
             <textarea name="schema" placeholder="timestamp, cage_id, animal_id, activity_index, temperature_c, …"></textarea>
           </label>
           <label class="field" style="margin-top:1rem">
-            <span class="lbl">Links to datasets / data dictionary <span class="tier tier--rec">Rec</span> <span class="sub">one per line — OSF, Zenodo, GitHub, Figshare…</span></span>
-            <textarea name="dataLinks" placeholder="https://osf.io/…&#10;https://zenodo.org/…"></textarea>
+            <span class="lbl">Storage paths / dataset links <span class="tier tier--rec">Rec</span> <span class="sub">one per line — file path, URI, OSF, Zenodo, GitHub…</span></span>
+            <textarea name="dataLinks" placeholder="s3://bucket/cage12/day01.csv&#10;https://zenodo.org/…"></textarea>
           </label>
           <div class="grid g2" style="margin-top:1rem">
             <label class="field">
@@ -643,9 +685,9 @@
           </div>
         </section>
 
-        <!-- 10. Extra -->
+        <!-- 11. Extra -->
         <section class="card">
-          <header><span class="card__num">10</span><h2>Anything else <span class="tier tier--opt" style="font-size:.62rem">more is better for v2</span></h2></header>
+          <header><span class="card__num">11</span><h2>Anything else <span class="tier tier--opt" style="font-size:.62rem">more is better for v2</span></h2></header>
           <label class="field">
             <span class="lbl">What does HCMO fail to capture about your data? <span class="tier tier--opt">Opt</span></span>
             <textarea name="gaps" placeholder="Concepts, parameters, or relationships you feel are missing…"></textarea>
@@ -681,8 +723,9 @@
         <button type="button" class="btn btn--primary" id="emailBtn" style="background:var(--accent-strong)">✉ Email to Damien</button>
         <div class="btn-row">
           <button type="button" class="btn btn--ghost" id="copyBtn">Copy</button>
-          <button type="button" class="btn btn--ghost" id="dlBtn">Download</button>
+          <button type="button" class="btn btn--ghost" id="dlBtn">Download triples CSV</button>
         </div>
+        <p class="fineprint">The CSV contains one RDF triple per row with absolute IRIs. Use the Turtle view for direct Fuseki import; use the CSV for tabular ETL or bulk-load transformation.</p>
         <p class="fineprint">Nothing is uploaded anywhere by this page — your entries stay in your browser until you send the email.</p>
       </div>
 
@@ -693,6 +736,7 @@
             <button type="button" class="tab" data-view="md" aria-selected="true" role="tab">Summary</button>
             <button type="button" class="tab" data-view="json" aria-selected="false" role="tab">JSON</button>
             <button type="button" class="tab" data-view="ttl" aria-selected="false" role="tab">Turtle</button>
+            <button type="button" class="tab" data-view="csv" aria-selected="false" role="tab">Triples CSV</button>
           </span>
         </div>
         <pre class="out" id="out"></pre>
@@ -764,6 +808,14 @@
         inp("param_rate", "rate (e.g. 4 Hz)")
       ]);
     },
+    result: function () {
+      return rowEl('row--4', [
+        inp("result_name", "result (e.g. activity score)"),
+        choice("result_kind", ["Quantitative", "Categorical", "Behavioral", "Location table"], "result kind"),
+        inp("result_value", "example value / category"),
+        inp("result_unit", "unit")
+      ]);
+    },
     sensor: function () {
       return rowEl('row--2', [
         inp("sensor_name", "sensor (e.g. IR camera, RFID reader)"),
@@ -778,9 +830,15 @@
     }
   };
   function inp(cls, ph) { var i = document.createElement("input"); i.className = cls; i.placeholder = ph; return i; }
+  function choice(cls, options, placeholder) {
+    var select = document.createElement("select"); select.className = cls;
+    var empty = document.createElement("option"); empty.value = ""; empty.textContent = placeholder; select.appendChild(empty);
+    options.forEach(function (value) { var option = document.createElement("option"); option.value = value; option.textContent = value; select.appendChild(option); });
+    return select;
+  }
   function rowEl(mod, inputs) {
     var d = document.createElement("div");
-    d.className = "row " + (mod === "row--2" ? "row--2" : "");
+    d.className = "row " + (mod === "row" ? "" : mod);
     inputs.forEach(function (i) { d.appendChild(i); });
     var del = document.createElement("button");
     del.type = "button"; del.className = "del"; del.setAttribute("aria-label", "Remove row"); del.textContent = "✕";
@@ -789,20 +847,20 @@
     return d;
   }
   function addRow(kind) {
-    var map = { param: "#paramRows", sensor: "#sensorRows", actuator: "#actuatorRows" };
+    var map = { param: "#paramRows", result: "#resultRows", sensor: "#sensorRows", actuator: "#actuatorRows" };
     var el = templates[kind]();
     $(map[kind]).appendChild(el);
-    el.querySelectorAll("input").forEach(function (i) { i.addEventListener("input", updateProgress); });
+    el.querySelectorAll("input, select").forEach(function (i) { i.addEventListener("input", updateProgress); });
     updateProgress();
     return el;
   }
   $$("[data-add]").forEach(function (b) { b.addEventListener("click", function () { addRow(b.getAttribute("data-add")); }); });
   // seed one of each
-  addRow("param"); addRow("sensor");
+  addRow("param"); addRow("result"); addRow("sensor");
 
   function collectRows(sel, keys) {
     return $$("#" + sel + " .row").map(function (r) {
-      var ins = r.querySelectorAll("input");
+      var ins = r.querySelectorAll("input, select");
       var o = {}; keys.forEach(function (k, i) { o[k] = (ins[i] && ins[i].value || "").trim(); });
       return o;
     }).filter(function (o) { return Object.keys(o).some(function (k) { return o[k]; }); });
@@ -855,6 +913,7 @@
   /* ---------- build submission ---------- */
   function build() {
     var params = collectRows("paramRows", ["param_name", "param_unit", "param_rate"]);
+    var results = collectRows("resultRows", ["result_name", "result_kind", "result_value", "result_unit"]);
     var sensors = collectRows("sensorRows", ["sensor_name", "sensor_type"]);
     var actuators = collectRows("actuatorRows", ["actuator_name", "actuator_type"]);
     var sysName = val("sysName");
@@ -866,18 +925,20 @@
       system: { name: sysName, vendor: val("vendor"), type: val("sysType"), modality: multi("modality"), description: val("sysDesc"), url: val("sysUrl") },
       hardwareSoftware: { hardware: val("hwName"), software: val("swName"), interoperability: val("interop") },
       enclosure: { type: val("encType"), fit: val("encFit"), width: val("encW"), length: val("encL"), height: val("encH"), unit: val("encUnit") },
-      animals: { species: val("species"), strain: val("strain"), sex: val("sex"), housing: val("housing"), perCage: val("perCage"), cages: val("nCages") },
-      measurements: { parameters: params, behaviors: val("behaviors"), circadian: val("circadian") },
+      animals: { species: val("species"), strain: val("strain"), housing: val("housing"), perCage: val("perCage"), cages: val("nCages") },
+      measurements: { parameters: params, results: results, behaviors: val("behaviors"), circadian: val("circadian") },
+      conditions: { label: val("conditionLabel"), treatment: val("treatmentContext"), environment: val("environmentContext"), interaction: val("interactionContext"), notes: val("conditionNotes") },
       sensors: sensors, actuators: actuators,
       recording: { duration: val("duration"), mode: val("recMode"), extendable: val("extendable") },
       dataOutput: {
         formats: multi("formats"), sampling: val("sampling"), volume: val("volume"),
         schema: val("schema"), datasetLinks: val("dataLinks").split(/\n+/).map(function (s) { return s.trim(); }).filter(Boolean),
+        fileName: val("fileName"), version: val("dataVersion"),
         license: val("license"), willEmailSample: checked("willEmailData")
       },
       extra: { gaps: val("gaps"), notes: val("notes") },
       identifiers: { baseIri: baseIri, systemId: systemId, hardwareId: "hw-" + slug(val("hwName") || "unit"), softwareId: "sw-" + slug(val("swName") || "app"), supplierId: "supplier-" + slug(val("vendor") || "na") },
-      _meta: { schema: "hcmo-contribution/0.1", source: "hcmo-contribute-form" }
+      _meta: { schema: "hcmo-contribution/0.2", ontologyVersion: "0.2.0", source: "hcmo-contribute-form" }
     };
     return data;
   }
@@ -924,69 +985,74 @@
     var hardware = iri(base, d.identifiers.hardwareId);
     var software = iri(base, d.identifiers.softwareId);
     var supplier = iri(base, d.identifiers.supplierId);
-    var enclosure = iri(base, "enclosure-" + slug(d.system.name || "system"));
-    var physicalSpace = iri(base, "space-" + slug(d.system.name || "system"));
     var dimensions = iri(base, "dimensions-" + slug(d.system.name || "system"));
     var contributor = iri(base, "contributor-" + slug(d.contributor.name || d.contributor.email || "anonymous"));
     var subject = iri(base, "subject-profile-" + slug(d.system.name || "system"));
-    var behavior = iri(base, "behavior-profile-" + slug(d.system.name || "system"));
-    var circadian = iri(base, "circadian-profile-" + slug(d.system.name || "system"));
-    var observationWindow = iri(base, "observation-window-" + slug(d.system.name || "system"));
-    var dataProduct = iri(base, "data-product-" + slug(d.system.name || "system"));
+    var housingAssignment = iri(base, "housing-assignment-" + slug(d.system.name || "system"));
+    var environment = iri(base, "environment-profile-" + slug(d.system.name || "system"));
+    var observedProperty = iri(base, "observed-property-" + slug(d.system.name || "system"));
+    var observationProfile = iri(base, "observation-profile-" + slug(d.system.name || "system"));
+    var condition = iri(base, "condition-" + slug(d.conditions.label || d.system.name || "system"));
+    var timeSeries = iri(base, "time-series-" + slug(d.dataOutput.fileName || d.system.name || "system"));
+    var hasSubject = hasAnyValue(d.animals);
+    var hasEnvironment = d.measurements.parameters.length || d.conditions.environment || d.measurements.circadian;
+    var hasCondition = hasAnyValue(d.conditions);
+    var hasObservationProfile = d.measurements.results.length || hasCondition || d.recording.duration || d.recording.mode || d.measurements.behaviors;
+    var hasTimeSeries = d.dataOutput.fileName || d.dataOutput.version || d.dataOutput.sampling || d.dataOutput.volume || d.dataOutput.schema || d.dataOutput.license || d.dataOutput.formats.length || d.dataOutput.datasetLinks.length;
     var lines = [
       "@prefix hcm: <https://w3id.org/hcmo/ontology/hcm#> .",
       "@prefix hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#> .",
       "@prefix hcm-env: <https://w3id.org/hcmo/ontology/hcm/env#> .",
+      "@prefix hcm-obs: <https://w3id.org/hcmo/ontology/hcm/obs#> .",
+      "@prefix hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#> .",
       "@prefix dcterms: <http://purl.org/dc/terms/> .",
       "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .",
       "@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .",
       "@prefix schema: <https://schema.org/> .",
+      "@prefix sosa: <http://www.w3.org/ns/sosa/> .",
       "@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .",
       ""
     ];
 
-    addTriple(lines, system, "rdf:type", "hcm:System");
+    addTriple(lines, system, "rdf:type", "hcm:MonitoredEnclosure");
     addLiteral(lines, system, "rdfs:label", d.system.name);
+    addLiteral(lines, system, "hcm:hasEnclosureIdentifier", d.identifiers.systemId);
     addLiteral(lines, system, "rdfs:comment", d.system.description);
     addLiteral(lines, system, "dcterms:type", d.system.type);
     d.system.modality.forEach(function (m) { addLiteral(lines, system, "dcterms:type", m); });
     addLiteral(lines, system, "dcterms:source", d.system.url);
-    addTriple(lines, system, "hcm:producedBy", supplier);
-    addTriple(lines, system, "hcm:hasHardware", hardware);
-    addTriple(lines, system, "hcm:hasSoftware", software);
-    addTriple(lines, system, "hcm:hasEnclosure", enclosure);
+    addLiteral(lines, system, "hcm:hasManufacturer", d.system.vendor);
+    addLiteral(lines, system, "dcterms:type", d.enclosure.type);
+    addLiteral(lines, system, "hcm:hasDescription", d.enclosure.fit);
+    addTriple(lines, system, "hcm:hasDimensions", dimensions);
     addTriple(lines, system, "dcterms:contributor", contributor);
-    if (hasAnyValue(d.animals)) addTriple(lines, system, "dcterms:subject", subject);
-    if (d.dataOutput.sampling || d.dataOutput.volume || d.dataOutput.schema || d.dataOutput.license || d.dataOutput.formats.length || d.dataOutput.datasetLinks.length) {
-      addTriple(lines, system, "dcterms:relation", dataProduct);
-    }
-    d.dataOutput.formats.forEach(function (f) { addLiteral(lines, system, "dcterms:format", f); });
-    d.dataOutput.datasetLinks.forEach(function (link) { addLiteral(lines, system, "dcterms:source", link); });
+    addTriple(lines, system, "dcterms:creator", supplier);
+    if (hasSubject) addTriple(lines, system, "hcm:hasMonitoredAnimals", subject);
+    if (hasEnvironment) addTriple(lines, system, "hcm-env:hasEnvironment", environment);
+    if (hasTimeSeries) addTriple(lines, system, "dcterms:relation", timeSeries);
+    addLiteral(lines, system, "hcm:hasCapacity", integerLiteral(d.animals.perCage), "xsd:nonNegativeInteger");
 
-    addTriple(lines, supplier, "rdf:type", "hcm:Supplier");
+    addTriple(lines, supplier, "rdf:type", "schema:Organization");
     addLiteral(lines, supplier, "rdfs:label", d.system.vendor);
 
-    addTriple(lines, hardware, "rdf:type", "hcm:Hardware");
-    addLiteral(lines, hardware, "rdfs:label", d.hardwareSoftware.hardware);
-    addLiteral(lines, hardware, "rdfs:comment", d.hardwareSoftware.interoperability);
+    if (d.hardwareSoftware.hardware || d.hardwareSoftware.interoperability) {
+      addTriple(lines, hardware, "rdf:type", "hcm-tech:Hardware");
+      addLiteral(lines, hardware, "rdfs:label", d.hardwareSoftware.hardware || (d.system.name + " hardware"));
+      addLiteral(lines, hardware, "rdfs:comment", d.hardwareSoftware.interoperability);
+      addTriple(lines, hardware, "hcm-tech:supportsEnclosure", system);
+    }
+    if (d.hardwareSoftware.software) {
+      addTriple(lines, software, "rdf:type", "hcm-tech:Software");
+      addLiteral(lines, software, "rdfs:label", d.hardwareSoftware.software);
+      addTriple(lines, software, "hcm-tech:supportsEnclosure", system);
+      if (d.hardwareSoftware.hardware || d.hardwareSoftware.interoperability) addTriple(lines, software, "hcm-tech:runsOn", hardware);
+    }
 
-    addTriple(lines, software, "rdf:type", "hcm:Software");
-    addLiteral(lines, software, "rdfs:label", d.hardwareSoftware.software);
-
-    addTriple(lines, enclosure, "rdf:type", "hcm:Enclosure");
-    addLiteral(lines, enclosure, "dcterms:type", d.enclosure.type);
-    addLiteral(lines, enclosure, "rdfs:comment", d.enclosure.fit);
-    addTriple(lines, enclosure, "hcm:hasSpaceRegion", physicalSpace);
-
-    addTriple(lines, physicalSpace, "rdf:type", "hcm:PhysicalSpace");
-    addLiteral(lines, physicalSpace, "rdfs:label", (d.system.name || "system") + " enclosure space");
-    addTriple(lines, physicalSpace, "hcm:hasDimensions", dimensions);
-
-    addTriple(lines, dimensions, "rdf:type", "hcm:Dimensions");
-    addLiteral(lines, dimensions, "hcm:width", d.enclosure.width, "xsd:decimal");
-    addLiteral(lines, dimensions, "hcm:length", d.enclosure.length, "xsd:decimal");
-    addLiteral(lines, dimensions, "hcm:height", d.enclosure.height, "xsd:decimal");
-    addLiteral(lines, dimensions, "hcm:unit", d.enclosure.unit);
+    addTriple(lines, dimensions, "rdf:type", "hcm:EnclosureDimensions");
+    addLiteral(lines, dimensions, "hcm:hasWidth", d.enclosure.width, "xsd:decimal");
+    addLiteral(lines, dimensions, "hcm:hasLength", d.enclosure.length, "xsd:decimal");
+    addLiteral(lines, dimensions, "hcm:hasHeight", d.enclosure.height, "xsd:decimal");
+    addLiteral(lines, dimensions, "hcm:hasDimUnit", d.enclosure.unit);
 
     addTriple(lines, contributor, "rdf:type", "schema:Person");
     addLiteral(lines, contributor, "schema:name", d.contributor.name);
@@ -994,77 +1060,138 @@
     addLiteral(lines, contributor, "schema:affiliation", d.contributor.organization);
     addLiteral(lines, contributor, "schema:roleName", d.contributor.role);
 
-    if (hasAnyValue(d.animals)) {
+    if (hasSubject) {
       addTriple(lines, subject, "rdf:type", "hcm-bio:Subject");
       addLiteral(lines, subject, "rdfs:label", (d.system.name || "system") + " supported subject profile");
       addLiteral(lines, subject, "hcm-bio:hasSpecies", d.animals.species);
       addLiteral(lines, subject, "hcm-bio:hasStrain", d.animals.strain);
-      addLiteral(lines, subject, "hcm-bio:hasBiologicalSex", d.animals.sex);
-      addLiteral(lines, subject, "rdfs:comment", d.animals.housing);
-      addLiteral(lines, subject, "hcm:hasCapacity", integerLiteral(d.animals.perCage), "xsd:integer");
+      addTriple(lines, subject, "hcm-bio:hasHousingAssignment", housingAssignment);
       addLiteral(lines, subject, "dcterms:extent", d.animals.cages);
+      addTriple(lines, housingAssignment, "rdf:type", "hcm-bio:HousingAssignment");
+      addTriple(lines, housingAssignment, "hcm-bio:assignedToEnclosure", system);
+      addLiteral(lines, housingAssignment, "rdfs:comment", d.animals.housing);
     }
 
-    if (d.measurements.behaviors || d.measurements.circadian) {
-      addTriple(lines, behavior, "rdf:type", "hcm:BehaviorAndPhysiology");
-      addLiteral(lines, behavior, "rdfs:label", (d.system.name || "system") + " behavior profile");
-      addLiteral(lines, behavior, "rdfs:comment", d.measurements.behaviors);
-      if (d.measurements.circadian) {
-        addTriple(lines, behavior, "hcm:hasCircadianRhythm", circadian);
-        addTriple(lines, circadian, "rdf:type", "hcm:CircadianRhythm");
-        addLiteral(lines, circadian, "rdfs:label", d.measurements.circadian);
-      }
+    if (hasEnvironment) {
+      addTriple(lines, environment, "rdf:type", "hcm-env:EnvironmentProfile");
+      addLiteral(lines, environment, "rdfs:label", (d.system.name || "system") + " environment profile");
+      addLiteral(lines, environment, "rdfs:comment", [d.conditions.environment, d.measurements.circadian].filter(Boolean).join("; "));
+    }
+    if (d.measurements.behaviors) {
+      addTriple(lines, observedProperty, "rdf:type", "sosa:Property");
+      addLiteral(lines, observedProperty, "rdfs:label", d.measurements.behaviors);
     }
 
     d.measurements.parameters.forEach(function (param, index) {
       if (!param.param_name && !param.param_unit && !param.param_rate) return;
       var node = iri(base, "measurement-spec-" + (index + 1) + "-" + slug(param.param_name || "parameter"));
-      addTriple(lines, system, "hcm-env:hasMeasurementSpec", node);
+      addTriple(lines, environment, "hcm-env:hasMeasurementSpec", node);
       addTriple(lines, node, "rdf:type", "hcm-env:MeasurementSpecification");
       addLiteral(lines, node, "rdfs:label", param.param_name);
-      addLiteral(lines, node, "hcm-env:hasUnit", param.param_unit);
-      addLiteral(lines, node, "hcm:hasSamplingRate", param.param_rate);
+      addLiteral(lines, node, "hcm:hasUnit", param.param_unit);
+      addLiteral(lines, node, "dcterms:frequency", param.param_rate);
     });
 
     var durationHours = parseDurationHours(d.recording.duration);
-    if (durationHours && durationHours > 24) {
-      addTriple(lines, system, "dcterms:temporal", observationWindow);
-      addTriple(lines, observationWindow, "rdf:type", "hcm:ObservationWindow");
-      addLiteral(lines, observationWindow, "rdfs:label", (d.system.name || "system") + " observation window");
-      addLiteral(lines, observationWindow, "hcm:durationHours", String(durationHours), "xsd:decimal");
-      addLiteral(lines, observationWindow, "hcm:isExtendable", booleanLiteral(d.recording.extendable), "xsd:boolean");
-      addLiteral(lines, observationWindow, "dcterms:type", d.recording.mode);
+    if (hasObservationProfile) {
+      addTriple(lines, observationProfile, "rdf:type", "sosa:Observation");
+      addLiteral(lines, observationProfile, "rdfs:label", (d.system.name || "system") + " observation profile");
+      addTriple(lines, observationProfile, "hcm-obs:occursIn", system);
+      if (hasSubject) addTriple(lines, observationProfile, "sosa:hasFeatureOfInterest", subject);
+      if (d.sensors.length) addTriple(lines, observationProfile, "sosa:madeBySensor", iri(base, "sensor-1-" + slug(d.sensors[0].sensor_name || "sensor")));
+      if (d.measurements.behaviors) addTriple(lines, observationProfile, "sosa:observedProperty", observedProperty);
+      if (hasCondition) addTriple(lines, observationProfile, "hcm-obs:hasCondition", condition);
+      if (durationHours) addLiteral(lines, observationProfile, "hcm-obs:hasInterval", "PT" + String(durationHours) + "H", "xsd:duration");
+      addLiteral(lines, observationProfile, "dcterms:type", d.recording.mode);
+      if (d.recording.extendable) addLiteral(lines, observationProfile, "rdfs:comment", "Extendable recording: " + booleanLiteral(d.recording.extendable));
     }
 
-    if (d.dataOutput.sampling || d.dataOutput.volume || d.dataOutput.schema || d.dataOutput.license || d.dataOutput.formats.length || d.dataOutput.datasetLinks.length) {
-      addTriple(lines, dataProduct, "rdf:type", "hcm:DataProduct");
-      addLiteral(lines, dataProduct, "rdfs:label", (d.system.name || "system") + " data output");
-      d.dataOutput.formats.forEach(function (f) { addLiteral(lines, dataProduct, "hcm:hasFileFormat", f); });
-      addLiteral(lines, dataProduct, "hcm:hasSamplingRate", d.dataOutput.sampling);
-      addLiteral(lines, dataProduct, "hcm:hasDescription", d.dataOutput.volume);
-      addLiteral(lines, dataProduct, "rdfs:comment", d.dataOutput.schema);
-      addLiteral(lines, dataProduct, "dcterms:license", d.dataOutput.license);
-      d.dataOutput.datasetLinks.forEach(function (link) { addLiteral(lines, dataProduct, "hcm:hasStoragePath", link); });
+    if (hasCondition) {
+      addTriple(lines, condition, "rdf:type", "schema:Thing");
+      addLiteral(lines, condition, "rdfs:label", d.conditions.label || ((d.system.name || "system") + " observation context"));
+      addLiteral(lines, condition, "rdfs:comment", [d.conditions.treatment, d.conditions.environment, d.conditions.interaction, d.conditions.notes].filter(Boolean).join("; "));
+    }
+
+    d.measurements.results.forEach(function (result, index) {
+      if (!result.result_name && !result.result_kind && !result.result_value && !result.result_unit) return;
+      var observation = iri(base, "observation-" + (index + 1) + "-" + slug(result.result_name || "result"));
+      var resultNode = iri(base, "result-" + (index + 1) + "-" + slug(result.result_name || "result"));
+      var kind = result.result_kind || "Categorical";
+      var resultClass = kind === "Quantitative" ? "hcm-obs:QuantityValue" : (kind === "Behavioral" ? "hcm-obs:BehaviorResult" : (kind === "Location table" ? "hcm-obs:LocationResultTable" : "hcm-obs:CategoricalResult"));
+      var observationClass = kind === "Behavioral" && hasSubject && d.sensors.length ? "hcm-obs:BehaviorObservation" : "sosa:Observation";
+      addTriple(lines, observation, "rdf:type", observationClass);
+      addLiteral(lines, observation, "rdfs:label", result.result_name || ((d.system.name || "system") + " observation result " + (index + 1)));
+      addTriple(lines, observation, "sosa:hasResult", resultNode);
+      addTriple(lines, observation, "hcm-obs:occursIn", system);
+      if (hasSubject) addTriple(lines, observation, "sosa:hasFeatureOfInterest", subject);
+      if (d.sensors.length) addTriple(lines, observation, "sosa:madeBySensor", iri(base, "sensor-1-" + slug(d.sensors[0].sensor_name || "sensor")));
+      if (hasCondition) addTriple(lines, observation, "hcm-obs:hasCondition", condition);
+      addTriple(lines, resultNode, "rdf:type", resultClass);
+      addLiteral(lines, resultNode, "rdfs:label", result.result_name);
+      if (kind === "Quantitative" && /^[-+]?\d+(?:\.\d+)?$/.test(result.result_value)) addLiteral(lines, resultNode, "hcm-obs:hasNumericValue", result.result_value, "xsd:decimal");
+      if (kind === "Quantitative") addLiteral(lines, resultNode, "hcm:hasUnit", result.result_unit);
+      if (kind === "Categorical") addLiteral(lines, resultNode, "hcm-obs:hasCategory", result.result_value);
+      if (kind === "Behavioral") addLiteral(lines, resultNode, "hcm-obs:hasBehaviorType", result.result_value);
+      if (kind === "Location table") addLiteral(lines, resultNode, "rdfs:comment", result.result_value);
+    });
+
+    if (hasTimeSeries) {
+      addTriple(lines, timeSeries, "rdf:type", "hcm-tech:TimeSeries");
+      addLiteral(lines, timeSeries, "rdfs:label", d.dataOutput.fileName || ((d.system.name || "system") + " time series"));
+      addLiteral(lines, timeSeries, "dcterms:title", d.dataOutput.fileName);
+      d.dataOutput.formats.forEach(function (f) { addLiteral(lines, timeSeries, "hcm-tech:hasFileFormat", f); });
+      addLiteral(lines, timeSeries, "hcm-tech:hasSamplingRate", d.dataOutput.sampling);
+      addLiteral(lines, timeSeries, "hcm-tech:hasVersion", d.dataOutput.version);
+      addLiteral(lines, timeSeries, "dcterms:extent", d.dataOutput.volume);
+      addLiteral(lines, timeSeries, "rdfs:comment", d.dataOutput.schema);
+      addLiteral(lines, timeSeries, "dcterms:license", d.dataOutput.license);
+      d.dataOutput.datasetLinks.forEach(function (link) { addLiteral(lines, timeSeries, "hcm-tech:hasStoragePath", link); });
     }
 
     d.sensors.forEach(function (sensor, index) {
       var node = iri(base, "sensor-" + (index + 1) + "-" + slug(sensor.sensor_name || "sensor"));
-      addTriple(lines, system, "hcm:hasSensor", node);
-      addTriple(lines, node, "rdf:type", "hcm:Sensor");
+      addTriple(lines, system, "hcm-tech:monitoredBy", node);
+      addTriple(lines, node, "rdf:type", "hcm-tech:Sensor");
       addLiteral(lines, node, "rdfs:label", sensor.sensor_name);
-      addLiteral(lines, node, "dcterms:type", sensor.sensor_type);
-      if (d.measurements.behaviors || d.measurements.circadian) addTriple(lines, node, "hcm:captures", behavior);
+      addLiteral(lines, node, "hcm-tech:hasSensorIdentifier", sensor.sensor_name || ("sensor-" + (index + 1)));
+      addLiteral(lines, node, "hcm-tech:hasSensorType", sensor.sensor_type);
+      addTriple(lines, node, "hcm-tech:installedIn", system);
+      if (d.measurements.behaviors) addTriple(lines, node, "hcm-tech:captures", observedProperty);
     });
     d.actuators.forEach(function (actuator, index) {
       var node = iri(base, "actuator-" + (index + 1) + "-" + slug(actuator.actuator_name || "actuator"));
-      addTriple(lines, system, "hcm:hasActuator", node);
-      addTriple(lines, node, "rdf:type", "hcm:Actuator");
+      addTriple(lines, system, "hcm-tech:hasActuator", node);
+      addTriple(lines, node, "rdf:type", "hcm-tech:Actuator");
       addLiteral(lines, node, "rdfs:label", actuator.actuator_name);
       addLiteral(lines, node, "dcterms:type", actuator.actuator_type);
     });
 
     return lines.join("\n") + "\n";
   }
+  function toTripleCsv(turtle) {
+    var prefixes = {};
+    var triples = [];
+    turtle.split(/\r?\n/).forEach(function (line) {
+      var prefix = line.match(/^@prefix\s+([A-Za-z][\w-]*):\s+<([^>]+)>\s+\.$/);
+      if (prefix) { prefixes[prefix[1]] = prefix[2]; return; }
+      var triple = line.match(/^(\S+)\s+(\S+)\s+(.+)\s+\.$/);
+      if (triple) triples.push([expandTerm(triple[1], prefixes), expandTerm(triple[2], prefixes), expandTerm(triple[3], prefixes)]);
+    });
+    return [["subject", "predicate", "object"]].concat(triples).map(function (row) {
+      return row.map(csvCell).join(",");
+    }).join("\r\n") + "\r\n";
+  }
+  function expandTerm(term, prefixes) {
+    if (term.charAt(0) === '"') {
+      return term.replace(/\^\^([A-Za-z][\w-]*):([^\s]+)$/, function (_match, prefix, local) {
+        return prefixes[prefix] ? "^^<" + prefixes[prefix] + local + ">" : _match;
+      });
+    }
+    if (term.charAt(0) === "<") return term;
+    var match = term.match(/^([A-Za-z][\w-]*):(.+)$/);
+    return match && prefixes[match[1]] ? "<" + prefixes[match[1]] + match[2] + ">" : term;
+  }
+  function csvCell(value) { return '"' + String(value).replace(/"/g, '""') + '"'; }
   function toMarkdown(d) {
     var m = "# HCMO system contribution\n\n";
     m += "## Contributor\n";
@@ -1078,11 +1205,16 @@
     if (d.enclosure.width || d.enclosure.length || d.enclosure.height)
       m += line("Dimensions (W×L×H)", [d.enclosure.width, d.enclosure.length, d.enclosure.height].join(" × ") + " " + d.enclosure.unit);
     m += "\n## Animals\n";
-    m += line("Species", d.animals.species) + line("Strain", d.animals.strain) + line("Sex", d.animals.sex) + line("Housing", d.animals.housing) + line("Per cage", d.animals.perCage) + line("Cages", d.animals.cages);
+    m += line("Species", d.animals.species) + line("Strain", d.animals.strain) + line("Housing", d.animals.housing) + line("Per cage", d.animals.perCage) + line("Cages", d.animals.cages);
     m += "\n## Measured parameters\n";
     if (d.measurements.parameters.length) d.measurements.parameters.forEach(function (p) { m += "- " + [p.param_name, p.param_unit, p.param_rate].filter(Boolean).join(" | ") + "\n"; });
     else m += "- (none listed)\n";
+    m += "\n## Representative results\n";
+    if (d.measurements.results.length) d.measurements.results.forEach(function (r) { m += "- " + [r.result_name, r.result_kind, r.result_value, r.result_unit].filter(Boolean).join(" | ") + "\n"; });
+    else m += "- (none listed)\n";
     m += line("Behaviours", d.measurements.behaviors) + line("Circadian", d.measurements.circadian);
+    m += "\n## Conditions & context\n";
+    m += line("Label", d.conditions.label) + line("Treatment / study", d.conditions.treatment) + line("Environment", d.conditions.environment) + line("Human interaction", d.conditions.interaction) + line("Notes", d.conditions.notes);
     m += "\n## Sensors\n";
     if (d.sensors.length) d.sensors.forEach(function (s) { m += "- " + [s.sensor_name, s.sensor_type].filter(Boolean).join(" — ") + "\n"; }); else m += "- (none listed)\n";
     m += "\n## Actuators\n";
@@ -1090,7 +1222,7 @@
     m += "\n## Recording window\n";
     m += line("Duration", d.recording.duration) + line("Mode", d.recording.mode) + line("Extendable", d.recording.extendable);
     m += "\n## Data output\n";
-    m += line("Formats", d.dataOutput.formats.join(", ")) + line("Sampling", d.dataOutput.sampling) + line("Volume", d.dataOutput.volume);
+    m += line("File name", d.dataOutput.fileName) + line("Version", d.dataOutput.version) + line("Formats", d.dataOutput.formats.join(", ")) + line("Sampling", d.dataOutput.sampling) + line("Volume", d.dataOutput.volume);
     if (d.dataOutput.schema) m += "- **Example schema:**\n  ```\n  " + d.dataOutput.schema.replace(/\n/g, "\n  ") + "\n  ```\n";
     if (d.dataOutput.datasetLinks.length) m += line("Dataset links", d.dataOutput.datasetLinks.join(" , "));
     m += line("License", d.dataOutput.license) + line("Will email a sample dataset", d.dataOutput.willEmailSample ? "yes" : "no");
@@ -1103,13 +1235,14 @@
   }
 
   /* ---------- render / actions ---------- */
-  var current = { md: "", json: "", ttl: "" };
+  var current = { md: "", json: "", ttl: "", csv: "" };
   function generate(scrollTo) {
     var missing = updateProgress();
     var d = build();
     current.md = toMarkdown(d);
     current.json = JSON.stringify(d, null, 2);
     current.ttl = toTurtle(d);
+    current.csv = toTripleCsv(current.ttl);
     var res = $("#result"); res.hidden = false;
     var st = $("#status");
     if (missing.length) { st.className = "status warn"; st.textContent = "⚠ " + missing.length + " required field(s) still empty — you can still send"; }
@@ -1118,7 +1251,7 @@
     if (scrollTo && window.matchMedia("(max-width: 979px)").matches) res.scrollIntoView({ behavior: "smooth", block: "start" });
     return d;
   }
-  function showView(v) { $("#out").textContent = v === "json" ? current.json : (v === "ttl" ? current.ttl : current.md); }
+  function showView(v) { $("#out").textContent = v === "json" ? current.json : (v === "ttl" ? current.ttl : (v === "csv" ? current.csv : current.md)); }
   $$(".tab").forEach(function (t) {
     t.addEventListener("click", function () {
       $$(".tab").forEach(function (x) { x.setAttribute("aria-selected", "false"); });
@@ -1145,10 +1278,10 @@
   $("#copyBtn").addEventListener("click", function () { generate(false); copyText(current.md, "Summary copied to clipboard"); });
   $("#dlBtn").addEventListener("click", function () {
     var d = generate(false);
-    var name = "hcmo-" + slug(d.system.name || "system") + ".md";
-    var blob = new Blob([current.md + "\n\n<!-- machine-readable JSON -->\n```json\n" + current.json + "\n```\n\n<!-- fuseki-ready turtle -->\n```turtle\n" + current.ttl + "\n```\n"], { type: "text/markdown" });
+    var name = "hcmo-" + slug(d.system.name || "system") + "-triples.csv";
+    var blob = new Blob([current.csv], { type: "text/csv;charset=utf-8" });
     var a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name; a.click();
-    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000); toast("Downloaded " + name);
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000); toast("Downloaded triple CSV with absolute IRIs");
   });
 
   $("#emailBtn").addEventListener("click", function () {

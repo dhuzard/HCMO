@@ -7,7 +7,7 @@ and time-series data.
 
 - Ontology IRI: `https://w3id.org/hcmo/ontology/hcm`
 - Base namespace: `https://w3id.org/hcmo/ontology/hcm#`
-- Version IRI: `https://w3id.org/hcmo/ontology/hcm/0.1.0`
+- Version IRI: `https://w3id.org/hcmo/ontology/hcm/0.2.0`
 - Standards: BFO/IAO upper anchors, SOSA/SSN observations and devices, and
   OWL-Time temporal entities
 - Validation: `python tooling/build.py` followed by `python tooling/validate.py`

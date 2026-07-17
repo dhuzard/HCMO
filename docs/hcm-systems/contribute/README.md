@@ -10,11 +10,13 @@ are auto-minted from human-friendly answers, and the page renders in light/dark.
 
 ## What it does
 - Live "required fields" progress + missing-field checklist.
-- **Review submission** → a Markdown summary and a JSON payload (`hcmo-contribution/0.1`).
-- **Turtle view** → a Fuseki-ready ABox graph using existing HCMO instance
+- **Review submission** → a Markdown summary and a JSON payload (`hcmo-contribution/0.2`).
+- **Turtle view** → a Fuseki-ready HCMO 0.2.0 ABox graph using current instance
   patterns: explicit `rdf:type` class assertions, instance-to-instance object
   links, and instance-to-literal data values.
-- **Copy** / **Download** the submission, or **Email to Damien** (opens a pre-filled
+- **Triples CSV view/download** → one RDF triple per row with `subject`,
+  `predicate`, and `object` columns, absolute IRIs, and RDF lexical literals.
+- **Copy** the summary, **download triples CSV**, or **Email to Damien** (opens a pre-filled
   `mailto:` and copies the full details to the clipboard as a paste fallback; the
   contributor attaches their dataset file to that email).
 
@@ -38,10 +40,12 @@ the `<!doctype>/<html>/<head>/<body>` wrapper (keep `<style>`, the body markup, 
 `<script>`), since the Artifact host injects its own document skeleton.
 
 ## Incoming data
-Submissions arrive by email as Markdown + JSON + Turtle. Drop each into the matching
+Submissions arrive by email as Markdown; JSON, Turtle, and triple CSV can be
+reviewed in the page before sending. Drop each into the matching
 `../<system-slug>/` folder (real exports under `datasets/real/`), use the JSON to
 seed the system `README.md`, and load the Turtle into Fuseki when building the
-instance graph.
+instance graph. Turtle is the direct Fuseki import format; CSV is intended for
+tabular ETL or transformation before bulk loading.
 
 The field-level RDF projection is documented in
 [`../FORM-FIELD-MAPPING.md`](../FORM-FIELD-MAPPING.md).

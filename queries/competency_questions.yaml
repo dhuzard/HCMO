@@ -1,7 +1,7 @@
 # Competency questions index for the Home-Cage Monitoring Ontology (HCMO).
 # Each entry maps a natural-language competency question to its SPARQL file.
 #
-version: 0.1.0
+version: 0.2.0
 dir: queries
 questions:
   - id: animals-by-enclosure
