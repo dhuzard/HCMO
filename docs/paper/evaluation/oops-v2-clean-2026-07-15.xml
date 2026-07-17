@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<oops:OOPSResponse xmlns:oops="http://www.oeg-upm.net/oops">
+<oops:Pitfall>
+<oops:Code>P13</oops:Code><oops:Name>Inverse relationships not explicitly declared</oops:Name>
+<oops:Description>This pitfall appears when any relationship (except for those that are defined as symmetric properties using owl:SymmetricProperty) does not have an inverse relationship (owl:inverseOf) defined within the ontology.	</oops:Description>
+<oops:Importance>Minor</oops:Importance>
+<oops:NumberAffectedElements>8</oops:NumberAffectedElements>
+<oops:Affects>
+<oops:NoInverseSuggestion>
+<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/bio#hasBehaviorObservation</oops:AffectedElement>
+<oops:AffectedElement>http://www.w3.org/ns/sosa/hasResult</oops:AffectedElement>
+<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/bio#hasHealthStatusObservation</oops:AffectedElement>
+<oops:AffectedElement>http://www.w3.org/ns/sosa/usedProcedure</oops:AffectedElement>
+<oops:AffectedElement>http://www.w3.org/ns/sosa/phenomenonTime</oops:AffectedElement>
+<oops:AffectedElement>http://www.w3.org/ns/sosa/observedProperty</oops:AffectedElement>
+<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/obs#hasResult</oops:AffectedElement>
+<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/bio#hasWeightObservation</oops:AffectedElement>
+</oops:NoInverseSuggestion>
+</oops:Affects>
+</oops:Pitfall>
+</oops:OOPSResponse>

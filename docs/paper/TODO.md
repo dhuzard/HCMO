@@ -32,7 +32,7 @@ column and append to the **Change log** whenever something moves.
 | T6b | **Host a public SPARQL endpoint** (HITL R3) | ☐ | Strongest availability story; depends on T0. |
 | T7 | Write **lab-maintained** governance/versioning policy (Huzard team, GitHub, SemVer+versionIRI; TEATIME = feedback channel) | ☐ | HITL R3. Feeds §7. |
 | T7b | **Drop MAPP branding** in paper docs and reconcile repository branding | ☑ | Active ontology metadata, manifest, README, citation metadata, and current documentation consistently use HCMO. |
-| T8 | Run **quality evaluation**: OOPS!, FOOPS! (FAIR), reasoner (HermiT/ELK), pySHACL, CQ results — archive reports | ◐ | HermiT and FOOPS evidence is archived; current build, parse, SHACL, and CQ execution gates pass. OOPS! remains pending. See `docs/paper/PROTEGE-REASONER.md` and `docs/paper/FOOPS-REPORT-2026-07-09.md`. |
+| T8 | Run **quality evaluation**: OOPS!, FOOPS! (FAIR), reasoner (HermiT/ELK), pySHACL, CQ results — archive reports | ◐ | HermiT, FOOPS, and OOPS! evidence is archived; current build, parse, SHACL, and CQ execution gates pass. OOPS! (public rerun 2026-07-15) reports no critical or important pitfalls, only P13 minor for 8 intentionally-unasserted inverses; to be re-confirmed on the promoted 0.1.0 release. See `docs/paper/PROTEGE-REASONER.md`, `docs/paper/FOOPS-REPORT-2026-07-09.md`, and `docs/paper/evaluation/OOPS-REPORT-2026-07-10.md`. |
 | T9 | Cut a **tagged release** (e.g. `v0.x`) + refreshed Zenodo DOI matching the paper | ☐ | Canonical citation. |
 
 ## Phase 2 — Write the paper
@@ -68,6 +68,8 @@ column and append to the **Change log** whenever something moves.
 
 | Date | Change | By |
 |------|--------|----|
+| 2026-07-15 | **OOPS public rerun archived** — reran OOPS! on the public v2 clean artifact; no critical or important pitfalls (P11/P22 closed), only P13 minor for 8 inverses intentionally not asserted. Archived the XML and a triaged Markdown report under `docs/paper/evaluation/`. Evaluation only; no change to the promoted 0.1.0 modules. | Codex |
+| 2026-07-10 | **OOPS post-FOOPS evaluation archived** — ran OOPS! on the FOOPS-fixed clean v2 artifact, triaged safe findings, and archived the XML plus a Markdown report at `docs/paper/evaluation/OOPS-REPORT-2026-07-10.md`. | Codex |
 | 2026-07-09 | **FOOPS logo metadata closed** — added `HCMO-logo3.png` to the README and `schema:logo` to the v2 ontology header; regenerated v2 artifacts and FOOPS now scores 1.0 on the clean OWL artifact. | Codex |
 | 2026-07-09 | **FOOPS VOC4 definition gap closed for v2** — added conservative `rdfs:comment` definitions to all 111 FOOPS-assessed v2 terms, regenerated v2 artifacts, and raised FOOPS from 0.92222226 to 0.9888889; only logo metadata remains. | Codex |
 | 2026-07-09 | **FOOPS FAIR assessment applied to v2** — ran FOOPS v0.4.0 on `ontology/v2/hcmo-v2-merged-clean.owl`, raised the score from 0.49444446 to 0.92222226 by adding ontology-header metadata, regenerated v2 artifacts, and archived baseline/post-fix reports. | Codex |

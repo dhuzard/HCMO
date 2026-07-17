@@ -42,10 +42,10 @@
 | 14 | Ontologie | Exemples d'instances représentatifs | Oui | ✅ | `examples/abox-minimal.ttl`, `examples/isa-hcmo-bridge.ttl`, `examples/dvc-tecniplast.ttl` | Exemples HCMO courants, cas ISA/RO-Crate et profil DVC présents. |
 | 15 | Ontologie | Requêtes SPARQL des competency questions | Oui | 🟡 | `queries/competency_questions.yaml`, `queries/cq-*.rq` | Cinq requêtes HCMO 0.1.0 s'exécutent; aligner encore la sixième CQ du papier. |
 | 16 | Ontologie | SHACL valides/invalides | Oui | ✅ | `shapes/hcm-shapes.ttl`, `examples/` | Les exemples positifs et négatifs sont exécutés par `tooling/validate.py`. |
-| 17 | Ontologie | Lancer OOPS! + FOOPS! FAIR ontology assessment + noter problèmes | Oui | 🟡 | `docs/paper/FOOPS-REPORT-2026-07-09.md`, `sections/06-evaluation.md` | FOOPS v0.4.0 lancé sur le clean v2: score 0.49444446 → 1.0 après métadonnées, définitions et logo. Reste OOPS!. |
+| 17 | Ontologie | Lancer OOPS! + FOOPS! FAIR ontology assessment + noter problèmes | Oui | ✅ | `docs/paper/FOOPS-REPORT-2026-07-09.md`, `docs/paper/evaluation/OOPS-REPORT-2026-07-10.md`, `sections/06-evaluation.md` | FOOPS v0.4.0 lancé sur le clean v2: score 0.49444446 → 1.0 après métadonnées, définitions et logo. OOPS! lancé et archivé (rerun public 2026-07-15): aucun piège critique ou important; seul P13 mineur reste (8 inverses non assertés). À re-confirmer sur la release 0.1.0 promue. |
 | 18 | Évaluation | Définir les competency questions de l'article | Oui | ✅ | `sections/03-requirements.md` | CQ1–CQ6 + mapping R1–R8. |
 | 19 | Évaluation | Chaque requête répond à une CQ | Oui | 🟡 | `queries/competency_questions.yaml` | Les cinq requêtes du dépôt sont indexées; réconcilier avec CQ1–CQ6 du papier. |
-| 20 | Évaluation | Bilan OOPS!/FOOPS!/SHACL/WIDOCO/HermiT | Oui | 🟡 | `sections/06-evaluation.md`, `docs/paper/PROTEGE-REASONER.md`, `docs/paper/FOOPS-REPORT-2026-07-09.md` | WIDOCO, HermiT, FOOPS et SHACL/CQ ✅; OOPS! reste à exécuter. |
+| 20 | Évaluation | Bilan OOPS!/FOOPS!/SHACL/WIDOCO/HermiT | Oui | ✅ | `sections/06-evaluation.md`, `docs/paper/PROTEGE-REASONER.md`, `docs/paper/FOOPS-REPORT-2026-07-09.md`, `docs/paper/evaluation/OOPS-REPORT-2026-07-10.md` | WIDOCO, HermiT, FOOPS et SHACL/CQ ✅; OOPS! ✅ archivé (aucun critique/important, seul P13 mineur documenté). |
 | 21 | Ontologie | Documentation WIDOCO | Oui | ✅ | `README.md` → <https://dhuzard.github.io/HCMO/index-en.html> | Lien ajouté au README. |
 | 22 | Availability | Dépôt GitHub propre & compréhensible | Oui | ✅ | `README.md`, `docs/README.md`, `docs/ARCHITECTURE.md` | Architecture active, sources historiques, génération et validation sont documentées. |
 | 23 | Availability | Release versionnée figée | Oui | ⬜ | `TODO.md` (T9) | À cadrer sur la version citée. |
@@ -75,13 +75,14 @@
 Abstract + §1 Introduction + §2 Related work + §3 Requirements + §5
 Engineering/Availability + §7 Impact + §8 Conclusion are **drafted** in
 `docs/paper/sections/`. **§4 Resource description** and **§6 Evaluation** are the
-only sections still incomplete; §6 now has HermiT and FOOPS evidence, while
-OOPS! and the final paper-level CQ reconciliation remain outstanding; SHACL
-and repository CQ execution no longer depend on promotion.
+only sections still incomplete; §6 now has HermiT, FOOPS, and archived OOPS!
+evidence, while the final paper-level CQ reconciliation remains outstanding;
+SHACL and repository CQ execution no longer depend on promotion.
 
 ## Remaining work
 The ontology promotion blocker is cleared. Items **15** and **19** require
 alignment between the repository's five executable queries and the paper's six
 competency questions. Item **42** now depends on finishing §4/§6 and final
-review. Item **17** remains in progress until OOPS! is archived, and item **27
-(w3id)** remains a release follow-up.
+review. Item **17** is closed — OOPS! is archived (no critical/important
+pitfalls; only P13 minor), to be re-confirmed on the promoted 0.1.0 release —
+and item **27 (w3id)** remains a release follow-up.
