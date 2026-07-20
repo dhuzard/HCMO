@@ -27,6 +27,13 @@ reports an inconsistent class.
 SHACL remains a separate data-quality gate and is run by
 `python tooling/validate.py` against the positive and negative ABox examples.
 
+## Active 0.2.0 result
+
+The command-line check was repeated on 2026-07-20 against `dist/hcmo.owl` from
+the tagged 0.2.0 lineage. The graph contained 1,252 triples; HermiT loaded 56
+HCMO classes and reported zero inconsistent classes. The pre-check found 57
+object properties, 73 datatype properties, and no active `UNKNOWN:` IRI.
+
 ## Historical v2 review result
 
 Before promotion, Protégé Desktop 5.6.9 and the command-line HermiT check were

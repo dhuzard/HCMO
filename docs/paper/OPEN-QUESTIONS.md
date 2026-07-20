@@ -5,20 +5,20 @@ asked to the author in batched rounds (human-paced loop). Answers are applied to
 the relevant doc and logged in `TODO.md`.
 
 **Confidence legend:** 🔴 low (<60%) · 🟠 medium (60–90%) · 🟢 resolved (≥90%)
-**Last updated:** 2026-06-29
+**Last updated:** 2026-07-20
 
 ## Round 1 — foundational ✅ RESOLVED (2026-06-29)
 | # | Aspect | Conf. | Answer |
 |---|--------|-------|--------|
 | Q1 | Target venue + cycle | 🟢 | **ESWC 2027, Resources Track, 15 pp + unlimited refs.** |
 | Q2 | Track | 🟢 | **Resources Track** (not In-Use). |
-| Q3 | Canonical module structure | 🟢 | **bio/housing/env/tech** (report) → repo must be re-modularised (T3b). |
-| Q4 | True current artifact state | 🟢 | **Needs audit → done.** Repo `dist/` is an OLD broken Chowlk export (143 terms, 0 defs, 43 placeholders); the report's clean V1 is **not committed**. See `AUDIT.md`. New blocker **T0**: obtain & commit the clean source. |
+| Q3 | Canonical module structure | 🟢 | **Five active modules: core/bio/env/obs/tech**, plus a migration-only compatibility module. Promoted in HCMO 0.2.0. |
+| Q4 | True current artifact state | 🟢 | **Audit and remediation complete.** The old Chowlk export is archived; the reviewed model is active in `ontology/modules/`. See `AUDIT.md`. |
 
 ## Round 2 — scope & contribution ✅ RESOLVED (2026-06-29)
 | # | Aspect | Conf. | Answer |
 |---|--------|-------|--------|
-| Q5a | Clean V1 source (blocker T0) | 🟢 | **Damien will provide** the diagrams.net/Turtle; Claude commits it. |
+| Q5a | Clean V1 source (blocker T0) | 🟢 | **Provided, reviewed, and promoted.** T0 is closed in HCMO 0.2.0. |
 | Q5 | Contribution scope | 🟢 | **Ontology + SHACL + CQs + JSON-LD + examples only.** KGQA/webapp/vendor = outlook in §7. |
 | Q7 | Novelty / competitors | 🟢 | **HCMO is first / none known.** Compare to SOSA/SSN + adjacent biomedical ontologies. (Can verify via LOV/BioPortal on request.) |
 | Q8 | Real datasets | 🟢 | **Via TEATIME network** (needs coordination). Build synthetic ABoxes now; TEATIME data = validation path. |
@@ -46,14 +46,14 @@ the relevant doc and logged in `TODO.md`.
 |---|--------|-------|-------------------|
 | Q19 | Should `tech` be its own module? Device layer (Sensor / Hardware / Software / TimeSeries + all sensor properties). | 🟢 | **YES — full `tech` module ("for now").** Final shape: **5 modules `hcm` core · `bio` · `obs` · `env` · `tech`.** Quarantines the 34 `UNKNOWN:` tech placeholders; mirrors SOSA/SSN's Observation ‖ System split; matches report fig10. `Sensor/Hardware/Software/TimeSeries` IRIs move `…/hcm#` → `…/hcm/tech#` **before** the T9 release. |
 | Q20 | Where do results live? (Decision 0 vs 1 conflict.) | 🟢 | **Drop results from core entirely → `core = enclosure only`; all result/value classes (`ObservationResult`, `QuantityValue`, `CategoricalResult`, `Structural&LocationTable`) move to `obs`.** Reference scan confirmed: once Chowlk cruft (`MonitoredEnclosure ⊑ ObservationResult`) is cleaned, all result usage is obs-internal → zero cross-module edges. Core reduces to the single hub concept: **MonitoredEnclosure**. |
-| Q21 | Adopt **QUDT/OM** for units & quantities? | 🟠 | ◐ **Units: YES** — M4 folds both `hasUnit` props into QUDT/OM. **Still open:** how far to extend (`QuantityValue`, `hasValue`, `hasNumericValue`) and V1-now vs. roadmap timing. See `MODULE-MAP.md` §6 M4. |
+| Q21 | Adopt **QUDT/OM** for units & quantities? | 🟠 | **Roadmap decision, not implemented in 0.2.0.** The release consolidates unit strings under `hcm:hasUnit`; the choice of QUDT vs OM and the quantity-value pattern still require review. |
 
-## Parked — artifact-dependent (until clean V1 arrives, T0; author: "soon, days")
+## Formerly parked — resolved or narrowed after promotion
 | # | Aspect | Conf. | Answer |
 |---|--------|-------|--------|
-| Q9 | Runnable competency-question SPARQL against the V1 terms | 🔴 | _parked: needs T0 artifact_ |
-| Q10 | OOPS!/FOOPS!/reasoner/SHACL reports run? | 🔴 | _parked: needs T0 artifact_ |
-| Q11 | Confirm counts (~45 classes / ~46 props / 6 reused / 17 reused / 12 prefixes) | 🟠 | _parked: verify against T0 artifact_ |
+| Q9 | Runnable competency-question SPARQL against the active terms | 🟠 | Five queries execute on 0.2.0, but expected-answer tests over ontology-plus-example data remain to be added. |
+| Q10 | OOPS!/FOOPS!/reasoner/SHACL reports run? | 🟢 | HermiT and SHACL pass on 0.2.0; OOPS!/FOOPS! evidence is archived from the promoted v2 lineage and must be rerun on the final paper-matching release. |
+| Q11 | Confirm release counts | 🟢 | Active modules: 29 classes, 32 object properties, 49 datatype properties. Full graph with compatibility: 56/57/73 and 1,252 triples. |
 
 ## Change log
 | Date | Round | Outcome |

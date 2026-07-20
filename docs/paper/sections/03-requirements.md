@@ -1,7 +1,7 @@
 # 3. Requirements and competency questions
 
-> **Status:** full draft (artifact-independent), from Gilbert (2026) §4. The CQ
-> *answers/results* are artifact-dependent and deferred to §6 (parked on T0). ~1 pp.
+> **Status:** full draft, reconciled with HCMO 0.2.0. The remaining CQ answer
+> tests are reported as an evaluation gap in §6. ~1 pp.
 
 **Stakeholders and use cases.** HCMO is intended for several roles: researchers
 comparing or aggregating behavioural and physiological data across studies and
@@ -36,7 +36,8 @@ which drive the model (forward references to §4):
   enrichment, device configuration, sampling rate, software, and protocol must be
   first-class, supporting FAIR reuse \cite{fair,forrest2026}.
 - **R7 — Standards reuse and interoperability.** Where a suitable standard exists
-  (SOSA/SSN, OWL-Time, UO, PROV, BFO), it must be reused rather than re-minted.
+  (SOSA, OWL-Time, BFO/IAO, SEMTS), it must be reused rather than re-minted;
+  additional unit and provenance alignments require explicit review.
 - **R8 — Data-quality checking.** The model must support consistency and
   completeness checks (e.g. a numeric value without a unit, an animal not assigned
   to an enclosure over an interval).
@@ -53,7 +54,7 @@ examples (from the domain analysis):
 - **CQ6.** Are there observations with numeric values but no units? *(R8)*
 
 Each CQ maps onto a requirement and onto the module that satisfies it (CQ1–CQ3 →
-*bio*/*housing*; CQ4 → *env*; CQ5 → *tech*; CQ6 → cross-cutting data quality via
-SHACL). §6 reports, for the released artifact, the SPARQL realisation of these
-questions and their results over example data. *(Deferred: runnable CQ results and
-coverage figures depend on the clean V1 artifact — TODO T6, parked on T0.)*
+*core*/*bio*/*obs*; CQ4 → *env*/*obs*; CQ5 → *tech*; CQ6 → cross-cutting data
+quality via SHACL). Section 6 distinguishes the five executable repository queries
+from the six paper-level questions and records the remaining work needed to run
+them over the example ABoxes with expected answers.

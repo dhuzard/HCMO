@@ -1,7 +1,6 @@
 % HCMO resource paper — bibliography
-% Keys used by the section drafts. Some entries are partial (marked TODO) and must
-% be completed before submission. Drawn from Gilbert (2026) report refs + novelty
-% search (NOVELTY.md).
+% Citation keys are kept stable across the section drafts. Entries cited by the
+% current draft were audited on 2026-07-20; uncited background entries are retained.
 
 % --- The resource itself (canonical citation; update version/DOI at T9) ---
 @misc{hcmo,
@@ -21,7 +20,8 @@
   title     = {Home Cage Monitoring: Where We Are and What We Need?},
   booktitle = {Home Cage Monitoring in Rodents: A Global Effort},
   editor    = {Gaburro, Stefano and Mandillo, Silvia},
-  pages     = {1--42}, publisher = {Springer Nature Switzerland}, address = {Cham}, year = {2026}
+  pages     = {1--41}, publisher = {Springer}, address = {Cham}, year = {2026},
+  doi       = {10.1007/978-3-032-19781-8_1}
 }
 @incollection{huzard2026tech,
   author    = {Huzard, Damien and Adams, Christopher K. and Alvarez, Julio and Florea, Michael and
@@ -30,7 +30,8 @@
   title     = {Technologies for Home Cage Monitoring in Preclinical Research},
   booktitle = {Home Cage Monitoring in Rodents: A Global Effort},
   editor    = {Gaburro, Stefano and Mandillo, Silvia},
-  pages     = {171--210}, publisher = {Springer Nature Switzerland}, address = {Cham}, year = {2026}
+  pages     = {171--210}, publisher = {Springer}, address = {Cham}, year = {2026},
+  doi       = {10.1007/978-3-032-19781-8_7}
 }
 @incollection{forrest2026,
   author    = {Forrest, Hamish and Huzard, Damien and Restivo, Leonardo and Baran, Szczepan W. and
@@ -38,7 +39,8 @@
   title     = {Data Sharing and Metadata},
   booktitle = {Home Cage Monitoring in Rodents: A Global Effort},
   editor    = {Gaburro, Stefano and Mandillo, Silvia},
-  pages     = {267--300}, publisher = {Springer Nature Switzerland}, address = {Cham}, year = {2026}
+  pages     = {267--300}, publisher = {Springer}, address = {Cham}, year = {2026},
+  doi       = {10.1007/978-3-032-19781-8_10}
 }
 @incollection{duarte2026diy,
   author    = {Duarte-Domingues, Daniela and Mieske, Paul and Kahnau, Pia and Lewejohann, Lars and
@@ -46,19 +48,22 @@
   title     = {Achieving Independence and Precision---A Guide for Do-It-Yourself (DIY) Home Cage Monitoring},
   booktitle = {Home Cage Monitoring in Rodents: A Global Effort},
   editor    = {Gaburro, Stefano and Mandillo, Silvia},
-  pages     = {235--266}, publisher = {Springer Nature Switzerland}, address = {Cham}, year = {2026}
+  pages     = {235--266}, publisher = {Springer}, address = {Cham}, year = {2026},
+  doi       = {10.1007/978-3-032-19781-8_9}
 }
 @article{petit2026wellfair,
   author  = {Petit-Demouli{\`e}re, Benoit and Huzard, Damien},
   title   = {Data Welfare is Animal Welfare: Building a WellFAIR Research Ecosystem},
-  journal = {Neuroscience Applied}, volume = {5}, pages = {106998}, year = {2026}
+  journal = {Neuroscience Applied}, volume = {5}, pages = {106998}, year = {2026},
+  doi     = {10.1016/j.nsa.2026.106998}
 }
 
 % --- FAIR ---
 @article{fair,
   author  = {Wilkinson, Mark D. and others},
   title   = {The {FAIR} Guiding Principles for Scientific Data Management and Stewardship},
-  journal = {Scientific Data}, volume = {3}, pages = {160018}, year = {2016}
+  journal = {Scientific Data}, volume = {3}, pages = {160018}, year = {2016},
+  doi     = {10.1038/sdata.2016.18}
 }
 
 % --- Semantic Web standards reused ---
@@ -69,10 +74,12 @@
   howpublished = {W3C Recommendation}, year = {2022}, note = {\url{https://www.w3.org/TR/owl-time/}} }
 @misc{provo, title = {{PROV-O}: The {PROV} Ontology}, author = {Lebo, Timothy and others},
   howpublished = {W3C Recommendation}, year = {2013}, note = {\url{https://www.w3.org/TR/prov-o/}} }
-@incollection{bfo, title = {Basic Formal Ontology ({BFO})},
+@book{bfo, title = {Building Ontologies with Basic Formal Ontology},
   author = {Arp, Robert and Smith, Barry and Spear, Andrew D.},
-  booktitle = {Building Ontologies with Basic Formal Ontology}, publisher = {MIT Press}, year = {2015},
-  note = {ISO/IEC 21838-2} }
+  publisher = {MIT Press}, year = {2015},
+  isbn = {978-0-262-52781-1},
+  url = {https://mitpress.mit.edu/9780262527811/building-ontologies-with-basic-formal-ontology/},
+  note = {BFO is standardised as ISO/IEC 21838-2} }
 @article{uo,
   author  = {Gkoutos, Georgios V. and Schofield, Paul N. and Hoehndorf, Robert},
   title   = {The Units Ontology: A Tool for Integrating Units of Measurement in Science},
@@ -87,7 +94,8 @@
 @article{obi,
   author  = {Bandrowski, Anita and others},
   title   = {The Ontology for Biomedical Investigations ({OBI})},
-  journal = {PLOS ONE}, volume = {11}, number = {4}, pages = {e0154556}, year = {2016}
+  journal = {PLOS ONE}, volume = {11}, number = {4}, pages = {e0154556}, year = {2016},
+  doi     = {10.1371/journal.pone.0154556}
 }
 @misc{olam, title = {Ontology of Laboratory Animal Medicine ({OLAM})},
   howpublished = {NCBO BioPortal}, year = {2024}, note = {\url{https://bioportal.bioontology.org/ontologies/OLAM}} }
@@ -100,7 +108,8 @@
 @article{arrive,
   author  = {Percie du Sert, Nathalie and others},
   title   = {The {ARRIVE} Guidelines 2.0: Updated Guidelines for Reporting Animal Research},
-  journal = {PLOS Biology}, volume = {18}, number = {7}, pages = {e3000410}, year = {2020}
+  journal = {PLOS Biology}, volume = {18}, number = {7}, pages = {e3000410}, year = {2020},
+  doi     = {10.1371/journal.pbio.3000410}
 }
 
 % --- Ontology engineering: methods & tooling ---
@@ -108,19 +117,22 @@
   author    = {Ch{\'a}vez-Feria, Serge and Garc{\'i}a-Castro, Ra{\'u}l and Poveda-Villal{\'o}n, Mar{\'i}a},
   title     = {Chowlk: From {UML}-Based Ontology Conceptualizations to {OWL}},
   booktitle = {The Semantic Web -- ESWC 2022}, series = {LNCS}, volume = {13261}, pages = {338--352},
-  publisher = {Springer}, year = {2022}
+  publisher = {Springer}, year = {2022},
+  doi       = {10.1007/978-3-031-06981-9_20}
 }
 @inproceedings{widoco2017,
   author    = {Garijo, Daniel},
   title     = {{WIDOCO}: A Wizard for Documenting Ontologies},
   booktitle = {The Semantic Web -- ISWC 2017}, series = {LNCS}, volume = {10588}, pages = {94--102},
-  publisher = {Springer}, year = {2017}
+  publisher = {Springer}, year = {2017},
+  doi       = {10.1007/978-3-319-68204-4_9}
 }
 @inproceedings{oops2012,
   author    = {Poveda-Villal{\'o}n, Mar{\'i}a and Su{\'a}rez-Figueroa, Mari Carmen and G{\'o}mez-P{\'e}rez, Asunci{\'o}n},
   title     = {Validating Ontologies with {OOPS!}},
   booktitle = {Knowledge Engineering and Knowledge Management (EKAW)}, series = {LNCS}, volume = {7603},
-  pages     = {267--281}, publisher = {Springer}, year = {2012}
+  pages     = {267--281}, publisher = {Springer}, year = {2012},
+  doi       = {10.1007/978-3-642-33876-2_24}
 }
 @inproceedings{foops,
   author    = {Garijo, Daniel and Corcho, Oscar and Poveda-Villal{\'o}n, Mar{\'i}a},
@@ -136,30 +148,36 @@
   author  = {Poveda-Villal{\'o}n, Mar{\'i}a and Fern{\'a}ndez-Izquierdo, Alba and
              Fern{\'a}ndez-L{\'o}pez, Mariano and Garc{\'i}a-Castro, Ra{\'u}l},
   title   = {{LOT}: An Industrial Oriented Ontology Engineering Framework},
-  journal = {Engineering Applications of Artificial Intelligence}, volume = {111}, pages = {104755}, year = {2022}
+  journal = {Engineering Applications of Artificial Intelligence}, volume = {111}, pages = {104755}, year = {2022},
+  doi     = {10.1016/j.engappai.2022.104755}
 }
 @inproceedings{samod2017,
   author    = {Peroni, Silvio},
   title     = {A Simplified Agile Methodology for Ontology Development},
   booktitle = {OWL: Experiences and Directions (OWLED)}, series = {LNCS}, volume = {10161}, pages = {55--69},
-  publisher = {Springer}, year = {2017}
+  publisher = {Springer}, year = {2017},
+  doi       = {10.1007/978-3-319-54627-8_5}
 }
 @techreport{noy2001,
   author = {Noy, Natalya F. and McGuinness, Deborah L.},
   title  = {Ontology Development 101: A Guide to Creating Your First Ontology},
-  institution = {Stanford Knowledge Systems Laboratory}, year = {2001}
+  institution = {Stanford Knowledge Systems Laboratory}, year = {2001},
+  number = {KSL-01-05},
+  url = {https://protege.stanford.edu/publications/ontology_development/ontology101.pdf}
 }
 @inproceedings{linkml2021,
   author    = {Moxon, Sierra and others},
   title     = {The Linked Data Modeling Language ({LinkML})},
   booktitle = {Proc. Int. Conf. on Biomedical Ontologies (ICBO)}, series = {CEUR}, volume = {3073},
-  pages     = {148--151}, year = {2021}
+  pages     = {148--151}, year = {2021},
+  url       = {https://ceur-ws.org/Vol-3073/paper24.pdf}
 }
 @inproceedings{gangemi2006,
   author    = {Gangemi, Aldo and Catenacci, Carola and Ciaramita, Massimiliano and Lehmann, Jos},
   title     = {Modelling Ontology Evaluation and Validation},
   booktitle = {The Semantic Web: Research and Applications (ESWC)}, series = {LNCS}, volume = {4011},
-  pages     = {140--154}, publisher = {Springer}, year = {2006}
+  pages     = {140--154}, publisher = {Springer}, year = {2006},
+  doi       = {10.1007/11762256_13}
 }
 
 % --- Knowledge graphs, embeddings, LLMs (outlook) ---
@@ -167,7 +185,8 @@
   author  = {Sanou, Gaoussou and Manso, Taciana and Todorov, Konstantin and Giudicelli, V{\'e}ronique and
              Duroux, Patrice and Kossida, Sofia},
   title   = {Therapeutic Monoclonal Antibodies Repurposing in Oncology via {IMGT/mAb-KG} Embeddings},
-  journal = {BMC Medical Informatics and Decision Making}, volume = {26}, number = {1}, pages = {89}, year = {2026}
+  journal = {BMC Medical Informatics and Decision Making}, volume = {26}, number = {1}, pages = {89}, year = {2026},
+  doi     = {10.1186/s12911-026-03394-4}
 }
 @inproceedings{butz,
   author    = {Butz, Elliot Hugo and Az{\'e}, J{\'e}r{\^o}me and Todorov, Konstantin and Toffano, Antoine and Larmande, Pierre},
@@ -179,7 +198,9 @@
 }
 @misc{bian2025,
   author = {Bian, Haonan}, title = {{LLM}-Empowered Knowledge Graph Construction: A Survey},
-  year = {2025}, note = {arXiv:2510.20345}
+  year = {2025}, note = {arXiv:2510.20345},
+  doi = {10.48550/arXiv.2510.20345},
+  url = {https://arxiv.org/abs/2510.20345}
 }
 @misc{protege,
   author = {Horridge, Matthew}, title = {A Practical Guide to Building {OWL} Ontologies Using Prot{\'e}g{\'e}},

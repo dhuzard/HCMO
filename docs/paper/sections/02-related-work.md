@@ -14,13 +14,13 @@ with the measurements — but stop short of a shared, machine-actionable semanti
 model. To our knowledge, no ontology models the HCM acquisition chain (animal
 subject ↔ housing ↔ environment ↔ device ↔ observation ↔ result) end-to-end.
 
-**Standards reused, not duplicated.** HCMO builds on W3C and community vocabularies.
-SOSA/SSN provides the sensor/observation/platform backbone \cite{sosa}; OWL-Time
-models temporal entities and intervals \cite{owltime}; UO provides units of
-measurement \cite{uo}; PROV captures provenance \cite{provo}; and BFO supplies an
-upper-ontology grounding for processes such as behaviour \cite{bfo}. HCMO reuses
-these as-is or by specialisation, contributing the HCM-specific concepts and the
-relations that bind them.
+**Standards reused, not duplicated.** HCMO builds on W3C and community
+vocabularies. SOSA provides the sensor/observation backbone \cite{sosa}; OWL-Time
+models temporal entities and intervals \cite{owltime}; BFO and IAO provide
+upper-level anchors \cite{bfo}; and SEMTS contributes selected time-series terms.
+UO, QUDT/OM, and PROV are relevant candidates for units and richer provenance,
+but are not claimed as active semantic dependencies of version 0.2.0. HCMO
+contributes the HCM-specific concepts and relations that bind the reused patterns.
 
 **Adjacent biomedical and laboratory-animal ontologies.** Several resources cover
 neighbouring concerns. The Ontology for Biomedical Investigations (OBI) models

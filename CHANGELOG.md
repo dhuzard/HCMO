@@ -3,6 +3,28 @@
 All notable changes to the Home-Cage Monitoring Ontology (HCMO) are documented here. Versions
 track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
+## [Unreleased]
+
+### Documentation
+
+- Reconciled the resource-paper draft with HCMO 0.2.0, archived current OOPS!
+  and FOOPS! assessments, audited cited bibliography metadata, and added three
+  editable release-aligned paper figures.
+
+### Changed
+
+- Reconciled the resource-paper drafts and tracking documents with HCMO 0.2.0.
+- Completed the resource-description and evaluation section drafts using the
+  active five-module model and reproducible validation evidence.
+- Distinguished historical v2 OOPS!/FOOPS! results from checks rerun on the
+  active release, and documented the remaining competency-query evaluation gap.
+- Archived current-release OOPS! and FOOPS! reruns for HCMO 0.2.0 and integrated
+  their triage into the evaluation section.
+
+### Renamed
+
+- None.
+
 ## [0.2.0] - 2026-07-17
 
 Updated the public contribution workflow to emit current HCMO instance data and

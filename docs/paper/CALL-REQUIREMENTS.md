@@ -75,6 +75,6 @@ The CfP requires these fields right after the abstract (drafted in
 - [ ] w3id PURL resolves; DOI resolves; docs site live.
 - [ ] No placeholder terms; all terms labelled + defined.
 - [ ] Competency queries return non-zero, meaningful results.
-- [ ] OOPS!/FOOPS!/reasoner/SHACL reports archived under `figures/` or appendix.
+- [ ] OOPS!/FOOPS!/reasoner/SHACL reports archived under `evaluation/` and linked from the appendix.
 - [ ] Page count within limit; LNCS template; metadata block present.
 - [ ] Canonical citation + tagged release (e.g. `v0.x` matching the paper).

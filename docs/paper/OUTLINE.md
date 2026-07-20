@@ -2,9 +2,8 @@
 
 Working title: **HCMO: An Ontology for Home-Cage Monitoring of Laboratory Animals**
 Target: **ESWC 2027 Resources Track**, Springer LNCS, **15 pp + unlimited refs**
-(decided, HITL Round 1). Canonical module structure: **bio / housing / env / tech**
-(per the Gilbert 2026 report), NOT the repo's current core/bio/env/obs — the repo
-must be re-modularised first (see `AUDIT.md`, `TODO.md` T0).
+(decided, HITL Round 1). Canonical HCMO 0.2.0 structure: five active modules,
+**core / bio / env / obs / tech**, plus a migration-only compatibility module.
 
 | § | Section | Pages | Key content / evidence |
 |---|---------|------:|------------------------|
@@ -13,7 +12,7 @@ must be re-modularised first (see `AUDIT.md`, `TODO.md` T0).
 | 1 | **Introduction & motivation** | 1.5 | Home-cage monitoring (24/7, non-invasive); preclinical reproducibility, 3Rs, FAIR; vendor data silos & interoperability gap; contributions (bulleted). |
 | 2 | **Related work** | 1.0 | Existing HCM/animal data models; SOSA/SSN-based sensor ontologies; biomedical/animal ontologies (e.g. OBI, anatomy/taxonomy); why none cover HCM end-to-end. |
 | 3 | **Requirements & competency questions** | 1.0 | Use cases; competency questions (cite `queries/`); design requirements driving the model. |
-| 4 | **Resource description** | 2.5 | HCMO (no MAPP); modules **bio/housing/env/tech**; key classes (Subject, HousingAssignment, observations, Sensor/Hardware/Software) & the sensor≠observation≠result split; standards reuse (SOSA/SSN, OWL-Time, UO, PROV, BFO, schema, semts); JSON-LD context. Figure: ontology overview. |
+| 4 | **Resource description** | 2.5 | HCMO 0.2.0 modules **core/bio/env/obs/tech** plus compatibility; key classes and the sensor≠observation≠result split; SOSA, OWL-Time, BFO/IAO and SEMTS reuse; JSON-LD context. Figure: ontology overview. |
 | 5 | **Engineering & availability** | 1.5 | Release manifest as a stable contract; modular Turtle → reproducible dist (TTL/OWL/JSON-LD); CI validation gate; SHACL; PURL (w3id) + DOI + CC BY 4.0; WIDOCO docs; FAIR mapping. Figure: architecture/build pipeline. |
 | 6 | **Evaluation** | 1.5 | OOPS! pitfalls; FOOPS! FAIR score; reasoner consistency; SHACL validation on examples; competency-query results; coverage/completeness; comparison to alternatives. |
 | 7 | **Impact, use cases & sustainability** | 1.0 | KGQA (NL querying) layer; authoring webapp; vendor-data mapping ambition; adoption path; welfare/3Rs/open-science impact; governance, versioning, maintenance plan. |
@@ -33,5 +32,5 @@ must be re-modularised first (see `AUDIT.md`, `TODO.md` T0).
 
 ## Figures (T19)
 - F1: HCMO architecture & reproducible build/release pipeline.
-- F2: Ontology overview (modules + key classes/relations; WebVOWL export).
+- F2: Ontology overview (modules + selected release-aligned classes/relations).
 - F3: Worked example — minimal ABox as an RDF graph mapped to standards.

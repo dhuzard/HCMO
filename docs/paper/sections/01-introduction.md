@@ -32,8 +32,8 @@ interpretation algorithms, and metadata quality \cite{kiryk2026}.
 This shift creates a data-interoperability problem. HCM systems vary widely —
 video, RFID, infrared and motion sensors, food- and water-intake tracking, or
 combinations thereof; commercial, lab-built, or hybrid \cite{huzard2026tech,duarte2026diy}.
-Two studies may measure closely related behaviours while producing very different
-sensors, parameters, and file formats. Crucially, HCM data are inseparable from
+Two studies may measure closely related behaviours while using different sensors
+and producing different parameters and file formats. Crucially, HCM data are inseparable from
 their experimental context: a measurement is interpretable only if one also knows
 the animal (species, strain, sex, age, genotype), the enclosure and its
 environmental conditions, the device and its configuration, the time, and the
@@ -57,14 +57,13 @@ makes HCM data usable as a knowledge graph \cite{forrest2026}.
 **Contributions.** We present **HCMO**, the Home-Cage Monitoring Ontology. To our
 knowledge it is the first ontology to model HCM as an integrated system. Concretely:
 
-1. **An ontology for the HCM domain** organised into four modules —
-   *bio* (animal subject and biological observations), *housing* (enclosure,
-   housing assignment, experimental groups), *env* (environmental conditions and
-   their measurements), and *tech* (hardware, sensors, software, time series) —
+1. **An ontology for the HCM domain** organised into five domain modules —
+   *core* (enclosures), *bio* (subjects, groups, and housing assignments),
+   *env* (environmental conditions and specifications), *obs* (observations and
+   results), and *tech* (hardware, sensors, software, and time series) —
    built around an explicit *sensor ≠ observation ≠ result* separation.
-2. **Reuse of established standards** rather than reinvention: SOSA/SSN
-   \cite{sosa}, OWL-Time \cite{owltime}, UO \cite{uo}, PROV \cite{provo}, and
-   BFO \cite{bfo}.
+2. **Reuse of established standards** rather than reinvention: SOSA
+   \cite{sosa}, OWL-Time \cite{owltime}, BFO \cite{bfo}, IAO, and SEMTS.
 3. **A FAIR, tool-consumable resource package**: a stable release manifest,
    modular Turtle sources, a reproducibly generated merged graph (TTL/OWL/JSON-LD),
    SHACL shapes, a JSON-LD context, competency-question SPARQL, HTML documentation,

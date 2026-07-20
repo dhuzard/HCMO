@@ -59,6 +59,7 @@ docs/paper/
 - Code repository: <https://github.com/dhuzard/HCMO>
 - DOI (Zenodo): <https://doi.org/10.5281/zenodo.18925285>
 - License: CC BY 4.0
-- Standards reused: SOSA/SSN, OWL-Time, PROV, BFO; SHACL; JSON-LD; (roadmap QUDT/OM)
+- Standards reused in 0.2.0: SOSA, OWL-Time, BFO, IAO, SEMTS; SHACL; JSON-LD;
+  roadmap: QUDT/OM and broader provenance alignments.
 - Engineering: release manifest, modular Turtle, reproducible build, CI gate,
   SHACL shapes, SPARQL competency questions.

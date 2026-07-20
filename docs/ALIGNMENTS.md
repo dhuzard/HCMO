@@ -30,6 +30,6 @@ Observation intervals are represented directly with `time:Interval` and
 
 ## Units roadmap
 
-HCMO 0.1.0 retains datatype values plus explicit unit strings. Adopting QUDT or
+HCMO 0.2.0 retains datatype values plus explicit unit strings. Adopting QUDT or
 OM quantity-value patterns remains an open, separately reviewed modeling
 decision.

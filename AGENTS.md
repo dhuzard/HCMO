@@ -35,7 +35,7 @@ If these paths change, update this map and `hcmo.yaml` before editing.
 - Avoid definition-by-example and circular definitions.
 
 ### Modularity
-- Put each term in the correct module by namespace (`hcm-core/bio/env/obs`).
+- Put each term in the correct module by namespace (`hcm-core/bio/env/obs/tech`).
 - Keep "core" minimal; push application-specific constraints to `shapes/` or `examples/`.
 - `dist/` is always regenerated from modules — never edit it by hand.
 

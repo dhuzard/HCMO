@@ -1,8 +1,13 @@
 # Artifact audit — committed repo vs. Gilbert 2026 report
 
+> **Historical audit, resolved in HCMO 0.2.0.** The discrepancy below describes
+> the repository on 2026-06-29. The reviewed five-module model has since been
+> promoted to `ontology/modules/`; placeholders were removed, definitions added,
+> and the original export archived under `ontology/legacy/`.
+
 **Date:** 2026-06-29 · **Trigger:** HITL Round 1, Q4 ("artifact state: needs audit").
 
-## Finding (critical): the repo and the report describe different artifacts
+## Original finding (resolved): the repo and the report described different artifacts
 
 | | Committed repo (`dist/` v0.0.1) | Gilbert 2026 report (V1) |
 |---|---|---|
@@ -19,7 +24,7 @@
 The report's diagrams (figs 7–10) show a **newer, cleaner V1** (different
 modularisation, sensible counts, no placeholders) that is **not in the repo**.
 
-## Implications for the paper
+## Original implications for the paper
 1. **The clean V1 must be obtained and committed** before any quality claims.
    The committed artifact cannot pass a Resources-Track availability/quality bar.
 2. The paper's canonical structure is **bio/housing/env/tech** (Round 1) → the
@@ -29,9 +34,9 @@ modularisation, sensible counts, no placeholders) that is **not in the repo**.
    (many should be object properties / restructured) — the clean V1 likely already
    fixes this.
 
-## Action
-- **NEW BLOCKER (T0):** obtain the current clean source — the diagrams.net/Chowlk
-  file and/or the exported Turtle behind the report's figures — and commit it as
-  the authoritative `ontology/modules/`. Everything else (definitions, SHACL, CQs,
-  evaluation) builds on this.
-- Until then, treat repo counts as **not** representative of HCMO V1 in the paper.
+## Resolution
+- **T0 is closed.** The active release uses five domain modules
+  (`core/bio/env/obs/tech`) plus `hcm-compat.ttl`; `hcmo.yaml`, `dist/`, SHACL,
+  examples, queries, and documentation now target HCMO 0.2.0.
+- The table above must be cited only as provenance for the cleanup decision, not
+  as the current state or term inventory of HCMO.

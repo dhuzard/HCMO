@@ -1,0 +1,41 @@
+<mxfile host="Electron" modified="2026-07-20T00:00:00.000Z" agent="HCMO" version="24.7.17">
+  <diagram id="f1" name="Release pipeline">
+    <mxGraphModel dx="1400" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="800" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="HCMO 0.2.0: reproducible release and validation pipeline" style="text;html=1;align=left;verticalAlign=middle;fontSize=24;fontStyle=1;fontColor=#1F2937;" vertex="1" parent="1"><mxGeometry x="40" y="30" width="900" height="40" as="geometry"/></mxCell>
+        <mxCell id="sourcesBand" value="AUTHORITATIVE SOURCES" style="swimlane;html=1;startSize=34;rounded=0;strokeColor=#64748B;fillColor=#F8FAFC;fontColor=#334155;fontStyle=1;fontSize=13;" vertex="1" parent="1"><mxGeometry x="40" y="100" width="310" height="520" as="geometry"/></mxCell>
+        <mxCell id="core" value="hcm-core.ttl&#xa;Enclosures" style="rounded=1;html=1;whiteSpace=wrap;fillColor=#FFF4CC;strokeColor=#D6B656;fontSize=14;" vertex="1" parent="sourcesBand"><mxGeometry x="20" y="55" width="125" height="60" as="geometry"/></mxCell>
+        <mxCell id="bio" value="hcm-bio.ttl&#xa;Subjects &amp; housing" style="rounded=1;html=1;whiteSpace=wrap;fillColor=#FADBD8;strokeColor=#C45A52;fontSize=14;" vertex="1" parent="sourcesBand"><mxGeometry x="165" y="55" width="125" height="60" as="geometry"/></mxCell>
+        <mxCell id="env" value="hcm-env.ttl&#xa;Environment" style="rounded=1;html=1;whiteSpace=wrap;fillColor=#DDEED6;strokeColor=#6A9A58;fontSize=14;" vertex="1" parent="sourcesBand"><mxGeometry x="20" y="135" width="125" height="60" as="geometry"/></mxCell>
+        <mxCell id="obs" value="hcm-obs.ttl&#xa;Observations &amp; results" style="rounded=1;html=1;whiteSpace=wrap;fillColor=#DCE8F7;strokeColor=#5B85B5;fontSize=14;" vertex="1" parent="sourcesBand"><mxGeometry x="165" y="135" width="125" height="60" as="geometry"/></mxCell>
+        <mxCell id="tech" value="hcm-tech.ttl&#xa;Devices &amp; data" style="rounded=1;html=1;whiteSpace=wrap;fillColor=#E6E0F4;strokeColor=#8064A2;fontSize=14;" vertex="1" parent="sourcesBand"><mxGeometry x="20" y="215" width="125" height="60" as="geometry"/></mxCell>
+        <mxCell id="compat" value="hcm-compat.ttl&#xa;Deprecated IRI mappings" style="rounded=1;html=1;whiteSpace=wrap;fillColor=#ECEFF1;strokeColor=#78909C;fontSize=14;" vertex="1" parent="sourcesBand"><mxGeometry x="165" y="215" width="125" height="60" as="geometry"/></mxCell>
+        <mxCell id="manifest" value="hcmo.yaml&#xa;Stable release contract" style="rounded=1;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#374151;strokeWidth=2;fontStyle=1;fontSize=15;" vertex="1" parent="sourcesBand"><mxGeometry x="55" y="320" width="200" height="65" as="geometry"/></mxCell>
+        <mxCell id="context" value="context.jsonld   shapes/   queries/   examples/" style="rounded=1;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#94A3B8;fontSize=13;" vertex="1" parent="sourcesBand"><mxGeometry x="40" y="415" width="230" height="55" as="geometry"/></mxCell>
+
+        <mxCell id="build" value="tooling/build.py&#xa;merge + canonicalise" style="rounded=1;html=1;whiteSpace=wrap;fillColor=#E0F2FE;strokeColor=#0284C7;strokeWidth=2;fontStyle=1;fontSize=16;" vertex="1" parent="1"><mxGeometry x="430" y="185" width="210" height="80" as="geometry"/></mxCell>
+        <mxCell id="dist" value="GENERATED DISTRIBUTIONS&#xa;&#xa;dist/hcmo.ttl&#xa;dist/hcmo.owl&#xa;dist/hcmo.json&#xa;dist/profile.json" style="rounded=1;html=1;whiteSpace=wrap;fillColor=#F0F9FF;strokeColor=#0284C7;fontSize=15;spacing=8;" vertex="1" parent="1"><mxGeometry x="720" y="135" width="220" height="180" as="geometry"/></mxCell>
+
+        <mxCell id="validate" value="tooling/validate.py&#xa;&#xa;Parse all RDF&#xa;SHACL positive/negative ABoxes&#xa;Execute competency queries" style="rounded=1;html=1;whiteSpace=wrap;fillColor=#ECFDF5;strokeColor=#059669;strokeWidth=2;fontSize=14;spacing=8;" vertex="1" parent="1"><mxGeometry x="430" y="370" width="250" height="150" as="geometry"/></mxCell>
+        <mxCell id="reason" value="tooling/reason.py&#xa;&#xa;HermiT consistency&#xa;0 inconsistent classes" style="rounded=1;html=1;whiteSpace=wrap;fillColor=#F5F3FF;strokeColor=#7C3AED;strokeWidth=2;fontSize=14;spacing=8;" vertex="1" parent="1"><mxGeometry x="720" y="370" width="220" height="150" as="geometry"/></mxCell>
+
+        <mxCell id="publish" value="PUBLICATION &amp; ACCESS" style="swimlane;html=1;startSize=34;rounded=0;strokeColor=#64748B;fillColor=#F8FAFC;fontColor=#334155;fontStyle=1;fontSize=13;" vertex="1" parent="1"><mxGeometry x="1010" y="100" width="330" height="520" as="geometry"/></mxCell>
+        <mxCell id="release" value="GitHub release&#xa;versioned artifacts" style="rounded=1;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#475569;fontSize=14;" vertex="1" parent="publish"><mxGeometry x="50" y="70" width="230" height="65" as="geometry"/></mxCell>
+        <mxCell id="docs" value="WIDOCO + GitHub Pages&#xa;human-readable documentation" style="rounded=1;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#475569;fontSize=14;" vertex="1" parent="publish"><mxGeometry x="50" y="170" width="230" height="65" as="geometry"/></mxCell>
+        <mxCell id="pid" value="w3id PURL + version IRI&#xa;persistent term access" style="rounded=1;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#475569;fontSize=14;" vertex="1" parent="publish"><mxGeometry x="50" y="270" width="230" height="65" as="geometry"/></mxCell>
+        <mxCell id="zenodo" value="Zenodo DOI&#xa;archival citation" style="rounded=1;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#475569;fontSize=14;" vertex="1" parent="publish"><mxGeometry x="50" y="370" width="230" height="65" as="geometry"/></mxCell>
+
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#334155;" edge="1" parent="1" source="sourcesBand" target="build"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#0284C7;" edge="1" parent="1" source="build" target="dist"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#059669;" edge="1" parent="1" source="dist" target="validate"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#7C3AED;" edge="1" parent="1" source="dist" target="reason"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="gate" value="QUALITY GATES PASS" style="rounded=1;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#334155;strokeWidth=2;fontStyle=1;fontSize=13;" vertex="1" parent="1"><mxGeometry x="800" y="570" width="180" height="45" as="geometry"/></mxCell>
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#334155;" edge="1" parent="1" source="validate" target="gate"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#334155;" edge="1" parent="1" source="reason" target="gate"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#334155;exitX=1;exitY=0.5;entryX=0;entryY=0.95;" edge="1" parent="1" source="gate" target="publish"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

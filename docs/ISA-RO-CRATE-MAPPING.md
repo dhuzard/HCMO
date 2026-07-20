@@ -1,7 +1,7 @@
 # HCMO, ISA, and ISA RO-Crate mapping
 
 Status: design note for expert review. This document distinguishes assertions
-that are already represented in HCMO 0.1.0 from proposed serialization choices
+that are already represented in HCMO 0.2.0 from proposed serialization choices
 for Metadatapp and ISA RO-Crate.
 
 ## Current Metadatapp export

@@ -16,7 +16,7 @@ view that data quality is part of animal welfare \cite{petit2026wellfair,fair}.
 **Reasoning and data quality.** Beyond organisation, the ontology enables
 reasoning. A first, immediately useful level is consistency and completeness
 checking — for example, flagging an observation whose numeric value has no unit, or
-an animal not assigned to an enclosure over a given interval — which helps surface
+a subject with no housing-assignment record — which helps surface
 missing metadata at ingestion. A second level uses HCMO as an explicit scaffold for
 AI: rather than letting a model infer relations from statistical association alone,
 the ontology constrains *which* entities and relations are admissible and *what*
