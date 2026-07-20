@@ -1,0 +1,173 @@
+# Philippe Rocca-Serra feedback: human review checklist
+
+Source: [meeting notes](meetings/PHILIPPE-ROCCA-SERRA-HCMO-NOTES.md)
+
+Related existing records:
+[feedback implementation record](PHILIPPE-ROCCA-SERRA-FEEDBACK.md) and
+[ISA/RO-Crate design note](ISA-RO-CRATE-MAPPING.md)
+
+Prepared against: HCMO 0.2.0 on 2026-07-20
+
+## Purpose and review rule
+
+This checklist converts the meeting notes into reviewable decisions and exact
+repository work. It is not authority to add, rename, merge, or reclassify an
+ontology term. A reviewer must record an accepted decision and its semantic
+rationale before an ontology action is implemented.
+
+Use these marks:
+
+- `[ ]` not reviewed;
+- `[?]` needs source material or expert decision;
+- `[x]` accepted and verified; and
+- `[~]` rejected or deferred, with the reason recorded.
+
+For each item, record the reviewer, date, decision, rationale, evidence link,
+and follow-up issue or pull request in the review record at the end of this
+document.
+
+## Current repository facts
+
+These facts prevent the meeting observations from being applied mechanically to
+an ontology that has changed since the reviewed file was produced.
+
+- The active source is `ontology/modules/*.ttl`; `ontology/legacy/` and
+  `ontology/v2/` are historical and are not merged by `hcmo.yaml`.
+- The active graph has 29 HCMO classes, 32 HCMO object properties, and 49 HCMO
+  datatype properties.
+- The generated profile audit reports no missing active labels, definitions,
+  property domains, property ranges, or class anchors. The human task is to
+  verify semantic correctness, not merely presence.
+- The active graph has no `owl:imports`. It references BFO, IAO, SOSA, and
+  Schema.org terms by IRI.
+- The external axiom targets currently lacking labels in the merged graph are
+  `BFO_0000019`, `BFO_0000027`, `BFO_0000040`, `IAO_0000030`,
+  `sosa:Actuator`, `sosa:Observation`, `sosa:Property`, `sosa:Result`,
+  `sosa:Sensor`, `sosa:observes`, and `schema:Place`.
+- HCMO has no active local `Person` class. `schema:Person` is used only for
+  contributor instances in the ontology header.
+- HCMO has no active local `Place` class. `hcm:locatedIn` currently has
+  `schema:Place` as its range.
+- There is one active actuator class, `hcm-tech:Actuator`, anchored to
+  `BFO_0000040` and `sosa:Actuator`. `hcm:Actuator` is retained in
+  `hcm-compat.ttl` as a deprecated 0.0.1 IRI with an explicit replacement. It
+  must not be deleted as a supposed duplicate.
+- The existing ISA RO-Crate work is a design note and an RDF bridge example;
+  it is not yet a declared, validated ISA RO-Crate profile.
+- No active HCMO mappings to OBI, PROV-O, STATO, SKOS, or Wikidata were found.
+
+## A. Architecture and class hierarchy
+
+| Done | ID | Item and description | Human review action | What and where to change after approval | Acceptance evidence |
+| --- | --- | --- | --- | --- | --- |
+| [ ] | A01 | **Four-category presentation.** Decide whether Process Entity, Physical Entity, Material Entity, and Information Entity are a navigation view or formal OWL parents. Material entity must not be modeled as a peer of an overlapping physical-entity category without an explicit upper-ontology rationale. | Draw the proposed hierarchy, identify the exact external IRIs, and approve either a documentation-only view or formal subclass axioms. | Navigation only: `docs/ARCHITECTURE.md`, `docs/ALIGNMENTS.md`, ontology diagrams, and paper resource section. Formal axioms: the owning files under `ontology/modules/`; update shapes, examples, and queries only where behavior changes; regenerate `dist/`. Do not mint generic HCMO upper classes without approval. | Approved hierarchy diagram; rationale for every parent; reasoner result with no unintended equivalences or unsatisfiable classes. |
+| [ ] | A02 | **Process-entity anchor.** The active model has observation classes but no general HCMO process model. | Decide whether processes are reused directly from OBI/PROV-O/BFO or specialized locally, and which process families are in HCMO scope. | Record policy in `docs/ARCHITECTURE.md` and `docs/ALIGNMENTS.md`. Put an approved specialization in the module matching its namespace; add a new module only after updating the authoritative repo map and `hcmo.yaml` without breaking manifest consumers. | Approved term/mapping table and at least one competency question that requires the process model. |
+| [ ] | A03 | **Person.** The meeting requested placement under material entity, but no HCMO Person class exists in the active domain model. | Confirm whether the request concerned an obsolete file, contributor metadata, or a needed experimental-agent class. Decide whether to reuse an external person/organism/agent term. | Contributor metadata is in `ontology/modules/hcm-core.ttl` and should remain Schema.org metadata unless a new requirement is approved. A domain-agent model would affect its owning module, provenance mappings, shapes, examples, and paper. Do not create `hcm:Person` solely to reproduce a display category. | Scope statement and approved external term or explicit “no ontology change” decision. |
+| [ ] | A04 | **Place.** `hcm:locatedIn` currently ranges over `schema:Place`; facility, site, and spatial region are not distinguished. | Provide representative data and decide whether the relation points to a material facility, spatial region, site identifier, or a union. Review the inferential effect of the range. | `ontology/modules/hcm-core.ttl` for `hcm:locatedIn`; `shapes/hcm-shapes.ttl` for intake constraints; `examples/` for positive and negative cases; `docs/MODEL.md` and `docs/ALIGNMENTS.md` for the distinction; then regenerate `dist/`. | Approved competency question and examples showing at least a facility and a spatial-location case, or a documented decision to retain `schema:Place`. |
+| [ ] | A05 | **Actuator placement and apparent duplication.** The active class is already a material entity through `BFO_0000040`; the second IRI is deprecated migration support. | Verify in Protege/OLS that the duplicate report refers to `hcm-tech:Actuator` and deprecated `hcm:Actuator`. Confirm that the deprecation and replacement are visible. | Normally no class merge. If display metadata is insufficient, update annotations in `ontology/modules/hcm-compat.ttl` or the curated external-label/mapping layer; never delete the deprecated IRI. Update `docs/PHILIPPE-ROCCA-SERRA-FEEDBACK.md` with verification evidence. | Screenshot or hierarchy export showing one active class and one clearly deprecated replacement mapping. |
+| [ ] | A06 | **Systematic active-class audit.** Presence checks have passed, but definitions, anchors, synonyms, and provenance still require expert review. | Review all active classes in `dist/profile.json` against domain meaning and source ontologies. Mark each as keep, revise annotation, map, deprecate, or needs evidence. | Definitions and axioms must be edited in the owning `ontology/modules/*.ttl` file. Track unresolved text in `docs/MISSING-DEFINITIONS.md`; record external alignments in the approved mapping artifact; regenerate `dist/`. | Signed inventory covering every active class and explaining every changed semantic axiom. |
+| [ ] | A07 | **Legacy and historical views.** Protege or OLS may have been opened on `ontology/v2/`, `ontology/legacy/`, or an older release. | Record the exact file and version Philippe reviewed and reproduce the finding against `dist/hcmo.owl`. | Clarify canonical load instructions in `README.md`, `docs/README.md`, and publication metadata. Historical files remain retained and must not be silently edited to resemble the active release. | File checksum/version recorded and findings classified as active, compatibility-only, or historical. |
+
+## B. External labels, imports, and mappings
+
+| Done | ID | Item and description | Human review action | What and where to change after approval | Acceptance evidence |
+| --- | --- | --- | --- | --- | --- |
+| [ ] | B01 | **Curated external-label strategy.** The merged release lacks labels for the 11 external axiom targets listed above. Full imports could make the hierarchy unnecessarily large. | Choose a versioned MIREOT-style subset, an import module, or another curated mechanism. Approve source ontology versions, annotation properties, update procedure, and license/provenance requirements. | Preferred candidate is a hand-authored or reproducibly generated module under `ontology/modules/`, added to the `modules` list in `hcmo.yaml`; document it in `ontology/AGENTS.md`, `docs/ARCHITECTURE.md`, and `docs/ALIGNMENTS.md`. If a new path is introduced, update the root repo map before using it. Never hand-edit `dist/`. | Reopening `dist/hcmo.owl` shows readable external labels; rebuild is reproducible; source/version annotations are queryable. |
+| [ ] | B02 | **Import policy.** The active ontology currently has no `owl:imports`. | Decide whether the release should remain import-free with curated annotations or assert limited imports. Consider offline builds, OLS ingestion, ontology size, version pinning, and license compatibility. | Ontology header in `ontology/modules/hcm-core.ttl`; import/annotation module if approved; build and validation tooling if imports must be resolved; `docs/ARCHITECTURE.md` and release documentation. | Documented policy and successful offline parse, reasoner, and OLS dry run. |
+| [ ] | B03 | **Mapping-strength policy.** Exact identity, logical equivalence, and SKOS similarity are currently not governed. | Define evidence thresholds for `owl:equivalentClass`, `owl:equivalentProperty`, `owl:sameAs`, SKOS match predicates, broader/narrower mappings, and simple cross-references. State whether SKOS mapping predicates may annotate OWL entities. | Add the policy to `docs/ALIGNMENTS.md`. Store approved mappings in a dedicated module such as `ontology/modules/hcm-mappings.ttl` or another reviewed artifact; add it to `hcmo.yaml` if it is part of the release. Extend validation for missing evidence and conflicting mapping strengths. | Policy examples approved by an ontology reviewer; every mapping has target IRI, predicate, source, reviewer, date, and evidence. |
+| [ ] | B04 | **Mapping registry data model.** One HCMO concept must support multiple external and serialization-specific mappings without collapsing URIs into one application key. | Approve registry fields: canonical HCMO IRI, target IRI/field, target scheme/version, mapping predicate, profile/serialization scope, evidence, provenance, status, and notes. Decide RDF versus a tabular source with generated RDF. | Ontology mappings belong in the approved mapping artifact; field-level mappings belong in `docs/ISA-RO-CRATE-MAPPING.md` or a machine-readable registry. Add a new tooling script only for deterministic validation/generation; do not overload `tooling/build.py` with application-specific keys. | Test fixtures demonstrate several mappings per HCMO term and reject duplicate registry identities, unresolved IRIs, and contradictory exact/broad mappings. |
+| [ ] | B05 | **Source materials supplied by Philippe.** The FAIR Cookbook recipe, ISA RO-Crate article, implementation repository, prior ISA-OBO-PROV mappings, and STATO references are absent from the supplied notes. | Obtain the exact URLs, versions/commits, licenses, and the mapping files Philippe intended. Review them before minting or asserting mappings. | Add bibliographic sources to `docs/paper/references.bib`; add design evidence to `docs/ISA-RO-CRATE-MAPPING.md` and `docs/ALIGNMENTS.md`; preserve third-party license and attribution requirements. | All resources have stable citations and a recorded reviewed version. |
+| [ ] | B06 | **HCMO-to-ISA mapping.** The existing table covers investigation, study, source/sample, enclosure, assignment, acquisition, observation, and files, but remains a proposal. | Review each row against the selected ISA model and add cardinality, direction, transformation rule, and round-trip loss notes. | Extend `docs/ISA-RO-CRATE-MAPPING.md`; update `examples/isa-hcmo-bridge.ttl`; add machine-readable entries to the mapping registry if approved. Ontology axioms change only when the relationship is semantic rather than serialization-specific. | Reviewer-approved table with a working example for Investigation -> Study -> Assay -> Process -> Data. |
+| [ ] | B07 | **HCMO-to-RO-Crate and Bioschemas mappings.** Current examples use Schema.org/Bioschemas types without a complete profile contract. | Approve the RO-Crate version, ISA profile URI, Bioschemas profiles/types, required fields, and conformance declarations. | `docs/ISA-RO-CRATE-MAPPING.md`, `examples/isa-hcmo-bridge.ttl`, profile validation shapes or tooling, `ontology/context.jsonld` where prefixes/terms are stable, and paper sections. | A packaged example validates against the chosen profile and declares conformance explicitly. |
+| [ ] | B08 | **OBI mapping.** Investigation, assay, allocation, acquisition, and analysis processes are not mapped to OBI. | Review candidate OBI terms and relations with definitions and logical context; avoid equivalence based only on similar labels. | Approved mapping artifact and `docs/ALIGNMENTS.md`; process classes/properties in their owning modules only if HCMO specialization is needed; examples and competency questions. | Each mapping has semantic-strength justification and one valid RDF use case. |
+| [ ] | B09 | **PROV-O mapping.** The active graph does not model activities, agents, generation, derivation, or attribution for experimental data. | Decide which HCMO processes/entities specialize or merely map to PROV-O and how planned ISA processes relate to executed provenance activities. | Mapping artifact and `docs/ALIGNMENTS.md`; process/data modules; `examples/isa-hcmo-bridge.ttl` or a dedicated provenance example; shapes and queries for required provenance. | End-to-end provenance query from subject/enclosure and sensor through raw data to derived output. |
+| [ ] | B10 | **STATO mapping.** Study factors, variables, analyses, and statistical outputs lack reviewed STATO mappings. | Jointly review STATO and ISA definitions before selecting targets. Record rejected candidates as well as accepted ones. | `ontology/modules/hcm-bio.ttl` for approved study-design semantics, the relevant process/result module for analyses and outputs, mapping artifact, examples, queries, and `docs/ALIGNMENTS.md`. | Factor/variable and analysis/output examples round-trip without treating an experimental group as a factor. |
+| [ ] | B11 | **Wikidata fallback.** Wikidata should not replace an available stable ontology term without a policy. | Define allowed use cases, identifier stability checks, mapping predicate, and review cadence. | Mapping policy and registry only; ontology modules change only for an approved semantic relation. | Each Wikidata mapping documents why no suitable maintained ontology term was selected. |
+
+## C. Object properties and reasoning
+
+| Done | ID | Item and description | Human review action | What and where to change after approval | Acceptance evidence |
+| --- | --- | --- | --- | --- | --- |
+| [ ] | C01 | **Domain/range semantic review.** All active local object and datatype properties currently have a domain and range, but OWL domains/ranges infer types and may still be too narrow or too broad. | For every property, test intended and edge-case triples and inspect inferred types. Pay particular attention to union domains/ranges, `hcm:locatedIn`, environmental measured-property relations, `hcm-obs:hasCondition`, and housing assignment relations. | Edit axioms only in the owning `ontology/modules/*.ttl`. Put closed-world requirements in `shapes/hcm-shapes.ttl`, not narrower OWL axioms. Add positive/negative examples and regenerate `dist/`. | Property-by-property sign-off and automated reasoner/SHACL evidence. |
+| [ ] | C02 | **Inverse and parent relations.** Only relations with justified semantics should receive inverses or superproperties. | Identify query-driven candidates; confirm direction and external parent definitions. Do not add inverses merely to silence quality tools. | Owning ontology modules; `docs/ALIGNMENTS.md` for reused parents; `queries/` for demonstrated utility; update `docs/paper/evaluation/` if OOPS findings change. | Every added inverse or parent is used by an example/query and introduces no unintended inference. |
+| [ ] | C03 | **Property documentation and provenance.** Labels, definitions, domains, and ranges exist, but source/provenance, usage examples, and CQ links are not systematically attached. | Choose an annotation pattern and whether CQ links are RDF annotations or documentation-only references. | Ontology modules for lightweight provenance annotations; `docs/ALIGNMENTS.md` for sources; `queries/competency_questions.yaml` for CQ coverage; generated documentation templates if used. | Inventory showing label, definition, source, domain, range, optional inverse/parent, example, and CQ for every active object property. |
+| [ ] | C04 | **OWL versus SHACL boundary.** The current design states that OWL provides semantics and SHACL provides intake constraints. | Confirm this policy for the new process, factor, provenance, and ISA profile requirements. | `docs/MODEL.md`, `docs/ARCHITECTURE.md`, and `shapes/hcm-shapes.ttl`; preserve the scalar `shapes` contract in `hcmo.yaml` unless a backward-compatible extension is approved. | Each proposed constraint is classified as inference, validation, or both, with tests. |
+
+## D. Processes, inputs, outputs, and provenance
+
+| Done | ID | Item and description | Human review action | What and where to change after approval | Acceptance evidence |
+| --- | --- | --- | --- | --- | --- |
+| [ ] | D01 | **Process scope and granularity.** Candidate processes include allocation, acclimatization, recording, measurement, detection, acquisition, preprocessing, feature extraction, analysis, annotation, and QC. | Select a minimal first-release subset based on competency questions and available datasets. For each, distinguish planned protocol, executed process/activity, and assignment or result record. | Architecture and alignment docs first. Approved local specializations go in the namespace-owning module; do not repurpose `hcm-bio:HousingAssignment`, which is currently an IAO information-content record, as a process without a migration design. | Approved process table with inputs, outputs, participants, agent, time, and external mappings. |
+| [ ] | D02 | **Input/output relation pattern.** HCMO does not yet define a general input/output model. | Choose OBI, PROV-O, or ISA/Bioschemas relations and decide when local subproperties are necessary. Verify directionality against definitions. | Mapping artifact and owning modules; `examples/isa-hcmo-bridge.ttl`; shapes for profile requirements; competency queries. | One acquisition and one transformation example demonstrate the pattern without duplicate or reverse relations. |
+| [ ] | D03 | **Information-output taxonomy.** Raw data, processed data, observations, events, annotations, features, summaries, estimates, models, figures, tables, and QC reports may require distinct treatment. | Decide which are OWL classes, external classes, roles, file media types, or controlled vocabulary values. Keep ontology scope minimal. | Likely `ontology/modules/hcm-obs.ttl` for observations/results and `hcm-tech.ttl` for data/software artifacts, subject to approved namespaces; mappings, shapes, examples, and context follow. | Approved matrix of artifact type versus representation with no definition-by-example. |
+| [ ] | D04 | **End-to-end provenance chain.** The target is animal/environment -> sensor -> acquisition -> raw dataset -> preprocessing -> derived variable -> statistical analysis -> statistical output. | Validate the chain against at least one real HCM dataset and decide attribution rules for group-housed versus individually identified observations. | Process/provenance mappings, ontology modules, `examples/`, new CQ files plus `queries/competency_questions.yaml`, and paper resource/impact sections. | SPARQL query reconstructs the chain and does not infer subject-level attribution from cage occupancy alone. |
+| [ ] | D05 | **Temporal ordering and assignment validity.** Housing changes and process order require time without breaking the acyclic ISA graph. | Choose interval and event patterns compatible with OWL-Time, PROV-O, and the selected ISA serialization. | `ontology/modules/hcm-bio.ttl` for assignment record relations, process modules, shapes, examples, and ISA mapping note. Reuse OWL-Time terms where valid. | Example with re-housing reconstructs non-overlapping assignment intervals and serializes successfully. |
+
+## E. Study design and controlled vocabularies
+
+| Done | ID | Item and description | Human review action | What and where to change after approval | Acceptance evidence |
+| --- | --- | --- | --- | --- | --- |
+| [ ] | E01 | **Study Factor and Factor Value.** `hcm-bio:StudyFactors` is an information-content class with the preferred singular label, but there is no factor-value model. | Confirm the current definition, the retained plural IRI, the ISA and STATO targets, and the distinction among factor, independent variable, condition, and value. Do not change the published IRI to make it singular. | `ontology/modules/hcm-bio.ttl`, mapping artifact, `docs/ISA-RO-CRATE-MAPPING.md`, shapes, examples, queries, context, and generated `dist/`. If replacement is required, deprecate/map rather than rename by IRI. | Study with at least two factors and multiple values serializes to the selected ISA representation. |
+| [ ] | E02 | **Experimental Group versus Study Factor.** `hcm-bio:ExperimentalGroup` is a BFO object aggregate with `hasMember`/`belongsToGroup`; it is not equivalent to Study Factor. | Approve relations for subject assignment and groups defined by combinations of factor values. Decide whether control group/cohort are classes, roles, or controlled terms. | `ontology/modules/hcm-bio.ttl`, shapes, examples, new group/factor CQs, ISA/STATO mappings, and model documentation. | Example shows two groups sharing a factor while differing in factor values; no equivalence between group and factor. |
+| [ ] | E03 | **Literal biological and treatment values.** Species, strain, sex, treatment, and some conditions are currently strings. | For each property, choose an external ontology IRI, SKOS concept, OWL individual, or SHACL-constrained literal based on reasoning and exchange requirements. | `ontology/modules/hcm-bio.ttl`, `hcm-obs.ttl`, shapes, context, examples, mapping registry, and documentation. Preserve backward compatibility for existing literal data or provide a migration mapping. | Representation matrix and validation tests for accepted and rejected values. |
+| [ ] | E04 | **SKOS candidate schemes.** Behavior labels, housing categories, modalities, device status, QC codes, experimental roles, and processing categories may not need OWL class semantics. | Select only lists with project governance and stable definitions. Decide whether HCMO owns the scheme or references an external vocabulary. | If HCMO-owned, use a reviewed module/artifact under the established namespace and add it to the build contract; update context, shapes, examples, documentation, and versioning policy. | Each scheme has URI policy, `skos:prefLabel`, definitions, optional alternatives/hierarchy, governance owner, and validation tests. |
+
+## F. Serialization and implementation
+
+| Done | ID | Item and description | Human review action | What and where to change after approval | Acceptance evidence |
+| --- | --- | --- | --- | --- | --- |
+| [ ] | F01 | **Canonical exchange decision.** Decide whether ISA RO-Crate is canonical or one supported export. The canonical ontology source and generated RDF artifacts remain separate from metadata-package formats. | Approve a statement distinguishing ontology representation, instance-data profile, exchange packages, and optional exports. | `docs/ARCHITECTURE.md`, `docs/ISA-RO-CRATE-MAPPING.md`, `README.md`, `hcmo.yaml` only if its existing contract values truly change, and paper sections. | Published serialization policy with canonical/optional formats and versioning rules. |
+| [ ] | F02 | **Profile levels.** Investigation, study, assay, process, object/device, observation, and dataset profiles may have different requirements. | Choose the first minimal profile and explicitly defer later profiles. Define required and recommended fields and nesting/conformance rules. | ISA mapping note, profile validation artifact, examples, context, and paper. Avoid changing the `hcmo.yaml` shape as an API without a compatibility design. | Minimal valid and intentionally invalid packages produce expected validation results. |
+| [ ] | F03 | **ISA-Tab and ISA-JSON export.** Compatibility is not demonstrated. | Define round-trip scenarios and acceptable information loss; select tool versions. | New deterministic exporter/validator tooling if this repository owns it, otherwise document the external implementation and fixtures. Add fixtures under an approved examples/test path and document it before changing the repo map. | RDF -> ISA format -> RDF comparison report for factors, processes, assignments, and files. |
+| [ ] | F04 | **Identifier and URI policy.** Profiles must distinguish persistent ontology IRIs, crate-local entity IDs, external IDs, and application keys. | Approve minting, base-URI, blank-node, versioning, correction, and deprecation rules. | `docs/ARCHITECTURE.md`, mapping registry documentation, JSON-LD context, examples, validation tooling, and paper availability section. | Tests reject key collisions and unresolved required identifiers while allowing several external mappings. |
+| [ ] | F05 | **Round-trip and conflict validation.** The current validator parses RDF, runs SHACL, and executes CQs; it does not validate mapping conflicts or ISA packages. | Define error categories and add fixtures for duplicate keys, duplicate canonical mappings, unresolved targets, incompatible mapping strengths, and serialization loss. | Extend `tooling/validate.py` or add narrowly scoped validators invoked by it; add test fixtures and document dependencies in `tooling/requirements.txt`. | Each failure mode has a negative test and CI exits non-zero. |
+
+## G. Publication, testing, and paper
+
+| Done | ID | Item and description | Human review action | What and where to change after approval | Acceptance evidence |
+| --- | --- | --- | --- | --- | --- |
+| [ ] | G01 | **Protege and reasoner review.** Automated build/SHACL/CQ validation does not replace a UI and DL reasoner check. | Open the generated `dist/hcmo.owl`, verify labels/deprecation/hierarchy, run the agreed reasoner, and inspect unintended inferred types caused by domains/ranges. | Record the dry run in `docs/paper/PROTEGE-REASONER.md` or a dated evaluation file; fix source modules only; regenerate artifacts. | Tool/version, input checksum, screenshots or report, consistency result, and triaged warnings. |
+| [ ] | G02 | **OLS ingestion readiness.** Readability, resolvability, metadata, imports, and deprecation display must survive the published artifact. | Perform an OLS-compatible ingestion dry run on the generated release, not historical OWL files. | Source module annotations/import strategy, ontology header metadata, build tooling if serialization changes are needed, and a dated report under `docs/paper/evaluation/`. | Search and hierarchy views display local and reused labels; term IRIs resolve; deprecated terms are marked. |
+| [ ] | G03 | **SHACL coverage.** New process, factor, group, provenance, and profile rules need validation without converting closed-world requirements into OWL semantics. | Approve required versus optional fields for each profile and add positive/negative cases. | `shapes/hcm-shapes.ttl`, manifest-listed `examples/`, and `tooling/validate.py`. Keep existing examples conformant and edge examples non-conformant. | Automated expected-pass and expected-fail results for every new constraint family. |
+| [ ] | G04 | **Competency-question coverage.** Current CQs cover enclosure assignment, dimensions, provisioning, sensor properties, and long observations, not mappings/processes/factors/provenance. | Add natural-language CQs before modeling each new capability and agree expected results. | `queries/competency_questions.yaml`, new `queries/cq-*.rq`, and representative examples. | Each claimed capability has an executable query with a non-empty expected result fixture. |
+| [ ] | G05 | **JSON-LD context.** The context covers current core relations but not proposed mappings, processes, provenance, factors, or profile terms. | Add only stable, approved terms; avoid aliases that collapse distinct IRIs onto one key. | `ontology/context.jsonld`; serialization fixtures; regenerate `dist/hcmo.json`; mapping-conflict tests. | JSON-LD expand/compact round trip preserves all IRIs and value types. |
+| [ ] | G06 | **Paper claims and citations.** The paper must distinguish implemented interoperability from roadmap work. | Review every claim against a released artifact and add the missing FAIR Cookbook, ISA RO-Crate, Bioschemas, OBI, PROV-O, and STATO sources. | `docs/paper/references.bib`, `sections/02-related-work.md`, `04-resource.md`, `05-availability.md`, `06-evaluation.md`, `07-impact.md`, `08-conclusion.md`, plus `docs/paper/TODO.md`. | Claim-to-evidence table; citations resolve; unimplemented features are labeled future work. |
+| [ ] | G07 | **Release integration.** Any approved ontology change requires synchronized source, generated artifacts, documentation, tests, and version metadata. | Decide whether accumulated semantic changes warrant the next minor version and review deprecations/migrations. | Owning modules, `hcmo.yaml` values without changing its shape, ontology header, `ontology/context.jsonld`, `shapes/`, `examples/`, `queries/`, `CHANGELOG.md`, docs, and regenerated `dist/`. | Two consecutive builds produce no diff; validation passes; changelog includes `old -> new` under `### Renamed` when applicable. |
+
+## Recommended review sequence
+
+1. Reproduce which ontology file was reviewed (A07), then verify the already
+   implemented Person/Place/Actuator/property facts (A03-A05 and C01).
+2. Obtain Philippe's source materials (B05) and decide the four-category,
+   import, and mapping policies (A01-A02 and B01-B04).
+3. Approve the ISA/RO-Crate/Bioschemas/OBI/PROV-O/STATO mappings (B06-B10) and
+   canonical exchange/profile scope (F01-F02).
+4. Model the minimum process/provenance and study-factor slice required by
+   agreed competency questions (D01-D05 and E01-E04).
+5. Implement serialization, validation, UI/reasoner/OLS testing, and paper
+   updates (F03-F05 and G01-G07).
+
+## Human review record
+
+Copy one row per reviewed item. Do not replace unresolved questions with
+unreviewed ontology assertions.
+
+| Item ID | Reviewer | Date | Decision (`accept`, `revise`, `reject`, `defer`) | Rationale and semantic effect | Evidence/source | Issue or PR |
+| --- | --- | --- | --- | --- | --- | --- |
+|  |  |  |  |  |  |  |
+
+## Required implementation gate for every accepted semantic change
+
+- [ ] The affected term and owning module are identified.
+- [ ] Existing IRIs are preserved, or deprecation and replacement mappings are
+  documented.
+- [ ] Definitions and mapping targets are sourced rather than invented.
+- [ ] OWL inferential effects and SHACL validation effects are separately
+  reviewed.
+- [ ] Examples and competency questions demonstrate the intended behavior.
+- [ ] `python tooling/build.py` succeeds.
+- [ ] Re-running `python tooling/build.py` produces no diff.
+- [ ] `python tooling/validate.py` succeeds.
+- [ ] Generated `dist/` changes are committed with their sources.
+- [ ] `CHANGELOG.md` contains the semantic effect and a `### Renamed` section
+  with `old -> new` entries when any term moved.
