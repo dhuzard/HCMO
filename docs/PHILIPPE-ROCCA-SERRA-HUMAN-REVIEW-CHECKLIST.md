@@ -356,10 +356,10 @@ checklist row.
 | [?] | B01 | **Use `ontology/external/` with a Python-controlled, pinned ROBOT extraction pipeline: provisionally accepted; co-author validation pending.** Keep approved source locks and selections separate from committed, generated per-source subsets. The canonical build remains offline. | Co-authors must validate the directory boundary, per-source artifact strategy, Python/ROBOT responsibilities, MIREOT default, conditions for locality extraction, upstream versions, selected annotations, licenses, and refresh procedure. | No implementation is authorized until co-author validation. After approval, add `ontology/external/`, `tooling/extract_external.py`, the external subset entries in `hcmo.yaml` without changing its shape, validation checks, repo-map updates, architecture/alignment documentation, and regenerated `dist/`. | Co-author sign-off; reviewed source and selection manifests; checksum-pinned reproducible extraction; offline canonical build; readable external hierarchy in Protégé; license and source/version provenance retained. |
 | [x] | B02 | **Keep the canonical HCMO release self-contained and free of live full-ontology imports: accepted.** No unversioned or network-dependent `owl:imports` may enter the canonical release. Merge the approved, pinned B01 subset into generated HCMO artifacts for readable offline use. | Preserve only the reviewed upstream annotations and logical axioms selected for the subset. Record source/version, extraction boundary, checksum, and license. Treat any future full-import reasoning profile as optional and separate from the canonical release. | After B01 is approved, update the authoritative repo map, `hcmo.yaml` module values without changing its shape, extraction/validation tooling, `docs/ARCHITECTURE.md`, and release documentation. Canonical `tooling/build.py` must remain offline and deterministic. | Offline build, parse, reasoner, and OLS dry run; no live import resolution; generated external subset has pinned provenance and license; optional profile cannot silently alter canonical reasoning or downstream manifest behavior. |
 | [?] | B03 | **Separate logical equivalence, individual identity, conceptual mapping, cross-reference, and exchange transformation: informed co-author feedback required.** The recommendation below is not accepted policy. | Give co-authors definitions and worked HCMO examples for `rdfs:subClassOf`, OWL equivalence, `owl:sameAs`, SKOS matches, references, and ISA/Bioschemas/RO-Crate transformation rules. Obtain explicit answers on evidence thresholds, review requirements, mapping-graph separation, SSSOM, and whether SKOS assertions may enter canonical reasoning. | Do not add mappings or a mapping module yet. After approval, record the policy in `docs/ALIGNMENTS.md`; implement the B04-approved mapping registry separately from exchange transformations; materialize only explicitly approved logical axioms in owning modules; extend validation for evidence and conflicting strengths. | Co-author review record with rationale for every policy question; ontology and domain reviewer approval; worked examples for class equivalence, narrower classes, individual identity, conceptual matches, cross-references, and exchange fields. |
-| [ ] | B04 | **Mapping registry data model.** One HCMO concept must support multiple external and serialization-specific mappings without collapsing URIs into one application key. | Approve registry fields: canonical HCMO IRI, target IRI/field, target scheme/version, mapping predicate, profile/serialization scope, evidence, provenance, status, and notes. Decide RDF versus a tabular source with generated RDF. | Ontology mappings belong in the approved mapping artifact; field-level mappings belong in `docs/ISA-RO-CRATE-MAPPING.md` or a machine-readable registry. Add a new tooling script only for deterministic validation/generation; do not overload `tooling/build.py` with application-specific keys. | Test fixtures demonstrate several mappings per HCMO term and reject duplicate registry identities, unresolved IRIs, and contradictory exact/broad mappings. |
-| [ ] | B05 | **Source materials supplied by Philippe.** The FAIR Cookbook recipe, ISA RO-Crate article, implementation repository, prior ISA-OBO-PROV mappings, and STATO references are absent from the supplied notes. | Obtain the exact URLs, versions/commits, licenses, and the mapping files Philippe intended. Review them before minting or asserting mappings. | Add bibliographic sources to `docs/paper/references.bib`; add design evidence to `docs/ISA-RO-CRATE-MAPPING.md` and `docs/ALIGNMENTS.md`; preserve third-party license and attribution requirements. | All resources have stable citations and a recorded reviewed version. |
-| [ ] | B06 | **HCMO-to-ISA mapping.** The existing table covers investigation, study, source/sample, enclosure, assignment, acquisition, observation, and files, but remains a proposal. | Review each row against the selected ISA model and add cardinality, direction, transformation rule, and round-trip loss notes. | Extend `docs/ISA-RO-CRATE-MAPPING.md`; update `examples/isa-hcmo-bridge.ttl`; add machine-readable entries to the mapping registry if approved. Ontology axioms change only when the relationship is semantic rather than serialization-specific. | Reviewer-approved table with a working example for Investigation -> Study -> Assay -> Process -> Data. |
-| [ ] | B07 | **HCMO-to-RO-Crate and Bioschemas mappings.** Current examples use Schema.org/Bioschemas types without a complete profile contract. | Approve the RO-Crate version, ISA profile URI, Bioschemas profiles/types, required fields, and conformance declarations. | `docs/ISA-RO-CRATE-MAPPING.md`, `examples/isa-hcmo-bridge.ttl`, profile validation shapes or tooling, `ontology/context.jsonld` where prefixes/terms are stable, and paper sections. | A packaged example validates against the chosen profile and declares conformance explicitly. |
+| [?] | B04 | **Maintain separate semantic-mapping and exchange-transformation registries: provisionally accepted, subject to B03.** Use SSSOM/TSV for semantic mappings and a separate structured registry for ISA/Bioschemas/RO-Crate/ISA-JSON/ISA-Tab transformations. Neither enters the canonical reasoning graph by default. | Co-authors must first decide B03 mapping strengths and review thresholds. Then validate the proposed `mappings/semantic/` and `mappings/exchange/` split, required fields, SSSOM extensions, source format, generated products, and release boundary. | No registry is created yet. After B03/B04 approval, update the repo map; add the reviewed mapping sources and narrowly scoped validation/generation tooling; keep semantic RDF, if generated, separate from `dist/hcmo.*`; do not overload `tooling/build.py` with exchange keys. | B03-compatible schema; multiple mappings per HCMO IRI; deterministic validation rejects malformed CURIEs, missing justification/version/reviewer data, duplicate mapping identities, and contradictory strengths; exchange rules record direction, cardinality, transformation, and loss. |
+| [?] | B05 | **Source-material register: partially resolved.** The ARC Workflow Run RO-Crate article and ISA-term-to-Schema.org/Bioschemas mapping file are confirmed below; the ISA model/profile, FAIR Cookbook recipe, and STATO source are located. Philippe's earlier ISA-OBO-PROV mapping resources remain unlocated. | Confirm the exact versions/commits and licenses of the listed sources and obtain Philippe's earlier ISA-OBO-PROV mappings or record that they are unavailable. Distinguish design evidence from normative profile requirements. | Add confirmed bibliography to `docs/paper/references.bib`; retain the audited versions in `docs/A02-ISA-STATO-COMPATIBILITY.md`; cite design evidence and mapping constraints in `docs/ISA-RO-CRATE-MAPPING.md` and `docs/ALIGNMENTS.md`. Do not derive ontology axioms directly from an article figure or field-mapping table. | Stable citations and reviewed versions for every used source; license/attribution recorded; missing-resource status explicit; each resulting mapping identifies the exact supporting source and section. |
+| [?] | B06 | **Initial HCMO-to-ISA export architecture recorded for validation by Philippe.** Keep biological subjects/materials, physical enclosures, protocols, executions, sensors, files, and study factors distinct as specified below. Source/Sample round-trip identity and non-File assignment/statistical outputs remain unresolved. | Philippe or another ISA-profile expert must validate every row, assay/process granularity, direction, cardinality, transformation rule, allowed extension, and round-trip loss. Explicitly resolve the two open mappings below before any conformance claim. | No ontology or example change is authorized. After validation, extend `docs/ISA-RO-CRATE-MAPPING.md`; add B04 exchange-registry rows; update `examples/isa-hcmo-bridge.ttl`, fixtures, and validation tooling. Add ontology axioms only through a separate B03/A06-approved semantic item. | Signed ISA mapping table; acyclic Investigation -> Study -> Assay -> Process -> Material/Data example; Source/Sample roles survive round trip; housing assignment and non-File STATO result policies are explicit; controlled loss is tested. |
+| [?] | B07 | **Adapt the ARC Workflow Run RO-Crate prospective/retrospective pattern for HCMO: co-author review required.** Use Ott et al. and its Figure 2 as design expertise, not as an automatically applicable HCMO profile or conformance claim. Multi-type computational specifications and executions only where all type meanings apply. | Co-authors must review the candidate adaptation below, especially which HCM processes are laboratory versus computational, where `ComputationalWorkflow`/`LabProtocol` and `CreateAction`/`LabProcess` multi-typing is valid, how HCMO/SOSA/OBI/PROV semantics remain distinct, and which RO-Crate/profile versions and validation rules apply. | No profile implementation is authorized. After approval, revise `docs/ISA-RO-CRATE-MAPPING.md`; create a minimal profile fixture and constraints; update the bridge example and JSON-LD context only for stable terms; document the profile URI/version and paper claims. | Co-author decision matrix; one physical acquisition and one computational-processing chain; prospective and retrospective entities remain distinct; base and extension profile validation pass; no ARC-specific type is reused without an HCMO requirement. |
 | [ ] | B08 | **OBI mapping.** Investigation, assay, allocation, acquisition, and analysis processes are not mapped to OBI. | Review candidate OBI terms and relations with definitions and logical context; avoid equivalence based only on similar labels. | Approved mapping artifact and `docs/ALIGNMENTS.md`; process classes/properties in their owning modules only if HCMO specialization is needed; examples and competency questions. | Each mapping has semantic-strength justification and one valid RDF use case. |
 | [ ] | B09 | **PROV-O mapping.** The active graph does not model activities, agents, generation, derivation, or attribution for experimental data. | Decide which HCMO processes/entities specialize or merely map to PROV-O and how planned ISA processes relate to executed provenance activities. | Mapping artifact and `docs/ALIGNMENTS.md`; process/data modules; `examples/isa-hcmo-bridge.ttl` or a dedicated provenance example; shapes and queries for required provenance. | End-to-end provenance query from subject/enclosure and sensor through raw data to derived output. |
 | [ ] | B10 | **STATO mapping.** Study factors, variables, analyses, and statistical outputs lack reviewed STATO mappings. | Jointly review STATO and ISA definitions before selecting targets. Record rejected candidates as well as accepted ones. | `ontology/modules/hcm-bio.ttl` for approved study-design semantics, the relevant process/result module for analyses and outputs, mapping artifact, examples, queries, and `docs/ALIGNMENTS.md`. | Factor/variable and analysis/output examples round-trip without treating an experimental group as a factor. |
@@ -513,6 +513,166 @@ Co-authors are asked to answer explicitly:
 6. Which concrete counterexamples or interoperability requirements would need
    an exception to these defaults?
 
+### B04 provisional mapping-registry architecture
+
+Status: provisionally accepted by Damien Huzard on 2026-07-21, subject to the
+B03 co-author decision. This records the intended separation and does not
+authorize a directory, registry, generated mapping graph, or ontology axiom.
+
+Provisional decision:
+
+> **B04 — maintain separate registries for semantic mappings and exchange
+> transformations.**
+> Store ontology-to-ontology mappings in an authoritative SSSOM/TSV mapping set.
+> Store ISA, Bioschemas, RO-Crate, ISA-JSON, and ISA-Tab field transformations
+> separately because their direction, cardinality, formatting, and controlled
+> information loss are not ontology-mapping predicates.
+>
+> Do not merge either registry into the canonical HCMO reasoning graph.
+> Generate RDF, JSON, or other publication views only as separate release
+> products. Deterministically validate identifiers, versions, predicates,
+> justifications, reviewers, decision status, duplicate records, contradictory
+> mapping strengths, and exchange round-trip declarations.
+
+Proposed layout, to be finalized only after B03:
+
+```text
+mappings/
+|-- README.md
+|-- semantic/
+|   `-- hcmo.sssom.tsv
+`-- exchange/
+    |-- isa-ro-crate.yaml
+    |-- isa-json.yaml
+    `-- isa-tab.yaml
+```
+
+The semantic mapping set uses standard SSSOM fields where available and
+declared `ext_hcmo_*` extensions only for HCMO-specific workflow metadata that
+SSSOM does not represent. The exchange registry records the HCMO IRI, target
+profile and version, target entity/property or field path, direction,
+cardinality, transformation, vocabulary handling, round-trip status, known
+loss, evidence, reviewer, and decision status.
+
+### B05 partially resolved source-material register
+
+Status: partially resolved by Damien Huzard on 2026-07-21. The following
+article and field-mapping source were confirmed by Damien; other listed sources
+were located during the A02 audit. Earlier ISA-OBO-PROV mappings attributed to
+Philippe remain an open evidence request.
+
+Confirmed source for computational/experimental provenance design:
+
+- Caroline Ott et al., [*Fusion of computational and experimental provenance
+  in RO-Crate*](https://doi.org/10.1515/jib-2025-0050), especially
+  [Figure 2 and its surrounding profile description](https://www.degruyterbrill.com/document/doi/10.1515/jib-2025-0050/html#j_jib-2025-0050_fig_002).
+
+Confirmed ISA field-mapping source:
+
+- [ISA RO-Crate `ISA term - schema term` mapping](https://github.com/nfdi4plants/isa-ro-crate-profile/blob/release/profile/isa_ro_crate_mapping.md).
+
+Already located, with the ISA and STATO versions audited in
+`docs/A02-ISA-STATO-COMPATIBILITY.md`:
+
+- the ISA abstract model and pinned ISA RO-Crate draft/profile repository;
+- the STATO source and audited commit; and
+- the [FAIR Cookbook recipe FCB066, *Packaging ISA as a Research
+  Object*](https://faircookbook.elixir-europe.org/content/recipes/maturity/isa-as-RO.html),
+  whose exact reviewed revision and retrieval date still need to be recorded.
+
+Still required:
+
+1. Philippe's earlier ISA-OBO-PROV mapping tables, repository, or publication;
+2. confirmation of the exact commits/releases and licenses to cite for B06-B10;
+   and
+3. a record of any source that cannot be recovered, so its alleged mappings are
+   not treated as evidence.
+
+The ISA-to-Schema.org table is an exchange mapping, and the article is design
+evidence. Neither is, by itself, evidence for an OWL class or property axiom.
+
+### B06 provisional HCMO-to-ISA architecture for Philippe's validation
+
+Status: provisional architecture recorded by Damien Huzard on 2026-07-21.
+Validation by Philippe Rocca-Serra or another designated ISA-profile expert is
+required. No mapping or ontology implementation is authorized.
+
+Initial mapping to validate:
+
+| HCMO concern | Initial ISA/Bioschemas/RO-Crate representation |
+| --- | --- |
+| HCMO subject at study entry | ISA Source role and Bioschemas Sample exchange type |
+| Derived tissue or specimen | Separate ISA Sample; never the same entity as the animal |
+| Physical enclosure | HCMO material/equipment entity; never ISA Source or Sample |
+| Acquisition protocol | ISA Protocol / Bioschemas LabProtocol |
+| Recording execution | ISA Process / Bioschemas LabProcess |
+| Sensor | Protocol equipment or HCMO/SOSA participant |
+| Raw and derived files | ISA Data and RO-Crate File/MediaObject |
+| Study factor | Only a deliberately manipulated variable, not a cage identifier or ordinary characteristic |
+
+Two mappings remain explicitly unresolved:
+
+1. The draft maps ISA Source and Sample to the same Bioschemas Sample type, so
+   an additional rule is needed to preserve their distinct ISA roles during a
+   round trip.
+2. A `hcm-bio:HousingAssignment` record and a non-File STATO result are not
+   permitted `LabProcess` outputs under the draft's Sample/File result
+   restriction. They remain HCMO extensions until ISA experts approve a
+   representation and round-trip policy.
+
+Philippe is asked to validate or revise the entity mapping, assay and process
+granularity, explicit inputs and outputs, extension boundary, and controlled
+loss for ISA-Tab, ISA-JSON, and ISA RO-Crate.
+
+### B07 ARC Workflow Run RO-Crate expertise to adapt for HCMO
+
+Status: design source selected by Damien Huzard on 2026-07-21; HCMO adaptation
+requires co-author review. The selected source is Ott et al., [*Fusion of
+computational and experimental provenance in
+RO-Crate*](https://doi.org/10.1515/jib-2025-0050), especially Figure 2. No
+profile conformance or ontology change is authorized.
+
+Relevant design pattern:
+
+- keep prospective provenance (a protocol or workflow specification) distinct
+  from retrospective provenance (an actual laboratory or computational
+  execution);
+- let a computational workflow specification satisfy both workflow-aware and
+  ISA-aware views through justified multi-typing;
+- let a computational workflow invocation satisfy both run-aware and ISA-aware
+  views through justified multi-typing; and
+- connect concrete inputs, outputs, parameters, characteristics, and factors in
+  one queryable provenance graph.
+
+Candidate HCMO adaptation for co-author review:
+
+| HCMO case | Candidate exchange representation | Boundary requiring review |
+| --- | --- | --- |
+| Physical acquisition or recording protocol | `LabProtocol`, with an appropriate HCMO/OBI/SOSA protocol or procedure type | It is not a `ComputationalWorkflow` merely because software or a sensor is involved. |
+| Physical acquisition or recording execution | `LabProcess`, with appropriate HCMO/OBI/SOSA execution semantics and PROV provenance | It is not automatically a Schema.org `CreateAction`; the article's computational multi-typing must not be generalized silently. |
+| Data-processing or statistical workflow specification | `LabProtocol` plus `ComputationalWorkflow` and the required File/Software types when all profile definitions apply | The executable artifact, abstract plan, and protocol record may need distinct resources rather than forced identity. |
+| Data-processing or statistical execution | `LabProcess` plus `CreateAction` when the same execution satisfies both definitions; PROV records provenance responsibility | Co-authors must confirm identity, input/output roles, agent, timing, status, and failure semantics. |
+| Subject, specimen, enclosure, sensor, data, and statistical output | Retain precise HCMO/external semantic types alongside the required ISA/Schema.org/Bioschemas exchange types | Multi-typing must not collapse biological materials, physical devices, information entities, files, or statistical results. |
+| Characteristics, factors, and parameters | Characteristics describe inherent input properties; factors describe deliberately varied study conditions; parameters describe execution settings | Placement and round-trip behavior must agree with ISA/STATO decisions and the B06 review. |
+
+Questions for the co-authors:
+
+1. Should the article's multi-typing pattern be adopted only for computational
+   HCM workflows and invocations, while physical recording uses the ISA
+   `LabProtocol`/`LabProcess` view without Workflow Run RO-Crate types?
+2. When are the executable workflow artifact, protocol/plan information entity,
+   and reusable procedure the same resource, and when must they be separate?
+3. Which HCMO, OBI, SOSA, STATO, and PROV types and relations must coexist with
+   the exchange types in each example?
+4. Does the proposed placement of characteristics, factors, and parameters
+   preserve the intended ISA/STATO meaning for home-cage studies?
+5. Which base RO-Crate, ISA RO-Crate, Bioschemas, and Workflow Run RO-Crate
+   versions will be pinned, and what validator establishes each conformance
+   claim?
+6. What is the smallest physical-acquisition plus computational-analysis
+   example that demonstrates the adaptation without importing ARC-specific
+   concepts that HCMO does not need?
+
 ## C. Object properties and reasoning
 
 | Done | ID | Item and description | Human review action | What and where to change after approval | Acceptance evidence |
@@ -593,6 +753,10 @@ unreviewed ontology assertions.
 | B01 | Damien Huzard; co-author validation pending | 2026-07-21 | Defer final approval; directory and hybrid pipeline provisionally accepted | Use `ontology/external/` for locked sources, reviewed selections, and committed per-source subsets. Use a Python-controlled, pinned ROBOT pipeline with MIREOT as the readability default and reviewed locality extraction where additional entailments are required. Keep canonical builds offline. No files or ontology axioms implemented. | B01 provisional directory and extraction decision above; ROBOT extraction documentation | `docs/philippe-rocca-serra-review` |
 | B02 | Damien Huzard | 2026-07-21 | Accept | Keep the canonical release self-contained and free of live full-ontology imports. Merge only the approved version-pinned B01 subset; keep any future full-import reasoning profile optional and separate. No ontology axioms changed. | B02 accepted canonical import policy above; B01 co-author validation pending | `docs/philippe-rocca-serra-review` |
 | B03 | Damien Huzard; educated co-author feedback pending | 2026-07-21 | Defer | Review the proposed separation of logical axioms, individual identity, conceptual mappings, cross-references, and exchange transformations using concrete HCMO examples. Decide evidence and reviewer thresholds, mapping-graph separation, and SSSOM use before adding mappings. No ontology axioms changed. | B03 informed-review brief above; OWL, SKOS, and SSSOM specifications to be included in the co-author packet | `docs/philippe-rocca-serra-review` |
+| B04 | Damien Huzard; B03 co-author decision pending | 2026-07-21 | Defer final approval; registry split provisionally accepted | Keep semantic SSSOM mappings separate from structured exchange transformations and outside the canonical reasoning graph. Final fields, source formats, extensions, and release products depend on B03. No registry or ontology axiom implemented. | B04 provisional mapping-registry architecture above; SSSOM specification | `docs/philippe-rocca-serra-review` |
+| B05 | Damien Huzard; missing-source evidence pending | 2026-07-21 | Partially resolved | Confirm Ott et al. as the article and the ISA RO-Crate `ISA term - schema term` file as the exchange mapping source. Retain audited ISA/STATO/FAIR Cookbook sources; continue requesting Philippe's earlier ISA-OBO-PROV mappings. No ontology axioms changed. | B05 source-material register above; DOI `10.1515/jib-2025-0050`; ISA RO-Crate mapping file | `docs/philippe-rocca-serra-review` |
+| B06 | Damien Huzard; Philippe Rocca-Serra or designated ISA expert validation pending | 2026-07-21 | Defer final approval; provisional architecture recorded | Validate the initial subject/material/enclosure/protocol/execution/sensor/file/factor mapping and resolve Source/Sample role preservation plus housing-assignment and non-File statistical-result round trips. No mapping or ontology axiom implemented. | B06 validation package above; ISA abstract model and ISA RO-Crate mapping | `docs/philippe-rocca-serra-review` |
+| B07 | Damien Huzard; co-author review pending | 2026-07-21 | Defer; adaptation source selected | Adapt Ott et al.'s prospective/retrospective and computational multi-typing pattern for HCMO without applying Workflow Run RO-Crate types to physical acquisition automatically. Decide type identity, semantic/exchange layering, versions, validation, and a minimal example. No profile or ontology axiom implemented. | B07 HCMO adaptation brief above; Ott et al., DOI `10.1515/jib-2025-0050`, especially Figure 2 | `docs/philippe-rocca-serra-review` |
 
 ## Required implementation gate for every accepted semantic change
 
