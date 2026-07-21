@@ -65,7 +65,7 @@ an ontology that has changed since the reviewed file was produced.
 | [x] | A03 | **Separate person identity, provenance responsibility, and contributor credit: accepted.** Use `schema:Person` for ISA/Bioschemas exchange, `prov:Person` and `prov:Agent` for provenance, and CRediT through qualified PROV relations for contributor credit. Do not create a local `hcm:Person`. | Preserve the distinctions in the accepted decision below. Before implementation, pin the external versions and identifiers and review every operational role whose meaning is narrower than CRediT. | No ontology class change is authorized. Current Schema.org contributor metadata remains in `ontology/modules/hcm-core.ttl`. Future provenance and contribution examples belong in `examples/`; approved mappings in `docs/ALIGNMENTS.md` or the mapping registry; requirements in `shapes/` and `queries/`; paper attribution guidance in `docs/paper/`. | Decision record below; no active `hcm:Person`; a future example distinguishes person, agent, association/attribution, CRediT contribution role, and any precise operational role. |
 | [x] | A04 | **Broad exchange-level Place with separate material, spatial, and identifier semantics: accepted.** Do not create `hcm:Place`. Retain `schema:Place` as the broad range of `hcm:locatedIn`, without equating it to a BFO site, spatial region, or material entity. Keep institutes/organizations, physical facilities, spatial sites, and geometries distinct. | Preserve the accepted distinctions below. Select authoritative facility/site/geospatial classes only after definition review. Use a globally resolvable organization identifier, preferably ROR where eligible, and a GeoNames IRI for the corresponding geographic place where an appropriate record exists; never treat those identifiers as identifying the same entity. | No immediate ontology axiom change is authorized. Record identifier and mapping rules in `docs/ALIGNMENTS.md` or the mapping registry; add organization/place/facility examples and competency questions before specializing `hcm:locatedIn`; update `ontology/modules/hcm-core.ttl`, shapes, context, and generated artifacts only if the approved examples demonstrate a need. | Decision record below; examples distinguish organization, physical facility, BFO site/spatial entity, and geometry; ROR and GeoNames identifiers resolve to the correct separate entities; no unintended type inference from `hcm:locatedIn`. |
 | [x] | A05 | **Retain the local physical HCM actuator specialization and model actuations and triggers explicitly: accepted.** `hcm-tech:Actuator` remains the physical, home-cage-specific subclass of BFO Material entity and `sosa:Actuator`; the broader SOSA class may also cover software and other systems. Keep the deprecated migration IRI. | Preserve the device/action/property/execution distinctions below. Before implementation, approve competency questions for physical state change, system reconfiguration, and triggering; pin the SOSA version; and select an explicit relation for each triggered execution rather than treating the actuator as the event. | The accepted future definition belongs in `ontology/modules/hcm-tech.ttl` without changing its IRI. Retain `hcm:Actuator` in `ontology/modules/hcm-compat.ttl`. Add approved SOSA actuation relations, physical and software-controller examples, shapes, queries, documentation, and regenerated `dist/` only in an implementation change. | Decision record below; active and deprecated IRIs remain distinguishable; examples distinguish physical actuator, software controller, actuation, acted-on property, and triggered execution; reasoner and SHACL tests reject physical typing of software-only controllers. |
-| [ ] | A06 | **Systematic active-class audit.** Presence checks have passed, but definitions, anchors, synonyms, and provenance still require expert review. | Review all active classes in `dist/profile.json` against domain meaning and source ontologies. Mark each as keep, revise annotation, map, deprecate, or needs evidence. | Definitions and axioms must be edited in the owning `ontology/modules/*.ttl` file. Track unresolved text in `docs/MISSING-DEFINITIONS.md`; record external alignments in the approved mapping artifact; regenerate `dist/`. | Signed inventory covering every active class and explaining every changed semantic axiom. |
+| [x] | A06 | **Require an evidence-based inventory review before implementing further hierarchy or mapping changes: accepted.** Audit every active HCMO class and every external class directly used as an anchor. The audit is a decision gate, not authorization for bulk changes. | For each term, record IRI, label, definition, module, asserted and inferred parents, restrictions, intended upper category, external source/version, mapping status, provenance, competency questions, and reviewer decision. Classify it as `keep`, `revise definition`, `revise axiom`, `map`, `deprecate`, or `needs evidence`. | Generate the active-term review source from `dist/profile.json` and supplement it with directly referenced external anchors. Store the signed audit under `docs/` or another approved review path. Apply each accepted semantic change separately in its owning source module with examples, reasoning, validation, generated artifacts, and changelog evidence. | Complete signed inventory; separate decision/evidence for every non-`keep` row; no bulk label, hierarchy, equivalence, or deprecation edit; external anchors included despite their intentional exclusion from `dist/profile.json`. |
 | [?] | A07 | **Preserve historical ontology artifacts as immutable evidence and exclude them from the active release: accepted; reviewed artifact identification pending.** `ontology/legacy/` and `ontology/v2/` remain historical and must not be edited to resemble the active ontology or used as the canonical Protégé entry point. | Obtain and record the exact file/version Philippe reviewed, its checksum, and the tool/view used; reproduce each finding against the current generated release and classify it as active, compatibility-only, or historical. | No historical ontology edit is authorized. Keep `ontology/modules/*.ttl` as the hand-authored source and `dist/hcmo.owl` / `dist/hcmo.ttl` as generated load targets. Put corrections in the owning active module or, for published migration IRIs, `ontology/modules/hcm-compat.ttl`; clarify canonical load instructions and preserve the historical inventory. | Accepted preservation policy; exact reviewed artifact and checksum; finding-classification table; historical paths remain excluded from `hcmo.yaml`; current release rebuild and validation pass. |
 
 ### A01 provisional decision and discussion structure
@@ -292,6 +292,36 @@ changelog entry when implemented. A relation between an actuation and a
 triggered execution must be selected and justified separately; neither the
 device nor `sosa:actsOn` alone expresses that execution dependency.
 
+### A06 accepted active-class audit gate
+
+Status: accepted by Damien Huzard on 2026-07-21. This is a required review gate
+and does not authorize any class, definition, hierarchy, mapping, or deprecation
+change by itself.
+
+Decision:
+
+> **A06 — require an evidence-based inventory review before implementing further
+> hierarchy or mapping changes.**
+> Review every active HCMO class and every external class directly used as an
+> anchor. For each term, record its IRI, label, definition, owning module,
+> asserted and inferred parents, restrictions, intended upper category,
+> external source and version, mapping status, provenance, relevant competency
+> questions, and reviewer decision.
+>
+> Classify each term as `keep`, `revise definition`, `revise axiom`, `map`,
+> `deprecate`, or `needs evidence`. Do not make bulk label, hierarchy, or
+> equivalence changes directly from the audit. Each accepted semantic change
+> must become a separate implementation item with reasoning and validation
+> evidence.
+>
+> Use `dist/profile.json` for the active HCMO inventory, supplemented by a
+> separate inventory of referenced external anchors because the generated
+> profile intentionally excludes external terms.
+
+The inventory-generation step may be automated, but review classifications and
+semantic rationales are human decisions. A generated table must never be used
+as an unattended ontology-rewrite input.
+
 ### A07 accepted historical-artifact policy
 
 Status: accepted by Damien Huzard on 2026-07-21. Verification remains open until
@@ -324,7 +354,7 @@ checklist row.
 | Done | ID | Item and description | Human review action | What and where to change after approval | Acceptance evidence |
 | --- | --- | --- | --- | --- | --- |
 | [ ] | B01 | **Curated external-label strategy.** The merged release lacks labels for the 11 external axiom targets listed above. Full imports could make the hierarchy unnecessarily large. | Choose a versioned MIREOT-style subset, an import module, or another curated mechanism. Approve source ontology versions, annotation properties, update procedure, and license/provenance requirements. | Preferred candidate is a hand-authored or reproducibly generated module under `ontology/modules/`, added to the `modules` list in `hcmo.yaml`; document it in `ontology/AGENTS.md`, `docs/ARCHITECTURE.md`, and `docs/ALIGNMENTS.md`. If a new path is introduced, update the root repo map before using it. Never hand-edit `dist/`. | Reopening `dist/hcmo.owl` shows readable external labels; rebuild is reproducible; source/version annotations are queryable. |
-| [ ] | B02 | **Import policy.** The active ontology currently has no `owl:imports`. | Decide whether the release should remain import-free with curated annotations or assert limited imports. Consider offline builds, OLS ingestion, ontology size, version pinning, and license compatibility. | Ontology header in `ontology/modules/hcm-core.ttl`; import/annotation module if approved; build and validation tooling if imports must be resolved; `docs/ARCHITECTURE.md` and release documentation. | Documented policy and successful offline parse, reasoner, and OLS dry run. |
+| [x] | B02 | **Keep the canonical HCMO release self-contained and free of live full-ontology imports: accepted.** No unversioned or network-dependent `owl:imports` may enter the canonical release. Merge the approved, pinned B01 subset into generated HCMO artifacts for readable offline use. | Preserve only the reviewed upstream annotations and logical axioms selected for the subset. Record source/version, extraction boundary, checksum, and license. Treat any future full-import reasoning profile as optional and separate from the canonical release. | After B01 is approved, update the authoritative repo map, `hcmo.yaml` module values without changing its shape, extraction/validation tooling, `docs/ARCHITECTURE.md`, and release documentation. Canonical `tooling/build.py` must remain offline and deterministic. | Offline build, parse, reasoner, and OLS dry run; no live import resolution; generated external subset has pinned provenance and license; optional profile cannot silently alter canonical reasoning or downstream manifest behavior. |
 | [ ] | B03 | **Mapping-strength policy.** Exact identity, logical equivalence, and SKOS similarity are currently not governed. | Define evidence thresholds for `owl:equivalentClass`, `owl:equivalentProperty`, `owl:sameAs`, SKOS match predicates, broader/narrower mappings, and simple cross-references. State whether SKOS mapping predicates may annotate OWL entities. | Add the policy to `docs/ALIGNMENTS.md`. Store approved mappings in a dedicated module such as `ontology/modules/hcm-mappings.ttl` or another reviewed artifact; add it to `hcmo.yaml` if it is part of the release. Extend validation for missing evidence and conflicting mapping strengths. | Policy examples approved by an ontology reviewer; every mapping has target IRI, predicate, source, reviewer, date, and evidence. |
 | [ ] | B04 | **Mapping registry data model.** One HCMO concept must support multiple external and serialization-specific mappings without collapsing URIs into one application key. | Approve registry fields: canonical HCMO IRI, target IRI/field, target scheme/version, mapping predicate, profile/serialization scope, evidence, provenance, status, and notes. Decide RDF versus a tabular source with generated RDF. | Ontology mappings belong in the approved mapping artifact; field-level mappings belong in `docs/ISA-RO-CRATE-MAPPING.md` or a machine-readable registry. Add a new tooling script only for deterministic validation/generation; do not overload `tooling/build.py` with application-specific keys. | Test fixtures demonstrate several mappings per HCMO term and reject duplicate registry identities, unresolved IRIs, and contradictory exact/broad mappings. |
 | [ ] | B05 | **Source materials supplied by Philippe.** The FAIR Cookbook recipe, ISA RO-Crate article, implementation repository, prior ISA-OBO-PROV mappings, and STATO references are absent from the supplied notes. | Obtain the exact URLs, versions/commits, licenses, and the mapping files Philippe intended. Review them before minting or asserting mappings. | Add bibliographic sources to `docs/paper/references.bib`; add design evidence to `docs/ISA-RO-CRATE-MAPPING.md` and `docs/ALIGNMENTS.md`; preserve third-party license and attribution requirements. | All resources have stable citations and a recorded reviewed version. |
@@ -334,6 +364,33 @@ checklist row.
 | [ ] | B09 | **PROV-O mapping.** The active graph does not model activities, agents, generation, derivation, or attribution for experimental data. | Decide which HCMO processes/entities specialize or merely map to PROV-O and how planned ISA processes relate to executed provenance activities. | Mapping artifact and `docs/ALIGNMENTS.md`; process/data modules; `examples/isa-hcmo-bridge.ttl` or a dedicated provenance example; shapes and queries for required provenance. | End-to-end provenance query from subject/enclosure and sensor through raw data to derived output. |
 | [ ] | B10 | **STATO mapping.** Study factors, variables, analyses, and statistical outputs lack reviewed STATO mappings. | Jointly review STATO and ISA definitions before selecting targets. Record rejected candidates as well as accepted ones. | `ontology/modules/hcm-bio.ttl` for approved study-design semantics, the relevant process/result module for analyses and outputs, mapping artifact, examples, queries, and `docs/ALIGNMENTS.md`. | Factor/variable and analysis/output examples round-trip without treating an experimental group as a factor. |
 | [ ] | B11 | **Wikidata fallback.** Wikidata should not replace an available stable ontology term without a policy. | Define allowed use cases, identifier stability checks, mapping predicate, and review cadence. | Mapping policy and registry only; ontology modules change only for an approved semantic relation. | Each Wikidata mapping documents why no suitable maintained ontology term was selected. |
+
+### B02 accepted canonical import policy
+
+Status: accepted by Damien Huzard on 2026-07-21. Implementation is blocked on
+the B01 directory and extraction-tooling decision. No `owl:imports`, external
+subset, or manifest entry is added by this record.
+
+Decision:
+
+> **B02 — keep the canonical HCMO release self-contained and free of live
+> full-ontology imports.**
+> Do not add unversioned or network-dependent `owl:imports` to the canonical
+> release. Merge the approved, version-pinned external subset from B01 into the
+> generated HCMO release so Protégé, CI, OLS, and offline users see the required
+> labels and hierarchy without downloading full external ontologies.
+>
+> Preserve the upstream logical axioms selected for the subset, but do not imply
+> that HCMO republishes or endorses the complete external ontology. Document the
+> extraction boundary and licenses.
+>
+> A separate optional full-import reasoning profile may be considered later,
+> but it must not replace the canonical release or silently alter `hcmo.yaml`,
+> reasoning results, or downstream API behavior.
+
+The canonical build consumes a committed subset and performs no network fetch.
+Refreshing that subset is a separate, explicit maintenance operation with
+source-version and checksum verification.
 
 ## C. Object properties and reasoning
 
@@ -410,7 +467,9 @@ unreviewed ontology assertions.
 | A03 | Damien Huzard | 2026-07-21 | Accept | Keep person identity, provenance responsibility, and contributor credit distinct. Reuse Schema.org, PROV-O, and official CRediT roles in their respective scopes; do not create `hcm:Person`. No ontology axioms changed. | A03 accepted decision and implementation boundary above; Schema.org Person, PROV-O, and CRediT specifications | `docs/philippe-rocca-serra-review` |
 | A04 | Damien Huzard | 2026-07-21 | Accept | Keep `schema:Place` as a broad exchange range while distinguishing material facilities, immaterial sites/spatial regions, and geometry. Identify an institute with ROR where eligible and its separate geographic place with GeoNames where available. Do not create `hcm:Place`. No ontology axioms changed. | A04 accepted decision and identifier boundary above; ROR schema v2.1; GeoNames Ontology | `docs/philippe-rocca-serra-review` |
 | A05 | Damien Huzard | 2026-07-21 | Accept | Retain the physical HCM actuator specialization and deprecated migration IRI; model actuations, acted-on properties, software controllers, and triggered executions as distinct entities. The future definition expansion is approved but not implemented; no ontology axioms changed. | A05 accepted actuator and actuation boundary above; SOSA/SSN 2023 | `docs/philippe-rocca-serra-review` |
+| A06 | Damien Huzard | 2026-07-21 | Accept as required review gate | Require a signed, evidence-based inventory of every active HCMO class and directly referenced external anchor before hierarchy or mapping implementation. Treat every non-`keep` result as a separate reviewed change. No ontology axioms changed. | A06 accepted active-class audit gate above; `dist/profile.json` plus external-anchor supplement | `docs/philippe-rocca-serra-review` |
 | A07 | Damien Huzard; reviewed artifact evidence pending | 2026-07-21 | Accept preservation policy; verification pending | Preserve `ontology/legacy/` and `ontology/v2/` as immutable, excluded historical evidence; use modules as source and generated `dist/` files as load targets. No ontology axioms changed. | A07 accepted historical-artifact policy above; exact reviewed file/version/checksum still required | `docs/philippe-rocca-serra-review` |
+| B02 | Damien Huzard | 2026-07-21 | Accept | Keep the canonical release self-contained and free of live full-ontology imports. Merge only the approved version-pinned B01 subset; keep any future full-import reasoning profile optional and separate. No ontology axioms changed. | B02 accepted canonical import policy above; B01 implementation decision pending | `docs/philippe-rocca-serra-review` |
 
 ## Required implementation gate for every accepted semantic change
 
