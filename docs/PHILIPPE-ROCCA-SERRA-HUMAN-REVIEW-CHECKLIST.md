@@ -363,7 +363,7 @@ checklist row.
 | [?] | B08 | **Reuse current OBI classes selectively for experimental plans and executed processes: provisional architecture; co-author and OBI-expert validation required.** Keep ISA exchange resources, HCMO records, protocols, and executions distinct. Do not use deprecated `OBI_0000011`. | Validate the candidate protocol, investigation, assay, study-design execution, group-assignment, data-transformation, statistical-test, and specified-input/output terms below against current definitions and real HCM workflows. Decide mapping strength separately under B03. | No mapping or ontology implementation is authorized. After approval, add reviewed B04 mappings and `docs/ALIGNMENTS.md`; add process axioms only for justified HCMO specializations; add examples and competency questions. | Signed term matrix against pinned OBI `v2026-05-08`; every accepted mapping has a semantic-strength rationale and valid RDF use case; deprecated terms are absent from active mappings. |
 | [?] | B09 | **Use PROV-O as a cross-cutting execution-provenance view: provisionally accepted, subject to B03/B04 and an end-to-end provenance example.** It does not replace BFO/OBI/SOSA domain process semantics. | Validate activity/entity/agent typing, actual usage and generation, derivation, timing, qualified plans, associations, attributions, and roles. Confirm that equipment is not made an agent merely because it participates. | No ontology implementation is authorized. After approval, add reviewed mappings and alignment documentation, a provenance example, SHACL profile requirements, and competency queries; add local specializations only if justified. | A query reconstructs subject/enclosure and sensor through recording, raw data, transformation, derived output, and STATO result, with responsibility and timing but no false agent or subject attribution. |
 | [?] | B10 | **Use STATO for statistical-analysis variables, models, methods, and semantic results: provisional architecture; ISA/STATO (Philippe) expert validation required.** Keep study-design factors, factor levels, statistical variables, groups, result entities, and files distinct. | Validate every candidate and rejected term below against STATO and ISA definitions. Resolve the upstream `STATO_0000299` dependency on deprecated `OBI_0000011` without locally rewriting STATO. Decide mapping strength separately under B03. | No mapping or ontology implementation is authorized. After approval, update `hcm-bio.ttl` only for approved study-design semantics, the appropriate process/result module only for justified local specializations, B04 mappings, examples, queries, and `docs/ALIGNMENTS.md`. | Signed ISA/STATO matrix against pinned STATO `v2026-04-20`; factor/variable and analysis/output examples round-trip without treating a group as a factor or a semantic result as necessarily identical to a file. |
-| [ ] | B11 | **Wikidata fallback.** Wikidata should not replace an available stable ontology term without a policy. | Define allowed use cases, identifier stability checks, mapping predicate, and review cadence. | Mapping policy and registry only; ontology modules change only for an approved semantic relation. | Each Wikidata mapping documents why no suitable maintained ontology term was selected. |
+| [?] | B11 | **Permit Wikidata only as a reviewed fallback cross-reference outside canonical reasoning: provisionally accepted, subject to B03/B04 and co-author feedback or suggested revisions.** Prefer maintained domain ontologies and authoritative registries. | Co-authors must validate the allowed-use, evidence, revision-pinning, mapping-strength, replacement, and review-cadence rules below. Each proposed QID requires a documented unsuccessful search for a suitable authoritative term. | No mapping is authorized yet. After B03/B04 and co-author approval, record reviewed QIDs in the semantic mapping registry; keep them outside `dist/hcmo.*` and make no canonical build depend on Wikidata APIs or SPARQL. | Each row records canonical QID URI, reviewed identity, source alternatives, mapping predicate and justification, reviewer, retrieval date, revision ID, and any preferred external authority identifier. |
 
 ### B01 provisional external-subset directory and extraction pipeline
 
@@ -794,14 +794,209 @@ with its exact upstream deprecation context, until Philippe and the STATO/OBI
 maintainers validate a resolution. Mapping predicates and strengths for every
 accepted candidate remain governed by B03 and B04.
 
+### B11 provisional Wikidata fallback policy
+
+Status: provisionally accepted by Damien Huzard on 2026-07-21, subject to B03,
+B04, and co-author feedback or suggested revisions. No Wikidata mapping,
+ontology axiom, registry row, or build dependency is authorized by this
+decision.
+
+Use a Wikidata item only when no suitable maintained ontology, registry, or
+authority identifier is found after a documented search. If the item exposes
+an authoritative identifier such as ROR, ORCID, GeoNames, DOI, taxonomy, or an
+ontology identifier, HCMO must link directly to that authority and may retain
+the QID only as a secondary cross-reference.
+
+Each candidate row must record:
+
+- the canonical Wikidata QID concept URI and the exact entity represented;
+- the reviewed label and description, without treating either as an
+  identifier;
+- the authoritative sources searched, rejected candidates, and reason a
+  maintained domain identifier was unavailable;
+- the mapping predicate and strength approved under B03;
+- the reviewer, retrieval date, and Wikidata revision ID; and
+- authoritative external identifiers present on the item and the condition
+  under which the fallback should be replaced.
+
+Do not use a Wikipedia URL, mutable label, Wikidata `P31`/`P279` statement, or
+Wikidata item as an HCMO superclass, domain, range, or equivalence axiom. Keep
+approved Wikidata references in the B04 semantic registry and outside the
+canonical reasoning graph. The offline canonical build must not query the
+Wikidata API or SPARQL endpoint. Creating or editing a Wikidata item is a
+separate governed action, not part of an HCMO release.
+
+The co-authors must validate or revise the review cadence. The proposed default
+is review at every HCMO release and whenever an authoritative replacement is
+reported. Wikidata documents persistent Q/P entity identifiers and supports
+retrieval of a specific entity revision; use both facilities for auditable
+evidence: [Wikidata identifiers](https://www.wikidata.org/wiki/Wikidata%3AIdentifiers)
+and [Wikidata data access](https://www.wikidata.org/wiki/Wikidata%3AData_access/en).
+
 ## C. Object properties and reasoning
 
 | Done | ID | Item and description | Human review action | What and where to change after approval | Acceptance evidence |
 | --- | --- | --- | --- | --- | --- |
-| [ ] | C01 | **Domain/range semantic review.** All active local object and datatype properties currently have a domain and range, but OWL domains/ranges infer types and may still be too narrow or too broad. | For every property, test intended and edge-case triples and inspect inferred types. Pay particular attention to union domains/ranges, `hcm:locatedIn`, environmental measured-property relations, `hcm-obs:hasCondition`, and housing assignment relations. | Edit axioms only in the owning `ontology/modules/*.ttl`. Put closed-world requirements in `shapes/hcm-shapes.ttl`, not narrower OWL axioms. Add positive/negative examples and regenerate `dist/`. | Property-by-property sign-off and automated reasoner/SHACL evidence. |
-| [ ] | C02 | **Inverse and parent relations.** Only relations with justified semantics should receive inverses or superproperties. | Identify query-driven candidates; confirm direction and external parent definitions. Do not add inverses merely to silence quality tools. | Owning ontology modules; `docs/ALIGNMENTS.md` for reused parents; `queries/` for demonstrated utility; update `docs/paper/evaluation/` if OOPS findings change. | Every added inverse or parent is used by an example/query and introduces no unintended inference. |
-| [ ] | C03 | **Property documentation and provenance.** Labels, definitions, domains, and ranges exist, but source/provenance, usage examples, and CQ links are not systematically attached. | Choose an annotation pattern and whether CQ links are RDF annotations or documentation-only references. | Ontology modules for lightweight provenance annotations; `docs/ALIGNMENTS.md` for sources; `queries/competency_questions.yaml` for CQ coverage; generated documentation templates if used. | Inventory showing label, definition, source, domain, range, optional inverse/parent, example, and CQ for every active object property. |
-| [ ] | C04 | **OWL versus SHACL boundary.** The current design states that OWL provides semantics and SHACL provides intake constraints. | Confirm this policy for the new process, factor, provenance, and ISA profile requirements. | `docs/MODEL.md`, `docs/ARCHITECTURE.md`, and `shapes/hcm-shapes.ttl`; preserve the scalar `shapes` contract in `hcmo.yaml` unless a backward-compatible extension is approved. | Each proposed constraint is classified as inference, validation, or both, with tests. |
+| [x] | C01 | **Require an inference-based audit of every active property before adding process or provenance axioms: accepted as a required property-review gate; Cyril is assigned to start.** Acceptance of the gate does not mark the audit itself complete. | Cyril must begin the inventory and property-by-property inference tests described below. Record his complete reviewer identity in the audit deliverable. Other reviewers must sign off semantic areas they own. | First create the review inventory and evidence; do not make bulk ontology changes. Every accepted non-`keep` result becomes a separate implementation item in the owning module with positive/negative examples, reasoner evidence, regenerated `dist/`, and validation. | Completed inventory of 81 currently active local properties plus directly used external properties; separate compatibility audit; signed decisions and automated inference/SHACL evidence for every proposed change. |
+| [x] | C02 | **Adopt a conservative inverse and parent-property governance policy: accepted; individual axioms remain deferred to C01 and competency-question review.** Navigation convenience is not semantic evidence. | Apply the exact inverse and subproperty tests below. Prioritize review of the existing `monitoredBy`/`installedIn` inverse, the potential group-membership inverse, and `captures` beneath `sosa:observes`. | Do not add or remove an axiom directly from this policy decision. Each candidate requires a separate C01/CQ-backed implementation item in its owning module, alignment documentation, examples, queries, and reasoner tests. | Every retained, added, removed, or split relation has definition-level justification, intended bidirectional or subsumption entailments, domain/range impact analysis, and a demonstrated CQ. |
+| [?] | C03 | **Maintain ontology annotations and review evidence as two coordinated documentation layers: accepted; co-authors must validate the exact inventory fields.** Keep normative term annotations in source modules and reviewer/CQ/evidence records in a separate inventory. | Co-authors must validate the proposed source annotations, suggested `docs/PROPERTY-INVENTORY.tsv` location, mandatory inventory fields, CQ-link policy, and generated-documentation expectations. | No annotation sweep or inventory file is authorized until field validation. After approval, annotate source terms only with sourced facts, create the property inventory, update `docs/ALIGNMENTS.md`, and add completeness checks to validation tooling. | Every active local property has label, definition, intentional domain/range, source where available, status, rationale, inferred effects, optional inverse/parent, example, CQ IDs, reviewer, and decision; missing fields fail validation. |
+| [x] | C04 | **Retain OWL for semantics and SHACL for profile validation: accepted, with the validator entailment contract as the first implementation item.** Every new rule must be classified as inference, validation, or intentionally both. | Before adding process, provenance, factor, or ISA shapes, specify and test the ontology graph, entailment regime, explicit versus inferred typing behavior, target selection, and expected positive/negative results. | First update `docs/MODEL.md` and `docs/ARCHITECTURE.md` with the approved contract, then make a separately reviewed change to `tooling/validate.py`, shapes, and fixtures. Preserve the scalar `shapes` key in `hcmo.yaml`. | The same pinned validator configuration produces stable results for explicit and inferred subclasses/types; ontology-aware target selection is tested; SHACL checks requiredness without converting it into OWL existential semantics. |
+
+### C01 accepted property-review gate and initial assignment
+
+Status: accepted by Damien Huzard on 2026-07-21 as a required review gate.
+Cyril is assigned to start the audit. Acceptance of the gate does not imply
+that Cyril has begun or completed the work; his complete reviewer identity and
+review dates must be recorded in the audit deliverable. No property axiom is
+changed by this decision.
+
+The current source snapshot contains 81 non-deprecated local object and
+datatype properties and 49 deprecated compatibility properties. Review every
+active local property and every external property directly used in HCMO axioms,
+shapes, examples, or queries. Keep deprecated migration properties in a
+separate compatibility audit so they do not silently regain active inferential
+meaning.
+
+For each property, record:
+
+- IRI, label, definition, status, and owning module;
+- asserted and inferred domain and range, including anonymous class
+  expressions;
+- parent, inverse, restrictions, and intended upper relation;
+- use in examples, shapes, mappings, and competency questions;
+- positive, edge-case, and intentionally invalid triples;
+- intended versus observed reasoner consequences; and
+- reviewer decision: `keep`, `revise definition`, `revise axiom`, `split`,
+  `deprecate`, or `needs evidence`.
+
+RDFS domain and range axioms infer the types of property subjects and objects;
+they are not data-validation constraints. Multiple separately asserted domains
+or ranges mean that all named classes apply, not a choice among them. See
+[RDF Schema 1.1](https://www.w3.org/TR/rdf-schema/#ch_domain).
+
+Prioritize:
+
+1. `hcm-tech:monitoredBy` and `hcm-tech:installedIn`;
+2. `hcm:locatedIn` against the A04 Place decision;
+3. the seven environmental-property predicates shared by profiles,
+   specifications, and observations;
+4. `hcm-obs:hasCondition`, whose current range is `owl:Thing`;
+5. current-state claims such as `hasMonitoredAnimals`, `isOccupied`, and
+   `isOperational` against temporal assignment requirements;
+6. subject-to-observation shortcuts against the SOSA pattern; and
+7. broad bio and technical union domains.
+
+The audit must not perform bulk label, domain, range, inverse, or hierarchy
+edits. Every approved semantic change becomes a separate implementation item
+with its own evidence and validation.
+
+### C02 accepted inverse and parent-property governance policy
+
+Status: governance policy accepted by Damien Huzard on 2026-07-21. Individual
+axioms remain deferred to C01 and competency-question review; this decision
+does not add, remove, or retain an axiom without that evidence.
+
+Add or retain an inverse only when the two properties express precisely the
+same relation in opposite directions for every intended instance, time, and
+context. Add or retain a parent property only when every local property
+assertion necessarily entails the parent assertion and all inherited
+domain/range consequences are intended. Do not introduce either construct for
+navigation convenience, presentation, or quality-tool scoring. OWL inverse
+properties entail both directions; see the
+[OWL 2 structural specification](https://www.w3.org/TR/owl2-syntax/#Inverse_Object_Properties).
+
+Initial candidate assessment for C01:
+
+- **Challenge** the existing inverse between `hcm-tech:monitoredBy` and
+  `hcm-tech:installedIn`: a remote or portable sensor may monitor an enclosure
+  without being installed in it. Review whether `monitoredBy` should be
+  narrowed or whether installation and monitoring must be split.
+- **Promising candidate:** `hcm-bio:hasMember` and
+  `hcm-bio:belongsToGroup`, but only if both represent the same atemporal
+  membership relation and assignment history remains a separate entity.
+- **Provisionally retain for testing:**
+  `hcm-tech:captures rdfs:subPropertyOf sosa:observes`, subject to the current
+  SOSA definition, domain/range, and instance-use tests.
+- Do not place the mixed environment-profile/specification/observation
+  predicates beneath `sosa:observedProperty`; a separate observation-specific
+  relation may be needed.
+- Do not add inverses for housing assignment, location, actuator association,
+  or technical support without a CQ and temporal/context analysis.
+
+When only reverse query navigation is required, prefer a SPARQL inverse path
+over an unjustified ontology axiom.
+
+### C03 accepted two-layer property documentation pattern
+
+Status: the two-layer pattern is accepted by Damien Huzard on 2026-07-21;
+co-authors must validate the exact inventory fields before implementation. No
+annotation sweep, property inventory, or validator change is authorized yet.
+
+Layer 1 remains in each owning ontology source module:
+
+- `rdfs:label`;
+- one normative `rdfs:comment` definition;
+- domain and range only when their inference is intentional;
+- `dcterms:source` only when an exact source exists;
+- approved parent and inverse axioms; and
+- `owl:deprecated` plus `dcterms:isReplacedBy` for migration terms.
+
+Layer 2 is a separate machine-readable review inventory, with
+`docs/PROPERTY-INVENTORY.tsv` proposed as the location. It records source and
+version, modeling rationale, asserted and inferred effects, example, CQ IDs,
+reviewer, decision, and rejected alternatives. Mapping evidence remains in the
+B04 registry and `docs/ALIGNMENTS.md`, not in ambiguous annotations.
+
+Use the stable identifiers already maintained in
+`queries/competency_questions.yaml` for documentation links. Do not mint RDF
+CQ links until a CQ IRI policy is approved. Co-authors must validate the file
+location, required columns, allowed decision values, handling of external
+properties, and whether a rendered property catalogue is generated from the
+inventory.
+
+### C04 accepted OWL/SHACL boundary and first implementation item
+
+Status: accepted by Damien Huzard on 2026-07-21. The validator entailment
+contract is the first implementation item, but it is not implemented by this
+documentation decision.
+
+Use OWL for statements intended to be universally true and inferential:
+
+- class and property hierarchy;
+- intentional domain and range inference;
+- exact inverse relations; and
+- reviewed disjointness and universal semantic restrictions.
+
+Use SHACL for submission and profile requirements:
+
+- required or prohibited values and minimum/maximum counts;
+- datatypes, patterns, numerical bounds, and controlled lists;
+- conditional and profile-specific requirements; and
+- intake-quality warnings and closed-world checks.
+
+Every new rule must document whether it is an inference, validation constraint,
+or intentionally both. Missing data must not be interpreted as false through
+OWL, and required profile fields must not be modeled as universal ontology
+existentials merely to make them mandatory.
+
+At review time, `tooling/validate.py` invokes pySHACL with RDFS inference over
+each example but does not supply the canonical ontology as an ontology graph.
+Before new process, provenance, factor, or ISA shapes are added, the first
+implementation item must:
+
+1. specify the canonical ontology graph and pinned entailment regime;
+2. decide explicit versus inferred typing and shape-target behavior;
+3. add positive and negative fixtures for subclass, domain, and range
+   inference;
+4. document the contract in `docs/MODEL.md` and `docs/ARCHITECTURE.md`; and
+5. update `tooling/validate.py` only after those expectations are approved.
+
+The recommended target is ontology-aware validation using the generated
+`dist/hcmo.ttl` graph with an explicit, pinned RDFS regime, subject to C01
+showing that domain/range inference does not trigger unintended shape targets.
+The scalar `shapes` key in `hcmo.yaml` remains unchanged. SHACL does not assume
+an entailment regime or ontology content by default; see the
+[W3C SHACL Recommendation](https://www.w3.org/TR/shacl/#validation).
 
 ## D. Processes, inputs, outputs, and provenance
 
@@ -881,6 +1076,11 @@ unreviewed ontology assertions.
 | B08 | Damien Huzard; co-author and OBI-expert validation pending | 2026-07-21 | Defer final approval; provisional OBI architecture selected | Reuse current OBI protocol and specific executed-process semantics only when definitions fit; keep ISA exchange nodes and HCMO records distinct; do not use deprecated `OBI_0000011`. No mapping or ontology axiom implemented. | B08 candidate matrix above; OBI `v2026-05-08` at `a7aeec49057d9f9ba03d14977576d064f3fa6825` | `docs/philippe-rocca-serra-review` |
 | B09 | Damien Huzard; B03/B04 and example validation pending | 2026-07-21 | Defer final approval; provisionally accept | Use PROV-O as a cross-cutting actual-provenance view alongside OBI/SOSA/HCMO semantics. Keep responsibility, equipment participation, plans, specified inputs/outputs, actual usage/generation, and derivation distinct. No mapping or ontology axiom implemented. | B09 provenance architecture above; W3C PROV-O Recommendation | `docs/philippe-rocca-serra-review` |
 | B10 | Damien Huzard; ISA/STATO validation by Philippe pending | 2026-07-21 | Defer final approval; provisional STATO architecture selected | Reuse specific STATO analysis variables, models, transformations, and result entities while distinguishing design factors, factor levels, groups, statistical samples, and files. Do not locally repair STATO's deprecated OBI dependency. No mapping or ontology axiom implemented. | B10 candidate and rejection matrix above; STATO `v2026-04-20` at `a5910e6115217a88ee86e2666e12983ef2ef2a42` | `docs/philippe-rocca-serra-review` |
+| B11 | Damien Huzard; co-author feedback and B03/B04 pending | 2026-07-21 | Defer final approval; restrictive fallback policy provisionally accepted | Permit a revision-recorded Wikidata QID only after an unsuccessful search for maintained authoritative identifiers; prefer direct external authorities, keep the QID outside canonical reasoning, and prohibit live build dependencies. No mapping implemented. | B11 provisional policy above; Wikidata identifier and revision documentation | `docs/philippe-rocca-serra-review` |
+| C01 | Damien Huzard; Cyril assigned as initial audit lead | 2026-07-21 | Accept as required property-review gate | Audit every active local and directly used external property through intended and observed inference, examples, shapes, and CQs before making new property changes. Cyril is assigned to start; audit completion remains pending. No axiom changed. | C01 accepted gate and assignment above; current inventory snapshot; RDF Schema 1.1 | `docs/philippe-rocca-serra-review` |
+| C02 | Damien Huzard | 2026-07-21 | Accept governance policy; defer individual axioms | Require exact bidirectional identity for inverses and universal semantic inclusion for parent properties. Challenge `monitoredBy`/`installedIn`; review group membership and `captures` through C01/CQs. No axiom changed. | C02 accepted governance policy above; OWL 2 structural specification | `docs/philippe-rocca-serra-review` |
+| C03 | Damien Huzard; co-author field validation pending | 2026-07-21 | Accept two-layer pattern; defer exact implementation | Keep normative labels, definitions, intentional axioms, source, and deprecation in source modules; keep examples, CQs, reviewer decisions, effects, and rejected alternatives in a separate inventory. No annotations or inventory implemented. | C03 two-layer pattern above; proposed `docs/PROPERTY-INVENTORY.tsv` | `docs/philippe-rocca-serra-review` |
+| C04 | Damien Huzard | 2026-07-21 | Accept; prioritize entailment contract | Keep universal semantics in OWL and profile/intake requirements in SHACL. Make an explicit ontology-aware validator entailment contract and tests the first implementation item before new shape families. No tooling or shape change implemented. | C04 accepted boundary and implementation sequence above; W3C SHACL Recommendation; current `tooling/validate.py` behavior | `docs/philippe-rocca-serra-review` |
 
 ## Required implementation gate for every accepted semantic change
 
