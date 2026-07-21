@@ -62,7 +62,7 @@ an ontology that has changed since the reviewed file was produced.
 | --- | --- | --- | --- | --- | --- |
 | [?] | A01 | **Readable upper-level presentation: provisionally accepted; co-author review pending.** Reuse authoritative external upper-level classes directly and include a curated, versioned annotation and hierarchy subset so Protégé renders readable names. Create a local HCMO upper class only when it is narrower than, or meaningfully different from, the external class. | Co-authors must validate or challenge the proposed structure below, identify the exact external IRIs and versions, and approve each asserted hierarchy or mapping relation. | No ontology implementation is authorized yet. After approval, add the curated external subset through the reviewed module/import strategy; document it in `docs/ARCHITECTURE.md` and `docs/ALIGNMENTS.md`; update owning modules only for approved hierarchy changes; regenerate `dist/`. | Co-author decision record; source and version for every external term; readable Protégé hierarchy; reasoner result with no unintended equivalences or unsatisfiable classes. |
 | [?] | A02 | **Provisional process architecture; external review pending.** Reuse authoritative process classes directly when their meaning matches HCMO and keep semantic, provenance, and exchange layers distinct. | Co-authors and external reviewers must validate or challenge the proposed architecture below, identify exact external IRIs and versions, approve mapping strengths, and settle the ISA round-trip policy for housing assignments and non-file statistical results. | No ontology implementation is authorized yet. After approval, record the policy in `docs/ARCHITECTURE.md` and `docs/ALIGNMENTS.md`; put any approved HCMO specialization in its owning module; add examples, shapes, and competency questions; regenerate `dist/`. | Reviewer-approved term/mapping table; acyclic example workflow with explicit inputs and outputs; resolved ISA extension policy; at least one process competency question. |
-| [ ] | A03 | **Person.** The meeting requested placement under material entity, but no HCMO Person class exists in the active domain model. | Confirm whether the request concerned an obsolete file, contributor metadata, or a needed experimental-agent class. Decide whether to reuse an external person/organism/agent term. | Contributor metadata is in `ontology/modules/hcm-core.ttl` and should remain Schema.org metadata unless a new requirement is approved. A domain-agent model would affect its owning module, provenance mappings, shapes, examples, and paper. Do not create `hcm:Person` solely to reproduce a display category. | Scope statement and approved external term or explicit “no ontology change” decision. |
+| [x] | A03 | **Separate person identity, provenance responsibility, and contributor credit: accepted.** Use `schema:Person` for ISA/Bioschemas exchange, `prov:Person` and `prov:Agent` for provenance, and CRediT through qualified PROV relations for contributor credit. Do not create a local `hcm:Person`. | Preserve the distinctions in the accepted decision below. Before implementation, pin the external versions and identifiers and review every operational role whose meaning is narrower than CRediT. | No ontology class change is authorized. Current Schema.org contributor metadata remains in `ontology/modules/hcm-core.ttl`. Future provenance and contribution examples belong in `examples/`; approved mappings in `docs/ALIGNMENTS.md` or the mapping registry; requirements in `shapes/` and `queries/`; paper attribution guidance in `docs/paper/`. | Decision record below; no active `hcm:Person`; a future example distinguishes person, agent, association/attribution, CRediT contribution role, and any precise operational role. |
 | [ ] | A04 | **Place.** `hcm:locatedIn` currently ranges over `schema:Place`; facility, site, and spatial region are not distinguished. | Provide representative data and decide whether the relation points to a material facility, spatial region, site identifier, or a union. Review the inferential effect of the range. | `ontology/modules/hcm-core.ttl` for `hcm:locatedIn`; `shapes/hcm-shapes.ttl` for intake constraints; `examples/` for positive and negative cases; `docs/MODEL.md` and `docs/ALIGNMENTS.md` for the distinction; then regenerate `dist/`. | Approved competency question and examples showing at least a facility and a spatial-location case, or a documented decision to retain `schema:Place`. |
 | [ ] | A05 | **Actuator placement and apparent duplication.** The active class is already a material entity through `BFO_0000040`; the second IRI is deprecated migration support. | Verify in Protege/OLS that the duplicate report refers to `hcm-tech:Actuator` and deprecated `hcm:Actuator`. Confirm that the deprecation and replacement are visible. | Normally no class merge. If display metadata is insufficient, update annotations in `ontology/modules/hcm-compat.ttl` or the curated external-label/mapping layer; never delete the deprecated IRI. Update `docs/PHILIPPE-ROCCA-SERRA-FEEDBACK.md` with verification evidence. | Screenshot or hierarchy export showing one active class and one clearly deprecated replacement mapping. |
 | [ ] | A06 | **Systematic active-class audit.** Presence checks have passed, but definitions, anchors, synonyms, and provenance still require expert review. | Review all active classes in `dist/profile.json` against domain meaning and source ontologies. Mark each as keep, revise annotation, map, deprecate, or needs evidence. | Definitions and axioms must be edited in the owning `ontology/modules/*.ttl` file. Track unresolved text in `docs/MISSING-DEFINITIONS.md`; record external alignments in the approved mapping artifact; regenerate `dist/`. | Signed inventory covering every active class and explaining every changed semantic axiom. |
@@ -162,6 +162,45 @@ mappings, and repository work proposed for later implementation are recorded in
 [`A02-ISA-STATO-COMPATIBILITY.md`](A02-ISA-STATO-COMPATIBILITY.md). They remain
 future work and are not ontology assertions.
 
+### A03 accepted decision and implementation boundary
+
+Status: accepted by Damien Huzard on 2026-07-21. This is a modeling and reuse
+policy. It does not authorize a local Person class, external imports, mapping
+axioms, or new operational-role terms.
+
+Decision:
+
+> **A03 — separate person identity, provenance responsibility, and contributor
+> credit.**
+> Represent a human contributor with `schema:Person` for ISA/Bioschemas exchange
+> and `prov:Person` for provenance; `prov:Person` is a kind of `prov:Agent`. Use
+> qualified PROV associations and attributions to connect the person to executed
+> processes and generated entities.
+>
+> Use official CRediT roles through `prov:hadRole` when describing contributions
+> to the study, dataset, software, analysis, or publication. Do not treat CRediT
+> roles as person classes or substitutes for `prov:Agent`, and do not use them
+> for precise operational responsibilities when their definitions are too broad.
+>
+> Do not create a local `hcm:Person` class. Create or reuse narrower operational
+> role terms only when required by an approved competency question.
+
+Implementation must preserve these distinctions:
+
+- [`schema:Person`](https://schema.org/Person) is the ISA/Bioschemas exchange
+  type; it is not asserted as an HCMO material-entity superclass.
+- [`prov:Person`](https://www.w3.org/TR/prov-o/#Person) identifies a person in
+  provenance and is a subclass of `prov:Agent`.
+- `prov:qualifiedAssociation` relates an executed activity to an agent and may
+  carry `prov:hadRole`; `prov:qualifiedAttribution` provides the corresponding
+  qualified attribution for a generated entity.
+- [CRediT](https://credit.niso.org/contributor-roles/) supplies scholarly
+  contribution categories, not person classes and not automatically the precise
+  operational role performed in an HCM workflow.
+- The external source/version, official CRediT role identifier, mapping status,
+  reviewer, and evidence must be recorded before an RDF example or application
+  profile treats a role mapping as approved.
+
 ## B. External labels, imports, and mappings
 
 | Done | ID | Item and description | Human review action | What and where to change after approval | Acceptance evidence |
@@ -250,6 +289,7 @@ unreviewed ontology assertions.
 | --- | --- | --- | --- | --- | --- | --- |
 | A01 | Damien Huzard; co-author review pending | 2026-07-21 | Defer final approval; provisional direction accepted | Prefer direct reuse of authoritative upper-level classes plus a curated, versioned subset of annotations and hierarchy for readable Protégé rendering. Local upper classes are permitted only when narrower or meaningfully different. No ontology axioms changed. | A01 provisional decision and discussion structure above | `docs/philippe-rocca-serra-review` |
 | A02 | Damien Huzard; co-author and external review pending | 2026-07-21 | Defer final approval; provisional direction recorded for discussion | Use a layered process architecture: BFO/OBI/SOSA/STATO for semantics, PROV-O for provenance, and ISA/Bioschemas for exchange. Keep plans, executions, and outputs distinct; create local classes only for narrower HCMO meanings. No ontology axioms changed. | A02 provisional decision above and `docs/A02-ISA-STATO-COMPATIBILITY.md` | `docs/philippe-rocca-serra-review` |
+| A03 | Damien Huzard | 2026-07-21 | Accept | Keep person identity, provenance responsibility, and contributor credit distinct. Reuse Schema.org, PROV-O, and official CRediT roles in their respective scopes; do not create `hcm:Person`. No ontology axioms changed. | A03 accepted decision and implementation boundary above; Schema.org Person, PROV-O, and CRediT specifications | `docs/philippe-rocca-serra-review` |
 
 ## Required implementation gate for every accepted semantic change
 
