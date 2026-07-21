@@ -60,13 +60,75 @@ an ontology that has changed since the reviewed file was produced.
 
 | Done | ID | Item and description | Human review action | What and where to change after approval | Acceptance evidence |
 | --- | --- | --- | --- | --- | --- |
-| [ ] | A01 | **Four-category presentation.** Decide whether Process Entity, Physical Entity, Material Entity, and Information Entity are a navigation view or formal OWL parents. Material entity must not be modeled as a peer of an overlapping physical-entity category without an explicit upper-ontology rationale. | Draw the proposed hierarchy, identify the exact external IRIs, and approve either a documentation-only view or formal subclass axioms. | Navigation only: `docs/ARCHITECTURE.md`, `docs/ALIGNMENTS.md`, ontology diagrams, and paper resource section. Formal axioms: the owning files under `ontology/modules/`; update shapes, examples, and queries only where behavior changes; regenerate `dist/`. Do not mint generic HCMO upper classes without approval. | Approved hierarchy diagram; rationale for every parent; reasoner result with no unintended equivalences or unsatisfiable classes. |
+| [?] | A01 | **Readable upper-level presentation: provisionally accepted; co-author review pending.** Reuse authoritative external upper-level classes directly and include a curated, versioned annotation and hierarchy subset so Protégé renders readable names. Create a local HCMO upper class only when it is narrower than, or meaningfully different from, the external class. | Co-authors must validate or challenge the proposed structure below, identify the exact external IRIs and versions, and approve each asserted hierarchy or mapping relation. | No ontology implementation is authorized yet. After approval, add the curated external subset through the reviewed module/import strategy; document it in `docs/ARCHITECTURE.md` and `docs/ALIGNMENTS.md`; update owning modules only for approved hierarchy changes; regenerate `dist/`. | Co-author decision record; source and version for every external term; readable Protégé hierarchy; reasoner result with no unintended equivalences or unsatisfiable classes. |
 | [ ] | A02 | **Process-entity anchor.** The active model has observation classes but no general HCMO process model. | Decide whether processes are reused directly from OBI/PROV-O/BFO or specialized locally, and which process families are in HCMO scope. | Record policy in `docs/ARCHITECTURE.md` and `docs/ALIGNMENTS.md`. Put an approved specialization in the module matching its namespace; add a new module only after updating the authoritative repo map and `hcmo.yaml` without breaking manifest consumers. | Approved term/mapping table and at least one competency question that requires the process model. |
 | [ ] | A03 | **Person.** The meeting requested placement under material entity, but no HCMO Person class exists in the active domain model. | Confirm whether the request concerned an obsolete file, contributor metadata, or a needed experimental-agent class. Decide whether to reuse an external person/organism/agent term. | Contributor metadata is in `ontology/modules/hcm-core.ttl` and should remain Schema.org metadata unless a new requirement is approved. A domain-agent model would affect its owning module, provenance mappings, shapes, examples, and paper. Do not create `hcm:Person` solely to reproduce a display category. | Scope statement and approved external term or explicit “no ontology change” decision. |
 | [ ] | A04 | **Place.** `hcm:locatedIn` currently ranges over `schema:Place`; facility, site, and spatial region are not distinguished. | Provide representative data and decide whether the relation points to a material facility, spatial region, site identifier, or a union. Review the inferential effect of the range. | `ontology/modules/hcm-core.ttl` for `hcm:locatedIn`; `shapes/hcm-shapes.ttl` for intake constraints; `examples/` for positive and negative cases; `docs/MODEL.md` and `docs/ALIGNMENTS.md` for the distinction; then regenerate `dist/`. | Approved competency question and examples showing at least a facility and a spatial-location case, or a documented decision to retain `schema:Place`. |
 | [ ] | A05 | **Actuator placement and apparent duplication.** The active class is already a material entity through `BFO_0000040`; the second IRI is deprecated migration support. | Verify in Protege/OLS that the duplicate report refers to `hcm-tech:Actuator` and deprecated `hcm:Actuator`. Confirm that the deprecation and replacement are visible. | Normally no class merge. If display metadata is insufficient, update annotations in `ontology/modules/hcm-compat.ttl` or the curated external-label/mapping layer; never delete the deprecated IRI. Update `docs/PHILIPPE-ROCCA-SERRA-FEEDBACK.md` with verification evidence. | Screenshot or hierarchy export showing one active class and one clearly deprecated replacement mapping. |
 | [ ] | A06 | **Systematic active-class audit.** Presence checks have passed, but definitions, anchors, synonyms, and provenance still require expert review. | Review all active classes in `dist/profile.json` against domain meaning and source ontologies. Mark each as keep, revise annotation, map, deprecate, or needs evidence. | Definitions and axioms must be edited in the owning `ontology/modules/*.ttl` file. Track unresolved text in `docs/MISSING-DEFINITIONS.md`; record external alignments in the approved mapping artifact; regenerate `dist/`. | Signed inventory covering every active class and explaining every changed semantic axiom. |
 | [ ] | A07 | **Legacy and historical views.** Protege or OLS may have been opened on `ontology/v2/`, `ontology/legacy/`, or an older release. | Record the exact file and version Philippe reviewed and reproduce the finding against `dist/hcmo.owl`. | Clarify canonical load instructions in `README.md`, `docs/README.md`, and publication metadata. Historical files remain retained and must not be silently edited to resemble the active release. | File checksum/version recorded and findings classified as active, compatibility-only, or historical. |
+
+### A01 provisional decision and discussion structure
+
+Status: provisional direction recorded on 2026-07-21; final approval is deferred
+until co-authors have validated, challenged, or revised it. This record does not
+authorize new classes, mappings, or hierarchy axioms.
+
+Provisional decision:
+
+> Reuse authoritative external upper-level classes directly. Include a curated,
+> versioned subset of their labels, definitions, hierarchy, synonyms, and
+> provenance in the HCMO release so Protégé renders readable names. Create a
+> local HCMO upper class only when it is narrower than, or meaningfully
+> different from, the external class.
+
+Suggested structure to discuss, validate, or challenge:
+
+```text
+owl:Thing
+├── Material entity
+│   ├── Subject
+│   ├── Enclosure
+│   ├── Sensor
+│   └── Actuator
+├── Process entity
+│   ├── Housing process
+│   ├── Recording process
+│   └── Data-processing process
+├── Information entity
+│   ├── Housing assignment
+│   ├── Dataset
+│   ├── Specification
+│   └── Result
+├── Quality / property entity
+│   ├── Temperature
+│   ├── Humidity
+│   └── Light intensity
+└── Spatial entity
+    ├── Site
+    ├── Facility
+    └── Spatial region
+```
+
+Co-author validation must settle the following before implementation:
+
+1. Select the authoritative external class and ontology version represented by
+   each displayed upper-level label.
+2. Confirm whether each HCMO class is a direct subclass of the external class or
+   needs a more specific intermediate class.
+3. Distinguish exact class equivalence (`owl:equivalentClass`), narrower meaning
+   (`rdfs:subClassOf`), and non-logical correspondence (`skos:exactMatch` or
+   `skos:closeMatch`). Do not use `owl:sameAs` for class equivalence.
+4. Validate whether observation and recording entities are processes and how
+   planned protocols differ from executed processes.
+5. Validate which datasets, specifications, assignments, and results qualify as
+   information-content entities.
+6. Distinguish BFO qualities from SOSA observable properties before approving
+   the Quality / property branch.
+7. Distinguish material facilities from spatial regions before approving Site
+   and Facility beneath Spatial entity.
+8. Confirm that the selected curated subset renders the proposed hierarchy in
+   Protégé without requiring full external-ontology imports.
 
 ## B. External labels, imports, and mappings
 
@@ -154,7 +216,7 @@ unreviewed ontology assertions.
 
 | Item ID | Reviewer | Date | Decision (`accept`, `revise`, `reject`, `defer`) | Rationale and semantic effect | Evidence/source | Issue or PR |
 | --- | --- | --- | --- | --- | --- | --- |
-|  |  |  |  |  |  |  |
+| A01 | Damien Huzard; co-author review pending | 2026-07-21 | Defer final approval; provisional direction accepted | Prefer direct reuse of authoritative upper-level classes plus a curated, versioned subset of annotations and hierarchy for readable Protégé rendering. Local upper classes are permitted only when narrower or meaningfully different. No ontology axioms changed. | A01 provisional decision and discussion structure above | `docs/philippe-rocca-serra-review` |
 
 ## Required implementation gate for every accepted semantic change
 
