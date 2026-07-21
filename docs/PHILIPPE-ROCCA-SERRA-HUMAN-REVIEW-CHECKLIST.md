@@ -64,7 +64,7 @@ an ontology that has changed since the reviewed file was produced.
 | [?] | A02 | **Provisional process architecture; external review pending.** Reuse authoritative process classes directly when their meaning matches HCMO and keep semantic, provenance, and exchange layers distinct. | Co-authors and external reviewers must validate or challenge the proposed architecture below, identify exact external IRIs and versions, approve mapping strengths, and settle the ISA round-trip policy for housing assignments and non-file statistical results. | No ontology implementation is authorized yet. After approval, record the policy in `docs/ARCHITECTURE.md` and `docs/ALIGNMENTS.md`; put any approved HCMO specialization in its owning module; add examples, shapes, and competency questions; regenerate `dist/`. | Reviewer-approved term/mapping table; acyclic example workflow with explicit inputs and outputs; resolved ISA extension policy; at least one process competency question. |
 | [x] | A03 | **Separate person identity, provenance responsibility, and contributor credit: accepted.** Use `schema:Person` for ISA/Bioschemas exchange, `prov:Person` and `prov:Agent` for provenance, and CRediT through qualified PROV relations for contributor credit. Do not create a local `hcm:Person`. | Preserve the distinctions in the accepted decision below. Before implementation, pin the external versions and identifiers and review every operational role whose meaning is narrower than CRediT. | No ontology class change is authorized. Current Schema.org contributor metadata remains in `ontology/modules/hcm-core.ttl`. Future provenance and contribution examples belong in `examples/`; approved mappings in `docs/ALIGNMENTS.md` or the mapping registry; requirements in `shapes/` and `queries/`; paper attribution guidance in `docs/paper/`. | Decision record below; no active `hcm:Person`; a future example distinguishes person, agent, association/attribution, CRediT contribution role, and any precise operational role. |
 | [x] | A04 | **Broad exchange-level Place with separate material, spatial, and identifier semantics: accepted.** Do not create `hcm:Place`. Retain `schema:Place` as the broad range of `hcm:locatedIn`, without equating it to a BFO site, spatial region, or material entity. Keep institutes/organizations, physical facilities, spatial sites, and geometries distinct. | Preserve the accepted distinctions below. Select authoritative facility/site/geospatial classes only after definition review. Use a globally resolvable organization identifier, preferably ROR where eligible, and a GeoNames IRI for the corresponding geographic place where an appropriate record exists; never treat those identifiers as identifying the same entity. | No immediate ontology axiom change is authorized. Record identifier and mapping rules in `docs/ALIGNMENTS.md` or the mapping registry; add organization/place/facility examples and competency questions before specializing `hcm:locatedIn`; update `ontology/modules/hcm-core.ttl`, shapes, context, and generated artifacts only if the approved examples demonstrate a need. | Decision record below; examples distinguish organization, physical facility, BFO site/spatial entity, and geometry; ROR and GeoNames identifiers resolve to the correct separate entities; no unintended type inference from `hcm:locatedIn`. |
-| [ ] | A05 | **Actuator placement and apparent duplication.** The active class is already a material entity through `BFO_0000040`; the second IRI is deprecated migration support. | Verify in Protege/OLS that the duplicate report refers to `hcm-tech:Actuator` and deprecated `hcm:Actuator`. Confirm that the deprecation and replacement are visible. | Normally no class merge. If display metadata is insufficient, update annotations in `ontology/modules/hcm-compat.ttl` or the curated external-label/mapping layer; never delete the deprecated IRI. Update `docs/PHILIPPE-ROCCA-SERRA-FEEDBACK.md` with verification evidence. | Screenshot or hierarchy export showing one active class and one clearly deprecated replacement mapping. |
+| [x] | A05 | **Retain the local physical HCM actuator specialization and model actuations and triggers explicitly: accepted.** `hcm-tech:Actuator` remains the physical, home-cage-specific subclass of BFO Material entity and `sosa:Actuator`; the broader SOSA class may also cover software and other systems. Keep the deprecated migration IRI. | Preserve the device/action/property/execution distinctions below. Before implementation, approve competency questions for physical state change, system reconfiguration, and triggering; pin the SOSA version; and select an explicit relation for each triggered execution rather than treating the actuator as the event. | The accepted future definition belongs in `ontology/modules/hcm-tech.ttl` without changing its IRI. Retain `hcm:Actuator` in `ontology/modules/hcm-compat.ttl`. Add approved SOSA actuation relations, physical and software-controller examples, shapes, queries, documentation, and regenerated `dist/` only in an implementation change. | Decision record below; active and deprecated IRIs remain distinguishable; examples distinguish physical actuator, software controller, actuation, acted-on property, and triggered execution; reasoner and SHACL tests reject physical typing of software-only controllers. |
 | [ ] | A06 | **Systematic active-class audit.** Presence checks have passed, but definitions, anchors, synonyms, and provenance still require expert review. | Review all active classes in `dist/profile.json` against domain meaning and source ontologies. Mark each as keep, revise annotation, map, deprecate, or needs evidence. | Definitions and axioms must be edited in the owning `ontology/modules/*.ttl` file. Track unresolved text in `docs/MISSING-DEFINITIONS.md`; record external alignments in the approved mapping artifact; regenerate `dist/`. | Signed inventory covering every active class and explaining every changed semantic axiom. |
 | [?] | A07 | **Preserve historical ontology artifacts as immutable evidence and exclude them from the active release: accepted; reviewed artifact identification pending.** `ontology/legacy/` and `ontology/v2/` remain historical and must not be edited to resemble the active ontology or used as the canonical Protégé entry point. | Obtain and record the exact file/version Philippe reviewed, its checksum, and the tool/view used; reproduce each finding against the current generated release and classify it as active, compatibility-only, or historical. | No historical ontology edit is authorized. Keep `ontology/modules/*.ttl` as the hand-authored source and `dist/hcmo.owl` / `dist/hcmo.ttl` as generated load targets. Put corrections in the owning active module or, for published migration IRIs, `ontology/modules/hcm-compat.ttl`; clarify canonical load instructions and preserve the historical inventory. | Accepted preservation policy; exact reviewed artifact and checksum; finding-classification table; historical paths remain excluded from `hcmo.yaml`; current release rebuild and validation pass. |
 
@@ -249,6 +249,49 @@ assume that a ROR organization whose registry type is `facility` identifies a
 particular building, room, BFO site, or geometry. The mapping registry must
 record identifier scheme, target entity, source/version, status, and evidence.
 
+### A05 accepted actuator and actuation boundary
+
+Status: accepted by Damien Huzard on 2026-07-21. This decision approves the
+future semantic scope and modeling pattern, but does not itself change the
+current class definition or add SOSA actuation terms to the active ontology.
+
+Decision:
+
+> **A05 — retain the local physical HCM actuator specialization and model
+> actuations and triggers explicitly.**
+> Retain `hcm-tech:Actuator` as a subclass of both BFO Material entity and
+> `sosa:Actuator`. It represents a physical device in a home-cage monitoring
+> system that implements an actuating procedure to change a property or state of
+> a subject, enclosure, environmental condition, device, or monitoring system.
+>
+> An HCM actuator may stimulate or perturb behavior or physiology, modify an
+> environmental condition, change an enclosure or system configuration, enable
+> or disable a function, or initiate, stop, or reconfigure a defined HCM
+> execution.
+>
+> Model the physical device as `hcm-tech:Actuator`, the performed action as
+> `sosa:Actuation`, the property that may be changed through `sosa:actsOn`, and
+> the property actually acted upon through `sosa:actsOnProperty`. Represent any
+> resulting or triggered recording, alert, feeding, lighting, or control
+> execution separately; do not treat the actuator itself as the event.
+>
+> A software-only controller may be a `sosa:Actuator` and an appropriate software
+> entity, but must not be typed as the physical `hcm-tech:Actuator`. Create a
+> narrower local software-actuator class only if an approved competency question
+> requires one.
+>
+> Retain the deprecated `hcm:Actuator` migration IRI and its replacement mapping.
+> Do not delete it or assert equivalence between the local physical class and the
+> broader SOSA class.
+
+Implementation must preserve the existing `hcm-tech:Actuator` IRI. The revised
+definition is a semantic expansion beyond its current behavior/physiology/
+environment wording and therefore requires an explicit source-module change,
+examples, competency questions, reasoning review, regenerated artifacts, and a
+changelog entry when implemented. A relation between an actuation and a
+triggered execution must be selected and justified separately; neither the
+device nor `sosa:actsOn` alone expresses that execution dependency.
+
 ### A07 accepted historical-artifact policy
 
 Status: accepted by Damien Huzard on 2026-07-21. Verification remains open until
@@ -366,6 +409,7 @@ unreviewed ontology assertions.
 | A02 | Damien Huzard; co-author and external review pending | 2026-07-21 | Defer final approval; provisional direction recorded for discussion | Use a layered process architecture: BFO/OBI/SOSA/STATO for semantics, PROV-O for provenance, and ISA/Bioschemas for exchange. Keep plans, executions, and outputs distinct; create local classes only for narrower HCMO meanings. No ontology axioms changed. | A02 provisional decision above and `docs/A02-ISA-STATO-COMPATIBILITY.md` | `docs/philippe-rocca-serra-review` |
 | A03 | Damien Huzard | 2026-07-21 | Accept | Keep person identity, provenance responsibility, and contributor credit distinct. Reuse Schema.org, PROV-O, and official CRediT roles in their respective scopes; do not create `hcm:Person`. No ontology axioms changed. | A03 accepted decision and implementation boundary above; Schema.org Person, PROV-O, and CRediT specifications | `docs/philippe-rocca-serra-review` |
 | A04 | Damien Huzard | 2026-07-21 | Accept | Keep `schema:Place` as a broad exchange range while distinguishing material facilities, immaterial sites/spatial regions, and geometry. Identify an institute with ROR where eligible and its separate geographic place with GeoNames where available. Do not create `hcm:Place`. No ontology axioms changed. | A04 accepted decision and identifier boundary above; ROR schema v2.1; GeoNames Ontology | `docs/philippe-rocca-serra-review` |
+| A05 | Damien Huzard | 2026-07-21 | Accept | Retain the physical HCM actuator specialization and deprecated migration IRI; model actuations, acted-on properties, software controllers, and triggered executions as distinct entities. The future definition expansion is approved but not implemented; no ontology axioms changed. | A05 accepted actuator and actuation boundary above; SOSA/SSN 2023 | `docs/philippe-rocca-serra-review` |
 | A07 | Damien Huzard; reviewed artifact evidence pending | 2026-07-21 | Accept preservation policy; verification pending | Preserve `ontology/legacy/` and `ontology/v2/` as immutable, excluded historical evidence; use modules as source and generated `dist/` files as load targets. No ontology axioms changed. | A07 accepted historical-artifact policy above; exact reviewed file/version/checksum still required | `docs/philippe-rocca-serra-review` |
 
 ## Required implementation gate for every accepted semantic change
