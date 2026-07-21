@@ -360,9 +360,9 @@ checklist row.
 | [?] | B05 | **Source-material register: partially resolved.** The ARC Workflow Run RO-Crate article and ISA-term-to-Schema.org/Bioschemas mapping file are confirmed below; the ISA model/profile, FAIR Cookbook recipe, and STATO source are located. Philippe's earlier ISA-OBO-PROV mapping resources remain unlocated. | Confirm the exact versions/commits and licenses of the listed sources and obtain Philippe's earlier ISA-OBO-PROV mappings or record that they are unavailable. Distinguish design evidence from normative profile requirements. | Add confirmed bibliography to `docs/paper/references.bib`; retain the audited versions in `docs/A02-ISA-STATO-COMPATIBILITY.md`; cite design evidence and mapping constraints in `docs/ISA-RO-CRATE-MAPPING.md` and `docs/ALIGNMENTS.md`. Do not derive ontology axioms directly from an article figure or field-mapping table. | Stable citations and reviewed versions for every used source; license/attribution recorded; missing-resource status explicit; each resulting mapping identifies the exact supporting source and section. |
 | [?] | B06 | **Initial HCMO-to-ISA export architecture recorded for validation by Philippe.** Keep biological subjects/materials, physical enclosures, protocols, executions, sensors, files, and study factors distinct as specified below. Source/Sample round-trip identity and non-File assignment/statistical outputs remain unresolved. | Philippe or another ISA-profile expert must validate every row, assay/process granularity, direction, cardinality, transformation rule, allowed extension, and round-trip loss. Explicitly resolve the two open mappings below before any conformance claim. | No ontology or example change is authorized. After validation, extend `docs/ISA-RO-CRATE-MAPPING.md`; add B04 exchange-registry rows; update `examples/isa-hcmo-bridge.ttl`, fixtures, and validation tooling. Add ontology axioms only through a separate B03/A06-approved semantic item. | Signed ISA mapping table; acyclic Investigation -> Study -> Assay -> Process -> Material/Data example; Source/Sample roles survive round trip; housing assignment and non-File STATO result policies are explicit; controlled loss is tested. |
 | [?] | B07 | **Adapt the ARC Workflow Run RO-Crate prospective/retrospective pattern for HCMO: co-author review required.** Use Ott et al. and its Figure 2 as design expertise, not as an automatically applicable HCMO profile or conformance claim. Multi-type computational specifications and executions only where all type meanings apply. | Co-authors must review the candidate adaptation below, especially which HCM processes are laboratory versus computational, where `ComputationalWorkflow`/`LabProtocol` and `CreateAction`/`LabProcess` multi-typing is valid, how HCMO/SOSA/OBI/PROV semantics remain distinct, and which RO-Crate/profile versions and validation rules apply. | No profile implementation is authorized. After approval, revise `docs/ISA-RO-CRATE-MAPPING.md`; create a minimal profile fixture and constraints; update the bridge example and JSON-LD context only for stable terms; document the profile URI/version and paper claims. | Co-author decision matrix; one physical acquisition and one computational-processing chain; prospective and retrospective entities remain distinct; base and extension profile validation pass; no ARC-specific type is reused without an HCMO requirement. |
-| [ ] | B08 | **OBI mapping.** Investigation, assay, allocation, acquisition, and analysis processes are not mapped to OBI. | Review candidate OBI terms and relations with definitions and logical context; avoid equivalence based only on similar labels. | Approved mapping artifact and `docs/ALIGNMENTS.md`; process classes/properties in their owning modules only if HCMO specialization is needed; examples and competency questions. | Each mapping has semantic-strength justification and one valid RDF use case. |
-| [ ] | B09 | **PROV-O mapping.** The active graph does not model activities, agents, generation, derivation, or attribution for experimental data. | Decide which HCMO processes/entities specialize or merely map to PROV-O and how planned ISA processes relate to executed provenance activities. | Mapping artifact and `docs/ALIGNMENTS.md`; process/data modules; `examples/isa-hcmo-bridge.ttl` or a dedicated provenance example; shapes and queries for required provenance. | End-to-end provenance query from subject/enclosure and sensor through raw data to derived output. |
-| [ ] | B10 | **STATO mapping.** Study factors, variables, analyses, and statistical outputs lack reviewed STATO mappings. | Jointly review STATO and ISA definitions before selecting targets. Record rejected candidates as well as accepted ones. | `ontology/modules/hcm-bio.ttl` for approved study-design semantics, the relevant process/result module for analyses and outputs, mapping artifact, examples, queries, and `docs/ALIGNMENTS.md`. | Factor/variable and analysis/output examples round-trip without treating an experimental group as a factor. |
+| [?] | B08 | **Reuse current OBI classes selectively for experimental plans and executed processes: provisional architecture; co-author and OBI-expert validation required.** Keep ISA exchange resources, HCMO records, protocols, and executions distinct. Do not use deprecated `OBI_0000011`. | Validate the candidate protocol, investigation, assay, study-design execution, group-assignment, data-transformation, statistical-test, and specified-input/output terms below against current definitions and real HCM workflows. Decide mapping strength separately under B03. | No mapping or ontology implementation is authorized. After approval, add reviewed B04 mappings and `docs/ALIGNMENTS.md`; add process axioms only for justified HCMO specializations; add examples and competency questions. | Signed term matrix against pinned OBI `v2026-05-08`; every accepted mapping has a semantic-strength rationale and valid RDF use case; deprecated terms are absent from active mappings. |
+| [?] | B09 | **Use PROV-O as a cross-cutting execution-provenance view: provisionally accepted, subject to B03/B04 and an end-to-end provenance example.** It does not replace BFO/OBI/SOSA domain process semantics. | Validate activity/entity/agent typing, actual usage and generation, derivation, timing, qualified plans, associations, attributions, and roles. Confirm that equipment is not made an agent merely because it participates. | No ontology implementation is authorized. After approval, add reviewed mappings and alignment documentation, a provenance example, SHACL profile requirements, and competency queries; add local specializations only if justified. | A query reconstructs subject/enclosure and sensor through recording, raw data, transformation, derived output, and STATO result, with responsibility and timing but no false agent or subject attribution. |
+| [?] | B10 | **Use STATO for statistical-analysis variables, models, methods, and semantic results: provisional architecture; ISA/STATO (Philippe) expert validation required.** Keep study-design factors, factor levels, statistical variables, groups, result entities, and files distinct. | Validate every candidate and rejected term below against STATO and ISA definitions. Resolve the upstream `STATO_0000299` dependency on deprecated `OBI_0000011` without locally rewriting STATO. Decide mapping strength separately under B03. | No mapping or ontology implementation is authorized. After approval, update `hcm-bio.ttl` only for approved study-design semantics, the appropriate process/result module only for justified local specializations, B04 mappings, examples, queries, and `docs/ALIGNMENTS.md`. | Signed ISA/STATO matrix against pinned STATO `v2026-04-20`; factor/variable and analysis/output examples round-trip without treating a group as a factor or a semantic result as necessarily identical to a file. |
 | [ ] | B11 | **Wikidata fallback.** Wikidata should not replace an available stable ontology term without a policy. | Define allowed use cases, identifier stability checks, mapping predicate, and review cadence. | Mapping policy and registry only; ontology modules change only for an approved semantic relation. | Each Wikidata mapping documents why no suitable maintained ontology term was selected. |
 
 ### B01 provisional external-subset directory and extraction pipeline
@@ -673,6 +673,127 @@ Questions for the co-authors:
    example that demonstrates the adaptation without importing ARC-specific
    concepts that HCMO does not need?
 
+### B08 provisional OBI architecture for expert validation
+
+Status: provisional OBI architecture selected by Damien Huzard on 2026-07-21;
+co-author and OBI-expert validation is required. No mapping, source-module
+axiom, external subset, or generated release change is authorized.
+
+The reviewed source is [OBI `v2026-05-08`](https://github.com/obi-ontology/obi/releases/tag/v2026-05-08),
+commit
+[`a7aeec49057d9f9ba03d14977576d064f3fa6825`](https://github.com/obi-ontology/obi/tree/a7aeec49057d9f9ba03d14977576d064f3fa6825).
+The B01 subset must also retain the selected IAO and COB dependencies needed to
+interpret these OBI terms.
+
+Candidate reuse for definition-level review:
+
+| Concern | Candidate | Required interpretation |
+| --- | --- | --- |
+| Reproducible protocol | [`OBI_0000272` protocol](http://purl.obolibrary.org/obo/OBI_0000272) | A sufficiently detailed `IAO_0000104` plan specification, distinct from its execution. |
+| Executed investigation | [`OBI_0000066` investigation](http://purl.obolibrary.org/obo/OBI_0000066) | The executed scientific investigation, not automatically the ISA metadata container carrying the same label. |
+| Study-design execution | [`OBI_0000471` study design execution](http://purl.obolibrary.org/obo/OBI_0000471) | An execution that carries out a study design. |
+| Assay | [`OBI_0000070` assay](http://purl.obolibrary.org/obo/OBI_0000070) | Use only when the process examines a material entity to produce information about it. |
+| Experimental-group assignment | [`OBI_0600015` group assignment](http://purl.obolibrary.org/obo/OBI_0600015) | Use when an organism is assigned a study role; do not infer that every cage allocation is group assignment. |
+| Random assignment | [`OBI_0302900` group randomization](http://purl.obolibrary.org/obo/OBI_0302900) | Use only when assignment relies on chance to avoid experimental bias. |
+| Data transformation | [`OBI_0200000` data transformation](http://purl.obolibrary.org/obo/OBI_0200000) | An executed process producing output data from input data. |
+| Statistical test | [`OBI_0000673` statistical hypothesis test](http://purl.obolibrary.org/obo/OBI_0000673) | Use this or a more specific reviewed STATO method only when the analysis meets the definition. |
+| Specified process roles | [`OBI_0000293` has specified input](http://purl.obolibrary.org/obo/OBI_0000293) and [`OBI_0000299` has specified output](http://purl.obolibrary.org/obo/OBI_0000299) | Express OBI process semantics; do not declare them equivalent to ISA exchange fields or actual PROV usage/generation. |
+
+`OBI_0000011` is labelled `obsolete planned process` and is deprecated in the
+reviewed OBI release. It must not be selected as HCMO's active process anchor.
+Current selected OBI process classes use
+[`COB_0000035` completely executed planned process](http://purl.obolibrary.org/obo/COB_0000035)
+beneath the BFO process hierarchy.
+
+A recording execution may receive both an appropriate OBI assay type and
+SOSA execution/observation semantics only when all definitions apply. An ISA
+Investigation, Assay, or Process resource is an exchange representation; it may
+be multi-typed as the same OBI execution only after identity and semantic fit
+are demonstrated. `hcm-bio:HousingAssignment` remains an information-content
+record. A narrower HCM housing-allocation process may be created only after an
+approved competency question establishes the requirement.
+
+### B09 provisional PROV-O execution-provenance architecture
+
+Status: provisionally accepted by Damien Huzard on 2026-07-21, subject to the
+B03/B04 decisions and validation with an end-to-end provenance example. No
+mapping, ontology axiom, shape, example, or query is implemented by this
+decision.
+
+Use PROV-O as a cross-cutting account of what happened, not as HCMO's upper
+domain process ontology:
+
+- an executed OBI, SOSA, or narrower HCM process may also be a `prov:Activity`
+  when the same instance satisfies both meanings;
+- use `prov:used` for entities actually used and `prov:wasGeneratedBy` for data,
+  records, and results actually generated;
+- use `prov:wasDerivedFrom` for derivation between entities, not merely as a
+  replacement for process output;
+- record execution time with `prov:startedAtTime` and `prov:endedAtTime`;
+- connect an activity, responsible agent, and protocol or plan through a
+  qualified `prov:Association` and `prov:hadPlan`;
+- use qualified associations and attributions with `prov:hadRole`, including
+  the CRediT policy accepted under A03; and
+- use `prov:wasAssociatedWith` for responsibility for an activity and
+  `prov:wasAttributedTo` for responsibility for an entity.
+
+A protocol may also be a `prov:Plan` when the same resource meets the PROV
+definition, but no class equivalence is implied. OBI specified inputs/outputs
+and PROV actual usage/generation may coexist on the same execution; their
+properties must not be declared equivalent. Do not globally assert that every
+SOSA observation or OBI process is a `prov:Activity`; begin with reviewed
+instance-level multi-typing.
+
+A sensor, actuator, enclosure, or other piece of equipment is not a
+`prov:Agent` merely because it participates in an execution. Type software or
+an autonomous system as an agent only when it bears the intended provenance
+responsibility. The required validation example and query must reconstruct:
+
+`subject/enclosure and sensor -> recording activity -> raw data -> transformation activity -> derived data and STATO result`.
+
+The example must also demonstrate responsible agents, plans, timing, and no
+subject-level attribution inferred solely from cage occupancy.
+
+### B10 provisional STATO architecture for Philippe's validation
+
+Status: provisional STATO architecture selected by Damien Huzard on
+2026-07-21; ISA/STATO validation by Philippe Rocca-Serra or a designated expert
+is required. No mapping, ontology axiom, external subset, or generated release
+change is authorized.
+
+The reviewed source is [STATO `v2026-04-20`](https://github.com/ISA-tools/stato/releases/tag/v2026-04-20),
+commit
+[`a5910e6115217a88ee86e2666e12983ef2ef2a42`](https://github.com/ISA-tools/stato/tree/a5910e6115217a88ee86e2666e12983ef2ef2a42).
+
+Initial candidate and rejection matrix:
+
+| Concern | Candidate or rejected term | Required interpretation |
+| --- | --- | --- |
+| HCMO Study Factor | [`OBI_0000750` study design independent variable](http://purl.obolibrary.org/obo/OBI_0000750) | Review this study-design specification before any mapping; do not automatically equate a study factor with a STATO analysis variable. |
+| ISA Factor Value | [`STATO_0000265` factor level](http://purl.obolibrary.org/obo/STATO_0000265) | Use when the value belongs to a deliberately manipulated independent variable. |
+| Analysis variable | [`STATO_0000258` variable](http://purl.obolibrary.org/obo/STATO_0000258) or a specific quantitative/categorical subtype | Represents the variable in statistical analysis or a model; preserve its distinction from the study-design factor specification and observed value. |
+| Statistical model | [`STATO_0000107` statistical model](http://purl.obolibrary.org/obo/STATO_0000107) | Represent the model separately from its fitting execution, parameters, estimates, and containing file. |
+| Model fitting | [`STATO_0000218` model fitting](http://purl.obolibrary.org/obo/STATO_0000218) | A specific data transformation; prefer it to a new generic HCMO statistical-analysis class when it fits. |
+| Parameter estimation | [`STATO_0000119` model parameter estimation](http://purl.obolibrary.org/obo/STATO_0000119) | Use for the transformation that determines model parameter estimates. |
+| Model selection | [`STATO_0000328` statistical model selection](http://purl.obolibrary.org/obo/STATO_0000328) | Use for a transformation comparing model quality to select a model. |
+| Statistical output | [`STATO_0000039` statistic](http://purl.obolibrary.org/obo/STATO_0000039), [`STATO_0000471` estimate](http://purl.obolibrary.org/obo/STATO_0000471), [`STATO_0000599` point estimate](http://purl.obolibrary.org/obo/STATO_0000599), [`STATO_0000600` interval estimate](http://purl.obolibrary.org/obo/STATO_0000600), or [`STATO_0000700` p-value](http://purl.obolibrary.org/obo/STATO_0000700) | A semantic information/data entity is not necessarily identical to the ISA or RO-Crate File in which it is serialized. |
+| Experimental group | Candidate [`STATO_0000193` study group population](http://purl.obolibrary.org/obo/STATO_0000193) | Consider only when the population, membership, sampling, and measurement conditions fit; do not assert blanket equivalence. |
+| Generic animal cohort | Reject [`STATO_0000203` cohort](http://purl.obolibrary.org/obo/STATO_0000203) | Its definition requires human beings in a longitudinal design. |
+| Statistical sample versus biological sample | No automatic mapping to [`STATO_0000651` statistical sample](http://purl.obolibrary.org/obo/STATO_0000651) | A statistical draw or sample must not be conflated with an ISA biological Sample. |
+
+An experimental group is neither a Study Factor nor a factor level. A group
+may instead be characterized by combinations of factor levels. The B06
+round-trip issue remains open because a non-File STATO result is not directly
+permitted by the reviewed ISA RO-Crate draft's restricted `LabProcess` result
+representation.
+
+The reviewed STATO release still asserts deprecated `OBI_0000011` as a parent
+of `STATO_0000299` statistical inference. HCMO must not silently repair that
+upstream axiom. Exclude the generic term from the initial subset, or include it
+with its exact upstream deprecation context, until Philippe and the STATO/OBI
+maintainers validate a resolution. Mapping predicates and strengths for every
+accepted candidate remain governed by B03 and B04.
+
 ## C. Object properties and reasoning
 
 | Done | ID | Item and description | Human review action | What and where to change after approval | Acceptance evidence |
@@ -757,6 +878,9 @@ unreviewed ontology assertions.
 | B05 | Damien Huzard; missing-source evidence pending | 2026-07-21 | Partially resolved | Confirm Ott et al. as the article and the ISA RO-Crate `ISA term - schema term` file as the exchange mapping source. Retain audited ISA/STATO/FAIR Cookbook sources; continue requesting Philippe's earlier ISA-OBO-PROV mappings. No ontology axioms changed. | B05 source-material register above; DOI `10.1515/jib-2025-0050`; ISA RO-Crate mapping file | `docs/philippe-rocca-serra-review` |
 | B06 | Damien Huzard; Philippe Rocca-Serra or designated ISA expert validation pending | 2026-07-21 | Defer final approval; provisional architecture recorded | Validate the initial subject/material/enclosure/protocol/execution/sensor/file/factor mapping and resolve Source/Sample role preservation plus housing-assignment and non-File statistical-result round trips. No mapping or ontology axiom implemented. | B06 validation package above; ISA abstract model and ISA RO-Crate mapping | `docs/philippe-rocca-serra-review` |
 | B07 | Damien Huzard; co-author review pending | 2026-07-21 | Defer; adaptation source selected | Adapt Ott et al.'s prospective/retrospective and computational multi-typing pattern for HCMO without applying Workflow Run RO-Crate types to physical acquisition automatically. Decide type identity, semantic/exchange layering, versions, validation, and a minimal example. No profile or ontology axiom implemented. | B07 HCMO adaptation brief above; Ott et al., DOI `10.1515/jib-2025-0050`, especially Figure 2 | `docs/philippe-rocca-serra-review` |
+| B08 | Damien Huzard; co-author and OBI-expert validation pending | 2026-07-21 | Defer final approval; provisional OBI architecture selected | Reuse current OBI protocol and specific executed-process semantics only when definitions fit; keep ISA exchange nodes and HCMO records distinct; do not use deprecated `OBI_0000011`. No mapping or ontology axiom implemented. | B08 candidate matrix above; OBI `v2026-05-08` at `a7aeec49057d9f9ba03d14977576d064f3fa6825` | `docs/philippe-rocca-serra-review` |
+| B09 | Damien Huzard; B03/B04 and example validation pending | 2026-07-21 | Defer final approval; provisionally accept | Use PROV-O as a cross-cutting actual-provenance view alongside OBI/SOSA/HCMO semantics. Keep responsibility, equipment participation, plans, specified inputs/outputs, actual usage/generation, and derivation distinct. No mapping or ontology axiom implemented. | B09 provenance architecture above; W3C PROV-O Recommendation | `docs/philippe-rocca-serra-review` |
+| B10 | Damien Huzard; ISA/STATO validation by Philippe pending | 2026-07-21 | Defer final approval; provisional STATO architecture selected | Reuse specific STATO analysis variables, models, transformations, and result entities while distinguishing design factors, factor levels, groups, statistical samples, and files. Do not locally repair STATO's deprecated OBI dependency. No mapping or ontology axiom implemented. | B10 candidate and rejection matrix above; STATO `v2026-04-20` at `a5910e6115217a88ee86e2666e12983ef2ef2a42` | `docs/philippe-rocca-serra-review` |
 
 ## Required implementation gate for every accepted semantic change
 

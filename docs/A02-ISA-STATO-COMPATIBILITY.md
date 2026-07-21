@@ -3,8 +3,14 @@
 Status: standards audit and future-work record for external review. Nothing in
 this document is an accepted ontology mapping or authority to change HCMO.
 
-Related decision:
-[`PHILIPPE-ROCCA-SERRA-HUMAN-REVIEW-CHECKLIST.md`](PHILIPPE-ROCCA-SERRA-HUMAN-REVIEW-CHECKLIST.md#a02-provisional-decision-and-compatibility-review)
+Related decisions are recorded in
+[`PHILIPPE-ROCCA-SERRA-HUMAN-REVIEW-CHECKLIST.md`](PHILIPPE-ROCCA-SERRA-HUMAN-REVIEW-CHECKLIST.md#a02-provisional-decision-and-compatibility-review),
+including the provisional
+[OBI](PHILIPPE-ROCCA-SERRA-HUMAN-REVIEW-CHECKLIST.md#b08-provisional-obi-architecture-for-expert-validation),
+[PROV-O](PHILIPPE-ROCCA-SERRA-HUMAN-REVIEW-CHECKLIST.md#b09-provisional-prov-o-execution-provenance-architecture),
+and
+[STATO](PHILIPPE-ROCCA-SERRA-HUMAN-REVIEW-CHECKLIST.md#b10-provisional-stato-architecture-for-philippes-validation)
+architectures.
 
 ## Sources and audited versions
 
@@ -16,8 +22,11 @@ Related decision:
 - [STATO 2026-04-20 source](https://github.com/ISA-tools/stato), audited at
   commit
   [`a5910e6115217a88ee86e2666e12983ef2ef2a42`](https://github.com/ISA-tools/stato/tree/a5910e6115217a88ee86e2666e12983ef2ef2a42)
-- [OBI core model](https://obi-ontology.org/docs/core-classes/),
-  [SOSA/SSN 2023](https://www.w3.org/TR/vocab-ssn-2023/), and
+- [OBI `v2026-05-08`](https://github.com/obi-ontology/obi/releases/tag/v2026-05-08),
+  audited at commit
+  [`a7aeec49057d9f9ba03d14977576d064f3fa6825`](https://github.com/obi-ontology/obi/tree/a7aeec49057d9f9ba03d14977576d064f3fa6825),
+  and the [OBI core model](https://obi-ontology.org/docs/core-classes/)
+- [SOSA/SSN 2023](https://www.w3.org/TR/vocab-ssn-2023/) and
   [PROV-O](https://www.w3.org/TR/prov-o/)
 
 The reviewed ISA RO-Crate profile identifies itself as `1.0.0-draft.1`, has no
@@ -32,7 +41,7 @@ approved.
 | Role | Preferred source | Intended use in HCMO |
 | --- | --- | --- |
 | Upper process semantics | BFO | Anchor a process as a processual entity. |
-| Protocol-driven execution, study design, and data transformation | OBI | Reuse planned-process, plan-specification, specified-input/output, study-design, and data-transformation semantics where their definitions match. An OBI planned process is an executed process that realizes a plan, not the plan document. |
+| Protocol-driven execution, study design, and data transformation | OBI, with its current COB/IAO dependencies | Reuse current specific process classes, plan specifications, specified-input/output relations, study-design semantics, and data transformations where their definitions match. Current OBI process classes use `COB_0000035` completely executed planned process; deprecated `OBI_0000011` must not be used as the active anchor. The execution remains distinct from the plan document. |
 | Sensing procedure and execution | SOSA | Represent reusable procedures, executions, observations, sensors, features of interest, and results. |
 | Statistical semantics | STATO and the OBI terms used by STATO | Represent specific variables, designs, statistical methods, models, and outputs rather than creating a generic parallel HCMO statistics hierarchy. |
 | Execution provenance | PROV-O | Record activities, used/generated entities, association with agents, derivation, and timing without treating PROV-O as the domain upper ontology. |
@@ -54,7 +63,7 @@ the mapping strength must be decided separately for every row.
 | HCMO concern | ISA / ISA RO-Crate representation | Candidate semantic source | Finding and future-work constraint |
 | --- | --- | --- | --- |
 | Protocol or algorithm | Bioschemas `LabProtocol` | OBI plan specification or `sosa:Procedure` | Keep the plan distinct from its execution and identify versioned protocol resources. |
-| Recording or acquisition execution | Bioschemas `LabProcess` | OBI planned process plus `sosa:Execution`; measurements may be `sosa:Observation` | A recording execution can use a sensor and generate observations and raw data files. Determine whether an HCMO-local class is needed only after narrower home-cage semantics are defined. |
+| Recording or acquisition execution | Bioschemas `LabProcess` | [`OBI_0000070` assay](http://purl.obolibrary.org/obo/OBI_0000070) when its evaluant/information objective fits, alongside appropriate SOSA execution or observation semantics | A recording execution can use a sensor and generate observations and raw data files. Do not force the OBI assay type when its definition is not met. Determine whether a local HCMO specialization is needed only after narrower home-cage semantics and a competency question are approved. |
 | Data-processing execution | Bioschemas `LabProcess` with File input and output | [`OBI_0200000` data transformation](http://purl.obolibrary.org/obo/OBI_0200000) | Direct reuse is preferred unless a proposed HCMO class is demonstrably narrower. |
 | Statistical analysis execution | Bioschemas `LabProcess` with File input and output | A specific process such as [`STATO_0000218` model fitting](http://purl.obolibrary.org/obo/STATO_0000218) or [`OBI_0000673` statistical hypothesis test](http://purl.obolibrary.org/obo/OBI_0000673) | STATO has no single class that justifies minting an equivalent generic HCMO `StatisticalAnalysis`. Use the most specific justified external process class. |
 | Study Factor | ISA Study Factor; the current RO-Crate mapping serializes its value as a `PropertyValue` | [`OBI_0000750` study design independent variable](http://purl.obolibrary.org/obo/OBI_0000750) | The definition of `hcm-bio:StudyFactors` is close, but its logical equivalence and singular/plural IRI history require review. Do not assert a mapping from label similarity alone. |
@@ -64,7 +73,13 @@ the mapping strength must be decided separately for every row.
 | Animal cohort | No automatic special mapping | [`STATO_0000203` cohort](http://purl.obolibrary.org/obo/STATO_0000203) | Do not reuse this STATO class for generic animal cohorts: its definition is restricted to human beings in a longitudinal design. |
 | Experimental-group assignment | ISA Process where represented | [`OBI_0600015` group assignment](http://purl.obolibrary.org/obo/OBI_0600015) and its randomization specializations | Use only when an organism is assigned to an experimental role or group. Cage allocation is not automatically group assignment. |
 | Housing assignment | Parameterized ISA Process plus HCMO extension | HCMO housing-assignment record generated by an approved process class | The HCMO record is an information entity, while the allocation event is a process. Its ISA serialization and round trip remain unresolved. |
-| Statistical output | ISA Data File produced by a LabProcess | [`STATO_0000039` statistic](http://purl.obolibrary.org/obo/STATO_0000039), [`STATO_0000471` estimate](http://purl.obolibrary.org/obo/STATO_0000471), [`STATO_0000700` p-value](http://purl.obolibrary.org/obo/STATO_0000700), confidence interval, or fitted model | The ISA output can be a File while the statistic or model is an additional typed RDF entity represented in that file. The linking and round-trip rule must be approved. |
+| Statistical output | ISA Data File produced by a LabProcess | [`STATO_0000039` statistic](http://purl.obolibrary.org/obo/STATO_0000039), [`STATO_0000471` estimate](http://purl.obolibrary.org/obo/STATO_0000471), [`STATO_0000599` point estimate](http://purl.obolibrary.org/obo/STATO_0000599), [`STATO_0000600` interval estimate](http://purl.obolibrary.org/obo/STATO_0000600), [`STATO_0000700` p-value](http://purl.obolibrary.org/obo/STATO_0000700), or a statistical model | The ISA output can be a File while the statistic or model is an additional typed RDF entity represented in that file. The linking and round-trip rule must be approved. |
+
+The reviewed STATO release still gives deprecated `OBI_0000011` as a parent of
+`STATO_0000299` statistical inference. HCMO must not rewrite that upstream
+axiom. The generic term should be excluded from the first external subset, or
+retained only with its exact upstream deprecation context, pending Philippe and
+STATO/OBI maintainer review.
 
 ## ISA graph and round-trip boundaries
 
