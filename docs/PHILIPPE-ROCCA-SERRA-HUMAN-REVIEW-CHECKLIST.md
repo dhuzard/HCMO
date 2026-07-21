@@ -63,10 +63,10 @@ an ontology that has changed since the reviewed file was produced.
 | [?] | A01 | **Readable upper-level presentation: provisionally accepted; co-author review pending.** Reuse authoritative external upper-level classes directly and include a curated, versioned annotation and hierarchy subset so Protégé renders readable names. Create a local HCMO upper class only when it is narrower than, or meaningfully different from, the external class. | Co-authors must validate or challenge the proposed structure below, identify the exact external IRIs and versions, and approve each asserted hierarchy or mapping relation. | No ontology implementation is authorized yet. After approval, add the curated external subset through the reviewed module/import strategy; document it in `docs/ARCHITECTURE.md` and `docs/ALIGNMENTS.md`; update owning modules only for approved hierarchy changes; regenerate `dist/`. | Co-author decision record; source and version for every external term; readable Protégé hierarchy; reasoner result with no unintended equivalences or unsatisfiable classes. |
 | [?] | A02 | **Provisional process architecture; external review pending.** Reuse authoritative process classes directly when their meaning matches HCMO and keep semantic, provenance, and exchange layers distinct. | Co-authors and external reviewers must validate or challenge the proposed architecture below, identify exact external IRIs and versions, approve mapping strengths, and settle the ISA round-trip policy for housing assignments and non-file statistical results. | No ontology implementation is authorized yet. After approval, record the policy in `docs/ARCHITECTURE.md` and `docs/ALIGNMENTS.md`; put any approved HCMO specialization in its owning module; add examples, shapes, and competency questions; regenerate `dist/`. | Reviewer-approved term/mapping table; acyclic example workflow with explicit inputs and outputs; resolved ISA extension policy; at least one process competency question. |
 | [x] | A03 | **Separate person identity, provenance responsibility, and contributor credit: accepted.** Use `schema:Person` for ISA/Bioschemas exchange, `prov:Person` and `prov:Agent` for provenance, and CRediT through qualified PROV relations for contributor credit. Do not create a local `hcm:Person`. | Preserve the distinctions in the accepted decision below. Before implementation, pin the external versions and identifiers and review every operational role whose meaning is narrower than CRediT. | No ontology class change is authorized. Current Schema.org contributor metadata remains in `ontology/modules/hcm-core.ttl`. Future provenance and contribution examples belong in `examples/`; approved mappings in `docs/ALIGNMENTS.md` or the mapping registry; requirements in `shapes/` and `queries/`; paper attribution guidance in `docs/paper/`. | Decision record below; no active `hcm:Person`; a future example distinguishes person, agent, association/attribution, CRediT contribution role, and any precise operational role. |
-| [ ] | A04 | **Place.** `hcm:locatedIn` currently ranges over `schema:Place`; facility, site, and spatial region are not distinguished. | Provide representative data and decide whether the relation points to a material facility, spatial region, site identifier, or a union. Review the inferential effect of the range. | `ontology/modules/hcm-core.ttl` for `hcm:locatedIn`; `shapes/hcm-shapes.ttl` for intake constraints; `examples/` for positive and negative cases; `docs/MODEL.md` and `docs/ALIGNMENTS.md` for the distinction; then regenerate `dist/`. | Approved competency question and examples showing at least a facility and a spatial-location case, or a documented decision to retain `schema:Place`. |
+| [x] | A04 | **Broad exchange-level Place with separate material, spatial, and identifier semantics: accepted.** Do not create `hcm:Place`. Retain `schema:Place` as the broad range of `hcm:locatedIn`, without equating it to a BFO site, spatial region, or material entity. Keep institutes/organizations, physical facilities, spatial sites, and geometries distinct. | Preserve the accepted distinctions below. Select authoritative facility/site/geospatial classes only after definition review. Use a globally resolvable organization identifier, preferably ROR where eligible, and a GeoNames IRI for the corresponding geographic place where an appropriate record exists; never treat those identifiers as identifying the same entity. | No immediate ontology axiom change is authorized. Record identifier and mapping rules in `docs/ALIGNMENTS.md` or the mapping registry; add organization/place/facility examples and competency questions before specializing `hcm:locatedIn`; update `ontology/modules/hcm-core.ttl`, shapes, context, and generated artifacts only if the approved examples demonstrate a need. | Decision record below; examples distinguish organization, physical facility, BFO site/spatial entity, and geometry; ROR and GeoNames identifiers resolve to the correct separate entities; no unintended type inference from `hcm:locatedIn`. |
 | [ ] | A05 | **Actuator placement and apparent duplication.** The active class is already a material entity through `BFO_0000040`; the second IRI is deprecated migration support. | Verify in Protege/OLS that the duplicate report refers to `hcm-tech:Actuator` and deprecated `hcm:Actuator`. Confirm that the deprecation and replacement are visible. | Normally no class merge. If display metadata is insufficient, update annotations in `ontology/modules/hcm-compat.ttl` or the curated external-label/mapping layer; never delete the deprecated IRI. Update `docs/PHILIPPE-ROCCA-SERRA-FEEDBACK.md` with verification evidence. | Screenshot or hierarchy export showing one active class and one clearly deprecated replacement mapping. |
 | [ ] | A06 | **Systematic active-class audit.** Presence checks have passed, but definitions, anchors, synonyms, and provenance still require expert review. | Review all active classes in `dist/profile.json` against domain meaning and source ontologies. Mark each as keep, revise annotation, map, deprecate, or needs evidence. | Definitions and axioms must be edited in the owning `ontology/modules/*.ttl` file. Track unresolved text in `docs/MISSING-DEFINITIONS.md`; record external alignments in the approved mapping artifact; regenerate `dist/`. | Signed inventory covering every active class and explaining every changed semantic axiom. |
-| [ ] | A07 | **Legacy and historical views.** Protege or OLS may have been opened on `ontology/v2/`, `ontology/legacy/`, or an older release. | Record the exact file and version Philippe reviewed and reproduce the finding against `dist/hcmo.owl`. | Clarify canonical load instructions in `README.md`, `docs/README.md`, and publication metadata. Historical files remain retained and must not be silently edited to resemble the active release. | File checksum/version recorded and findings classified as active, compatibility-only, or historical. |
+| [?] | A07 | **Preserve historical ontology artifacts as immutable evidence and exclude them from the active release: accepted; reviewed artifact identification pending.** `ontology/legacy/` and `ontology/v2/` remain historical and must not be edited to resemble the active ontology or used as the canonical Protégé entry point. | Obtain and record the exact file/version Philippe reviewed, its checksum, and the tool/view used; reproduce each finding against the current generated release and classify it as active, compatibility-only, or historical. | No historical ontology edit is authorized. Keep `ontology/modules/*.ttl` as the hand-authored source and `dist/hcmo.owl` / `dist/hcmo.ttl` as generated load targets. Put corrections in the owning active module or, for published migration IRIs, `ontology/modules/hcm-compat.ttl`; clarify canonical load instructions and preserve the historical inventory. | Accepted preservation policy; exact reviewed artifact and checksum; finding-classification table; historical paths remain excluded from `hcmo.yaml`; current release rebuild and validation pass. |
 
 ### A01 provisional decision and discussion structure
 
@@ -89,6 +89,9 @@ owl:Thing
 ├── Material entity
 │   ├── Subject
 │   ├── Enclosure
+│   ├── Facility
+│   ├── Building
+│   ├── Rack
 │   ├── Sensor
 │   └── Actuator
 ├── Process entity
@@ -104,10 +107,12 @@ owl:Thing
 │   ├── Temperature
 │   ├── Humidity
 │   └── Light intensity
-└── Spatial entity
+└── Immaterial / spatial entity
     ├── Site
-    ├── Facility
     └── Spatial region
+
+Exchange typing (not an upper-ontology branch)
+└── schema:Place
 ```
 
 Co-author validation must settle the following before implementation:
@@ -125,8 +130,9 @@ Co-author validation must settle the following before implementation:
    information-content entities.
 6. Distinguish BFO qualities from SOSA observable properties before approving
    the Quality / property branch.
-7. Distinguish material facilities from spatial regions before approving Site
-   and Facility beneath Spatial entity.
+7. Apply the accepted A04 distinction: Facility, Building, and Rack are material;
+   Site and Spatial region are immaterial/spatial; `schema:Place` is a broad
+   exchange type rather than their shared upper-ontology class.
 8. Confirm that the selected curated subset renders the proposed hierarchy in
    Protégé without requiring full external-ontology imports.
 
@@ -200,6 +206,75 @@ Implementation must preserve these distinctions:
 - The external source/version, official CRediT role identifier, mapping status,
   reviewer, and evidence must be recorded before an RDF example or application
   profile treats a role mapping as approved.
+
+### A04 accepted decision and identifier boundary
+
+Status: accepted by Damien Huzard on 2026-07-21. The category and identifier
+policy is settled; exact external facility/site classes and any property
+specializations remain subject to competency questions and mapping review. No
+ontology axiom change is authorized by this record.
+
+Decision:
+
+> **A04 — retain a broad exchange-level Place while separating material
+> containment, immaterial sites, and geometry.**
+> Do not create a local `hcm:Place` class. Retain `schema:Place` as the broad
+> range of `hcm:locatedIn` for exchange and metadata, but do not assert that
+> `schema:Place` is equivalent to a BFO site, spatial region, or material entity.
+>
+> Represent a facility, building, rack, or other physical container as a
+> material entity using an authoritative external class selected after review.
+> Represent an interior space or occupied site with an appropriate BFO
+> site/spatial term. Represent coordinates and geometry separately using a
+> geospatial vocabulary when required.
+>
+> A Facility must not be placed beneath Spatial entity merely for display: the
+> facility is physical, while its site or spatial region is immaterial. One
+> real-world location resource may have an exchange type such as `schema:Place`
+> alongside a more precise semantic type. Split or specialize `hcm:locatedIn`
+> only when an approved competency question requires distinctions that the
+> current broad relation cannot answer.
+>
+> An institute should have a globally unique, resolvable organization identifier,
+> preferably a [ROR](https://ror.org/) identifier when the organization is in
+> ROR. Its corresponding geographic place should use a
+> [GeoNames](https://www.geonames.org/ontology/documentation.html) identifier
+> where a record exists at the required granularity.
+
+The institute and its place are different entities. ROR identifies the research
+organization; a GeoNames IRI such as `https://sws.geonames.org/{id}/` identifies
+a geographic feature or place. Link the organization to the place rather than
+attaching both identifiers to one undifferentiated resource. Likewise, do not
+assume that a ROR organization whose registry type is `facility` identifies a
+particular building, room, BFO site, or geometry. The mapping registry must
+record identifier scheme, target entity, source/version, status, and evidence.
+
+### A07 accepted historical-artifact policy
+
+Status: accepted by Damien Huzard on 2026-07-21. Verification remains open until
+the exact artifact reviewed by Philippe is identified and checksummed.
+
+Decision:
+
+> **A07 — preserve historical ontology artifacts as immutable evidence and
+> exclude them from the active release.**
+> Treat `ontology/legacy/` and `ontology/v2/` as historical sources. Do not edit
+> them to resemble the current ontology, merge them into the active release, or
+> use them as the canonical Protégé entry point.
+>
+> The hand-authored source of truth remains `ontology/modules/*.ttl`; users
+> should open the generated `dist/hcmo.owl` or `dist/hcmo.ttl`. Record the exact
+> historical file, version, and checksum reviewed by Philippe, then classify
+> each observation as active, compatibility-only, or historical.
+>
+> Preserve externally referenced IRIs through the active compatibility module
+> and documented deprecation/replacement mappings. Corrections belong in active
+> source modules or `hcm-compat.ttl`, never as retrospective edits to archived
+> files.
+
+This accepted preservation rule does not by itself complete A07. Completion
+requires the reviewed-file evidence and comparison report described in the A07
+checklist row.
 
 ## B. External labels, imports, and mappings
 
@@ -290,6 +365,8 @@ unreviewed ontology assertions.
 | A01 | Damien Huzard; co-author review pending | 2026-07-21 | Defer final approval; provisional direction accepted | Prefer direct reuse of authoritative upper-level classes plus a curated, versioned subset of annotations and hierarchy for readable Protégé rendering. Local upper classes are permitted only when narrower or meaningfully different. No ontology axioms changed. | A01 provisional decision and discussion structure above | `docs/philippe-rocca-serra-review` |
 | A02 | Damien Huzard; co-author and external review pending | 2026-07-21 | Defer final approval; provisional direction recorded for discussion | Use a layered process architecture: BFO/OBI/SOSA/STATO for semantics, PROV-O for provenance, and ISA/Bioschemas for exchange. Keep plans, executions, and outputs distinct; create local classes only for narrower HCMO meanings. No ontology axioms changed. | A02 provisional decision above and `docs/A02-ISA-STATO-COMPATIBILITY.md` | `docs/philippe-rocca-serra-review` |
 | A03 | Damien Huzard | 2026-07-21 | Accept | Keep person identity, provenance responsibility, and contributor credit distinct. Reuse Schema.org, PROV-O, and official CRediT roles in their respective scopes; do not create `hcm:Person`. No ontology axioms changed. | A03 accepted decision and implementation boundary above; Schema.org Person, PROV-O, and CRediT specifications | `docs/philippe-rocca-serra-review` |
+| A04 | Damien Huzard | 2026-07-21 | Accept | Keep `schema:Place` as a broad exchange range while distinguishing material facilities, immaterial sites/spatial regions, and geometry. Identify an institute with ROR where eligible and its separate geographic place with GeoNames where available. Do not create `hcm:Place`. No ontology axioms changed. | A04 accepted decision and identifier boundary above; ROR schema v2.1; GeoNames Ontology | `docs/philippe-rocca-serra-review` |
+| A07 | Damien Huzard; reviewed artifact evidence pending | 2026-07-21 | Accept preservation policy; verification pending | Preserve `ontology/legacy/` and `ontology/v2/` as immutable, excluded historical evidence; use modules as source and generated `dist/` files as load targets. No ontology axioms changed. | A07 accepted historical-artifact policy above; exact reviewed file/version/checksum still required | `docs/philippe-rocca-serra-review` |
 
 ## Required implementation gate for every accepted semantic change
 
