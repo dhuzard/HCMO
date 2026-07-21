@@ -353,9 +353,9 @@ checklist row.
 
 | Done | ID | Item and description | Human review action | What and where to change after approval | Acceptance evidence |
 | --- | --- | --- | --- | --- | --- |
-| [ ] | B01 | **Curated external-label strategy.** The merged release lacks labels for the 11 external axiom targets listed above. Full imports could make the hierarchy unnecessarily large. | Choose a versioned MIREOT-style subset, an import module, or another curated mechanism. Approve source ontology versions, annotation properties, update procedure, and license/provenance requirements. | Preferred candidate is a hand-authored or reproducibly generated module under `ontology/modules/`, added to the `modules` list in `hcmo.yaml`; document it in `ontology/AGENTS.md`, `docs/ARCHITECTURE.md`, and `docs/ALIGNMENTS.md`. If a new path is introduced, update the root repo map before using it. Never hand-edit `dist/`. | Reopening `dist/hcmo.owl` shows readable external labels; rebuild is reproducible; source/version annotations are queryable. |
+| [?] | B01 | **Use `ontology/external/` with a Python-controlled, pinned ROBOT extraction pipeline: provisionally accepted; co-author validation pending.** Keep approved source locks and selections separate from committed, generated per-source subsets. The canonical build remains offline. | Co-authors must validate the directory boundary, per-source artifact strategy, Python/ROBOT responsibilities, MIREOT default, conditions for locality extraction, upstream versions, selected annotations, licenses, and refresh procedure. | No implementation is authorized until co-author validation. After approval, add `ontology/external/`, `tooling/extract_external.py`, the external subset entries in `hcmo.yaml` without changing its shape, validation checks, repo-map updates, architecture/alignment documentation, and regenerated `dist/`. | Co-author sign-off; reviewed source and selection manifests; checksum-pinned reproducible extraction; offline canonical build; readable external hierarchy in Protégé; license and source/version provenance retained. |
 | [x] | B02 | **Keep the canonical HCMO release self-contained and free of live full-ontology imports: accepted.** No unversioned or network-dependent `owl:imports` may enter the canonical release. Merge the approved, pinned B01 subset into generated HCMO artifacts for readable offline use. | Preserve only the reviewed upstream annotations and logical axioms selected for the subset. Record source/version, extraction boundary, checksum, and license. Treat any future full-import reasoning profile as optional and separate from the canonical release. | After B01 is approved, update the authoritative repo map, `hcmo.yaml` module values without changing its shape, extraction/validation tooling, `docs/ARCHITECTURE.md`, and release documentation. Canonical `tooling/build.py` must remain offline and deterministic. | Offline build, parse, reasoner, and OLS dry run; no live import resolution; generated external subset has pinned provenance and license; optional profile cannot silently alter canonical reasoning or downstream manifest behavior. |
-| [ ] | B03 | **Mapping-strength policy.** Exact identity, logical equivalence, and SKOS similarity are currently not governed. | Define evidence thresholds for `owl:equivalentClass`, `owl:equivalentProperty`, `owl:sameAs`, SKOS match predicates, broader/narrower mappings, and simple cross-references. State whether SKOS mapping predicates may annotate OWL entities. | Add the policy to `docs/ALIGNMENTS.md`. Store approved mappings in a dedicated module such as `ontology/modules/hcm-mappings.ttl` or another reviewed artifact; add it to `hcmo.yaml` if it is part of the release. Extend validation for missing evidence and conflicting mapping strengths. | Policy examples approved by an ontology reviewer; every mapping has target IRI, predicate, source, reviewer, date, and evidence. |
+| [?] | B03 | **Separate logical equivalence, individual identity, conceptual mapping, cross-reference, and exchange transformation: informed co-author feedback required.** The recommendation below is not accepted policy. | Give co-authors definitions and worked HCMO examples for `rdfs:subClassOf`, OWL equivalence, `owl:sameAs`, SKOS matches, references, and ISA/Bioschemas/RO-Crate transformation rules. Obtain explicit answers on evidence thresholds, review requirements, mapping-graph separation, SSSOM, and whether SKOS assertions may enter canonical reasoning. | Do not add mappings or a mapping module yet. After approval, record the policy in `docs/ALIGNMENTS.md`; implement the B04-approved mapping registry separately from exchange transformations; materialize only explicitly approved logical axioms in owning modules; extend validation for evidence and conflicting strengths. | Co-author review record with rationale for every policy question; ontology and domain reviewer approval; worked examples for class equivalence, narrower classes, individual identity, conceptual matches, cross-references, and exchange fields. |
 | [ ] | B04 | **Mapping registry data model.** One HCMO concept must support multiple external and serialization-specific mappings without collapsing URIs into one application key. | Approve registry fields: canonical HCMO IRI, target IRI/field, target scheme/version, mapping predicate, profile/serialization scope, evidence, provenance, status, and notes. Decide RDF versus a tabular source with generated RDF. | Ontology mappings belong in the approved mapping artifact; field-level mappings belong in `docs/ISA-RO-CRATE-MAPPING.md` or a machine-readable registry. Add a new tooling script only for deterministic validation/generation; do not overload `tooling/build.py` with application-specific keys. | Test fixtures demonstrate several mappings per HCMO term and reject duplicate registry identities, unresolved IRIs, and contradictory exact/broad mappings. |
 | [ ] | B05 | **Source materials supplied by Philippe.** The FAIR Cookbook recipe, ISA RO-Crate article, implementation repository, prior ISA-OBO-PROV mappings, and STATO references are absent from the supplied notes. | Obtain the exact URLs, versions/commits, licenses, and the mapping files Philippe intended. Review them before minting or asserting mappings. | Add bibliographic sources to `docs/paper/references.bib`; add design evidence to `docs/ISA-RO-CRATE-MAPPING.md` and `docs/ALIGNMENTS.md`; preserve third-party license and attribution requirements. | All resources have stable citations and a recorded reviewed version. |
 | [ ] | B06 | **HCMO-to-ISA mapping.** The existing table covers investigation, study, source/sample, enclosure, assignment, acquisition, observation, and files, but remains a proposal. | Review each row against the selected ISA model and add cardinality, direction, transformation rule, and round-trip loss notes. | Extend `docs/ISA-RO-CRATE-MAPPING.md`; update `examples/isa-hcmo-bridge.ttl`; add machine-readable entries to the mapping registry if approved. Ontology axioms change only when the relationship is semantic rather than serialization-specific. | Reviewer-approved table with a working example for Investigation -> Study -> Assay -> Process -> Data. |
@@ -365,11 +365,72 @@ checklist row.
 | [ ] | B10 | **STATO mapping.** Study factors, variables, analyses, and statistical outputs lack reviewed STATO mappings. | Jointly review STATO and ISA definitions before selecting targets. Record rejected candidates as well as accepted ones. | `ontology/modules/hcm-bio.ttl` for approved study-design semantics, the relevant process/result module for analyses and outputs, mapping artifact, examples, queries, and `docs/ALIGNMENTS.md`. | Factor/variable and analysis/output examples round-trip without treating an experimental group as a factor. |
 | [ ] | B11 | **Wikidata fallback.** Wikidata should not replace an available stable ontology term without a policy. | Define allowed use cases, identifier stability checks, mapping predicate, and review cadence. | Mapping policy and registry only; ontology modules change only for an approved semantic relation. | Each Wikidata mapping documents why no suitable maintained ontology term was selected. |
 
+### B01 provisional external-subset directory and extraction pipeline
+
+Status: accepted as a provisional direction by Damien Huzard on 2026-07-21;
+co-author validation is required before implementation. This record does not
+create a directory, extraction script, external subset, manifest entry, or
+ontology axiom.
+
+Provisional decision:
+
+> **B01 — use a dedicated external-source area and a hybrid extraction
+> pipeline.**
+> Keep curated external ontology material under `ontology/external/`, separate
+> from the hand-authored HCMO modules. Record pinned upstream sources and human-
+> approved term selections separately from generated, committed per-source
+> subsets. Use a Python controller for source locking, checksum and license
+> verification, ROBOT invocation, boundary validation, deterministic output,
+> and reporting.
+>
+> Use ROBOT MIREOT by default for the labels, definitions, synonyms, provenance,
+> and named ancestor hierarchy needed for readable Protégé navigation. Use a
+> syntactic locality extraction such as BOT or STAR only where A06 review has
+> explicitly approved preservation of additional upstream entailments. The
+> canonical build consumes committed subsets and performs no download or live
+> import resolution.
+
+Proposed layout for co-author validation:
+
+```text
+ontology/external/
+|-- README.md
+|-- sources.lock.yaml
+|-- selection.yaml
+`-- generated/
+    |-- bfo-subset.ttl
+    |-- iao-subset.ttl
+    |-- obi-subset.ttl
+    |-- sosa-subset.ttl
+    |-- stato-subset.ttl
+    `-- prov-subset.ttl
+
+tooling/extract_external.py
+```
+
+The source lock records ontology and version IRIs, exact retrieval locations,
+checksums, retrieval dates, licenses, and extraction-tool versions. The
+selection manifest records each approved IRI, rationale, required annotations,
+hierarchy boundary, extraction method, and A06 review reference. Generated
+files remain separated by upstream source so their provenance, license, and
+diffs can be reviewed independently.
+
+Co-authors must validate:
+
+1. whether `ontology/external/` is the correct stable directory name;
+2. whether generated subsets should remain separated by upstream ontology;
+3. whether MIREOT is the correct default and which cases justify BOT or STAR;
+4. the pinned upstream versions, annotation allowlist, hierarchy boundaries,
+   licensing, and update cadence; and
+5. whether the refresh command may retrieve a checksum-pinned ROBOT executable
+   into a local cache, while canonical build and validation remain offline.
+
 ### B02 accepted canonical import policy
 
-Status: accepted by Damien Huzard on 2026-07-21. Implementation is blocked on
-the B01 directory and extraction-tooling decision. No `owl:imports`, external
-subset, or manifest entry is added by this record.
+Status: accepted by Damien Huzard on 2026-07-21. Implementation remains blocked
+on co-author validation of the provisional B01 directory and extraction
+pipeline. No `owl:imports`, external subset, or manifest entry is added by this
+record.
 
 Decision:
 
@@ -391,6 +452,66 @@ Decision:
 The canonical build consumes a committed subset and performs no network fetch.
 Refreshing that subset is a separate, explicit maintenance operation with
 source-version and checksum verification.
+
+### B03 mapping-strength policy for informed co-author review
+
+Status: recommendation recorded by Damien Huzard on 2026-07-21; educated
+co-author feedback is required before a decision. No mapping assertion,
+registry, ontology axiom, or release artifact is authorized by this text.
+
+Recommendation to review:
+
+> **B03 — separate logical equivalence, individual identity, conceptual
+> mapping, cross-reference, and exchange transformation.**
+> Reuse an authoritative external IRI directly when its meaning matches HCMO.
+> Use `rdfs:subClassOf` or `rdfs:subPropertyOf` when the HCMO entity is
+> demonstrably narrower. Use `owl:equivalentClass` or
+> `owl:equivalentProperty` only when the intended extensions and logical
+> consequences agree in both directions under pinned source versions.
+>
+> Use `owl:sameAs` only when two IRIs identify the same individual. Never use
+> it to relate classes, properties, identifier strings, or merely similar
+> resources. Record non-logical conceptual correspondence with an appropriate
+> SKOS match predicate in a separately versioned mapping product; do not
+> automatically translate a SKOS match into an OWL equivalence axiom.
+>
+> Treat `rdfs:seeAlso`, `dcterms:source`, and identifier metadata as navigation,
+> evidence, provenance, or identification rather than semantic mappings. Treat
+> ISA, Bioschemas, and RO-Crate field mappings and round-trip rules as exchange
+> transformations rather than ontology equivalence.
+>
+> Every mapping must record its entities and labels, predicate, source and
+> target versions, justification, evidence, author, reviewer, date, status,
+> scope, and decision reference. Require both ontology and domain review for
+> OWL equivalence and `owl:sameAs` assertions.
+
+The following examples should be used to educate and test the policy rather
+than asking co-authors to approve predicates in the abstract:
+
+| Claim | Recommended representation | Reason to review |
+| --- | --- | --- |
+| HCMO reuses BFO Material entity with the same meaning | Use the BFO class IRI directly | No duplicate HCMO class or identity assertion is needed. |
+| An HCMO class is narrower than an external class | `rdfs:subClassOf` | Every HCMO instance must satisfy the external parent definition. |
+| Two independently named classes have the same extension | `owl:equivalentClass`, only after bidirectional logical review | This is a reasoner-visible identity of class extensions, not label similarity. |
+| Two IRIs identify the same person, organization, device, or other individual | `owl:sameAs`, only with identity evidence | It merges all facts about the two individuals and therefore requires strong evidence. |
+| Two ontology concepts are exact, close, broader, or narrower conceptual matches | SKOS match predicate in the separate mapping product | The correspondence supports discovery or transformation without silently asserting OWL equivalence. |
+| A publication or source supports a definition | `dcterms:source` or another approved provenance relation | Evidence is not a semantic mapping. |
+| An HCMO entity becomes an ISA or RO-Crate field/value | Transformation rule in the exchange mapping registry | Serialization direction, cardinality, and round-trip loss are not captured by class equivalence. |
+
+Co-authors are asked to answer explicitly:
+
+1. Should direct reuse of the authoritative IRI be the default when meanings
+   match?
+2. Should `owl:sameAs` be forbidden for classes and properties and restricted
+   to evidenced individual identity?
+3. Should OWL equivalence and `owl:sameAs` require both a domain reviewer and
+   an ontology reviewer?
+4. Should SKOS mappings remain outside the canonical HCMO reasoning graph by
+   default?
+5. Should SSSOM be the preferred mapping exchange model, while B04 decides the
+   authoritative serialization and generation process?
+6. Which concrete counterexamples or interoperability requirements would need
+   an exception to these defaults?
 
 ## C. Object properties and reasoning
 
@@ -469,7 +590,9 @@ unreviewed ontology assertions.
 | A05 | Damien Huzard | 2026-07-21 | Accept | Retain the physical HCM actuator specialization and deprecated migration IRI; model actuations, acted-on properties, software controllers, and triggered executions as distinct entities. The future definition expansion is approved but not implemented; no ontology axioms changed. | A05 accepted actuator and actuation boundary above; SOSA/SSN 2023 | `docs/philippe-rocca-serra-review` |
 | A06 | Damien Huzard | 2026-07-21 | Accept as required review gate | Require a signed, evidence-based inventory of every active HCMO class and directly referenced external anchor before hierarchy or mapping implementation. Treat every non-`keep` result as a separate reviewed change. No ontology axioms changed. | A06 accepted active-class audit gate above; `dist/profile.json` plus external-anchor supplement | `docs/philippe-rocca-serra-review` |
 | A07 | Damien Huzard; reviewed artifact evidence pending | 2026-07-21 | Accept preservation policy; verification pending | Preserve `ontology/legacy/` and `ontology/v2/` as immutable, excluded historical evidence; use modules as source and generated `dist/` files as load targets. No ontology axioms changed. | A07 accepted historical-artifact policy above; exact reviewed file/version/checksum still required | `docs/philippe-rocca-serra-review` |
-| B02 | Damien Huzard | 2026-07-21 | Accept | Keep the canonical release self-contained and free of live full-ontology imports. Merge only the approved version-pinned B01 subset; keep any future full-import reasoning profile optional and separate. No ontology axioms changed. | B02 accepted canonical import policy above; B01 implementation decision pending | `docs/philippe-rocca-serra-review` |
+| B01 | Damien Huzard; co-author validation pending | 2026-07-21 | Defer final approval; directory and hybrid pipeline provisionally accepted | Use `ontology/external/` for locked sources, reviewed selections, and committed per-source subsets. Use a Python-controlled, pinned ROBOT pipeline with MIREOT as the readability default and reviewed locality extraction where additional entailments are required. Keep canonical builds offline. No files or ontology axioms implemented. | B01 provisional directory and extraction decision above; ROBOT extraction documentation | `docs/philippe-rocca-serra-review` |
+| B02 | Damien Huzard | 2026-07-21 | Accept | Keep the canonical release self-contained and free of live full-ontology imports. Merge only the approved version-pinned B01 subset; keep any future full-import reasoning profile optional and separate. No ontology axioms changed. | B02 accepted canonical import policy above; B01 co-author validation pending | `docs/philippe-rocca-serra-review` |
+| B03 | Damien Huzard; educated co-author feedback pending | 2026-07-21 | Defer | Review the proposed separation of logical axioms, individual identity, conceptual mappings, cross-references, and exchange transformations using concrete HCMO examples. Decide evidence and reviewer thresholds, mapping-graph separation, and SSSOM use before adding mappings. No ontology axioms changed. | B03 informed-review brief above; OWL, SKOS, and SSSOM specifications to be included in the co-author packet | `docs/philippe-rocca-serra-review` |
 
 ## Required implementation gate for every accepted semantic change
 
