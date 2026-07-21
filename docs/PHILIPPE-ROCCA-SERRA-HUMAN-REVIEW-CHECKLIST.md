@@ -1002,11 +1002,193 @@ an entailment regime or ontology content by default; see the
 
 | Done | ID | Item and description | Human review action | What and where to change after approval | Acceptance evidence |
 | --- | --- | --- | --- | --- | --- |
-| [ ] | D01 | **Process scope and granularity.** Candidate processes include allocation, acclimatization, recording, measurement, detection, acquisition, preprocessing, feature extraction, analysis, annotation, and QC. | Select a minimal first-release subset based on competency questions and available datasets. For each, distinguish planned protocol, executed process/activity, and assignment or result record. | Architecture and alignment docs first. Approved local specializations go in the namespace-owning module; do not repurpose `hcm-bio:HousingAssignment`, which is currently an IAO information-content record, as a process without a migration design. | Approved process table with inputs, outputs, participants, agent, time, and external mappings. |
-| [ ] | D02 | **Input/output relation pattern.** HCMO does not yet define a general input/output model. | Choose OBI, PROV-O, or ISA/Bioschemas relations and decide when local subproperties are necessary. Verify directionality against definitions. | Mapping artifact and owning modules; `examples/isa-hcmo-bridge.ttl`; shapes for profile requirements; competency queries. | One acquisition and one transformation example demonstrate the pattern without duplicate or reverse relations. |
-| [ ] | D03 | **Information-output taxonomy.** Raw data, processed data, observations, events, annotations, features, summaries, estimates, models, figures, tables, and QC reports may require distinct treatment. | Decide which are OWL classes, external classes, roles, file media types, or controlled vocabulary values. Keep ontology scope minimal. | Likely `ontology/modules/hcm-obs.ttl` for observations/results and `hcm-tech.ttl` for data/software artifacts, subject to approved namespaces; mappings, shapes, examples, and context follow. | Approved matrix of artifact type versus representation with no definition-by-example. |
-| [ ] | D04 | **End-to-end provenance chain.** The target is animal/environment -> sensor -> acquisition -> raw dataset -> preprocessing -> derived variable -> statistical analysis -> statistical output. | Validate the chain against at least one real HCM dataset and decide attribution rules for group-housed versus individually identified observations. | Process/provenance mappings, ontology modules, `examples/`, new CQ files plus `queries/competency_questions.yaml`, and paper resource/impact sections. | SPARQL query reconstructs the chain and does not infer subject-level attribution from cage occupancy alone. |
-| [ ] | D05 | **Temporal ordering and assignment validity.** Housing changes and process order require time without breaking the acyclic ISA graph. | Choose interval and event patterns compatible with OWL-Time, PROV-O, and the selected ISA serialization. | `ontology/modules/hcm-bio.ttl` for assignment record relations, process modules, shapes, examples, and ISA mapping note. Reuse OWL-Time terms where valid. | Example with re-housing reconstructs non-overlapping assignment intervals and serializes successfully. |
+| [?] | D01 | **Adopt a minimal first process slice: provisional; co-author and OBI-expert validation required before minting local process classes.** The initial slice covers housing allocation, recording, data transformation, and one concrete statistical execution. | Validate the proposed granularity and external targets below against competency questions and a real dataset. Keep protocol/plan, execution, generated record, and generated data/result distinct. Decide whether a recording session contains SOSA observations or is identical to one only in a deliberately coarse representation. | First update architecture/alignment documentation and add approved CQs. Put only justified, narrower HCMO specializations in their namespace-owning modules. Do not repurpose `hcm-bio:HousingAssignment`. Add examples, shapes, queries, context, generated artifacts, and changelog entries only through separately reviewed implementation items. | Signed process matrix with definitions, inputs, outputs, participants, agent, time, granularity, external source/version, rejected candidates, and CQ evidence; no use of image-specific OBI feature extraction for generic HCM time-series processing. |
+| [x] | D02 | **Use a layered input/output relation policy: accepted, subject to B03/B04 and ISA round-trip validation.** Use OBI for specified process inputs/outputs, PROV-O for actual use/generation, SOSA for observation semantics, and ISA/Bioschemas for exchange. Do not make these relations equivalent or add generic local input/output properties now. | Validate relation direction and the role of each entity in the D04 chain. Distinguish evaluant/feature of interest, equipment, contextual enclosure, protocol/plan, and actual data or material input/output. | Record approved mappings in the B04 artifacts and alignment documentation; update `examples/isa-hcmo-bridge.ttl`, profile shapes, CQs, and owning modules only when a CQ requires a narrower local subproperty. Keep ISA process order grounded in explicit material/data inputs and outputs. | One recording and one transformation example have unambiguous specified and actual inputs/outputs, no duplicate/reverse/equivalent relation assertions, and a successful ISA round trip under the approved policy. |
+| [?] | D03 | **Adopt a minimal information-output architecture: provisional; co-author, data-model, and ISA validation required.** Distinguish observation result, information content, file representation, statistical output, and variable or model specification. Treat raw/processed/derived primarily as provenance-relative roles or states. | Validate the distinctions below against real outputs and decide the external dataset/content classes plus the content-to-file representation relation. Approve new output categories only when required by CQs. | Review `ontology/modules/hcm-obs.ttl` and `hcm-tech.ttl` without assuming current module ownership is final; then update mappings, shapes, examples, context, CQs, and generated artifacts through separate implementation items. Do not encode file formats or processing history as intrinsic class identity without evidence. | Approved artifact/representation matrix; a statistical result remains distinct from its containing file; a derived value remains distinct from its variable specification; raw/derived status reconstructs from provenance; deferred categories remain outside the first slice. |
+| [x] | D04 | **Require an end-to-end provenance chain as release evidence: accepted, for implementation after D01-D03 and B03/B04.** The reference chain must cover housing context, planned and executed recording, sensing, raw data, transformation, derived data, statistical analysis, and statistical output. | Select a real representative HCM dataset and approve CQs for forward and backward traversal. Explicitly review individual versus enclosure/group attribution and all plan, agent, participant, time, input/output, and derivation links. | Implement the approved example under `examples/`; add CQs to `queries/competency_questions.yaml` and `queries/cq-*.rq`; add only the mappings, module axioms, shapes, context entries, and paper claims required by the demonstrated chain. | A SPARQL query reconstructs the complete chain in both directions; validation and reasoning pass; an enclosure-level negative case cannot acquire subject-level attribution from housing assignment alone; the ISA exchange graph remains acyclic. |
+| [x] | D05 | **Separate execution time, observation time, and assignment validity: accepted; co-authors must validate overlap rules and ISA round-trip representation.** Use PROV-O for execution time, SOSA for phenomenon/result time, and an OWL-Time interval for HousingAssignment validity. | Validate the default use of `time:hasTime`, interval-boundary representation, overlap/open-ended-assignment rules, and re-housing serialization. Approve a narrower HCMO validity relation only if a CQ proves the generic relation insufficient. | Document the temporal contract first. Then, if approved, update `ontology/modules/hcm-bio.ttl` and any process-owning module, shapes, examples, CQs, ISA mapping notes, context, and generated artifacts. Keep `hcm-bio:HousingAssignment` as a record rather than a temporal entity or process. | Re-housing example distinguishes allocation-execution time from assignment-validity intervals; SHACL/SPARQL checks boundary order, timezone, overlaps, and current assignments under the approved profile; SOSA phenomenon/result time remains distinct; ISA round trip is acyclic and documented. |
+
+### D01 provisional minimal process slice
+
+Status: provisional direction recorded by Damien Huzard on 2026-07-21;
+co-author and OBI-expert validation is required before minting any local process
+class. This decision narrows the first review slice; it does not authorize
+ontology axioms.
+
+The first process slice is:
+
+1. A housing-allocation execution, distinct from the resulting
+   `hcm-bio:HousingAssignment` information-content record. OBI group assignment
+   and OBI acquisition are not assumed to mean cage allocation.
+2. A recording execution represented through the current COB executed-planned-
+   process anchor, or a more specific OBI class, and `prov:Activity` when their
+   definitions fit. Do not use deprecated `OBI_0000011`. Stable
+   SOSA `Observation` instances represent sensing acts. A recording session may
+   contain several observations and must not automatically be identified with
+   each observation.
+3. A preprocessing or other data-processing execution under OBI data
+   transformation (`OBI_0200000`). More specific local terms require their own
+   definitions and CQs.
+4. One concrete statistical execution using the provisional B10 STATO/OBI
+   architecture.
+
+For every process, keep the protocol or plan, executed process, generated
+record, and generated data/result distinct. Do not introduce a generic local
+Process, Recording, or Analysis class merely to organize the Protégé tree.
+
+The current OBI acquisition terms describe gaining possession of an entity,
+material, or information and are not approved as synonyms for sensor recording.
+The current OBI feature-extraction process and objective are image-specific and
+are not approved for generic HCM time-series feature extraction. OBI
+acclimatization (`OBI_0600011`) remains a candidate requiring expert review: its
+equilibrium-based definition may not cover every intended behavioral
+habituation or adaptation process.
+
+Detection, annotation, quality control, generic feature extraction, actuation,
+and broader analysis processes remain deferred until approved CQs and external
+term review justify them.
+
+As of this decision, the stable
+[W3C SSN/SOSA Recommendation](https://www.w3.org/TR/vocab-ssn/) provides concrete
+classes including Observation, Actuation, and Sampling, but not a generic
+`sosa:Execution`. That generic class appears in the
+[SSN/SOSA 2023 Edition First Public Working Draft](https://www.w3.org/TR/vocab-ssn-2023/),
+which is not a W3C Recommendation and must not be used as a canonical HCMO
+release anchor without a later version-policy decision. Generic execution
+semantics therefore stay on the approved BFO/COB/OBI and PROV-O path.
+
+### D02 accepted layered input/output relation policy
+
+Status: accepted by Damien Huzard on 2026-07-21, subject to the B03/B04
+mapping decisions and a demonstrated ISA round trip. No new property or mapping
+axiom is authorized by this documentation decision.
+
+Use each relation only in its own semantic layer:
+
+- OBI `has specified input` (`OBI_0000293`) and `has specified output`
+  (`OBI_0000299`) describe inputs and outputs specified for the executed
+  planned process.
+- `prov:used` and `prov:wasGeneratedBy` describe what an actual execution used
+  and generated. Use qualified PROV only when role, plan, or association detail
+  is required.
+- Stable SOSA `hasFeatureOfInterest`, `madeBySensor`, `usedProcedure`, and
+  `hasResult` describe observation-specific semantics.
+- ISA/Bioschemas object, result, and protocol links are exchange
+  representations, not replacements for the semantic or provenance relations.
+
+Do not assert these relations as equivalent. Do not introduce generic local
+`hasInput` or `hasOutput` properties in the first slice. A participant is not
+automatically an input: the subject may be an evaluant or feature of interest,
+the sensor is equipment performing the observation, and the enclosure may be
+context or location. Material and data entities may be explicit workflow inputs
+or outputs; a protocol remains a plan rather than consumed data.
+
+Keep the ISA workflow acyclic through explicit material and data inputs and
+outputs. Direct temporal or process-to-process links may supplement the semantic
+description but must not replace the ISA dataflow or imply a reversed relation.
+See the [W3C PROV-O Recommendation](https://www.w3.org/TR/prov-o/) and the
+[ISA RO-Crate mapping draft](https://github.com/nfdi4plants/isa-ro-crate-profile/blob/release/profile/isa_ro_crate_mapping.md).
+
+### D03 provisional minimal information-output architecture
+
+Status: provisional direction recorded by Damien Huzard on 2026-07-21;
+co-author, data-model, and ISA validation is required. No information class,
+mapping, or representation relation is authorized yet.
+
+The first review slice distinguishes:
+
+- an observation result, using `sosa:Result` or a justified existing HCMO
+  specialization;
+- information content such as an HCMO time series or approved dataset class;
+- the File or `schema:MediaObject` that serializes that content for RO-Crate or
+  ISA exchange;
+- a STATO statistical output such as an estimate, statistic, fitted model, or
+  hypothesis-test result; and
+- a derived feature value versus the variable specification or model variable
+  it instantiates.
+
+Raw, processed, and derived normally describe provenance-relative roles or
+states rather than intrinsic, mutually exclusive OWL classes. A dataset may be
+derived output of one execution and input to another. A STATO result remains
+distinct from a file containing its serialization, and an observed real-world
+event remains distinct from an information record asserting that the event was
+detected.
+
+The external dataset/content class and the relation connecting information
+content to its file representation remain review questions tied to B03/B04 and
+B06. Events, annotations, summaries, figures, tables, general models, and QC
+reports are deferred until approved CQs require them. Do not use a file format,
+processing stage, or illustrative example as the definition of an ontology
+class.
+
+### D04 accepted end-to-end provenance evidence requirement
+
+Status: accepted by Damien Huzard on 2026-07-21 as a mandatory integration and
+release-evidence test. Implementation follows D01-D03 and the B03/B04 mapping
+decisions; this decision does not implement the example or its axioms.
+
+Use one real representative HCM dataset to demonstrate this chain:
+
+```text
+subject + housing assignment + enclosure
+    -> recording protocol and execution
+    -> sensor observations
+    -> raw time-series content and file
+    -> preprocessing transformation
+    -> derived variable or dataset
+    -> statistical analysis
+    -> STATO statistical output
+    -> optional result file
+```
+
+The reference example must identify the protocol/plan and every execution;
+specified and actual inputs and outputs; sensor, feature of interest, enclosure,
+and relevant subject; raw and derived information entities and their file
+representations; responsible agents and approved contribution roles; relevant
+times; and derivation from the final output back to the source data.
+
+Executable CQs must support forward and backward reconstruction. Include a
+negative group-housing case: an enclosure-level signal must not become an
+individual-animal observation merely because the animal had a housing
+assignment during the observation interval. Individual attribution requires an
+identification-capable sensing or data-processing method and evidence that the
+method identified that subject.
+
+### D05 accepted temporal-separation policy
+
+Status: accepted by Damien Huzard on 2026-07-21. Co-authors must validate the
+overlap and open-ended-assignment rules, and ISA experts must validate the
+round-trip representation. No temporal axiom or shape is implemented by this
+decision.
+
+Keep three temporal meanings distinct:
+
+- PROV `startedAtTime` and `endedAtTime` describe an execution's duration.
+- SOSA `phenomenonTime` describes the time to which an observation applies;
+  `resultTime` describes when its result became available.
+- An OWL-Time `ProperInterval` describes the validity of a
+  `hcm-bio:HousingAssignment` record. The assignment is neither a temporal
+  entity nor the allocation execution.
+
+The initial candidate is the generic `time:hasTime` from the assignment record
+to its validity interval. Introduce a narrower HCMO validity subproperty only if
+an approved CQ shows that the generic relation cannot answer the required
+question. Represent interval boundaries with OWL-Time instants and the current
+`time:inXSDDateTimeStamp` predicate; do not use deprecated
+`time:inXSDDateTime` in new data.
+
+The approved profile must use SHACL or SPARQL to validate boundary ordering,
+timezone-bearing timestamps, overlapping assignments, and open-ended current
+assignments. OWL's open-world semantics alone is not sufficient for these
+closed-world requirements. Whether multiple simultaneous enclosures are ever
+permitted is a co-author decision, not an ontology assumption.
+
+Re-housing creates successive assignment records plus a separate allocation
+execution. The allocation execution time and the new assignment's validity need
+not be identical. OWL-Time interval relations may state chronology, but ISA
+workflow order remains grounded in explicit material or data inputs and outputs
+so the exchange graph remains acyclic. See the
+[W3C OWL-Time Recommendation](https://www.w3.org/TR/owl-time/).
 
 ## E. Study design and controlled vocabularies
 
@@ -1081,6 +1263,11 @@ unreviewed ontology assertions.
 | C02 | Damien Huzard | 2026-07-21 | Accept governance policy; defer individual axioms | Require exact bidirectional identity for inverses and universal semantic inclusion for parent properties. Challenge `monitoredBy`/`installedIn`; review group membership and `captures` through C01/CQs. No axiom changed. | C02 accepted governance policy above; OWL 2 structural specification | `docs/philippe-rocca-serra-review` |
 | C03 | Damien Huzard; co-author field validation pending | 2026-07-21 | Accept two-layer pattern; defer exact implementation | Keep normative labels, definitions, intentional axioms, source, and deprecation in source modules; keep examples, CQs, reviewer decisions, effects, and rejected alternatives in a separate inventory. No annotations or inventory implemented. | C03 two-layer pattern above; proposed `docs/PROPERTY-INVENTORY.tsv` | `docs/philippe-rocca-serra-review` |
 | C04 | Damien Huzard | 2026-07-21 | Accept; prioritize entailment contract | Keep universal semantics in OWL and profile/intake requirements in SHACL. Make an explicit ontology-aware validator entailment contract and tests the first implementation item before new shape families. No tooling or shape change implemented. | C04 accepted boundary and implementation sequence above; W3C SHACL Recommendation; current `tooling/validate.py` behavior | `docs/philippe-rocca-serra-review` |
+| D01 | Damien Huzard; co-author and OBI-expert validation pending | 2026-07-21 | Defer final approval; provisional minimal slice selected | Limit the first process review to housing allocation, recording, data transformation, and one statistical execution; keep plans, executions, records, and results distinct. Do not mint local process classes before CQ and external-definition review. No axiom changed. | D01 provisional process slice above; OBI `v2026-05-08`; W3C SSN/SOSA Recommendation and 2025 First Public Working Draft status | `docs/philippe-rocca-serra-review` |
+| D02 | Damien Huzard; B03/B04 and ISA validation pending | 2026-07-21 | Accept layered relation policy; dependent validation pending | Use OBI specified input/output, PROV actual use/generation, SOSA observation relations, and ISA/Bioschemas exchange relations in separate layers. Do not assert equivalence or add generic local input/output properties now. No axiom changed. | D02 accepted relation policy above; OBI, PROV-O, SOSA, and ISA RO-Crate specifications | `docs/philippe-rocca-serra-review` |
+| D03 | Damien Huzard; co-author, data-model, and ISA validation pending | 2026-07-21 | Defer final approval; provisional minimal architecture selected | Distinguish result, information content, file representation, statistical output, and variable/model specification; treat raw/processed/derived primarily as provenance-relative roles or states. No class or mapping changed. | D03 provisional output architecture above; B03/B04 and B06 unresolved representation work | `docs/philippe-rocca-serra-review` |
+| D04 | Damien Huzard; implementation dependencies pending | 2026-07-21 | Accept as mandatory integration and release-evidence test | Require a real-dataset chain from housing context and recording through raw/derived data and statistical output, with forward/backward CQs and a group-housing attribution negative case. Implement only after D01-D03 and B03/B04. | D04 accepted provenance-evidence requirement above; current HCMO ISA bridge and attribution policy | `docs/philippe-rocca-serra-review` |
+| D05 | Damien Huzard; co-author and ISA validation pending | 2026-07-21 | Accept temporal-separation policy; constraint details pending | Separate PROV execution time, SOSA phenomenon/result time, and OWL-Time assignment-validity intervals. Keep HousingAssignment as a record; validate overlap and open-ended rules outside OWL. No axiom or shape changed. | D05 accepted temporal policy above; W3C PROV-O, SSN/SOSA, and OWL-Time Recommendations | `docs/philippe-rocca-serra-review` |
 
 ## Required implementation gate for every accepted semantic change
 
