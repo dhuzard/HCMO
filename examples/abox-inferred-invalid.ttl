@@ -1,0 +1,8 @@
+@prefix ex: <https://example.org/hcmo/inferred-invalid/> .
+@prefix hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#> .
+
+# No rdf:type is asserted. The ontology domain and range of monitoredBy infer
+# MonitoredEnclosure and Sensor, causing both targetClass shapes to select these
+# incomplete nodes. A validator that omits the ontology graph would incorrectly
+# report conformance because neither focus node would be selected.
+ex:incomplete-enclosure hcm-tech:monitoredBy ex:incomplete-sensor .

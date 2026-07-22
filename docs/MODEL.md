@@ -37,6 +37,36 @@ as required identifiers, dimensions, housing assignments, sensor placement,
 and observation-result cardinalities. The ontology does not encode those
 application requirements as universal class definitions.
 
+### Validation entailment contract
+
+The canonical validation contract keeps ontology semantics and profile
+validation distinct while making their interaction explicit:
+
+1. the ontology graph is the offline union of the source modules listed in
+   `hcmo.yaml`, including the compatibility module;
+2. each example is validated as an isolated data graph, with the canonical
+   ontology supplied separately to pySHACL as its ontology graph;
+3. pySHACL applies RDFS inference, so shape targets and value classes include
+   types inferred from intentional subclass, domain, and range axioms;
+4. an explicitly typed instance and an instance receiving the same type by
+   RDFS inference are subject to the same shape;
+5. SHACL cardinality, datatype, pattern, and required-value failures do not
+   become OWL axioms or imply that missing facts are false; and
+6. HermiT remains the separate OWL DL consistency check. A successful SHACL
+   run is not a proof of ontology consistency, and RDFS validation inference is
+   not a replacement for HermiT classification.
+
+Validation is offline and does not resolve live `owl:imports`. Positive
+examples must conform. Files whose names contain `edge` or `invalid` are
+negative fixtures and must be non-conformant. At least one negative fixture
+must rely on ontology-inferred target typing, preventing a validator from
+passing merely because it failed to select the intended focus node.
+
+Competency questions run against the canonical ontology plus all positive
+example graphs. Negative fixtures are excluded. Every indexed CQ records its
+expected row count; successful parsing with an unreviewed empty result is not
+considered sufficient evidence.
+
 ## Deferred decisions
 
 - Replace unit strings with a reviewed QUDT or OM pattern.
