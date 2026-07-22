@@ -7,9 +7,10 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Added
 
-- Started the signed C01 property audit with reproducible source-count and
-  inverse-entailment checks plus a first evidence record for
-  `hcm-tech:monitoredBy` and `hcm-tech:installedIn`.
+- Expanded the signed C01 property audit across all 81 active local
+  properties, directly used external property groups, and all 49 deprecated
+  compatibility properties, with reproducible metadata, migration, domain,
+  range, inverse, parent, and shortcut-entailment checks.
 
 ### Changed
 
