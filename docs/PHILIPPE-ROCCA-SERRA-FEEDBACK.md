@@ -2,6 +2,12 @@
 
 Date received: July 2026. Target release: HCMO 0.1.0.
 
+This record covers the earlier cleanup already implemented for HCMO 0.1.0.
+The later interoperability meeting is preserved in
+[`meetings/PHILIPPE-ROCCA-SERRA-HCMO-NOTES.md`](meetings/PHILIPPE-ROCCA-SERRA-HCMO-NOTES.md),
+with unresolved and follow-up work routed through the
+[`PHILIPPE-ROCCA-SERRA-HUMAN-REVIEW-CHECKLIST.md`](PHILIPPE-ROCCA-SERRA-HUMAN-REVIEW-CHECKLIST.md).
+
 | Feedback | Resolution | Evidence |
 | --- | --- | --- |
 | HCMO name conflicts with MAPP description | Ontology title, description, manifest, README, and current documentation now consistently use Home-Cage Monitoring Ontology. | `hcmo.yaml`, ontology header, `README.md` |

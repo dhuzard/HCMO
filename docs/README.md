@@ -12,6 +12,12 @@ and time-series data.
   OWL-Time temporal entities
 - Validation: `python tooling/build.py` followed by `python tooling/validate.py`
 - ISA integration note: [`ISA-RO-CRATE-MAPPING.md`](ISA-RO-CRATE-MAPPING.md)
+- A02 ISA/STATO compatibility and future-work record:
+  [`A02-ISA-STATO-COMPATIBILITY.md`](A02-ISA-STATO-COMPATIBILITY.md)
+- Philippe Rocca-Serra meeting record:
+  [`meetings/PHILIPPE-ROCCA-SERRA-HCMO-NOTES.md`](meetings/PHILIPPE-ROCCA-SERRA-HCMO-NOTES.md)
+- Human review checklist:
+  [`PHILIPPE-ROCCA-SERRA-HUMAN-REVIEW-CHECKLIST.md`](PHILIPPE-ROCCA-SERRA-HUMAN-REVIEW-CHECKLIST.md)
 
 Load `dist/hcmo.ttl` or `dist/hcmo.owl`. The source of truth is
 `ontology/modules/*.ttl`; files under `dist/` are generated.
