@@ -7,15 +7,20 @@ questions:
   - id: animals-by-enclosure
     question: Which biological subjects are assigned to each monitored enclosure?
     file: queries/cq-animals-by-enclosure.rq
+    expected_rows: 3
   - id: missing-dimensions
     question: Which enclosures are missing dimension records?
     file: queries/cq-missing-dimensions.rq
+    expected_rows: 0
   - id: needs-provisioning
     question: Which housed subjects are assigned to enclosures with incomplete husbandry requirements?
     file: queries/cq-needs-provisioning.rq
+    expected_rows: 3
   - id: sensors-behaviors
     question: Which properties does each monitored enclosure's sensor capture?
     file: queries/cq-sensors-behaviors.rq
+    expected_rows: 3
   - id: systems-24h-limited
     question: Which monitored enclosures have behavior observations lasting at least 24 hours under a stated condition?
     file: queries/cq-systems-24h-limited.rq
+    expected_rows: 1

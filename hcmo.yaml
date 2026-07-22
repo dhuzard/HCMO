@@ -45,3 +45,4 @@ examples:
   - examples/user-submission.ttl
   - examples/isa-hcmo-bridge.ttl
   - examples/abox-edge-cases.ttl
+  - examples/abox-inferred-invalid.ttl
