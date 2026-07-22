@@ -3,6 +3,23 @@
 All notable changes to the Home-Cage Monitoring Ontology (HCMO) are documented here. Versions
 track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
+## [Unreleased]
+
+### Added
+
+- Started the signed C01 property audit with reproducible source-count and
+  inverse-entailment checks plus a first evidence record for
+  `hcm-tech:monitoredBy` and `hcm-tech:installedIn`.
+
+### Changed
+
+- None. The initial audit records evidence only and does not change ontology
+  terms, axioms, shapes, examples, or generated release artifacts.
+
+### Renamed
+
+- None.
+
 ## [0.2.0] - 2026-07-17
 
 Updated the public contribution workflow to emit current HCMO instance data and
