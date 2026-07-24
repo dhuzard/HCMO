@@ -322,6 +322,14 @@ The inventory-generation step may be automated, but review classifications and
 semantic rationales are human decisions. A generated table must never be used
 as an unattended ontology-rewrite input.
 
+Implementation evidence: Cyril Gilbert completed the first signed A06 working
+pass on 2026-07-24 in `docs/CLASS-AUDIT-WORKING-NOTES.md`. It covers all 29
+active local classes and 13 directly used external class anchors.
+`tooling/class_audit.py` verifies source counts, required metadata,
+`dist/profile.json` agreement, external-anchor coverage, and exactly one
+review decision per class. The pass records 23 local classes as `keep` and 6 as
+`needs evidence`; it makes no ontology axiom change.
+
 ### A07 accepted historical-artifact policy
 
 Status: accepted by Damien Huzard on 2026-07-21. Verification remains open until
@@ -1247,6 +1255,7 @@ unreviewed ontology assertions.
 | A04 | Damien Huzard | 2026-07-21 | Accept | Keep `schema:Place` as a broad exchange range while distinguishing material facilities, immaterial sites/spatial regions, and geometry. Identify an institute with ROR where eligible and its separate geographic place with GeoNames where available. Do not create `hcm:Place`. No ontology axioms changed. | A04 accepted decision and identifier boundary above; ROR schema v2.1; GeoNames Ontology | `docs/philippe-rocca-serra-review` |
 | A05 | Damien Huzard | 2026-07-21 | Accept | Retain the physical HCM actuator specialization and deprecated migration IRI; model actuations, acted-on properties, software controllers, and triggered executions as distinct entities. The future definition expansion is approved but not implemented; no ontology axioms changed. | A05 accepted actuator and actuation boundary above; SOSA/SSN 2023 | `docs/philippe-rocca-serra-review` |
 | A06 | Damien Huzard | 2026-07-21 | Accept as required review gate | Require a signed, evidence-based inventory of every active HCMO class and directly referenced external anchor before hierarchy or mapping implementation. Treat every non-`keep` result as a separate reviewed change. No ontology axioms changed. | A06 accepted active-class audit gate above; `dist/profile.json` plus external-anchor supplement | `docs/philippe-rocca-serra-review` |
+| A06 implementation | Cyril Gilbert (`https://orcid.org/0009-0008-2489-8106`) | 2026-07-24 | Working pass complete; defer semantic changes requiring evidence | Reviewed all 29 active local classes and 13 directly used external class anchors. Recorded 23 local `keep` and 6 `needs evidence` decisions; checked labels, definitions, parents, restrictions, inferred hierarchy, provenance, CQ relevance, external version gaps, and generated-profile agreement. No ontology axiom changed. | `docs/CLASS-AUDIT-WORKING-NOTES.md`; `tooling/class_audit.py --catalog` | `cyril/c04-entailment-contract` |
 | A07 | Damien Huzard; reviewed artifact evidence pending | 2026-07-21 | Accept preservation policy; verification pending | Preserve `ontology/legacy/` and `ontology/v2/` as immutable, excluded historical evidence; use modules as source and generated `dist/` files as load targets. No ontology axioms changed. | A07 accepted historical-artifact policy above; exact reviewed file/version/checksum still required | `docs/philippe-rocca-serra-review` |
 | B01 | Damien Huzard; co-author validation pending | 2026-07-21 | Defer final approval; directory and hybrid pipeline provisionally accepted | Use `ontology/external/` for locked sources, reviewed selections, and committed per-source subsets. Use a Python-controlled, pinned ROBOT pipeline with MIREOT as the readability default and reviewed locality extraction where additional entailments are required. Keep canonical builds offline. No files or ontology axioms implemented. | B01 provisional directory and extraction decision above; ROBOT extraction documentation | `docs/philippe-rocca-serra-review` |
 | B02 | Damien Huzard | 2026-07-21 | Accept | Keep the canonical release self-contained and free of live full-ontology imports. Merge only the approved version-pinned B01 subset; keep any future full-import reasoning profile optional and separate. No ontology axioms changed. | B02 accepted canonical import policy above; B01 co-author validation pending | `docs/philippe-rocca-serra-review` |

@@ -7,6 +7,9 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Added
 
+- Added the signed A06 class audit for all 29 active local classes and 13
+  directly used external class anchors, with reproducible metadata,
+  generated-profile, restriction, coverage, and decision checks.
 - Expanded the signed C01 property audit across all 81 active local
   properties, directly used external property groups, and all 49 deprecated
   compatibility properties, with reproducible metadata, migration, domain,
