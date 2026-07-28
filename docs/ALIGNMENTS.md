@@ -24,12 +24,14 @@ SOSA roles are applied selectively. A domain class is not made a subclass of
 
 ## OWL-Time
 
-Observation intervals are represented directly with `time:Interval` and
-`time:hasBeginning` / `time:hasEnd`. The former
+The current example data represent observation intervals directly with
+`time:Interval`, `time:hasBeginning`, and `time:hasEnd`; the duration competency
+query consumes that pattern. These OWL-Time terms are not redeclared as HCMO
+classes or properties. The former
 `hcm:OWL-Timeintervaltable` artifact is deprecated without replacement.
 
 ## Units roadmap
 
-HCMO 0.1.0 retains datatype values plus explicit unit strings. Adopting QUDT or
+HCMO 0.2.0 retains datatype values plus explicit unit strings. Adopting QUDT or
 OM quantity-value patterns remains an open, separately reviewed modeling
 decision.

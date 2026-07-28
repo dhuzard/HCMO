@@ -57,14 +57,17 @@ makes HCM data usable as a knowledge graph \cite{forrest2026}.
 **Contributions.** We present **HCMO**, the Home-Cage Monitoring Ontology. To our
 knowledge it is the first ontology to model HCM as an integrated system. Concretely:
 
-1. **An ontology for the HCM domain** organised into four modules —
-   *bio* (animal subject and biological observations), *housing* (enclosure,
-   housing assignment, experimental groups), *env* (environmental conditions and
-   their measurements), and *tech* (hardware, sensors, software, time series) —
-   built around an explicit *sensor ≠ observation ≠ result* separation.
-2. **Reuse of established standards** rather than reinvention: SOSA/SSN
-   \cite{sosa}, OWL-Time \cite{owltime}, UO \cite{uo}, PROV \cite{provo}, and
-   BFO \cite{bfo}.
+1. **An ontology for the HCM domain** organised into five modules: a minimal
+   enclosure-centred *core*, *bio* (subjects, groups, factors, and housing
+   assignments), *env* (environmental profiles and measurements), *obs*
+   (observations and results), and *tech* (hardware, sensors, actuators,
+   software, and time series). The model is built around an explicit
+   *sensor ≠ observation ≠ result* separation.
+2. **Selective reuse of established standards** rather than reinvention:
+   BFO \cite{bfo}, IAO, and SOSA/SSN \cite{sosa} provide active semantic
+   anchors, while example data reuse OWL-Time \cite{owltime}. PROV-O
+   \cite{provo} and quantity/unit vocabularies remain explicit alignment work
+   rather than being claimed as implemented.
 3. **A FAIR, tool-consumable resource package**: a stable release manifest,
    modular Turtle sources, a reproducibly generated merged graph (TTL/OWL/JSON-LD),
    SHACL shapes, a JSON-LD context, competency-question SPARQL, HTML documentation,

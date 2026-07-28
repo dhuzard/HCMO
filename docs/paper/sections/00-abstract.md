@@ -10,11 +10,13 @@ highly heterogeneous — differing in sensors, measured variables, software, and
 output formats — and their data are inseparable from a rich experimental context.
 This heterogeneity hinders comparison, reuse, and FAIR data sharing. We present
 **HCMO, the Home-Cage Monitoring Ontology**, which, to our knowledge, is the first
-ontology to model HCM as an integrated system. HCMO is organised into four modules
-— animal subject, housing, environment, and technical acquisition — and is built
-around an explicit separation of sensor, observation, and result, preserving the
-chain from device to interpreted measurement. It reuses established standards
-(SOSA/SSN, OWL-Time, UO, PROV, BFO) rather than reinventing them, and is delivered
+ontology to model HCM as an integrated system. HCMO is organised into five modules
+covering monitored enclosures, biological subjects, environmental context,
+observations and results, and technical acquisition. It is built around an
+explicit separation of sensor, observation, and result, preserving the chain from
+device to interpreted measurement. The current release reuses BFO, IAO, SOSA/SSN,
+Schema.org, SemTS, and OWL-Time terms where their semantics fit, while broader
+provenance and quantity alignments remain future work. HCMO is delivered
 as a FAIR, tool-consumable package: modular sources, reproducibly generated
 distributions (Turtle/OWL/JSON-LD), SHACL shapes, competency-question queries, a
 JSON-LD context, persistent identifiers, an open licence, and documentation. We

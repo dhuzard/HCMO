@@ -51,9 +51,9 @@ the relevant doc and logged in `TODO.md`.
 ## Parked — artifact-dependent (until clean V1 arrives, T0; author: "soon, days")
 | # | Aspect | Conf. | Answer |
 |---|--------|-------|--------|
-| Q9 | Runnable competency-question SPARQL against the V1 terms | 🔴 | _parked: needs T0 artifact_ |
-| Q10 | OOPS!/FOOPS!/reasoner/SHACL reports run? | 🔴 | _parked: needs T0 artifact_ |
-| Q11 | Confirm counts (~45 classes / ~46 props / 6 reused / 17 reused / 12 prefixes) | 🟠 | _parked: verify against T0 artifact_ |
+| Q9 | Runnable competency-question SPARQL against the active terms | 🟢 | Five indexed queries run against HCMO 0.2.0 with reviewed exact row counts. |
+| Q10 | OOPS!/FOOPS!/reasoner/SHACL reports run? | 🟠 | HermiT and ontology-aware SHACL/CQ results are current for 0.2.0. Historical OOPS!/FOOPS! runs are archived; final-release reruns and Protege UI captures remain. |
+| Q11 | Confirm release term counts | 🟢 | Current generated profile: 56 declared classes, 57 object properties, and 73 datatype properties including compatibility terms; active local audit: 29 classes and 81 properties. |
 
 ## Change log
 | Date | Round | Outcome |

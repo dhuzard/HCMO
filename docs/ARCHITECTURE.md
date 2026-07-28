@@ -24,13 +24,18 @@ Its old generated review artifacts remain only as historical evidence.
 ## Dependency policy
 
 HCMO reuses external classes and properties by reference and does not redeclare
-them locally. The active ontology uses:
+them locally. The active ontology modules use:
 
 - BFO and IAO as upper-level anchors;
 - SOSA for observation, result, sensor, actuator, observed-property, and
   feature-of-interest roles;
-- OWL-Time for temporal intervals;
+- Schema.org for contributor and place exchange types;
+- SemTS for selected data-dimension and time-series relations; and
 - Dublin Core Terms for ontology metadata and provenance.
+
+The current example data and competency queries reuse OWL-Time for observation
+intervals. PROV-O, OBI, STATO, ISA RO-Crate, and quantity/unit alignments remain
+reviewed roadmap work and are not claimed as active ontology mappings.
 
 The `bio` and `obs` modules intentionally have a small semantic cycle:
 subject-side convenience properties live in `bio`, while observations point to

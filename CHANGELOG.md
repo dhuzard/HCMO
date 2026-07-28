@@ -7,6 +7,9 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Added
 
+- Added a checksummed HermiT evaluation report for the canonical HCMO 0.2.0
+  OWL artifact and updated the resource-paper claims to match implemented
+  modules, alignments, SHACL validation, and competency-query results.
 - Added the signed A06 class audit for all 29 active local classes and 13
   directly used external class anchors, with reproducible metadata,
   generated-profile, restriction, coverage, and decision checks.
