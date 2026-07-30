@@ -15,8 +15,8 @@ covering monitored enclosures, biological subjects, environmental context,
 observations and results, and technical acquisition. It is built around an
 explicit separation of sensor, observation, and result, preserving the chain from
 device to interpreted measurement. The current release reuses BFO, IAO, SOSA/SSN,
-Schema.org, SemTS, and OWL-Time terms where their semantics fit, while broader
-provenance and quantity alignments remain future work. HCMO is delivered
+Schema.org, and OWL-Time terms where their semantics fit. SemTS alignment, broader
+provenance, and quantity alignments remain future work. HCMO is delivered
 as a FAIR, tool-consumable package: modular sources, reproducibly generated
 distributions (Turtle/OWL/JSON-LD), SHACL shapes, competency-question queries, a
 JSON-LD context, persistent identifiers, an open licence, and documentation. We

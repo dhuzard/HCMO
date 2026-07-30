@@ -22,6 +22,24 @@
 SOSA roles are applied selectively. A domain class is not made a subclass of
 `sosa:FeatureOfInterest` merely because one of its instances can be observed.
 
+### Edition policy
+
+Most SOSA terms reused by HCMO occur in the
+[2017 W3C Recommendation](https://www.w3.org/TR/vocab-ssn/).
+`sosa:Property`, however, follows the developing
+[SOSA/SSN 2023 Edition](https://www.w3.org/TR/vocab-ssn-2023/), currently
+published as a W3C Working Draft; the 2017 edition uses
+`sosa:ObservableProperty` instead. The current `sosa:Property` reference is
+therefore provisional. A dated SOSA source and its exact semantics must be
+pinned before HCMO treats this choice as a stable alignment.
+
+## SemTS
+
+SemTS alignment remains provisional. HCMO currently contains references derived
+from an earlier SemTS model, but their canonical IRIs and semantic fit have not
+yet been validated. These references are not counted as implemented
+external-vocabulary reuse.
+
 ## OWL-Time
 
 The current example data represent observation intervals directly with

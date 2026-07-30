@@ -22,6 +22,9 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Changed
 
+- Qualified SemTS alignment as provisional and documented that its canonical
+  term IRIs and semantic fit remain unvalidated; added an explicit provisional
+  edition policy for the developing `sosa:Property` term.
 - Made pySHACL validation ontology-aware with the documented RDFS entailment
   contract, while keeping OWL consistency checking in HermiT.
 - Run competency questions over the ontology plus positive examples and require

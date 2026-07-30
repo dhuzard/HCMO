@@ -30,12 +30,16 @@ them locally. The active ontology modules use:
 - SOSA for observation, result, sensor, actuator, observed-property, and
   feature-of-interest roles;
 - Schema.org for contributor and place exchange types;
-- SemTS for selected data-dimension and time-series relations; and
+- provisional SemTS-derived references whose canonical IRIs and semantic fit
+  remain under review; and
 - Dublin Core Terms for ontology metadata and provenance.
 
 The current example data and competency queries reuse OWL-Time for observation
 intervals. PROV-O, OBI, STATO, ISA RO-Crate, and quantity/unit alignments remain
 reviewed roadmap work and are not claimed as active ontology mappings.
+SemTS-derived references are likewise not counted as implemented reuse, and the
+`sosa:Property` reference remains provisional until HCMO pins an explicit SOSA
+edition.
 
 The `bio` and `obs` modules intentionally have a small semantic cycle:
 subject-side convenience properties live in `bio`, while observations point to

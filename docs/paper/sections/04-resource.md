@@ -39,12 +39,24 @@ software, and observation-result artifacts use the IAO information-content
 anchor. Sensors, actuators, observations, results, and observed properties reuse
 SOSA classes and relations, and `hcm-tech:captures` is explicitly a subproperty
 of `sosa:observes`. Schema.org supplies contributor and place exchange types.
-Selected SemTS terms describe data dimensions and generated time-series
-segments. The example ABox uses OWL-Time intervals and the duration competency
-query consumes this representation. These are selective references, not claims
-that HCMO imports or reproduces the full external ontologies. PROV-O, OBI,
-STATO, ISA RO-Crate, and QUDT/OM integration remain separately reviewed roadmap
-work.
+The example ABox uses OWL-Time intervals and the duration competency query
+consumes this representation. These are selective references, not claims that
+HCMO imports or reproduces the full external ontologies.
+
+SemTS alignment remains provisional. HCMO currently contains references derived
+from an earlier SemTS model, but their canonical IRIs and semantic fit have not
+yet been validated. These references are not counted as implemented
+external-vocabulary reuse.
+
+HCMO also requires an explicit SOSA edition policy. Most reused SOSA terms occur
+in the 2017 W3C Recommendation \cite{sosa}, while `sosa:Property` follows the
+developing 2023 Edition, currently published as a W3C Working Draft
+\cite{sosa2023}; the 2017 edition instead uses `sosa:ObservableProperty`. HCMO
+retains the current
+`sosa:Property` reference provisionally, but must pin a dated SOSA source and
+review the resulting semantics before treating that choice as a stable
+alignment. PROV-O, OBI, STATO, ISA RO-Crate, and QUDT/OM integration remain
+separately reviewed roadmap work.
 
 **Distribution and application support.** The authored modules are merged
 deterministically into Turtle, RDF/XML, and JSON-LD distributions. A generated

@@ -45,8 +45,10 @@ makes the resource's quality claims reproducible by any third party.
   via GitHub Pages. A public **SPARQL endpoint** will be provided for live
   querying. *[pending: host the endpoint — T6b.]*
 - *Interoperable.* The current model reuses BFO \cite{bfo}, IAO, and SOSA/SSN
-  \cite{sosa} anchors, with Schema.org and selected SemTS terms; example data
-  reuse OWL-Time \cite{owltime}. PROV-O \cite{provo} and quantity-vocabulary
+  \cite{sosa} anchors, with Schema.org; example data reuse OWL-Time
+  \cite{owltime}. The `sosa:Property` choice remains provisional pending a
+  pinned SOSA edition, and SemTS-derived references are not counted as
+  implemented reuse. PROV-O \cite{provo}, SemTS, and quantity-vocabulary
   integration are future alignment work. A JSON-LD context is shipped for
   application developers exchanging data.
 - *Reusable.* The resource is licensed CC BY 4.0, carries provenance on the

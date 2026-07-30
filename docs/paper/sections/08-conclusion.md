@@ -7,10 +7,12 @@ integrated system spanning the animal subject, its housing, the environment, and
 the technical acquisition chain. HCMO captures HCM data together with the
 experimental context that makes them interpretable, keeps sensor, observation, and
 result distinct, and reuses selected terms from BFO, IAO, SOSA/SSN, Schema.org,
-SemTS, and OWL-Time rather than duplicating them. It is delivered as a FAIR,
+and OWL-Time rather than duplicating them. SemTS alignment and the SOSA edition
+governing `sosa:Property` remain provisional. HCMO is delivered as a FAIR,
 tool-consumable resource — modular sources, reproducible distributions, SHACL
-shapes, competency-question queries, a JSON-LD context, persistent identifiers, an
-open licence, and documentation — and is grounded in the COST TEATIME community.
+shapes, competency-question queries, a JSON-LD context, persistent identifiers,
+an open licence, and documentation — and is grounded in the COST TEATIME
+community.
 
 **Limitations.** HCMO is an early, evolving resource. Some conceptual boundaries
 are still being stabilised, most notably between raw data, processed measurement,
