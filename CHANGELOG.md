@@ -3,6 +3,38 @@
 All notable changes to the Home-Cage Monitoring Ontology (HCMO) are documented here. Versions
 track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
+## [Unreleased]
+
+### Added
+
+- Added a checksummed HermiT evaluation report for the canonical HCMO 0.2.0
+  OWL artifact and updated the resource-paper claims to match implemented
+  modules, alignments, SHACL validation, and competency-query results.
+- Added the signed A06 class audit for all 29 active local classes and 13
+  directly used external class anchors, with reproducible metadata,
+  generated-profile, restriction, coverage, and decision checks.
+- Expanded the signed C01 property audit across all 81 active local
+  properties, directly used external property groups, and all 49 deprecated
+  compatibility properties, with reproducible metadata, migration, domain,
+  range, inverse, parent, and shortcut-entailment checks.
+- Added an intentionally invalid example whose SHACL targets are selected only
+  after ontology domain/range inference.
+
+### Changed
+
+- Qualified SemTS alignment as provisional and documented that its canonical
+  term IRIs and semantic fit remain unvalidated; added an explicit provisional
+  edition policy for the developing `sosa:Property` term.
+- Made pySHACL validation ontology-aware with the documented RDFS entailment
+  contract, while keeping OWL consistency checking in HermiT.
+- Run competency questions over the ontology plus positive examples and require
+  reviewed exact row counts instead of accepting unexamined empty results.
+- No ontology terms, axioms, shapes, or generated release artifacts changed.
+
+### Renamed
+
+- None.
+
 ## [0.2.0] - 2026-07-17
 
 Updated the public contribution workflow to emit current HCMO instance data and

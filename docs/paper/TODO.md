@@ -1,7 +1,7 @@
 # HCMO Resource Paper — TODO & change tracking
 
 **Status legend:** ☐ todo · ◐ in progress · ☑ done · ⚠ blocked
-**Last updated:** 2026-07-16
+**Last updated:** 2026-07-28
 
 This is the single source of truth for paper progress. Update the **status**
 column and append to the **Change log** whenever something moves.
@@ -12,12 +12,12 @@ column and append to the **Change log** whenever something moves.
 
 | ID | Task | Owner | Status | Notes |
 |----|------|-------|--------|-------|
-| T0 | **Clean ontology artifact for paper/release** | Damien/Cyril/Codex | ☑ | Five reviewed modules plus a compatibility module are active in `ontology/modules/`; `hcmo.yaml`, `dist/`, shapes, examples, context, and queries target 0.1.0. |
+| T0 | **Clean ontology artifact for paper/release** | Damien/Cyril/Codex | ☑ | Five reviewed modules plus a compatibility module are active in `ontology/modules/`; `hcmo.yaml`, `dist/`, shapes, examples, context, and queries target 0.2.0. |
 | T1 | ~~Lock venue~~ → **ESWC 2027 Resources Track, 15 pp** (HITL R1) | — | ☑ | Re-confirm dates/template when CfP opens. |
 | T2 | ~~Create the w3id PURL redirect~~ → **live**: `https://w3id.org/hcmo/ontology/hcm#` resolves (303 → docs site) | — | ☑ | **Availability hard gate cleared.** [w3id PR #6261](https://github.com/perma-id/w3id.org/pull/6261) merged 2026-06-30; verified 2026-07-03. Re-check with the paper-matching release (T9). |
-| T2b | **Update w3id for the promoted v2 ontology** while keeping the base ontology IRI stable. | — | ☐ | After v2 promotion/release, update the perma-id redirect/content negotiation targets to the v2 documentation and distributions; do not re-mint term IRIs. |
+| T2b | **Verify w3id content negotiation for the current release** while keeping the base ontology IRI stable. | — | ☐ | Confirm that ontology, documentation, Turtle, RDF/XML, and JSON-LD requests resolve to the 0.2.0 publication targets; do not re-mint term IRIs. |
 | T3 | Create Overleaf project from **LNCS** template; mirror `sections/` | — | ☐ | Keep authors **named** (single-anonymous). |
-| T3b | **Re-modularise** to the **DECIDED** R5 shape (2026-07-03): **5 modules — `hcm` core = enclosure only · `bio` · `obs` (observations + results) · `env` · `tech`**. `HousingAssignment` → bio (out of obs); `EnclosureDimensions` → core; all result/value classes → obs; `Sensor/Hardware/Software/TimeSeries` → new `tech` (`…/hcm/tech#`). Supersedes bio/housing/env/tech. | — | ☑ | Promoted into `ontology/modules/` and the live build manifest for 0.1.0. Spec and decision record: `docs/paper/MODULE-MAP.md`. |
+| T3b | **Re-modularise** to the **DECIDED** R5 shape (2026-07-03): **5 modules — `hcm` core = enclosure only · `bio` · `obs` (observations + results) · `env` · `tech`**. `HousingAssignment` → bio (out of obs); `EnclosureDimensions` → core; all result/value classes → obs; `Sensor/Hardware/Software/TimeSeries` → new `tech` (`…/hcm/tech#`). Supersedes bio/housing/env/tech. | — | ☑ | Promoted into `ontology/modules/` and retained in the live 0.2.0 build manifest. Spec and decision record: `docs/paper/MODULE-MAP.md`. |
 | T3c | **Decide which module owns the bio↔obs linking properties** (Subject→observation vs Observation→subject). The two modules are mutually dependent; **accept the bio/obs cycle for V1 knowingly** (harmless in the merged graph; blocks strict `owl:imports` layering only). | — | ☑ | Decision applied in v2 and documented in `docs/ARCHITECTURE.md`/`MODEL.md`: subject-to-observation convenience links stay in `bio`; observation-to-subject semantics use SOSA `hasFeatureOfInterest` in `obs`. |
 
 ## Phase 1 — Make the resource paper-ready (ontology work)
@@ -28,11 +28,11 @@ column and append to the **Change log** whenever something moves.
 |----|------|--------|-------|
 | T4 | Replace/remove **Chowlk placeholders** (`UNKNOWN:*`, `ns:Class2`, `ns:objectProperty`, `xsd:boolean/integer` as properties) | ☑ | No placeholder is present in the active graph. The original export is archived and valid old HCMO IRIs are handled in the compatibility module. |
 | T5 | Add **labels + `rdfs:comment`/IAO definitions** for all terms | ☑ | Every active HCMO class/property has a label and textual definition; wording remains open to ordinary expert review. |
-| T6 | **Re-author SHACL shapes, examples & competency queries** against the clean V1 term set | ☑ | Shapes, positive/negative examples, ISA bridge example, and five executable competency queries target 0.1.0. |
+| T6 | **Re-author SHACL shapes, examples & competency queries** against the active term set | ☑ | Shapes, three positive and two negative examples, and five executable competency queries target 0.2.0; ontology-aware RDFS target selection and exact CQ row counts are enforced. |
 | T6b | **Host a public SPARQL endpoint** (HITL R3) | ☐ | Strongest availability story; depends on T0. |
 | T7 | Write **lab-maintained** governance/versioning policy (Huzard team, GitHub, SemVer+versionIRI; TEATIME = feedback channel) | ☐ | HITL R3. Feeds §7. |
 | T7b | **Drop MAPP branding** in paper docs and reconcile repository branding | ☑ | Active ontology metadata, manifest, README, citation metadata, and current documentation consistently use HCMO. |
-| T8 | Run **quality evaluation**: OOPS!, FOOPS! (FAIR), reasoner (HermiT/ELK), pySHACL, CQ results — archive reports | ◐ | HermiT, FOOPS, and OOPS! evidence is archived; current build, parse, SHACL, and CQ execution gates pass. OOPS! (public rerun 2026-07-15) reports no critical or important pitfalls, only P13 minor for 8 intentionally-unasserted inverses; to be re-confirmed on the promoted 0.1.0 release. See `docs/paper/PROTEGE-REASONER.md`, `docs/paper/FOOPS-REPORT-2026-07-09.md`, and `docs/paper/evaluation/OOPS-REPORT-2026-07-10.md`. |
+| T8 | Run **quality evaluation**: OOPS!, FOOPS! (FAIR), reasoner (HermiT/ELK), pySHACL, CQ results — archive reports | ◐ | Current 0.2.0 build, HermiT, parse, ontology-aware SHACL, and exact CQ gates pass. Historical clean-v2 OOPS!/FOOPS! evidence is archived; rerun both scanners on the final paper-matching release. Manual Protege hierarchy/deprecation screenshots remain. |
 | T9 | Cut a **tagged release** (e.g. `v0.x`) + refreshed Zenodo DOI matching the paper | ☐ | Canonical citation. |
 
 ## Phase 2 — Write the paper
@@ -43,9 +43,9 @@ column and append to the **Change log** whenever something moves.
 | T11 | Introduction & motivation — **drafted** (Gilbert 2026) | `sections/01-introduction.md` | ☑ |
 | T12 | Related work — **drafted** (OBI/OLAM/MEDO/ARRIVE positioned) | `sections/02-related-work.md` | ☑ |
 | T13 | Requirements & competency questions — **drafted** (R1–R8 + CQ1–CQ6; results deferred T6) | `sections/03-requirements.md` | ☑ |
-| T14 | Resource description (modules, classes/properties, standards reuse) | `sections/04-resource.md` | ☐ |
+| T14 | Resource description (modules, classes/properties, standards reuse) | `sections/04-resource.md` | ☑ |
 | T15 | Engineering & availability — **drafted** (manifest, build, CI, FAIR, license, endpoint, governance; pending items marked) | `sections/05-availability.md` | ☑ |
-| T16 | Evaluation (OOPS!/FOOPS!/reasoner/SHACL/CQs + completeness) | `sections/06-evaluation.md` | ☐ |
+| T16 | Evaluation (OOPS!/FOOPS!/reasoner/SHACL/CQs + completeness) | `sections/06-evaluation.md` | ◐ |
 | T17 | Impact, use cases & outlook — **drafted** (reasoning, KGQA/authoring/vendor as outlook, TEATIME adoption) | `sections/07-impact.md` | ☑ |
 | T18 | Conclusion & future work — **drafted** (honest limitations + roadmap) | `sections/08-conclusion.md` | ☑ |
 | T19 | Figures: architecture, ontology overview (WebVOWL), example ABox graph | `figures/` | ◐ |
@@ -68,6 +68,7 @@ column and append to the **Change log** whenever something moves.
 
 | Date | Change | By |
 |------|--------|----|
+| 2026-07-28 | **Paper and current-artifact evaluation refresh** — aligned the abstract, resource, availability, evaluation, and conclusion drafts with HCMO 0.2.0; archived the checksummed current HermiT result; separated implemented alignments from roadmap claims; left manual Protege UI evidence and final OOPS!/FOOPS! reruns open. | Codex |
 | 2026-07-15 | **OOPS public rerun archived** — reran OOPS! on the public v2 clean artifact; no critical or important pitfalls (P11/P22 closed), only P13 minor for 8 inverses intentionally not asserted. Archived the XML and a triaged Markdown report under `docs/paper/evaluation/`. Evaluation only; no change to the promoted 0.1.0 modules. | Codex |
 | 2026-07-10 | **OOPS post-FOOPS evaluation archived** — ran OOPS! on the FOOPS-fixed clean v2 artifact, triaged safe findings, and archived the XML plus a Markdown report at `docs/paper/evaluation/OOPS-REPORT-2026-07-10.md`. | Codex |
 | 2026-07-09 | **FOOPS logo metadata closed** — added `HCMO-logo3.png` to the README and `schema:logo` to the v2 ontology header; regenerated v2 artifacts and FOOPS now scores 1.0 on the clean OWL artifact. | Codex |

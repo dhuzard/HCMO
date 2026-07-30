@@ -40,19 +40,19 @@
 | 12 | Ontologie | Vérifier modules Turtle/OWL exportés | Oui | ✅ | `ontology/modules/`, `dist/`, `tooling/validate.py` | Build reproductible, parsing des modules/distributions et validation automatisée. |
 | 13 | Ontologie | Nettoyer termes Chowlk temporaires | Oui | ✅ | `docs/paper/PLACEHOLDER-MAP.md`, `ontology/legacy/mapp-0.0.1/` | Aucun placeholder actif; source originale archivée hors manifeste. |
 | 14 | Ontologie | Exemples d'instances représentatifs | Oui | ✅ | `examples/abox-minimal.ttl`, `examples/isa-hcmo-bridge.ttl`, `examples/dvc-tecniplast.ttl` | Exemples HCMO courants, cas ISA/RO-Crate et profil DVC présents. |
-| 15 | Ontologie | Requêtes SPARQL des competency questions | Oui | 🟡 | `queries/competency_questions.yaml`, `queries/cq-*.rq` | Cinq requêtes HCMO 0.1.0 s'exécutent; aligner encore la sixième CQ du papier. |
+| 15 | Ontologie | Requêtes SPARQL des competency questions | Oui | 🟡 | `queries/competency_questions.yaml`, `queries/cq-*.rq` | Cinq requêtes HCMO 0.2.0 s'exécutent avec des nombres de résultats attendus; aligner encore la sixième CQ du papier. |
 | 16 | Ontologie | SHACL valides/invalides | Oui | ✅ | `shapes/hcm-shapes.ttl`, `examples/` | Les exemples positifs et négatifs sont exécutés par `tooling/validate.py`. |
-| 17 | Ontologie | Lancer OOPS! + FOOPS! FAIR ontology assessment + noter problèmes | Oui | ✅ | `docs/paper/FOOPS-REPORT-2026-07-09.md`, `docs/paper/evaluation/OOPS-REPORT-2026-07-10.md`, `sections/06-evaluation.md` | FOOPS v0.4.0 lancé sur le clean v2: score 0.49444446 → 1.0 après métadonnées, définitions et logo. OOPS! lancé et archivé (rerun public 2026-07-15): aucun piège critique ou important; seul P13 mineur reste (8 inverses non assertés). À re-confirmer sur la release 0.1.0 promue. |
+| 17 | Ontologie | Lancer OOPS! + FOOPS! FAIR ontology assessment + noter problèmes | Oui | 🟡 | `docs/paper/FOOPS-REPORT-2026-07-09.md`, `docs/paper/evaluation/OOPS-REPORT-2026-07-10.md`, `sections/06-evaluation.md` | Historique clean-v2 archivé: FOOPS 1.0 et aucun OOPS critique/important. À relancer sur l'artefact final 0.2.0 cité dans le papier. |
 | 18 | Évaluation | Définir les competency questions de l'article | Oui | ✅ | `sections/03-requirements.md` | CQ1–CQ6 + mapping R1–R8. |
 | 19 | Évaluation | Chaque requête répond à une CQ | Oui | 🟡 | `queries/competency_questions.yaml` | Les cinq requêtes du dépôt sont indexées; réconcilier avec CQ1–CQ6 du papier. |
-| 20 | Évaluation | Bilan OOPS!/FOOPS!/SHACL/WIDOCO/HermiT | Oui | ✅ | `sections/06-evaluation.md`, `docs/paper/PROTEGE-REASONER.md`, `docs/paper/FOOPS-REPORT-2026-07-09.md`, `docs/paper/evaluation/OOPS-REPORT-2026-07-10.md` | WIDOCO, HermiT, FOOPS et SHACL/CQ ✅; OOPS! ✅ archivé (aucun critique/important, seul P13 mineur documenté). |
+| 20 | Évaluation | Bilan OOPS!/FOOPS!/SHACL/WIDOCO/HermiT | Oui | 🟡 | `sections/06-evaluation.md`, `docs/paper/PROTEGE-REASONER.md`, `docs/paper/evaluation/PROTEGE-HERMIT-2026-07-28.md` | HermiT, SHACL et CQ sont confirmés sur 0.2.0. OOPS!/FOOPS! restent à relancer sur la release finale; captures UI Protégé encore à archiver. |
 | 21 | Ontologie | Documentation WIDOCO | Oui | ✅ | `README.md` → <https://dhuzard.github.io/HCMO/index-en.html> | Lien ajouté au README. |
 | 22 | Availability | Dépôt GitHub propre & compréhensible | Oui | ✅ | `README.md`, `docs/README.md`, `docs/ARCHITECTURE.md` | Architecture active, sources historiques, génération et validation sont documentées. |
 | 23 | Availability | Release versionnée figée | Oui | ⬜ | `TODO.md` (T9) | À cadrer sur la version citée. |
 | 24 | Availability | DOI Zenodo | Oui | ✅ | `CITATION.cff` → 10.5281/zenodo.18925285 | Existe; à refigers sur la release du papier (T9). |
 | 25 | Availability | Vérifier la licence | Oui | ✅ | `LICENSE`, `README.md` | CC BY 4.0 (fichier vérifié). ⚠ **Consentement des co-auteurs à confirmer** (CC BY 4.0 vs CC0) — voir OPEN-QUESTIONS Q19 / TODO T23b. |
 | 26 | Availability | CITATION.cff | Oui | ✅ | `CITATION.cff` | Présent + ORCIDs ajoutés. |
-| 27 | Availability | Namespace persistant w3id | Oui | 🟡 | <https://github.com/perma-id/w3id.org/pull/6261>, <https://w3id.org/hcmo/ontology/hcm> | Namespace HCMO live depuis le 2026-06-30. Follow-up ajouté: mettre à jour le w3id pour la version v2/release promue, sans changer l'IRI de base. |
+| 27 | Availability | Namespace persistant w3id | Oui | 🟡 | <https://github.com/perma-id/w3id.org/pull/6261>, <https://w3id.org/hcmo/ontology/hcm> | Namespace HCMO live depuis le 2026-06-30. Vérifier la négociation de contenu vers les artefacts et la documentation 0.2.0, sans changer l'IRI de base. |
 | 28 | Availability | README : comment utiliser l'ontologie | Oui | ✅ | `README.md` | Quickstart + "Consuming the ontology". |
 | 29 | Availability | Release/doc/DOI = même version | Oui | ⬜ | `TODO.md` (T9) | À faire au moment de la release. |
 | 30 | Availability | Section Availability prête à coller | Oui | ✅ | `sections/05-availability.md`, `metadata/resource-metadata.md` | GitHub/DOI/licence/docs/examples/queries. |
@@ -67,22 +67,20 @@
 | 39 | Soumission | Tableau récap des ressources | Oui | ✅ | `metadata/resource-metadata.md` | GitHub/DOI/docs/examples/SHACL/queries. |
 | 40 | Soumission | Relecture interne complète | Oui | ⬜ | `TODO.md` (T22) | À faire en fin de rédaction. |
 | 41 | Soumission | Liste auteurs & contributions | Oui | ✅ | `metadata/authors.md` | Gilbert 1ᵉʳ; Todorov & Huzard co-corresp. |
-| 42 | Soumission | Version soumissionnable (objectif fin juillet) | Oui | 🟡 | `sections/` | Le blocage T0 est levé; §4/§6 et la relecture finale restent à terminer. |
+| 42 | Soumission | Version soumissionnable (objectif fin juillet) | Oui | 🟡 | `sections/` | §4 et §6 sont maintenant rédigées pour 0.2.0; restent la réconciliation des CQ, les preuves finales OOPS!/FOOPS!/Protégé, les figures et la relecture. |
 | 43 | Soumission | Archive interne (preuves & liens) | Non | ✅ | `docs/paper/` (OPEN-QUESTIONS, AUDIT, NOVELTY…) | Ce dossier sert d'archive de décisions. |
 | 44 | Availability | Liens valides après soumission/publication | Oui | ⬜ | — | À revérifier avant soumission. |
 
 ## What's drafted (article) — for items 2–6, 18, 30, 36–37, 39, 41
-Abstract + §1 Introduction + §2 Related work + §3 Requirements + §5
-Engineering/Availability + §7 Impact + §8 Conclusion are **drafted** in
-`docs/paper/sections/`. **§4 Resource description** and **§6 Evaluation** are the
-only sections still incomplete; §6 now has HermiT, FOOPS, and archived OOPS!
-evidence, while the final paper-level CQ reconciliation remains outstanding;
-SHACL and repository CQ execution no longer depend on promotion.
+All eight article sections now have a draft in `docs/paper/sections/`. The
+resource and evaluation sections were refreshed against HCMO 0.2.0 on
+2026-07-28. The final paper-level CQ reconciliation, figures, citations,
+evaluation reruns, and full-text review remain outstanding.
 
 ## Remaining work
 The ontology promotion blocker is cleared. Items **15** and **19** require
 alignment between the repository's five executable queries and the paper's six
-competency questions. Item **42** now depends on finishing §4/§6 and final
-review. Item **17** is closed — OOPS! is archived (no critical/important
-pitfalls; only P13 minor), to be re-confirmed on the promoted 0.1.0 release —
-and item **27 (w3id)** remains a release follow-up.
+competency questions. Item **17** remains partially open because the archived
+OOPS!/FOOPS! runs target the clean-v2 precursor, not the final paper-matching
+0.2.0 artifact. Item **20** additionally needs the manual Protege screenshots,
+and item **27 (w3id)** remains a release-verification follow-up.

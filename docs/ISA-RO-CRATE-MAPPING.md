@@ -4,6 +4,10 @@ Status: design note for expert review. This document distinguishes assertions
 that are already represented in HCMO 0.1.0 from proposed serialization choices
 for Metadatapp and ISA RO-Crate.
 
+The A02 process-layer audit and ISA/STATO compatibility findings are recorded in
+[`A02-ISA-STATO-COMPATIBILITY.md`](A02-ISA-STATO-COMPATIBILITY.md). Those
+findings are future work and do not constitute accepted ontology mappings.
+
 ## Current Metadatapp export
 
 `Neuronautix/metadatapp-oss/templates/ro-crate-metadata.jsonld.tpl` is a generic

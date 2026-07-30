@@ -22,14 +22,34 @@
 SOSA roles are applied selectively. A domain class is not made a subclass of
 `sosa:FeatureOfInterest` merely because one of its instances can be observed.
 
+### Edition policy
+
+Most SOSA terms reused by HCMO occur in the
+[2017 W3C Recommendation](https://www.w3.org/TR/vocab-ssn/).
+`sosa:Property`, however, follows the developing
+[SOSA/SSN 2023 Edition](https://www.w3.org/TR/vocab-ssn-2023/), currently
+published as a W3C Working Draft; the 2017 edition uses
+`sosa:ObservableProperty` instead. The current `sosa:Property` reference is
+therefore provisional. A dated SOSA source and its exact semantics must be
+pinned before HCMO treats this choice as a stable alignment.
+
+## SemTS
+
+SemTS alignment remains provisional. HCMO currently contains references derived
+from an earlier SemTS model, but their canonical IRIs and semantic fit have not
+yet been validated. These references are not counted as implemented
+external-vocabulary reuse.
+
 ## OWL-Time
 
-Observation intervals are represented directly with `time:Interval` and
-`time:hasBeginning` / `time:hasEnd`. The former
+The current example data represent observation intervals directly with
+`time:Interval`, `time:hasBeginning`, and `time:hasEnd`; the duration competency
+query consumes that pattern. These OWL-Time terms are not redeclared as HCMO
+classes or properties. The former
 `hcm:OWL-Timeintervaltable` artifact is deprecated without replacement.
 
 ## Units roadmap
 
-HCMO 0.1.0 retains datatype values plus explicit unit strings. Adopting QUDT or
+HCMO 0.2.0 retains datatype values plus explicit unit strings. Adopting QUDT or
 OM quantity-value patterns remains an open, separately reviewed modeling
 decision.

@@ -24,18 +24,50 @@ Its old generated review artifacts remain only as historical evidence.
 ## Dependency policy
 
 HCMO reuses external classes and properties by reference and does not redeclare
-them locally. The active ontology uses:
+them locally. The active ontology modules use:
 
 - BFO and IAO as upper-level anchors;
 - SOSA for observation, result, sensor, actuator, observed-property, and
   feature-of-interest roles;
-- OWL-Time for temporal intervals;
+- Schema.org for contributor and place exchange types;
+- provisional SemTS-derived references whose canonical IRIs and semantic fit
+  remain under review; and
 - Dublin Core Terms for ontology metadata and provenance.
+
+The current example data and competency queries reuse OWL-Time for observation
+intervals. PROV-O, OBI, STATO, ISA RO-Crate, and quantity/unit alignments remain
+reviewed roadmap work and are not claimed as active ontology mappings.
+SemTS-derived references are likewise not counted as implemented reuse, and the
+`sosa:Property` reference remains provisional until HCMO pins an explicit SOSA
+edition.
 
 The `bio` and `obs` modules intentionally have a small semantic cycle:
 subject-side convenience properties live in `bio`, while observations point to
 their subject with `sosa:hasFeatureOfInterest`. HCMO is released as one merged
 graph, so this does not create an import-order dependency.
+
+## Validation architecture
+
+The release has three separate validation layers:
+
+- `tooling/build.py` creates deterministic release artifacts from the module
+  list in `hcmo.yaml` without network access;
+- pySHACL validates each isolated example against `shapes/hcm-shapes.ttl`, with
+  the merged ontology supplied as a separate ontology graph and RDFS inference
+  enabled; and
+- HermiT checks OWL DL consistency on the generated release artifact.
+
+The pySHACL data graph is never the ontology graph alone. Supplying the
+ontology graph ensures that an instance typed through a reviewed subclass,
+domain, or range axiom is selected by the same `sh:targetClass` as an explicitly
+typed instance. Shapes define intake/profile requirements and must not be
+copied into OWL existential restrictions.
+
+Competency queries run over a separate evaluation graph containing the merged
+ontology and all positive examples declared in `hcmo.yaml`. Negative examples
+remain isolated and never contribute answers. Expected row counts live beside
+the stable CQ identifiers in `queries/competency_questions.yaml`; the validator
+fails on a missing query, an unindexed query, or a count mismatch.
 
 ## Extension rules
 

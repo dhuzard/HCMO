@@ -35,8 +35,10 @@ which drive the model (forward references to §4):
 - **R6 — Rich, machine-readable metadata.** Species, strain, sex, age, housing,
   enrichment, device configuration, sampling rate, software, and protocol must be
   first-class, supporting FAIR reuse \cite{fair,forrest2026}.
-- **R7 — Standards reuse and interoperability.** Where a suitable standard exists
-  (SOSA/SSN, OWL-Time, UO, PROV, BFO), it must be reused rather than re-minted.
+- **R7 — Standards reuse and interoperability.** Where a suitable standard
+  exists, it must be reused rather than re-minted. Candidate standards include
+  SOSA/SSN, OWL-Time, BFO/IAO, PROV-O, and reviewed quantity/unit
+  vocabularies; each mapping strength must be justified separately.
 - **R8 — Data-quality checking.** The model must support consistency and
   completeness checks (e.g. a numeric value without a unit, an animal not assigned
   to an enclosure over an interval).
