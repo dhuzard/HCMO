@@ -1,0 +1,17 @@
+PREFIX hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#>
+PREFIX schema: <https://schema.org/>
+PREFIX stato: <http://purl.obolibrary.org/obo/STATO_>
+
+SELECT ?subject ?group ?factor ?factorValue
+WHERE {
+  ?subject a hcm-bio:Subject ;
+           hcm-bio:belongsToGroup ?group ;
+           schema:additionalProperty ?factorValue .
+  ?group a hcm-bio:ExperimentalGroup ;
+         hcm-bio:hasMember ?subject ;
+         schema:additionalProperty ?factorValue .
+  ?factorValue a stato:0000265 ;
+               schema:propertyID ?factor .
+  ?factor a hcm-bio:StudyFactors .
+}
+ORDER BY ?subject ?group ?factor

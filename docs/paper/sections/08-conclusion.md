@@ -8,7 +8,10 @@ the technical acquisition chain. HCMO captures HCM data together with the
 experimental context that makes them interpretable, keeps sensor, observation, and
 result distinct, and reuses selected terms from BFO, IAO, SOSA/SSN, Schema.org,
 and OWL-Time rather than duplicating them. SemTS alignment and the SOSA edition
-governing `sosa:Property` remain provisional. HCMO is delivered as a FAIR,
+governing `sosa:Property` remain provisional. A pinned instance-level
+ISA/Bioschemas, PROV-O, OBI, and STATO evidence slice demonstrates one acyclic
+recording-to-statistical-result workflow without claiming HCMO class mappings or
+formal ISA conformance. HCMO is delivered as a FAIR,
 tool-consumable resource — modular sources, reproducible distributions, SHACL
 shapes, competency-question queries, a JSON-LD context, persistent identifiers,
 an open licence, and documentation — and is grounded in the COST TEATIME

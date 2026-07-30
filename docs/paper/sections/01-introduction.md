@@ -65,9 +65,11 @@ knowledge it is the first ontology to model HCM as an integrated system. Concret
    *sensor ≠ observation ≠ result* separation.
 2. **Selective reuse of established standards** rather than reinvention:
    BFO \cite{bfo}, IAO, and SOSA/SSN \cite{sosa} provide active semantic
-   anchors, while example data reuse OWL-Time \cite{owltime}. PROV-O
-   \cite{provo} and quantity/unit vocabularies remain explicit alignment work
-   rather than being claimed as implemented.
+   anchors, while example data reuse OWL-Time \cite{owltime}. A pinned
+   example-level evidence slice uses PROV-O \cite{provo}, OBI, STATO, and
+   ISA/Bioschemas without asserting HCMO class mappings or formal ISA
+   conformance. Broader provenance/process mappings and quantity/unit
+   vocabularies remain explicit alignment work.
 3. **A FAIR, tool-consumable resource package**: a stable release manifest,
    modular Turtle sources, a reproducibly generated merged graph (TTL/OWL/JSON-LD),
    SHACL shapes, a JSON-LD context, competency-question SPARQL, HTML documentation,

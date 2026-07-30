@@ -44,6 +44,9 @@ EXPECTED_DIST_KEYS = {
     "context",
 }
 EXPECTED_QUERY_KEYS = {"index", "dir"}
+PREFIX_RE = re.compile(r"(?im)^\s*PREFIX\s+([\w-]+):\s*<([^>]+)>")
+PREFIXED_TERM_RE = re.compile(r"\b([\w-]+):([A-Za-z_][\w.-]*)")
+IRI_RE = re.compile(r"<(https?://[^>]+)>")
 
 
 def _load_yaml(path: Path) -> dict:
@@ -85,6 +88,7 @@ def _check_contract(notes: list[str]) -> tuple[bool, dict]:
         return False, contract
 
     all_terms: set[str] = set()
+    namespace_terms: dict[str, set[str]] = {}
     artifact_count = 0
     for vocab_id, entry in vocabularies.items():
         if not isinstance(entry, dict):
@@ -122,6 +126,8 @@ def _check_contract(notes: list[str]) -> tuple[bool, dict]:
             ok = False
             notes.append(f"[FAIL] vocabulary {vocab_id} has duplicate used_terms")
         all_terms.update(terms)
+        for namespace in namespaces:
+            namespace_terms.setdefault(namespace, set()).update(terms)
 
         if not isinstance(artifacts, list) or not artifacts:
             ok = False
@@ -181,6 +187,48 @@ def _check_contract(notes: list[str]) -> tuple[bool, dict]:
                 "[FAIL] curated upper terms are not covered by vocabulary allowlists"
             )
 
+    manifest = _load_yaml(MANIFEST_PATH)
+    source_paths = [
+        *(ROOT / path for path in manifest.get("modules", [])),
+        *(ROOT / path for path in manifest.get("examples", [])),
+        *sorted((ROOT / "shapes").glob("*.ttl")),
+    ]
+    source_graph = Graph()
+    for path in source_paths:
+        source_graph.parse(path, format="turtle")
+    used_iris = {
+        str(term)
+        for triple in source_graph
+        for term in triple
+        if isinstance(term, URIRef)
+    }
+    for query_path in sorted((ROOT / manifest["queries"]["dir"]).glob("cq-*.rq")):
+        query_text = query_path.read_text(encoding="utf-8")
+        prefixes = dict(PREFIX_RE.findall(query_text))
+        used_iris.update(set(IRI_RE.findall(query_text)) - set(prefixes.values()))
+        used_iris.update(
+            prefixes[prefix] + local
+            for prefix, local in PREFIXED_TERM_RE.findall(query_text)
+            if prefix in prefixes
+        )
+
+    uncovered = sorted(
+        iri
+        for iri in used_iris
+        if any(iri.startswith(namespace) for namespace in namespace_terms)
+        and not any(
+            iri in allowed
+            for namespace, allowed in namespace_terms.items()
+            if iri.startswith(namespace)
+        )
+    )
+    if uncovered:
+        ok = False
+        notes.append(
+            "[FAIL] external IRIs used outside contract allowlists: "
+            f"{uncovered}"
+        )
+
     if ok:
         notes.append(
             f"[OK]   external contract: {len(vocabularies)} vocabularies, "
@@ -189,6 +237,7 @@ def _check_contract(notes: list[str]) -> tuple[bool, dict]:
         notes.append(
             f"[OK]   curated upper subset: {len(expected_terms)} source terms"
         )
+        notes.append("[OK]   active RDF and query IRIs covered by term allowlists")
     return ok, contract
 
 

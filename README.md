@@ -68,7 +68,8 @@ webapp/                        # optional Node.js authoring/blueprint app
 pip install -r tooling/requirements.txt
 
 python tooling/build.py      # regenerate dist/ + profile.json (idempotent, reproducible)
-python tooling/validate.py   # parse all TTL + pySHACL + competency queries (the CI gate)
+python tooling/validate.py   # parse + contract + SHACL + exact-answer CQs (the CI gate)
+python tooling/external_vocab.py --verify-network  # recheck pinned source bytes
 ```
 
 - **`tooling/build.py`** merges `ontology/modules/*.ttl` into `dist/` using a
@@ -76,8 +77,9 @@ python tooling/validate.py   # parse all TTL + pySHACL + competency queries (the
   output (clean diffs). Everything in `dist/` is generated — edit the modules,
   not the artifacts.
 - **`tooling/validate.py`** parses every TTL, runs the SHACL shapes against the
-  examples, and runs every `queries/cq-*.rq` against the merged graph; it exits
-  non-zero on failure. It is the same check the PR workflow runs.
+  examples, validates the dedicated acyclic ISA/STATO evidence slice, and checks
+  every `queries/cq-*.rq` against complete reviewed answers; it exits non-zero
+  on failure. It is the same check the PR workflow runs.
 
 ## Consuming the ontology
 
@@ -88,7 +90,11 @@ python tooling/validate.py   # parse all TTL + pySHACL + competency queries (the
   counts — ideal for sync layers and UIs.
 - **JSON-LD apps:** apply `ontology/context.jsonld` when exchanging data.
 - **Validation:** use `shapes/hcm-shapes.ttl` to validate payloads during
-  ingestion; see `examples/` for conformant and intentionally-invalid ABoxes.
+  ingestion; `shapes/isa-hcmo-evidence-shapes.ttl` covers the pinned ISA/STATO
+  bridge evidence. See `examples/` for conformant and intentionally-invalid
+  ABoxes.
+- **External source contract:** read `external-vocabularies.yaml` for pinned
+  versions, canonical term namespaces, used-term allowlists, and checksums.
 - **Everything is discoverable from `hcmo.yaml`** — resolve module, dist, shapes,
   queries, and example paths from there rather than hard-coding them.
 

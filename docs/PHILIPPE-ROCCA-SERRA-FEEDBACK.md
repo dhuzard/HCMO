@@ -91,12 +91,14 @@ topic and offered to present STATO to the group. The next step is an
 evidence-review session around one concrete HCM workflow, not immediate
 alignment axioms. The external-vocabulary contract is now implemented in
 `external-vocabularies.yaml`, pinning OBI, STATO, ISA, and the selected ISA
-RO-Crate draft. The remaining review package should contain:
+RO-Crate draft. The concrete acyclic workflow and answer-based competency
+questions are now implemented as an evidence slice. The remaining review
+package should contain:
 
-1. one acyclic recording-to-raw-file-to-statistical-result example;
-2. answer-based competency questions for factors, factor values, groups,
-   executions, files, and typed statistical results; and
-3. explicit decisions on mapping strength and ISA round-trip losses.
+1. explicit decisions on mapping strength; and
+2. resolution of the housing-assignment and non-file statistical-result ISA
+   round-trip losses.
 
-Until that review is complete, STATO and ISA remain compatibility and exchange
-roadmap work rather than implemented HCMO vocabulary reuse.
+Until that review is complete, the STATO and ISA types in the bridge remain
+instance-level interoperability evidence rather than HCMO class mappings or a
+claim of formal ISA RO-Crate conformance.

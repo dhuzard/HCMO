@@ -1,26 +1,85 @@
 # Competency questions index for the Home-Cage Monitoring Ontology (HCMO).
-# Each entry maps a natural-language competency question to its SPARQL file.
-#
+# Every query is checked against its complete reviewed answer rows, including
+# unbound variables represented as null. Counts alone are not acceptance
+# evidence.
 version: 0.2.0
 dir: queries
 questions:
   - id: animals-by-enclosure
     question: Which biological subjects are assigned to each monitored enclosure?
     file: queries/cq-animals-by-enclosure.rq
-    expected_rows: 3
+    expected_answers:
+      - enclosure: https://example.org/hcmo/isa-crate/cage-12
+        subjects: https://example.org/hcmo/isa-crate/animal-1
+      - enclosure: https://example.org/hcmo/minimal/cage-12
+        subjects: https://example.org/hcmo/minimal/mouse-1
+      - enclosure: https://w3id.org/hcmo/id/example-submission/enclosure-example-hcm
+        subjects: https://w3id.org/hcmo/id/example-submission/subject-example-hcm
+
+  - id: isa-factor-group-assignment
+    question: Which subject, experimental group, study factor, and STATO factor level form the reviewed ISA evidence assignment?
+    file: queries/cq-isa-factor-group-assignment.rq
+    expected_answers:
+      - subject: https://example.org/hcmo/isa-crate/animal-1
+        group: https://example.org/hcmo/isa-crate/ambient-temperature-group
+        factor: https://example.org/hcmo/isa-crate/ambient-temperature-factor
+        factorValue: https://example.org/hcmo/isa-crate/ambient-temperature-22c
+
+  - id: isa-recording-provenance
+    question: Which execution, protocol, sensor, and enclosure generated the reviewed raw ISA data file?
+    file: queries/cq-isa-recording-provenance.rq
+    expected_answers:
+      - file: https://example.org/hcmo/isa-crate/activity-file
+        execution: https://example.org/hcmo/isa-crate/acquisition-process
+        protocol: https://example.org/hcmo/isa-crate/recording-protocol
+        sensor: https://example.org/hcmo/isa-crate/sensor-1
+        enclosure: https://example.org/hcmo/isa-crate/cage-12
+
+  - id: isa-statistical-result-provenance
+    question: Which OBI data transformation links the raw file, output file, and typed STATO result?
+    file: queries/cq-isa-statistical-result-provenance.rq
+    expected_answers:
+      - result: https://example.org/hcmo/isa-crate/mean-activity
+        execution: https://example.org/hcmo/isa-crate/activity-summary-process
+        inputFile: https://example.org/hcmo/isa-crate/activity-file
+        outputFile: https://example.org/hcmo/isa-crate/activity-summary-file
+
   - id: missing-dimensions
     question: Which enclosures are missing dimension records?
     file: queries/cq-missing-dimensions.rq
-    expected_rows: 0
+    expected_answers: []
+
   - id: needs-provisioning
     question: Which housed subjects are assigned to enclosures with incomplete husbandry requirements?
     file: queries/cq-needs-provisioning.rq
-    expected_rows: 3
+    expected_answers:
+      - subject: https://example.org/hcmo/isa-crate/animal-1
+        enclosure: https://example.org/hcmo/isa-crate/cage-12
+      - subject: https://example.org/hcmo/minimal/mouse-1
+        enclosure: https://example.org/hcmo/minimal/cage-12
+      - subject: https://w3id.org/hcmo/id/example-submission/subject-example-hcm
+        enclosure: https://w3id.org/hcmo/id/example-submission/enclosure-example-hcm
+
   - id: sensors-behaviors
     question: Which properties does each monitored enclosure's sensor capture?
     file: queries/cq-sensors-behaviors.rq
-    expected_rows: 3
+    expected_answers:
+      - enclosure: https://example.org/hcmo/isa-crate/cage-12
+        sensor: https://example.org/hcmo/isa-crate/sensor-1
+        property: null
+      - enclosure: https://example.org/hcmo/minimal/cage-12
+        sensor: https://example.org/hcmo/minimal/ir-sensor-1
+        property: https://example.org/hcmo/minimal/locomotor-activity
+      - enclosure: https://w3id.org/hcmo/id/example-submission/enclosure-example-hcm
+        sensor: https://w3id.org/hcmo/id/example-submission/sensor-ir-camera
+        property: null
+
   - id: systems-24h-limited
     question: Which monitored enclosures have behavior observations lasting at least 24 hours under a stated condition?
     file: queries/cq-systems-24h-limited.rq
-    expected_rows: 1
+    expected_answers:
+      - enclosure: https://example.org/hcmo/minimal/cage-12
+        observation: https://example.org/hcmo/minimal/observation-1
+        duration: "24.0"
+        unit: http://www.w3.org/2006/time#unitHour
+        condition: https://example.org/hcmo/minimal/limited-human-interaction

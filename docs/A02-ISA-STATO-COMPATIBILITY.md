@@ -1,7 +1,8 @@
-# A02 ISA/STATO process compatibility findings and future work
+# A02 ISA/STATO process compatibility and evidence slice
 
-Status: standards audit and future-work record for external review. Nothing in
-this document is an accepted ontology mapping or authority to change HCMO.
+Status: standards audit plus an executable instance-level evidence slice for
+external review. The evidence does not assert an HCMO class mapping, declare
+full ISA RO-Crate conformance, or authorize additional ontology axioms.
 
 Related decisions are recorded in
 [`PHILIPPE-ROCCA-SERRA-HUMAN-REVIEW-CHECKLIST.md`](PHILIPPE-ROCCA-SERRA-HUMAN-REVIEW-CHECKLIST.md#a02-provisional-decision-and-compatibility-review),
@@ -35,6 +36,10 @@ property, and does not provide a completed example or machine-readable
 validation artifact. HCMO must therefore pin the reviewed source and must not
 claim formal conformance until a target profile and validation procedure are
 approved.
+
+The exact external artifacts, canonical namespaces, term allowlists, and
+SHA-256 checksums used by the evidence slice are pinned in
+[`external-vocabularies.yaml`](../external-vocabularies.yaml).
 
 ## Layering that fits the standards
 
@@ -120,28 +125,45 @@ Consequences for HCMO:
 - Treat a sensor as protocol equipment or an HCMO/SOSA participant, not as the
   biological `object` input of an ISA LabProcess.
 
-The current bridge example at `examples/isa-hcmo-bridge.ttl` uses
-`schema:result ex:assignment-1` for a `hcm-bio:HousingAssignment`. The reviewed
-draft profile expects `LabProcess.result` to be a Sample or File/MediaObject.
-Until expert review settles the serialization, that triple must be described as
-an HCMO extension rather than evidence of strict ISA RO-Crate conformance.
+The bridge example at `examples/isa-hcmo-bridge.ttl` does not use
+`schema:result ex:assignment-1`: the reviewed draft profile expects a
+`LabProcess.result` to be a Sample or File/MediaObject. Instead, the allocation
+is conservatively represented as a `prov:Activity` that generates the HCMO
+assignment record. It is deliberately not asserted to be a Bioschemas
+`LabProcess` while this round trip remains unresolved.
 
 The same boundary applies to non-file statistical entities. A concrete output
 file fits the ISA Process graph; a p-value, estimate, confidence interval, or
 fitted model may require additional HCMO/STATO RDF nodes and an approved link to
 the representing file.
 
-## Work to perform only after approval
+## Implemented evidence slice and remaining review
+
+The repository now contains one deliberately narrow evidence graph:
+
+- a sensor-recording execution typed as Bioschemas `LabProcess`, PROV
+  `Activity`, and OBI assay (`OBI_0000070`), producing a raw
+  `schema:MediaObject`;
+- an OBI data transformation (`OBI_0200000`) from the raw file to a derived
+  file and a typed STATO sample mean (`STATO_0000401`);
+- a particular HCMO study-factor instance also typed as OBI study design
+  independent variable (`OBI_0000750`), a particular factor value typed as
+  STATO factor level (`STATO_0000265`), and a particular experimental group
+  typed as STATO study group population (`STATO_0000193`); and
+- dedicated SHACL checks for the pinned ISA exchange boundary, including an
+  injected cyclic process/data graph that must fail.
+
+These are justified types of the example individuals, not mappings between
+HCMO classes and external classes. Three competency questions assert the exact
+recording-provenance, factor/group, and statistical-result answer rows.
 
 | Order | Action | Repository locations | Acceptance evidence |
 | --- | --- | --- | --- |
+| Done | Pin the external versions and build the recording, transformation, statistical-result, factor-level, and group evidence slice. | `external-vocabularies.yaml`, `examples/isa-hcmo-bridge.ttl`, `shapes/isa-hcmo-evidence-shapes.ttl`, and `queries/cq-isa-*.rq` | Checksums pass; the positive graph conforms; an injected cycle fails; all three CQs match exact answers. |
 | 1 | Create a reviewed mapping registry that records source ontology/version, target IRI, mapping strength, evidence, reviewer, status, and exchange scope. | `docs/ALIGNMENTS.md` and the mapping artifact approved under B03-B04 | Every candidate above is accepted, rejected, or deferred with evidence; no class uses `owl:sameAs`. |
-| 2 | Record the process-layer policy and decide which, if any, home-cage-specific process classes are needed. | `docs/ARCHITECTURE.md`; owning `ontology/modules/*.ttl` only for approved specializations | Definitions establish a meaning narrower than the reused external class; reasoner review finds no unintended equivalence. |
-| 3 | Build one sensor-recording chain: protocol, recording execution, sensor/subject/enclosure context, observation, and raw File. | `examples/isa-hcmo-bridge.ttl`, relevant modules, `shapes/`, and `queries/` | An executable competency question traces the protocol and execution to the raw output. |
-| 4 | Build one data-transformation and statistical-analysis chain from raw File to processed File and typed statistical output. | Relevant process/result module, example, shapes, and queries | Specific OBI/STATO classes are used and the result can be traced to its input data and execution. |
-| 5 | Add the Study Factor, FactorValue, measured variable, group, and subject-assignment slice. | `ontology/modules/hcm-bio.ttl`, examples, shapes, queries, and mapping registry | Examples distinguish characteristic, factor, factor level, dependent variable, group, and group assignment. |
-| 6 | Resolve the housing-assignment and statistical-result ISA round trips with ISA-profile expertise. | `docs/ISA-RO-CRATE-MAPPING.md`, bridge example, profile fixtures, and validation tooling | Investigation -> Study -> Assay -> Process -> Data round trip preserves HCMO extensions or documents each controlled loss. |
-| 7 | Pin the approved ISA RO-Crate profile and add conformance validation before making implementation claims. | Profile documentation, fixtures, `tooling/validate.py`, and paper | A packaged example validates against the selected profile and declares a stable conformance URI. |
+| 2 | Decide whether any home-cage-specific process classes are needed. | `docs/ARCHITECTURE.md`; owning `ontology/modules/*.ttl` only for approved specializations | Definitions establish a meaning narrower than the reused external class; reasoner review finds no unintended equivalence. |
+| 3 | Resolve the housing-assignment and non-file statistical-result ISA round trips with ISA-profile expertise. | `docs/ISA-RO-CRATE-MAPPING.md`, bridge example, profile fixtures, and validation tooling | Investigation -> Study -> Assay -> Process -> Data round trip preserves HCMO extensions or documents each controlled loss. |
+| 4 | Pin an approved ISA RO-Crate release and its machine-readable validator before making formal conformance claims. | Profile documentation, fixtures, `tooling/validate.py`, and paper | A packaged example validates against the approved profile and declares a stable conformance URI. |
 
 Any accepted semantic change must then follow the repository implementation
 gate: edit source modules, preserve existing IRIs, regenerate `dist/`, run the

@@ -55,8 +55,11 @@ developing 2023 Edition, currently published as a W3C Working Draft
 retains the current
 `sosa:Property` reference provisionally, but must pin a dated SOSA source and
 review the resulting semantics before treating that choice as a stable
-alignment. PROV-O, OBI, STATO, ISA RO-Crate, and QUDT/OM integration remain
-separately reviewed roadmap work.
+alignment. A pinned example-level evidence slice now uses PROV-O, specific OBI
+and STATO types, and ISA/Bioschemas exchange terms in one acyclic workflow. This is
+validated interoperability evidence, not an HCMO class mapping or a claim of
+formal ISA RO-Crate conformance. Broader process mappings, ISA round trips, and
+QUDT/OM integration remain separately reviewed work.
 
 **Distribution and application support.** The authored modules are merged
 deterministically into Turtle, RDF/XML, and JSON-LD distributions. A generated

@@ -197,12 +197,29 @@ vocabularies:
     used_terms:
       - https://bioschemas.org/LabProcess
       - https://bioschemas.org/LabProtocol
+      - https://bioschemas.org/Sample
       - https://bioschemas.org/executesLabProtocol
       - https://schema.org/Dataset
       - https://schema.org/MediaObject
+      - https://schema.org/Person
+      - https://schema.org/Place
       - https://schema.org/PropertyValue
+      - https://schema.org/about
+      - https://schema.org/additionalProperty
       - https://schema.org/additionalType
+      - https://schema.org/affiliation
+      - https://schema.org/datePublished
+      - https://schema.org/description
+      - https://schema.org/email
+      - https://schema.org/encodingFormat
       - https://schema.org/hasPart
       - https://schema.org/identifier
+      - https://schema.org/license
+      - https://schema.org/logo
+      - https://schema.org/name
       - https://schema.org/object
+      - https://schema.org/propertyID
       - https://schema.org/result
+      - https://schema.org/roleName
+      - https://schema.org/unitText
+      - https://schema.org/value

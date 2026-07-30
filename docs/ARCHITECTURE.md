@@ -41,8 +41,9 @@ source annotations and immediate hierarchy. The active ontology modules use:
 - Dublin Core Terms for ontology metadata and provenance.
 
 The current example data and competency queries reuse OWL-Time for observation
-intervals. PROV-O, OBI, STATO, ISA RO-Crate, and quantity/unit alignments remain
-reviewed roadmap work and are not claimed as active ontology mappings.
+intervals. A pinned evidence slice uses particular PROV-O, OBI, STATO, and
+ISA/Bioschemas instances without asserting ontology mappings or full ISA
+RO-Crate conformance. Quantity/unit alignment remains roadmap work.
 SemTS-derived references are likewise not counted as implemented reuse, and the
 `sosa:Property` reference remains provisional until HCMO pins an explicit SOSA
 edition.
@@ -73,13 +74,16 @@ present but does not require the relation or impose a timeless cardinality.
 
 ## Validation architecture
 
-The release has three separate validation layers:
+The release has four separate validation layers:
 
 - `tooling/build.py` creates deterministic release artifacts from the module
   list in `hcmo.yaml` without network access;
 - pySHACL validates each isolated example against `shapes/hcm-shapes.ttl`, with
   the merged ontology supplied as a separate ontology graph and RDFS inference
   enabled; and
+- a dedicated ISA/STATO evidence profile validates
+  `examples/isa-hcmo-bridge.ttl` and rejects an injected cyclic process/data
+  graph; and
 - HermiT checks OWL DL consistency on the generated release artifact.
 
 The pySHACL data graph is never the ontology graph alone. Supplying the
@@ -90,9 +94,10 @@ copied into OWL existential restrictions.
 
 Competency queries run over a separate evaluation graph containing the merged
 ontology and all positive examples declared in `hcmo.yaml`. Negative examples
-remain isolated and never contribute answers. Expected row counts live beside
-the stable CQ identifiers in `queries/competency_questions.yaml`; the validator
-fails on a missing query, an unindexed query, or a count mismatch.
+remain isolated and never contribute answers. Complete expected answer rows
+live beside the stable CQ identifiers in `queries/competency_questions.yaml`;
+the validator fails on a missing query, an unindexed query, or any answer-value,
+binding, multiplicity, or row mismatch.
 
 ## Extension rules
 

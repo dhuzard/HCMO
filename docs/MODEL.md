@@ -65,8 +65,14 @@ passing merely because it failed to select the intended focus node.
 
 Competency questions run against the canonical ontology plus all positive
 example graphs. Negative fixtures are excluded. Every indexed CQ records its
-expected row count; successful parsing with an unreviewed empty result is not
-considered sufficient evidence.
+complete expected answer rows; the validator compares bindings, unbound values,
+values, and multiplicity. A matching count or an unreviewed empty result is not
+sufficient evidence.
+
+The ISA/STATO bridge has a separate evidence shape. It constrains the pinned
+Investigation/Study/Assay and LabProcess/File slice and includes an injected
+process/data cycle that must be non-conformant. This profile is evidence for the
+example boundary, not a claim of formal ISA RO-Crate conformance.
 
 ## Deferred decisions
 

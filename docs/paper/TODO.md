@@ -28,11 +28,11 @@ column and append to the **Change log** whenever something moves.
 |----|------|--------|-------|
 | T4 | Replace/remove **Chowlk placeholders** (`UNKNOWN:*`, `ns:Class2`, `ns:objectProperty`, `xsd:boolean/integer` as properties) | ☑ | No placeholder is present in the active graph. The original export is archived and valid old HCMO IRIs are handled in the compatibility module. |
 | T5 | Add **labels + `rdfs:comment`/IAO definitions** for all terms | ☑ | Every active HCMO class/property has a label and textual definition; wording remains open to ordinary expert review. |
-| T6 | **Re-author SHACL shapes, examples & competency queries** against the active term set | ☑ | Shapes, three positive and two negative examples, and five executable competency queries target 0.2.0; ontology-aware RDFS target selection and exact CQ row counts are enforced. |
+| T6 | **Re-author SHACL shapes, examples & competency queries** against the active term set | ☑ | Shapes, three positive and two negative examples, and eight executable competency queries target 0.2.0; ontology-aware RDFS target selection, a cyclic ISA negative probe, and exact CQ answer rows are enforced. |
 | T6b | **Host a public SPARQL endpoint** (HITL R3) | ☐ | Strongest availability story; depends on T0. |
 | T7 | Write **lab-maintained** governance/versioning policy (Huzard team, GitHub, SemVer+versionIRI; TEATIME = feedback channel) | ☐ | HITL R3. Feeds §7. |
 | T7b | **Drop MAPP branding** in paper docs and reconcile repository branding | ☑ | Active ontology metadata, manifest, README, citation metadata, and current documentation consistently use HCMO. |
-| T8 | Run **quality evaluation**: OOPS!, FOOPS! (FAIR), reasoner (HermiT/ELK), pySHACL, CQ results — archive reports | ◐ | Current 0.2.0 build, HermiT, parse, ontology-aware SHACL, and exact CQ gates pass. Historical clean-v2 OOPS!/FOOPS! evidence is archived; rerun both scanners on the final paper-matching release. Manual Protege hierarchy/deprecation screenshots remain. |
+| T8 | Run **quality evaluation**: OOPS!, FOOPS! (FAIR), reasoner (HermiT/ELK), pySHACL, CQ results — archive reports | ◐ | Current 0.2.0 build, HermiT, parse, ontology-aware SHACL, ISA evidence, and exact-answer CQ gates pass. Historical clean-v2 OOPS!/FOOPS! evidence is archived; rerun both scanners on the final paper-matching release. Manual Protege hierarchy/deprecation screenshots remain. |
 | T9 | Cut a **tagged release** (e.g. `v0.x`) + refreshed Zenodo DOI matching the paper | ☐ | Canonical citation. |
 
 ## Phase 2 — Write the paper

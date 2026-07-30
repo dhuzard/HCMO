@@ -6,7 +6,8 @@ for Metadatapp and ISA RO-Crate.
 
 The A02 process-layer audit and ISA/STATO compatibility findings are recorded in
 [`A02-ISA-STATO-COMPATIBILITY.md`](A02-ISA-STATO-COMPATIBILITY.md). Those
-findings are future work and do not constitute accepted ontology mappings.
+findings now include an executable instance-level evidence slice. They do not
+constitute HCMO class mappings or formal ISA RO-Crate conformance.
 
 ## Current Metadatapp export
 
@@ -84,6 +85,23 @@ profile's Schema.org/Bioschemas types:
 The crate context must add the four HCMO namespaces and Bioschemas. The root
 metadata entity should declare both the selected RO-Crate version and the ISA
 RO-Crate profile when the full profile requirements are implemented.
+
+## Executable evidence boundary
+
+`examples/isa-hcmo-bridge.ttl` implements an acyclic
+recording → raw file → transformation → derived file chain. The particular
+recording execution is typed as an OBI assay, and the particular transformation
+as an OBI data transformation. The evidence graph also contains particular
+STATO factor-level, study-group-population, and sample-mean instances. These
+instance types are evidence for a concrete workflow; they do not imply
+equivalence or subclass mappings for the corresponding HCMO classes.
+
+The housing process is only a `prov:Activity`. It generates the
+`hcm-bio:HousingAssignment` through `prov:generated`; the assignment is not a
+`schema:result` because it is neither an ISA Sample nor a File/MediaObject.
+Dedicated shapes in `shapes/isa-hcmo-evidence-shapes.ttl` enforce that boundary
+and reject a cyclic process/data graph. Exact-answer competency questions trace
+the raw file, factor/group assignment, and typed statistical result.
 
 ## Questions to settle with ISA expertise
 

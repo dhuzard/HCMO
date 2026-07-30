@@ -4,24 +4,28 @@
 Steps (any failure -> non-zero exit):
   1. Parse every TTL under ontology/, shapes/, and examples/, plus all generated
      RDF distribution serializations declared in hcmo.yaml.
-  2. Run pySHACL of shapes/ against each isolated example with the canonical
+  2. Validate the pinned external-vocabulary contract without network access.
+  3. Run pySHACL of shapes/ against each isolated example with the canonical
      ontology supplied as an ontology graph and RDFS inference enabled.
      Examples whose name contains "edge" or "invalid" are NEGATIVE tests
      (expected to be non-conformant); all others are expected to conform.
-  3. Run every indexed competency query against the canonical ontology plus all
-     positive examples. The observed row count must equal the reviewed count in
-     queries/competency_questions.yaml.
+  4. Validate the dedicated ISA/STATO evidence graph, including an injected
+     process-cycle negative probe.
+  5. Run every indexed competency query against the canonical ontology plus all
+     positive examples. The canonicalized result rows must equal the reviewed
+     answers in queries/competency_questions.yaml.
 
 Usage: python tooling/validate.py
 """
 from __future__ import annotations
 
 import glob
+import json
 import sys
 from pathlib import Path
 
 import yaml
-from rdflib import Graph
+from rdflib import Graph, Namespace, URIRef
 from pyshacl import validate as shacl_validate
 from external_vocab import validate_contract
 
@@ -145,6 +149,64 @@ def step_shacl(manifest: dict, ontology_graph: Graph) -> tuple[bool, list[str]]:
     return ok, notes
 
 
+def step_isa_evidence() -> tuple[bool, list[str]]:
+    data_path = ROOT / "examples/isa-hcmo-bridge.ttl"
+    shapes_path = ROOT / "shapes/isa-hcmo-evidence-shapes.ttl"
+    if not data_path.exists() or not shapes_path.exists():
+        return False, ["[FAIL] ISA/STATO evidence graph or shapes file missing"]
+
+    data_g = Graph().parse(data_path, format="turtle")
+    shapes_g = Graph().parse(shapes_path, format="turtle")
+    conforms, _, report = shacl_validate(
+        data_g,
+        shacl_graph=shapes_g,
+        inference="none",
+        abort_on_first=False,
+        do_owl_imports=False,
+    )
+    if not conforms:
+        return False, [f"[FAIL] ISA/STATO evidence graph: {report}"]
+
+    cycle_g = Graph()
+    for triple in data_g:
+        cycle_g.add(triple)
+    ex = Namespace("https://example.org/hcmo/isa-crate/")
+    schema = Namespace("https://schema.org/")
+    cycle_g.add(
+        (
+            URIRef(ex["activity-summary-process"]),
+            URIRef(schema.result),
+            URIRef(ex["activity-file"]),
+        )
+    )
+    cycle_conforms, _, _ = shacl_validate(
+        cycle_g,
+        shacl_graph=shapes_g,
+        inference="none",
+        abort_on_first=False,
+        do_owl_imports=False,
+    )
+    if cycle_conforms:
+        return False, ["[FAIL] ISA/STATO acyclic-process negative probe conformed"]
+    return True, [
+        "[OK]   ISA/STATO evidence graph: conformant",
+        "[OK]   ISA/STATO acyclic-process negative probe: non-conformant",
+    ]
+
+
+def canonical_result_rows(result) -> list[dict[str, str | None]]:
+    variables = [str(variable) for variable in result.vars]
+    rows = []
+    for row in result:
+        rows.append(
+            {
+                variable: None if row[index] is None else str(row[index])
+                for index, variable in enumerate(variables)
+            }
+        )
+    return sorted(rows, key=lambda row: json.dumps(row, sort_keys=True))
+
+
 def step_queries(
     manifest: dict, graph: Graph
 ) -> tuple[bool, list[str], dict[str, int | None]]:
@@ -181,30 +243,39 @@ def step_queries(
     for question in questions:
         rel = question.get("file")
         question_id = question.get("id")
-        expected = question.get("expected_rows")
+        expected = question.get("expected_answers")
         if not isinstance(rel, str) or not isinstance(question_id, str):
             ok = False
             notes.append(f"[FAIL] malformed competency question entry: {question}")
             continue
-        if not isinstance(expected, int) or expected < 0:
+        if not isinstance(expected, list) or not all(
+            isinstance(row, dict) for row in expected
+        ):
             ok = False
-            notes.append(f"[FAIL] query {question_id}: expected_rows must be >= 0")
+            notes.append(
+                f"[FAIL] query {question_id}: expected_answers must be a list "
+                "of row mappings"
+            )
             continue
         path = ROOT / rel
         try:
             res = graph.query(path.read_text(encoding="utf-8"))
-            n = len(list(res))
+            actual = canonical_result_rows(res)
+            expected = sorted(
+                expected, key=lambda row: json.dumps(row, sort_keys=True)
+            )
+            n = len(actual)
             rowcounts[rel] = n
-            if n != expected:
+            if actual != expected:
                 ok = False
                 notes.append(
-                    f"[FAIL] query {question_id} ({rel}): expected "
-                    f"{expected} row(s), got {n}"
+                    f"[FAIL] query {question_id} ({rel}): exact-answer mismatch\n"
+                    f"       expected={json.dumps(expected, sort_keys=True)}\n"
+                    f"       actual={json.dumps(actual, sort_keys=True)}"
                 )
             else:
                 notes.append(
-                    f"[OK]   query {question_id} ({rel}): {n} row(s) "
-                    f"(expected {expected})"
+                    f"[OK]   query {question_id} ({rel}): {n} exact answer(s)"
                 )
         except Exception as e:  # noqa: BLE001
             ok = False
@@ -233,7 +304,12 @@ def main() -> int:
     print("\n".join(notes))
     all_ok &= ok
 
-    print("\n== 4. Competency queries vs ontology and positive examples ==")
+    print("\n== 4. ISA/STATO evidence graph ==")
+    ok, notes = step_isa_evidence()
+    print("\n".join(notes))
+    all_ok &= ok
+
+    print("\n== 5. Competency queries vs ontology and positive examples ==")
     query_graph = evaluation_graph(manifest, ontology_graph)
     ok, notes, rowcounts = step_queries(manifest, query_graph)
     print("\n".join(notes))

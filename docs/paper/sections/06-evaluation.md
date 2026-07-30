@@ -22,13 +22,13 @@ compatibility, and contribution-workflow changes, OOPS! and FOOPS! must be run
 once more on the final paper-matching distribution before submission.
 
 **Logical consistency.** The canonical RDF/XML artifact was rebuilt and
-checksummed on 28 July 2026. `dist/hcmo.owl` contained 1,252 RDF triples; the
+checksummed on 30 July 2026. `dist/hcmo.owl` contained 1,308 RDF triples; the
 generated profile contained 56 declared release classes, 57 object properties,
 and 73 datatype properties, including compatibility terms. HermiT reported zero
 inconsistent classes. The pre-check also found no active `UNKNOWN:` IRI and no
 property declared as both object and datatype. The exact checksum, environment,
 output, and triage are archived in
-`docs/paper/evaluation/PROTEGE-HERMIT-2026-07-28.md`. A final visual Protege
+`docs/paper/evaluation/PROTEGE-HERMIT-2026-07-30.md`. A final visual Protege
 inspection remains required for hierarchy readability and deprecated-term
 display; it is not conflated with the automated consistency result.
 
@@ -41,15 +41,21 @@ negative fixture deliberately omits explicit `rdf:type`: it conforms when
 validated without the ontology, then fails when ontology-aware inference selects
 the intended targets. This differential test guards the validator's entailment
 contract while keeping profile requiredness in SHACL rather than translating it
-into OWL existential semantics.
+into OWL existential semantics. A separate ISA/STATO evidence shape validates
+the pinned workflow boundary; an injected process/data cycle is required to
+fail.
 
-**Competency questions.** Five SPARQL queries run over the ontology plus all
+**Competency questions.** Eight SPARQL queries run over the ontology plus all
 positive examples. Negative fixtures are isolated from the query graph. The
-validator checks both query-index completeness and exact result counts:
+validator checks both query-index completeness and the complete expected answer
+rows, including bindings, unbound values, and multiplicity:
 
-| Competency question | Rows |
+| Competency question | Exact answers |
 | --- | ---: |
 | subjects assigned by monitored enclosure | 3 |
+| ISA factor/group assignment | 1 |
+| ISA raw-file recording provenance | 1 |
+| OBI transformation and STATO result provenance | 1 |
 | enclosures missing dimension records | 0 |
 | housed subjects needing provisioning | 3 |
 | properties captured by enclosure sensors | 3 |
@@ -57,6 +63,6 @@ validator checks both query-index completeness and exact result counts:
 
 The zero-row dimensions query is intentional: it verifies absence of missing
 records in the positive fixture rather than being accepted as an unexamined
-empty result. New process, provenance, factor, and exchange claims will require
-new competency questions and representative data before they can be presented
-as implemented capabilities.
+empty result. The three ISA/STATO questions establish a narrow executable
+evidence slice; they do not establish HCMO class mappings or formal ISA
+RO-Crate conformance.
