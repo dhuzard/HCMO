@@ -1,7 +1,7 @@
 # HCMO, ISA, and ISA RO-Crate mapping
 
 Status: design note for expert review. This document distinguishes assertions
-that are already represented in HCMO 0.1.0 from proposed serialization choices
+that are already represented in HCMO 0.2.0 from proposed serialization choices
 for Metadatapp and ISA RO-Crate.
 
 The A02 process-layer audit and ISA/STATO compatibility findings are recorded in
@@ -30,7 +30,7 @@ graph, but is not itself an ISA RO-Crate implementation yet.
 | Physical cage | Not an ISA Source or Sample | `hcm:MonitoredEnclosure` | A cage is equipment/housing context, not biological material. |
 | Animal-to-cage allocation | ISA Process applying a housing/allocation protocol; cage ID may also be a protocol parameter value | `hcm-bio:HousingAssignment` linked by `hcm-bio:assignedToEnclosure` | The n-ary assignment record can later carry start/end time and provenance without treating cage identity as a biological characteristic. |
 | Cage as an experimental variable | ISA Study Factor only when housing/cage condition is deliberately manipulated | `hcm-bio:StudyFactors` (preferred label: Study Factor) plus the applicable enclosure/environment attributes | A cage identifier alone is not a study factor. |
-| Sensor/acquisition procedure | ISA Protocol/LabProtocol and executed Process/LabProcess; sensor can be protocol equipment | `hcm-tech:Sensor`, `sosa:madeBySensor` | Separates planned acquisition from what actually ran. |
+| Sensor-recording procedure | ISA Protocol/LabProtocol and executed Process/LabProcess; sensor can be protocol equipment | `hcm-tech:Sensor`, `sosa:madeBySensor` | Separates the planned recording procedure from what actually ran and avoids conflating new observations with OBI procurement or retrieval. |
 | HCM measurements | ISA Assay plus LabProcess | HCMO observation subclasses and SOSA relations | Use the animal as feature of interest for attributable measurements; use the enclosure for cage-level aggregate/environment observations. |
 | Raw/derived monitoring files | ISA Data node; ISA RO-Crate `File` or `MediaObject` produced by LabProcess and included in the Assay dataset | `hcm-tech:TimeSeries` and format/storage metadata | HCMO is format-neutral; current repository examples use CSV time-series and event exports. |
 
@@ -92,7 +92,7 @@ RO-Crate profile when the full profile requirements are implemented.
    ISA-Tab/ISA-JSON round-tripping?
 2. Which protocol type and parameter term should identify cage allocation and
    cage identifier without overloading an ISA characteristic?
-3. Should HCM acquisition be one Assay per sensing modality, one Assay per
+3. Should HCM sensor recording be one Assay per sensing modality, one Assay per
    enclosure, or one Assay per data-product family in Metadatapp?
 4. How should assignment validity intervals be serialized so cage changes can
    be reconstructed without breaking the acyclic ISA process graph?

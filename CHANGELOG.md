@@ -22,6 +22,11 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Changed
 
+- Recorded Philippe Rocca-Serra's follow-up guidance on a readable upper-level
+  presentation, corrected the process-side PROV-O term to `prov:Activity`, and
+  distinguished sensor procurement, retrieval of existing information, and
+  sensor recording in the OBI/ISA design notes and bridge example. STATO and
+  ISA remain evidence-first roadmap work; no new alignment axiom is asserted.
 - Qualified SemTS alignment as provisional and documented that its canonical
   term IRIs and semantic fit remain unvalidated; added an explicit provisional
   edition policy for the developing `sosa:Property` term.

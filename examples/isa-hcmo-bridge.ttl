@@ -64,7 +64,8 @@ ex:sensor-1 a hcm-tech:Sensor ;
   hcm-tech:installedIn ex:cage-12 .
 
 ex:acquisition-process a bioschemas:LabProcess ;
-  schema:name "Acquire cage activity" ;
+  schema:name "Record cage activity" ;
+  rdfs:comment "The example IRI is retained for continuity. This execution generates new sensor observations and data; it is not an OBI material-acquisition or information-acquisition process." ;
   schema:object ex:animal-1 ;
   schema:result ex:activity-file .
 

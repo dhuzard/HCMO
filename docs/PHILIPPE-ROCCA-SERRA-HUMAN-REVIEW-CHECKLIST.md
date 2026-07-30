@@ -74,6 +74,11 @@ Status: provisional direction recorded on 2026-07-21; final approval is deferred
 until co-authors have validated, challenged, or revised it. This record does not
 authorize new classes, mappings, or hierarchy axioms.
 
+Philippe's 2026-07-30 follow-up confirms that the simple upper-level grouping is
+useful for end-user communication, while explicitly framing it as a suggestion
+rather than a recommendation. This supports a presentation view but does not
+approve any particular external version, IRI, import, or logical mapping.
+
 Provisional decision:
 
 > Reuse authoritative external upper-level classes directly. Include a curated,
@@ -1045,7 +1050,15 @@ record, and generated data/result distinct. Do not introduce a generic local
 Process, Recording, or Analysis class merely to organize the Protégé tree.
 
 The current OBI acquisition terms describe gaining possession of an entity,
-material, or information and are not approved as synonyms for sensor recording.
+material, or information and are not generic synonyms for sensor recording.
+`OBI_0600010` material acquisition is appropriate when an existing physical
+sensor is procured. `OBI_0600013` information acquisition, whose alternative
+label is “data collection,” is appropriate when existing information is
+retrieved or copied; its definition explicitly excludes creating or changing
+information, including assays and data transformations. A recording execution
+that produces new sensor observations or files therefore uses SOSA observation
+semantics and may use `OBI_0000070` assay only when that term's evaluant and
+objective fit.
 The current OBI feature-extraction process and objective are image-specific and
 are not approved for generic HCM time-series feature extraction. OBI
 acclimatization (`OBI_0600011`) remains a candidate requiring expert review: its

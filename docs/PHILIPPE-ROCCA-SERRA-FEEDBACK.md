@@ -36,3 +36,67 @@ require ISA round-trip expertise rather than unilateral ontology edits:
 3. Assay granularity by modality, enclosure, or data-product family;
 4. serialization of assignment validity intervals in an acyclic ISA graph;
 5. target version and conformance URI for the draft ISA RO-Crate profile.
+
+## Follow-up additions received on 2026-07-30
+
+Philippe added three points after reviewing the meeting record. They refine the
+open A01/A02 design work; they do not by themselves authorize new ontology
+classes, imports, or mapping axioms.
+
+### Readable upper-level presentation
+
+Philippe described the following as a useful end-user presentation rather than
+a formal recommendation:
+
+```text
+Thing / Entity
+├── Material Entity
+├── Information Entity
+├── Quality / Property
+└── Process Entity
+```
+
+This supports the provisional A01 direction: retain direct BFO/IAO anchors,
+provide a curated and versioned external subset for readable labels and minimal
+hierarchy, and avoid duplicate local HCMO upper classes. The friendly headings
+are a presentation view, not evidence that similarly named BFO, SIO, SULO,
+ONTOP, SOSA, and PROV-O classes are logically equivalent.
+
+For provenance, the duration-bearing PROV-O class corresponding to an executed
+process is `prov:Activity`. PROV-O has no general `prov:Event` class;
+`prov:InstantaneousEvent` is reserved for instantaneous generation, usage,
+invalidation, start, and end events. The BFO process hierarchy remains the
+semantic upper-process backbone; PROV-O remains a cross-cutting provenance view.
+
+### OBI acquisition meanings
+
+The word *acquisition* must be qualified in HCMO documentation and examples.
+The pinned OBI `v2026-05-08` source supports three distinct cases:
+
+| Intended meaning | Candidate representation | HCMO policy |
+| --- | --- | --- |
+| Purchasing or otherwise procuring an existing sensor | `OBI_0600010` material acquisition; alternative label “material procurement” | Directly reuse only when the modeled execution gains possession of the physical sensor. |
+| Retrieving or copying information that already exists | `OBI_0600013` information acquisition; alternative label “data collection” | Directly reuse only when possession of existing information is gained. |
+| Producing new measurements with a sensor | SOSA `Observation`; optionally an encompassing `OBI_0000070` assay when its evaluant and objective fit | Describe this as sensor recording or observation generation, not generic OBI acquisition. |
+
+`OBI_0600013` explicitly excludes processes that create or change information,
+including assays and data transformations. OBI also declares assay disjoint
+with information acquisition. HCMO therefore does not mint or map a generic
+`SensorAcquisition` class. The current ontology contains no such class.
+
+### STATO and ISA
+
+Philippe confirmed that HCMO's connection to STATO and ISA is a worthwhile
+topic and offered to present STATO to the group. The next step is an
+evidence-review session around one concrete HCM workflow, not immediate
+alignment axioms. The review package should contain:
+
+1. a pinned external-vocabulary contract for OBI, STATO, ISA, and the selected
+   ISA RO-Crate draft;
+2. one acyclic recording-to-raw-file-to-statistical-result example;
+3. answer-based competency questions for factors, factor values, groups,
+   executions, files, and typed statistical results; and
+4. explicit decisions on mapping strength and ISA round-trip losses.
+
+Until that review is complete, STATO and ISA remain compatibility and exchange
+roadmap work rather than implemented HCMO vocabulary reuse.
