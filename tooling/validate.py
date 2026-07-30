@@ -23,6 +23,7 @@ from pathlib import Path
 import yaml
 from rdflib import Graph
 from pyshacl import validate as shacl_validate
+from external_vocab import validate_contract
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -222,12 +223,17 @@ def main() -> int:
     print("\n".join(notes))
     all_ok &= ok
 
-    print("\n== 2. SHACL (shapes vs examples) ==")
+    print("\n== 2. External vocabulary contract ==")
+    ok, notes = validate_contract(verify_network=False)
+    print("\n".join(notes))
+    all_ok &= ok
+
+    print("\n== 3. SHACL (shapes vs examples) ==")
     ok, notes = step_shacl(manifest, ontology_graph)
     print("\n".join(notes))
     all_ok &= ok
 
-    print("\n== 3. Competency queries vs ontology and positive examples ==")
+    print("\n== 4. Competency queries vs ontology and positive examples ==")
     query_graph = evaluation_graph(manifest, ontology_graph)
     ok, notes, rowcounts = step_queries(manifest, query_graph)
     print("\n".join(notes))

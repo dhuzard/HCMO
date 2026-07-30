@@ -70,6 +70,8 @@ def bind_prefixes(g: Graph, manifest: dict) -> None:
     g.bind("hcm-env", Namespace("https://w3id.org/hcmo/ontology/hcm/env#"), replace=True)
     g.bind("hcm-obs", Namespace("https://w3id.org/hcmo/ontology/hcm/obs#"), replace=True)
     g.bind("hcm-tech", Namespace("https://w3id.org/hcmo/ontology/hcm/tech#"), replace=True)
+    g.bind("BFO", Namespace("http://purl.obolibrary.org/obo/BFO_"), replace=True)
+    g.bind("IAO", Namespace("http://purl.obolibrary.org/obo/IAO_"), replace=True)
     g.bind("owl", OWL, replace=True)
     g.bind("rdfs", RDFS, replace=True)
     g.bind("dc", DC, replace=True)

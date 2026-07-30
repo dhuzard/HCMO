@@ -79,6 +79,12 @@ useful for end-user communication, while explicitly framing it as a suggestion
 rather than a recommendation. This supports a presentation view but does not
 approve any particular external version, IRI, import, or logical mapping.
 
+Implementation note: HCMO now ships a checksummed BFO 2020 / IAO 2026-03-30
+upper projection containing canonical labels, definitions, and immediate
+hierarchy. `external-vocabularies.yaml` pins the source artifacts and used-term
+allowlists while `hcmo.yaml` retains its stable API shape. No local upper class,
+cross-ontology equivalence, or full import was added.
+
 Provisional decision:
 
 > Reuse authoritative external upper-level classes directly. Include a curated,

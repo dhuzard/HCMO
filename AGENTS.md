@@ -10,7 +10,12 @@ Never "just edit labels". Treat every change as a semantic change unless proven 
 
 ## Repo map (authoritative paths)
 - Release manifest (the contract downstream tools read): `hcmo.yaml` — its **shape is an API**; keep it stable.
-- Hand-authored ontology source modules: `ontology/modules/*.ttl` (`hcm-core`, `hcm-bio`, `hcm-env`, `hcm-obs`, `hcm-tech`, and the migration-only `hcm-compat`).
+- Hand-authored ontology source modules: `ontology/modules/*.ttl` (the
+  checksummed `external-upper` projection; `hcm-core`, `hcm-bio`, `hcm-env`,
+  `hcm-obs`, `hcm-tech`; and the migration-only `hcm-compat`).
+- External-vocabulary contract: `external-vocabularies.yaml` — separate from
+  the stable `hcmo.yaml` API; records versions, namespaces, used terms, and
+  source checksums.
 - JSON-LD context: `ontology/context.jsonld`
 - Generated artifacts (**never hand-edit**): `dist/` (`hcmo.ttl` merged/canonical, `hcmo.owl`, `hcmo.json`, `profile.json`).
 - Shapes / constraints: `shapes/`

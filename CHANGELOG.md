@@ -7,6 +7,13 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Added
 
+- Added `external-vocabularies.yaml` with authoritative versions, canonical
+  namespaces, used-term allowlists, and SHA-256 checksums for ten external
+  semantic/exchange sources; added offline contract validation plus optional
+  network checksum verification.
+- Added a source-faithful BFO 2020 / IAO 2026-03-30 upper projection so
+  Protégé renders canonical upper labels, definitions, and immediate hierarchy
+  without a full external import or duplicate HCMO upper classes.
 - Added a checksummed HermiT evaluation report for the canonical HCMO 0.2.0
   OWL artifact and updated the resource-paper claims to match implemented
   modules, alignments, SHACL validation, and competency-query results.

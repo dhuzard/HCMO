@@ -1,11 +1,16 @@
 # Ontology architecture
 
-HCMO 0.2.0 is authored as five domain modules plus one migration-only
-compatibility module. The release manifest `hcmo.yaml` is the authoritative
-module list; `dist/` is generated from that manifest.
+HCMO 0.2.0 is authored as a checksummed external upper-level projection, five
+domain modules, and one migration-only compatibility module. The release
+manifest `hcmo.yaml` is the authoritative module list; `dist/` is generated
+from that manifest.
 
 ## Active modules
 
+- `ontology/modules/external-upper.ttl`: a source-faithful projection of the
+  pinned BFO 2020 and IAO 2026-03-30 labels, definitions, and immediate
+  hierarchy needed to render HCMO's upper anchors offline. It does not mint
+  HCMO terms or replace either source ontology.
 - `ontology/modules/hcm-core.ttl` (`hcm:`): monitored enclosures, enclosure
   dimensions, enrichment, and stable enclosure relations.
 - `ontology/modules/hcm-bio.ttl` (`hcm-bio:`): subjects, experimental groups,
@@ -24,7 +29,8 @@ Its old generated review artifacts remain only as historical evidence.
 ## Dependency policy
 
 HCMO reuses external classes and properties by reference and does not redeclare
-them locally. The active ontology modules use:
+them as local HCMO terms. The curated upper projection copies only reviewed
+source annotations and immediate hierarchy. The active ontology modules use:
 
 - BFO and IAO as upper-level anchors;
 - SOSA for observation, result, sensor, actuator, observed-property, and
@@ -40,6 +46,15 @@ reviewed roadmap work and are not claimed as active ontology mappings.
 SemTS-derived references are likewise not counted as implemented reuse, and the
 `sosa:Property` reference remains provisional until HCMO pins an explicit SOSA
 edition.
+
+`external-vocabularies.yaml` is the external-source contract. It records the
+authoritative version, canonical term namespace, used-term allowlist, immutable
+artifact URL, and SHA-256 for the upper anchors and the sensing, temporal, OBI,
+PROV-O, STATO, SemTS, and ISA RO-Crate evidence sources. It is deliberately
+separate from `hcmo.yaml`; validation asserts that the public manifest's key
+shape is unchanged. The build remains offline and does not follow
+`owl:imports`. Network checksum verification is an explicit audit command:
+`python tooling/external_vocab.py --verify-network`.
 
 The `bio` and `obs` modules intentionally have a small semantic cycle:
 subject-side convenience properties live in `bio`, while observations point to

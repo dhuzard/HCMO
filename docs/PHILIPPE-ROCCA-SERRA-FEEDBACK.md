@@ -89,14 +89,14 @@ with information acquisition. HCMO therefore does not mint or map a generic
 Philippe confirmed that HCMO's connection to STATO and ISA is a worthwhile
 topic and offered to present STATO to the group. The next step is an
 evidence-review session around one concrete HCM workflow, not immediate
-alignment axioms. The review package should contain:
+alignment axioms. The external-vocabulary contract is now implemented in
+`external-vocabularies.yaml`, pinning OBI, STATO, ISA, and the selected ISA
+RO-Crate draft. The remaining review package should contain:
 
-1. a pinned external-vocabulary contract for OBI, STATO, ISA, and the selected
-   ISA RO-Crate draft;
-2. one acyclic recording-to-raw-file-to-statistical-result example;
-3. answer-based competency questions for factors, factor values, groups,
+1. one acyclic recording-to-raw-file-to-statistical-result example;
+2. answer-based competency questions for factors, factor values, groups,
    executions, files, and typed statistical results; and
-4. explicit decisions on mapping strength and ISA round-trip losses.
+3. explicit decisions on mapping strength and ISA round-trip losses.
 
 Until that review is complete, STATO and ISA remain compatibility and exchange
 roadmap work rather than implemented HCMO vocabulary reuse.

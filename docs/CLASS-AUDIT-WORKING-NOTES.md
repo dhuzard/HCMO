@@ -109,23 +109,24 @@ Table columns:
 
 ## Directly used external class anchors
 
-These rows record the external source family and current release status. Their
-definitions, versions, and imported hierarchy are not copied into HCMO 0.2.0.
-All therefore remain `needs evidence` for A06: this does not reject their use,
-but blocks stronger mappings and new hierarchy axioms until exact authoritative
-versions and definitions are recorded.
+These rows record the external source family and current release status.
+Reviewed BFO/IAO labels, definitions, and immediate hierarchy are included in
+the checksummed `external-upper.ttl` projection. Other external terms remain
+references rather than a bundled import closure. A `needs evidence` decision
+blocks stronger mappings and new hierarchy axioms until the stated issue is
+resolved.
 
 | Anchor | Current direct use | Source/version status | Decision |
 | --- | --- | --- | --- |
-| `BFO:0000019` | Parent of `hcm-env:EnvironmentalProperty`. | BFO; exact release not pinned. | `needs evidence` |
-| `BFO:0000027` | Parent of `hcm-bio:ExperimentalGroup`. | BFO; exact release not pinned. | `needs evidence` |
-| `BFO:0000040` | Parent of material subjects, enclosures, enrichments, and devices. | BFO; exact release not pinned. | `needs evidence` |
-| `IAO:0000030` | Parent of records, profiles, results, software, and time series. | IAO; exact release not pinned. | `needs evidence` |
-| `sosa:Actuator` | Parent of `hcm-tech:Actuator`. | SOSA/SSN; exact release not pinned. | `needs evidence` |
-| `sosa:Observation` | Parent/domain anchor for observation classes and properties. | SOSA/SSN; exact release not pinned. | `needs evidence` |
-| `sosa:Property` | Parent/range anchor for environmental and captured properties. | Developing SOSA/SSN 2023 Edition Working Draft term; the latest Recommendation is the 2017 edition and uses `sosa:ObservableProperty`. Exact dated source not pinned. | `needs evidence` |
-| `sosa:Result` | Parent of `hcm-obs:ObservationResult`. | SOSA/SSN; exact release not pinned. | `needs evidence` |
-| `sosa:Sensor` | Parent of `hcm-tech:Sensor`. | SOSA/SSN; exact release not pinned. | `needs evidence` |
+| `BFO:0000019` | Parent of `hcm-env:EnvironmentalProperty`. | BFO 2020 source, commit and checksum pinned; canonical definition included in the upper projection. | `keep` |
+| `BFO:0000027` | Parent of `hcm-bio:ExperimentalGroup`. | BFO 2020 source, commit and checksum pinned; canonical definition included in the upper projection. | `keep` |
+| `BFO:0000040` | Parent of material subjects, enclosures, enrichments, and devices. | BFO 2020 source, commit and checksum pinned; canonical definition included in the upper projection. | `keep` |
+| `IAO:0000030` | Parent of records, profiles, results, software, and time series. | IAO 2026-03-30 source, commit and checksum pinned; canonical definition included in the upper projection. | `keep` |
+| `sosa:Actuator` | Parent of `hcm-tech:Actuator`. | SOSA/SSN 2017 Recommendation artifact and checksum pinned. | `keep` |
+| `sosa:Observation` | Parent/domain anchor for observation classes and properties. | SOSA/SSN 2017 Recommendation artifact and checksum pinned. | `keep` |
+| `sosa:Property` | Parent/range anchor for environmental and captured properties. | Developing SOSA/SSN 2023 Edition source pinned at commit `1c3b44c`; the 2017 Recommendation uses `sosa:ObservableProperty`. Edition choice and semantic fit remain provisional. | `needs evidence` |
+| `sosa:Result` | Parent of `hcm-obs:ObservationResult`. | SOSA/SSN 2017 Recommendation artifact and checksum pinned. | `keep` |
+| `sosa:Sensor` | Parent of `hcm-tech:Sensor`. | SOSA/SSN 2017 Recommendation artifact and checksum pinned. | `keep` |
 | `schema:Person` | Contributor exchange type for ORCID-identified creators. | Schema.org; version not pinned. | `needs evidence` |
 | `schema:Place` | Range of `hcm:locatedIn`. | Schema.org; version not pinned. | `needs evidence` |
 | `semts:DataDimension` | Restriction filler on environment observations. | HCMO uses SemTS 1.2.0's version IRI (`.../ontology/120#`) as a term namespace, but SemTS declares `DataDimension` in `.../ontology#`; canonical IRI and semantic fit are unvalidated. | `needs evidence` |
@@ -146,5 +147,5 @@ Priority evidence gaps:
 2. distinguish study factor from factor specification for
    `hcm-bio:StudyFactors`;
 3. settle the upper-category treatment of software artifacts; and
-4. pin authoritative versions and definitions for every external anchor,
-   especially the two SemTS restriction fillers.
+4. resolve the invalid SemTS term references and pin Schema.org evidence for
+   the contributor/place exchange anchors.
