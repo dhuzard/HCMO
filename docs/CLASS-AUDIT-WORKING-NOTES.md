@@ -103,7 +103,7 @@ Table columns:
 | --- | --- | --- | --- | --- |
 | `hcm-tech:Actuator` | `keep` | Physical HCM actuator affecting behavior, physiology, or environment; asserted BFO material entity and SOSA Actuator. | No restriction; external inferred hierarchy not bundled. | none; matches accepted A05 physical-device policy while actuation events remain future work. |
 | `hcm-tech:Hardware` | `keep` | Physical computing component; asserted BFO material entity. | No restriction; none beyond asserted. | none; physical-device scope is clear. |
-| `hcm-tech:Sensor` | `needs evidence` | Physical sensing device; asserted BFO material entity and SOSA Sensor. | Requires installation in some monitored enclosure; no additional local named parent. | `sensors-behaviors`; portable/remote/not-yet-deployed sensors may invalidate the existential restriction. |
+| `hcm-tech:Sensor` | `keep` | Physical sensing device; asserted BFO material entity and SOSA Sensor. | No installation restriction; no additional local named parent. | `sensors-behaviors`; rack-level and remote sensors are supported without asserting cage installation. |
 | `hcm-tech:Software` | `needs evidence` | Software used in HCM workflows; currently asserted IAO information content entity. | No restriction; none beyond asserted. | none; executable artifact versus information-content representation needs an explicit upper-ontology policy. |
 | `hcm-tech:TimeSeries` | `keep` | Ordered time-indexed measurement/output artifact; asserted IAO information content entity. | No restriction; none beyond asserted. | none; artifact interpretation is coherent, pending separate SemTS mapping review. |
 
@@ -133,7 +133,7 @@ versions and definitions are recorded.
 
 ## Review outcome
 
-The inventory records 23 local classes as `keep` and 6 as `needs evidence`.
+The inventory records 24 local classes as `keep` and 5 as `needs evidence`.
 No class is approved here for definition, axiom, mapping, or deprecation
 changes. The next semantic implementation must be a separate, evidence-backed
 item and must include examples, reasoning, validation, regenerated artifacts,
@@ -143,10 +143,8 @@ Priority evidence gaps:
 
 1. validate the dual BFO-quality/SOSA-property parentage of
    `hcm-env:EnvironmentalProperty`;
-2. test portable and remote sensors against the `hcm-tech:Sensor`
-   installation existential;
-3. distinguish study factor from factor specification for
+2. distinguish study factor from factor specification for
    `hcm-bio:StudyFactors`;
-4. settle the upper-category treatment of software artifacts; and
-5. pin authoritative versions and definitions for every external anchor,
+3. settle the upper-category treatment of software artifacts; and
+4. pin authoritative versions and definitions for every external anchor,
    especially the two SemTS restriction fillers.

@@ -45,9 +45,9 @@ dvc:capacitive-electrode-board a hcm-tech:Sensor ;
 
 dvc:rack-environment-monitor a hcm-tech:Sensor ;
   rdfs:label "DVC rack environmental monitor" ;
+  rdfs:comment "A rack-level sensor that monitors the cage environment without being physically installed in the individual cage." ;
   dcterms:type "Rack temperature and relative-humidity monitor" ;
-  hcm-tech:hasSensorIdentifier "DVC rack environmental monitor" ;
-  hcm-tech:installedIn dvc:cage .
+  hcm-tech:hasSensorIdentifier "DVC rack environmental monitor" .
 
 dvc:locomotor-activity a sosa:Property ;
   rdfs:label "activation density / Animal Locomotion Index" .

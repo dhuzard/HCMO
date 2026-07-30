@@ -288,7 +288,7 @@
     "classes": 56,
     "datatype_properties": 73,
     "object_properties": 57,
-    "triples": 1252
+    "triples": 1247
   },
   "datatype_properties": [
     {
@@ -740,7 +740,7 @@
       "label": "has result"
     },
     {
-      "comment": "Deprecated in HCMO 0.1.0 with no context-free replacement because its subject was an aggregate system. For a sensor monitoring an enclosure, use hcm-tech:monitoredBy and its inverse hcm-tech:installedIn.",
+      "comment": "Deprecated in HCMO 0.1.0 with no context-free replacement because its subject was an aggregate system. For a sensor monitoring an enclosure, use hcm-tech:monitoredBy. Use hcm-tech:installedIn separately only for physical installation.",
       "iri": "https://w3id.org/hcmo/ontology/hcm#hasSensor",
       "label": "has sensor"
     },
@@ -925,12 +925,12 @@
       "label": "has actuator"
     },
     {
-      "comment": "Relates a sensor to the monitored enclosure in which it is installed.",
+      "comment": "Relates a sensor to a monitored enclosure in which the sensor is physically installed. This relation does not imply that the sensor monitors that enclosure.",
       "iri": "https://w3id.org/hcmo/ontology/hcm/tech#installedIn",
       "label": "installed in"
     },
     {
-      "comment": "Relates a monitored enclosure to a sensor installed in or monitoring it.",
+      "comment": "Relates a monitored enclosure to a sensor that monitors it, independently of whether the sensor is physically installed in that enclosure.",
       "iri": "https://w3id.org/hcmo/ontology/hcm/tech#monitoredBy",
       "label": "monitored by"
     },

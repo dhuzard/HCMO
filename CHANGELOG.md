@@ -22,6 +22,10 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Changed
 
+- Separated enclosure monitoring from physical sensor installation: removed the
+  incorrect `monitoredBy`/`installedIn` inverse axiom, removed the Sensor
+  installation existential, relaxed the SHACL installation cardinality, and
+  added a conforming rack-level monitoring example.
 - Recorded Philippe Rocca-Serra's follow-up guidance on a readable upper-level
   presentation, corrected the process-side PROV-O term to `prov:Activity`, and
   distinguished sensor procurement, retrieval of existing information, and

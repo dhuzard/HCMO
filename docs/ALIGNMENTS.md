@@ -21,6 +21,9 @@
 
 SOSA roles are applied selectively. A domain class is not made a subclass of
 `sosa:FeatureOfInterest` merely because one of its instances can be observed.
+Likewise, `hcm-tech:monitoredBy` is a monitoring association rather than an
+installation relation. Rack-level, portable, or remote sensors may monitor an
+enclosure without an `hcm-tech:installedIn` assertion.
 
 ### Edition policy
 

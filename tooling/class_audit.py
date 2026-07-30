@@ -190,7 +190,7 @@ def check_documented_decisions(graph: Graph, classes: set[URIRef]) -> None:
             f"missing={missing}; unexpected={unexpected}"
         )
     decision_counts = Counter(decision for _, decision in rows)
-    expected_counts = Counter({"keep": 23, "needs evidence": 6})
+    expected_counts = Counter({"keep": 24, "needs evidence": 5})
     if decision_counts != expected_counts:
         raise SystemExit(
             "ERROR: active class decision totals mismatch; "

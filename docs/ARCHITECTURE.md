@@ -46,6 +46,16 @@ subject-side convenience properties live in `bio`, while observations point to
 their subject with `sosa:hasFeatureOfInterest`. HCMO is released as one merged
 graph, so this does not create an import-order dependency.
 
+## Monitoring and physical installation
+
+Monitoring association and physical installation are intentionally distinct.
+`hcm-tech:monitoredBy` links an enclosure to a sensor that monitors it, including
+remote and rack-level sensors. `hcm-tech:installedIn` records physical
+installation in a particular monitored enclosure. Neither property is the
+inverse of the other, and being a sensor does not require installation in an
+individual enclosure. SHACL validates the target class when `installedIn` is
+present but does not require the relation or impose a timeless cardinality.
+
 ## Validation architecture
 
 The release has three separate validation layers:

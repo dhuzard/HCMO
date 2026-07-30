@@ -458,7 +458,7 @@ hcm:hasSamplingRate a owl:DatatypeProperty ;
 hcm:hasSensor a owl:ObjectProperty ;
     rdfs:label "has sensor" ;
     dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
-    rdfs:comment "Deprecated in HCMO 0.1.0 with no context-free replacement because its subject was an aggregate system. For a sensor monitoring an enclosure, use hcm-tech:monitoredBy and its inverse hcm-tech:installedIn." ;
+    rdfs:comment "Deprecated in HCMO 0.1.0 with no context-free replacement because its subject was an aggregate system. For a sensor monitoring an enclosure, use hcm-tech:monitoredBy. Use hcm-tech:installedIn separately only for physical installation." ;
     owl:deprecated true .
 
 hcm:hasSocialContacts a owl:DatatypeProperty ;
@@ -1080,6 +1080,12 @@ hcm-tech:hasVersion a owl:DatatypeProperty ;
             owl:unionOf ( hcm-tech:Hardware hcm-tech:Software hcm-tech:TimeSeries ) ] ;
     rdfs:range xsd:string .
 
+hcm-tech:installedIn a owl:ObjectProperty ;
+    rdfs:label "installed in" ;
+    rdfs:comment "Relates a sensor to a monitored enclosure in which the sensor is physically installed. This relation does not imply that the sensor monitors that enclosure." ;
+    rdfs:domain hcm-tech:Sensor ;
+    rdfs:range hcm:MonitoredEnclosure .
+
 <https://orcid.org/0000-0002-2923-9790> a schema:Person ;
     schema:name "Pierre Larmande" .
 
@@ -1156,10 +1162,9 @@ hcm-obs:HealthStatusObservation a owl:Class ;
 
 hcm-tech:monitoredBy a owl:ObjectProperty ;
     rdfs:label "monitored by" ;
-    rdfs:comment "Relates a monitored enclosure to a sensor installed in or monitoring it." ;
+    rdfs:comment "Relates a monitored enclosure to a sensor that monitors it, independently of whether the sensor is physically installed in that enclosure." ;
     rdfs:domain hcm:MonitoredEnclosure ;
-    rdfs:range hcm-tech:Sensor ;
-    owl:inverseOf hcm-tech:installedIn .
+    rdfs:range hcm-tech:Sensor .
 
 hcm-bio:HousingAssignment a owl:Class ;
     rdfs:label "Housing Assignment" ;
@@ -1176,12 +1181,6 @@ hcm-obs:BehaviorObservation a owl:Class ;
             owl:onProperty sosa:hasResult ;
             owl:someValuesFrom hcm-obs:BehaviorResult ],
         sosa:Observation .
-
-hcm-tech:installedIn a owl:ObjectProperty ;
-    rdfs:label "installed in" ;
-    rdfs:comment "Relates a sensor to the monitored enclosure in which it is installed." ;
-    rdfs:domain hcm-tech:Sensor ;
-    rdfs:range hcm:MonitoredEnclosure .
 
 hcm-env:GasConcentrationProfile a owl:Class ;
     rdfs:label "Gas Concentration Profile" ;
@@ -1226,22 +1225,6 @@ hcm-env:LightCycle a owl:Class ;
     rdfs:comment "A description of the timing and transitions of light and dark phases in an enclosure environment." ;
     rdfs:subClassOf <http://purl.obolibrary.org/obo/IAO_0000030> .
 
-hcm-obs:EnvironmentObservation a owl:Class ;
-    rdfs:label "Environment Observation" ;
-    rdfs:comment "A SOSA-style observation about an environmental property of a monitored enclosure." ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty sosa:hasFeatureOfInterest ;
-            owl:someValuesFrom hcm:MonitoredEnclosure ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom semts:DataDimension ;
-            owl:onProperty semts:hasDimension ],
-        sosa:Observation .
-
-hcm:EnclosureDimensions a owl:Class ;
-    rdfs:label "Enclosure Dimensions" ;
-    rdfs:comment "A dimensions record describing the physical size of an enclosure." ;
-    rdfs:subClassOf <http://purl.obolibrary.org/obo/IAO_0000030> .
-
 hcm:MonitoredEnclosure a owl:Class ;
     rdfs:label "Monitored Enclosure" ;
     rdfs:comment "A physical enclosure equipped for the longitudinal monitoring of housed biological subjects." ;
@@ -1258,6 +1241,22 @@ hcm:MonitoredEnclosure a owl:Class ;
             owl:allValuesFrom hcm:EnclosureDimensions ;
             owl:onProperty hcm:hasDimensions ],
         hcm:Enclosure .
+
+hcm-obs:EnvironmentObservation a owl:Class ;
+    rdfs:label "Environment Observation" ;
+    rdfs:comment "A SOSA-style observation about an environmental property of a monitored enclosure." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty sosa:hasFeatureOfInterest ;
+            owl:someValuesFrom hcm:MonitoredEnclosure ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom semts:DataDimension ;
+            owl:onProperty semts:hasDimension ],
+        sosa:Observation .
+
+hcm:EnclosureDimensions a owl:Class ;
+    rdfs:label "Enclosure Dimensions" ;
+    rdfs:comment "A dimensions record describing the physical size of an enclosure." ;
+    rdfs:subClassOf <http://purl.obolibrary.org/obo/IAO_0000030> .
 
 hcm-tech:Hardware a owl:Class ;
     rdfs:label "Hardware" ;
@@ -1291,10 +1290,7 @@ hcm-env:EnvironmentProfile a owl:Class ;
 hcm-tech:Sensor a owl:Class ;
     rdfs:label "Sensor" ;
     rdfs:comment "A device that captures signals related to behavior, physiology, or enclosure environment." ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty hcm-tech:installedIn ;
-            owl:someValuesFrom hcm:MonitoredEnclosure ],
-        <http://purl.obolibrary.org/obo/BFO_0000040>,
+    rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000040>,
         sosa:Sensor .
 
 hcm:Enclosure a owl:Class ;

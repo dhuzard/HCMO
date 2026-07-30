@@ -241,7 +241,7 @@ def check_monitored_installation(manifest: dict) -> None:
 
     monitored_graph = closure_for((cage, HCM_TECH.monitoredBy, sensor), manifest)
     print("monitoredBy assertion consequences")
-    require(
+    require_absent(
         monitored_graph,
         (sensor, HCM_TECH.installedIn, cage),
         "sensor installedIn cage",
@@ -259,7 +259,7 @@ def check_monitored_installation(manifest: dict) -> None:
 
     installed_graph = closure_for((sensor, HCM_TECH.installedIn, cage), manifest)
     print("installedIn assertion consequences")
-    require(
+    require_absent(
         installed_graph,
         (cage, HCM_TECH.monitoredBy, sensor),
         "cage monitoredBy sensor",
@@ -274,6 +274,17 @@ def check_monitored_installation(manifest: dict) -> None:
         (cage, RDF.type, HCM.MonitoredEnclosure),
         "cage rdf:type MonitoredEnclosure",
     )
+
+    active_graph = load_modules(active_module_paths(manifest))
+    for parent in active_graph.objects(HCM_TECH.Sensor, RDFS.subClassOf):
+        if (
+            isinstance(parent, BNode)
+            and active_graph.value(parent, OWL.onProperty) == HCM_TECH.installedIn
+        ):
+            raise SystemExit(
+                "ERROR: Sensor still has an installedIn existential restriction"
+            )
+    print("  [absent] Sensor installedIn existential restriction")
 
 
 def check_priority_entailments(manifest: dict) -> None:

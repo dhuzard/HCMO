@@ -8,7 +8,8 @@ A `hcm:MonitoredEnclosure` is a physical enclosure that:
 - houses one or more `hcm-bio:Subject` instances through
   `hcm:hasMonitoredAnimals`;
 - is monitored by `hcm-tech:Sensor` instances through
-  `hcm-tech:monitoredBy` (inverse: `hcm-tech:installedIn`); and
+  `hcm-tech:monitoredBy`; physical cage installation is represented separately
+  with `hcm-tech:installedIn`; and
 - may have an `hcm-env:EnvironmentProfile`.
 
 Animal-to-cage allocation is modeled explicitly with

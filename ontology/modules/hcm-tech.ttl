@@ -23,10 +23,7 @@ hcm-tech:Actuator a owl:Class ;
 hcm-tech:Sensor a owl:Class ;
     rdfs:label "Sensor" ;
     rdfs:comment "A device that captures signals related to behavior, physiology, or enclosure environment." ;
-    rdfs:subClassOf BFO:0000040, sosa:Sensor,
-        [ a owl:Restriction ;
-            owl:onProperty hcm-tech:installedIn ;
-            owl:someValuesFrom hcm:MonitoredEnclosure ] .
+    rdfs:subClassOf BFO:0000040, sosa:Sensor .
 
 hcm-tech:Software a owl:Class ;
     rdfs:label "Software" ;
@@ -125,14 +122,13 @@ hcm-tech:hasActuator a owl:ObjectProperty ;
 
 hcm-tech:monitoredBy a owl:ObjectProperty ;
     rdfs:label "monitored by" ;
-    rdfs:comment "Relates a monitored enclosure to a sensor installed in or monitoring it." ;
+    rdfs:comment "Relates a monitored enclosure to a sensor that monitors it, independently of whether the sensor is physically installed in that enclosure." ;
     rdfs:domain hcm:MonitoredEnclosure ;
-    rdfs:range hcm-tech:Sensor ;
-    owl:inverseOf hcm-tech:installedIn .
+    rdfs:range hcm-tech:Sensor .
 
 hcm-tech:installedIn a owl:ObjectProperty ;
     rdfs:label "installed in" ;
-    rdfs:comment "Relates a sensor to the monitored enclosure in which it is installed." ;
+    rdfs:comment "Relates a sensor to a monitored enclosure in which the sensor is physically installed. This relation does not imply that the sensor monitors that enclosure." ;
     rdfs:domain hcm-tech:Sensor ;
     rdfs:range hcm:MonitoredEnclosure .
 
