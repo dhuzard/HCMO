@@ -70,6 +70,32 @@ All eight competency questions matched their complete expected answer rows:
 | `sensors-behaviors` | 3 |
 | `systems-24h-limited` | 1 |
 
+## Human Protégé review
+
+Damien Huzard reviewed the generated `dist/hcmo.owl` in Protégé on
+2026-07-31. The scoped review confirmed:
+
+- the default Entity branch exposes Material entity, Information content
+  entity, Quality, and Process, while continuant and occurrent remain absent;
+- the optional full BFO/IAO developer profile remains a deliberate specialist
+  view and is not part of the standard release;
+- the Material entity and Information content entity branches contain the
+  expected HCMO classes, including Monitored Enclosure below Enclosure and
+  Experimental Group below Material entity;
+- the repeated Actuator and Sensor tree positions are the same HCMO classes
+  shown beneath their two asserted parents, BFO Material entity and the
+  corresponding SOSA class, rather than duplicate HCMO terms;
+- Sensor has no anonymous `installedIn` existential restriction;
+- `installedIn` has Sensor as domain and Monitored Enclosure as range, with no
+  inverse axiom; and
+- `monitoredBy` has Monitored Enclosure as domain and Sensor as range, also
+  with no inverse axiom.
+
+Screenshots were reviewed interactively but are not committed. This scoped
+review closes the hierarchy and monitoring/installation UI checks for PR #23;
+the broader repository checklist for exhaustive deprecated-term display remains
+separate.
+
 ## Triage
 
 - **Pass:** canonical OWL parses and HermiT reports zero inconsistent classes.
@@ -79,5 +105,6 @@ All eight competency questions matched their complete expected answer rows:
   hierarchy match their reviewed contracts.
 - **Expected inference:** `hcm-tech:captures` is classified under
   `sosa:observes`.
-- **Open UI evidence:** labels, deprecated-term display, and the two hierarchy
-  views should still be inspected in Protégé by a human reviewer.
+- **Pass:** the scoped human Protégé hierarchy and
+  monitoring/installation review found no unintended axiom or presentation
+  issue.

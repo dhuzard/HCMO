@@ -131,6 +131,13 @@ and the more precise object-aggregate parent for Experimental Group. BFO
 Quality versus SOSA observable property, BFO Process versus PROV Activity, and
 any mapping to other upper ontologies remain separate semantic decisions.
 
+Manual review evidence: Damien Huzard inspected `dist/hcmo.owl` in Protégé on
+2026-07-31 and confirmed the four default children of Entity, the absence of
+continuant and occurrent from the standard release, the intended BFO/SOSA
+polyhierarchy for Actuator and Sensor, and the reviewed default placement of
+Experimental Group. He reaffirmed that the full intermediate hierarchy remains
+available only through the optional developer profile.
+
 ### A02 provisional decision and compatibility review
 
 Status: provisional direction recorded on 2026-07-21; final approval is deferred
