@@ -7,8 +7,8 @@ integrated system spanning the animal subject, its housing, the environment, and
 the technical acquisition chain. HCMO captures HCM data together with the
 experimental context that makes them interpretable, keeps sensor, observation, and
 result distinct, and reuses selected terms from BFO, IAO, SOSA/SSN, Schema.org,
-and OWL-Time rather than duplicating them. SemTS alignment and the SOSA edition
-governing `sosa:Property` remain provisional. A pinned instance-level
+and OWL-Time rather than duplicating them. HCMO pins SOSA to the 2017
+Recommendation and selectively reuses canonical SemTS 1.2.0 segment terms. A pinned instance-level
 ISA/Bioschemas, PROV-O, OBI, and STATO evidence slice demonstrates one acyclic
 recording-to-statistical-result workflow without claiming HCMO class mappings or
 formal ISA conformance. A generated 2 × 2 round-trip fixture further preserves

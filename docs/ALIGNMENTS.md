@@ -23,12 +23,11 @@ reference is not counted as implemented reuse or alignment.
 | Vocabulary or profile | Current classification | Scope |
 | --- | --- | --- |
 | BFO and IAO | Implemented selective alignment | Canonical upper anchors and the optional source-faithful developer hierarchy |
-| SOSA 2017 terms | Implemented selective reuse/alignment | Reviewed sensor, actuator, observation, result, and relation terms |
+| SOSA 2017 terms | Implemented selective reuse/alignment | Reviewed sensor, actuator, observable-property, observation, result, and relation terms; immutable 2017 artifact pinned |
 | Schema.org | Implemented selective reuse | Contributor, place, and exchange terms |
 | OWL-Time | Validated interoperability evidence | Supported example and duration-query pattern |
 | PROV-O, OBI, STATO, and ISA/Bioschemas | Validated interoperability evidence | Pinned recording workflow plus lossless extended-crate 2 × 2, housing, Source/Sample, and statistical-result fixtures; no HCMO class mappings |
-| SemTS | Provisional; not implemented reuse | Canonical IRIs and semantic fit unresolved |
-| `sosa:Property` from the developing 2023 Edition | Provisional; not stable alignment | Edition choice and exact semantics unresolved |
+| SemTS 1.2.0 | Implemented selective reuse/alignment | Canonical `TimeSeriesSegment`, `DataDimension`, and `segmentDimension` terms for location result tables |
 | QUDT/OM | Future work | No implemented alignment |
 | ISA RO-Crate | Validated interoperability evidence; no formal conformance claim | HCMO RDF/extended-crate graph round trip, RO-Crate 1.2 required validation, and ISA-specific required validation pass; permanent ISA profile URI/base-version decision remains external |
 
@@ -42,7 +41,8 @@ reference is not counted as implemented reuse or alignment.
   under BFO material entities.
 - Experimental groups appear under BFO material entity by default. The optional
   developer profile restores the more precise BFO object-aggregate parent.
-- Environmental properties are BFO qualities and `sosa:Property` instances.
+- Environmental properties are BFO qualities and SOSA 2017
+  `sosa:ObservableProperty` instances.
 - Profiles, specifications, assignments, software, and recorded result/data
   resources are anchored under the IAO information-content hierarchy.
 
@@ -71,21 +71,22 @@ enclosure without an `hcm-tech:installedIn` assertion.
 
 ### Edition policy
 
-Most SOSA terms reused by HCMO occur in the
-[2017 W3C Recommendation](https://www.w3.org/TR/vocab-ssn/).
-`sosa:Property`, however, follows the developing
-[SOSA/SSN 2023 Edition](https://www.w3.org/TR/vocab-ssn-2023/), currently
-published as a W3C Working Draft; the 2017 edition uses
-`sosa:ObservableProperty` instead. The current `sosa:Property` reference is
-therefore provisional. A dated SOSA source and its exact semantics must be
-pinned before HCMO treats this choice as a stable alignment.
+HCMO normatively uses the
+[2017 W3C Recommendation](https://www.w3.org/TR/2017/REC-vocab-ssn-20171019/).
+Its ontology artifact is pinned to W3C's historical repository commit and
+checksum in `external-vocabularies.yaml`. Environmental and sensor-captured
+properties use `sosa:ObservableProperty`. HCMO does not mix in
+`sosa:Property` from the developing later edition. Adopting a later SOSA
+edition requires a separate reviewed migration and an immutable source pin.
 
 ## SemTS
 
-SemTS alignment remains provisional. HCMO currently contains references derived
-from an earlier SemTS model, but their canonical IRIs and semantic fit have not
-yet been validated. These references are not counted as implemented
-external-vocabulary reuse.
+HCMO selectively reuses SemTS 1.2.0 with its canonical unversioned entity
+namespace. A location result table is a `semts:TimeSeriesSegment` and may use
+`semts:segmentDimension` values typed as `semts:DataDimension`. SemTS is not
+used to describe an observation's observed property, and HCMO does not use
+SemTS `generated`, whose knowledge-generation domain and range do not fit the
+location-result relation. See ADR-0002 and the migration note.
 
 ## OWL-Time
 

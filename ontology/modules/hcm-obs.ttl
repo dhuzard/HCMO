@@ -3,12 +3,13 @@
 #
 @prefix hcm: <https://w3id.org/hcmo/ontology/hcm#> .
 @prefix hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#> .
+@prefix hcm-env: <https://w3id.org/hcmo/ontology/hcm/env#> .
 @prefix hcm-obs: <https://w3id.org/hcmo/ontology/hcm/obs#> .
 @prefix hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#> .
 @prefix IAO: <http://purl.obolibrary.org/obo/IAO_> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix semts: <https://w3id.org/semts/ontology/120#> .
+@prefix semts: <https://w3id.org/semts/ontology#> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -41,8 +42,8 @@ hcm-obs:EnvironmentObservation a owl:Class ;
             owl:onProperty sosa:hasFeatureOfInterest ;
             owl:someValuesFrom hcm:MonitoredEnclosure ],
         [ a owl:Restriction ;
-            owl:allValuesFrom semts:DataDimension ;
-            owl:onProperty semts:hasDimension ] .
+            owl:allValuesFrom hcm-env:EnvironmentalProperty ;
+            owl:onProperty sosa:observedProperty ] .
 
 hcm-obs:GasConcentrationObservation a owl:Class ;
     rdfs:label "Gas Concentration Observation" ;
@@ -59,11 +60,11 @@ hcm-obs:HealthStatusObservation a owl:Class ;
 
 hcm-obs:LocationResultTable a owl:Class ;
     rdfs:label "Location Result Table" ;
-    rdfs:comment "A tabular observation result containing location values or generated time-series segments." ;
-    rdfs:subClassOf hcm-obs:ObservationResult,
+    rdfs:comment "A tabular observation result representing a time-series segment of location values, optionally described by one or more data dimensions." ;
+    rdfs:subClassOf hcm-obs:ObservationResult, semts:TimeSeriesSegment,
         [ a owl:Restriction ;
-            owl:onProperty semts:generated ;
-            owl:allValuesFrom semts:TimeSeriesSegment ] .
+            owl:onProperty semts:segmentDimension ;
+            owl:allValuesFrom semts:DataDimension ] .
 
 hcm-obs:WeightObservation a owl:Class ;
     rdfs:label "Weight Observation" ;

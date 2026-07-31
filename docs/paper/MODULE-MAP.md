@@ -70,7 +70,7 @@ Source of truth for the current inventory: `dist/profile.json`.
 | Term | Kind | Note |
 |------|------|------|
 | `Sensor` `Hardware` `Software` | Class | **IRIs move `…/hcm#` → `…/hcm/tech#`** (breaking; before T9). |
-| `TimeSeries` | Class | → **tech** (M2); aligns with reused `semts:TimeSeriesSegment`. |
+| `TimeSeries` | Class | → **tech** (M2); generic HCMO time-series artifact, with SemTS specialization applied only where reviewed. |
 | `installedIn` `monitoredBy` | ObjProp | Device↔enclosure — placed with **tech** (M6). |
 | `hasFileFormat` `hasSamplingRate` `hasStoragePath` `hasVersion` | DataProp | Device/software attributes; `hasVersion` = software (M5). |
 | *device-manufacturer* | DataProp | New prop for device manufacturer (M5 split from enclosure `hasManufacturer`). |
@@ -91,7 +91,8 @@ Source of truth for the current inventory: `dist/profile.json`.
 
 - **SOSA/SSN**: `hasFeatureOfInterest`, `hasResult`, `madeBySensor`, `madeObservation`, `observedProperty`, `phenomenonTime`, `resultTime`, `usedProcedure`.
 - **OWL-Time**: `TemporalEntity`, `hasBeginning`, `hasEnd`, `inXSDDateTime`.
-- **semts**: `DataDimension`, `TimeSeriesSegment`, `during`, `generated`, `hasDimension`, `isPartOf`, `dimensionUnit`, `title`.
+- **SemTS 1.2.0**: canonical `DataDimension`, `TimeSeriesSegment`, and
+  `segmentDimension`, used only by the reviewed location-result pattern.
 
 These are declared where used (or as core imports) and appear in alignment axioms (`docs/ALIGNMENTS.md`), not re-homed.
 

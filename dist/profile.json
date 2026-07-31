@@ -238,7 +238,7 @@
       "label": "Housing Assignment"
     },
     {
-      "comment": "A tabular observation result containing location values or generated time-series segments.",
+      "comment": "A tabular observation result representing a time-series segment of location values, optionally described by one or more data dimensions.",
       "iri": "https://w3id.org/hcmo/ontology/hcm/obs#LocationResultTable",
       "label": "Location Result Table"
     },
@@ -288,7 +288,7 @@
     "classes": 56,
     "datatype_properties": 73,
     "object_properties": 57,
-    "triples": 1279
+    "triples": 1280
   },
   "datatype_properties": [
     {

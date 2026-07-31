@@ -81,7 +81,7 @@ def bind_prefixes(g: Graph, manifest: dict) -> None:
     g.bind("skos", SKOS, replace=True)
     g.bind("sosa", Namespace("http://www.w3.org/ns/sosa/"), replace=True)
     g.bind("time", Namespace("http://www.w3.org/2006/time#"), replace=True)
-    g.bind("semts", Namespace("https://w3id.org/semts/ontology/120#"), replace=True)
+    g.bind("semts", Namespace("https://w3id.org/semts/ontology#"), replace=True)
     g.bind("mod", Namespace("https://w3id.org/mod#"), replace=True)
 
 

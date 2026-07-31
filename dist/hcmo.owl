@@ -281,13 +281,6 @@
     <rdfs:label>has sampling rate</rdfs:label>
     <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
   </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#LocationResultTable">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:comment>A tabular observation result containing location values or generated time-series segments.</rdfs:comment>
-    <rdfs:label>Location Result Table</rdfs:label>
-    <rdfs:subClassOf rdf:nodeID="cb24ee396c4f454f68146208eee51dff0131921b34f2d7e1eb48515bbabc9495923"/>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/hcmo/ontology/hcm/obs#ObservationResult"/>
-  </rdf:Description>
   <rdf:Description rdf:nodeID="cb26cf125c2997ec9c247a20bd5a2fe0941e892feb598b69ad1e9bb033a54b2a345">
     <rdf:first rdf:resource="https://w3id.org/hcmo/ontology/hcm/obs#BehaviorObservation"/>
     <rdf:rest rdf:nodeID="cb17b8d83aabe70c424d1587adee9de9628c9d3a897b88c09131a233edacf3fc7f1"/>
@@ -379,6 +372,14 @@
     <rdfs:label>provides</rdfs:label>
     <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
   </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#LocationResultTable">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>A tabular observation result representing a time-series segment of location values, optionally described by one or more data dimensions.</rdfs:comment>
+    <rdfs:label>Location Result Table</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="cb20af18b3c153872b8c31dfde6e340a0c66b7836a699c2288b3a36f38c137b2b56"/>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/hcmo/ontology/hcm/obs#ObservationResult"/>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/semts/ontology#TimeSeriesSegment"/>
+  </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#QuantityValue">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:comment>An observation result that represents a quantitative value, typically with a numeric value and unit.</rdfs:comment>
@@ -425,7 +426,7 @@
     <rdfs:comment>An environmental parameter that may be measured, specified, or controlled in a home-cage monitoring context.</rdfs:comment>
     <rdfs:label>Environmental Property</rdfs:label>
     <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/sosa/Property"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/sosa/ObservableProperty"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#hasEnclosure">
     <dcterms:source rdf:resource="https://w3id.org/hcmo/ontology/hcm/0.0.1"/>
@@ -447,6 +448,11 @@
     <rdfs:comment>Deprecated in HCMO 0.1.0. Relates an actuator to a behavior or physiology process it elicits or perturbs.</rdfs:comment>
     <rdfs:label>elicits</rdfs:label>
     <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="cb20af18b3c153872b8c31dfde6e340a0c66b7836a699c2288b3a36f38c137b2b56">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://w3id.org/semts/ontology#DataDimension"/>
+    <owl:onProperty rdf:resource="https://w3id.org/semts/ontology#segmentDimension"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#hasMonitoredAnimals">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -617,6 +623,11 @@
   <rdf:Description rdf:nodeID="cb188eef46dca4ef9d088086ce126c4cce9502f0d99f10239be362774b694c09c64">
     <rdf:first rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#MeasurementSpecification"/>
     <rdf:rest rdf:nodeID="cb1872753d6ae41fe8af5b964109f2a4c465d4570515bcd77409611bf4a60620ccf"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="cb22887eb4e2020ae05bc95576086b812e4771e1e7bdd8b665d35ed6b7f7e2fcca8">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#EnvironmentalProperty"/>
+    <owl:onProperty rdf:resource="http://www.w3.org/ns/sosa/observedProperty"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#hasDimUnit">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
@@ -1087,11 +1098,6 @@
     <rdf:type rdf:resource="https://schema.org/Person"/>
     <schema:name>Cyril Gilbert</schema:name>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="cb292f05ec450fc6b455d93d6292541a53b1a1cd3155aacb4242171eeebaf9f3064">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:allValuesFrom rdf:resource="https://w3id.org/semts/ontology/120#DataDimension"/>
-    <owl:onProperty rdf:resource="https://w3id.org/semts/ontology/120#hasDimension"/>
-  </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#Software">
     <dcterms:isReplacedBy rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#Software"/>
     <dcterms:source rdf:resource="https://w3id.org/hcmo/ontology/hcm/0.0.1"/>
@@ -1192,8 +1198,8 @@
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:comment>A SOSA-style observation about an environmental property of a monitored enclosure.</rdfs:comment>
     <rdfs:label>Environment Observation</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="cb22887eb4e2020ae05bc95576086b812e4771e1e7bdd8b665d35ed6b7f7e2fcca8"/>
     <rdfs:subClassOf rdf:nodeID="cb27c0602fc017ef96f10218279064da39c79b36fadbd5c1f4b7bbe7e8378d570d2"/>
-    <rdfs:subClassOf rdf:nodeID="cb292f05ec450fc6b455d93d6292541a53b1a1cd3155aacb4242171eeebaf9f3064"/>
     <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/sosa/Observation"/>
   </rdf:Description>
   <rdf:Description rdf:nodeID="cb238d002aa329039c7ba037673dfb2442a44762bf79452967f0f8db72d2ec34e7c">
@@ -1411,7 +1417,7 @@
     <rdfs:comment>Relates a sensor to the property it observes or captures.</rdfs:comment>
     <rdfs:domain rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#Sensor"/>
     <rdfs:label>captures</rdfs:label>
-    <rdfs:range rdf:resource="http://www.w3.org/ns/sosa/Property"/>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/sosa/ObservableProperty"/>
     <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/sosa/observes"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#Actuator">
@@ -1640,11 +1646,6 @@
   <rdf:Description rdf:nodeID="cb113d156ab24d149e3fbad485d059e9b6766494d33d4f53c52ab0ddc82f2d538e7">
     <rdf:first rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#EnvironmentProfile"/>
     <rdf:rest rdf:nodeID="cb1cd6668dec70122e49521c6899870c1f632038c84cc30b0b7628c0ec1679ff661"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="cb24ee396c4f454f68146208eee51dff0131921b34f2d7e1eb48515bbabc9495923">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:allValuesFrom rdf:resource="https://w3id.org/semts/ontology/120#TimeSeriesSegment"/>
-    <owl:onProperty rdf:resource="https://w3id.org/semts/ontology/120#generated"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#CircadianRhythm">
     <dcterms:source rdf:resource="https://w3id.org/hcmo/ontology/hcm/0.0.1"/>

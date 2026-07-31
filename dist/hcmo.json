@@ -28,7 +28,7 @@
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "schema": "https://schema.org/",
-    "semts": "https://w3id.org/semts/ontology/120#",
+    "semts": "https://w3id.org/semts/ontology#",
     "sh": "http://www.w3.org/ns/shacl#",
     "skos": "http://www.w3.org/2004/02/skos/core#",
     "sosa": "http://www.w3.org/ns/sosa/",
@@ -356,6 +356,16 @@
       }
     },
     {
+      "@id": "_:cb20af18b3c153872b8c31dfde6e340a0c66b7836a699c2288b3a36f38c137b2b56",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "semts:DataDimension"
+      },
+      "owl:onProperty": {
+        "@id": "semts:segmentDimension"
+      }
+    },
+    {
       "@id": "_:cb218c99c91cf3e0b0a8925ac09fea216aa607246eb25cd992b4aa36ee74c89203c",
       "@type": "owl:Restriction",
       "owl:onProperty": {
@@ -376,6 +386,16 @@
       }
     },
     {
+      "@id": "_:cb22887eb4e2020ae05bc95576086b812e4771e1e7bdd8b665d35ed6b7f7e2fcca8",
+      "@type": "owl:Restriction",
+      "owl:allValuesFrom": {
+        "@id": "hcm-env:EnvironmentalProperty"
+      },
+      "owl:onProperty": {
+        "@id": "sosa:observedProperty"
+      }
+    },
+    {
       "@id": "_:cb22d894ff4a94c7483bcc777cf759fd77d9867ed06c0efd14366bc202bf46926c2",
       "@type": "owl:Class",
       "owl:unionOf": {
@@ -390,16 +410,6 @@
             "@id": "hcm-obs:EnvironmentObservation"
           }
         ]
-      }
-    },
-    {
-      "@id": "_:cb24ee396c4f454f68146208eee51dff0131921b34f2d7e1eb48515bbabc9495923",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "semts:TimeSeriesSegment"
-      },
-      "owl:onProperty": {
-        "@id": "semts:generated"
       }
     },
     {
@@ -440,16 +450,6 @@
       },
       "owl:someValuesFrom": {
         "@id": "hcm:MonitoredEnclosure"
-      }
-    },
-    {
-      "@id": "_:cb292f05ec450fc6b455d93d6292541a53b1a1cd3155aacb4242171eeebaf9f3064",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "semts:DataDimension"
-      },
-      "owl:onProperty": {
-        "@id": "semts:hasDimension"
       }
     },
     {
@@ -892,7 +892,7 @@
           "@id": "http://purl.obolibrary.org/obo/BFO_0000019"
         },
         {
-          "@id": "sosa:Property"
+          "@id": "sosa:ObservableProperty"
         }
       ]
     },
@@ -1231,10 +1231,10 @@
       "rdfs:label": "Environment Observation",
       "rdfs:subClassOf": [
         {
-          "@id": "_:cb27c0602fc017ef96f10218279064da39c79b36fadbd5c1f4b7bbe7e8378d570d2"
+          "@id": "_:cb22887eb4e2020ae05bc95576086b812e4771e1e7bdd8b665d35ed6b7f7e2fcca8"
         },
         {
-          "@id": "_:cb292f05ec450fc6b455d93d6292541a53b1a1cd3155aacb4242171eeebaf9f3064"
+          "@id": "_:cb27c0602fc017ef96f10218279064da39c79b36fadbd5c1f4b7bbe7e8378d570d2"
         },
         {
           "@id": "sosa:Observation"
@@ -1280,14 +1280,17 @@
     {
       "@id": "hcm-obs:LocationResultTable",
       "@type": "owl:Class",
-      "rdfs:comment": "A tabular observation result containing location values or generated time-series segments.",
+      "rdfs:comment": "A tabular observation result representing a time-series segment of location values, optionally described by one or more data dimensions.",
       "rdfs:label": "Location Result Table",
       "rdfs:subClassOf": [
         {
-          "@id": "_:cb24ee396c4f454f68146208eee51dff0131921b34f2d7e1eb48515bbabc9495923"
+          "@id": "_:cb20af18b3c153872b8c31dfde6e340a0c66b7836a699c2288b3a36f38c137b2b56"
         },
         {
           "@id": "hcm-obs:ObservationResult"
+        },
+        {
+          "@id": "semts:TimeSeriesSegment"
         }
       ]
     },
@@ -1504,7 +1507,7 @@
       },
       "rdfs:label": "captures",
       "rdfs:range": {
-        "@id": "sosa:Property"
+        "@id": "sosa:ObservableProperty"
       },
       "rdfs:subPropertyOf": {
         "@id": "sosa:observes"
