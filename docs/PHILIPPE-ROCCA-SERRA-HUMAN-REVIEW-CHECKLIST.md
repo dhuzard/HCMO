@@ -51,9 +51,10 @@ The paper and alignment documentation distinguish:
    requirement of a declared external profile version and scope is tested.
 
 The accepted current classification is: BFO/IAO, reviewed SOSA 2017,
-Schema.org terms, and the reviewed SemTS 1.2.0 segment pattern are selective
-implemented reuse/alignment; OWL-Time and the PROV-O/OBI/STATO/ISA-Bioschemas
-workflow are validated interoperability evidence; QUDT/OM remains future work;
+Schema.org terms, the reviewed SemTS 1.2.0 segment pattern, QUDT 3.4.0, and the
+reviewed OWL-Time/PROV-O status patterns are selective implemented reuse;
+OBI/STATO/ISA-Bioschemas workflow use is validated interoperability evidence;
+OM is not implemented;
 and HCMO makes no formal ISA RO-Crate conformance
 claim. “Provisional” is a review status and is not counted as a fourth
 achievement level.
@@ -339,12 +340,13 @@ as an unattended ontology-rewrite input.
 
 Implementation evidence: Cyril Gilbert completed the first signed A06 working
 pass in `docs/CLASS-AUDIT-WORKING-NOTES.md`, updated for the accepted A01 view
-on 2026-07-31. It covers all 29 active local classes and 12 directly used
-default external class anchors.
+and subsequent reviewed semantic changes on 2026-07-31. It covers all 33 active
+local classes and 15 directly used default external class anchors.
 `tooling/class_audit.py` verifies source counts, required metadata,
 `dist/profile.json` agreement, external-anchor coverage, and exactly one
-review decision per class. The pass records 24 local classes as `keep` and 5 as
-`needs evidence`; it makes no ontology axiom change.
+review decision per class. The current pass records 29 local classes as `keep`
+and 4 as `needs evidence`; ontology changes remain separately documented in
+their ADRs and changelog entries.
 
 ### A07 accepted historical-artifact policy
 

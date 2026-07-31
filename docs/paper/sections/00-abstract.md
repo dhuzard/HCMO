@@ -16,8 +16,9 @@ observations and results, and technical acquisition. It is built around an
 explicit separation of sensor, observation, and result, preserving the chain from
 device to interpreted measurement. The current release reuses BFO, IAO, the
 2017 SOSA/SSN Recommendation, Schema.org, OWL-Time, and a reviewed SemTS 1.2.0
-time-series segment pattern where their semantics fit. Broader provenance and
-quantity alignments remain future work. HCMO is delivered
+time-series segment pattern where their semantics fit. Provenance-backed state
+records and a pinned QUDT 3.4.0 quantity pattern are implemented; broader
+domain alignments remain future work. HCMO is delivered
 as a FAIR, tool-consumable package: modular sources, reproducibly generated
 distributions (Turtle/OWL/JSON-LD), SHACL shapes, competency-question queries, a
 JSON-LD context, persistent identifiers, an open licence, and documentation. We

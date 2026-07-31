@@ -5,7 +5,7 @@
 # identity, canonical namespaces, used-term allowlists, and byte checksums.
 contract_version: 1
 reviewed_on: 2026-07-31
-scope: semantic anchors, temporal, sensing, and time-series terms, and ISA/STATO evidence
+scope: semantic anchors, temporal, sensing, quantity, and time-series terms, and ISA/STATO evidence
 
 curated_upper_subset:
   path: ontology/modules/external-upper.ttl
@@ -106,7 +106,7 @@ vocabularies:
       - https://w3id.org/semts/ontology#segmentDimension
 
   owl-time:
-    status: example-and-query
+    status: active-temporal-reuse
     authoritative_version: "W3C Recommendation 2017-10-19"
     version_iri: https://www.w3.org/TR/2017/REC-owl-time-20171019/
     canonical_term_namespaces:
@@ -128,7 +128,7 @@ vocabularies:
       - http://www.w3.org/2006/time#unitType
 
   prov-o:
-    status: evidence-only
+    status: active-selective-reuse-and-evidence
     authoritative_version: "W3C Recommendation 2013-04-30"
     version_iri: http://www.w3.org/ns/prov-o-20130430
     canonical_term_namespaces:
@@ -145,6 +145,29 @@ vocabularies:
       - http://www.w3.org/ns/prov#used
       - http://www.w3.org/ns/prov#wasDerivedFrom
       - http://www.w3.org/ns/prov#wasGeneratedBy
+
+  qudt-340:
+    status: active-selective-reuse
+    authoritative_version: "3.4.0"
+    version_iri: http://qudt.org/3.4.0/schema/qudt
+    canonical_term_namespaces:
+      - http://qudt.org/schema/qudt/
+      - http://qudt.org/vocab/unit/
+    artifacts:
+      - role: ontology
+        url: https://qudt.org/3.4.0/schema/qudt
+        sha256: 9035fc5191e1be880f849c935ce059526872eb7c847b965a3ab0c3d1e5d1303b
+      - role: units
+        url: https://qudt.org/3.4.0/vocab/unit
+        sha256: ad9b76adb7e1b106f7a74c699ebeea17c2479c20fc67f6de9363bb2538134ba8
+    used_terms:
+      - http://qudt.org/schema/qudt/QuantityValue
+      - http://qudt.org/schema/qudt/numericValue
+      - http://qudt.org/schema/qudt/hasUnit
+      - http://qudt.org/vocab/unit/CentiM
+      - http://qudt.org/vocab/unit/DEG_C
+      - http://qudt.org/vocab/unit/HZ
+      - http://qudt.org/vocab/unit/UNITLESS
 
   obi:
     status: evidence-only

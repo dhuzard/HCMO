@@ -7,11 +7,13 @@
 @prefix hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#> .
 @prefix obi: <http://purl.obolibrary.org/obo/OBI_> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <http://schema.org/> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
 @prefix stato: <http://purl.obolibrary.org/obo/STATO_> .
 @prefix time: <http://www.w3.org/2006/time#> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 ex:investigation a schema:Dataset ;
@@ -81,10 +83,9 @@ ex:cage-12 a hcm:MonitoredEnclosure ;
   hcm-tech:monitoredBy ex:sensor-1 .
 
 ex:cage-12-dimensions a hcm:EnclosureDimensions ;
-  hcm:hasWidth 20.0 ;
-  hcm:hasLength 36.0 ;
-  hcm:hasHeight 18.0 ;
-  hcm:hasDimUnit "cm" .
+  hcm:hasWidthQuantity [ a qudt:QuantityValue ; qudt:numericValue 20.0 ; qudt:hasUnit unit:CentiM ] ;
+  hcm:hasLengthQuantity [ a qudt:QuantityValue ; qudt:numericValue 36.0 ; qudt:hasUnit unit:CentiM ] ;
+  hcm:hasHeightQuantity [ a qudt:QuantityValue ; qudt:numericValue 18.0 ; qudt:hasUnit unit:CentiM ] .
 
 ex:housing-protocol a bioschemas:LabProtocol, prov:Plan ;
   schema:name "Animal-to-cage allocation protocol" .

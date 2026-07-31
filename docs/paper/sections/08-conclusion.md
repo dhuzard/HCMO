@@ -37,7 +37,7 @@ pathologies and AI models on the data remain outside the stabilised core.
 axioms identified by the class and property audits; systematic alignment
 decisions (reuse as-is vs specialise vs keep HCMO-specific) and bridge modules
 to adjacent ontologies (e.g. OBI, PROV-O, STATO, MEDO) and to
-taxa/anatomy/device vocabularies; modelling quantities and units with QUDT/OM;
+taxa/anatomy/device vocabularies; extending the pinned QUDT quantity pattern;
 populating the ontology with real datasets via the TEATIME network and publishing
 the corresponding SPARQL queries; and supporting the downstream uses outlined in
 §7. Through these steps, HCMO aims to become a community reference that improves the

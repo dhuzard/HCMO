@@ -28,10 +28,7 @@ hcm-bio:StudyFactors a owl:Class ;
 hcm-bio:Subject a owl:Class ;
     rdfs:label "Subject" ;
     rdfs:comment "A biological individual, such as a laboratory animal, observed in a home-cage monitoring context." ;
-    rdfs:subClassOf BFO:0000040,
-        [ a owl:Restriction ;
-            owl:allValuesFrom hcm-obs:BehaviorObservation ;
-            owl:onProperty hcm-bio:hasBehaviorObservation ] .
+    rdfs:subClassOf BFO:0000040 .
 
 hcm-bio:assignedToEnclosure a owl:ObjectProperty ;
     rdfs:label "assigned to enclosure" ;
@@ -59,9 +56,10 @@ hcm-bio:hasDateOfBirth a owl:DatatypeProperty ;
 
 hcm-bio:hasHealthStatusObservation a owl:ObjectProperty ;
     rdfs:label "has health status observation" ;
-    rdfs:comment "Relates a subject to a health-status observation about that subject." ;
+    rdfs:comment "Deprecated subject-to-observation shortcut. Query the inverse of sosa:hasFeatureOfInterest instead." ;
     rdfs:domain hcm-bio:Subject ;
-    rdfs:range hcm-obs:HealthStatusObservation .
+    rdfs:range hcm-obs:HealthStatusObservation ;
+    owl:deprecated true .
 
 hcm-bio:hasHousingAssignment a owl:ObjectProperty ;
     rdfs:label "has housing assignment" ;
@@ -97,20 +95,23 @@ hcm-bio:hasStrain a owl:DatatypeProperty ;
 
 hcm-bio:hasTreatment a owl:DatatypeProperty ;
     rdfs:label "has treatment" ;
-    rdfs:comment "Records a treatment, intervention, or experimental condition assigned to a subject or group." ;
+    rdfs:comment "Deprecated ambiguous treatment string. Represent planned factor assignment through the study-factor model and executed treatment through an explicit provenance process." ;
     rdfs:domain [ a owl:Class ;
         owl:unionOf ( hcm-bio:Subject hcm-bio:ExperimentalGroup ) ] ;
-    rdfs:range xsd:string .
+    rdfs:range xsd:string ;
+    owl:deprecated true .
 
 hcm-bio:hasWeightObservation a owl:ObjectProperty ;
     rdfs:label "has weight observation" ;
-    rdfs:comment "Relates a subject to a weight observation about that subject." ;
+    rdfs:comment "Deprecated subject-to-observation shortcut. Query the inverse of sosa:hasFeatureOfInterest instead." ;
     rdfs:domain hcm-bio:Subject ;
-    rdfs:range hcm-obs:WeightObservation .
+    rdfs:range hcm-obs:WeightObservation ;
+    owl:deprecated true .
 
 hcm-bio:hasBehaviorObservation a owl:ObjectProperty ;
     rdfs:label "has behavior observation" ;
-    rdfs:comment "Relates a subject to a behavior observation about that subject." ;
+    rdfs:comment "Deprecated subject-to-observation shortcut. Query the inverse of sosa:hasFeatureOfInterest instead." ;
     rdfs:domain hcm-bio:Subject ;
-    rdfs:range hcm-obs:BehaviorObservation .
+    rdfs:range hcm-obs:BehaviorObservation ;
+    owl:deprecated true .
 

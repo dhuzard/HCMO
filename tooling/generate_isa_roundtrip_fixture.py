@@ -38,6 +38,8 @@ SOSA = Namespace("http://www.w3.org/ns/sosa/")
 TIME = Namespace("http://www.w3.org/2006/time#")
 OBI = Namespace("http://purl.obolibrary.org/obo/OBI_")
 STATO = Namespace("http://purl.obolibrary.org/obo/STATO_")
+QUDT = Namespace("http://qudt.org/schema/qudt/")
+UNIT = Namespace("http://qudt.org/vocab/unit/")
 
 CORE_PROFILE = URIRef("https://w3id.org/ro/crate/1.2")
 
@@ -200,10 +202,16 @@ def build_graph() -> tuple[Graph, list[dict[str, str | int]]]:
 
     dimensions = EX["standard-cage-dimensions"]
     g.add((dimensions, RDF.type, HCM.EnclosureDimensions))
-    g.add((dimensions, HCM.hasWidth, Literal("20.0", datatype=XSD.decimal)))
-    g.add((dimensions, HCM.hasLength, Literal("36.0", datatype=XSD.decimal)))
-    g.add((dimensions, HCM.hasHeight, Literal("18.0", datatype=XSD.decimal)))
-    g.add((dimensions, HCM.hasDimUnit, Literal("cm")))
+    for property_iri, key, value in (
+        (HCM.hasWidthQuantity, "width", "20.0"),
+        (HCM.hasLengthQuantity, "length", "36.0"),
+        (HCM.hasHeightQuantity, "height", "18.0"),
+    ):
+        quantity = EX[f"standard-cage-{key}-quantity"]
+        g.add((dimensions, property_iri, quantity))
+        g.add((quantity, RDF.type, QUDT.QuantityValue))
+        g.add((quantity, QUDT.numericValue, Literal(value, datatype=XSD.decimal)))
+        g.add((quantity, QUDT.hasUnit, UNIT.CentiM))
     rack_sensor = EX["rack-activity-sensor"]
     add_named(g, rack_sensor, HCM_TECH.Sensor, "Rack activity sensor")
     g.add((rack_sensor, RDFS.label, Literal("Rack activity sensor")))
@@ -280,8 +288,8 @@ def build_graph() -> tuple[Graph, list[dict[str, str | int]]]:
                 g.add((observation, HCM_OBS.occursIn, observation_cage))
                 g.add((result, RDF.type, HCM_OBS.BehaviorResult))
                 g.add((result, RDF.type, HCM_OBS.QuantityValue))
-                g.add((result, HCM_OBS.hasNumericValue, Literal(f"{value}.0", datatype=XSD.decimal)))
-                g.add((result, HCM.hasUnit, Literal("activity counts per dark phase")))
+                g.add((result, QUDT.numericValue, Literal(f"{value}.0", datatype=XSD.decimal)))
+                g.add((result, QUDT.hasUnit, UNIT.UNITLESS))
                 add_interval_bounds(
                     g,
                     phenomenon,
@@ -289,7 +297,6 @@ def build_graph() -> tuple[Graph, list[dict[str, str | int]]]:
                     observed_start,
                     observed_end,
                 )
-                g.add((animal, HCM_BIO.hasBehaviorObservation, observation))
                 observation_rows.append(
                     {
                         "animal": f"animal-{animal_number}",

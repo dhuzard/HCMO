@@ -146,7 +146,7 @@ published 0.0.1 HCMO IRIs remain available as deprecated mapped terms.
 
 The remaining modeling decisions are tracked in `docs/MISSING-DEFINITIONS.md`.
 Most notably, quantity/unit modeling is still a lightweight HCMO pattern pending
-a reviewed QUDT or OM alignment.
+a pinned QUDT 3.4.0 quantity-value pattern.
 
 ## Web authoring app (optional)
 

@@ -4,36 +4,48 @@
 @prefix hcm-env: <https://w3id.org/hcmo/ontology/hcm/env#> .
 @prefix hcm-obs: <https://w3id.org/hcmo/ontology/hcm/obs#> .
 @prefix hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
 @prefix time: <http://www.w3.org/2006/time#> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 ex:cage-12 a hcm:MonitoredEnclosure ;
   rdfs:label "Rack 3, cage 12" ;
   hcm:hasEnclosureIdentifier "rack-3-cage-12" ;
   hcm:hasDimensions ex:cage-12-dimensions ;
+  hcm:hasOperationalStatusRecord ex:cage-12-operational-status ;
   hcm-env:hasEnvironment ex:cage-12-environment ;
-  hcm-tech:monitoredBy ex:ir-sensor-1 .
+  hcm-env:hasThriveProfile ex:standard-thrive-profile ;
+  hcm-tech:monitoredBy ex:ir-sensor-1, ex:temperature-sensor-1 .
 
 ex:cage-12-dimensions a hcm:EnclosureDimensions ;
-  hcm:hasWidth 30.0 ;
-  hcm:hasLength 45.0 ;
-  hcm:hasHeight 20.0 ;
-  hcm:hasDimUnit "cm" .
+  hcm:hasWidthQuantity [ a qudt:QuantityValue ; qudt:numericValue 30.0 ; qudt:hasUnit unit:CentiM ] ;
+  hcm:hasLengthQuantity [ a qudt:QuantityValue ; qudt:numericValue 45.0 ; qudt:hasUnit unit:CentiM ] ;
+  hcm:hasHeightQuantity [ a qudt:QuantityValue ; qudt:numericValue 20.0 ; qudt:hasUnit unit:CentiM ] .
 
 ex:cage-12-environment a hcm-env:EnvironmentProfile ;
-  hcm-env:hasMeasurementSpec ex:activity-specification .
+  hcm-env:hasMeasurementSpec ex:temperature-specification .
 
-ex:activity-specification a hcm-env:MeasurementSpecification ;
-  rdfs:label "Activity index measurement specification" .
+ex:temperature-specification a hcm-env:MeasurementSpecification ;
+  rdfs:label "Cage ambient-temperature target" ;
+  hcm-env:specifiesProperty ex:ambient-temperature ;
+  hcm-env:hasSpecifiedValue [ a qudt:QuantityValue ; qudt:numericValue 22.0 ; qudt:hasUnit unit:DEG_C ] .
+
+ex:standard-thrive-profile a hcm-env:ThriveProfile ;
+  rdfs:label "Standard mouse husbandry environment profile" ;
+  hcm-env:hasMeasurementSpec ex:temperature-specification .
+
+ex:ambient-temperature a hcm-env:EnvironmentalProperty ;
+  rdfs:label "ambient temperature" .
 
 ex:mouse-1 a hcm-bio:Subject ;
   rdfs:label "Mouse 1" ;
   hcm-bio:hasSpecies "Mus musculus" ;
   hcm-bio:hasStrain "C57BL/6J" ;
-  hcm-bio:hasHousingAssignment ex:mouse-1-cage-12-assignment ;
-  hcm-bio:hasBehaviorObservation ex:observation-1 .
+  hcm-bio:hasHousingAssignment ex:mouse-1-cage-12-assignment .
 
 ex:mouse-1-cage-12-assignment a hcm-bio:HousingAssignment ;
   hcm-bio:assignedToEnclosure ex:cage-12 ;
@@ -47,9 +59,16 @@ ex:ir-sensor-1 a hcm-tech:Sensor ;
   rdfs:label "Left-wall infrared sensor" ;
   hcm-tech:hasSensorIdentifier "ir-1" ;
   hcm-tech:hasSensorType "infrared beam-break sensor" ;
-  hcm-tech:hasSamplingRate "4 Hz" ;
+  hcm-tech:hasSamplingRateQuantity [ a qudt:QuantityValue ; qudt:numericValue 4.0 ; qudt:hasUnit unit:HZ ] ;
+  hcm-tech:hasCalibrationRecord ex:ir-sensor-1-calibration ;
   hcm-tech:installedIn ex:cage-12 ;
   hcm-tech:captures ex:locomotor-activity .
+
+ex:temperature-sensor-1 a hcm-tech:Sensor ;
+  rdfs:label "Rack ambient-temperature sensor" ;
+  hcm-tech:hasSensorIdentifier "rack-temp-1" ;
+  hcm-tech:hasSamplingRateQuantity [ a qudt:QuantityValue ; qudt:numericValue 1.0 ; qudt:hasUnit unit:HZ ] ;
+  hcm-tech:captures ex:ambient-temperature .
 
 ex:locomotor-activity a sosa:ObservableProperty ;
   rdfs:label "locomotor activity" .
@@ -76,6 +95,45 @@ ex:limited-human-interaction rdfs:label "limited human interaction" .
 ex:behavior-result-1 a hcm-obs:BehaviorResult ;
   hcm-obs:hasBehaviorType "exploration" ;
   hcm-obs:hasConfidenceScore 0.95 .
+
+ex:temperature-observation-1 a hcm-obs:EnvironmentObservation ;
+  sosa:hasFeatureOfInterest ex:cage-12 ;
+  sosa:madeBySensor ex:temperature-sensor-1 ;
+  sosa:observedProperty ex:ambient-temperature ;
+  sosa:hasResult ex:temperature-result-1 ;
+  sosa:phenomenonTime ex:temperature-observation-time .
+
+ex:temperature-result-1 a hcm-obs:QuantityValue ;
+  qudt:numericValue 21.8 ;
+  qudt:hasUnit unit:DEG_C .
+
+ex:temperature-observation-time a time:Interval ;
+  time:hasBeginning [ a time:Instant ; time:inXSDDateTime "2026-01-01T12:00:00Z"^^xsd:dateTime ] ;
+  time:hasEnd [ a time:Instant ; time:inXSDDateTime "2026-01-01T12:05:00Z"^^xsd:dateTime ] .
+
+ex:cage-12-operational-status a hcm:OperationalStatusRecord ;
+  hcm:hasOperationalStatusValue true ;
+  time:hasTime ex:cage-12-operational-validity ;
+  prov:wasGeneratedBy ex:cage-12-operational-assessment .
+
+ex:cage-12-operational-assessment a hcm:OperationalAssessment ;
+  hcm:assessesEnclosure ex:cage-12 .
+
+ex:cage-12-operational-validity a time:Interval ;
+  time:hasBeginning [ a time:Instant ; time:inXSDDateTime "2026-01-01T00:00:00Z"^^xsd:dateTime ] ;
+  time:hasEnd [ a time:Instant ; time:inXSDDateTime "2026-02-01T00:00:00Z"^^xsd:dateTime ] .
+
+ex:ir-sensor-1-calibration a hcm-tech:CalibrationRecord ;
+  hcm-tech:hasCalibrationStatusValue true ;
+  time:hasTime ex:ir-sensor-1-calibration-validity ;
+  prov:wasGeneratedBy ex:ir-sensor-1-calibration-activity .
+
+ex:ir-sensor-1-calibration-activity a hcm-tech:CalibrationActivity ;
+  hcm-tech:calibratesSensor ex:ir-sensor-1 .
+
+ex:ir-sensor-1-calibration-validity a time:Interval ;
+  time:hasBeginning [ a time:Instant ; time:inXSDDateTime "2025-12-15T00:00:00Z"^^xsd:dateTime ] ;
+  time:hasEnd [ a time:Instant ; time:inXSDDateTime "2026-03-15T00:00:00Z"^^xsd:dateTime ] .
 
 ex:activity-series a hcm-tech:TimeSeries ;
   rdfs:label "Cage 12 activity series" ;

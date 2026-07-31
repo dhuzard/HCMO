@@ -2,32 +2,34 @@
 # Promoted after expert review; see docs/paper/MODULE-MAP.md. Namespace policy: …/hcm/env#.
 #
 @prefix BFO: <http://purl.obolibrary.org/obo/BFO_> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix hcm: <https://w3id.org/hcmo/ontology/hcm#> .
 @prefix hcm-env: <https://w3id.org/hcmo/ontology/hcm/env#> .
 @prefix hcm-obs: <https://w3id.org/hcmo/ontology/hcm/obs#> .
 @prefix IAO: <http://purl.obolibrary.org/obo/IAO_> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 hcm-env:AmbientTemperature a owl:ObjectProperty ;
     rdfs:label "ambient temperature" ;
-    rdfs:comment "Relates an environmental profile, specification, or observation to the environmental property representing ambient temperature." ;
+    rdfs:comment "Deprecated role-conflating relation. Profiles use hasMeasurementSpec, specifications use specifiesProperty, and observations use sosa:observedProperty." ;
     rdfs:domain [ a owl:Class ; owl:unionOf ( hcm-env:EnvironmentProfile hcm-env:MeasurementSpecification hcm-obs:EnvironmentObservation ) ] ;
-    rdfs:range hcm-env:EnvironmentalProperty .
+    rdfs:range hcm-env:EnvironmentalProperty ; owl:deprecated true .
 
 hcm-env:AmmoniaConcentration a owl:ObjectProperty ;
     rdfs:label "ammonia concentration" ;
-    rdfs:comment "Relates an environmental profile, specification, or observation to the environmental property representing ammonia concentration." ;
+    rdfs:comment "Deprecated role-conflating relation. Profiles use hasMeasurementSpec, specifications use specifiesProperty, and observations use sosa:observedProperty." ;
     rdfs:domain [ a owl:Class ; owl:unionOf ( hcm-env:EnvironmentProfile hcm-env:MeasurementSpecification hcm-obs:EnvironmentObservation ) ] ;
-    rdfs:range hcm-env:EnvironmentalProperty .
+    rdfs:range hcm-env:EnvironmentalProperty ; owl:deprecated true .
 
 hcm-env:CarbonDioxideConcentration a owl:ObjectProperty ;
     rdfs:label "carbon dioxide concentration" ;
-    rdfs:comment "Relates an environmental profile, specification, or observation to the environmental property representing carbon dioxide concentration." ;
+    rdfs:comment "Deprecated role-conflating relation. Profiles use hasMeasurementSpec, specifications use specifiesProperty, and observations use sosa:observedProperty." ;
     rdfs:domain [ a owl:Class ; owl:unionOf ( hcm-env:EnvironmentProfile hcm-env:MeasurementSpecification hcm-obs:EnvironmentObservation ) ] ;
-    rdfs:range hcm-env:EnvironmentalProperty .
+    rdfs:range hcm-env:EnvironmentalProperty ; owl:deprecated true .
 
 hcm-env:EnvironmentProfile a owl:Class ;
     rdfs:label "Environment Profile" ;
@@ -50,32 +52,32 @@ hcm-env:EnvironmentalProperty a owl:Class ;
 
 hcm-env:LightIntensity a owl:ObjectProperty ;
     rdfs:label "light intensity" ;
-    rdfs:comment "Relates an environmental profile, specification, or observation to the environmental property representing light intensity." ;
+    rdfs:comment "Deprecated role-conflating relation. Profiles use hasMeasurementSpec, specifications use specifiesProperty, and observations use sosa:observedProperty." ;
     rdfs:domain [ a owl:Class ; owl:unionOf ( hcm-env:EnvironmentProfile hcm-env:MeasurementSpecification hcm-obs:EnvironmentObservation ) ] ;
-    rdfs:range hcm-env:EnvironmentalProperty .
+    rdfs:range hcm-env:EnvironmentalProperty ; owl:deprecated true .
 
 hcm-env:LightState a owl:ObjectProperty ;
     rdfs:label "light state" ;
-    rdfs:comment "Relates an environmental profile, specification, or observation to the environmental property representing light state." ;
+    rdfs:comment "Deprecated role-conflating relation. Profiles use hasMeasurementSpec, specifications use specifiesProperty, and observations use sosa:observedProperty." ;
     rdfs:domain [ a owl:Class ; owl:unionOf ( hcm-env:EnvironmentProfile hcm-env:MeasurementSpecification hcm-obs:EnvironmentObservation ) ] ;
-    rdfs:range hcm-env:EnvironmentalProperty .
+    rdfs:range hcm-env:EnvironmentalProperty ; owl:deprecated true .
 
 hcm-env:OxygenConcentration a owl:ObjectProperty ;
     rdfs:label "oxygen concentration" ;
-    rdfs:comment "Relates an environmental profile, specification, or observation to the environmental property representing oxygen concentration." ;
+    rdfs:comment "Deprecated role-conflating relation. Profiles use hasMeasurementSpec, specifications use specifiesProperty, and observations use sosa:observedProperty." ;
     rdfs:domain [ a owl:Class ; owl:unionOf ( hcm-env:EnvironmentProfile hcm-env:MeasurementSpecification hcm-obs:EnvironmentObservation ) ] ;
-    rdfs:range hcm-env:EnvironmentalProperty .
+    rdfs:range hcm-env:EnvironmentalProperty ; owl:deprecated true .
 
 hcm-env:RelativeHumidity a owl:ObjectProperty ;
     rdfs:label "relative humidity" ;
-    rdfs:comment "Relates an environmental profile, specification, or observation to the environmental property representing relative humidity." ;
+    rdfs:comment "Deprecated role-conflating relation. Profiles use hasMeasurementSpec, specifications use specifiesProperty, and observations use sosa:observedProperty." ;
     rdfs:domain [ a owl:Class ; owl:unionOf ( hcm-env:EnvironmentProfile hcm-env:MeasurementSpecification hcm-obs:EnvironmentObservation ) ] ;
-    rdfs:range hcm-env:EnvironmentalProperty .
+    rdfs:range hcm-env:EnvironmentalProperty ; owl:deprecated true .
 
 hcm-env:ThriveProfile a owl:Class ;
     rdfs:label "Thrive Profile" ;
-    rdfs:comment "A welfare or husbandry profile describing environmental conditions intended to support animal thriving." ;
-    rdfs:subClassOf IAO:0000030 .
+    rdfs:comment "A normative environment profile specifying husbandry and environmental conditions intended to support animal thriving; linking one to an enclosure does not assert compliance or an animal outcome." ;
+    rdfs:subClassOf hcm-env:EnvironmentProfile .
 
 hcm-env:hasEnvironment a owl:ObjectProperty ;
     rdfs:label "has environment" ;
@@ -109,9 +111,9 @@ hcm-env:hasDuskDuration a owl:DatatypeProperty ;
 
 hcm-env:hasGasType a owl:DatatypeProperty ;
     rdfs:label "has gas type" ;
-    rdfs:comment "Records the gas type measured or specified in a gas concentration profile." ;
+    rdfs:comment "Deprecated gas-name string. Identify a gas-specific EnvironmentalProperty resource with specifiesProperty." ;
     rdfs:domain hcm-env:GasConcentrationProfile ;
-    rdfs:range xsd:string .
+    rdfs:range xsd:string ; owl:deprecated true .
 
 hcm-env:hasLightPhaseDuration a owl:DatatypeProperty ;
     rdfs:label "has light phase duration" ;
@@ -127,14 +129,16 @@ hcm-env:hasThriveProfile a owl:ObjectProperty ;
 
 hcm-env:hasValue a owl:DatatypeProperty ;
     rdfs:label "has value" ;
-    rdfs:comment "Records a literal value for an environmental measurement or specification." ;
+    rdfs:comment "Deprecated untyped literal. Use hasSpecifiedValue for specifications or sosa:hasResult for observations with QUDT QuantityValue nodes." ;
     rdfs:domain [ a owl:Class ; owl:unionOf ( hcm-env:MeasurementSpecification hcm-env:GasConcentrationProfile ) ] ;
-    rdfs:range rdfs:Literal .
+    rdfs:range rdfs:Literal ;
+    dcterms:isReplacedBy hcm-env:hasSpecifiedValue ;
+    owl:deprecated true .
 
 hcm-env:GasConcentrationProfile a owl:Class ;
     rdfs:label "Gas Concentration Profile" ;
-    rdfs:comment "A profile describing concentrations of gases relevant to the monitored enclosure environment." ;
-    rdfs:subClassOf IAO:0000030 .
+    rdfs:comment "A measurement specification describing a target or required concentration for a gas-specific environmental property." ;
+    rdfs:subClassOf hcm-env:MeasurementSpecification .
 
 hcm-env:LightCycle a owl:Class ;
     rdfs:label "Light Cycle" ;
@@ -163,4 +167,16 @@ hcm-env:hasMeasurementSpec a owl:ObjectProperty ;
     rdfs:comment "Relates an environment profile to a measurement specification." ;
     rdfs:domain hcm-env:EnvironmentProfile ;
     rdfs:range hcm-env:MeasurementSpecification .
+
+hcm-env:specifiesProperty a owl:ObjectProperty ;
+    rdfs:label "specifies property" ;
+    rdfs:comment "Relates a measurement specification to the environmental property for which it specifies a target or requirement." ;
+    rdfs:domain hcm-env:MeasurementSpecification ;
+    rdfs:range hcm-env:EnvironmentalProperty .
+
+hcm-env:hasSpecifiedValue a owl:ObjectProperty ;
+    rdfs:label "has specified value" ;
+    rdfs:comment "Relates a measurement specification to a QUDT quantity value expressing its target or required value." ;
+    rdfs:domain hcm-env:MeasurementSpecification ;
+    rdfs:range qudt:QuantityValue .
 

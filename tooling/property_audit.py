@@ -91,8 +91,8 @@ def check_source_snapshot(manifest: dict) -> None:
     print(f"  Active non-deprecated total: {len(active)}")
     print(f"  Deprecated compatibility total: {len(compatibility)}")
 
-    if len(active) != 81:
-        raise SystemExit(f"ERROR: expected 81 active properties, found {len(active)}")
+    if len(active) != 69:
+        raise SystemExit(f"ERROR: expected 69 active properties, found {len(active)}")
     if len(compatibility) != 49:
         raise SystemExit(
             "ERROR: expected 49 deprecated compatibility properties, "
@@ -152,7 +152,10 @@ def check_property_metadata(manifest: dict) -> None:
         )
 
     print("Property metadata completeness")
-    print("  Active properties with label/definition/domain/range: 81")
+    print(
+        "  Authored properties with label/definition/domain/range: "
+        f"{len(active_object | active_datatype)}"
+    )
     print("  Compatibility properties with label/definition/source/deprecation: 49")
     print(f"  Declared compatibility replacements: {replacements}")
     print(f"  Type-changing replacements requiring migration: {len(type_changes)}")

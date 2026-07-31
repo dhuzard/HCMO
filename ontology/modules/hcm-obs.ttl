@@ -6,8 +6,10 @@
 @prefix hcm-env: <https://w3id.org/hcmo/ontology/hcm/env#> .
 @prefix hcm-obs: <https://w3id.org/hcmo/ontology/hcm/obs#> .
 @prefix hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix IAO: <http://purl.obolibrary.org/obo/IAO_> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix semts: <https://w3id.org/semts/ontology#> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
@@ -85,7 +87,7 @@ hcm-obs:hasBehaviorType a owl:DatatypeProperty ;
 
 hcm-obs:hasCondition a owl:ObjectProperty ;
     rdfs:label "has condition" ;
-    rdfs:comment "Relates an observation to the condition under which it was made or interpreted; the condition model is intentionally left open." ;
+    rdfs:comment "A non-causal contextual link from an observation to a resource describing a condition relevant during interpretation. It does not assert a study factor, factor value, treatment assignment, or executed intervention." ;
     rdfs:domain sosa:Observation ;
     rdfs:range owl:Thing .
 
@@ -109,9 +111,11 @@ hcm-obs:hasInterval a owl:DatatypeProperty ;
 
 hcm-obs:hasNumericValue a owl:DatatypeProperty ;
     rdfs:label "has numeric value" ;
-    rdfs:comment "Records the numeric value of a quantity result or measurement." ;
+    rdfs:comment "Deprecated numeric literal. Use qudt:numericValue on the QUDT QuantityValue result." ;
     rdfs:domain hcm-obs:QuantityValue ;
-    rdfs:range xsd:decimal .
+    rdfs:range xsd:decimal ;
+    dcterms:isReplacedBy qudt:numericValue ;
+    owl:deprecated true .
 
 hcm-obs:occursIn a owl:ObjectProperty ;
     rdfs:label "occurs in" ;
@@ -121,8 +125,8 @@ hcm-obs:occursIn a owl:ObjectProperty ;
 
 hcm-obs:QuantityValue a owl:Class ;
     rdfs:label "Quantity Value" ;
-    rdfs:comment "An observation result that represents a quantitative value, typically with a numeric value and unit." ;
-    rdfs:subClassOf hcm-obs:ObservationResult .
+    rdfs:comment "An observation result represented as a QUDT quantity value with a numeric value and unit." ;
+    rdfs:subClassOf hcm-obs:ObservationResult, qudt:QuantityValue .
 
 hcm-obs:hasCategory a owl:DatatypeProperty ;
     rdfs:label "has category" ;

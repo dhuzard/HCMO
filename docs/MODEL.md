@@ -6,8 +6,9 @@ A `hcm:MonitoredEnclosure` is a physical enclosure that:
 
 - has one `hcm:EnclosureDimensions` record through `hcm:hasDimensions`;
 - has time-bounded subject/group housing recorded through
-  `hcm-bio:HousingAssignment`; `hcm:hasMonitoredAnimals` is only an optional
-  derived snapshot at an explicitly stated evaluation time;
+  `hcm-bio:HousingAssignment`; current membership is derived at an explicitly
+  stated evaluation time and the old `hcm:hasMonitoredAnimals` shortcut is
+  deprecated;
 - is monitored by `hcm-tech:Sensor` instances through
   `hcm-tech:monitoredBy`; physical cage installation is represented separately
   with `hcm-tech:installedIn`; and
@@ -94,7 +95,8 @@ semantics remain explicit controlled losses.
 
 ## Deferred decisions
 
-- Replace unit strings with a reviewed QUDT or OM pattern.
+- Extend the pinned QUDT 3.4.0 pattern only when a new quantity role and unit
+  scope have representative evidence.
 - Refine the target class for `hcm-obs:hasCondition`.
 - Obtain an authoritative permanent ISA RO-Crate profile URI, base RO-Crate
   edition, and endorsed validator procedure before claiming formal conformance.

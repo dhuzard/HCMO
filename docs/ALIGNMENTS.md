@@ -25,10 +25,12 @@ reference is not counted as implemented reuse or alignment.
 | BFO and IAO | Implemented selective alignment | Canonical upper anchors and the optional source-faithful developer hierarchy |
 | SOSA 2017 terms | Implemented selective reuse/alignment | Reviewed sensor, actuator, observable-property, observation, result, and relation terms; immutable 2017 artifact pinned |
 | Schema.org | Implemented selective reuse | Contributor, place, and exchange terms |
-| OWL-Time | Validated interoperability evidence | Supported example and duration-query pattern |
-| PROV-O, OBI, STATO, and ISA/Bioschemas | Validated interoperability evidence | Pinned recording workflow plus lossless extended-crate 2 × 2, housing, Source/Sample, and statistical-result fixtures; no HCMO class mappings |
+| OWL-Time | Implemented selective reuse plus validated interoperability evidence | Time-bounded housing, observation, operational-status, and calibration records with exact-answer queries |
+| PROV-O | Implemented selective reuse plus validated interoperability evidence | `prov:Activity` and `prov:wasGeneratedBy` in evidence-backed operational and calibration patterns, plus workflow fixtures |
+| OBI, STATO, and ISA/Bioschemas | Validated interoperability evidence | Pinned recording workflow plus lossless extended-crate 2 × 2, housing, Source/Sample, and statistical-result fixtures; no HCMO class mappings |
 | SemTS 1.2.0 | Implemented selective reuse/alignment | Canonical `TimeSeriesSegment`, `DataDimension`, and `segmentDimension` terms for location result tables |
-| QUDT/OM | Future work | No implemented alignment |
+| QUDT 3.4.0 | Implemented selective reuse | Pinned QuantityValue, numericValue, hasUnit, and reviewed unit IRIs for dimensions, sampling rates, specifications, and observations |
+| OM | Not implemented | QUDT was selected for the release; no OM terms are asserted |
 | ISA RO-Crate | Validated interoperability evidence; no formal conformance claim | HCMO RDF/extended-crate graph round trip, RO-Crate 1.2 required validation, and ISA-specific required validation pass; permanent ISA profile URI/base-version decision remains external |
 
 ## Upper-level anchors
@@ -96,8 +98,8 @@ query consumes that pattern. These OWL-Time terms are not redeclared as HCMO
 classes or properties. The former
 `hcm:OWL-Timeintervaltable` artifact is deprecated without replacement.
 
-## Units roadmap
+## Quantities and units
 
-HCMO 0.2.0 retains datatype values plus explicit unit strings. Adopting QUDT or
-OM quantity-value patterns remains an open, separately reviewed modeling
-decision.
+HCMO uses the QUDT 3.4.0 `QuantityValue`/`numericValue`/`hasUnit` pattern.
+The external contract pins both the schema and unit vocabulary. See ADR-0004
+for scope and the migration guide for replacements of earlier literal fields.
