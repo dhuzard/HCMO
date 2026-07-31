@@ -570,12 +570,16 @@ def write_outputs(
     )
 
     with (OUT / "data" / "dark-phase-activity.csv").open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=["animal", "group", "day", "activity_count"])
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=["animal", "group", "day", "activity_count"],
+            lineterminator="\n",
+        )
         writer.writeheader()
         writer.writerows(observations)
 
     with (OUT / "data" / "model-results.csv").open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.writer(handle)
+        writer = csv.writer(handle, lineterminator="\n")
         writer.writerow(
             [
                 "entity",
