@@ -22,13 +22,13 @@ compatibility, and contribution-workflow changes, OOPS! and FOOPS! must be run
 once more on the final paper-matching distribution before submission.
 
 **Logical consistency.** The canonical RDF/XML artifact was rebuilt and
-checksummed on 30 July 2026. `dist/hcmo.owl` contained 1,308 RDF triples; the
+checksummed on 31 July 2026. `dist/hcmo.owl` contained 1,279 RDF triples; the
 generated profile contained 56 declared release classes, 57 object properties,
 and 73 datatype properties, including compatibility terms. HermiT reported zero
 inconsistent classes. The pre-check also found no active `UNKNOWN:` IRI and no
 property declared as both object and datatype. The exact checksum, environment,
 output, and triage are archived in
-`docs/paper/evaluation/PROTEGE-HERMIT-2026-07-30.md`. A final visual Protege
+`docs/paper/evaluation/PROTEGE-HERMIT-2026-07-31.md`. A final visual Protege
 inspection remains required for hierarchy readability and deprecated-term
 display; it is not conflated with the automated consistency result.
 

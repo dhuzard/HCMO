@@ -60,7 +60,7 @@ an ontology that has changed since the reviewed file was produced.
 
 | Done | ID | Item and description | Human review action | What and where to change after approval | Acceptance evidence |
 | --- | --- | --- | --- | --- | --- |
-| [?] | A01 | **Readable upper-level presentation: provisionally accepted; co-author review pending.** Reuse authoritative external upper-level classes directly and include a curated, versioned annotation and hierarchy subset so Protégé renders readable names. Create a local HCMO upper class only when it is narrower than, or meaningfully different from, the external class. | Co-authors must validate or challenge the proposed structure below, identify the exact external IRIs and versions, and approve each asserted hierarchy or mapping relation. | No ontology implementation is authorized yet. After approval, add the curated external subset through the reviewed module/import strategy; document it in `docs/ARCHITECTURE.md` and `docs/ALIGNMENTS.md`; update owning modules only for approved hierarchy changes; regenerate `dist/`. | Co-author decision record; source and version for every external term; readable Protégé hierarchy; reasoner result with no unintended equivalences or unsatisfiable classes. |
+| [x] | A01 | **Readable upper-level presentation: accepted by Damien Huzard on 2026-07-31.** Retain canonical BFO/IAO compatibility internally while exposing Entity, Material entity, Information content entity, Quality, and Process as the default end-user layer. Keep the source-faithful intermediate hierarchy optional for developers. | Preserve the two-view boundary and review any future mapping to SIO, SULO, ONTOP, SOSA, or PROV-O separately. | The default checksummed presentation is `ontology/modules/external-upper.ttl`; the optional source-faithful hierarchy is `ontology/profiles/external-upper-developer.ttl`. No local upper class or cross-ontology equivalence is created. | Human decision record; pinned sources; default five-anchor graph; optional developer graph; HermiT and validation pass. |
 | [?] | A02 | **Provisional process architecture; external review pending.** Reuse authoritative process classes directly when their meaning matches HCMO and keep semantic, provenance, and exchange layers distinct. | Co-authors and external reviewers must validate or challenge the proposed architecture below, identify exact external IRIs and versions, approve mapping strengths, and settle the ISA round-trip policy for housing assignments and non-file statistical results. | No ontology implementation is authorized yet. After approval, record the policy in `docs/ARCHITECTURE.md` and `docs/ALIGNMENTS.md`; put any approved HCMO specialization in its owning module; add examples, shapes, and competency questions; regenerate `dist/`. | Reviewer-approved term/mapping table; acyclic example workflow with explicit inputs and outputs; resolved ISA extension policy; at least one process competency question. |
 | [x] | A03 | **Separate person identity, provenance responsibility, and contributor credit: accepted.** Use `schema:Person` for ISA/Bioschemas exchange, `prov:Person` and `prov:Agent` for provenance, and CRediT through qualified PROV relations for contributor credit. Do not create a local `hcm:Person`. | Preserve the distinctions in the accepted decision below. Before implementation, pin the external versions and identifiers and review every operational role whose meaning is narrower than CRediT. | No ontology class change is authorized. Current Schema.org contributor metadata remains in `ontology/modules/hcm-core.ttl`. Future provenance and contribution examples belong in `examples/`; approved mappings in `docs/ALIGNMENTS.md` or the mapping registry; requirements in `shapes/` and `queries/`; paper attribution guidance in `docs/paper/`. | Decision record below; no active `hcm:Person`; a future example distinguishes person, agent, association/attribution, CRediT contribution role, and any precise operational role. |
 | [x] | A04 | **Broad exchange-level Place with separate material, spatial, and identifier semantics: accepted.** Do not create `hcm:Place`. Retain `schema:Place` as the broad range of `hcm:locatedIn`, without equating it to a BFO site, spatial region, or material entity. Keep institutes/organizations, physical facilities, spatial sites, and geometries distinct. | Preserve the accepted distinctions below. Select authoritative facility/site/geospatial classes only after definition review. Use a globally resolvable organization identifier, preferably ROR where eligible, and a GeoNames IRI for the corresponding geographic place where an appropriate record exists; never treat those identifiers as identifying the same entity. | No immediate ontology axiom change is authorized. Record identifier and mapping rules in `docs/ALIGNMENTS.md` or the mapping registry; add organization/place/facility examples and competency questions before specializing `hcm:locatedIn`; update `ontology/modules/hcm-core.ttl`, shapes, context, and generated artifacts only if the approved examples demonstrate a need. | Decision record below; examples distinguish organization, physical facility, BFO site/spatial entity, and geometry; ROR and GeoNames identifiers resolve to the correct separate entities; no unintended type inference from `hcm:locatedIn`. |
@@ -68,84 +68,47 @@ an ontology that has changed since the reviewed file was produced.
 | [x] | A06 | **Require an evidence-based inventory review before implementing further hierarchy or mapping changes: accepted.** Audit every active HCMO class and every external class directly used as an anchor. The audit is a decision gate, not authorization for bulk changes. | For each term, record IRI, label, definition, module, asserted and inferred parents, restrictions, intended upper category, external source/version, mapping status, provenance, competency questions, and reviewer decision. Classify it as `keep`, `revise definition`, `revise axiom`, `map`, `deprecate`, or `needs evidence`. | Generate the active-term review source from `dist/profile.json` and supplement it with directly referenced external anchors. Store the signed audit under `docs/` or another approved review path. Apply each accepted semantic change separately in its owning source module with examples, reasoning, validation, generated artifacts, and changelog evidence. | Complete signed inventory; separate decision/evidence for every non-`keep` row; no bulk label, hierarchy, equivalence, or deprecation edit; external anchors included despite their intentional exclusion from `dist/profile.json`. |
 | [?] | A07 | **Preserve historical ontology artifacts as immutable evidence and exclude them from the active release: accepted; reviewed artifact identification pending.** `ontology/legacy/` and `ontology/v2/` remain historical and must not be edited to resemble the active ontology or used as the canonical Protégé entry point. | Obtain and record the exact file/version Philippe reviewed, its checksum, and the tool/view used; reproduce each finding against the current generated release and classify it as active, compatibility-only, or historical. | No historical ontology edit is authorized. Keep `ontology/modules/*.ttl` as the hand-authored source and `dist/hcmo.owl` / `dist/hcmo.ttl` as generated load targets. Put corrections in the owning active module or, for published migration IRIs, `ontology/modules/hcm-compat.ttl`; clarify canonical load instructions and preserve the historical inventory. | Accepted preservation policy; exact reviewed artifact and checksum; finding-classification table; historical paths remain excluded from `hcmo.yaml`; current release rebuild and validation pass. |
 
-### A01 provisional decision and discussion structure
+### A01 accepted two-view upper-level policy
 
-Status: provisional direction recorded on 2026-07-21; final approval is deferred
-until co-authors have validated, challenged, or revised it. This record does not
-authorize new classes, mappings, or hierarchy axioms.
+Status: accepted by Damien Huzard on 2026-07-31 after reviewing Philippe's
+follow-up. The decision authorizes the presentation/refinement changes below,
+but no local upper class or cross-ontology equivalence.
 
 Philippe's 2026-07-30 follow-up confirms that the simple upper-level grouping is
 useful for end-user communication, while explicitly framing it as a suggestion
 rather than a recommendation. This supports a presentation view but does not
 approve any particular external version, IRI, import, or logical mapping.
 
-Implementation note: HCMO now ships a checksummed BFO 2020 / IAO 2026-03-30
-upper projection containing canonical labels, definitions, and immediate
-hierarchy. `external-vocabularies.yaml` pins the source artifacts and used-term
-allowlists while `hcmo.yaml` retains its stable API shape. No local upper class,
-cross-ontology equivalence, or full import was added.
+Implementation note: the default HCMO release now ships a checksummed,
+flattened BFO 2020 / IAO 2026-03-30 presentation containing five canonical
+anchors, their source labels and definitions, and source-entailed navigation
+shortcuts. The full source-faithful intermediate hierarchy is retained in an
+optional developer profile outside `hcmo.yaml`. No local upper class,
+cross-ontology equivalence, or full import is added.
 
-Provisional decision:
+Accepted decision:
 
-> Reuse authoritative external upper-level classes directly. Include a curated,
-> versioned subset of their labels, definitions, hierarchy, synonyms, and
-> provenance in the HCMO release so Protégé renders readable names. Create a
-> local HCMO upper class only when it is narrower than, or meaningfully
-> different from, the external class.
+> Retain canonical BFO/IAO IRIs and precise upper-ontology compatibility for
+> developers, while exposing a small end-user conceptual layer consisting of
+> Entity, Material entity, Information content entity, Quality, and Process.
+> Keep continuant, occurrent, independent-continuant, and
+> dependent-continuant distinctions in an optional developer profile.
 
-Suggested structure to discuss, validate, or challenge:
+Default presentation:
 
 ```text
 owl:Thing
-├── Material entity
-│   ├── Subject
-│   ├── Enclosure
-│   ├── Facility
-│   ├── Building
-│   ├── Rack
-│   ├── Sensor
-│   └── Actuator
-├── Process entity
-│   ├── Housing process
-│   ├── Recording process
-│   └── Data-processing process
-├── Information entity
-│   ├── Housing assignment
-│   ├── Dataset
-│   ├── Specification
-│   └── Result
-├── Quality / property entity
-│   ├── Temperature
-│   ├── Humidity
-│   └── Light intensity
-└── Immaterial / spatial entity
-    ├── Site
-    └── Spatial region
-
-Exchange typing (not an upper-ontology branch)
-└── schema:Place
+└── BFO Entity
+    ├── BFO Material entity
+    ├── IAO Information content entity
+    ├── BFO Quality
+    └── BFO Process
 ```
 
-Co-author validation must settle the following before implementation:
-
-1. Select the authoritative external class and ontology version represented by
-   each displayed upper-level label.
-2. Confirm whether each HCMO class is a direct subclass of the external class or
-   needs a more specific intermediate class.
-3. Distinguish exact class equivalence (`owl:equivalentClass`), narrower meaning
-   (`rdfs:subClassOf`), and non-logical correspondence (`skos:exactMatch` or
-   `skos:closeMatch`). Do not use `owl:sameAs` for class equivalence.
-4. Validate whether observation and recording entities are processes and how
-   planned protocols differ from executed processes.
-5. Validate which datasets, specifications, assignments, and results qualify as
-   information-content entities.
-6. Distinguish BFO qualities from SOSA observable properties before approving
-   the Quality / property branch.
-7. Apply the accepted A04 distinction: Facility, Building, and Rack are material;
-   Site and Spatial region are immaterial/spatial; `schema:Place` is a broad
-   exchange type rather than their shared upper-ontology class.
-8. Confirm that the selected curated subset renders the proposed hierarchy in
-   Protégé without requiring full external-ontology imports.
+The optional developer profile restores BFO's canonical intermediate hierarchy
+and the more precise object-aggregate parent for Experimental Group. BFO
+Quality versus SOSA observable property, BFO Process versus PROV Activity, and
+any mapping to other upper ontologies remain separate semantic decisions.
 
 ### A02 provisional decision and compatibility review
 
@@ -337,11 +300,12 @@ semantic rationales are human decisions. A generated table must never be used
 as an unattended ontology-rewrite input.
 
 Implementation evidence: Cyril Gilbert completed the first signed A06 working
-pass on 2026-07-24 in `docs/CLASS-AUDIT-WORKING-NOTES.md`. It covers all 29
-active local classes and 13 directly used external class anchors.
+pass in `docs/CLASS-AUDIT-WORKING-NOTES.md`, updated for the accepted A01 view
+on 2026-07-31. It covers all 29 active local classes and 12 directly used
+default external class anchors.
 `tooling/class_audit.py` verifies source counts, required metadata,
 `dist/profile.json` agreement, external-anchor coverage, and exactly one
-review decision per class. The pass records 23 local classes as `keep` and 6 as
+review decision per class. The pass records 24 local classes as `keep` and 5 as
 `needs evidence`; it makes no ontology axiom change.
 
 ### A07 accepted historical-artifact policy
@@ -1225,7 +1189,7 @@ so the exchange graph remains acyclic. See the
 | Done | ID | Item and description | Human review action | What and where to change after approval | Acceptance evidence |
 | --- | --- | --- | --- | --- | --- |
 | [ ] | E01 | **Study Factor and Factor Value.** `hcm-bio:StudyFactors` is an information-content class with the preferred singular label, but there is no factor-value model. | Confirm the current definition, the retained plural IRI, the ISA and STATO targets, and the distinction among factor, independent variable, condition, and value. Do not change the published IRI to make it singular. | `ontology/modules/hcm-bio.ttl`, mapping artifact, `docs/ISA-RO-CRATE-MAPPING.md`, shapes, examples, queries, context, and generated `dist/`. If replacement is required, deprecate/map rather than rename by IRI. | Study with at least two factors and multiple values serializes to the selected ISA representation. |
-| [ ] | E02 | **Experimental Group versus Study Factor.** `hcm-bio:ExperimentalGroup` is a BFO object aggregate with `hasMember`/`belongsToGroup`; it is not equivalent to Study Factor. | Approve relations for subject assignment and groups defined by combinations of factor values. Decide whether control group/cohort are classes, roles, or controlled terms. | `ontology/modules/hcm-bio.ttl`, shapes, examples, new group/factor CQs, ISA/STATO mappings, and model documentation. | Example shows two groups sharing a factor while differing in factor values; no equivalence between group and factor. |
+| [ ] | E02 | **Experimental Group versus Study Factor.** `hcm-bio:ExperimentalGroup` appears under Material entity by default; the optional developer profile refines it as a BFO object aggregate. It has `hasMember`/`belongsToGroup` and is not equivalent to Study Factor. | Approve relations for subject assignment and groups defined by combinations of factor values. Decide whether control group/cohort are classes, roles, or controlled terms. | `ontology/modules/hcm-bio.ttl`, optional developer profile, shapes, examples, new group/factor CQs, ISA/STATO mappings, and model documentation. | Example shows two groups sharing a factor while differing in factor values; no equivalence between group and factor. |
 | [ ] | E03 | **Literal biological and treatment values.** Species, strain, sex, treatment, and some conditions are currently strings. | For each property, choose an external ontology IRI, SKOS concept, OWL individual, or SHACL-constrained literal based on reasoning and exchange requirements. | `ontology/modules/hcm-bio.ttl`, `hcm-obs.ttl`, shapes, context, examples, mapping registry, and documentation. Preserve backward compatibility for existing literal data or provide a migration mapping. | Representation matrix and validation tests for accepted and rejected values. |
 | [ ] | E04 | **SKOS candidate schemes.** Behavior labels, housing categories, modalities, device status, QC codes, experimental roles, and processing categories may not need OWL class semantics. | Select only lists with project governance and stable definitions. Decide whether HCMO owns the scheme or references an external vocabulary. | If HCMO-owned, use a reviewed module/artifact under the established namespace and add it to the build contract; update context, shapes, examples, documentation, and versioning policy. | Each scheme has URI policy, `skos:prefLabel`, definitions, optional alternatives/hierarchy, governance owner, and validation tests. |
 
@@ -1271,13 +1235,13 @@ unreviewed ontology assertions.
 
 | Item ID | Reviewer | Date | Decision (`accept`, `revise`, `reject`, `defer`) | Rationale and semantic effect | Evidence/source | Issue or PR |
 | --- | --- | --- | --- | --- | --- | --- |
-| A01 | Damien Huzard; co-author review pending | 2026-07-21 | Defer final approval; provisional direction accepted | Prefer direct reuse of authoritative upper-level classes plus a curated, versioned subset of annotations and hierarchy for readable Protégé rendering. Local upper classes are permitted only when narrower or meaningfully different. No ontology axioms changed. | A01 provisional decision and discussion structure above | `docs/philippe-rocca-serra-review` |
+| A01 | Damien Huzard | 2026-07-31 | Accept and implement two-view upper policy | Retain canonical BFO/IAO compatibility while exposing five intuitive default anchors; keep philosophical intermediate categories and the Experimental Group object-aggregate refinement in an optional developer profile. No HCMO upper class or cross-ontology equivalence is created. | A01 accepted decision above; Philippe's 2026-07-30 follow-up; `external-vocabularies.yaml` | PR #23 |
 | A02 | Damien Huzard; co-author and external review pending | 2026-07-30 | Evidence slice implemented; defer mapping and conformance approval | Use a layered process architecture: BFO/OBI/SOSA/STATO for semantics, PROV-O for provenance, and ISA/Bioschemas for exchange. The pinned instance graph now demonstrates an acyclic recording, raw file, OBI transformation, STATO sample mean, factor level, and study group with exact-answer CQs. No HCMO class mapping axiom was added; housing/statistical-result round trips and formal ISA conformance remain unresolved. | A02 provisional decision; `external-vocabularies.yaml`; `examples/isa-hcmo-bridge.ttl`; dedicated shapes and `cq-isa-*.rq` | `docs/philippe-followup` |
 | A03 | Damien Huzard | 2026-07-21 | Accept | Keep person identity, provenance responsibility, and contributor credit distinct. Reuse Schema.org, PROV-O, and official CRediT roles in their respective scopes; do not create `hcm:Person`. No ontology axioms changed. | A03 accepted decision and implementation boundary above; Schema.org Person, PROV-O, and CRediT specifications | `docs/philippe-rocca-serra-review` |
 | A04 | Damien Huzard | 2026-07-21 | Accept | Keep `schema:Place` as a broad exchange range while distinguishing material facilities, immaterial sites/spatial regions, and geometry. Identify an institute with ROR where eligible and its separate geographic place with GeoNames where available. Do not create `hcm:Place`. No ontology axioms changed. | A04 accepted decision and identifier boundary above; ROR schema v2.1; GeoNames Ontology | `docs/philippe-rocca-serra-review` |
 | A05 | Damien Huzard | 2026-07-21 | Accept | Retain the physical HCM actuator specialization and deprecated migration IRI; model actuations, acted-on properties, software controllers, and triggered executions as distinct entities. The future definition expansion is approved but not implemented; no ontology axioms changed. | A05 accepted actuator and actuation boundary above; SOSA/SSN 2023 | `docs/philippe-rocca-serra-review` |
 | A06 | Damien Huzard | 2026-07-21 | Accept as required review gate | Require a signed, evidence-based inventory of every active HCMO class and directly referenced external anchor before hierarchy or mapping implementation. Treat every non-`keep` result as a separate reviewed change. No ontology axioms changed. | A06 accepted active-class audit gate above; `dist/profile.json` plus external-anchor supplement | `docs/philippe-rocca-serra-review` |
-| A06 implementation | Cyril Gilbert (`https://orcid.org/0009-0008-2489-8106`) | 2026-07-30 | Working pass complete; defer semantic changes requiring evidence | Reviewed all 29 active local classes and 13 directly used external class anchors. Recorded 24 local `keep` and 5 `needs evidence` decisions after separating monitoring from installation and pinning the source-faithful upper anchors; checked labels, definitions, parents, restrictions, inferred hierarchy, provenance, CQ relevance, external versions, and generated-profile agreement. | `docs/CLASS-AUDIT-WORKING-NOTES.md`; `tooling/class_audit.py --catalog` | `docs/philippe-followup` |
+| A06 implementation | Cyril Gilbert (`https://orcid.org/0009-0008-2489-8106`) | 2026-07-31 | Working pass complete; defer semantic changes requiring evidence | Reviewed all 29 active local classes and 12 directly used default external class anchors. Recorded 24 local `keep` and 5 `needs evidence` decisions; the optional developer profile retains the BFO object-aggregate refinement without counting it as a default direct anchor. | `docs/CLASS-AUDIT-WORKING-NOTES.md`; `tooling/class_audit.py --catalog` | PR #23 |
 | A07 | Damien Huzard; reviewed artifact evidence pending | 2026-07-21 | Accept preservation policy; verification pending | Preserve `ontology/legacy/` and `ontology/v2/` as immutable, excluded historical evidence; use modules as source and generated `dist/` files as load targets. No ontology axioms changed. | A07 accepted historical-artifact policy above; exact reviewed file/version/checksum still required | `docs/philippe-rocca-serra-review` |
 | B01 | Damien Huzard; co-author validation pending | 2026-07-21 | Defer final approval; directory and hybrid pipeline provisionally accepted | Use `ontology/external/` for locked sources, reviewed selections, and committed per-source subsets. Use a Python-controlled, pinned ROBOT pipeline with MIREOT as the readability default and reviewed locality extraction where additional entailments are required. Keep canonical builds offline. No files or ontology axioms implemented. | B01 provisional directory and extraction decision above; ROBOT extraction documentation | `docs/philippe-rocca-serra-review` |
 | B02 | Damien Huzard | 2026-07-21 | Accept | Keep the canonical release self-contained and free of live full-ontology imports. Merge only the approved version-pinned B01 subset; keep any future full-import reasoning profile optional and separate. No ontology axioms changed. | B02 accepted canonical import policy above; B01 co-author validation pending | `docs/philippe-rocca-serra-review` |

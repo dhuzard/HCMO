@@ -2,22 +2,24 @@
 
 ## Upper-level anchors
 
-- The readable upper hierarchy is a checksummed projection of BFO 2020
-  (`bfo/2020/bfo-core.owl`) and IAO 2026-03-30. It supplies canonical labels,
-  definitions, and immediate parent relations without a full `owl:imports`
-  closure.
+- The default readable upper hierarchy is a checksummed five-anchor
+  presentation of BFO 2020 (`bfo/2020/bfo-core.owl`) and IAO 2026-03-30. It
+  supplies canonical labels and definitions plus source-entailed shortcuts to
+  Entity without a full `owl:imports` closure.
 - Physical enclosures, subjects, sensors, actuators, and hardware are anchored
   under BFO material entities.
-- Experimental groups are BFO object aggregates.
+- Experimental groups appear under BFO material entity by default. The optional
+  developer profile restores the more precise BFO object-aggregate parent.
 - Environmental properties are BFO qualities and `sosa:Property` instances.
 - Profiles, specifications, assignments, software, and recorded result/data
   resources are anchored under the IAO information-content hierarchy.
 
-The projection retains the canonical BFO distinctions beneath the friendly
-headings “Material Entity,” “Information Entity,” “Quality / Property,” and
-“Process Entity.” Those headings are a presentation view, not new HCMO classes
-or equivalence mappings across upper ontologies. PROV-O remains a separate
-provenance view.
+The optional `ontology/profiles/external-upper-developer.ttl` profile retains
+the canonical BFO intermediate distinctions for ontology developers. The
+default headings “Material Entity,” “Information Entity,”
+“Quality / Property,” and “Process Entity” are a presentation view, not new
+HCMO classes or equivalence mappings across upper ontologies. PROV-O remains a
+separate provenance view.
 
 ## SOSA
 

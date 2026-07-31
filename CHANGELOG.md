@@ -11,9 +11,10 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
   namespaces, used-term allowlists, and SHA-256 checksums for ten external
   semantic/exchange sources; added offline contract validation plus optional
   network checksum verification.
-- Added a source-faithful BFO 2020 / IAO 2026-03-30 upper projection so
-  Protégé renders canonical upper labels, definitions, and immediate hierarchy
-  without a full external import or duplicate HCMO upper classes.
+- Added a five-anchor BFO 2020 / IAO 2026-03-30 end-user presentation plus an
+  optional source-faithful developer profile. The default hierarchy hides
+  continuant/dependent-continuant intermediates while retaining canonical IRIs,
+  source definitions, and developer compatibility without full imports.
 - Added a pinned, acyclic ISA/STATO evidence slice linking a recording protocol,
   OBI assay, raw file, OBI data transformation, derived file, STATO sample mean,
   study factor, factor level, experimental group, subject, sensor, and enclosure.
@@ -55,6 +56,8 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 - Kept housing assignment outside `schema:result`: the unresolved allocation is
   a PROV activity that generates an HCMO record, not a claimed conformant ISA
   LabProcess output.
+- Exposed Experimental Group under Material entity by default and retained its
+  more precise BFO object-aggregate parent in the optional developer profile.
 - No HCMO class mapping axiom or new local process/statistics term was added.
 
 ### Renamed

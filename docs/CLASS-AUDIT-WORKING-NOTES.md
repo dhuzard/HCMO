@@ -13,7 +13,7 @@ Review branch: `cyril/c04-entailment-contract`
 ## Scope and method
 
 The audit covers all 29 active local classes declared in the five active source
-modules and 13 external classes used directly as superclass, restriction
+modules and 12 external classes used directly as superclass, restriction
 filler, property domain/range, or contributor type. Deprecated compatibility
 classes remain migration evidence and are not active hierarchy candidates.
 
@@ -66,7 +66,7 @@ Table columns:
 
 | Class | Decision | Definition and intended upper category / mapping | Restrictions / inferred parents | CQ and review rationale |
 | --- | --- | --- | --- | --- |
-| `hcm-bio:ExperimentalGroup` | `keep` | Group of subjects sharing a study condition; asserted BFO object aggregate. | No restriction; none beyond asserted. | `animals-by-enclosure`; aggregate interpretation matches membership relations. |
+| `hcm-bio:ExperimentalGroup` | `keep` | Group of subjects sharing a study condition; exposed under BFO material entity in the end-user model. | The optional developer profile adds the more precise BFO object-aggregate parent. | `animals-by-enclosure`; material grouping is intuitive by default while the precise BFO refinement remains available to ontology developers. |
 | `hcm-bio:HousingAssignment` | `keep` | Assignment record linking subjects/groups and enclosures; asserted IAO information content entity. | No restriction; none beyond asserted. | `animals-by-enclosure`, `needs-provisioning`; assignment is correctly reified for study context. |
 | `hcm-bio:StudyFactors` | `needs evidence` | Independent variable represented as an information artifact; currently asserted IAO information content entity. | No restriction; none beyond asserted. | none; singular label/plural IRI and factor-versus-factor-specification meaning require domain evidence before definition or mapping changes. |
 | `hcm-bio:Subject` | `keep` | Biological individual observed in HCM; asserted BFO material entity. | Behavior-observation values restricted to `hcm-obs:BehaviorObservation`; none beyond asserted BFO parent. | `animals-by-enclosure`, `needs-provisioning`; intended individual granularity is explicit. |
@@ -110,16 +110,19 @@ Table columns:
 ## Directly used external class anchors
 
 These rows record the external source family and current release status.
-Reviewed BFO/IAO labels, definitions, and immediate hierarchy are included in
-the checksummed `external-upper.ttl` projection. Other external terms remain
-references rather than a bundled import closure. A `needs evidence` decision
-blocks stronger mappings and new hierarchy axioms until the stated issue is
-resolved.
+Reviewed BFO/IAO labels and definitions for the five end-user anchors are
+included in the checksummed `external-upper.ttl` presentation. Its direct
+Entity links are source-entailed navigation shortcuts. The source-faithful
+intermediate hierarchy and the object-aggregate refinement for Experimental
+Group are retained in the optional
+`ontology/profiles/external-upper-developer.ttl` profile. Other external terms
+remain references rather than a bundled import closure. A `needs evidence`
+decision blocks stronger mappings and new hierarchy axioms until the stated
+issue is resolved.
 
 | Anchor | Current direct use | Source/version status | Decision |
 | --- | --- | --- | --- |
 | `BFO:0000019` | Parent of `hcm-env:EnvironmentalProperty`. | BFO 2020 source, commit and checksum pinned; canonical definition included in the upper projection. | `keep` |
-| `BFO:0000027` | Parent of `hcm-bio:ExperimentalGroup`. | BFO 2020 source, commit and checksum pinned; canonical definition included in the upper projection. | `keep` |
 | `BFO:0000040` | Parent of material subjects, enclosures, enrichments, and devices. | BFO 2020 source, commit and checksum pinned; canonical definition included in the upper projection. | `keep` |
 | `IAO:0000030` | Parent of records, profiles, results, software, and time series. | IAO 2026-03-30 source, commit and checksum pinned; canonical definition included in the upper projection. | `keep` |
 | `sosa:Actuator` | Parent of `hcm-tech:Actuator`. | SOSA/SSN 2017 Recommendation artifact and checksum pinned. | `keep` |
@@ -131,6 +134,11 @@ resolved.
 | `schema:Place` | Range of `hcm:locatedIn`. | Schema.org; version not pinned. | `needs evidence` |
 | `semts:DataDimension` | Restriction filler on environment observations. | HCMO uses SemTS 1.2.0's version IRI (`.../ontology/120#`) as a term namespace, but SemTS declares `DataDimension` in `.../ontology#`; canonical IRI and semantic fit are unvalidated. | `needs evidence` |
 | `semts:TimeSeriesSegment` | Restriction filler on location result tables. | HCMO uses SemTS 1.2.0's version IRI (`.../ontology/120#`) as a term namespace, but SemTS declares `TimeSeriesSegment` in `.../ontology#`; canonical IRI and semantic fit are unvalidated. | `needs evidence` |
+
+The optional developer profile additionally restores
+`hcm-bio:ExperimentalGroup rdfs:subClassOf BFO:0000027` and BFO's canonical
+object-aggregate hierarchy. Because that axiom is excluded from the default
+release graph, `BFO:0000027` is not counted as a directly used default anchor.
 
 ## Review outcome
 

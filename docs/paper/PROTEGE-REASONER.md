@@ -5,16 +5,16 @@ pre-promotion v2 results remain recorded below as historical evidence.
 
 ## Current 0.2.0 result
 
-The canonical `dist/hcmo.owl` artifact was rebuilt and checked on 2026-07-30.
+The canonical `dist/hcmo.owl` artifact was rebuilt and checked on 2026-07-31.
 Its SHA-256 is
-`AF143C468778ABF5D794A295464E32367A4C4BA0083502C0AA2A65173F935BC3`.
-HermiT loaded 67 classes from a 1,308-triple graph and
+`60074FD3909C44F061FA2474AB4A8078E1146512FE0A62B566BECF58633BF5AD`.
+HermiT loaded 61 classes from a 1,279-triple graph and
 reported zero inconsistent classes and zero active `UNKNOWN:` IRIs. SHACL and
 all eight exact-answer competency-query expectations also passed.
 
 The complete environment, output, triage, and remaining manual UI checklist
 are archived in
-`docs/paper/evaluation/PROTEGE-HERMIT-2026-07-30.md`.
+`docs/paper/evaluation/PROTEGE-HERMIT-2026-07-31.md`.
 
 ## Active release protocol
 

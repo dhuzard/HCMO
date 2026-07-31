@@ -11,8 +11,11 @@ Never "just edit labels". Treat every change as a semantic change unless proven 
 ## Repo map (authoritative paths)
 - Release manifest (the contract downstream tools read): `hcmo.yaml` — its **shape is an API**; keep it stable.
 - Hand-authored ontology source modules: `ontology/modules/*.ttl` (the
-  checksummed `external-upper` projection; `hcm-core`, `hcm-bio`, `hcm-env`,
-  `hcm-obs`, `hcm-tech`; and the migration-only `hcm-compat`).
+  checksummed end-user `external-upper` presentation; `hcm-core`, `hcm-bio`,
+  `hcm-env`, `hcm-obs`, `hcm-tech`; and the migration-only `hcm-compat`).
+- Optional developer profile: `ontology/profiles/external-upper-developer.ttl`
+  — restores the source-faithful BFO/IAO intermediate hierarchy and is excluded
+  from the default release manifest.
 - External-vocabulary contract: `external-vocabularies.yaml` — separate from
   the stable `hcmo.yaml` API; records versions, namespaces, used terms, and
   source checksums.
@@ -29,7 +32,7 @@ If these paths change, update this map and `hcmo.yaml` before editing.
 
 ## Namespace (authoritative)
 - Base namespace: `https://w3id.org/hcmo/ontology/hcm#`
-- Ontology IRI: `https://w3id.org/hcmo/ontology/hcm` · versionIRI `…/hcm/0.0.1`
+- Ontology IRI: `https://w3id.org/hcmo/ontology/hcm` · versionIRI `…/hcm/0.2.0`
 - Module sub-namespaces: `…/hcm/bio#`, `…/hcm/env#`, `…/hcm/obs#`, `…/hcm/tech#`
 - Never re-mint IRIs for existing concepts. Deprecate instead. Keep the namespace exactly as authored; if it must change, call it out and bump `owl:versionIRI`.
 

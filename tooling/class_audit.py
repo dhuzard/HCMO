@@ -21,7 +21,6 @@ LOCAL_PREFIX = "https://w3id.org/hcmo/ontology/hcm"
 
 EXTERNAL_ANCHORS = {
     URIRef("http://purl.obolibrary.org/obo/BFO_0000019"),
-    URIRef("http://purl.obolibrary.org/obo/BFO_0000027"),
     URIRef("http://purl.obolibrary.org/obo/BFO_0000040"),
     URIRef("http://purl.obolibrary.org/obo/IAO_0000030"),
     URIRef("http://www.w3.org/ns/sosa/Actuator"),

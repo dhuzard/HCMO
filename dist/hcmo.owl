@@ -20,7 +20,7 @@
     <dcterms:source rdf:resource="http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:label xml:lang="en">material entity</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000001"/>
     <skos:definition xml:lang="en">(Elucidation) A material entity is an independent continuant that at all times at which it exists has some portion of matter as continuant part</skos:definition>
   </rdf:Description>
   <rdf:Description rdf:nodeID="cb13893241617ffd78af4c17a3453b4e005c3ae52d6ac5192a6c91220266bcd7de1">
@@ -532,7 +532,7 @@
     <dcterms:source rdf:resource="http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:label xml:lang="en">process</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000001"/>
     <skos:definition xml:lang="en">(Elucidation) p is a process means p is an occurrent that has some temporal proper part and for some time t, p has some material entity as participant</skos:definition>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#length">
@@ -567,13 +567,6 @@
     <rdfs:comment>Deprecated in HCMO 0.1.0. Relates an animal to a behavior or physiology process it displays.</rdfs:comment>
     <rdfs:label>displays</rdfs:label>
     <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000002">
-    <dcterms:source rdf:resource="http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">continuant</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000001"/>
-    <skos:definition xml:lang="en">(Elucidation) A continuant is an entity that persists, endures, or continues to exist through time while maintaining its identity</skos:definition>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#StudyFactors">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
@@ -636,13 +629,6 @@
     <rdfs:label>has unit</rdfs:label>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000003">
-    <dcterms:source rdf:resource="http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">occurrent</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000001"/>
-    <skos:definition xml:lang="en">(Elucidation) An occurrent is an entity that unfolds itself in time or it is the start or end of such an entity or it is a temporal or spatiotemporal region</skos:definition>
-  </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/dc/terms/modified">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
   </rdf:Description>
@@ -671,6 +657,14 @@
     <rdfs:domain rdf:resource="https://w3id.org/hcmo/ontology/hcm#EnclosureDimensions"/>
     <rdfs:label>has width</rdfs:label>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/IAO_0000030">
+    <dcterms:source rdf:resource="http://purl.obolibrary.org/obo/iao/2026-03-30/iao.owl"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">information content entity</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000001"/>
+    <skos:altLabel xml:lang="en">information entity</skos:altLabel>
+    <skos:definition xml:lang="en">A generically dependent continuant that is about some thing.</skos:definition>
   </rdf:Description>
   <rdf:Description rdf:nodeID="cb1b5e7ce0a8702fc2e5ad885d909ee8fad903adad8453dd1e674f16403e06d74be">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
@@ -765,6 +759,14 @@
     <rdfs:label>carbon dioxide concentration</rdfs:label>
     <rdfs:range rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#EnvironmentalProperty"/>
   </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/external/upper-presentation">
+    <dcterms:source rdf:resource="http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl"/>
+    <dcterms:source rdf:resource="http://purl.obolibrary.org/obo/iao/2026-03-30/iao.owl"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <rdfs:comment>A checksummed, flattened presentation of five canonical BFO/IAO anchors for HCMO end users. Its shortcut hierarchy is entailed by the pinned sources; it does not replace BFO or IAO and does not assert equivalence with PROV-O, SIO, SULO, or ONTOP.</rdfs:comment>
+    <rdfs:label>HCMO end-user upper-level presentation</rdfs:label>
+    <owl:versionInfo>2026-07-31</owl:versionInfo>
+  </rdf:Description>
   <rdf:Description rdf:nodeID="cb267d4d105c2ddc6181a39af02fe0ac92d9559c10796ba13ef7391e66a1d40e1f3">
     <rdf:first rdf:resource="https://w3id.org/hcmo/ontology/hcm/bio#ExperimentalGroup"/>
     <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
@@ -855,14 +857,6 @@
     <rdfs:label>monitored by</rdfs:label>
     <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
   </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/external/upper-subset">
-    <dcterms:source rdf:resource="http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl"/>
-    <dcterms:source rdf:resource="http://purl.obolibrary.org/obo/iao/2026-03-30/iao.owl"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
-    <rdfs:comment>A checksummed projection of the BFO 2020 and IAO 2026-03-30 labels, definitions, and immediate hierarchy needed to render HCMO's upper anchors offline. It does not assert equivalence between BFO, IAO, PROV-O, SOSA, SIO, SULO, or ONTOP.</rdfs:comment>
-    <rdfs:label>HCMO curated external upper-level subset</rdfs:label>
-    <owl:versionInfo>2026-07-30</owl:versionInfo>
-  </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#ObservationWindow">
     <dcterms:source rdf:resource="https://w3id.org/hcmo/ontology/hcm/0.0.1"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
@@ -917,13 +911,6 @@
     <rdfs:label>has space region</rdfs:label>
     <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000031">
-    <dcterms:source rdf:resource="http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">generically dependent continuant</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
-    <skos:definition xml:lang="en">(Elucidation) A generically dependent continuant is an entity that exists in virtue of the fact that there is at least one of what may be multiple copies which is the content or the pattern that multiple copies would share</skos:definition>
-  </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#PhysicalSpace">
     <dcterms:source rdf:resource="https://w3id.org/hcmo/ontology/hcm/0.0.1"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
@@ -940,7 +927,7 @@
     <dcterms:source rdf:resource="http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:label xml:lang="en">quality</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000001"/>
     <skos:definition xml:lang="en">(Elucidation) A quality is a specifically dependent continuant that, in contrast to roles and dispositions, does not require any further process in order to be realized</skos:definition>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#hasSensorType">
@@ -1226,13 +1213,6 @@
     <rdfs:label>has condition</rdfs:label>
     <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/IAO_0000030">
-    <dcterms:source rdf:resource="http://purl.obolibrary.org/obo/iao/2026-03-30/iao.owl"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">information content entity</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-    <skos:definition xml:lang="en">A generically dependent continuant that is about some thing.</skos:definition>
-  </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#CategoricalResult">
     <dcterms:isReplacedBy rdf:resource="https://w3id.org/hcmo/ontology/hcm/obs#CategoricalResult"/>
     <dcterms:source rdf:resource="https://w3id.org/hcmo/ontology/hcm/0.0.1"/>
@@ -1305,13 +1285,6 @@
     <rdfs:domain rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#LightCycle"/>
     <rdfs:label>has dawn duration</rdfs:label>
     <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000027">
-    <dcterms:source rdf:resource="http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">object aggregate</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-    <skos:definition xml:lang="en">(Elucidation) An object aggregate is a material entity consisting exactly of a plurality (≥1) of objects as member parts which together form a unit</skos:definition>
   </rdf:Description>
   <rdf:Description rdf:nodeID="cb27a457fb53898a44eb13caeb5e38f0368b6e312c2f8a5583c855d370826403cd1">
     <rdf:first rdf:resource="https://w3id.org/hcmo/ontology/hcm/bio#ExperimentalGroup"/>
@@ -1390,13 +1363,6 @@
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
     <owl:onProperty rdf:resource="http://www.w3.org/ns/sosa/hasResult"/>
     <owl:someValuesFrom rdf:resource="https://w3id.org/hcmo/ontology/hcm/obs#BehaviorResult"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000004">
-    <dcterms:source rdf:resource="http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">independent continuant</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
-    <skos:definition xml:lang="en">b is an independent continuant =Def b is a continuant &amp; there is no c such that b specifically depends on c or b generically depends on c</skos:definition>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/env#LightState">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -1599,13 +1565,6 @@
   <rdf:Description rdf:about="http://purl.org/ontology/bibo/doi">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000020">
-    <dcterms:source rdf:resource="http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">specifically dependent continuant</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
-    <skos:definition xml:lang="en">b is a specifically dependent continuant =Def b is a continuant &amp; there is some independent continuant c which is not a spatial region &amp; which is such that b specifically depends on c</skos:definition>
-  </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#durationHours">
     <dcterms:source rdf:resource="https://w3id.org/hcmo/ontology/hcm/0.0.1"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
@@ -1800,12 +1759,6 @@
     <rdf:first rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#Hardware"/>
     <rdf:rest rdf:nodeID="cb25ed1587224cf963a7ab8517e40354b90a0979994730a4dc521a908c427068335"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#ExperimentalGroup">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:comment>A group of biological subjects sharing an experimental condition, treatment, or study role.</rdfs:comment>
-    <rdfs:label>Experimental Group</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000027"/>
-  </rdf:Description>
   <rdf:Description rdf:nodeID="cb1927c465fe67d6061244df711e478e344fe04c3c7a8f4c8877d678c13a7c536b2">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
     <owl:allValuesFrom rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#Sensor"/>
@@ -1883,6 +1836,12 @@
   <rdf:Description rdf:nodeID="cb1859cea3c264a1014169680af0f79eaaf45329f62b5194c7987d46e69e5413d09">
     <rdf:first rdf:resource="https://w3id.org/hcmo/ontology/hcm/obs#EnvironmentObservation"/>
     <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#ExperimentalGroup">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>A group of biological subjects sharing an experimental condition, treatment, or study role.</rdfs:comment>
+    <rdfs:label>Experimental Group</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://orcid.org/0000-0003-2204-2466">
     <rdf:type rdf:resource="https://schema.org/Person"/>

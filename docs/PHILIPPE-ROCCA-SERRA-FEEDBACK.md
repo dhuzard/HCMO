@@ -56,11 +56,14 @@ Thing / Entity
 └── Process Entity
 ```
 
-This supports the provisional A01 direction: retain direct BFO/IAO anchors,
-provide a curated and versioned external subset for readable labels and minimal
-hierarchy, and avoid duplicate local HCMO upper classes. The friendly headings
-are a presentation view, not evidence that similarly named BFO, SIO, SULO,
-ONTOP, SOSA, and PROV-O classes are logically equivalent.
+Damien accepted this pragmatic two-view policy on 2026-07-31. The default HCMO
+release retains direct canonical BFO/IAO anchors but exposes only Entity,
+Material entity, Information content entity, Quality, and Process through
+source-entailed navigation shortcuts. The full continuant/dependent-continuant
+hierarchy is retained in the optional
+`ontology/profiles/external-upper-developer.ttl` profile. No duplicate HCMO
+upper classes or equivalences between BFO, SIO, SULO, ONTOP, SOSA, and PROV-O
+are asserted.
 
 For provenance, the duration-bearing PROV-O class corresponding to an executed
 process is `prov:Activity`. PROV-O has no general `prov:Event` class;

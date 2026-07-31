@@ -33,15 +33,18 @@ supports provenance-sensitive queries without treating a device, event, and
 data value as the same thing.
 
 **Standards reuse.** Physical subjects, enclosures, enrichments, sensors,
-actuators, and hardware are anchored under BFO material entity; experimental
-groups are anchored as BFO object aggregates. Records, specifications, profiles,
+actuators, hardware, and experimental groups are exposed under BFO material
+entity in the default end-user hierarchy. Records, specifications, profiles,
 software, and observation-result artifacts use the IAO information-content
-anchor. Sensors, actuators, observations, results, and observed properties reuse
-SOSA classes and relations, and `hcm-tech:captures` is explicitly a subproperty
-of `sosa:observes`. Schema.org supplies contributor and place exchange types.
-The example ABox uses OWL-Time intervals and the duration competency query
-consumes this representation. These are selective references, not claims that
-HCMO imports or reproduces the full external ontologies.
+anchor. A separate optional developer profile restores BFO's source-faithful
+intermediate hierarchy and the more precise object-aggregate classification of
+experimental groups. Sensors, actuators, observations, results, and observed
+properties reuse SOSA classes and relations, and `hcm-tech:captures` is
+explicitly a subproperty of `sosa:observes`. Schema.org supplies contributor
+and place exchange types. The example ABox uses OWL-Time intervals and the
+duration competency query consumes this representation. These are selective
+references, not claims that HCMO imports or reproduces the full external
+ontologies.
 
 SemTS alignment remains provisional. HCMO currently contains references derived
 from an earlier SemTS model, but their canonical IRIs and semantic fit have not

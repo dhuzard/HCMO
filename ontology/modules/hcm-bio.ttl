@@ -13,7 +13,7 @@
 hcm-bio:ExperimentalGroup a owl:Class ;
     rdfs:label "Experimental Group" ;
     rdfs:comment "A group of biological subjects sharing an experimental condition, treatment, or study role." ;
-    rdfs:subClassOf BFO:0000027 .
+    rdfs:subClassOf BFO:0000040 .
 
 hcm-bio:HousingAssignment a owl:Class ;
     rdfs:label "Housing Assignment" ;

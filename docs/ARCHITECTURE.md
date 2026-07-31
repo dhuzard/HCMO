@@ -1,16 +1,17 @@
 # Ontology architecture
 
-HCMO 0.2.0 is authored as a checksummed external upper-level projection, five
+HCMO 0.2.0 is authored as a checksummed end-user upper-level presentation, five
 domain modules, and one migration-only compatibility module. The release
 manifest `hcmo.yaml` is the authoritative module list; `dist/` is generated
 from that manifest.
 
 ## Active modules
 
-- `ontology/modules/external-upper.ttl`: a source-faithful projection of the
-  pinned BFO 2020 and IAO 2026-03-30 labels, definitions, and immediate
-  hierarchy needed to render HCMO's upper anchors offline. It does not mint
-  HCMO terms or replace either source ontology.
+- `ontology/modules/external-upper.ttl`: a flattened presentation of five
+  canonical BFO 2020 / IAO 2026-03-30 anchors—Entity, Material entity,
+  Information content entity, Quality, and Process. Its direct links to Entity
+  are source-entailed navigation shortcuts. It does not mint HCMO terms or
+  replace either source ontology.
 - `ontology/modules/hcm-core.ttl` (`hcm:`): monitored enclosures, enclosure
   dimensions, enrichment, and stable enclosure relations.
 - `ontology/modules/hcm-bio.ttl` (`hcm-bio:`): subjects, experimental groups,
@@ -26,11 +27,30 @@ from that manifest.
 The former `ontology/v2/` draft has been promoted into the active module set.
 Its old generated review artifacts remain only as historical evidence.
 
+## End-user and developer upper views
+
+The default generated release deliberately hides BFO's continuant, occurrent,
+independent-continuant, and dependent-continuant intermediates. This implements
+Philippe Rocca-Serra's pragmatic end-user layer while retaining canonical
+BFO/IAO IRIs, source definitions, and compatibility.
+
+Ontology developers can load
+`ontology/profiles/external-upper-developer.ttl` alongside `dist/hcmo.owl`.
+That optional, non-manifest profile restores the pinned source-faithful
+intermediate hierarchy and refines `hcm-bio:ExperimentalGroup` from the default
+Material entity category to BFO object aggregate. The default and developer
+views make no equivalence assertions between BFO, IAO, SOSA, PROV-O, SIO, SULO,
+or ONTOP.
+
+See [UPPER-LEVEL-VIEW.md](UPPER-LEVEL-VIEW.md) for the user-facing tree,
+placement examples, and instructions for loading the optional profile.
+
 ## Dependency policy
 
 HCMO reuses external classes and properties by reference and does not redeclare
-them as local HCMO terms. The curated upper projection copies only reviewed
-source annotations and immediate hierarchy. The active ontology modules use:
+them as local HCMO terms. The end-user presentation copies reviewed source
+annotations and adds only source-entailed navigation shortcuts. The active
+ontology modules use:
 
 - BFO and IAO as upper-level anchors;
 - SOSA for observation, result, sensor, actuator, observed-property, and

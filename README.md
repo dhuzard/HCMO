@@ -34,18 +34,24 @@ JSON-LD context.
 > downstream tools (e.g. the `hcmo-kgqa-lab` sync layer) read. Its shape is
 > treated as an API and kept stable across releases.
 
+See [`docs/UPPER-LEVEL-VIEW.md`](docs/UPPER-LEVEL-VIEW.md) for the simple
+end-user hierarchy and the optional source-faithful ontology-developer view.
+
 ## Repository layout
 
 ```
 hcmo.yaml                      # release manifest (name, version, namespace, modules, dist, shapes, queries, examples)
 ontology/
   modules/                     # hand-authored modular sources
+    external-upper.ttl         #   five-anchor end-user upper presentation
     hcm-core.ttl               #   core terms + owl:Ontology header (attribution)
     hcm-bio.ttl                #   subjects, experimental groups        (…/hcm/bio#)
     hcm-env.ttl                #   environment & measurements           (…/hcm/env#)
     hcm-obs.ttl                #   observations & results               (…/hcm/obs#)
     hcm-tech.ttl               #   sensors, devices, software & data    (…/hcm/tech#)
     hcm-compat.ttl             #   deprecated 0.0.1 IRIs + replacements
+  profiles/
+    external-upper-developer.ttl # optional source-faithful BFO/IAO hierarchy
   context.jsonld               # JSON-LD context for app developers
   legacy/                      # previous HCMO 1.0.0 + HCMO/MAPP 0.0.1 sources (not merged)
 dist/                          # GENERATED — never hand-edit

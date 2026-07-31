@@ -1,7 +1,12 @@
-# Curated external upper-level subset for readable offline HCMO rendering.
-# This is a source-faithful projection, not a local replacement vocabulary and
-# not a full import. Source identity and checksums are pinned in
-# external-vocabularies.yaml.
+# Default end-user upper-level presentation for HCMO.
+#
+# The five declared classes retain their canonical BFO/IAO IRIs, source labels,
+# definitions, and provenance. The direct links to BFO entity are presentation
+# shortcuts that are entailed by the pinned source ontologies. They deliberately
+# hide continuant/dependent-continuant intermediates from the default hierarchy.
+#
+# Ontology developers can load ontology/profiles/external-upper-developer.ttl
+# alongside dist/hcmo.owl to restore the source-faithful intermediate hierarchy.
 #
 @prefix BFO: <http://purl.obolibrary.org/obo/BFO_> .
 @prefix IAO: <http://purl.obolibrary.org/obo/IAO_> .
@@ -10,12 +15,12 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
-<https://w3id.org/hcmo/ontology/external/upper-subset> a owl:Ontology ;
-    rdfs:label "HCMO curated external upper-level subset" ;
-    rdfs:comment "A checksummed projection of the BFO 2020 and IAO 2026-03-30 labels, definitions, and immediate hierarchy needed to render HCMO's upper anchors offline. It does not assert equivalence between BFO, IAO, PROV-O, SOSA, SIO, SULO, or ONTOP." ;
+<https://w3id.org/hcmo/ontology/external/upper-presentation> a owl:Ontology ;
+    rdfs:label "HCMO end-user upper-level presentation" ;
+    rdfs:comment "A checksummed, flattened presentation of five canonical BFO/IAO anchors for HCMO end users. Its shortcut hierarchy is entailed by the pinned sources; it does not replace BFO or IAO and does not assert equivalence with PROV-O, SIO, SULO, or ONTOP." ;
     dcterms:source <http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl>,
         <http://purl.obolibrary.org/obo/iao/2026-03-30/iao.owl> ;
-    owl:versionInfo "2026-07-30" .
+    owl:versionInfo "2026-07-31" .
 
 BFO:0000001 a owl:Class ;
     rdfs:label "entity"@en ;
@@ -23,62 +28,27 @@ BFO:0000001 a owl:Class ;
     rdfs:subClassOf owl:Thing ;
     dcterms:source <http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl> .
 
-BFO:0000002 a owl:Class ;
-    rdfs:label "continuant"@en ;
-    skos:definition "(Elucidation) A continuant is an entity that persists, endures, or continues to exist through time while maintaining its identity"@en ;
+BFO:0000040 a owl:Class ;
+    rdfs:label "material entity"@en ;
+    skos:definition "(Elucidation) A material entity is an independent continuant that at all times at which it exists has some portion of matter as continuant part"@en ;
     rdfs:subClassOf BFO:0000001 ;
     dcterms:source <http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl> .
 
-BFO:0000003 a owl:Class ;
-    rdfs:label "occurrent"@en ;
-    skos:definition "(Elucidation) An occurrent is an entity that unfolds itself in time or it is the start or end of such an entity or it is a temporal or spatiotemporal region"@en ;
+IAO:0000030 a owl:Class ;
+    rdfs:label "information content entity"@en ;
+    skos:altLabel "information entity"@en ;
+    skos:definition "A generically dependent continuant that is about some thing."@en ;
     rdfs:subClassOf BFO:0000001 ;
-    dcterms:source <http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl> .
+    dcterms:source <http://purl.obolibrary.org/obo/iao/2026-03-30/iao.owl> .
 
-BFO:0000004 a owl:Class ;
-    rdfs:label "independent continuant"@en ;
-    skos:definition "b is an independent continuant =Def b is a continuant & there is no c such that b specifically depends on c or b generically depends on c"@en ;
-    rdfs:subClassOf BFO:0000002 ;
+BFO:0000019 a owl:Class ;
+    rdfs:label "quality"@en ;
+    skos:definition "(Elucidation) A quality is a specifically dependent continuant that, in contrast to roles and dispositions, does not require any further process in order to be realized"@en ;
+    rdfs:subClassOf BFO:0000001 ;
     dcterms:source <http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl> .
 
 BFO:0000015 a owl:Class ;
     rdfs:label "process"@en ;
     skos:definition "(Elucidation) p is a process means p is an occurrent that has some temporal proper part and for some time t, p has some material entity as participant"@en ;
-    rdfs:subClassOf BFO:0000003 ;
+    rdfs:subClassOf BFO:0000001 ;
     dcterms:source <http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl> .
-
-BFO:0000019 a owl:Class ;
-    rdfs:label "quality"@en ;
-    skos:definition "(Elucidation) A quality is a specifically dependent continuant that, in contrast to roles and dispositions, does not require any further process in order to be realized"@en ;
-    rdfs:subClassOf BFO:0000020 ;
-    dcterms:source <http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl> .
-
-BFO:0000020 a owl:Class ;
-    rdfs:label "specifically dependent continuant"@en ;
-    skos:definition "b is a specifically dependent continuant =Def b is a continuant & there is some independent continuant c which is not a spatial region & which is such that b specifically depends on c"@en ;
-    rdfs:subClassOf BFO:0000002 ;
-    dcterms:source <http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl> .
-
-BFO:0000027 a owl:Class ;
-    rdfs:label "object aggregate"@en ;
-    skos:definition "(Elucidation) An object aggregate is a material entity consisting exactly of a plurality (≥1) of objects as member parts which together form a unit"@en ;
-    rdfs:subClassOf BFO:0000040 ;
-    dcterms:source <http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl> .
-
-BFO:0000031 a owl:Class ;
-    rdfs:label "generically dependent continuant"@en ;
-    skos:definition "(Elucidation) A generically dependent continuant is an entity that exists in virtue of the fact that there is at least one of what may be multiple copies which is the content or the pattern that multiple copies would share"@en ;
-    rdfs:subClassOf BFO:0000002 ;
-    dcterms:source <http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl> .
-
-BFO:0000040 a owl:Class ;
-    rdfs:label "material entity"@en ;
-    skos:definition "(Elucidation) A material entity is an independent continuant that at all times at which it exists has some portion of matter as continuant part"@en ;
-    rdfs:subClassOf BFO:0000004 ;
-    dcterms:source <http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl> .
-
-IAO:0000030 a owl:Class ;
-    rdfs:label "information content entity"@en ;
-    skos:definition "A generically dependent continuant that is about some thing."@en ;
-    rdfs:subClassOf BFO:0000031 ;
-    dcterms:source <http://purl.obolibrary.org/obo/iao/2026-03-30/iao.owl> .

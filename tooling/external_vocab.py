@@ -186,6 +186,147 @@ def _check_contract(notes: list[str]) -> tuple[bool, dict]:
             notes.append(
                 "[FAIL] curated upper terms are not covered by vocabulary allowlists"
             )
+        expected_presentation_parents = {
+            "http://purl.obolibrary.org/obo/BFO_0000001": str(OWL.Thing),
+            "http://purl.obolibrary.org/obo/BFO_0000015":
+                "http://purl.obolibrary.org/obo/BFO_0000001",
+            "http://purl.obolibrary.org/obo/BFO_0000019":
+                "http://purl.obolibrary.org/obo/BFO_0000001",
+            "http://purl.obolibrary.org/obo/BFO_0000040":
+                "http://purl.obolibrary.org/obo/BFO_0000001",
+            "http://purl.obolibrary.org/obo/IAO_0000030":
+                "http://purl.obolibrary.org/obo/BFO_0000001",
+        }
+        actual_presentation_parents = {
+            term: {
+                str(parent)
+                for parent in graph.objects(URIRef(term), RDFS.subClassOf)
+                if isinstance(parent, URIRef)
+            }
+            for term in expected_terms
+        }
+        unexpected_parent_sets = {
+            term: sorted(actual_presentation_parents[term])
+            for term, parent in expected_presentation_parents.items()
+            if actual_presentation_parents.get(term) != {parent}
+        }
+        if unexpected_parent_sets:
+            ok = False
+            notes.append(
+                "[FAIL] end-user upper presentation is not the reviewed "
+                f"five-category hierarchy: {unexpected_parent_sets}"
+            )
+
+    developer = contract.get("developer_upper_profile", {})
+    developer_path = ROOT / str(developer.get("path", ""))
+    developer_terms = set(developer.get("terms", []))
+    if not developer_path.exists():
+        ok = False
+        notes.append(f"[FAIL] developer upper profile missing: {developer_path}")
+    elif not developer_terms:
+        ok = False
+        notes.append("[FAIL] developer upper profile term list is empty")
+    else:
+        developer_graph = Graph().parse(developer_path, format="turtle")
+        developer_declared = {
+            str(term)
+            for term in developer_graph.subjects(RDF.type, OWL.Class)
+            if isinstance(term, URIRef)
+        }
+        if developer_declared != developer_terms:
+            ok = False
+            notes.append(
+                "[FAIL] developer upper profile terms differ from contract: "
+                f"missing={sorted(developer_terms - developer_declared)}, "
+                f"unexpected={sorted(developer_declared - developer_terms)}"
+            )
+        developer_missing_metadata = [
+            str(term)
+            for term in map(URIRef, developer_terms)
+            if developer_graph.value(term, RDFS.label) is None
+            or developer_graph.value(term, SKOS.definition) is None
+        ]
+        if developer_missing_metadata:
+            ok = False
+            notes.append(
+                "[FAIL] developer upper terms missing label/definition: "
+                f"{sorted(developer_missing_metadata)}"
+            )
+        if not developer_terms <= all_terms:
+            ok = False
+            notes.append(
+                "[FAIL] developer upper terms are not covered by vocabulary allowlists"
+            )
+        expected_developer_parents = {
+            "http://purl.obolibrary.org/obo/BFO_0000001": {str(OWL.Thing)},
+            "http://purl.obolibrary.org/obo/BFO_0000002": {
+                "http://purl.obolibrary.org/obo/BFO_0000001"
+            },
+            "http://purl.obolibrary.org/obo/BFO_0000003": {
+                "http://purl.obolibrary.org/obo/BFO_0000001"
+            },
+            "http://purl.obolibrary.org/obo/BFO_0000004": {
+                "http://purl.obolibrary.org/obo/BFO_0000002"
+            },
+            "http://purl.obolibrary.org/obo/BFO_0000015": {
+                "http://purl.obolibrary.org/obo/BFO_0000003"
+            },
+            "http://purl.obolibrary.org/obo/BFO_0000019": {
+                "http://purl.obolibrary.org/obo/BFO_0000020"
+            },
+            "http://purl.obolibrary.org/obo/BFO_0000020": {
+                "http://purl.obolibrary.org/obo/BFO_0000002"
+            },
+            "http://purl.obolibrary.org/obo/BFO_0000027": {
+                "http://purl.obolibrary.org/obo/BFO_0000040"
+            },
+            "http://purl.obolibrary.org/obo/BFO_0000031": {
+                "http://purl.obolibrary.org/obo/BFO_0000002"
+            },
+            "http://purl.obolibrary.org/obo/BFO_0000040": {
+                "http://purl.obolibrary.org/obo/BFO_0000004"
+            },
+            "http://purl.obolibrary.org/obo/IAO_0000030": {
+                "http://purl.obolibrary.org/obo/BFO_0000031"
+            },
+        }
+        actual_developer_parents = {
+            term: {
+                str(parent)
+                for parent in developer_graph.objects(
+                    URIRef(term), RDFS.subClassOf
+                )
+                if isinstance(parent, URIRef)
+            }
+            for term in developer_terms
+        }
+        unexpected_developer_parent_sets = {
+            term: sorted(actual_developer_parents[term])
+            for term, parents in expected_developer_parents.items()
+            if actual_developer_parents.get(term) != parents
+        }
+        if unexpected_developer_parent_sets:
+            ok = False
+            notes.append(
+                "[FAIL] developer upper profile differs from the pinned "
+                f"source hierarchy: {unexpected_developer_parent_sets}"
+            )
+        experimental_group = URIRef(
+            "https://w3id.org/hcmo/ontology/hcm/bio#ExperimentalGroup"
+        )
+        object_aggregate = URIRef(
+            "http://purl.obolibrary.org/obo/BFO_0000027"
+        )
+        if (
+            experimental_group,
+            RDFS.subClassOf,
+            object_aggregate,
+        ) not in developer_graph:
+            ok = False
+            notes.append(
+                "[FAIL] developer upper profile does not refine "
+                "ExperimentalGroup as a BFO object aggregate"
+            )
 
     manifest = _load_yaml(MANIFEST_PATH)
     source_paths = [
@@ -196,6 +337,23 @@ def _check_contract(notes: list[str]) -> tuple[bool, dict]:
     source_graph = Graph()
     for path in source_paths:
         source_graph.parse(path, format="turtle")
+    experimental_group = URIRef(
+        "https://w3id.org/hcmo/ontology/hcm/bio#ExperimentalGroup"
+    )
+    material_entity = URIRef("http://purl.obolibrary.org/obo/BFO_0000040")
+    object_aggregate = URIRef("http://purl.obolibrary.org/obo/BFO_0000027")
+    if (experimental_group, RDFS.subClassOf, material_entity) not in source_graph:
+        ok = False
+        notes.append(
+            "[FAIL] default hierarchy does not place ExperimentalGroup under "
+            "BFO material entity"
+        )
+    if (experimental_group, RDFS.subClassOf, object_aggregate) in source_graph:
+        ok = False
+        notes.append(
+            "[FAIL] default hierarchy exposes the developer-only "
+            "ExperimentalGroup/object aggregate refinement"
+        )
     used_iris = {
         str(term)
         for triple in source_graph
@@ -235,7 +393,12 @@ def _check_contract(notes: list[str]) -> tuple[bool, dict]:
             f"{artifact_count} checksummed artifacts"
         )
         notes.append(
-            f"[OK]   curated upper subset: {len(expected_terms)} source terms"
+            f"[OK]   end-user upper presentation: {len(expected_terms)} "
+            "canonical anchors"
+        )
+        notes.append(
+            f"[OK]   optional developer upper profile: {len(developer_terms)} "
+            "source terms"
         )
         notes.append("[OK]   active RDF and query IRIs covered by term allowlists")
     return ok, contract

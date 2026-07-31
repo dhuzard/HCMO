@@ -622,7 +622,7 @@
       "rdfs:comment": "A group of biological subjects sharing an experimental condition, treatment, or study role.",
       "rdfs:label": "Experimental Group",
       "rdfs:subClassOf": {
-        "@id": "http://purl.obolibrary.org/obo/BFO_0000027"
+        "@id": "http://purl.obolibrary.org/obo/BFO_0000040"
       }
     },
     {
@@ -2823,60 +2823,6 @@
       }
     },
     {
-      "@id": "http://purl.obolibrary.org/obo/BFO_0000002",
-      "@type": "owl:Class",
-      "dcterms:source": {
-        "@id": "http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl"
-      },
-      "rdfs:label": {
-        "@language": "en",
-        "@value": "continuant"
-      },
-      "rdfs:subClassOf": {
-        "@id": "http://purl.obolibrary.org/obo/BFO_0000001"
-      },
-      "skos:definition": {
-        "@language": "en",
-        "@value": "(Elucidation) A continuant is an entity that persists, endures, or continues to exist through time while maintaining its identity"
-      }
-    },
-    {
-      "@id": "http://purl.obolibrary.org/obo/BFO_0000003",
-      "@type": "owl:Class",
-      "dcterms:source": {
-        "@id": "http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl"
-      },
-      "rdfs:label": {
-        "@language": "en",
-        "@value": "occurrent"
-      },
-      "rdfs:subClassOf": {
-        "@id": "http://purl.obolibrary.org/obo/BFO_0000001"
-      },
-      "skos:definition": {
-        "@language": "en",
-        "@value": "(Elucidation) An occurrent is an entity that unfolds itself in time or it is the start or end of such an entity or it is a temporal or spatiotemporal region"
-      }
-    },
-    {
-      "@id": "http://purl.obolibrary.org/obo/BFO_0000004",
-      "@type": "owl:Class",
-      "dcterms:source": {
-        "@id": "http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl"
-      },
-      "rdfs:label": {
-        "@language": "en",
-        "@value": "independent continuant"
-      },
-      "rdfs:subClassOf": {
-        "@id": "http://purl.obolibrary.org/obo/BFO_0000002"
-      },
-      "skos:definition": {
-        "@language": "en",
-        "@value": "b is an independent continuant =Def b is a continuant & there is no c such that b specifically depends on c or b generically depends on c"
-      }
-    },
-    {
       "@id": "http://purl.obolibrary.org/obo/BFO_0000015",
       "@type": "owl:Class",
       "dcterms:source": {
@@ -2887,7 +2833,7 @@
         "@value": "process"
       },
       "rdfs:subClassOf": {
-        "@id": "http://purl.obolibrary.org/obo/BFO_0000003"
+        "@id": "http://purl.obolibrary.org/obo/BFO_0000001"
       },
       "skos:definition": {
         "@language": "en",
@@ -2905,65 +2851,11 @@
         "@value": "quality"
       },
       "rdfs:subClassOf": {
-        "@id": "http://purl.obolibrary.org/obo/BFO_0000020"
+        "@id": "http://purl.obolibrary.org/obo/BFO_0000001"
       },
       "skos:definition": {
         "@language": "en",
         "@value": "(Elucidation) A quality is a specifically dependent continuant that, in contrast to roles and dispositions, does not require any further process in order to be realized"
-      }
-    },
-    {
-      "@id": "http://purl.obolibrary.org/obo/BFO_0000020",
-      "@type": "owl:Class",
-      "dcterms:source": {
-        "@id": "http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl"
-      },
-      "rdfs:label": {
-        "@language": "en",
-        "@value": "specifically dependent continuant"
-      },
-      "rdfs:subClassOf": {
-        "@id": "http://purl.obolibrary.org/obo/BFO_0000002"
-      },
-      "skos:definition": {
-        "@language": "en",
-        "@value": "b is a specifically dependent continuant =Def b is a continuant & there is some independent continuant c which is not a spatial region & which is such that b specifically depends on c"
-      }
-    },
-    {
-      "@id": "http://purl.obolibrary.org/obo/BFO_0000027",
-      "@type": "owl:Class",
-      "dcterms:source": {
-        "@id": "http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl"
-      },
-      "rdfs:label": {
-        "@language": "en",
-        "@value": "object aggregate"
-      },
-      "rdfs:subClassOf": {
-        "@id": "http://purl.obolibrary.org/obo/BFO_0000040"
-      },
-      "skos:definition": {
-        "@language": "en",
-        "@value": "(Elucidation) An object aggregate is a material entity consisting exactly of a plurality (\u22651) of objects as member parts which together form a unit"
-      }
-    },
-    {
-      "@id": "http://purl.obolibrary.org/obo/BFO_0000031",
-      "@type": "owl:Class",
-      "dcterms:source": {
-        "@id": "http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl"
-      },
-      "rdfs:label": {
-        "@language": "en",
-        "@value": "generically dependent continuant"
-      },
-      "rdfs:subClassOf": {
-        "@id": "http://purl.obolibrary.org/obo/BFO_0000002"
-      },
-      "skos:definition": {
-        "@language": "en",
-        "@value": "(Elucidation) A generically dependent continuant is an entity that exists in virtue of the fact that there is at least one of what may be multiple copies which is the content or the pattern that multiple copies would share"
       }
     },
     {
@@ -2977,7 +2869,7 @@
         "@value": "material entity"
       },
       "rdfs:subClassOf": {
-        "@id": "http://purl.obolibrary.org/obo/BFO_0000004"
+        "@id": "http://purl.obolibrary.org/obo/BFO_0000001"
       },
       "skos:definition": {
         "@language": "en",
@@ -2995,7 +2887,11 @@
         "@value": "information content entity"
       },
       "rdfs:subClassOf": {
-        "@id": "http://purl.obolibrary.org/obo/BFO_0000031"
+        "@id": "http://purl.obolibrary.org/obo/BFO_0000001"
+      },
+      "skos:altLabel": {
+        "@language": "en",
+        "@value": "information entity"
       },
       "skos:definition": {
         "@language": "en",
@@ -3038,7 +2934,7 @@
       "schema:name": "Cyril Gilbert"
     },
     {
-      "@id": "https://w3id.org/hcmo/ontology/external/upper-subset",
+      "@id": "https://w3id.org/hcmo/ontology/external/upper-presentation",
       "@type": "owl:Ontology",
       "dcterms:source": [
         {
@@ -3048,9 +2944,9 @@
           "@id": "http://purl.obolibrary.org/obo/iao/2026-03-30/iao.owl"
         }
       ],
-      "owl:versionInfo": "2026-07-30",
-      "rdfs:comment": "A checksummed projection of the BFO 2020 and IAO 2026-03-30 labels, definitions, and immediate hierarchy needed to render HCMO's upper anchors offline. It does not assert equivalence between BFO, IAO, PROV-O, SOSA, SIO, SULO, or ONTOP.",
-      "rdfs:label": "HCMO curated external upper-level subset"
+      "owl:versionInfo": "2026-07-31",
+      "rdfs:comment": "A checksummed, flattened presentation of five canonical BFO/IAO anchors for HCMO end users. Its shortcut hierarchy is entailed by the pinned sources; it does not replace BFO or IAO and does not assert equivalence with PROV-O, SIO, SULO, or ONTOP.",
+      "rdfs:label": "HCMO end-user upper-level presentation"
     },
     {
       "@id": "https://w3id.org/hcmo/ontology/hcm",
