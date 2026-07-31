@@ -25,6 +25,7 @@
     "prof": "http://www.w3.org/ns/dx/prof/",
     "prov": "http://www.w3.org/ns/prov#",
     "qb": "http://purl.org/linked-data/cube#",
+    "qudt": "http://qudt.org/schema/qudt/",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "schema": "https://schema.org/",
@@ -34,6 +35,7 @@
     "sosa": "http://www.w3.org/ns/sosa/",
     "ssn": "http://www.w3.org/ns/ssn/",
     "time": "http://www.w3.org/2006/time#",
+    "unit": "http://qudt.org/vocab/unit/",
     "vann": "http://purl.org/vocab/vann/",
     "void": "http://rdfs.org/ns/void#",
     "wgs": "https://www.w3.org/2003/01/geo/wgs84_pos#",
@@ -151,16 +153,6 @@
       }
     },
     {
-      "@id": "_:cb15a41efc8b4077324df6a17af6a0b8a57ef9c0f9397b181823f1f117efc820b2b",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "hcm-bio:Subject"
-      },
-      "owl:onProperty": {
-        "@id": "hcm:hasMonitoredAnimals"
-      }
-    },
-    {
       "@id": "_:cb16d6e8ffe5d223218a28922ba7a439def1b4ab44417fce6742af984053e4ac90b",
       "@type": "owl:Class",
       "owl:unionOf": {
@@ -228,6 +220,20 @@
           },
           {
             "@id": "hcm-obs:EnvironmentObservation"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "_:cb188d925ba0faaf8c403b36b90562436c051d6cf3d8c47a1c7d28bd1560e455d8b",
+      "@type": "owl:Class",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "hcm-tech:Sensor"
+          },
+          {
+            "@id": "hcm-tech:TimeSeries"
           }
         ]
       }
@@ -463,16 +469,6 @@
       }
     },
     {
-      "@id": "_:cb30d62455af54dc4e3801cb2a6f6817e6c81cb8e179cf761050e455a30070ab0bf",
-      "@type": "owl:Restriction",
-      "owl:allValuesFrom": {
-        "@id": "hcm-obs:BehaviorObservation"
-      },
-      "owl:onProperty": {
-        "@id": "hcm-bio:hasBehaviorObservation"
-      }
-    },
-    {
       "@id": "_:cb31ec00e8f513a21d68d42624c813702e50432d44c14388830a884954919fce391",
       "@type": "owl:Restriction",
       "owl:allValuesFrom": {
@@ -648,14 +644,9 @@
       "@type": "owl:Class",
       "rdfs:comment": "A biological individual, such as a laboratory animal, observed in a home-cage monitoring context.",
       "rdfs:label": "Subject",
-      "rdfs:subClassOf": [
-        {
-          "@id": "_:cb30d62455af54dc4e3801cb2a6f6817e6c81cb8e179cf761050e455a30070ab0bf"
-        },
-        {
-          "@id": "http://purl.obolibrary.org/obo/BFO_0000040"
-        }
-      ]
+      "rdfs:subClassOf": {
+        "@id": "http://purl.obolibrary.org/obo/BFO_0000040"
+      }
     },
     {
       "@id": "hcm-bio:assignedToEnclosure",
@@ -684,7 +675,8 @@
     {
       "@id": "hcm-bio:hasBehaviorObservation",
       "@type": "owl:ObjectProperty",
-      "rdfs:comment": "Relates a subject to a behavior observation about that subject.",
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated subject-to-observation shortcut. Query the inverse of sosa:hasFeatureOfInterest instead.",
       "rdfs:domain": {
         "@id": "hcm-bio:Subject"
       },
@@ -720,7 +712,8 @@
     {
       "@id": "hcm-bio:hasHealthStatusObservation",
       "@type": "owl:ObjectProperty",
-      "rdfs:comment": "Relates a subject to a health-status observation about that subject.",
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated subject-to-observation shortcut. Query the inverse of sosa:hasFeatureOfInterest instead.",
       "rdfs:domain": {
         "@id": "hcm-bio:Subject"
       },
@@ -792,7 +785,8 @@
     {
       "@id": "hcm-bio:hasTreatment",
       "@type": "owl:DatatypeProperty",
-      "rdfs:comment": "Records a treatment, intervention, or experimental condition assigned to a subject or group.",
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated ambiguous treatment string. Represent planned factor assignment through the study-factor model and executed treatment through an explicit provenance process.",
       "rdfs:domain": {
         "@id": "_:cb1aff4143a61d5e0e68bea795a51a6f4670f444ed25906a5531b6734b72f7127c2"
       },
@@ -804,7 +798,8 @@
     {
       "@id": "hcm-bio:hasWeightObservation",
       "@type": "owl:ObjectProperty",
-      "rdfs:comment": "Relates a subject to a weight observation about that subject.",
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated subject-to-observation shortcut. Query the inverse of sosa:hasFeatureOfInterest instead.",
       "rdfs:domain": {
         "@id": "hcm-bio:Subject"
       },
@@ -816,7 +811,8 @@
     {
       "@id": "hcm-env:AmbientTemperature",
       "@type": "owl:ObjectProperty",
-      "rdfs:comment": "Relates an environmental profile, specification, or observation to the environmental property representing ambient temperature.",
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated role-conflating relation. Profiles use hasMeasurementSpec, specifications use specifiesProperty, and observations use sosa:observedProperty.",
       "rdfs:domain": {
         "@id": "_:cb1a19a3b35ad14c3b180e811bc6a7ea1e20d6cd1706210bc625b8a036c26baeff9"
       },
@@ -828,7 +824,8 @@
     {
       "@id": "hcm-env:AmmoniaConcentration",
       "@type": "owl:ObjectProperty",
-      "rdfs:comment": "Relates an environmental profile, specification, or observation to the environmental property representing ammonia concentration.",
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated role-conflating relation. Profiles use hasMeasurementSpec, specifications use specifiesProperty, and observations use sosa:observedProperty.",
       "rdfs:domain": {
         "@id": "_:cb17c254b984a90c8183c6f725eb25517f536736328c9f2ee3c9372c156e7edeadb"
       },
@@ -840,7 +837,8 @@
     {
       "@id": "hcm-env:CarbonDioxideConcentration",
       "@type": "owl:ObjectProperty",
-      "rdfs:comment": "Relates an environmental profile, specification, or observation to the environmental property representing carbon dioxide concentration.",
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated role-conflating relation. Profiles use hasMeasurementSpec, specifications use specifiesProperty, and observations use sosa:observedProperty.",
       "rdfs:domain": {
         "@id": "_:cb117924e50c2c64c53c39c30f238998341fb79810495ffdb7e760c10eb169b7eb0"
       },
@@ -899,10 +897,10 @@
     {
       "@id": "hcm-env:GasConcentrationProfile",
       "@type": "owl:Class",
-      "rdfs:comment": "A profile describing concentrations of gases relevant to the monitored enclosure environment.",
+      "rdfs:comment": "A measurement specification describing a target or required concentration for a gas-specific environmental property.",
       "rdfs:label": "Gas Concentration Profile",
       "rdfs:subClassOf": {
-        "@id": "http://purl.obolibrary.org/obo/IAO_0000030"
+        "@id": "hcm-env:MeasurementSpecification"
       }
     },
     {
@@ -917,7 +915,8 @@
     {
       "@id": "hcm-env:LightIntensity",
       "@type": "owl:ObjectProperty",
-      "rdfs:comment": "Relates an environmental profile, specification, or observation to the environmental property representing light intensity.",
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated role-conflating relation. Profiles use hasMeasurementSpec, specifications use specifiesProperty, and observations use sosa:observedProperty.",
       "rdfs:domain": {
         "@id": "_:cb1524fa29b4e64d37b381f0d9aa40550d4d7b7e2404df7ed01e089d8e15ada8072"
       },
@@ -929,7 +928,8 @@
     {
       "@id": "hcm-env:LightState",
       "@type": "owl:ObjectProperty",
-      "rdfs:comment": "Relates an environmental profile, specification, or observation to the environmental property representing light state.",
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated role-conflating relation. Profiles use hasMeasurementSpec, specifications use specifiesProperty, and observations use sosa:observedProperty.",
       "rdfs:domain": {
         "@id": "_:cb14ccc5381614bd2702e680cd5017ab8c29074d78e837713f9b9700a85f81f49d5"
       },
@@ -950,7 +950,8 @@
     {
       "@id": "hcm-env:OxygenConcentration",
       "@type": "owl:ObjectProperty",
-      "rdfs:comment": "Relates an environmental profile, specification, or observation to the environmental property representing oxygen concentration.",
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated role-conflating relation. Profiles use hasMeasurementSpec, specifications use specifiesProperty, and observations use sosa:observedProperty.",
       "rdfs:domain": {
         "@id": "_:cb22d894ff4a94c7483bcc777cf759fd77d9867ed06c0efd14366bc202bf46926c2"
       },
@@ -962,7 +963,8 @@
     {
       "@id": "hcm-env:RelativeHumidity",
       "@type": "owl:ObjectProperty",
-      "rdfs:comment": "Relates an environmental profile, specification, or observation to the environmental property representing relative humidity.",
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated role-conflating relation. Profiles use hasMeasurementSpec, specifications use specifiesProperty, and observations use sosa:observedProperty.",
       "rdfs:domain": {
         "@id": "_:cbf2b41321935bb0b77525cee56ddc080bd16b81af7005a5aca7fc5c1d4991b213"
       },
@@ -974,10 +976,10 @@
     {
       "@id": "hcm-env:ThriveProfile",
       "@type": "owl:Class",
-      "rdfs:comment": "A welfare or husbandry profile describing environmental conditions intended to support animal thriving.",
+      "rdfs:comment": "A normative environment profile specifying husbandry and environmental conditions intended to support animal thriving; linking one to an enclosure does not assert compliance or an animal outcome.",
       "rdfs:label": "Thrive Profile",
       "rdfs:subClassOf": {
-        "@id": "http://purl.obolibrary.org/obo/IAO_0000030"
+        "@id": "hcm-env:EnvironmentProfile"
       }
     },
     {
@@ -1068,7 +1070,8 @@
     {
       "@id": "hcm-env:hasGasType",
       "@type": "owl:DatatypeProperty",
-      "rdfs:comment": "Records the gas type measured or specified in a gas concentration profile.",
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated gas-name string. Identify a gas-specific EnvironmentalProperty resource with specifiesProperty.",
       "rdfs:domain": {
         "@id": "hcm-env:GasConcentrationProfile"
       },
@@ -1140,6 +1143,18 @@
       }
     },
     {
+      "@id": "hcm-env:hasSpecifiedValue",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": "Relates a measurement specification to a QUDT quantity value expressing its target or required value.",
+      "rdfs:domain": {
+        "@id": "hcm-env:MeasurementSpecification"
+      },
+      "rdfs:label": "has specified value",
+      "rdfs:range": {
+        "@id": "qudt:QuantityValue"
+      }
+    },
+    {
       "@id": "hcm-env:hasThriveProfile",
       "@type": "owl:ObjectProperty",
       "rdfs:comment": "Relates a monitored enclosure to the thrive profile that specifies suitable husbandry or environmental conditions.",
@@ -1167,7 +1182,11 @@
     {
       "@id": "hcm-env:hasValue",
       "@type": "owl:DatatypeProperty",
-      "rdfs:comment": "Records a literal value for an environmental measurement or specification.",
+      "dcterms:isReplacedBy": {
+        "@id": "hcm-env:hasSpecifiedValue"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated untyped literal. Use hasSpecifiedValue for specifications or sosa:hasResult for observations with QUDT QuantityValue nodes.",
       "rdfs:domain": {
         "@id": "_:cb16d6e8ffe5d223218a28922ba7a439def1b4ab44417fce6742af984053e4ac90b"
       },
@@ -1188,6 +1207,18 @@
       "owl:deprecated": true,
       "rdfs:comment": "Deprecated HCMO 0.0.1 term retained for backward compatibility.",
       "rdfs:label": "has width"
+    },
+    {
+      "@id": "hcm-env:specifiesProperty",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": "Relates a measurement specification to the environmental property for which it specifies a target or requirement.",
+      "rdfs:domain": {
+        "@id": "hcm-env:MeasurementSpecification"
+      },
+      "rdfs:label": "specifies property",
+      "rdfs:range": {
+        "@id": "hcm-env:EnvironmentalProperty"
+      }
     },
     {
       "@id": "hcm-obs:BehaviorObservation",
@@ -1311,11 +1342,16 @@
     {
       "@id": "hcm-obs:QuantityValue",
       "@type": "owl:Class",
-      "rdfs:comment": "An observation result that represents a quantitative value, typically with a numeric value and unit.",
+      "rdfs:comment": "An observation result represented as a QUDT quantity value with a numeric value and unit.",
       "rdfs:label": "Quantity Value",
-      "rdfs:subClassOf": {
-        "@id": "hcm-obs:ObservationResult"
-      }
+      "rdfs:subClassOf": [
+        {
+          "@id": "qudt:QuantityValue"
+        },
+        {
+          "@id": "hcm-obs:ObservationResult"
+        }
+      ]
     },
     {
       "@id": "hcm-obs:WeightObservation",
@@ -1374,7 +1410,7 @@
     {
       "@id": "hcm-obs:hasCondition",
       "@type": "owl:ObjectProperty",
-      "rdfs:comment": "Relates an observation to the condition under which it was made or interpreted; the condition model is intentionally left open.",
+      "rdfs:comment": "A non-causal contextual link from an observation to a resource describing a condition relevant during interpretation. It does not assert a study factor, factor value, treatment assignment, or executed intervention.",
       "rdfs:domain": {
         "@id": "sosa:Observation"
       },
@@ -1422,7 +1458,11 @@
     {
       "@id": "hcm-obs:hasNumericValue",
       "@type": "owl:DatatypeProperty",
-      "rdfs:comment": "Records the numeric value of a quantity result or measurement.",
+      "dcterms:isReplacedBy": {
+        "@id": "qudt:numericValue"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated numeric literal. Use qudt:numericValue on the QUDT QuantityValue result.",
       "rdfs:domain": {
         "@id": "hcm-obs:QuantityValue"
       },
@@ -1456,6 +1496,29 @@
           "@id": "sosa:Actuator"
         }
       ]
+    },
+    {
+      "@id": "hcm-tech:CalibrationActivity",
+      "@type": "owl:Class",
+      "rdfs:comment": "An activity that calibrates a sensor and generates a time-bounded calibration record.",
+      "rdfs:label": "Calibration Activity",
+      "rdfs:subClassOf": [
+        {
+          "@id": "http://purl.obolibrary.org/obo/BFO_0000015"
+        },
+        {
+          "@id": "prov:Activity"
+        }
+      ]
+    },
+    {
+      "@id": "hcm-tech:CalibrationRecord",
+      "@type": "owl:Class",
+      "rdfs:comment": "An evidence-backed information record stating a sensor's calibration status during a specified validity interval.",
+      "rdfs:label": "Calibration Record",
+      "rdfs:subClassOf": {
+        "@id": "http://purl.obolibrary.org/obo/IAO_0000030"
+      }
     },
     {
       "@id": "hcm-tech:Hardware",
@@ -1499,6 +1562,18 @@
       }
     },
     {
+      "@id": "hcm-tech:calibratesSensor",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": "Relates a calibration activity to the sensor that it calibrates.",
+      "rdfs:domain": {
+        "@id": "hcm-tech:CalibrationActivity"
+      },
+      "rdfs:label": "calibrates sensor",
+      "rdfs:range": {
+        "@id": "hcm-tech:Sensor"
+      }
+    },
+    {
       "@id": "hcm-tech:captures",
       "@type": "owl:ObjectProperty",
       "rdfs:comment": "Relates a sensor to the property it observes or captures.",
@@ -1535,6 +1610,30 @@
       "rdfs:label": "has actuator",
       "rdfs:range": {
         "@id": "hcm-tech:Actuator"
+      }
+    },
+    {
+      "@id": "hcm-tech:hasCalibrationRecord",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": "Relates a sensor to an evidence-backed, time-bounded calibration record.",
+      "rdfs:domain": {
+        "@id": "hcm-tech:Sensor"
+      },
+      "rdfs:label": "has calibration record",
+      "rdfs:range": {
+        "@id": "hcm-tech:CalibrationRecord"
+      }
+    },
+    {
+      "@id": "hcm-tech:hasCalibrationStatusValue",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": "Records the assessed calibration-status value within a time-bounded calibration record.",
+      "rdfs:domain": {
+        "@id": "hcm-tech:CalibrationRecord"
+      },
+      "rdfs:label": "has calibration status value",
+      "rdfs:range": {
+        "@id": "xsd:boolean"
       }
     },
     {
@@ -1588,13 +1687,29 @@
     {
       "@id": "hcm-tech:hasSamplingRate",
       "@type": "owl:DatatypeProperty",
-      "rdfs:comment": "Records the rate at which a sensor or data stream is sampled, including its unit.",
+      "dcterms:isReplacedBy": {
+        "@id": "hcm-tech:hasSamplingRateQuantity"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated sampling-rate string. Use hasSamplingRateQuantity with a QUDT QuantityValue.",
       "rdfs:domain": {
         "@id": "_:cbe4f216cdd845e4f52471f31d47e589fe9037e88906ff208f6bccce056437eca3"
       },
       "rdfs:label": "has sampling rate",
       "rdfs:range": {
         "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "hcm-tech:hasSamplingRateQuantity",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": "Relates a sensor or time series to a QUDT quantity value expressing its sampling rate.",
+      "rdfs:domain": {
+        "@id": "_:cb188d925ba0faaf8c403b36b90562436c051d6cf3d8c47a1c7d28bd1560e455d8b"
+      },
+      "rdfs:label": "has sampling rate quantity",
+      "rdfs:range": {
+        "@id": "qudt:QuantityValue"
       }
     },
     {
@@ -1672,7 +1787,11 @@
     {
       "@id": "hcm-tech:isCalibrated",
       "@type": "owl:DatatypeProperty",
-      "rdfs:comment": "Indicates whether a sensor or device has been calibrated.",
+      "dcterms:isReplacedBy": {
+        "@id": "hcm-tech:hasCalibrationRecord"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated timeless calibration flag. Use hasCalibrationRecord with a validity interval and generating calibration activity.",
       "rdfs:domain": {
         "@id": "hcm-tech:Sensor"
       },
@@ -1866,9 +1985,6 @@
       "rdfs:label": "Monitored Enclosure",
       "rdfs:subClassOf": [
         {
-          "@id": "_:cb15a41efc8b4077324df6a17af6a0b8a57ef9c0f9397b181823f1f117efc820b2b"
-        },
-        {
           "@id": "_:cb1927c465fe67d6061244df711e478e344fe04c3c7a8f4c8877d678c13a7c536b2"
         },
         {
@@ -1924,6 +2040,29 @@
       "owl:deprecated": true,
       "rdfs:comment": "Deprecated in HCMO 0.1.0. An observation time window for behavior capture.",
       "rdfs:label": "Observation Window"
+    },
+    {
+      "@id": "hcm:OperationalAssessment",
+      "@type": "owl:Class",
+      "rdfs:comment": "An activity that assesses whether a monitored enclosure is operational and generates a time-bounded operational status record.",
+      "rdfs:label": "Operational Assessment",
+      "rdfs:subClassOf": [
+        {
+          "@id": "http://purl.obolibrary.org/obo/BFO_0000015"
+        },
+        {
+          "@id": "prov:Activity"
+        }
+      ]
+    },
+    {
+      "@id": "hcm:OperationalStatusRecord",
+      "@type": "owl:Class",
+      "rdfs:comment": "An evidence-backed information record stating the operational status of a monitored enclosure during a specified validity interval.",
+      "rdfs:label": "Operational Status Record",
+      "rdfs:subClassOf": {
+        "@id": "http://purl.obolibrary.org/obo/IAO_0000030"
+      }
     },
     {
       "@id": "hcm:PhysicalSpace",
@@ -2052,6 +2191,18 @@
       "owl:deprecated": true,
       "rdfs:comment": "Deprecated HCMO 0.0.1 term retained for backward compatibility.",
       "rdfs:label": "Time Series"
+    },
+    {
+      "@id": "hcm:assessesEnclosure",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": "Relates an operational assessment to the monitored enclosure whose operational state it evaluates.",
+      "rdfs:domain": {
+        "@id": "hcm:OperationalAssessment"
+      },
+      "rdfs:label": "assesses enclosure",
+      "rdfs:range": {
+        "@id": "hcm:MonitoredEnclosure"
+      }
     },
     {
       "@id": "hcm:captures",
@@ -2199,7 +2350,8 @@
     {
       "@id": "hcm:hasDimUnit",
       "@type": "owl:DatatypeProperty",
-      "rdfs:comment": "Records the unit used for enclosure dimension values.",
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated shared unit string. Each dimension now links to its own QUDT QuantityValue carrying qudt:hasUnit.",
       "rdfs:domain": {
         "@id": "hcm:EnclosureDimensions"
       },
@@ -2329,13 +2481,29 @@
     {
       "@id": "hcm:hasFloorArea",
       "@type": "owl:DatatypeProperty",
-      "rdfs:comment": "Records the floor area value for an enclosure dimensions record.",
+      "dcterms:isReplacedBy": {
+        "@id": "hcm:hasFloorAreaQuantity"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated numeric literal. Use hasFloorAreaQuantity with a QUDT QuantityValue.",
       "rdfs:domain": {
         "@id": "hcm:EnclosureDimensions"
       },
       "rdfs:label": "has floor area",
       "rdfs:range": {
         "@id": "xsd:decimal"
+      }
+    },
+    {
+      "@id": "hcm:hasFloorAreaQuantity",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": "Relates an enclosure dimensions record to a QUDT quantity value for floor area.",
+      "rdfs:domain": {
+        "@id": "hcm:EnclosureDimensions"
+      },
+      "rdfs:label": "has floor area quantity",
+      "rdfs:range": {
+        "@id": "qudt:QuantityValue"
       }
     },
     {
@@ -2373,7 +2541,11 @@
     {
       "@id": "hcm:hasHeight",
       "@type": "owl:DatatypeProperty",
-      "rdfs:comment": "Records the height value of an enclosure dimensions record.",
+      "dcterms:isReplacedBy": {
+        "@id": "hcm:hasHeightQuantity"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated numeric literal. Use hasHeightQuantity with a QUDT QuantityValue.",
       "rdfs:domain": {
         "@id": "hcm:EnclosureDimensions"
       },
@@ -2383,15 +2555,43 @@
       }
     },
     {
+      "@id": "hcm:hasHeightQuantity",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": "Relates an enclosure dimensions record to a QUDT quantity value for height.",
+      "rdfs:domain": {
+        "@id": "hcm:EnclosureDimensions"
+      },
+      "rdfs:label": "has height quantity",
+      "rdfs:range": {
+        "@id": "qudt:QuantityValue"
+      }
+    },
+    {
       "@id": "hcm:hasLength",
       "@type": "owl:DatatypeProperty",
-      "rdfs:comment": "Records the length value of an enclosure dimensions record.",
+      "dcterms:isReplacedBy": {
+        "@id": "hcm:hasLengthQuantity"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated numeric literal. Use hasLengthQuantity with a QUDT QuantityValue.",
       "rdfs:domain": {
         "@id": "hcm:EnclosureDimensions"
       },
       "rdfs:label": "has length",
       "rdfs:range": {
         "@id": "xsd:decimal"
+      }
+    },
+    {
+      "@id": "hcm:hasLengthQuantity",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": "Relates an enclosure dimensions record to a QUDT quantity value for length.",
+      "rdfs:domain": {
+        "@id": "hcm:EnclosureDimensions"
+      },
+      "rdfs:label": "has length quantity",
+      "rdfs:range": {
+        "@id": "qudt:QuantityValue"
       }
     },
     {
@@ -2409,7 +2609,8 @@
     {
       "@id": "hcm:hasMonitoredAnimals",
       "@type": "owl:ObjectProperty",
-      "rdfs:comment": "A derived convenience relation from a monitored enclosure to biological subjects housed or tracked within it at a stated evaluation time. Time-bounded HousingAssignment records, not this shortcut, are authoritative for housing history.",
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated timeless shortcut. Derive enclosure membership at an explicit reference time from time-bounded HousingAssignment records.",
       "rdfs:domain": {
         "@id": "hcm:MonitoredEnclosure"
       },
@@ -2442,6 +2643,30 @@
       "owl:deprecated": true,
       "rdfs:comment": "Deprecated HCMO 0.0.1 term retained for backward compatibility.",
       "rdfs:label": "has numeric value"
+    },
+    {
+      "@id": "hcm:hasOperationalStatusRecord",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": "Relates a monitored enclosure to an evidence-backed, time-bounded operational status record.",
+      "rdfs:domain": {
+        "@id": "hcm:MonitoredEnclosure"
+      },
+      "rdfs:label": "has operational status record",
+      "rdfs:range": {
+        "@id": "hcm:OperationalStatusRecord"
+      }
+    },
+    {
+      "@id": "hcm:hasOperationalStatusValue",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": "Records the assessed operational-status value within a time-bounded operational status record.",
+      "rdfs:domain": {
+        "@id": "hcm:OperationalStatusRecord"
+      },
+      "rdfs:label": "has operational status value",
+      "rdfs:range": {
+        "@id": "xsd:boolean"
+      }
     },
     {
       "@id": "hcm:hasProperty",
@@ -2567,7 +2792,11 @@
     {
       "@id": "hcm:hasUnit",
       "@type": "owl:DatatypeProperty",
-      "rdfs:comment": "Records the measurement unit associated with a quantitative observation result or measurement specification.",
+      "dcterms:isReplacedBy": {
+        "@id": "qudt:hasUnit"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated unit string. Use qudt:hasUnit on a QUDT QuantityValue.",
       "rdfs:domain": {
         "@id": "_:cb1f49fbc3aeedef75c8c11c4375f3384937b804548ac7363db11e69c2387cf6df0"
       },
@@ -2614,13 +2843,29 @@
     {
       "@id": "hcm:hasWidth",
       "@type": "owl:DatatypeProperty",
-      "rdfs:comment": "Records the width value of an enclosure dimensions record.",
+      "dcterms:isReplacedBy": {
+        "@id": "hcm:hasWidthQuantity"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated numeric literal. Use hasWidthQuantity with a QUDT QuantityValue.",
       "rdfs:domain": {
         "@id": "hcm:EnclosureDimensions"
       },
       "rdfs:label": "has width",
       "rdfs:range": {
         "@id": "xsd:decimal"
+      }
+    },
+    {
+      "@id": "hcm:hasWidthQuantity",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": "Relates an enclosure dimensions record to a QUDT quantity value for width.",
+      "rdfs:domain": {
+        "@id": "hcm:EnclosureDimensions"
+      },
+      "rdfs:label": "has width quantity",
+      "rdfs:range": {
+        "@id": "qudt:QuantityValue"
       }
     },
     {
@@ -2672,7 +2917,8 @@
     {
       "@id": "hcm:isOccupied",
       "@type": "owl:DatatypeProperty",
-      "rdfs:comment": "Indicates whether an enclosure is currently occupied by animals.",
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated timeless occupancy flag. Determine occupancy at an explicit reference time from HousingAssignment validity intervals.",
       "rdfs:domain": {
         "@id": "hcm:Enclosure"
       },
@@ -2684,7 +2930,11 @@
     {
       "@id": "hcm:isOperational",
       "@type": "owl:DatatypeProperty",
-      "rdfs:comment": "Indicates whether a monitored enclosure is currently operational.",
+      "dcterms:isReplacedBy": {
+        "@id": "hcm:hasOperationalStatusRecord"
+      },
+      "owl:deprecated": true,
+      "rdfs:comment": "Deprecated timeless operational flag. Use hasOperationalStatusRecord with a validity interval and generating assessment.",
       "rdfs:domain": {
         "@id": "hcm:MonitoredEnclosure"
       },

@@ -49,6 +49,35 @@ questions:
     file: queries/cq-missing-dimensions.rq
     expected_answers: []
 
+  - id: environment-spec-observation
+    question: Which explicit property and QUDT quantities connect an environmental target specification to its observation?
+    file: queries/cq-environment-spec-observation.rq
+    expected_answers:
+      - property: https://example.org/hcmo/minimal/ambient-temperature
+        specifiedValue: "22.0"
+        specifiedUnit: http://qudt.org/vocab/unit/DEG_C
+        observedValue: "21.8"
+        observedUnit: http://qudt.org/vocab/unit/DEG_C
+
+  - id: current-housing-at-time
+    question: Which enclosure contains the reviewed animal at the stated reference time according to time-bounded housing assignments?
+    file: queries/cq-current-housing-at-time.rq
+    expected_answers:
+      - subject: https://example.org/hcmo/minimal/mouse-1
+        enclosure: https://example.org/hcmo/minimal/cage-12
+        assignment: https://example.org/hcmo/minimal/mouse-1-cage-12-assignment
+
+  - id: status-evidence-at-time
+    question: Which evidence-generating activities support the enclosure's operational and sensor-calibration status at the stated time?
+    file: queries/cq-status-evidence-at-time.rq
+    expected_answers:
+      - enclosure: https://example.org/hcmo/minimal/cage-12
+        operational: "true"
+        operationalAssessment: https://example.org/hcmo/minimal/cage-12-operational-assessment
+        sensor: https://example.org/hcmo/minimal/ir-sensor-1
+        calibrated: "true"
+        calibrationActivity: https://example.org/hcmo/minimal/ir-sensor-1-calibration-activity
+
   - id: needs-provisioning
     question: Which housed subjects are assigned to enclosures with incomplete husbandry requirements?
     file: queries/cq-needs-provisioning.rq
@@ -70,6 +99,9 @@ questions:
       - enclosure: https://example.org/hcmo/minimal/cage-12
         sensor: https://example.org/hcmo/minimal/ir-sensor-1
         property: https://example.org/hcmo/minimal/locomotor-activity
+      - enclosure: https://example.org/hcmo/minimal/cage-12
+        sensor: https://example.org/hcmo/minimal/temperature-sensor-1
+        property: https://example.org/hcmo/minimal/ambient-temperature
       - enclosure: https://w3id.org/hcmo/id/example-submission/enclosure-example-hcm
         sensor: https://w3id.org/hcmo/id/example-submission/sensor-ir-camera
         property: null

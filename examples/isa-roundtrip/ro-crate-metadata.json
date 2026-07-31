@@ -25,26 +25,23 @@
       "generated": "http://www.w3.org/ns/prov#generated",
       "givenName": "http://schema.org/givenName",
       "hasBeginning": "http://www.w3.org/2006/time#hasBeginning",
-      "hasBehaviorObservation": "https://w3id.org/hcmo/ontology/hcm/bio#hasBehaviorObservation",
-      "hasDimUnit": "https://w3id.org/hcmo/ontology/hcm#hasDimUnit",
       "hasDimensions": "https://w3id.org/hcmo/ontology/hcm#hasDimensions",
       "hasEnclosureIdentifier": "https://w3id.org/hcmo/ontology/hcm#hasEnclosureIdentifier",
       "hasEnd": "http://www.w3.org/2006/time#hasEnd",
       "hasFeatureOfInterest": "http://www.w3.org/ns/sosa/hasFeatureOfInterest",
       "hasFileFormat": "https://w3id.org/hcmo/ontology/hcm/tech#hasFileFormat",
-      "hasHeight": "https://w3id.org/hcmo/ontology/hcm#hasHeight",
+      "hasHeightQuantity": "https://w3id.org/hcmo/ontology/hcm#hasHeightQuantity",
       "hasHousingAssignment": "https://w3id.org/hcmo/ontology/hcm/bio#hasHousingAssignment",
-      "hasLength": "https://w3id.org/hcmo/ontology/hcm#hasLength",
+      "hasLengthQuantity": "https://w3id.org/hcmo/ontology/hcm#hasLengthQuantity",
       "hasMember": "https://w3id.org/hcmo/ontology/hcm/bio#hasMember",
-      "hasNumericValue": "https://w3id.org/hcmo/ontology/hcm/obs#hasNumericValue",
       "hasPart": "http://schema.org/hasPart",
       "hasResult": "http://www.w3.org/ns/sosa/hasResult",
       "hasSensorIdentifier": "https://w3id.org/hcmo/ontology/hcm/tech#hasSensorIdentifier",
       "hasSpecies": "https://w3id.org/hcmo/ontology/hcm/bio#hasSpecies",
       "hasStoragePath": "https://w3id.org/hcmo/ontology/hcm/tech#hasStoragePath",
       "hasTime": "http://www.w3.org/2006/time#hasTime",
-      "hasUnit": "https://w3id.org/hcmo/ontology/hcm#hasUnit",
-      "hasWidth": "https://w3id.org/hcmo/ontology/hcm#hasWidth",
+      "hasUnit": "http://qudt.org/schema/qudt/hasUnit",
+      "hasWidthQuantity": "https://w3id.org/hcmo/ontology/hcm#hasWidthQuantity",
       "hcm": "https://w3id.org/hcmo/ontology/hcm#",
       "hcm-bio": "https://w3id.org/hcmo/ontology/hcm/bio#",
       "hcm-obs": "https://w3id.org/hcmo/ontology/hcm/obs#",
@@ -57,6 +54,7 @@
       "mentions": "http://schema.org/mentions",
       "monitoredBy": "https://w3id.org/hcmo/ontology/hcm/tech#monitoredBy",
       "name": "http://schema.org/name",
+      "numericValue": "http://qudt.org/schema/qudt/numericValue",
       "obi": "http://purl.obolibrary.org/obo/OBI_",
       "object": "http://schema.org/object",
       "observedProperty": "http://www.w3.org/ns/sosa/observedProperty",
@@ -258,29 +256,6 @@
       "belongsToGroup": {
         "@id": "https://example.org/hcmo/isa-roundtrip/group-vehicle-standard"
       },
-      "hasBehaviorObservation": [
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-1-day-1"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-1-day-2"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-1-day-3"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-1-day-4"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-1-day-5"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-1-day-6"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-1-day-7"
-        }
-      ],
       "hasHousingAssignment": [
         {
           "@id": "https://example.org/hcmo/isa-roundtrip/assignment-1"
@@ -311,29 +286,6 @@
       "belongsToGroup": {
         "@id": "https://example.org/hcmo/isa-roundtrip/group-vehicle-standard"
       },
-      "hasBehaviorObservation": [
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-2-day-1"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-2-day-2"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-2-day-3"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-2-day-4"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-2-day-5"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-2-day-6"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-2-day-7"
-        }
-      ],
       "hasHousingAssignment": {
         "@id": "https://example.org/hcmo/isa-roundtrip/assignment-2"
       },
@@ -359,29 +311,6 @@
       "belongsToGroup": {
         "@id": "https://example.org/hcmo/isa-roundtrip/group-vehicle-enriched"
       },
-      "hasBehaviorObservation": [
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-3-day-1"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-3-day-2"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-3-day-3"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-3-day-4"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-3-day-5"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-3-day-6"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-3-day-7"
-        }
-      ],
       "hasHousingAssignment": {
         "@id": "https://example.org/hcmo/isa-roundtrip/assignment-3"
       },
@@ -407,29 +336,6 @@
       "belongsToGroup": {
         "@id": "https://example.org/hcmo/isa-roundtrip/group-vehicle-enriched"
       },
-      "hasBehaviorObservation": [
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-4-day-1"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-4-day-2"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-4-day-3"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-4-day-4"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-4-day-5"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-4-day-6"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-4-day-7"
-        }
-      ],
       "hasHousingAssignment": {
         "@id": "https://example.org/hcmo/isa-roundtrip/assignment-4"
       },
@@ -455,29 +361,6 @@
       "belongsToGroup": {
         "@id": "https://example.org/hcmo/isa-roundtrip/group-active-standard"
       },
-      "hasBehaviorObservation": [
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-5-day-1"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-5-day-2"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-5-day-3"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-5-day-4"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-5-day-5"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-5-day-6"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-5-day-7"
-        }
-      ],
       "hasHousingAssignment": {
         "@id": "https://example.org/hcmo/isa-roundtrip/assignment-5"
       },
@@ -503,29 +386,6 @@
       "belongsToGroup": {
         "@id": "https://example.org/hcmo/isa-roundtrip/group-active-standard"
       },
-      "hasBehaviorObservation": [
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-6-day-1"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-6-day-2"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-6-day-3"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-6-day-4"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-6-day-5"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-6-day-6"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-6-day-7"
-        }
-      ],
       "hasHousingAssignment": {
         "@id": "https://example.org/hcmo/isa-roundtrip/assignment-6"
       },
@@ -551,29 +411,6 @@
       "belongsToGroup": {
         "@id": "https://example.org/hcmo/isa-roundtrip/group-active-enriched"
       },
-      "hasBehaviorObservation": [
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-7-day-1"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-7-day-2"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-7-day-3"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-7-day-4"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-7-day-5"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-7-day-6"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-7-day-7"
-        }
-      ],
       "hasHousingAssignment": {
         "@id": "https://example.org/hcmo/isa-roundtrip/assignment-7"
       },
@@ -599,29 +436,6 @@
       "belongsToGroup": {
         "@id": "https://example.org/hcmo/isa-roundtrip/group-active-enriched"
       },
-      "hasBehaviorObservation": [
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-8-day-1"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-8-day-2"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-8-day-3"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-8-day-4"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-8-day-5"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-8-day-6"
-        },
-        {
-          "@id": "https://example.org/hcmo/isa-roundtrip/observation-8-day-7"
-        }
-      ],
       "hasHousingAssignment": {
         "@id": "https://example.org/hcmo/isa-roundtrip/assignment-8"
       },
@@ -4282,11 +4096,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "99.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-1-day-2",
@@ -4294,11 +4110,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "102.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-1-day-3",
@@ -4306,11 +4124,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "105.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-1-day-4",
@@ -4318,11 +4138,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "104.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-1-day-5",
@@ -4330,11 +4152,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "110.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-1-day-6",
@@ -4342,11 +4166,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "110.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-1-day-7",
@@ -4354,11 +4180,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "113.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-2-day-1",
@@ -4366,11 +4194,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "105.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-2-day-2",
@@ -4378,11 +4208,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "105.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-2-day-3",
@@ -4390,11 +4222,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "108.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-2-day-4",
@@ -4402,11 +4236,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "112.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-2-day-5",
@@ -4414,11 +4250,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "110.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-2-day-6",
@@ -4426,11 +4264,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "115.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-2-day-7",
@@ -4438,11 +4278,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "116.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-3-day-1",
@@ -4450,11 +4292,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "106.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-3-day-2",
@@ -4462,11 +4306,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "109.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-3-day-3",
@@ -4474,11 +4320,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "109.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-3-day-4",
@@ -4486,11 +4334,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "114.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-3-day-5",
@@ -4498,11 +4348,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "114.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-3-day-6",
@@ -4510,11 +4362,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "114.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-3-day-7",
@@ -4522,11 +4376,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "119.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-4-day-1",
@@ -4534,11 +4390,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "107.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-4-day-2",
@@ -4546,11 +4404,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "112.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-4-day-3",
@@ -4558,11 +4418,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "112.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-4-day-4",
@@ -4570,11 +4432,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "113.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-4-day-5",
@@ -4582,11 +4446,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "117.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-4-day-6",
@@ -4594,11 +4460,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "118.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-4-day-7",
@@ -4606,11 +4474,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "118.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-5-day-1",
@@ -4618,11 +4488,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "114.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-5-day-2",
@@ -4630,11 +4502,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "113.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-5-day-3",
@@ -4642,11 +4516,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "117.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-5-day-4",
@@ -4654,11 +4530,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "118.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-5-day-5",
@@ -4666,11 +4544,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "118.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-5-day-6",
@@ -4678,11 +4558,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "123.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-5-day-7",
@@ -4690,11 +4572,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "123.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-6-day-1",
@@ -4702,11 +4586,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "116.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-6-day-2",
@@ -4714,11 +4600,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "116.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-6-day-3",
@@ -4726,11 +4614,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "122.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-6-day-4",
@@ -4738,11 +4628,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "123.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-6-day-5",
@@ -4750,11 +4642,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "123.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-6-day-6",
@@ -4762,11 +4656,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "126.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-6-day-7",
@@ -4774,11 +4670,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "129.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-7-day-1",
@@ -4786,11 +4684,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "122.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-7-day-2",
@@ -4798,11 +4698,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "123.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-7-day-3",
@@ -4810,11 +4712,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "123.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-7-day-4",
@@ -4822,11 +4726,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "129.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-7-day-5",
@@ -4834,11 +4740,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "128.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-7-day-6",
@@ -4846,11 +4754,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "132.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-7-day-7",
@@ -4858,11 +4768,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "133.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-8-day-1",
@@ -4870,11 +4782,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "121.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-8-day-2",
@@ -4882,11 +4796,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "126.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-8-day-3",
@@ -4894,11 +4810,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "127.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-8-day-4",
@@ -4906,11 +4824,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "128.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-8-day-5",
@@ -4918,11 +4838,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "133.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-8-day-6",
@@ -4930,11 +4852,13 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "133.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/result-8-day-7",
@@ -4942,25 +4866,56 @@
         "hcm-obs:BehaviorResult",
         "hcm-obs:QuantityValue"
       ],
-      "hasNumericValue": {
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/UNITLESS"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "136.0"
-      },
-      "hasUnit": "activity counts per dark phase"
+      }
     },
     {
       "@id": "https://example.org/hcmo/isa-roundtrip/standard-cage-dimensions",
       "@type": "hcm:EnclosureDimensions",
-      "hasDimUnit": "cm",
-      "hasHeight": {
+      "hasHeightQuantity": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/standard-cage-height-quantity"
+      },
+      "hasLengthQuantity": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/standard-cage-length-quantity"
+      },
+      "hasWidthQuantity": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/standard-cage-width-quantity"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/standard-cage-height-quantity",
+      "@type": "http://qudt.org/schema/qudt/QuantityValue",
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/CentiM"
+      },
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "18.0"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/standard-cage-length-quantity",
+      "@type": "http://qudt.org/schema/qudt/QuantityValue",
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/CentiM"
       },
-      "hasLength": {
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "36.0"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/standard-cage-width-quantity",
+      "@type": "http://qudt.org/schema/qudt/QuantityValue",
+      "hasUnit": {
+        "@id": "http://qudt.org/vocab/unit/CentiM"
       },
-      "hasWidth": {
+      "numericValue": {
         "@type": "http://www.w3.org/2001/XMLSchema#decimal",
         "@value": "20.0"
       }

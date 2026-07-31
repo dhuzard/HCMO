@@ -13,6 +13,8 @@
 @prefix IAO: <http://purl.obolibrary.org/obo/IAO_> .
 @prefix mod: <https://w3id.org/mod#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
@@ -103,6 +105,16 @@ hcm:Enrichment a owl:Class ;
     rdfs:comment "A material or structure provided within an enclosure to support animal welfare or experimental conditions." ;
     rdfs:subClassOf BFO:0000040 .
 
+hcm:OperationalAssessment a owl:Class ;
+    rdfs:label "Operational Assessment" ;
+    rdfs:comment "An activity that assesses whether a monitored enclosure is operational and generates a time-bounded operational status record." ;
+    rdfs:subClassOf BFO:0000015, prov:Activity .
+
+hcm:OperationalStatusRecord a owl:Class ;
+    rdfs:label "Operational Status Record" ;
+    rdfs:comment "An evidence-backed information record stating the operational status of a monitored enclosure during a specified validity interval." ;
+    rdfs:subClassOf IAO:0000030 .
+
 hcm:hasEnrichmentRequirement a owl:DatatypeProperty ;
     rdfs:label "has enrichment requirement" ;
     rdfs:comment "Records a textual or coded enrichment requirement for an enclosure or monitored enclosure." ;
@@ -123,9 +135,10 @@ hcm:hasDescription a owl:DatatypeProperty ;
 
 hcm:hasMonitoredAnimals a owl:ObjectProperty ;
     rdfs:label "has monitored animals" ;
-    rdfs:comment "A derived convenience relation from a monitored enclosure to biological subjects housed or tracked within it at a stated evaluation time. Time-bounded HousingAssignment records, not this shortcut, are authoritative for housing history." ;
+    rdfs:comment "Deprecated timeless shortcut. Derive enclosure membership at an explicit reference time from time-bounded HousingAssignment records." ;
     rdfs:domain hcm:MonitoredEnclosure ;
-    rdfs:range hcm-bio:Subject .
+    rdfs:range hcm-bio:Subject ;
+    owl:deprecated true .
 
 hcm:hasName a owl:DatatypeProperty ;
     rdfs:label "has name" ;
@@ -135,14 +148,35 @@ hcm:hasName a owl:DatatypeProperty ;
 
 hcm:isOccupied a owl:DatatypeProperty ;
     rdfs:label "is occupied" ;
-    rdfs:comment "Indicates whether an enclosure is currently occupied by animals." ;
+    rdfs:comment "Deprecated timeless occupancy flag. Determine occupancy at an explicit reference time from HousingAssignment validity intervals." ;
     rdfs:domain hcm:Enclosure ;
-    rdfs:range xsd:boolean .
+    rdfs:range xsd:boolean ;
+    owl:deprecated true .
 
 hcm:isOperational a owl:DatatypeProperty ;
     rdfs:label "is operational" ;
-    rdfs:comment "Indicates whether a monitored enclosure is currently operational." ;
+    rdfs:comment "Deprecated timeless operational flag. Use hasOperationalStatusRecord with a validity interval and generating assessment." ;
     rdfs:domain hcm:MonitoredEnclosure ;
+    rdfs:range xsd:boolean ;
+    dcterms:isReplacedBy hcm:hasOperationalStatusRecord ;
+    owl:deprecated true .
+
+hcm:assessesEnclosure a owl:ObjectProperty ;
+    rdfs:label "assesses enclosure" ;
+    rdfs:comment "Relates an operational assessment to the monitored enclosure whose operational state it evaluates." ;
+    rdfs:domain hcm:OperationalAssessment ;
+    rdfs:range hcm:MonitoredEnclosure .
+
+hcm:hasOperationalStatusRecord a owl:ObjectProperty ;
+    rdfs:label "has operational status record" ;
+    rdfs:comment "Relates a monitored enclosure to an evidence-backed, time-bounded operational status record." ;
+    rdfs:domain hcm:MonitoredEnclosure ;
+    rdfs:range hcm:OperationalStatusRecord .
+
+hcm:hasOperationalStatusValue a owl:DatatypeProperty ;
+    rdfs:label "has operational status value" ;
+    rdfs:comment "Records the assessed operational-status value within a time-bounded operational status record." ;
+    rdfs:domain hcm:OperationalStatusRecord ;
     rdfs:range xsd:boolean .
 
 <https://orcid.org/0000-0002-2923-9790> a schema:Person ;
@@ -173,9 +207,10 @@ hcm:EnclosureDimensions a owl:Class ;
 
 hcm:hasDimUnit a owl:DatatypeProperty ;
     rdfs:label "has dim unit" ;
-    rdfs:comment "Records the unit used for enclosure dimension values." ;
+    rdfs:comment "Deprecated shared unit string. Each dimension now links to its own QUDT QuantityValue carrying qudt:hasUnit." ;
     rdfs:domain hcm:EnclosureDimensions ;
-    rdfs:range xsd:string .
+    rdfs:range xsd:string ;
+    owl:deprecated true .
 
 hcm:hasDimensions a owl:ObjectProperty ;
     rdfs:label "has dimensions" ;
@@ -209,9 +244,11 @@ hcm:hasFacilityType a owl:DatatypeProperty ;
 
 hcm:hasFloorArea a owl:DatatypeProperty ;
     rdfs:label "has floor area" ;
-    rdfs:comment "Records the floor area value for an enclosure dimensions record." ;
+    rdfs:comment "Deprecated numeric literal. Use hasFloorAreaQuantity with a QUDT QuantityValue." ;
     rdfs:domain hcm:EnclosureDimensions ;
-    rdfs:range xsd:decimal .
+    rdfs:range xsd:decimal ;
+    dcterms:isReplacedBy hcm:hasFloorAreaQuantity ;
+    owl:deprecated true .
 
 hcm:hasFoodRequirement a owl:DatatypeProperty ;
     rdfs:label "has food requirement" ;
@@ -221,15 +258,19 @@ hcm:hasFoodRequirement a owl:DatatypeProperty ;
 
 hcm:hasHeight a owl:DatatypeProperty ;
     rdfs:label "has height" ;
-    rdfs:comment "Records the height value of an enclosure dimensions record." ;
+    rdfs:comment "Deprecated numeric literal. Use hasHeightQuantity with a QUDT QuantityValue." ;
     rdfs:domain hcm:EnclosureDimensions ;
-    rdfs:range xsd:decimal .
+    rdfs:range xsd:decimal ;
+    dcterms:isReplacedBy hcm:hasHeightQuantity ;
+    owl:deprecated true .
 
 hcm:hasLength a owl:DatatypeProperty ;
     rdfs:label "has length" ;
-    rdfs:comment "Records the length value of an enclosure dimensions record." ;
+    rdfs:comment "Deprecated numeric literal. Use hasLengthQuantity with a QUDT QuantityValue." ;
     rdfs:domain hcm:EnclosureDimensions ;
-    rdfs:range xsd:decimal .
+    rdfs:range xsd:decimal ;
+    dcterms:isReplacedBy hcm:hasLengthQuantity ;
+    owl:deprecated true .
 
 hcm:hasManufacturer a owl:DatatypeProperty ;
     rdfs:label "has manufacturer" ;
@@ -251,9 +292,35 @@ hcm:hasWaterRequirement a owl:DatatypeProperty ;
 
 hcm:hasWidth a owl:DatatypeProperty ;
     rdfs:label "has width" ;
-    rdfs:comment "Records the width value of an enclosure dimensions record." ;
+    rdfs:comment "Deprecated numeric literal. Use hasWidthQuantity with a QUDT QuantityValue." ;
     rdfs:domain hcm:EnclosureDimensions ;
-    rdfs:range xsd:decimal .
+    rdfs:range xsd:decimal ;
+    dcterms:isReplacedBy hcm:hasWidthQuantity ;
+    owl:deprecated true .
+
+hcm:hasFloorAreaQuantity a owl:ObjectProperty ;
+    rdfs:label "has floor area quantity" ;
+    rdfs:comment "Relates an enclosure dimensions record to a QUDT quantity value for floor area." ;
+    rdfs:domain hcm:EnclosureDimensions ;
+    rdfs:range qudt:QuantityValue .
+
+hcm:hasHeightQuantity a owl:ObjectProperty ;
+    rdfs:label "has height quantity" ;
+    rdfs:comment "Relates an enclosure dimensions record to a QUDT quantity value for height." ;
+    rdfs:domain hcm:EnclosureDimensions ;
+    rdfs:range qudt:QuantityValue .
+
+hcm:hasLengthQuantity a owl:ObjectProperty ;
+    rdfs:label "has length quantity" ;
+    rdfs:comment "Relates an enclosure dimensions record to a QUDT quantity value for length." ;
+    rdfs:domain hcm:EnclosureDimensions ;
+    rdfs:range qudt:QuantityValue .
+
+hcm:hasWidthQuantity a owl:ObjectProperty ;
+    rdfs:label "has width quantity" ;
+    rdfs:comment "Relates an enclosure dimensions record to a QUDT quantity value for width." ;
+    rdfs:domain hcm:EnclosureDimensions ;
+    rdfs:range qudt:QuantityValue .
 
 hcm:locatedIn a owl:ObjectProperty ;
     rdfs:label "located in" ;
@@ -263,10 +330,12 @@ hcm:locatedIn a owl:ObjectProperty ;
 
 hcm:hasUnit a owl:DatatypeProperty ;
     rdfs:label "has unit" ;
-    rdfs:comment "Records the measurement unit associated with a quantitative observation result or measurement specification." ;
+    rdfs:comment "Deprecated unit string. Use qudt:hasUnit on a QUDT QuantityValue." ;
     rdfs:domain [ a owl:Class ;
         owl:unionOf ( hcm-obs:QuantityValue hcm-env:MeasurementSpecification ) ] ;
-    rdfs:range xsd:string .
+    rdfs:range xsd:string ;
+    dcterms:isReplacedBy qudt:hasUnit ;
+    owl:deprecated true .
 
 hcm:MonitoredEnclosure a owl:Class ;
     rdfs:label "Monitored Enclosure" ;
@@ -275,9 +344,6 @@ hcm:MonitoredEnclosure a owl:Class ;
         [ a owl:Restriction ;
             owl:onProperty hcm:hasDimensions ;
             owl:allValuesFrom hcm:EnclosureDimensions ],
-        [ a owl:Restriction ;
-            owl:onProperty hcm:hasMonitoredAnimals ;
-            owl:allValuesFrom hcm-bio:Subject ],
         [ a owl:Restriction ;
             owl:onProperty hcm-env:hasEnvironment ;
             owl:allValuesFrom hcm-env:EnvironmentProfile ],

@@ -46,14 +46,14 @@ the relevant doc and logged in `TODO.md`.
 |---|--------|-------|-------------------|
 | Q19 | Should `tech` be its own module? Device layer (Sensor / Hardware / Software / TimeSeries + all sensor properties). | 🟢 | **YES — full `tech` module ("for now").** Final shape: **5 modules `hcm` core · `bio` · `obs` · `env` · `tech`.** Quarantines the 34 `UNKNOWN:` tech placeholders; mirrors SOSA/SSN's Observation ‖ System split; matches report fig10. `Sensor/Hardware/Software/TimeSeries` IRIs move `…/hcm#` → `…/hcm/tech#` **before** the T9 release. |
 | Q20 | Where do results live? (Decision 0 vs 1 conflict.) | 🟢 | **Drop results from core entirely → `core = enclosure only`; all result/value classes (`ObservationResult`, `QuantityValue`, `CategoricalResult`, `Structural&LocationTable`) move to `obs`.** Reference scan confirmed: once Chowlk cruft (`MonitoredEnclosure ⊑ ObservationResult`) is cleaned, all result usage is obs-internal → zero cross-module edges. Core reduces to the single hub concept: **MonitoredEnclosure**. |
-| Q21 | Adopt **QUDT/OM** for units & quantities? | 🟠 | ◐ **Units: YES** — M4 folds both `hasUnit` props into QUDT/OM. **Still open:** how far to extend (`QuantityValue`, `hasValue`, `hasNumericValue`) and V1-now vs. roadmap timing. See `MODULE-MAP.md` §6 M4. |
+| Q21 | Adopt **QUDT/OM** for units & quantities? | 🟢 | **QUDT 3.4.0 selected now.** One pinned QuantityValue/numericValue/hasUnit pattern covers dimensions, sampling rates, environmental specifications, and observations; earlier local literal/unit properties are deprecated. See ADR-0004. |
 
 ## Parked — artifact-dependent (until clean V1 arrives, T0; author: "soon, days")
 | # | Aspect | Conf. | Answer |
 |---|--------|-------|--------|
 | Q9 | Runnable competency-question SPARQL against the active terms | 🟢 | Eight indexed queries run against HCMO 0.2.0 with complete reviewed answer rows, including three ISA/STATO evidence queries. |
 | Q10 | OOPS!/FOOPS!/reasoner/SHACL reports run? | 🟠 | HermiT and ontology-aware SHACL/CQ results are current for 0.2.0. Historical OOPS!/FOOPS! runs are archived; final-release reruns and Protege UI captures remain. |
-| Q11 | Confirm release term counts | 🟢 | Current generated profile: 56 declared classes, 57 object properties, and 73 datatype properties including compatibility terms; active local audit: 29 classes and 81 properties. |
+| Q11 | Confirm release term counts | 🟢 | Current generated profile: 60 declared classes, 68 object properties, and 75 datatype properties including compatibility terms; active source audit: 33 classes and 69 non-deprecated properties. |
 
 ## Change log
 | Date | Round | Outcome |

@@ -4,8 +4,11 @@
 @prefix hcm: <https://w3id.org/hcmo/ontology/hcm#> .
 @prefix hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#> .
 @prefix BFO: <http://purl.obolibrary.org/obo/BFO_> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix IAO: <http://purl.obolibrary.org/obo/IAO_> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -35,6 +38,16 @@ hcm-tech:TimeSeries a owl:Class ;
     rdfs:comment "An ordered sequence of time-indexed measurements or outputs produced in a monitoring workflow." ;
     rdfs:subClassOf IAO:0000030 .
 
+hcm-tech:CalibrationActivity a owl:Class ;
+    rdfs:label "Calibration Activity" ;
+    rdfs:comment "An activity that calibrates a sensor and generates a time-bounded calibration record." ;
+    rdfs:subClassOf BFO:0000015, prov:Activity .
+
+hcm-tech:CalibrationRecord a owl:Class ;
+    rdfs:label "Calibration Record" ;
+    rdfs:comment "An evidence-backed information record stating a sensor's calibration status during a specified validity interval." ;
+    rdfs:subClassOf IAO:0000030 .
+
 hcm-tech:hasFileFormat a owl:DatatypeProperty ;
     rdfs:label "has file format" ;
     rdfs:comment "Records the file format of a software or time-series artifact." ;
@@ -61,9 +74,11 @@ hcm-tech:hasProtocol a owl:DatatypeProperty ;
 
 hcm-tech:hasSamplingRate a owl:DatatypeProperty ;
     rdfs:label "has sampling rate" ;
-    rdfs:comment "Records the rate at which a sensor or data stream is sampled, including its unit." ;
+    rdfs:comment "Deprecated sampling-rate string. Use hasSamplingRateQuantity with a QUDT QuantityValue." ;
     rdfs:domain [ a owl:Class ; owl:unionOf ( hcm-tech:Sensor hcm-tech:TimeSeries ) ] ;
-    rdfs:range xsd:string .
+    rdfs:range xsd:string ;
+    dcterms:isReplacedBy hcm-tech:hasSamplingRateQuantity ;
+    owl:deprecated true .
 
 hcm-tech:hasSensorIdentifier a owl:DatatypeProperty ;
     rdfs:label "has sensor identifier" ;
@@ -97,9 +112,35 @@ hcm-tech:hasVersion a owl:DatatypeProperty ;
 
 hcm-tech:isCalibrated a owl:DatatypeProperty ;
     rdfs:label "is calibrated" ;
-    rdfs:comment "Indicates whether a sensor or device has been calibrated." ;
+    rdfs:comment "Deprecated timeless calibration flag. Use hasCalibrationRecord with a validity interval and generating calibration activity." ;
     rdfs:domain hcm-tech:Sensor ;
+    rdfs:range xsd:boolean ;
+    dcterms:isReplacedBy hcm-tech:hasCalibrationRecord ;
+    owl:deprecated true .
+
+hcm-tech:calibratesSensor a owl:ObjectProperty ;
+    rdfs:label "calibrates sensor" ;
+    rdfs:comment "Relates a calibration activity to the sensor that it calibrates." ;
+    rdfs:domain hcm-tech:CalibrationActivity ;
+    rdfs:range hcm-tech:Sensor .
+
+hcm-tech:hasCalibrationRecord a owl:ObjectProperty ;
+    rdfs:label "has calibration record" ;
+    rdfs:comment "Relates a sensor to an evidence-backed, time-bounded calibration record." ;
+    rdfs:domain hcm-tech:Sensor ;
+    rdfs:range hcm-tech:CalibrationRecord .
+
+hcm-tech:hasCalibrationStatusValue a owl:DatatypeProperty ;
+    rdfs:label "has calibration status value" ;
+    rdfs:comment "Records the assessed calibration-status value within a time-bounded calibration record." ;
+    rdfs:domain hcm-tech:CalibrationRecord ;
     rdfs:range xsd:boolean .
+
+hcm-tech:hasSamplingRateQuantity a owl:ObjectProperty ;
+    rdfs:label "has sampling rate quantity" ;
+    rdfs:comment "Relates a sensor or time series to a QUDT quantity value expressing its sampling rate." ;
+    rdfs:domain [ a owl:Class ; owl:unionOf ( hcm-tech:Sensor hcm-tech:TimeSeries ) ] ;
+    rdfs:range qudt:QuantityValue .
 
 hcm-tech:communicatesWith a owl:ObjectProperty ;
     rdfs:label "communicates with" ;

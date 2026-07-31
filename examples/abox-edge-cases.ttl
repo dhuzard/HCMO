@@ -3,20 +3,23 @@
 @prefix hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#> .
 @prefix hcm-obs: <https://w3id.org/hcmo/ontology/hcm/obs#> .
 @prefix hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
 
 # Missing identifier, sensor, and monitored subject.
 ex:enclosure-with-gaps a hcm:MonitoredEnclosure ;
   rdfs:label "Incomplete enclosure" ;
-  hcm:hasDimensions ex:bad-dimensions .
+  hcm:hasDimensions ex:bad-dimensions ;
+  hcm:isOccupied true .
 
 # Invalid negative height.
 ex:bad-dimensions a hcm:EnclosureDimensions ;
-  hcm:hasWidth 30.0 ;
-  hcm:hasLength 45.0 ;
-  hcm:hasHeight -1.0 ;
-  hcm:hasDimUnit "cm" .
+  hcm:hasWidthQuantity [ a qudt:QuantityValue ; qudt:numericValue 30.0 ; qudt:hasUnit unit:CentiM ] ;
+  hcm:hasLengthQuantity [ a qudt:QuantityValue ; qudt:numericValue 45.0 ; qudt:hasUnit unit:CentiM ] ;
+  hcm:hasHeightQuantity [ a qudt:QuantityValue ; qudt:numericValue -1.0 ; qudt:hasUnit unit:CentiM ] .
 
 # Missing species and housing assignment.
 ex:subject-with-gaps a hcm-bio:Subject ;
@@ -34,7 +37,7 @@ ex:observation-with-gaps a hcm-obs:BehaviorObservation .
 
 # Missing unit.
 ex:quantity-with-gaps a hcm-obs:QuantityValue ;
-  hcm-obs:hasNumericValue 12.0 .
+  qudt:numericValue 12.0 .
 
 # Missing storage path.
 ex:series-with-gaps a hcm-tech:TimeSeries ;

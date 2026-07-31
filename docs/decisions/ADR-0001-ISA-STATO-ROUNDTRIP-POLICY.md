@@ -27,8 +27,8 @@ may move at the exact end/start boundary without overlap. Reversed and
 zero-length intervals are invalid. Overlapping housing assignments are
 prohibited in the standard profile.
 Extensions that permit an exceptional overlap must state and validate their
-reason. `hcm:hasMonitoredAnimals` is an optional, derived shortcut evaluated at
-a stated time; time-bounded housing assignments are authoritative.
+reason. `hcm:hasMonitoredAnimals` is deprecated; current membership is derived
+at a stated time from authoritative time-bounded housing assignments.
 
 `hcm-bio:StudyFactors` denotes an independent-variable specification belonging
 to a study design. Subject-level factor assignments are authoritative. Named

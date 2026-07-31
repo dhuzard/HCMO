@@ -136,7 +136,7 @@ binding, multiplicity, or row mismatch.
 - Add each term to the module matching its namespace.
 - Put application-specific cardinality and intake rules in `shapes/`, not in
   the domain class hierarchy.
-- Prefer a bridge document or module for ISA, QUDT/OM, taxon, and anatomy
+- Prefer a bridge document or module for ISA, taxon, and anatomy
   mappings until an equivalence is justified.
 - Never re-mint a published HCMO IRI. Deprecate it and map a replacement when a
   defensible replacement exists.

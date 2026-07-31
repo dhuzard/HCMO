@@ -20,6 +20,7 @@ AUDIT_PATH = ROOT / "docs" / "CLASS-AUDIT-WORKING-NOTES.md"
 LOCAL_PREFIX = "https://w3id.org/hcmo/ontology/hcm"
 
 EXTERNAL_ANCHORS = {
+    URIRef("http://purl.obolibrary.org/obo/BFO_0000015"),
     URIRef("http://purl.obolibrary.org/obo/BFO_0000019"),
     URIRef("http://purl.obolibrary.org/obo/BFO_0000040"),
     URIRef("http://purl.obolibrary.org/obo/IAO_0000030"),
@@ -28,6 +29,8 @@ EXTERNAL_ANCHORS = {
     URIRef("http://www.w3.org/ns/sosa/ObservableProperty"),
     URIRef("http://www.w3.org/ns/sosa/Result"),
     URIRef("http://www.w3.org/ns/sosa/Sensor"),
+    URIRef("http://www.w3.org/ns/prov#Activity"),
+    URIRef("http://qudt.org/schema/qudt/QuantityValue"),
     URIRef("https://schema.org/Person"),
     URIRef("https://schema.org/Place"),
     URIRef("https://w3id.org/semts/ontology#DataDimension"),
@@ -120,8 +123,8 @@ def check_source_snapshot(manifest: dict) -> tuple[Graph, set[URIRef]]:
     print("Class source snapshot")
     print(f"  Active local classes: {len(classes)}")
     print(f"  Directly used external class anchors: {len(anchors)}")
-    if len(classes) != 29:
-        raise SystemExit(f"ERROR: expected 29 active local classes, found {len(classes)}")
+    if len(classes) != 33:
+        raise SystemExit(f"ERROR: expected 33 active local classes, found {len(classes)}")
     if anchors != EXTERNAL_ANCHORS:
         missing = sorted(map(str, EXTERNAL_ANCHORS - anchors))
         unexpected = sorted(map(str, anchors - EXTERNAL_ANCHORS))
@@ -145,7 +148,7 @@ def check_metadata(graph: Graph, classes: set[URIRef]) -> None:
     if missing:
         raise SystemExit("ERROR: active class metadata missing: " + "; ".join(missing))
     print("Class metadata completeness")
-    print("  Active classes with label/definition/subClassOf: 29")
+    print(f"  Active classes with label/definition/subClassOf: {len(classes)}")
 
 
 def check_generated_profile(graph: Graph, classes: set[URIRef]) -> None:
@@ -166,7 +169,7 @@ def check_generated_profile(graph: Graph, classes: set[URIRef]) -> None:
     if mismatches:
         raise SystemExit("ERROR: generated profile mismatch: " + "; ".join(mismatches))
     print("Generated profile agreement")
-    print("  Active class IRI/label/definition records matched: 29")
+    print(f"  Active class IRI/label/definition records matched: {len(classes)}")
 
 
 def check_documented_decisions(graph: Graph, classes: set[URIRef]) -> None:
@@ -189,7 +192,7 @@ def check_documented_decisions(graph: Graph, classes: set[URIRef]) -> None:
             f"missing={missing}; unexpected={unexpected}"
         )
     decision_counts = Counter(decision for _, decision in rows)
-    expected_counts = Counter({"keep": 25, "needs evidence": 4})
+    expected_counts = Counter({"keep": 29, "needs evidence": 4})
     if decision_counts != expected_counts:
         raise SystemExit(
             "ERROR: active class decision totals mismatch; "

@@ -1,0 +1,19 @@
+PREFIX ex: <https://example.org/hcmo/minimal/>
+PREFIX hcm-env: <https://w3id.org/hcmo/ontology/hcm/env#>
+PREFIX qudt: <http://qudt.org/schema/qudt/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+
+SELECT ?property ?specifiedValue ?specifiedUnit ?observedValue ?observedUnit
+WHERE {
+  ex:cage-12-environment hcm-env:hasMeasurementSpec ?specification .
+  ?specification hcm-env:specifiesProperty ?property ;
+                 hcm-env:hasSpecifiedValue ?specifiedQuantity .
+  ?specifiedQuantity qudt:numericValue ?specifiedNumeric ;
+                     qudt:hasUnit ?specifiedUnit .
+  ex:temperature-observation-1 sosa:observedProperty ?property ;
+                               sosa:hasResult ?observedQuantity .
+  ?observedQuantity qudt:numericValue ?observedNumeric ;
+                    qudt:hasUnit ?observedUnit .
+  BIND(STR(?specifiedNumeric) AS ?specifiedValue)
+  BIND(STR(?observedNumeric) AS ?observedValue)
+}
