@@ -403,6 +403,12 @@
     <rdfs:label>has software</rdfs:label>
     <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
   </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#StudyFactors">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>An independent-variable specification that is part of a study design and identifies a variable the investigation is designed to vary systematically in order to determine its effect on subjects or observations.</rdfs:comment>
+    <rdfs:label>Study Factor</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/IAO_0000030"/>
+  </rdf:Description>
   <rdf:Description rdf:nodeID="cb113a22143a5742e912db68f80d8e32c8f5fe1314a7f1c9c1c24df1badfba02637">
     <rdf:first rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#Actuator"/>
     <rdf:rest rdf:nodeID="cb1ff0e5491c61225a4c2d917e6efd854e3d3f684c4d2c69d78cfe68eebcd22cf85"/>
@@ -441,6 +447,13 @@
     <rdfs:comment>Deprecated in HCMO 0.1.0. Relates an actuator to a behavior or physiology process it elicits or perturbs.</rdfs:comment>
     <rdfs:label>elicits</rdfs:label>
     <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#hasMonitoredAnimals">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment>A derived convenience relation from a monitored enclosure to biological subjects housed or tracked within it at a stated evaluation time. Time-bounded HousingAssignment records, not this shortcut, are authoritative for housing history.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/hcmo/ontology/hcm#MonitoredEnclosure"/>
+    <rdfs:label>has monitored animals</rdfs:label>
+    <rdfs:range rdf:resource="https://w3id.org/hcmo/ontology/hcm/bio#Subject"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/env#EnclosureDimensions">
     <dcterms:isReplacedBy rdf:resource="https://w3id.org/hcmo/ontology/hcm#EnclosureDimensions"/>
@@ -568,23 +581,17 @@
     <rdfs:label>displays</rdfs:label>
     <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
   </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#StudyFactors">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:comment>An independent variable that an investigation is designed to vary systematically in order to determine its effect on subjects or observations.</rdfs:comment>
-    <rdfs:label>Study Factor</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/IAO_0000030"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="cb15a41efc8b4077324df6a17af6a0b8a57ef9c0f9397b181823f1f117efc820b2b">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:allValuesFrom rdf:resource="https://w3id.org/hcmo/ontology/hcm/bio#Subject"/>
-    <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm#hasMonitoredAnimals"/>
-  </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#communicatesWith">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
     <rdfs:comment>Relates a technical component to another hardware or software component with which it exchanges data or commands.</rdfs:comment>
     <rdfs:domain rdf:nodeID="cb971add8ad812460906e5db16397e56dc883bd46dfd66e8d960f178f6f38754ae"/>
     <rdfs:label>communicates with</rdfs:label>
     <rdfs:range rdf:nodeID="cb1f6413380c1436625d8de27ba53397f8929f5cf2bdec67e4f547b0b9a42f48c1d"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="cb15a41efc8b4077324df6a17af6a0b8a57ef9c0f9397b181823f1f117efc820b2b">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:allValuesFrom rdf:resource="https://w3id.org/hcmo/ontology/hcm/bio#Subject"/>
+    <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm#hasMonitoredAnimals"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#BehaviorAndPhysiology">
     <dcterms:source rdf:resource="https://w3id.org/hcmo/ontology/hcm/0.0.1"/>
@@ -831,12 +838,6 @@
     <rdfs:label>installed in</rdfs:label>
     <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
   </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#HousingAssignment">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:comment>A record assigning a subject or group to an enclosure in a study or housing context.</rdfs:comment>
-    <rdfs:label>Housing Assignment</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/IAO_0000030"/>
-  </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#hasFileFormat">
     <dcterms:isReplacedBy rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#hasFileFormat"/>
     <dcterms:source rdf:resource="https://w3id.org/hcmo/ontology/hcm/0.0.1"/>
@@ -863,13 +864,6 @@
     <rdfs:comment>Deprecated in HCMO 0.1.0. An observation time window for behavior capture.</rdfs:comment>
     <rdfs:label>Observation Window</rdfs:label>
     <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#hasMonitoredAnimals">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:comment>Relates a monitored enclosure to the biological subjects housed or tracked within it.</rdfs:comment>
-    <rdfs:domain rdf:resource="https://w3id.org/hcmo/ontology/hcm#MonitoredEnclosure"/>
-    <rdfs:label>has monitored animals</rdfs:label>
-    <rdfs:range rdf:resource="https://w3id.org/hcmo/ontology/hcm/bio#Subject"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/env#hasDimUnit">
     <dcterms:isReplacedBy rdf:resource="https://w3id.org/hcmo/ontology/hcm#hasDimUnit"/>
@@ -1512,6 +1506,12 @@
     <rdfs:domain rdf:resource="https://w3id.org/hcmo/ontology/hcm/obs#QuantityValue"/>
     <rdfs:label>has numeric value</rdfs:label>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#HousingAssignment">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>An information-content record documenting the actual housing of a subject or group in an enclosure during a stated validity interval. It is distinct from a planned assignment and from the allocation execution that establishes the housing.</rdfs:comment>
+    <rdfs:label>Housing Assignment</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/IAO_0000030"/>
   </rdf:Description>
   <rdf:Description rdf:nodeID="cb1016c1014e375a4eb8eea2ea88b7d2e77cf0960b695e840a2d388b08c4411ed1c">
     <rdf:first rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#Software"/>

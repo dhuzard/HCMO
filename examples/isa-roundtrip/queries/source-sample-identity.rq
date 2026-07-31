@@ -1,0 +1,14 @@
+PREFIX bioschemas: <https://bioschemas.org/>
+PREFIX ex: <https://example.org/hcmo/isa-roundtrip/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX schema: <http://schema.org/>
+
+SELECT ?source ?sample ?collection
+WHERE {
+  ?source schema:additionalType "Source" .
+  ?collection schema:object ?source ; schema:result ?sample .
+  ?sample a bioschemas:Sample ;
+          schema:additionalType "Sample" ;
+          prov:wasDerivedFrom ?source .
+}
+

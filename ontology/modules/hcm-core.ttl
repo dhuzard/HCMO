@@ -124,7 +124,7 @@ hcm:hasDescription a owl:DatatypeProperty ;
 
 hcm:hasMonitoredAnimals a owl:ObjectProperty ;
     rdfs:label "has monitored animals" ;
-    rdfs:comment "Relates a monitored enclosure to the biological subjects housed or tracked within it." ;
+    rdfs:comment "A derived convenience relation from a monitored enclosure to biological subjects housed or tracked within it at a stated evaluation time. Time-bounded HousingAssignment records, not this shortcut, are authoritative for housing history." ;
     rdfs:domain hcm:MonitoredEnclosure ;
     rdfs:range hcm-bio:Subject .
 

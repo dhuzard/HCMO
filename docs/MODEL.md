@@ -5,8 +5,9 @@
 A `hcm:MonitoredEnclosure` is a physical enclosure that:
 
 - has one `hcm:EnclosureDimensions` record through `hcm:hasDimensions`;
-- houses one or more `hcm-bio:Subject` instances through
-  `hcm:hasMonitoredAnimals`;
+- has time-bounded subject/group housing recorded through
+  `hcm-bio:HousingAssignment`; `hcm:hasMonitoredAnimals` is only an optional
+  derived snapshot at an explicitly stated evaluation time;
 - is monitored by `hcm-tech:Sensor` instances through
   `hcm-tech:monitoredBy`; physical cage installation is represented separately
   with `hcm-tech:installedIn`; and
@@ -16,7 +17,11 @@ Animal-to-cage allocation is modeled explicitly with
 `hcm-bio:HousingAssignment`. This supports allocation metadata and avoids
 treating a cage as a study factor. A cage should be represented as a study
 factor only when cage identity or cage treatment is deliberately manipulated
-as an independent variable.
+as an independent variable. Assignment validity uses half-open `[start, end)`
+intervals: adjacent re-housing records may share a boundary, while overlap,
+zero-length/reversed intervals, and orphan records fail the standard profile.
+Historical graphs use the assignment records rather than materializing the
+time-dependent shortcut.
 
 ## Observation pattern
 
@@ -27,6 +32,9 @@ HCMO specializes SOSA rather than duplicating it:
 3. `sosa:madeBySensor` identifies the sensor;
 4. `sosa:hasResult` links the result; and
 5. `hcm-obs:occursIn` identifies the monitored enclosure.
+
+For interval measurements, the observation enclosure must agree with the
+subject's authoritative housing assignment throughout the phenomenon interval.
 
 Time-series files use `hcm-tech:TimeSeries`; format and storage metadata use
 `hcm-tech:hasFileFormat` and `hcm-tech:hasStoragePath`.
@@ -74,9 +82,19 @@ Investigation/Study/Assay and LabProcess/File slice and includes an injected
 process/data cycle that must be non-conformant. This profile is evidence for the
 example boundary, not a claim of formal ISA RO-Crate conformance.
 
+A second isolated profile validates the accepted housing, identity, 2 × 2
+factor/group, repeated-observation, and statistical-result/file-fragment
+invariants. Its canonical RDF and extended ISA RO-Crate JSON-LD graphs must be
+isomorphic. Separate loss manifests describe ISA-JSON and ISA-Tab projections.
+The executable native overlap covers only a distinct animal Source, specimen-
+collection process, and genuine tissue Sample; HCMO IRIs are carried through
+the Tab round trip as explicit comments. No Sample proxy is created for an
+unchanged animal, so source-bound factor values and direct whole-animal assay
+semantics remain explicit controlled losses.
+
 ## Deferred decisions
 
 - Replace unit strings with a reviewed QUDT or OM pattern.
 - Refine the target class for `hcm-obs:hasCondition`.
-- Validate the ISA Process / LabProcess representation of cage allocation with
-  ISA domain experts. See `ISA-RO-CRATE-MAPPING.md`.
+- Obtain an authoritative permanent ISA RO-Crate profile URI, base RO-Crate
+  edition, and endorsed validator procedure before claiming formal conformance.

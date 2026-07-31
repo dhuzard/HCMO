@@ -1,0 +1,11 @@
+PREFIX hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+
+SELECT ?subject (COUNT(?observation) AS ?observations)
+WHERE {
+  ?subject a hcm-bio:Subject .
+  ?observation sosa:hasFeatureOfInterest ?subject .
+}
+GROUP BY ?subject
+ORDER BY ?subject
+

@@ -1,0 +1,14 @@
+PREFIX hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#>
+PREFIX schema: <http://schema.org/>
+
+SELECT ?subject ?group ?treatment ?enrichment
+WHERE {
+  ?subject a hcm-bio:Subject ;
+           hcm-bio:belongsToGroup ?group ;
+           schema:additionalProperty ?treatment, ?enrichment .
+  ?group hcm-bio:hasMember ?subject ;
+         schema:additionalProperty ?treatment, ?enrichment .
+  ?treatment schema:propertyID <https://example.org/hcmo/isa-roundtrip/factor-treatment> .
+  ?enrichment schema:propertyID <https://example.org/hcmo/isa-roundtrip/factor-enrichment> .
+}
+ORDER BY ?subject

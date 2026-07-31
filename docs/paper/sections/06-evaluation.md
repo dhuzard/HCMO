@@ -45,6 +45,22 @@ into OWL existential semantics. A separate ISA/STATO evidence shape validates
 the pinned workflow boundary; an injected process/data cycle is required to
 fail.
 
+The accepted round-trip fixture contains a 2 × 2 treatment-by-enrichment
+design with eight individually housed animals, 56 repeated dark-phase activity
+observations, non-overlapping re-housing, an actual derived tissue Sample, and
+separate fitted-model, estimate, confidence-interval, p-value, File, and file-
+fragment entities. Canonical HCMO RDF and extended ISA RO-Crate JSON-LD are
+graph-isomorphic at 1,587 triples. Dark-phase outcomes use phenomenon intervals,
+and the re-housed animal's observations resolve to its new enclosure through
+the authoritative assignment. The declared mixed model is executed against the
+generated CSV with pinned numerical dependencies; the model serialization and
+the active-versus-vehicle contrast at standard enrichment use distinct exact
+row fragments. Dedicated shapes and
+injected probes reject overlapping, orphaned, reversed, or incompletely
+generated housing assignments; generated replacement animals; observation/
+housing mismatch; group/factor disagreement; and fabricated ISA assignment
+results.
+
 **Competency questions.** Eight SPARQL queries run over the ontology plus all
 positive examples. Negative fixtures are isolated from the query graph. The
 validator checks both query-index completeness and the complete expected answer
@@ -66,3 +82,18 @@ records in the positive fixture rather than being accepted as an unexamined
 empty result. The three ISA/STATO questions establish a narrow executable
 evidence slice; they do not establish HCMO class mappings or formal ISA
 RO-Crate conformance.
+
+Five additional exact-answer questions run against the isolated round-trip
+fixture: nine housing-history rows, eight authoritative subject/group/factor
+rows, eight per-animal repeated-observation counts, four statistical-result/
+file-fragment rows including exact values and meaning links, and one
+Source-to-derived-Sample row. `roc-validator` 0.11.3 passes all RO-Crate 1.2
+required rules and all ISA-specific required rules. Its full inherited ISA run
+has one isolated upstream conflict: the embedded ISA profile requires RO-Crate
+1.1 although its minimal ISA fixture uses the 1.2 context. We report this as
+interoperability evidence, not formal conformance. Separately, pinned
+`isatools` 0.14.3 validates an executable native projection and round trip for
+the genuine Source-to-Sample collection. Exact HCMO identifiers survive as ISA
+comments. The test deliberately excludes non-native housing, direct whole-
+animal assay, source-bound factor assignment, group, repeated-observation, and
+semantic-result/file-fragment structures and checks their loss manifests.

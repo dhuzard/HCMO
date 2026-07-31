@@ -1,4 +1,5 @@
 @prefix bioschemas: <https://bioschemas.org/> .
+@prefix bioschemas-prop: <https://bioschemas.org/properties/> .
 @prefix ex: <https://example.org/hcmo/isa-crate/> .
 @prefix hcm: <https://w3id.org/hcmo/ontology/hcm#> .
 @prefix hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#> .
@@ -7,9 +8,10 @@
 @prefix obi: <http://purl.obolibrary.org/obo/OBI_> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema: <https://schema.org/> .
+@prefix schema: <http://schema.org/> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
 @prefix stato: <http://purl.obolibrary.org/obo/STATO_> .
+@prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 ex:investigation a schema:Dataset ;
@@ -64,14 +66,18 @@ ex:ambient-temperature-group a hcm-bio:ExperimentalGroup, stato:0000193 ;
 
 ex:assignment-1 a hcm-bio:HousingAssignment ;
   hcm-bio:assignedToEnclosure ex:cage-12 ;
-  prov:wasGeneratedBy ex:housing-process .
+  prov:wasGeneratedBy ex:housing-process ;
+  time:hasTime ex:assignment-1-validity .
+
+ex:assignment-1-validity a time:Interval ;
+  time:hasBeginning [ a time:Instant ; time:inXSDDateTime "2026-01-01T00:00:00Z"^^xsd:dateTime ] ;
+  time:hasEnd [ a time:Instant ; time:inXSDDateTime "2026-01-31T23:59:59Z"^^xsd:dateTime ] .
 
 ex:cage-12 a hcm:MonitoredEnclosure ;
   schema:name "Rack 3, cage 12" ;
   rdfs:label "Rack 3, cage 12" ;
   hcm:hasEnclosureIdentifier "rack-3-cage-12" ;
   hcm:hasDimensions ex:cage-12-dimensions ;
-  hcm:hasMonitoredAnimals ex:animal-1 ;
   hcm-tech:monitoredBy ex:sensor-1 .
 
 ex:cage-12-dimensions a hcm:EnclosureDimensions ;
@@ -83,11 +89,19 @@ ex:cage-12-dimensions a hcm:EnclosureDimensions ;
 ex:housing-protocol a bioschemas:LabProtocol, prov:Plan ;
   schema:name "Animal-to-cage allocation protocol" .
 
-ex:housing-process a prov:Activity ;
+ex:housing-process a bioschemas:LabProcess, prov:Activity ;
   schema:name "Allocate animal-1 to cage-12" ;
-  rdfs:comment "Housing-assignment round-tripping remains an HCMO extension: this activity is deliberately not asserted as an ISA LabProcess because the generated HousingAssignment is neither a biological Sample nor a File." ;
+  rdfs:comment "The allocation execution uses the unchanged animal and enclosure and generates an HCMO HousingAssignment record through PROV. It has no ISA Sample or File result." ;
+  schema:object ex:animal-1 ;
+  bioschemas-prop:executesLabProtocol ex:housing-protocol ;
+  bioschemas-prop:parameterValue ex:cage-12-parameter ;
   prov:used ex:animal-1, ex:cage-12, ex:housing-protocol ;
   prov:generated ex:assignment-1 .
+
+ex:cage-12-parameter a schema:PropertyValue ;
+  schema:name "Allocated enclosure identifier" ;
+  schema:propertyID hcm-bio:assignedToEnclosure ;
+  schema:value "rack-3-cage-12" .
 
 ex:sensor-1 a hcm-tech:Sensor ;
   schema:name "Infrared activity sensor" ;
@@ -103,7 +117,7 @@ ex:acquisition-process a bioschemas:LabProcess, prov:Activity, obi:0000070 ;
   rdfs:comment "The example IRI is retained for continuity. This execution generates new sensor observations and data; it is an OBI assay, not an OBI material-acquisition or information-acquisition process." ;
   schema:object ex:animal-1 ;
   schema:result ex:activity-file ;
-  bioschemas:executesLabProtocol ex:recording-protocol ;
+  bioschemas-prop:executesLabProtocol ex:recording-protocol ;
   prov:used ex:animal-1, ex:sensor-1 ;
   prov:generated ex:activity-file .
 
@@ -130,7 +144,7 @@ ex:activity-summary-process a bioschemas:LabProcess, prov:Activity, obi:0200000 
   schema:name "Calculate daily mean activity" ;
   schema:object ex:activity-file ;
   schema:result ex:activity-summary-file ;
-  bioschemas:executesLabProtocol ex:summary-protocol ;
+  bioschemas-prop:executesLabProtocol ex:summary-protocol ;
   prov:used ex:activity-file ;
   prov:generated ex:activity-summary-file, ex:mean-activity .
 

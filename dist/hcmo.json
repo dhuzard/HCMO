@@ -628,7 +628,7 @@
     {
       "@id": "hcm-bio:HousingAssignment",
       "@type": "owl:Class",
-      "rdfs:comment": "A record assigning a subject or group to an enclosure in a study or housing context.",
+      "rdfs:comment": "An information-content record documenting the actual housing of a subject or group in an enclosure during a stated validity interval. It is distinct from a planned assignment and from the allocation execution that establishes the housing.",
       "rdfs:label": "Housing Assignment",
       "rdfs:subClassOf": {
         "@id": "http://purl.obolibrary.org/obo/IAO_0000030"
@@ -637,7 +637,7 @@
     {
       "@id": "hcm-bio:StudyFactors",
       "@type": "owl:Class",
-      "rdfs:comment": "An independent variable that an investigation is designed to vary systematically in order to determine its effect on subjects or observations.",
+      "rdfs:comment": "An independent-variable specification that is part of a study design and identifies a variable the investigation is designed to vary systematically in order to determine its effect on subjects or observations.",
       "rdfs:label": "Study Factor",
       "rdfs:subClassOf": {
         "@id": "http://purl.obolibrary.org/obo/IAO_0000030"
@@ -2406,7 +2406,7 @@
     {
       "@id": "hcm:hasMonitoredAnimals",
       "@type": "owl:ObjectProperty",
-      "rdfs:comment": "Relates a monitored enclosure to the biological subjects housed or tracked within it.",
+      "rdfs:comment": "A derived convenience relation from a monitored enclosure to biological subjects housed or tracked within it at a stated evaluation time. Time-bounded HousingAssignment records, not this shortcut, are authoritative for housing history.",
       "rdfs:domain": {
         "@id": "hcm:MonitoredEnclosure"
       },

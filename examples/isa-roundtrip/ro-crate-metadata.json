@@ -1,0 +1,5104 @@
+{
+  "@context": [
+    "https://w3id.org/ro/crate/1.2/context",
+    {
+      "CreativeWork": "http://schema.org/CreativeWork",
+      "Dataset": "http://schema.org/Dataset",
+      "LabProcess": "https://bioschemas.org/LabProcess",
+      "LabProtocol": "https://bioschemas.org/LabProtocol",
+      "MediaObject": "http://schema.org/MediaObject",
+      "Person": "http://schema.org/Person",
+      "PropertyValue": "http://schema.org/PropertyValue",
+      "Sample": "https://bioschemas.org/Sample",
+      "about": "http://schema.org/about",
+      "additionalProperty": "http://schema.org/additionalProperty",
+      "additionalType": "http://schema.org/additionalType",
+      "assignedToEnclosure": "https://w3id.org/hcmo/ontology/hcm/bio#assignedToEnclosure",
+      "belongsToGroup": "https://w3id.org/hcmo/ontology/hcm/bio#belongsToGroup",
+      "conformsTo": "http://purl.org/dc/terms/conformsTo",
+      "creator": "http://schema.org/creator",
+      "datePublished": "http://schema.org/datePublished",
+      "description": "http://schema.org/description",
+      "encodingFormat": "http://schema.org/encodingFormat",
+      "executesLabProtocol": "https://bioschemas.org/properties/executesLabProtocol",
+      "familyName": "http://schema.org/familyName",
+      "generated": "http://www.w3.org/ns/prov#generated",
+      "givenName": "http://schema.org/givenName",
+      "hasBeginning": "http://www.w3.org/2006/time#hasBeginning",
+      "hasBehaviorObservation": "https://w3id.org/hcmo/ontology/hcm/bio#hasBehaviorObservation",
+      "hasDimUnit": "https://w3id.org/hcmo/ontology/hcm#hasDimUnit",
+      "hasDimensions": "https://w3id.org/hcmo/ontology/hcm#hasDimensions",
+      "hasEnclosureIdentifier": "https://w3id.org/hcmo/ontology/hcm#hasEnclosureIdentifier",
+      "hasEnd": "http://www.w3.org/2006/time#hasEnd",
+      "hasFeatureOfInterest": "http://www.w3.org/ns/sosa/hasFeatureOfInterest",
+      "hasFileFormat": "https://w3id.org/hcmo/ontology/hcm/tech#hasFileFormat",
+      "hasHeight": "https://w3id.org/hcmo/ontology/hcm#hasHeight",
+      "hasHousingAssignment": "https://w3id.org/hcmo/ontology/hcm/bio#hasHousingAssignment",
+      "hasLength": "https://w3id.org/hcmo/ontology/hcm#hasLength",
+      "hasMember": "https://w3id.org/hcmo/ontology/hcm/bio#hasMember",
+      "hasNumericValue": "https://w3id.org/hcmo/ontology/hcm/obs#hasNumericValue",
+      "hasPart": "http://schema.org/hasPart",
+      "hasResult": "http://www.w3.org/ns/sosa/hasResult",
+      "hasSensorIdentifier": "https://w3id.org/hcmo/ontology/hcm/tech#hasSensorIdentifier",
+      "hasSpecies": "https://w3id.org/hcmo/ontology/hcm/bio#hasSpecies",
+      "hasStoragePath": "https://w3id.org/hcmo/ontology/hcm/tech#hasStoragePath",
+      "hasTime": "http://www.w3.org/2006/time#hasTime",
+      "hasUnit": "https://w3id.org/hcmo/ontology/hcm#hasUnit",
+      "hasWidth": "https://w3id.org/hcmo/ontology/hcm#hasWidth",
+      "hcm": "https://w3id.org/hcmo/ontology/hcm#",
+      "hcm-bio": "https://w3id.org/hcmo/ontology/hcm/bio#",
+      "hcm-obs": "https://w3id.org/hcmo/ontology/hcm/obs#",
+      "hcm-tech": "https://w3id.org/hcmo/ontology/hcm/tech#",
+      "identifier": "http://schema.org/identifier",
+      "inXSDDateTime": "http://www.w3.org/2006/time#inXSDDateTime",
+      "label": "http://www.w3.org/2000/01/rdf-schema#label",
+      "license": "http://schema.org/license",
+      "madeBySensor": "http://www.w3.org/ns/sosa/madeBySensor",
+      "mentions": "http://schema.org/mentions",
+      "monitoredBy": "https://w3id.org/hcmo/ontology/hcm/tech#monitoredBy",
+      "name": "http://schema.org/name",
+      "obi": "http://purl.obolibrary.org/obo/OBI_",
+      "object": "http://schema.org/object",
+      "observedProperty": "http://www.w3.org/ns/sosa/observedProperty",
+      "occursIn": "https://w3id.org/hcmo/ontology/hcm/obs#occursIn",
+      "parameterValue": "https://bioschemas.org/properties/parameterValue",
+      "phenomenonTime": "http://www.w3.org/ns/sosa/phenomenonTime",
+      "propertyID": "http://schema.org/propertyID",
+      "prov": "http://www.w3.org/ns/prov#",
+      "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+      "result": "http://schema.org/result",
+      "sosa": "http://www.w3.org/ns/sosa/",
+      "stato": "http://purl.obolibrary.org/obo/STATO_",
+      "time": "http://www.w3.org/2006/time#",
+      "unitText": "http://schema.org/unitText",
+      "usageInfo": "http://schema.org/usageInfo",
+      "used": "http://www.w3.org/ns/prov#used",
+      "value": "http://schema.org/value",
+      "variableMeasured": "http://schema.org/variableMeasured",
+      "wasDerivedFrom": "http://www.w3.org/ns/prov#wasDerivedFrom",
+      "wasGeneratedBy": "http://www.w3.org/ns/prov#wasGeneratedBy"
+    }
+  ],
+  "@graph": [
+    {
+      "@id": "./",
+      "@type": "Dataset",
+      "additionalType": "Investigation",
+      "creator": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/damien-huzard"
+      },
+      "datePublished": "2026-07-31T00:00:00Z",
+      "description": "A generated evidence fixture for animal identity, housing, factorial design, repeated observations, and statistical-result provenance.",
+      "hasPart": [
+        {
+          "@id": "studies/hcmo-2x2/"
+        },
+        {
+          "@id": "assays/activity/"
+        }
+      ],
+      "identifier": "HCMO-ISA-ROUNDTRIP-001",
+      "license": {
+        "@id": "https://creativecommons.org/publicdomain/zero/1.0/"
+      },
+      "mentions": [
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/factor-treatment"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/factor-enrichment"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/group-vehicle-standard"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/group-vehicle-enriched"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/group-active-standard"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/group-active-enriched"
+        }
+      ],
+      "name": "HCMO ISA/STATO 2 x 2 interoperability fixture"
+    },
+    {
+      "@id": "assays/activity/",
+      "@type": "Dataset",
+      "about": [
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/process-recording"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/process-specimen-collection"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/process-linear-mixed-model"
+        }
+      ],
+      "additionalType": "Assay",
+      "description": "Seven repeated daily dark-phase activity outcomes per individually housed animal.",
+      "hasPart": [
+        {
+          "@id": "data/dark-phase-activity.csv"
+        },
+        {
+          "@id": "data/model-results.csv"
+        }
+      ],
+      "identifier": "HCMO-2X2-ACTIVITY",
+      "name": "Repeated dark-phase activity assay",
+      "variableMeasured": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      }
+    },
+    {
+      "@id": "data/dark-phase-activity.csv",
+      "@type": [
+        "MediaObject",
+        "hcm-tech:TimeSeries",
+        "prov:Entity"
+      ],
+      "encodingFormat": "text/csv",
+      "hasFileFormat": "text/csv",
+      "hasStoragePath": "./data/dark-phase-activity.csv",
+      "name": "dark-phase-activity.csv",
+      "wasGeneratedBy": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/process-recording"
+      }
+    },
+    {
+      "@id": "data/model-results.csv",
+      "@type": [
+        "MediaObject",
+        "prov:Entity"
+      ],
+      "encodingFormat": "text/csv",
+      "hasPart": [
+        {
+          "@id": "data/model-results.csv#row=2"
+        },
+        {
+          "@id": "data/model-results.csv#row=3"
+        }
+      ],
+      "name": "model-results.csv",
+      "wasGeneratedBy": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/process-linear-mixed-model"
+      }
+    },
+    {
+      "@id": "data/model-results.csv#row=2",
+      "@type": "MediaObject",
+      "about": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/fitted-linear-mixed-model"
+      },
+      "name": "model-results.csv model row",
+      "usageInfo": "RFC 7111 row selector: row=2"
+    },
+    {
+      "@id": "data/model-results.csv#row=3",
+      "@type": "MediaObject",
+      "about": [
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/treatment-contrast-estimate"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/treatment-contrast-95ci"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/treatment-contrast-p-value"
+        }
+      ],
+      "name": "model-results.csv treatment contrast row",
+      "usageInfo": "RFC 7111 row selector: row=3"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/active-versus-vehicle-contrast",
+      "@type": "PropertyValue",
+      "name": "Active treatment versus vehicle contrast at standard enrichment",
+      "propertyID": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/factor-treatment"
+      },
+      "unitText": "activity counts per dark phase",
+      "value": "active minus vehicle at standard enrichment, adjusted for day",
+      "variableMeasured": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/active-versus-vehicle-null-hypothesis",
+      "@type": "PropertyValue",
+      "about": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/active-versus-vehicle-contrast"
+      },
+      "name": "Zero active-treatment contrast at standard enrichment null hypothesis",
+      "unitText": "activity counts per dark phase",
+      "value": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "0.0"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/animal-1",
+      "@type": [
+        "hcm-bio:Subject",
+        "Sample"
+      ],
+      "additionalProperty": [
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/level-vehicle"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/level-standard"
+        }
+      ],
+      "additionalType": "Source",
+      "belongsToGroup": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/group-vehicle-standard"
+      },
+      "hasBehaviorObservation": [
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-1-day-1"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-1-day-2"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-1-day-3"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-1-day-4"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-1-day-5"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-1-day-6"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-1-day-7"
+        }
+      ],
+      "hasHousingAssignment": [
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/assignment-1"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/assignment-1-rehousing"
+        }
+      ],
+      "hasSpecies": "Mus musculus",
+      "label": "animal-1",
+      "name": "animal-1"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/animal-2",
+      "@type": [
+        "hcm-bio:Subject",
+        "Sample"
+      ],
+      "additionalProperty": [
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/level-vehicle"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/level-standard"
+        }
+      ],
+      "additionalType": "Source",
+      "belongsToGroup": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/group-vehicle-standard"
+      },
+      "hasBehaviorObservation": [
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-2-day-1"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-2-day-2"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-2-day-3"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-2-day-4"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-2-day-5"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-2-day-6"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-2-day-7"
+        }
+      ],
+      "hasHousingAssignment": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/assignment-2"
+      },
+      "hasSpecies": "Mus musculus",
+      "label": "animal-2",
+      "name": "animal-2"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/animal-3",
+      "@type": [
+        "hcm-bio:Subject",
+        "Sample"
+      ],
+      "additionalProperty": [
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/level-vehicle"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/level-enriched"
+        }
+      ],
+      "additionalType": "Source",
+      "belongsToGroup": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/group-vehicle-enriched"
+      },
+      "hasBehaviorObservation": [
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-3-day-1"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-3-day-2"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-3-day-3"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-3-day-4"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-3-day-5"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-3-day-6"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-3-day-7"
+        }
+      ],
+      "hasHousingAssignment": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/assignment-3"
+      },
+      "hasSpecies": "Mus musculus",
+      "label": "animal-3",
+      "name": "animal-3"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/animal-4",
+      "@type": [
+        "hcm-bio:Subject",
+        "Sample"
+      ],
+      "additionalProperty": [
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/level-vehicle"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/level-enriched"
+        }
+      ],
+      "additionalType": "Source",
+      "belongsToGroup": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/group-vehicle-enriched"
+      },
+      "hasBehaviorObservation": [
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-4-day-1"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-4-day-2"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-4-day-3"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-4-day-4"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-4-day-5"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-4-day-6"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-4-day-7"
+        }
+      ],
+      "hasHousingAssignment": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/assignment-4"
+      },
+      "hasSpecies": "Mus musculus",
+      "label": "animal-4",
+      "name": "animal-4"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/animal-5",
+      "@type": [
+        "hcm-bio:Subject",
+        "Sample"
+      ],
+      "additionalProperty": [
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/level-active"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/level-standard"
+        }
+      ],
+      "additionalType": "Source",
+      "belongsToGroup": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/group-active-standard"
+      },
+      "hasBehaviorObservation": [
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-5-day-1"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-5-day-2"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-5-day-3"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-5-day-4"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-5-day-5"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-5-day-6"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-5-day-7"
+        }
+      ],
+      "hasHousingAssignment": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/assignment-5"
+      },
+      "hasSpecies": "Mus musculus",
+      "label": "animal-5",
+      "name": "animal-5"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/animal-6",
+      "@type": [
+        "hcm-bio:Subject",
+        "Sample"
+      ],
+      "additionalProperty": [
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/level-active"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/level-standard"
+        }
+      ],
+      "additionalType": "Source",
+      "belongsToGroup": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/group-active-standard"
+      },
+      "hasBehaviorObservation": [
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-6-day-1"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-6-day-2"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-6-day-3"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-6-day-4"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-6-day-5"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-6-day-6"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-6-day-7"
+        }
+      ],
+      "hasHousingAssignment": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/assignment-6"
+      },
+      "hasSpecies": "Mus musculus",
+      "label": "animal-6",
+      "name": "animal-6"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/animal-7",
+      "@type": [
+        "hcm-bio:Subject",
+        "Sample"
+      ],
+      "additionalProperty": [
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/level-active"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/level-enriched"
+        }
+      ],
+      "additionalType": "Source",
+      "belongsToGroup": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/group-active-enriched"
+      },
+      "hasBehaviorObservation": [
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-7-day-1"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-7-day-2"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-7-day-3"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-7-day-4"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-7-day-5"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-7-day-6"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-7-day-7"
+        }
+      ],
+      "hasHousingAssignment": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/assignment-7"
+      },
+      "hasSpecies": "Mus musculus",
+      "label": "animal-7",
+      "name": "animal-7"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/animal-8",
+      "@type": [
+        "hcm-bio:Subject",
+        "Sample"
+      ],
+      "additionalProperty": [
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/level-active"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/level-enriched"
+        }
+      ],
+      "additionalType": "Source",
+      "belongsToGroup": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/group-active-enriched"
+      },
+      "hasBehaviorObservation": [
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-8-day-1"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-8-day-2"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-8-day-3"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-8-day-4"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-8-day-5"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-8-day-6"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/observation-8-day-7"
+        }
+      ],
+      "hasHousingAssignment": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/assignment-8"
+      },
+      "hasSpecies": "Mus musculus",
+      "label": "animal-8",
+      "name": "animal-8"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/assignment-1",
+      "@type": "hcm-bio:HousingAssignment",
+      "assignedToEnclosure": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-1"
+      },
+      "hasTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-1"
+      },
+      "wasGeneratedBy": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/process-initial-allocation"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/assignment-1-rehousing",
+      "@type": "hcm-bio:HousingAssignment",
+      "assignedToEnclosure": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-9"
+      },
+      "hasTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-1-rehousing"
+      },
+      "wasGeneratedBy": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/process-rehousing-animal-1"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/assignment-2",
+      "@type": "hcm-bio:HousingAssignment",
+      "assignedToEnclosure": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-2"
+      },
+      "hasTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-2"
+      },
+      "wasGeneratedBy": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/process-initial-allocation"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/assignment-3",
+      "@type": "hcm-bio:HousingAssignment",
+      "assignedToEnclosure": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-3"
+      },
+      "hasTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-3"
+      },
+      "wasGeneratedBy": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/process-initial-allocation"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/assignment-4",
+      "@type": "hcm-bio:HousingAssignment",
+      "assignedToEnclosure": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-4"
+      },
+      "hasTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-4"
+      },
+      "wasGeneratedBy": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/process-initial-allocation"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/assignment-5",
+      "@type": "hcm-bio:HousingAssignment",
+      "assignedToEnclosure": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-5"
+      },
+      "hasTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-5"
+      },
+      "wasGeneratedBy": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/process-initial-allocation"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/assignment-6",
+      "@type": "hcm-bio:HousingAssignment",
+      "assignedToEnclosure": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-6"
+      },
+      "hasTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-6"
+      },
+      "wasGeneratedBy": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/process-initial-allocation"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/assignment-7",
+      "@type": "hcm-bio:HousingAssignment",
+      "assignedToEnclosure": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-7"
+      },
+      "hasTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-7"
+      },
+      "wasGeneratedBy": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/process-initial-allocation"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/assignment-8",
+      "@type": "hcm-bio:HousingAssignment",
+      "assignedToEnclosure": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-8"
+      },
+      "hasTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-8"
+      },
+      "wasGeneratedBy": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/process-initial-allocation"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/cage-1",
+      "@type": "hcm:MonitoredEnclosure",
+      "hasDimensions": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/standard-cage-dimensions"
+      },
+      "hasEnclosureIdentifier": "cage-1",
+      "label": "Cage 1",
+      "monitoredBy": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "name": "Cage 1"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/cage-2",
+      "@type": "hcm:MonitoredEnclosure",
+      "hasDimensions": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/standard-cage-dimensions"
+      },
+      "hasEnclosureIdentifier": "cage-2",
+      "label": "Cage 2",
+      "monitoredBy": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "name": "Cage 2"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/cage-3",
+      "@type": "hcm:MonitoredEnclosure",
+      "hasDimensions": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/standard-cage-dimensions"
+      },
+      "hasEnclosureIdentifier": "cage-3",
+      "label": "Cage 3",
+      "monitoredBy": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "name": "Cage 3"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/cage-4",
+      "@type": "hcm:MonitoredEnclosure",
+      "hasDimensions": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/standard-cage-dimensions"
+      },
+      "hasEnclosureIdentifier": "cage-4",
+      "label": "Cage 4",
+      "monitoredBy": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "name": "Cage 4"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/cage-5",
+      "@type": "hcm:MonitoredEnclosure",
+      "hasDimensions": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/standard-cage-dimensions"
+      },
+      "hasEnclosureIdentifier": "cage-5",
+      "label": "Cage 5",
+      "monitoredBy": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "name": "Cage 5"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/cage-6",
+      "@type": "hcm:MonitoredEnclosure",
+      "hasDimensions": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/standard-cage-dimensions"
+      },
+      "hasEnclosureIdentifier": "cage-6",
+      "label": "Cage 6",
+      "monitoredBy": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "name": "Cage 6"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/cage-7",
+      "@type": "hcm:MonitoredEnclosure",
+      "hasDimensions": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/standard-cage-dimensions"
+      },
+      "hasEnclosureIdentifier": "cage-7",
+      "label": "Cage 7",
+      "monitoredBy": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "name": "Cage 7"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/cage-8",
+      "@type": "hcm:MonitoredEnclosure",
+      "hasDimensions": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/standard-cage-dimensions"
+      },
+      "hasEnclosureIdentifier": "cage-8",
+      "label": "Cage 8",
+      "monitoredBy": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "name": "Cage 8"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/cage-9",
+      "@type": "hcm:MonitoredEnclosure",
+      "hasDimensions": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/standard-cage-dimensions"
+      },
+      "hasEnclosureIdentifier": "cage-9",
+      "label": "Cage 9",
+      "monitoredBy": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "name": "Cage 9"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/damien-huzard",
+      "@type": "Person",
+      "familyName": "Huzard",
+      "givenName": "Damien",
+      "name": "Damien Huzard"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity",
+      "@type": [
+        "PropertyValue",
+        "http://purl.obolibrary.org/obo/OBI_0000751"
+      ],
+      "name": "Daily dark-phase activity count",
+      "unitText": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/factor-enrichment",
+      "@type": [
+        "hcm-bio:StudyFactors",
+        "http://purl.obolibrary.org/obo/OBI_0000750"
+      ],
+      "name": "Cage enrichment study factor"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/factor-treatment",
+      "@type": [
+        "hcm-bio:StudyFactors",
+        "http://purl.obolibrary.org/obo/OBI_0000750"
+      ],
+      "name": "Treatment study factor"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/fitted-linear-mixed-model",
+      "@type": [
+        "http://purl.obolibrary.org/obo/STATO_0000464",
+        "prov:Entity"
+      ],
+      "description": "activity_count ~ treatment * enrichment + day; random intercept: animal",
+      "name": "Fitted linear mixed model",
+      "value": "activity_count ~ treatment * enrichment + day; random intercept: animal",
+      "wasGeneratedBy": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/process-linear-mixed-model"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/group-active-enriched",
+      "@type": [
+        "hcm-bio:ExperimentalGroup",
+        "http://purl.obolibrary.org/obo/STATO_0000193"
+      ],
+      "additionalProperty": [
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/level-active"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/level-enriched"
+        }
+      ],
+      "hasMember": [
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-7"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-8"
+        }
+      ],
+      "name": "active / enriched group"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/group-active-standard",
+      "@type": [
+        "hcm-bio:ExperimentalGroup",
+        "http://purl.obolibrary.org/obo/STATO_0000193"
+      ],
+      "additionalProperty": [
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/level-active"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/level-standard"
+        }
+      ],
+      "hasMember": [
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-5"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-6"
+        }
+      ],
+      "name": "active / standard group"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/group-vehicle-enriched",
+      "@type": [
+        "hcm-bio:ExperimentalGroup",
+        "http://purl.obolibrary.org/obo/STATO_0000193"
+      ],
+      "additionalProperty": [
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/level-vehicle"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/level-enriched"
+        }
+      ],
+      "hasMember": [
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-3"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-4"
+        }
+      ],
+      "name": "vehicle / enriched group"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/group-vehicle-standard",
+      "@type": [
+        "hcm-bio:ExperimentalGroup",
+        "http://purl.obolibrary.org/obo/STATO_0000193"
+      ],
+      "additionalProperty": [
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/level-vehicle"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/level-standard"
+        }
+      ],
+      "hasMember": [
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-1"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-2"
+        }
+      ],
+      "name": "vehicle / standard group"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-1-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-01T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-1-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-04T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-1-rehousing-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-04T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-1-rehousing-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-11T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-2-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-01T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-2-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-11T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-3-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-01T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-3-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-11T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-4-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-01T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-4-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-11T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-5-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-01T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-5-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-11T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-6-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-01T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-6-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-11T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-7-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-01T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-7-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-11T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-8-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-01T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-8-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-11T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-1-day-1-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-04T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-1-day-1-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-04T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-1-day-2-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-05T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-1-day-2-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-05T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-1-day-3-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-06T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-1-day-3-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-06T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-1-day-4-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-07T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-1-day-4-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-07T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-1-day-5-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-08T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-1-day-5-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-08T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-1-day-6-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-09T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-1-day-6-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-09T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-1-day-7-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-10T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-1-day-7-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-10T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-2-day-1-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-04T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-2-day-1-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-04T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-2-day-2-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-05T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-2-day-2-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-05T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-2-day-3-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-06T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-2-day-3-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-06T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-2-day-4-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-07T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-2-day-4-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-07T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-2-day-5-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-08T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-2-day-5-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-08T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-2-day-6-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-09T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-2-day-6-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-09T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-2-day-7-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-10T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-2-day-7-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-10T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-3-day-1-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-04T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-3-day-1-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-04T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-3-day-2-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-05T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-3-day-2-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-05T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-3-day-3-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-06T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-3-day-3-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-06T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-3-day-4-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-07T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-3-day-4-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-07T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-3-day-5-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-08T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-3-day-5-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-08T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-3-day-6-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-09T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-3-day-6-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-09T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-3-day-7-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-10T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-3-day-7-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-10T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-4-day-1-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-04T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-4-day-1-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-04T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-4-day-2-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-05T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-4-day-2-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-05T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-4-day-3-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-06T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-4-day-3-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-06T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-4-day-4-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-07T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-4-day-4-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-07T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-4-day-5-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-08T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-4-day-5-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-08T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-4-day-6-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-09T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-4-day-6-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-09T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-4-day-7-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-10T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-4-day-7-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-10T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-5-day-1-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-04T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-5-day-1-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-04T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-5-day-2-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-05T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-5-day-2-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-05T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-5-day-3-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-06T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-5-day-3-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-06T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-5-day-4-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-07T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-5-day-4-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-07T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-5-day-5-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-08T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-5-day-5-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-08T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-5-day-6-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-09T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-5-day-6-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-09T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-5-day-7-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-10T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-5-day-7-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-10T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-6-day-1-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-04T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-6-day-1-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-04T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-6-day-2-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-05T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-6-day-2-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-05T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-6-day-3-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-06T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-6-day-3-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-06T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-6-day-4-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-07T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-6-day-4-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-07T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-6-day-5-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-08T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-6-day-5-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-08T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-6-day-6-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-09T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-6-day-6-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-09T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-6-day-7-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-10T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-6-day-7-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-10T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-7-day-1-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-04T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-7-day-1-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-04T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-7-day-2-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-05T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-7-day-2-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-05T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-7-day-3-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-06T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-7-day-3-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-06T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-7-day-4-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-07T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-7-day-4-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-07T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-7-day-5-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-08T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-7-day-5-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-08T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-7-day-6-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-09T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-7-day-6-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-09T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-7-day-7-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-10T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-7-day-7-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-10T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-8-day-1-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-04T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-8-day-1-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-04T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-8-day-2-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-05T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-8-day-2-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-05T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-8-day-3-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-06T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-8-day-3-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-06T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-8-day-4-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-07T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-8-day-4-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-07T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-8-day-5-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-08T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-8-day-5-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-08T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-8-day-6-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-09T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-8-day-6-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-09T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-8-day-7-begin",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-10T00:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-8-day-7-end",
+      "@type": "time:Instant",
+      "inXSDDateTime": {
+        "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "@value": "2026-01-10T12:00:00+00:00"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-1",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-1-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-1-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-1-rehousing",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-1-rehousing-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-1-rehousing-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-2",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-2-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-2-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-3",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-3-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-3-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-4",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-4-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-4-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-5",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-5-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-5-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-6",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-6-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-6-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-7",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-7-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-7-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-8",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-8-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-8-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-1-day-1",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-1-day-1-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-1-day-1-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-1-day-2",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-1-day-2-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-1-day-2-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-1-day-3",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-1-day-3-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-1-day-3-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-1-day-4",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-1-day-4-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-1-day-4-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-1-day-5",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-1-day-5-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-1-day-5-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-1-day-6",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-1-day-6-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-1-day-6-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-1-day-7",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-1-day-7-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-1-day-7-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-2-day-1",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-2-day-1-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-2-day-1-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-2-day-2",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-2-day-2-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-2-day-2-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-2-day-3",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-2-day-3-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-2-day-3-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-2-day-4",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-2-day-4-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-2-day-4-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-2-day-5",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-2-day-5-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-2-day-5-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-2-day-6",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-2-day-6-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-2-day-6-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-2-day-7",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-2-day-7-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-2-day-7-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-3-day-1",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-3-day-1-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-3-day-1-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-3-day-2",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-3-day-2-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-3-day-2-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-3-day-3",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-3-day-3-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-3-day-3-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-3-day-4",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-3-day-4-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-3-day-4-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-3-day-5",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-3-day-5-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-3-day-5-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-3-day-6",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-3-day-6-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-3-day-6-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-3-day-7",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-3-day-7-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-3-day-7-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-4-day-1",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-4-day-1-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-4-day-1-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-4-day-2",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-4-day-2-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-4-day-2-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-4-day-3",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-4-day-3-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-4-day-3-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-4-day-4",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-4-day-4-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-4-day-4-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-4-day-5",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-4-day-5-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-4-day-5-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-4-day-6",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-4-day-6-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-4-day-6-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-4-day-7",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-4-day-7-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-4-day-7-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-5-day-1",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-5-day-1-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-5-day-1-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-5-day-2",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-5-day-2-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-5-day-2-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-5-day-3",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-5-day-3-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-5-day-3-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-5-day-4",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-5-day-4-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-5-day-4-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-5-day-5",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-5-day-5-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-5-day-5-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-5-day-6",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-5-day-6-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-5-day-6-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-5-day-7",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-5-day-7-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-5-day-7-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-6-day-1",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-6-day-1-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-6-day-1-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-6-day-2",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-6-day-2-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-6-day-2-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-6-day-3",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-6-day-3-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-6-day-3-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-6-day-4",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-6-day-4-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-6-day-4-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-6-day-5",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-6-day-5-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-6-day-5-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-6-day-6",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-6-day-6-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-6-day-6-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-6-day-7",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-6-day-7-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-6-day-7-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-7-day-1",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-7-day-1-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-7-day-1-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-7-day-2",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-7-day-2-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-7-day-2-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-7-day-3",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-7-day-3-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-7-day-3-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-7-day-4",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-7-day-4-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-7-day-4-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-7-day-5",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-7-day-5-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-7-day-5-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-7-day-6",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-7-day-6-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-7-day-6-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-7-day-7",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-7-day-7-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-7-day-7-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-8-day-1",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-8-day-1-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-8-day-1-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-8-day-2",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-8-day-2-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-8-day-2-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-8-day-3",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-8-day-3-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-8-day-3-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-8-day-4",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-8-day-4-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-8-day-4-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-8-day-5",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-8-day-5-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-8-day-5-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-8-day-6",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-8-day-6-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-8-day-6-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-8-day-7",
+      "@type": "time:Interval",
+      "hasBeginning": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-8-day-7-begin"
+      },
+      "hasEnd": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/instant-observation-8-day-7-end"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/level-active",
+      "@type": [
+        "PropertyValue",
+        "http://purl.obolibrary.org/obo/STATO_0000265"
+      ],
+      "additionalType": "FactorValue",
+      "name": "Active treatment",
+      "propertyID": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/factor-treatment"
+      },
+      "value": "Active treatment"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/level-enriched",
+      "@type": [
+        "PropertyValue",
+        "http://purl.obolibrary.org/obo/STATO_0000265"
+      ],
+      "additionalType": "FactorValue",
+      "name": "Enriched cage",
+      "propertyID": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/factor-enrichment"
+      },
+      "value": "Enriched cage"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/level-standard",
+      "@type": [
+        "PropertyValue",
+        "http://purl.obolibrary.org/obo/STATO_0000265"
+      ],
+      "additionalType": "FactorValue",
+      "name": "Standard cage",
+      "propertyID": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/factor-enrichment"
+      },
+      "value": "Standard cage"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/level-vehicle",
+      "@type": [
+        "PropertyValue",
+        "http://purl.obolibrary.org/obo/STATO_0000265"
+      ],
+      "additionalType": "FactorValue",
+      "name": "Vehicle",
+      "propertyID": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/factor-treatment"
+      },
+      "value": "Vehicle"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-1-day-1",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-1"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-1-day-1"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-9"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-1-day-1"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-1-day-2",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-1"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-1-day-2"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-9"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-1-day-2"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-1-day-3",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-1"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-1-day-3"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-9"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-1-day-3"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-1-day-4",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-1"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-1-day-4"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-9"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-1-day-4"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-1-day-5",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-1"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-1-day-5"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-9"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-1-day-5"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-1-day-6",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-1"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-1-day-6"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-9"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-1-day-6"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-1-day-7",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-1"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-1-day-7"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-9"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-1-day-7"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-2-day-1",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-2"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-2-day-1"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-2"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-2-day-1"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-2-day-2",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-2"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-2-day-2"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-2"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-2-day-2"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-2-day-3",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-2"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-2-day-3"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-2"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-2-day-3"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-2-day-4",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-2"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-2-day-4"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-2"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-2-day-4"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-2-day-5",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-2"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-2-day-5"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-2"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-2-day-5"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-2-day-6",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-2"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-2-day-6"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-2"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-2-day-6"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-2-day-7",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-2"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-2-day-7"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-2"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-2-day-7"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-3-day-1",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-3"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-3-day-1"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-3"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-3-day-1"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-3-day-2",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-3"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-3-day-2"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-3"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-3-day-2"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-3-day-3",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-3"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-3-day-3"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-3"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-3-day-3"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-3-day-4",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-3"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-3-day-4"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-3"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-3-day-4"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-3-day-5",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-3"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-3-day-5"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-3"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-3-day-5"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-3-day-6",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-3"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-3-day-6"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-3"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-3-day-6"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-3-day-7",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-3"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-3-day-7"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-3"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-3-day-7"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-4-day-1",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-4"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-4-day-1"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-4"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-4-day-1"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-4-day-2",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-4"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-4-day-2"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-4"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-4-day-2"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-4-day-3",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-4"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-4-day-3"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-4"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-4-day-3"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-4-day-4",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-4"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-4-day-4"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-4"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-4-day-4"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-4-day-5",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-4"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-4-day-5"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-4"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-4-day-5"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-4-day-6",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-4"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-4-day-6"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-4"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-4-day-6"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-4-day-7",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-4"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-4-day-7"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-4"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-4-day-7"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-5-day-1",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-5"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-5-day-1"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-5"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-5-day-1"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-5-day-2",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-5"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-5-day-2"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-5"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-5-day-2"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-5-day-3",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-5"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-5-day-3"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-5"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-5-day-3"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-5-day-4",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-5"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-5-day-4"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-5"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-5-day-4"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-5-day-5",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-5"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-5-day-5"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-5"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-5-day-5"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-5-day-6",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-5"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-5-day-6"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-5"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-5-day-6"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-5-day-7",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-5"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-5-day-7"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-5"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-5-day-7"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-6-day-1",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-6"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-6-day-1"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-6"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-6-day-1"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-6-day-2",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-6"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-6-day-2"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-6"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-6-day-2"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-6-day-3",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-6"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-6-day-3"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-6"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-6-day-3"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-6-day-4",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-6"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-6-day-4"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-6"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-6-day-4"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-6-day-5",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-6"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-6-day-5"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-6"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-6-day-5"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-6-day-6",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-6"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-6-day-6"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-6"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-6-day-6"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-6-day-7",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-6"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-6-day-7"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-6"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-6-day-7"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-7-day-1",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-7"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-7-day-1"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-7"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-7-day-1"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-7-day-2",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-7"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-7-day-2"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-7"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-7-day-2"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-7-day-3",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-7"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-7-day-3"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-7"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-7-day-3"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-7-day-4",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-7"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-7-day-4"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-7"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-7-day-4"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-7-day-5",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-7"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-7-day-5"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-7"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-7-day-5"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-7-day-6",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-7"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-7-day-6"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-7"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-7-day-6"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-7-day-7",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-7"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-7-day-7"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-7"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-7-day-7"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-8-day-1",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-8"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-8-day-1"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-8"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-8-day-1"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-8-day-2",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-8"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-8-day-2"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-8"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-8-day-2"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-8-day-3",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-8"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-8-day-3"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-8"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-8-day-3"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-8-day-4",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-8"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-8-day-4"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-8"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-8-day-4"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-8-day-5",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-8"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-8-day-5"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-8"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-8-day-5"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-8-day-6",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-8"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-8-day-6"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-8"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-8-day-6"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/observation-8-day-7",
+      "@type": "hcm-obs:BehaviorObservation",
+      "hasFeatureOfInterest": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-8"
+      },
+      "hasResult": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/result-8-day-7"
+      },
+      "madeBySensor": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor"
+      },
+      "observedProperty": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/dependent-variable-dark-phase-activity"
+      },
+      "occursIn": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/cage-8"
+      },
+      "phenomenonTime": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/interval-observation-8-day-7"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/process-initial-allocation",
+      "@type": [
+        "LabProcess",
+        "prov:Activity"
+      ],
+      "executesLabProtocol": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/protocol-allocation"
+      },
+      "generated": [
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/assignment-1"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/assignment-2"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/assignment-3"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/assignment-4"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/assignment-5"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/assignment-6"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/assignment-7"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/assignment-8"
+        }
+      ],
+      "name": "Initial animal allocation",
+      "object": [
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-1"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-2"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-3"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-4"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-5"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-6"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-7"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-8"
+        }
+      ],
+      "used": [
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-1"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/cage-1"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-2"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/cage-2"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-3"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/cage-3"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-4"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/cage-4"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-5"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/cage-5"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-6"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/cage-6"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-7"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/cage-7"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-8"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/cage-8"
+        }
+      ]
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/process-linear-mixed-model",
+      "@type": [
+        "LabProcess",
+        "prov:Activity",
+        "http://purl.obolibrary.org/obo/STATO_0000218"
+      ],
+      "executesLabProtocol": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/protocol-linear-mixed-model"
+      },
+      "generated": [
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/fitted-linear-mixed-model"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/treatment-contrast-estimate"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/treatment-contrast-95ci"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/treatment-contrast-p-value"
+        },
+        {
+          "@id": "data/model-results.csv"
+        }
+      ],
+      "name": "Fit repeated-measures linear mixed model",
+      "object": {
+        "@id": "data/dark-phase-activity.csv"
+      },
+      "result": {
+        "@id": "data/model-results.csv"
+      },
+      "used": {
+        "@id": "data/dark-phase-activity.csv"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/process-recording",
+      "@type": [
+        "LabProcess",
+        "prov:Activity"
+      ],
+      "executesLabProtocol": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/protocol-recording"
+      },
+      "generated": {
+        "@id": "data/dark-phase-activity.csv"
+      },
+      "name": "Record repeated dark-phase activity",
+      "object": [
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-1"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-2"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-3"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-4"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-5"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-6"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-7"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-8"
+        }
+      ],
+      "result": {
+        "@id": "data/dark-phase-activity.csv"
+      },
+      "used": [
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-1"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-2"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-3"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-4"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-5"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-6"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-7"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-8"
+        }
+      ]
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/process-rehousing-animal-1",
+      "@type": [
+        "LabProcess",
+        "prov:Activity"
+      ],
+      "executesLabProtocol": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/protocol-allocation"
+      },
+      "generated": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/assignment-1-rehousing"
+      },
+      "name": "Re-house animal 1",
+      "object": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-1"
+      },
+      "used": [
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-1"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/cage-9"
+        }
+      ]
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/process-specimen-collection",
+      "@type": [
+        "LabProcess",
+        "prov:Activity"
+      ],
+      "executesLabProtocol": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/protocol-specimen-collection"
+      },
+      "generated": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/tissue-sample-animal-8"
+      },
+      "name": "Collect tissue from animal 8",
+      "object": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-8"
+      },
+      "result": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/tissue-sample-animal-8"
+      },
+      "used": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-8"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/protocol-allocation",
+      "@type": [
+        "LabProtocol",
+        "prov:Plan"
+      ],
+      "name": "Animal housing allocation protocol"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/protocol-linear-mixed-model",
+      "@type": "LabProtocol",
+      "name": "Linear mixed model analysis protocol"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/protocol-recording",
+      "@type": "LabProtocol",
+      "name": "Seven-day dark-phase activity recording"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/protocol-specimen-collection",
+      "@type": "LabProtocol",
+      "name": "Tissue specimen collection protocol"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/rack-activity-sensor",
+      "@type": "hcm-tech:Sensor",
+      "hasSensorIdentifier": "rack-sensor-1",
+      "label": "Rack activity sensor",
+      "name": "Rack activity sensor"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-1-day-1",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "99.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-1-day-2",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "102.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-1-day-3",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "105.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-1-day-4",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "104.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-1-day-5",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "110.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-1-day-6",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "110.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-1-day-7",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "113.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-2-day-1",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "105.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-2-day-2",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "105.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-2-day-3",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "108.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-2-day-4",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "112.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-2-day-5",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "110.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-2-day-6",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "115.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-2-day-7",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "116.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-3-day-1",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "106.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-3-day-2",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "109.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-3-day-3",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "109.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-3-day-4",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "114.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-3-day-5",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "114.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-3-day-6",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "114.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-3-day-7",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "119.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-4-day-1",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "107.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-4-day-2",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "112.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-4-day-3",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "112.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-4-day-4",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "113.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-4-day-5",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "117.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-4-day-6",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "118.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-4-day-7",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "118.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-5-day-1",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "114.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-5-day-2",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "113.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-5-day-3",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "117.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-5-day-4",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "118.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-5-day-5",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "118.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-5-day-6",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "123.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-5-day-7",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "123.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-6-day-1",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "116.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-6-day-2",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "116.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-6-day-3",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "122.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-6-day-4",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "123.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-6-day-5",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "123.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-6-day-6",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "126.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-6-day-7",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "129.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-7-day-1",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "122.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-7-day-2",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "123.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-7-day-3",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "123.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-7-day-4",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "129.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-7-day-5",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "128.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-7-day-6",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "132.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-7-day-7",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "133.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-8-day-1",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "121.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-8-day-2",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "126.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-8-day-3",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "127.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-8-day-4",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "128.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-8-day-5",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "133.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-8-day-6",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "133.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/result-8-day-7",
+      "@type": [
+        "hcm-obs:BehaviorResult",
+        "hcm-obs:QuantityValue"
+      ],
+      "hasNumericValue": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "136.0"
+      },
+      "hasUnit": "activity counts per dark phase"
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/standard-cage-dimensions",
+      "@type": "hcm:EnclosureDimensions",
+      "hasDimUnit": "cm",
+      "hasHeight": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "18.0"
+      },
+      "hasLength": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "36.0"
+      },
+      "hasWidth": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "20.0"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/tissue-sample-animal-8",
+      "@type": "Sample",
+      "additionalType": "Sample",
+      "name": "Tissue sample from animal 8",
+      "wasDerivedFrom": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/animal-8"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/treatment-contrast-95ci",
+      "@type": [
+        "http://purl.obolibrary.org/obo/STATO_0000231",
+        "prov:Entity"
+      ],
+      "about": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/treatment-contrast-estimate"
+      },
+      "name": "Active-treatment contrast 95% confidence interval at standard enrichment",
+      "unitText": "activity counts per dark phase",
+      "value": "[8.8256, 15.0315]",
+      "wasGeneratedBy": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/process-linear-mixed-model"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/treatment-contrast-estimate",
+      "@type": [
+        "http://purl.obolibrary.org/obo/STATO_0000384",
+        "prov:Entity"
+      ],
+      "about": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/active-versus-vehicle-contrast"
+      },
+      "name": "Active-treatment contrast estimate at standard enrichment",
+      "unitText": "activity counts per dark phase",
+      "value": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "11.9286"
+      },
+      "wasGeneratedBy": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/process-linear-mixed-model"
+      }
+    },
+    {
+      "@id": "https://example.org/hcmo/isa-roundtrip/treatment-contrast-p-value",
+      "@type": [
+        "http://purl.obolibrary.org/obo/STATO_0000700",
+        "prov:Entity"
+      ],
+      "about": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/active-versus-vehicle-null-hypothesis"
+      },
+      "name": "Active-treatment contrast p-value at standard enrichment",
+      "value": {
+        "@type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "@value": "0.0000000000000489559"
+      },
+      "wasGeneratedBy": {
+        "@id": "https://example.org/hcmo/isa-roundtrip/process-linear-mixed-model"
+      }
+    },
+    {
+      "@id": "ro-crate-metadata.json",
+      "@type": "CreativeWork",
+      "about": {
+        "@id": "./"
+      },
+      "conformsTo": {
+        "@id": "https://w3id.org/ro/crate/1.2"
+      }
+    },
+    {
+      "@id": "studies/hcmo-2x2/",
+      "@type": "Dataset",
+      "about": [
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/process-initial-allocation"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/process-rehousing-animal-1"
+        }
+      ],
+      "additionalType": "Study",
+      "description": "A structural 2 x 2 design fixture; it is not a claim of adequate statistical power.",
+      "hasPart": {
+        "@id": "assays/activity/"
+      },
+      "identifier": "HCMO-2X2",
+      "mentions": [
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/factor-treatment"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/factor-enrichment"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/group-vehicle-standard"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-1"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-2"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/group-vehicle-enriched"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-3"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-4"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/group-active-standard"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-5"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-6"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/group-active-enriched"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-7"
+        },
+        {
+          "@id": "https://example.org/hcmo/isa-roundtrip/animal-8"
+        }
+      ],
+      "name": "Treatment by enrichment home-cage study"
+    }
+  ]
+}

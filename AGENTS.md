@@ -19,10 +19,15 @@ Never "just edit labels". Treat every change as a semantic change unless proven 
 - External-vocabulary contract: `external-vocabularies.yaml` — separate from
   the stable `hcmo.yaml` API; records versions, namespaces, used terms, and
   source checksums.
+- Mapping registries: `mappings/semantic/` contains review-only SSSOM tables;
+  `mappings/exchange/` contains directional serialization contracts. Neither
+  registry is merged into canonical HCMO reasoning by default.
 - JSON-LD context: `ontology/context.jsonld`
 - Generated artifacts (**never hand-edit**): `dist/` (`hcmo.ttl` merged/canonical, `hcmo.owl`, `hcmo.json`, `profile.json`).
 - Shapes / constraints: `shapes/`
 - Examples (ABox): `examples/`
+- Interoperability fixtures: `examples/isa-roundtrip/` (generated canonical
+  RDF, extended ISA RO-Crate, data files, and controlled-loss manifests).
 - Queries + competency-question index: `queries/` (`competency_questions.yaml`, `cq-*.rq`)
 - Tooling: `tooling/build.py` (regenerate dist), `tooling/validate.py` (CI gate).
 - Docs: `docs/` (incl. `docs/MISSING-DEFINITIONS.md`).

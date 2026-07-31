@@ -11,7 +11,13 @@ and OWL-Time rather than duplicating them. SemTS alignment and the SOSA edition
 governing `sosa:Property` remain provisional. A pinned instance-level
 ISA/Bioschemas, PROV-O, OBI, and STATO evidence slice demonstrates one acyclic
 recording-to-statistical-result workflow without claiming HCMO class mappings or
-formal ISA conformance. HCMO is delivered as a FAIR,
+formal ISA conformance. A generated 2 × 2 round-trip fixture further preserves
+animal identity, housing history, factors, groups, repeated observations, and
+separate semantic statistical results and their representing file fragments in
+HCMO RDF and an extended ISA RO-Crate. A narrower native ISA-JSON/ISA-Tab test
+preserves the real animal-Source-to-tissue-Sample collection without fabricating
+an animal Sample; all excluded HCMO/STATO structures are reported as controlled
+losses. HCMO is delivered as a FAIR,
 tool-consumable resource — modular sources, reproducible distributions, SHACL
 shapes, competency-question queries, a JSON-LD context, persistent identifiers,
 an open licence, and documentation — and is grounded in the COST TEATIME
@@ -23,9 +29,9 @@ interpreted observation, and biological result, where the same information can b
 viewed at several levels. The diversity of HCM systems makes a single model that is
 both broad enough to be reusable and precise enough to describe individual
 experiments an ongoing balance. Alignment to external vocabularies is deliberately
-partial in this version, and complex pathologies, experimental treatments, advanced
-statistics, and AI models on the data were intentionally left out of scope to keep
-the core stabilisable.
+partial in this version. The factorial and mixed-model resources are
+interoperability fixtures, not a general HCMO statistics hierarchy. Complex
+pathologies and AI models on the data remain outside the stabilised core.
 
 **Future work.** Planned directions include expert review of definitions and
 axioms identified by the class and property audits; systematic alignment

@@ -6,6 +6,7 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 hcm:MonitoredEnclosureShape a sh:NodeShape ;
@@ -23,7 +24,7 @@ hcm:MonitoredEnclosureShape a sh:NodeShape ;
     sh:path hcm-tech:monitoredBy ; sh:class hcm-tech:Sensor ; sh:minCount 1
   ] ;
   sh:property [
-    sh:path hcm:hasMonitoredAnimals ; sh:class hcm-bio:Subject ; sh:minCount 1
+    sh:path hcm:hasMonitoredAnimals ; sh:class hcm-bio:Subject
   ] ;
   sh:property [
     sh:path hcm-env:hasEnvironment ; sh:class hcm-env:EnvironmentProfile ; sh:maxCount 1
@@ -62,7 +63,61 @@ hcm-bio:SubjectShape a sh:NodeShape ;
 hcm-bio:HousingAssignmentShape a sh:NodeShape ;
   sh:targetClass hcm-bio:HousingAssignment ;
   sh:property [
+    sh:path [ sh:inversePath hcm-bio:hasHousingAssignment ] ;
+    sh:minCount 1 ; sh:maxCount 1 ;
+    sh:or ( [ sh:class hcm-bio:Subject ] [ sh:class hcm-bio:ExperimentalGroup ] )
+  ] ;
+  sh:property [
     sh:path hcm-bio:assignedToEnclosure ; sh:class hcm:MonitoredEnclosure ; sh:minCount 1 ; sh:maxCount 1
+  ] ;
+  sh:property [
+    sh:path time:hasTime ; sh:minCount 1 ; sh:maxCount 1 ;
+    sh:node [
+      sh:class time:Interval ;
+      sh:property [
+        sh:path time:hasBeginning ; sh:minCount 1 ; sh:maxCount 1 ;
+        sh:node [
+          sh:class time:Instant ;
+          sh:property [ sh:path time:inXSDDateTime ; sh:datatype xsd:dateTime ; sh:minCount 1 ; sh:maxCount 1 ]
+        ]
+      ] ;
+      sh:property [
+        sh:path time:hasEnd ; sh:minCount 1 ; sh:maxCount 1 ;
+        sh:node [
+          sh:class time:Instant ;
+          sh:property [ sh:path time:inXSDDateTime ; sh:datatype xsd:dateTime ; sh:minCount 1 ; sh:maxCount 1 ]
+        ]
+      ]
+    ]
+  ] ;
+  sh:sparql [
+    sh:message "A housing validity interval must have a beginning strictly earlier than its end." ;
+    sh:select """
+      PREFIX time: <http://www.w3.org/2006/time#>
+      SELECT $this
+      WHERE {
+        $this time:hasTime/time:hasBeginning/time:inXSDDateTime ?start ;
+              time:hasTime/time:hasEnd/time:inXSDDateTime ?end .
+        FILTER (?start >= ?end)
+      }
+    """
+  ] ;
+  sh:sparql [
+    sh:message "A subject's housing assignments must not have overlapping half-open [start, end) validity intervals in the standard HCMO profile." ;
+    sh:select """
+      PREFIX hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#>
+      PREFIX time: <http://www.w3.org/2006/time#>
+      SELECT $this
+      WHERE {
+        ?subject hcm-bio:hasHousingAssignment $this, ?other .
+        FILTER ($this != ?other)
+        $this time:hasTime/time:hasBeginning/time:inXSDDateTime ?start ;
+              time:hasTime/time:hasEnd/time:inXSDDateTime ?end .
+        ?other time:hasTime/time:hasBeginning/time:inXSDDateTime ?otherStart ;
+               time:hasTime/time:hasEnd/time:inXSDDateTime ?otherEnd .
+        FILTER (?start < ?otherEnd && ?otherStart < ?end)
+      }
+    """
   ] .
 
 hcm-env:LightCycleShape a sh:NodeShape ;

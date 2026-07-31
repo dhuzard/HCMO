@@ -1,9 +1,10 @@
 @prefix bioschemas: <https://bioschemas.org/> .
+@prefix bioschemas-prop: <https://bioschemas.org/properties/> .
 @prefix ex: <https://example.org/hcmo/isa-crate/> .
 @prefix hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix schema: <https://schema.org/> .
+@prefix schema: <http://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix stato: <http://purl.obolibrary.org/obo/STATO_> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -44,15 +45,14 @@ ex:AssayEvidenceShape a sh:NodeShape ;
 ex:LabProcessEvidenceShape a sh:NodeShape ;
   sh:targetClass bioschemas:LabProcess ;
   sh:property [
-    sh:path bioschemas:executesLabProtocol ;
+    sh:path bioschemas-prop:executesLabProtocol ;
     sh:class bioschemas:LabProtocol ;
     sh:minCount 1 ;
     sh:maxCount 1
   ] ;
-  sh:property [ sh:path schema:object ; sh:nodeKind sh:IRI ; sh:minCount 1 ] ;
+  sh:property [ sh:path schema:object ; sh:nodeKind sh:IRI ] ;
   sh:property [
     sh:path schema:result ;
-    sh:minCount 1 ;
     sh:or (
       [ sh:class bioschemas:Sample ]
       [ sh:class schema:MediaObject ]
@@ -63,7 +63,7 @@ ex:LabProcessEvidenceShape a sh:NodeShape ;
   sh:sparql [
     sh:message "The ISA process/data graph must be acyclic." ;
     sh:select """
-      PREFIX schema: <https://schema.org/>
+      PREFIX schema: <http://schema.org/>
       SELECT $this
       WHERE {
         $this (schema:result/^schema:object)+ $this .
@@ -74,7 +74,7 @@ ex:LabProcessEvidenceShape a sh:NodeShape ;
     sh:message "An HCMO HousingAssignment is not an ISA Sample or File result." ;
     sh:select """
       PREFIX hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#>
-      PREFIX schema: <https://schema.org/>
+      PREFIX schema: <http://schema.org/>
       SELECT $this
       WHERE {
         $this schema:result ?result .
@@ -82,6 +82,22 @@ ex:LabProcessEvidenceShape a sh:NodeShape ;
       }
     """
   ] .
+
+ex:RecordingProcessEvidenceShape a sh:NodeShape ;
+  sh:targetNode ex:acquisition-process ;
+  sh:property [ sh:path schema:object ; sh:hasValue ex:animal-1 ; sh:minCount 1 ] ;
+  sh:property [ sh:path schema:result ; sh:hasValue ex:activity-file ; sh:minCount 1 ] .
+
+ex:DataTransformationEvidenceShape a sh:NodeShape ;
+  sh:targetNode ex:activity-summary-process ;
+  sh:property [ sh:path schema:object ; sh:hasValue ex:activity-file ; sh:minCount 1 ] ;
+  sh:property [ sh:path schema:result ; sh:hasValue ex:activity-summary-file ; sh:minCount 1 ] .
+
+ex:HousingAllocationEvidenceShape a sh:NodeShape ;
+  sh:targetNode ex:housing-process ;
+  sh:property [ sh:path schema:object ; sh:hasValue ex:animal-1 ; sh:minCount 1 ] ;
+  sh:property [ sh:path schema:result ; sh:maxCount 0 ] ;
+  sh:property [ sh:path prov:generated ; sh:hasValue ex:assignment-1 ] .
 
 ex:RawFileEvidenceShape a sh:NodeShape ;
   sh:targetNode ex:activity-file ;

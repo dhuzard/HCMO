@@ -13,7 +13,6 @@ ex:cage-12 a hcm:MonitoredEnclosure ;
   rdfs:label "Rack 3, cage 12" ;
   hcm:hasEnclosureIdentifier "rack-3-cage-12" ;
   hcm:hasDimensions ex:cage-12-dimensions ;
-  hcm:hasMonitoredAnimals ex:mouse-1 ;
   hcm-env:hasEnvironment ex:cage-12-environment ;
   hcm-tech:monitoredBy ex:ir-sensor-1 .
 
@@ -37,7 +36,12 @@ ex:mouse-1 a hcm-bio:Subject ;
   hcm-bio:hasBehaviorObservation ex:observation-1 .
 
 ex:mouse-1-cage-12-assignment a hcm-bio:HousingAssignment ;
-  hcm-bio:assignedToEnclosure ex:cage-12 .
+  hcm-bio:assignedToEnclosure ex:cage-12 ;
+  time:hasTime ex:mouse-1-cage-12-validity .
+
+ex:mouse-1-cage-12-validity a time:Interval ;
+  time:hasBeginning [ a time:Instant ; time:inXSDDateTime "2026-01-01T00:00:00Z"^^xsd:dateTime ] ;
+  time:hasEnd [ a time:Instant ; time:inXSDDateTime "2026-01-02T00:00:00Z"^^xsd:dateTime ] .
 
 ex:ir-sensor-1 a hcm-tech:Sensor ;
   rdfs:label "Left-wall infrared sensor" ;

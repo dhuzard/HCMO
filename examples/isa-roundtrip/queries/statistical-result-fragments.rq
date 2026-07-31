@@ -1,0 +1,20 @@
+PREFIX ex: <https://example.org/hcmo/isa-roundtrip/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX schema: <http://schema.org/>
+
+SELECT ?result ?file ?fragment ?execution ?value ?about ?unit
+WHERE {
+  VALUES ?result {
+    ex:fitted-linear-mixed-model
+    ex:treatment-contrast-estimate
+    ex:treatment-contrast-95ci
+    ex:treatment-contrast-p-value
+  }
+  ?result prov:wasGeneratedBy ?execution .
+  ?result schema:value ?value .
+  OPTIONAL { ?result schema:about ?about }
+  OPTIONAL { ?result schema:unitText ?unit }
+  ?fragment schema:about ?result .
+  ?file schema:hasPart ?fragment .
+}
+ORDER BY ?result

@@ -17,12 +17,12 @@ hcm-bio:ExperimentalGroup a owl:Class ;
 
 hcm-bio:HousingAssignment a owl:Class ;
     rdfs:label "Housing Assignment" ;
-    rdfs:comment "A record assigning a subject or group to an enclosure in a study or housing context." ;
+    rdfs:comment "An information-content record documenting the actual housing of a subject or group in an enclosure during a stated validity interval. It is distinct from a planned assignment and from the allocation execution that establishes the housing." ;
     rdfs:subClassOf IAO:0000030 .
 
 hcm-bio:StudyFactors a owl:Class ;
     rdfs:label "Study Factor" ;
-    rdfs:comment "An independent variable that an investigation is designed to vary systematically in order to determine its effect on subjects or observations." ;
+    rdfs:comment "An independent-variable specification that is part of a study design and identifies a variable the investigation is designed to vary systematically in order to determine its effect on subjects or observations." ;
     rdfs:subClassOf IAO:0000030 .
 
 hcm-bio:Subject a owl:Class ;

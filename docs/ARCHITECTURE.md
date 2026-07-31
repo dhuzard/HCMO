@@ -61,9 +61,11 @@ ontology modules use:
 - Dublin Core Terms for ontology metadata and provenance.
 
 The current example data and competency queries reuse OWL-Time for observation
-intervals. A pinned evidence slice uses particular PROV-O, OBI, STATO, and
-ISA/Bioschemas instances without asserting ontology mappings or full ISA
-RO-Crate conformance. Quantity/unit alignment remains roadmap work.
+and housing-validity intervals. Pinned evidence uses particular PROV-O, OBI,
+STATO, and ISA/Bioschemas instances without asserting ontology mappings. A
+lossless HCMO RDF/extended ISA RO-Crate fixture is validated separately, but
+formal ISA profile conformance remains deferred. Quantity/unit alignment
+remains roadmap work.
 SemTS-derived references are likewise not counted as implemented reuse, and the
 `sosa:Property` reference remains provisional until HCMO pins an explicit SOSA
 edition.
@@ -94,16 +96,24 @@ present but does not require the relation or impose a timeless cardinality.
 
 ## Validation architecture
 
-The release has four separate validation layers:
+The release has seven separate validation layers:
 
 - `tooling/build.py` creates deterministic release artifacts from the module
   list in `hcmo.yaml` without network access;
 - pySHACL validates each isolated example against `shapes/hcm-shapes.ttl`, with
   the merged ontology supplied as a separate ontology graph and RDFS inference
-  enabled; and
+  enabled;
 - a dedicated ISA/STATO evidence profile validates
   `examples/isa-hcmo-bridge.ttl` and rejects an injected cyclic process/data
-  graph; and
+  graph;
+- a dedicated round-trip profile validates graph isomorphism, housing/identity,
+  factor/group, observation, result-fragment, mapping-registry, and controlled-
+  loss invariants;
+- pinned `isatools` executes the native animal Source → genuine tissue Sample
+  overlap through ISA-JSON → ISA-Tab → ISA-JSON and checks the explicit HCMO
+  identity comments;
+- `roc-validator` independently checks RO-Crate 1.2 and the pinned ISA-specific
+  rules; and
 - HermiT checks OWL DL consistency on the generated release artifact.
 
 The pySHACL data graph is never the ontology graph alone. Supplying the
