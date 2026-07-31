@@ -1,0 +1,65 @@
+contract_version: 1
+status: accepted-evidence-policy
+accepted_on: 2026-07-31
+canonical_representation: HCMO RDF
+targets:
+  ro_crate:
+    version: "1.2"
+    profile_uri: https://w3id.org/ro/crate/1.2
+    status: recommendation
+  isa_ro_crate:
+    version: 1.0.0-draft.1
+    commit: d77e5a90aee0d23289c2174b229146a5bf2e18c7
+    profile_uri: null
+    status: pinned-draft-evidence
+  roc_validator:
+    package: roc-validator
+    version: 0.11.3
+    commit: 9f82e49ad5889371e62d5ba784284ac6651be630
+    status: evidence-validator
+    known_issue: The embedded ISA profile declares RO-Crate 1.1 while its minimal fixture uses the 1.2 context.
+  isa_api:
+    package: isatools
+    version: 0.14.3
+    commit: 3ee762eddc9a9cd86546ceb2307b71fe1c4435b2
+transformations:
+  - id: housing-assignment
+    source: hcm-bio:HousingAssignment
+    target: extended ISA RO-Crate contextual entity
+    direction: bidirectional
+    cardinality: one assignment record per actual subject/group-to-enclosure validity interval
+    rule: Preserve the HCMO type, enclosure link, interval, and PROV generation. Do not use schema:result.
+    loss:
+      isa_json: HCMO assignment structure is not native and may be omitted.
+      isa_tab: HCMO assignment structure is not native and may be omitted.
+  - id: unchanged-animal
+    source: hcm-bio:Subject
+    target: bioschemas:Sample with an HCMO Source-role marker
+    direction: bidirectional-with-role-manifest
+    cardinality: one stable animal identity
+    rule: Never generate the unchanged animal as a process output. Only material collection creates a distinct Sample.
+    loss:
+      isa_json: Source/Sample role may be recoverable from ISA object type but HCMO typing requires the extension.
+      isa_tab: Direct whole-animal assays may not fit the assay table without a proxy; proxies are prohibited.
+  - id: factor-assignment
+    source: hcm-bio:StudyFactors and subject schema:additionalProperty values
+    target: ISA Study Factor and FactorValue
+    direction: bidirectional
+    cardinality: exactly one value per subject and study factor in the evidence profile
+    rule: Subject-level values are authoritative; asserted group combinations must equal every member's values.
+    loss:
+      isa_json: Subject-level values on unchanged animal Sources and explicit HCMO ExperimentalGroup resources are omitted by the current native projection.
+      isa_tab: Factor Values require Samples; the current native projection omits them rather than fabricating animal Sample proxies.
+  - id: statistical-result-file
+    source: STATO result entity plus PROV generation
+    target: ISA Data File and exact data fragment
+    direction: bidirectional-with-extension
+    cardinality: each semantic result has exactly one containing fragment in the evidence fixture
+    rule: Keep result and file distinct; file hasPart fragment and fragment schema:about result.
+    loss:
+      isa_json: STATO result identity and exact fragment link require extensions.
+      isa_tab: STATO result identity and exact fragment link require extensions.
+claim_policy:
+  implemented_alignment: requires canonical HCMO axioms or direct external-term reuse
+  interoperability_evidence: requires pinned executable fixtures and exact tests
+  formal_conformance: deferred pending a permanent ISA profile URI, agreed base version, and endorsed validator

@@ -1,0 +1,16 @@
+mapping_set_id: https://w3id.org/hcmo/mappings/external-review
+mapping_set_title: HCMO external semantic mapping review registry
+mapping_set_description: Candidate correspondences remain outside canonical HCMO reasoning until explicitly promoted.
+mapping_set_version: "2026-07-31"
+license: https://creativecommons.org/publicdomain/zero/1.0/
+mapping_provider: https://github.com/dhuzard/HCMO
+prefix_map:
+  HCMO: https://w3id.org/hcmo/ontology/hcm/
+  hcm-bio: https://w3id.org/hcmo/ontology/hcm/bio#
+  OBI: http://purl.obolibrary.org/obo/OBI_
+  STATO: http://purl.obolibrary.org/obo/STATO_
+  bioschemas: https://bioschemas.org/
+  ISA-RO-Crate: https://github.com/nfdi4plants/isa-ro-crate-profile/releases/tag/
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  skos: http://www.w3.org/2004/02/skos/core#
+  semapv: https://w3id.org/semapv/vocab/

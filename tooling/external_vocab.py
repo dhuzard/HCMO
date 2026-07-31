@@ -333,6 +333,7 @@ def _check_contract(notes: list[str]) -> tuple[bool, dict]:
         *(ROOT / path for path in manifest.get("modules", [])),
         *(ROOT / path for path in manifest.get("examples", [])),
         *sorted((ROOT / "shapes").glob("*.ttl")),
+        ROOT / "examples" / "isa-roundtrip" / "canonical.ttl",
     ]
     source_graph = Graph()
     for path in source_paths:
@@ -361,6 +362,15 @@ def _check_contract(notes: list[str]) -> tuple[bool, dict]:
         if isinstance(term, URIRef)
     }
     for query_path in sorted((ROOT / manifest["queries"]["dir"]).glob("cq-*.rq")):
+        query_text = query_path.read_text(encoding="utf-8")
+        prefixes = dict(PREFIX_RE.findall(query_text))
+        used_iris.update(set(IRI_RE.findall(query_text)) - set(prefixes.values()))
+        used_iris.update(
+            prefixes[prefix] + local
+            for prefix, local in PREFIXED_TERM_RE.findall(query_text)
+            if prefix in prefixes
+        )
+    for query_path in sorted((ROOT / "examples" / "isa-roundtrip" / "queries").glob("*.rq")):
         query_text = query_path.read_text(encoding="utf-8")
         prefixes = dict(PREFIX_RE.findall(query_text))
         used_iris.update(set(IRI_RE.findall(query_text)) - set(prefixes.values()))

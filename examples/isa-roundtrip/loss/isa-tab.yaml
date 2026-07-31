@@ -1,0 +1,24 @@
+projection: ISA-Tab
+status: controlled-loss-contract
+source: ../canonical.ttl
+executable_scope:
+  validator: ../../../tooling/validate_isa_native_projection.py
+  path: animal-8 Source -> specimen collection -> genuine tissue Sample
+preserved:
+  - stable HCMO animal and specimen identifiers through explicit Comment[HCMO IRI] columns
+  - Source and genuine Sample table positions
+  - sample-collection Protocol and Process
+  - Sample derives-from Source relationship
+transformed:
+  - ISA Source and Sample roles become table positions and named columns
+lost_or_extension_dependent:
+  - HCMO HousingAssignment identity, enclosure link, and validity interval
+  - explicit HCMO ExperimentalGroup resources
+  - subject-level factor values because ISA-Tab places Factor Values on Samples and a Sample proxy is prohibited
+  - direct whole-animal assay semantics when a Sample Name proxy would otherwise be required
+  - repeated-observation structure pending a reviewed HCM ISA configuration
+  - semantic STATO result IRIs and exact file-fragment links
+prohibited_fallbacks:
+  - minting a Sample proxy for an unchanged animal
+  - typing an enclosure as Source, Sample, factor, or characteristic
+acceptance_rule: Loss must be emitted explicitly; unsupported direct whole-animal assays are reported as limitations.

@@ -7,6 +7,32 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Added
 
+- Added the accepted ISA/STATO round-trip policy, separate review-only SSSOM
+  and exchange-transformation registries, and controlled-loss contracts for
+  ISA-JSON and ISA-Tab.
+- Added a generated, graph-isomorphic HCMO RDF/extended ISA RO-Crate fixture
+  with a 2 × 2 design, eight animals, 56 repeated observations, re-housing,
+  Source/Sample identity evidence, a fitted model, estimate, confidence
+  interval, p-value, and exact result-file fragment.
+- Added dedicated semantic-invariant shapes, five exact-answer round-trip
+  competency questions, overlap and identity negative probes, pinned RO-Crate
+  1.2/ISA validator evidence, and a separate CI interoperability gate.
+- Added a pinned `isatools` 0.14.3 executable projection test covering the
+  native animal Source → genuine tissue Sample overlap through ISA-JSON →
+  ISA-Tab → ISA-JSON. Stable HCMO IRIs survive as explicit ISA comments; the
+  loss manifests now expose that factor values on unchanged animal Sources are
+  outside this projection instead of fabricating Sample proxies.
+- Hardened the 2 × 2 fixture after expert audit: housing intervals are
+  half-open and must be well-formed, assignment records require one bearer,
+  observation intervals must resolve to the correct enclosure, and historical
+  graphs omit the timeless monitored-animal shortcut. Added negative probes
+  for orphan/reversed assignments, incomplete allocation, wrong-cage
+  observations, and unchanged animals exposed as ISA results.
+- Replaced illustrative hard-coded statistics with a reproducible pinned
+  mixed-model fit over the generated activity CSV. The model formula, contrast,
+  null hypothesis, estimate, confidence interval, p-value, units, meaning links,
+  and separate exact model/contrast file fragments are now asserted and checked
+  by exact-answer competency questions.
 - Added `external-vocabularies.yaml` with authoritative versions, canonical
   namespaces, used-term allowlists, and SHA-256 checksums for ten external
   semantic/exchange sources; added offline contract validation plus optional
@@ -36,6 +62,18 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Changed
 
+- Clarified `HousingAssignment` as an actual time-bounded information record,
+  `StudyFactors` as an independent-variable specification belonging to a study
+  design, and `hasMonitoredAnimals` as an optional time-evaluated derived
+  shortcut rather than authoritative housing history.
+- Made housing validity intervals required in the standard SHACL profile and
+  prohibited overlaps by default; relaxed the derived monitored-animal shortcut
+  cardinality.
+- Corrected the ISA exchange namespace to RO-Crate's `http://schema.org/`
+  terms and Bioschemas' `/properties/` namespace, and separated generic
+  `LabProcess` recommendations from execution-specific object/result rules.
+- Represented housing allocation as a Bioschemas `LabProcess`/PROV activity
+  that generates an HCMO assignment record without a fabricated ISA result.
 - Separated enclosure monitoring from physical sensor installation: removed the
   incorrect `monitoredBy`/`installedIn` inverse axiom, removed the Sensor
   installation existential, relaxed the SHACL installation cardinality, and

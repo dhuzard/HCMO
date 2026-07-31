@@ -1,0 +1,46 @@
+questions:
+  - id: housing-history
+    file: examples/isa-roundtrip/queries/housing-history.rq
+    expected_answers:
+      - {subject: https://example.org/hcmo/isa-roundtrip/animal-1, assignment: https://example.org/hcmo/isa-roundtrip/assignment-1, enclosure: https://example.org/hcmo/isa-roundtrip/cage-1, start: "2026-01-01T00:00:00+00:00", end: "2026-01-04T00:00:00+00:00", execution: https://example.org/hcmo/isa-roundtrip/process-initial-allocation}
+      - {subject: https://example.org/hcmo/isa-roundtrip/animal-1, assignment: https://example.org/hcmo/isa-roundtrip/assignment-1-rehousing, enclosure: https://example.org/hcmo/isa-roundtrip/cage-9, start: "2026-01-04T00:00:00+00:00", end: "2026-01-11T00:00:00+00:00", execution: https://example.org/hcmo/isa-roundtrip/process-rehousing-animal-1}
+      - {subject: https://example.org/hcmo/isa-roundtrip/animal-2, assignment: https://example.org/hcmo/isa-roundtrip/assignment-2, enclosure: https://example.org/hcmo/isa-roundtrip/cage-2, start: "2026-01-01T00:00:00+00:00", end: "2026-01-11T00:00:00+00:00", execution: https://example.org/hcmo/isa-roundtrip/process-initial-allocation}
+      - {subject: https://example.org/hcmo/isa-roundtrip/animal-3, assignment: https://example.org/hcmo/isa-roundtrip/assignment-3, enclosure: https://example.org/hcmo/isa-roundtrip/cage-3, start: "2026-01-01T00:00:00+00:00", end: "2026-01-11T00:00:00+00:00", execution: https://example.org/hcmo/isa-roundtrip/process-initial-allocation}
+      - {subject: https://example.org/hcmo/isa-roundtrip/animal-4, assignment: https://example.org/hcmo/isa-roundtrip/assignment-4, enclosure: https://example.org/hcmo/isa-roundtrip/cage-4, start: "2026-01-01T00:00:00+00:00", end: "2026-01-11T00:00:00+00:00", execution: https://example.org/hcmo/isa-roundtrip/process-initial-allocation}
+      - {subject: https://example.org/hcmo/isa-roundtrip/animal-5, assignment: https://example.org/hcmo/isa-roundtrip/assignment-5, enclosure: https://example.org/hcmo/isa-roundtrip/cage-5, start: "2026-01-01T00:00:00+00:00", end: "2026-01-11T00:00:00+00:00", execution: https://example.org/hcmo/isa-roundtrip/process-initial-allocation}
+      - {subject: https://example.org/hcmo/isa-roundtrip/animal-6, assignment: https://example.org/hcmo/isa-roundtrip/assignment-6, enclosure: https://example.org/hcmo/isa-roundtrip/cage-6, start: "2026-01-01T00:00:00+00:00", end: "2026-01-11T00:00:00+00:00", execution: https://example.org/hcmo/isa-roundtrip/process-initial-allocation}
+      - {subject: https://example.org/hcmo/isa-roundtrip/animal-7, assignment: https://example.org/hcmo/isa-roundtrip/assignment-7, enclosure: https://example.org/hcmo/isa-roundtrip/cage-7, start: "2026-01-01T00:00:00+00:00", end: "2026-01-11T00:00:00+00:00", execution: https://example.org/hcmo/isa-roundtrip/process-initial-allocation}
+      - {subject: https://example.org/hcmo/isa-roundtrip/animal-8, assignment: https://example.org/hcmo/isa-roundtrip/assignment-8, enclosure: https://example.org/hcmo/isa-roundtrip/cage-8, start: "2026-01-01T00:00:00+00:00", end: "2026-01-11T00:00:00+00:00", execution: https://example.org/hcmo/isa-roundtrip/process-initial-allocation}
+  - id: factorial-groups
+    file: examples/isa-roundtrip/queries/factorial-groups.rq
+    expected_answers:
+      - {subject: https://example.org/hcmo/isa-roundtrip/animal-1, group: https://example.org/hcmo/isa-roundtrip/group-vehicle-standard, treatment: https://example.org/hcmo/isa-roundtrip/level-vehicle, enrichment: https://example.org/hcmo/isa-roundtrip/level-standard}
+      - {subject: https://example.org/hcmo/isa-roundtrip/animal-2, group: https://example.org/hcmo/isa-roundtrip/group-vehicle-standard, treatment: https://example.org/hcmo/isa-roundtrip/level-vehicle, enrichment: https://example.org/hcmo/isa-roundtrip/level-standard}
+      - {subject: https://example.org/hcmo/isa-roundtrip/animal-3, group: https://example.org/hcmo/isa-roundtrip/group-vehicle-enriched, treatment: https://example.org/hcmo/isa-roundtrip/level-vehicle, enrichment: https://example.org/hcmo/isa-roundtrip/level-enriched}
+      - {subject: https://example.org/hcmo/isa-roundtrip/animal-4, group: https://example.org/hcmo/isa-roundtrip/group-vehicle-enriched, treatment: https://example.org/hcmo/isa-roundtrip/level-vehicle, enrichment: https://example.org/hcmo/isa-roundtrip/level-enriched}
+      - {subject: https://example.org/hcmo/isa-roundtrip/animal-5, group: https://example.org/hcmo/isa-roundtrip/group-active-standard, treatment: https://example.org/hcmo/isa-roundtrip/level-active, enrichment: https://example.org/hcmo/isa-roundtrip/level-standard}
+      - {subject: https://example.org/hcmo/isa-roundtrip/animal-6, group: https://example.org/hcmo/isa-roundtrip/group-active-standard, treatment: https://example.org/hcmo/isa-roundtrip/level-active, enrichment: https://example.org/hcmo/isa-roundtrip/level-standard}
+      - {subject: https://example.org/hcmo/isa-roundtrip/animal-7, group: https://example.org/hcmo/isa-roundtrip/group-active-enriched, treatment: https://example.org/hcmo/isa-roundtrip/level-active, enrichment: https://example.org/hcmo/isa-roundtrip/level-enriched}
+      - {subject: https://example.org/hcmo/isa-roundtrip/animal-8, group: https://example.org/hcmo/isa-roundtrip/group-active-enriched, treatment: https://example.org/hcmo/isa-roundtrip/level-active, enrichment: https://example.org/hcmo/isa-roundtrip/level-enriched}
+  - id: repeated-observation-counts
+    file: examples/isa-roundtrip/queries/repeated-observation-counts.rq
+    expected_answers:
+      - {subject: https://example.org/hcmo/isa-roundtrip/animal-1, observations: "7"}
+      - {subject: https://example.org/hcmo/isa-roundtrip/animal-2, observations: "7"}
+      - {subject: https://example.org/hcmo/isa-roundtrip/animal-3, observations: "7"}
+      - {subject: https://example.org/hcmo/isa-roundtrip/animal-4, observations: "7"}
+      - {subject: https://example.org/hcmo/isa-roundtrip/animal-5, observations: "7"}
+      - {subject: https://example.org/hcmo/isa-roundtrip/animal-6, observations: "7"}
+      - {subject: https://example.org/hcmo/isa-roundtrip/animal-7, observations: "7"}
+      - {subject: https://example.org/hcmo/isa-roundtrip/animal-8, observations: "7"}
+  - id: statistical-result-fragments
+    file: examples/isa-roundtrip/queries/statistical-result-fragments.rq
+    expected_answers:
+      - {result: https://example.org/hcmo/isa-roundtrip/fitted-linear-mixed-model, file: "https://example.org/hcmo/isa-roundtrip/data/model-results.csv", fragment: "https://example.org/hcmo/isa-roundtrip/data/model-results.csv#row=2", execution: https://example.org/hcmo/isa-roundtrip/process-linear-mixed-model, value: "activity_count ~ treatment * enrichment + day; random intercept: animal", about: null, unit: null}
+      - {result: https://example.org/hcmo/isa-roundtrip/treatment-contrast-95ci, file: "https://example.org/hcmo/isa-roundtrip/data/model-results.csv", fragment: "https://example.org/hcmo/isa-roundtrip/data/model-results.csv#row=3", execution: https://example.org/hcmo/isa-roundtrip/process-linear-mixed-model, value: "[8.8256, 15.0315]", about: https://example.org/hcmo/isa-roundtrip/treatment-contrast-estimate, unit: "activity counts per dark phase"}
+      - {result: https://example.org/hcmo/isa-roundtrip/treatment-contrast-estimate, file: "https://example.org/hcmo/isa-roundtrip/data/model-results.csv", fragment: "https://example.org/hcmo/isa-roundtrip/data/model-results.csv#row=3", execution: https://example.org/hcmo/isa-roundtrip/process-linear-mixed-model, value: "11.9286", about: https://example.org/hcmo/isa-roundtrip/active-versus-vehicle-contrast, unit: "activity counts per dark phase"}
+      - {result: https://example.org/hcmo/isa-roundtrip/treatment-contrast-p-value, file: "https://example.org/hcmo/isa-roundtrip/data/model-results.csv", fragment: "https://example.org/hcmo/isa-roundtrip/data/model-results.csv#row=3", execution: https://example.org/hcmo/isa-roundtrip/process-linear-mixed-model, value: "0.0000000000000489559", about: https://example.org/hcmo/isa-roundtrip/active-versus-vehicle-null-hypothesis, unit: null}
+  - id: source-sample-identity
+    file: examples/isa-roundtrip/queries/source-sample-identity.rq
+    expected_answers:
+      - {source: https://example.org/hcmo/isa-roundtrip/animal-8, sample: https://example.org/hcmo/isa-roundtrip/tissue-sample-animal-8, collection: https://example.org/hcmo/isa-roundtrip/process-specimen-collection}

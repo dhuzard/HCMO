@@ -11,7 +11,11 @@ Steps (any failure -> non-zero exit):
      (expected to be non-conformant); all others are expected to conform.
   4. Validate the dedicated ISA/STATO evidence graph, including an injected
      process-cycle negative probe.
-  5. Run every indexed competency query against the canonical ontology plus all
+  5. Validate the accepted lossless extended-crate round-trip fixture, exact
+     semantic invariants, and negative housing-overlap probe.
+  6. Validate the review-only semantic mapping and controlled-loss exchange
+     registries.
+  7. Run every indexed competency query against the canonical ontology plus all
      positive examples. The canonicalized result rows must equal the reviewed
      answers in queries/competency_questions.yaml.
 
@@ -20,12 +24,14 @@ Usage: python tooling/validate.py
 from __future__ import annotations
 
 import glob
+import csv
 import json
 import sys
 from pathlib import Path
 
 import yaml
-from rdflib import Graph, Namespace, URIRef
+from rdflib import RDF, Graph, Literal, Namespace, URIRef, XSD
+from rdflib.compare import isomorphic
 from pyshacl import validate as shacl_validate
 from external_vocab import validate_contract
 
@@ -171,7 +177,7 @@ def step_isa_evidence() -> tuple[bool, list[str]]:
     for triple in data_g:
         cycle_g.add(triple)
     ex = Namespace("https://example.org/hcmo/isa-crate/")
-    schema = Namespace("https://schema.org/")
+    schema = Namespace("http://schema.org/")
     cycle_g.add(
         (
             URIRef(ex["activity-summary-process"]),
@@ -192,6 +198,268 @@ def step_isa_evidence() -> tuple[bool, list[str]]:
         "[OK]   ISA/STATO evidence graph: conformant",
         "[OK]   ISA/STATO acyclic-process negative probe: non-conformant",
     ]
+
+
+def step_isa_roundtrip(ontology_graph: Graph) -> tuple[bool, list[str]]:
+    """Validate the accepted HCMO/ISA/STATO round-trip policy fixture."""
+    ok = True
+    notes: list[str] = []
+    fixture_root = ROOT / "examples" / "isa-roundtrip"
+    canonical_path = fixture_root / "canonical.ttl"
+    crate_path = fixture_root / "ro-crate-metadata.json"
+    base = "https://example.org/hcmo/isa-roundtrip/"
+    try:
+        canonical = Graph().parse(canonical_path, format="turtle", publicID=base)
+        crate = Graph().parse(crate_path, format="json-ld", publicID=base)
+    except Exception as exc:  # noqa: BLE001
+        return False, [f"[FAIL] ISA round-trip fixture parse: {exc}"]
+
+    if not isomorphic(canonical, crate):
+        ok = False
+        notes.append("[FAIL] canonical HCMO RDF and extended ISA RO-Crate are not graph-isomorphic")
+    else:
+        notes.append(f"[OK]   lossless HCMO RDF/extended ISA RO-Crate graph: {len(canonical)} triples")
+
+    monitored_animals = URIRef("https://w3id.org/hcmo/ontology/hcm#hasMonitoredAnimals")
+    if any(canonical.triples((None, monitored_animals, None))):
+        ok = False
+        notes.append(
+            "[FAIL] historical fixture materializes hcm:hasMonitoredAnimals without a single stated evaluation time"
+        )
+    else:
+        notes.append("[OK]   housing history uses assignments, not a timeless monitored-animal shortcut")
+
+    shapes = Graph()
+    for rel in ("shapes/hcm-shapes.ttl", "shapes/isa-hcmo-roundtrip-shapes.ttl"):
+        shapes.parse(ROOT / rel, format="turtle")
+    conforms, _, report = shacl_validate(
+        canonical,
+        shacl_graph=shapes,
+        ont_graph=ontology_graph,
+        inference="rdfs",
+        abort_on_first=False,
+        do_owl_imports=False,
+    )
+    if not conforms:
+        ok = False
+        notes.append(f"[FAIL] ISA round-trip semantic invariants: {report}")
+    else:
+        notes.append("[OK]   ISA round-trip semantic invariants: conformant")
+
+    # Move the second assignment's beginning one day earlier: the standard
+    # profile must reject the resulting overlap without changing the fixture.
+    overlap = Graph()
+    for triple in canonical:
+        overlap.add(triple)
+    time = Namespace("http://www.w3.org/2006/time#")
+    ex = Namespace(base)
+    overlap.set(
+        (
+            URIRef(ex["instant-1-rehousing-begin"]),
+            URIRef(time.inXSDDateTime),
+            Literal(
+                "2026-01-03T00:00:00+00:00",
+                datatype=XSD.dateTime,
+            ),
+        )
+    )
+    overlap_conforms, _, _ = shacl_validate(
+        overlap,
+        shacl_graph=shapes,
+        ont_graph=ontology_graph,
+        inference="rdfs",
+        abort_on_first=False,
+        do_owl_imports=False,
+    )
+    if overlap_conforms:
+        ok = False
+        notes.append("[FAIL] overlapping-housing negative probe conformed")
+    else:
+        notes.append("[OK]   overlapping-housing negative probe: non-conformant")
+
+    def copy_fixture() -> Graph:
+        copied = Graph()
+        for triple in canonical:
+            copied.add(triple)
+        return copied
+
+    def require_nonconforming(label: str, probe: Graph) -> None:
+        nonlocal ok
+        probe_conforms, _, _ = shacl_validate(
+            probe,
+            shacl_graph=shapes,
+            ont_graph=ontology_graph,
+            inference="rdfs",
+            abort_on_first=False,
+            do_owl_imports=False,
+        )
+        if probe_conforms:
+            ok = False
+            notes.append(f"[FAIL] {label} negative probe conformed")
+        else:
+            notes.append(f"[OK]   {label} negative probe: non-conformant")
+
+    hcm_bio = Namespace("https://w3id.org/hcmo/ontology/hcm/bio#")
+    hcm_obs = Namespace("https://w3id.org/hcmo/ontology/hcm/obs#")
+    prov = Namespace("http://www.w3.org/ns/prov#")
+    schema = Namespace("http://schema.org/")
+
+    orphan = copy_fixture()
+    orphan.remove((ex["animal-2"], hcm_bio.hasHousingAssignment, ex["assignment-2"]))
+    require_nonconforming("orphan HousingAssignment", orphan)
+
+    reversed_interval = copy_fixture()
+    reversed_interval.set(
+        (
+            ex["instant-2-begin"],
+            time.inXSDDateTime,
+            Literal("2026-01-12T00:00:00+00:00", datatype=XSD.dateTime),
+        )
+    )
+    require_nonconforming("reversed housing interval", reversed_interval)
+
+    incomplete_allocation = copy_fixture()
+    incomplete_allocation.remove((ex["process-initial-allocation"], prov.used, ex["cage-2"]))
+    require_nonconforming("incomplete allocation execution", incomplete_allocation)
+
+    untyped_allocation = copy_fixture()
+    untyped_allocation.remove((ex["process-initial-allocation"], RDF.type, prov.Activity))
+    untyped_allocation.remove(
+        (
+            ex["process-initial-allocation"],
+            RDF.type,
+            URIRef("https://bioschemas.org/LabProcess"),
+        )
+    )
+    require_nonconforming("untyped allocation execution", untyped_allocation)
+
+    generated_animal = copy_fixture()
+    generated_animal.add((ex["process-recording"], schema.result, ex["animal-2"]))
+    require_nonconforming("unchanged animal as ISA result", generated_animal)
+
+    wrong_observation_cage = copy_fixture()
+    wrong_observation_cage.remove((ex["observation-1-day-1"], hcm_obs.occursIn, ex["cage-9"]))
+    wrong_observation_cage.add((ex["observation-1-day-1"], hcm_obs.occursIn, ex["cage-1"]))
+    require_nonconforming("observation outside authoritative housing", wrong_observation_cage)
+
+    index_path = fixture_root / "competency_questions.yaml"
+    try:
+        index = yaml.safe_load(index_path.read_text(encoding="utf-8"))
+        questions = index["questions"]
+        for question in questions:
+            query_path = ROOT / question["file"]
+            actual = canonical_result_rows(canonical.query(query_path.read_text(encoding="utf-8")))
+            expected = sorted(
+                question["expected_answers"],
+                key=lambda row: json.dumps(row, sort_keys=True),
+            )
+            if actual != expected:
+                ok = False
+                notes.append(
+                    f"[FAIL] ISA round-trip CQ {question['id']}: "
+                    f"expected={json.dumps(expected, sort_keys=True)} "
+                    f"actual={json.dumps(actual, sort_keys=True)}"
+                )
+            else:
+                notes.append(f"[OK]   ISA round-trip CQ {question['id']}: {len(actual)} exact answer(s)")
+    except Exception as exc:  # noqa: BLE001
+        ok = False
+        notes.append(f"[FAIL] ISA round-trip competency questions: {exc}")
+
+    return ok, notes
+
+
+def step_mapping_contracts() -> tuple[bool, list[str]]:
+    """Validate review-only semantic and exchange mapping registries."""
+    ok = True
+    notes: list[str] = []
+    semantic_path = ROOT / "mappings" / "semantic" / "hcmo-external.sssom.tsv"
+    metadata_path = ROOT / "mappings" / "semantic" / "hcmo-external.sssom.yml"
+    required_columns = {
+        "subject_id",
+        "predicate_id",
+        "object_id",
+        "mapping_justification",
+        "subject_source_version",
+        "object_source_version",
+        "author_label",
+        "confidence",
+        "review_status",
+        "comment",
+    }
+    try:
+        with semantic_path.open(encoding="utf-8", newline="") as handle:
+            rows = list(csv.DictReader(handle, delimiter="\t"))
+        metadata = yaml.safe_load(metadata_path.read_text(encoding="utf-8"))
+        prefixes = metadata.get("prefix_map", {})
+        if not metadata.get("mapping_set_id") or not metadata.get("license") or not prefixes:
+            raise ValueError("SSSOM metadata lacks mapping_set_id, license, or prefix_map")
+        columns = set(rows[0]) if rows else set()
+        missing = required_columns - columns
+        if missing:
+            ok = False
+            notes.append(f"[FAIL] semantic mapping registry missing columns: {sorted(missing)}")
+        identities: set[tuple[str, str, str]] = set()
+        allowed_statuses = {"deferred", "registry-only", "exchange-only", "rejected", "approved"}
+        for row in rows:
+            identity = (row["subject_id"], row["predicate_id"], row["object_id"])
+            if identity in identities:
+                raise ValueError(f"duplicate mapping identity {identity}")
+            identities.add(identity)
+            confidence = float(row["confidence"])
+            if not 0 <= confidence <= 1:
+                raise ValueError(f"confidence outside [0,1] for {identity}")
+            if row["review_status"] not in allowed_statuses:
+                raise ValueError(f"invalid review status for {identity}")
+            for field in ("subject_id", "predicate_id", "object_id", "mapping_justification", "subject_source_version", "object_source_version"):
+                value = row[field]
+                if ":" not in value or value.split(":", 1)[0] not in prefixes:
+                    raise ValueError(f"unresolved CURIE {value!r} in {field}")
+            if row["predicate_id"] in {"owl:equivalentClass", "rdfs:subClassOf"} and row["review_status"] == "approved":
+                raise ValueError(f"logical mapping entered approved state without a materialization review: {identity}")
+        notes.append(f"[OK]   semantic mapping registry: {len(rows)} review-only mapping(s)")
+    except Exception as exc:  # noqa: BLE001
+        ok = False
+        notes.append(f"[FAIL] semantic mapping registry: {exc}")
+
+    try:
+        exchange = yaml.safe_load((ROOT / "mappings" / "exchange" / "isa-ro-crate.yaml").read_text(encoding="utf-8"))
+        targets = exchange["targets"]
+        if targets["ro_crate"]["profile_uri"] != "https://w3id.org/ro/crate/1.2":
+            raise ValueError("RO-Crate 1.2 target is not pinned")
+        if targets["isa_ro_crate"]["profile_uri"] is not None:
+            raise ValueError("an unconfirmed ISA profile URI was asserted")
+        required_rule_fields = {"id", "source", "target", "direction", "cardinality", "rule", "loss"}
+        ids = set()
+        for rule in exchange["transformations"]:
+            missing = required_rule_fields - set(rule)
+            if missing:
+                raise ValueError(f"exchange rule missing fields {sorted(missing)}")
+            if rule["id"] in ids:
+                raise ValueError(f"duplicate exchange rule id {rule['id']}")
+            ids.add(rule["id"])
+            if set(rule["loss"]) != {"isa_json", "isa_tab"}:
+                raise ValueError(f"exchange rule {rule['id']} lacks both projection loss statements")
+        for name in ("isa-json.yaml", "isa-tab.yaml"):
+            loss_path = ROOT / "examples" / "isa-roundtrip" / "loss" / name
+            loss = yaml.safe_load(loss_path.read_text(encoding="utf-8"))
+            if loss.get("status") != "controlled-loss-contract" or not loss.get("lost_or_extension_dependent"):
+                raise ValueError(f"incomplete controlled-loss manifest {name}")
+            executable = loss.get("executable_scope", {})
+            validator = executable.get("validator")
+            if not validator or not (loss_path.parent / validator).resolve().is_file():
+                raise ValueError(f"controlled-loss manifest {name} lacks an executable projection validator")
+            losses = " ".join(loss["lost_or_extension_dependent"])
+            if "factor" not in losses.lower() or "Sample" not in losses:
+                raise ValueError(f"controlled-loss manifest {name} does not expose the Source/factor boundary")
+        notes.append(
+            f"[OK]   exchange registry: {len(ids)} directional rule(s), "
+            "two controlled-loss manifests with an executable native overlap"
+        )
+    except Exception as exc:  # noqa: BLE001
+        ok = False
+        notes.append(f"[FAIL] exchange mapping registry: {exc}")
+    return ok, notes
 
 
 def canonical_result_rows(result) -> list[dict[str, str | None]]:
@@ -309,7 +577,17 @@ def main() -> int:
     print("\n".join(notes))
     all_ok &= ok
 
-    print("\n== 5. Competency queries vs ontology and positive examples ==")
+    print("\n== 5. Accepted ISA/STATO round-trip policy ==")
+    ok, notes = step_isa_roundtrip(ontology_graph)
+    print("\n".join(notes))
+    all_ok &= ok
+
+    print("\n== 6. Mapping and exchange contracts ==")
+    ok, notes = step_mapping_contracts()
+    print("\n".join(notes))
+    all_ok &= ok
+
+    print("\n== 7. Competency queries vs ontology and positive examples ==")
     query_graph = evaluation_graph(manifest, ontology_graph)
     ok, notes, rowcounts = step_queries(manifest, query_graph)
     print("\n".join(notes))

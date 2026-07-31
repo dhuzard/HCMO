@@ -8,6 +8,16 @@ Related existing records:
 
 Prepared against: HCMO 0.2.0 on 2026-07-20
 
+> **Resolution update, 2026-07-31:** Damien Huzard accepted the ISA/STATO
+> round-trip and mapping-governance decisions recorded in
+> [`decisions/ADR-0001-ISA-STATO-ROUNDTRIP-POLICY.md`](decisions/ADR-0001-ISA-STATO-ROUNDTRIP-POLICY.md).
+> That ADR supersedes earlier pending wording in B03-B04, B06, B10, D05,
+> E01-E02, and F01 for mapping strength, canonical HCMO RDF, extended ISA
+> RO-Crate, controlled-loss ISA-JSON/ISA-Tab projections, housing identity,
+> Source/Sample roles, factors/groups, and statistical-result files. Formal ISA
+> conformance remains externally blocked by the missing permanent profile URI
+> and base-version agreement.
+
 ## Purpose and review rule
 
 This checklist converts the meeting notes into reviewable decisions and exact

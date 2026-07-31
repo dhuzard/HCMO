@@ -1,0 +1,7 @@
+# Optional interoperability tools; kept separate from the core ontology gate.
+roc-validator==0.11.3
+isatools==0.14.3
+numpy==2.2.6
+pandas==2.2.3
+scipy==1.17.1
+statsmodels==0.14.6

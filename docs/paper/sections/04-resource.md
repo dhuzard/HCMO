@@ -73,8 +73,21 @@ review the resulting semantics before treating that choice as a stable
 alignment. A pinned example-level evidence slice now uses PROV-O, specific OBI
 and STATO types, and ISA/Bioschemas exchange terms in one acyclic workflow. This is
 validated interoperability evidence, not an HCMO class mapping or a claim of
-formal ISA RO-Crate conformance. Broader process mappings, ISA round trips, and
-QUDT/OM integration remain separately reviewed work.
+formal ISA RO-Crate conformance. A second generated 2 × 2 fixture preserves
+animal identity, time-bounded housing, Source/Sample roles, repeated
+observations, factor/group structure, and separate STATO results and file
+fragments across a graph-isomorphic HCMO RDF/extended ISA RO-Crate pair.
+RO-Crate 1.2 and ISA-specific required validator rules pass. Formal ISA
+conformance remains deferred because the draft has no permanent profile URI and
+its validator currently disagrees about the base RO-Crate edition. ISA-JSON and
+ISA-Tab are controlled-loss projections. Their executable native overlap,
+tested with pinned `isatools` 0.14.3, preserves a distinct animal Source, a real
+tissue Sample, their collection process and their HCMO identifiers through a
+JSON--Tab--JSON cycle. Housing, direct whole-animal recording, source-bound
+factor assignments, explicit groups, repeated observations, and semantic
+STATO/file-fragment links remain declared losses rather than being represented
+with fabricated Sample proxies. Broader logical mappings and QUDT/OM
+integration remain separately reviewed work.
 
 **Distribution and application support.** The authored modules are merged
 deterministically into Turtle, RDF/XML, and JSON-LD distributions. A generated

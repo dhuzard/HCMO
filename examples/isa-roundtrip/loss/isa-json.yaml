@@ -1,0 +1,21 @@
+projection: ISA-JSON
+status: controlled-loss-contract
+source: ../canonical.ttl
+executable_scope:
+  validator: ../../../tooling/validate_isa_native_projection.py
+  path: animal-8 Source -> specimen collection -> genuine tissue Sample
+preserved:
+  - stable HCMO animal and specimen identifiers through explicit Comment[HCMO IRI] annotations
+  - Source and genuine Sample distinction
+  - sample-collection Protocol and Process
+  - Sample derives-from Source relationship
+transformed:
+  - extended ISA RO-Crate Bioschemas entities become ISA-JSON model objects
+lost_or_extension_dependent:
+  - HCMO HousingAssignment identity, enclosure link, and validity interval
+  - subject-level factor values because the unchanged animals are ISA Sources, not fabricated Samples
+  - explicit HCMO ExperimentalGroup resources
+  - HCMO Source role marker on a Bioschemas Sample
+  - direct whole-animal recording and repeated-observation structure pending a reviewed HCM ISA configuration
+  - semantic STATO result IRIs and exact file-fragment links
+acceptance_rule: Loss must be emitted explicitly; it must never be replaced with a fabricated Sample or identity assertion.

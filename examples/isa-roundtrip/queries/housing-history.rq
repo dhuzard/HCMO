@@ -1,0 +1,15 @@
+PREFIX hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX time: <http://www.w3.org/2006/time#>
+
+SELECT ?subject ?assignment ?enclosure ?start ?end ?execution
+WHERE {
+  ?subject hcm-bio:hasHousingAssignment ?assignment .
+  ?assignment hcm-bio:assignedToEnclosure ?enclosure ;
+              prov:wasGeneratedBy ?execution ;
+              time:hasTime ?interval .
+  ?interval time:hasBeginning/time:inXSDDateTime ?start ;
+            time:hasEnd/time:inXSDDateTime ?end .
+}
+ORDER BY ?subject ?start
+

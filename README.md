@@ -76,6 +76,9 @@ pip install -r tooling/requirements.txt
 python tooling/build.py      # regenerate dist/ + profile.json (idempotent, reproducible)
 python tooling/validate.py   # parse + contract + SHACL + exact-answer CQs (the CI gate)
 python tooling/external_vocab.py --verify-network  # recheck pinned source bytes
+pip install -r tooling/interoperability-requirements.txt
+python tooling/validate_interoperability.py  # independent RO-Crate/ISA evidence gate
+python tooling/validate_isa_native_projection.py  # controlled-loss ISA-JSON/ISA-Tab gate
 ```
 
 - **`tooling/build.py`** merges `ontology/modules/*.ttl` into `dist/` using a
@@ -83,9 +86,13 @@ python tooling/external_vocab.py --verify-network  # recheck pinned source bytes
   output (clean diffs). Everything in `dist/` is generated — edit the modules,
   not the artifacts.
 - **`tooling/validate.py`** parses every TTL, runs the SHACL shapes against the
-  examples, validates the dedicated acyclic ISA/STATO evidence slice, and checks
-  every `queries/cq-*.rq` against complete reviewed answers; it exits non-zero
-  on failure. It is the same check the PR workflow runs.
+  examples, validates the dedicated acyclic ISA/STATO evidence slice and the
+  lossless extended-crate round trip, checks mapping/loss contracts, and checks
+  exact competency-query answers; it exits non-zero on failure.
+- **`tooling/validate_isa_native_projection.py`** executes the native ISA
+  overlap through ISA-JSON → ISA-Tab → ISA-JSON: one animal Source generates
+  one real tissue Sample. It tests identity preservation without fabricating an
+  animal Sample proxy; all non-native HCMO/STATO losses remain explicit.
 
 ## Consuming the ontology
 
@@ -97,8 +104,9 @@ python tooling/external_vocab.py --verify-network  # recheck pinned source bytes
 - **JSON-LD apps:** apply `ontology/context.jsonld` when exchanging data.
 - **Validation:** use `shapes/hcm-shapes.ttl` to validate payloads during
   ingestion; `shapes/isa-hcmo-evidence-shapes.ttl` covers the pinned ISA/STATO
-  bridge evidence. See `examples/` for conformant and intentionally-invalid
-  ABoxes.
+  bridge, while `shapes/isa-hcmo-roundtrip-shapes.ttl` covers the generated
+  2 × 2 extended ISA RO-Crate. See `examples/` for conformant,
+  intentionally-invalid, and controlled-loss fixtures.
 - **External source contract:** read `external-vocabularies.yaml` for pinned
   versions, canonical term namespaces, used-term allowlists, and checksums.
 - **Everything is discoverable from `hcmo.yaml`** — resolve module, dist, shapes,

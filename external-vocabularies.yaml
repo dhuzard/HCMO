@@ -133,6 +133,7 @@ vocabularies:
       - http://www.w3.org/2006/time#Interval
       - http://www.w3.org/2006/time#hasBeginning
       - http://www.w3.org/2006/time#hasEnd
+      - http://www.w3.org/2006/time#hasTime
       - http://www.w3.org/2006/time#inXSDDateTime
       - http://www.w3.org/2006/time#numericDuration
       - http://www.w3.org/2006/time#unitDay
@@ -155,6 +156,7 @@ vocabularies:
       - http://www.w3.org/ns/prov#Plan
       - http://www.w3.org/ns/prov#generated
       - http://www.w3.org/ns/prov#used
+      - http://www.w3.org/ns/prov#wasDerivedFrom
       - http://www.w3.org/ns/prov#wasGeneratedBy
 
   obi:
@@ -170,6 +172,7 @@ vocabularies:
     used_terms:
       - http://purl.obolibrary.org/obo/OBI_0000070
       - http://purl.obolibrary.org/obo/OBI_0000750
+      - http://purl.obolibrary.org/obo/OBI_0000751
       - http://purl.obolibrary.org/obo/OBI_0200000
       - http://purl.obolibrary.org/obo/OBI_0600010
       - http://purl.obolibrary.org/obo/OBI_0600013
@@ -186,8 +189,13 @@ vocabularies:
         sha256: 7e8f945ee30c6b24139f0064d57c2edbcfc988f3f74811cad6b5c84819ce1494
     used_terms:
       - http://purl.obolibrary.org/obo/STATO_0000193
+      - http://purl.obolibrary.org/obo/STATO_0000218
+      - http://purl.obolibrary.org/obo/STATO_0000231
       - http://purl.obolibrary.org/obo/STATO_0000265
+      - http://purl.obolibrary.org/obo/STATO_0000384
       - http://purl.obolibrary.org/obo/STATO_0000401
+      - http://purl.obolibrary.org/obo/STATO_0000464
+      - http://purl.obolibrary.org/obo/STATO_0000700
 
   isa-ro-crate:
     status: pinned-draft-evidence
@@ -195,6 +203,8 @@ vocabularies:
     version_iri: https://github.com/nfdi4plants/isa-ro-crate-profile/tree/d77e5a90aee0d23289c2174b229146a5bf2e18c7
     canonical_term_namespaces:
       - https://bioschemas.org/
+      - https://bioschemas.org/properties/
+      - http://schema.org/
       - https://schema.org/
     artifacts:
       - role: mapping
@@ -207,28 +217,43 @@ vocabularies:
       - https://bioschemas.org/LabProcess
       - https://bioschemas.org/LabProtocol
       - https://bioschemas.org/Sample
-      - https://bioschemas.org/executesLabProtocol
-      - https://schema.org/Dataset
-      - https://schema.org/MediaObject
+      - https://bioschemas.org/properties/executesLabProtocol
+      - https://bioschemas.org/properties/parameterValue
+      - http://schema.org/Dataset
+      - http://schema.org/CreativeWork
+      - http://schema.org/MediaObject
+      - http://schema.org/Person
+      - http://schema.org/Place
+      - http://schema.org/PropertyValue
+      - http://schema.org/about
+      - http://schema.org/additionalProperty
+      - http://schema.org/additionalType
+      - http://schema.org/affiliation
+      - http://schema.org/creator
+      - http://schema.org/datePublished
+      - http://schema.org/description
+      - http://schema.org/email
+      - http://schema.org/encodingFormat
+      - http://schema.org/familyName
+      - http://schema.org/givenName
+      - http://schema.org/hasPart
+      - http://schema.org/identifier
+      - http://schema.org/license
+      - http://schema.org/logo
+      - http://schema.org/mentions
+      - http://schema.org/name
+      - http://schema.org/object
+      - http://schema.org/propertyID
+      - http://schema.org/result
+      - http://schema.org/roleName
+      - http://schema.org/unitText
+      - http://schema.org/usageInfo
+      - http://schema.org/value
+      - http://schema.org/variableMeasured
       - https://schema.org/Person
       - https://schema.org/Place
-      - https://schema.org/PropertyValue
-      - https://schema.org/about
-      - https://schema.org/additionalProperty
-      - https://schema.org/additionalType
       - https://schema.org/affiliation
-      - https://schema.org/datePublished
-      - https://schema.org/description
       - https://schema.org/email
-      - https://schema.org/encodingFormat
-      - https://schema.org/hasPart
-      - https://schema.org/identifier
-      - https://schema.org/license
       - https://schema.org/logo
       - https://schema.org/name
-      - https://schema.org/object
-      - https://schema.org/propertyID
-      - https://schema.org/result
       - https://schema.org/roleName
-      - https://schema.org/unitText
-      - https://schema.org/value

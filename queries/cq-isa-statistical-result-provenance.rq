@@ -1,6 +1,6 @@
 PREFIX obi: <http://purl.obolibrary.org/obo/OBI_>
 PREFIX prov: <http://www.w3.org/ns/prov#>
-PREFIX schema: <https://schema.org/>
+PREFIX schema: <http://schema.org/>
 PREFIX stato: <http://purl.obolibrary.org/obo/STATO_>
 
 SELECT ?result ?execution ?inputFile ?outputFile

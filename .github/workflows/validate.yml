@@ -25,3 +25,27 @@ jobs:
           fi
       - name: Validate (parse + SHACL + competency queries)
         run: python tooling/validate.py
+
+  interoperability:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install ontology and interoperability dependencies
+        run: |
+          pip install -r tooling/requirements.txt
+          pip install -r tooling/interoperability-requirements.txt
+      - name: Verify generated ISA round-trip fixture
+        run: |
+          python tooling/generate_isa_roundtrip_fixture.py
+          if ! git diff --quiet -- examples/isa-roundtrip/; then
+            echo "::error::ISA round-trip fixture is stale. Regenerate and commit it."
+            git --no-pager diff --stat -- examples/isa-roundtrip/
+            exit 1
+          fi
+      - name: Validate RO-Crate and pinned ISA rules
+        run: |
+          python tooling/validate_interoperability.py
+          python tooling/validate_isa_native_projection.py

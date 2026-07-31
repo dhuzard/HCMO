@@ -1,0 +1,3 @@
+entity,term,estimate,ci_lower,ci_upper,p_value,model_formula,fixed_effects,random_effect
+https://example.org/hcmo/isa-roundtrip/fitted-linear-mixed-model,fitted linear mixed model,,,,,activity_count ~ treatment * enrichment + day; random intercept: animal,"treatment, enrichment, treatment:enrichment, day",animal random intercept
+https://example.org/hcmo/isa-roundtrip/active-versus-vehicle-contrast,active treatment contrast at standard enrichment,11.9286,8.8256,15.0315,4.89559e-14,,,

@@ -1,0 +1,224 @@
+@prefix bioschemas: <https://bioschemas.org/> .
+@prefix ex: <https://example.org/hcmo/isa-roundtrip/> .
+@prefix hcm: <https://w3id.org/hcmo/ontology/hcm#> .
+@prefix hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#> .
+@prefix hcm-obs: <https://w3id.org/hcmo/ontology/hcm/obs#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix schema: <http://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:StableAnimalIdentityShape a sh:NodeShape ;
+  sh:targetClass hcm-bio:Subject ;
+  sh:property [ sh:path schema:additionalType ; sh:hasValue "Source" ] ;
+  sh:sparql [
+    sh:message "An unchanged animal must not be exposed as a PROV or ISA process output." ;
+    sh:select """
+      PREFIX prov: <http://www.w3.org/ns/prov#>
+      PREFIX schema: <http://schema.org/>
+      SELECT $this WHERE {
+        { ?process prov:generated $this }
+        UNION
+        { ?process schema:result $this }
+      }
+    """
+  ] .
+
+ex:HousingAssignmentExecutionShape a sh:NodeShape ;
+  sh:targetClass hcm-bio:HousingAssignment ;
+  sh:property [
+    sh:path prov:wasGeneratedBy ; sh:minCount 1 ; sh:maxCount 1 ;
+    sh:nodeKind sh:IRI ;
+    sh:node [ sh:class prov:Activity ; sh:class bioschemas:LabProcess ]
+  ] ;
+  sh:sparql [
+    sh:message "The allocation execution must use the assignment bearer and enclosure and generate the HousingAssignment record." ;
+    sh:select """
+      PREFIX hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#>
+      PREFIX prov: <http://www.w3.org/ns/prov#>
+      SELECT $this WHERE {
+        ?bearer hcm-bio:hasHousingAssignment $this .
+        $this hcm-bio:assignedToEnclosure ?enclosure ;
+              prov:wasGeneratedBy ?execution .
+        FILTER NOT EXISTS {
+          ?execution prov:used ?bearer, ?enclosure ;
+                     prov:generated $this .
+        }
+      }
+    """
+  ] .
+
+ex:AllocationExecutionShape a sh:NodeShape ;
+  sh:targetSubjectsOf prov:generated ;
+  sh:sparql [
+    sh:message "A process generating a HousingAssignment must not expose that record as an ISA result." ;
+    sh:select """
+      PREFIX hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#>
+      PREFIX prov: <http://www.w3.org/ns/prov#>
+      PREFIX schema: <http://schema.org/>
+      SELECT $this WHERE {
+        $this prov:generated ?assignment .
+        ?assignment a hcm-bio:HousingAssignment .
+        $this schema:result ?result .
+      }
+    """
+  ] .
+
+ex:FactorAssignmentShape a sh:NodeShape ;
+  sh:targetClass hcm-bio:Subject ;
+  sh:sparql [
+    sh:message "Every subject must have exactly one value for each study factor." ;
+    sh:select """
+      PREFIX hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#>
+      PREFIX schema: <http://schema.org/>
+      SELECT $this ?factor (COUNT(?value) AS ?count)
+      WHERE {
+        ?study schema:additionalType "Study" ;
+               schema:mentions $this, ?factor .
+        ?factor a hcm-bio:StudyFactors .
+        OPTIONAL {
+          $this schema:additionalProperty ?value .
+          ?value schema:propertyID ?factor .
+        }
+      }
+      GROUP BY $this ?factor
+      HAVING (COUNT(?value) != 1)
+    """
+  ] .
+
+ex:GroupFactorConsistencyShape a sh:NodeShape ;
+  sh:targetClass hcm-bio:ExperimentalGroup ;
+  sh:sparql [
+    sh:message "A group's factor values must equal the factor values of every member." ;
+    sh:select """
+      PREFIX hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#>
+      PREFIX schema: <http://schema.org/>
+      SELECT $this WHERE {
+        $this hcm-bio:hasMember ?member .
+        {
+          $this schema:additionalProperty ?groupValue .
+          ?groupValue schema:propertyID ?factor .
+          FILTER NOT EXISTS { ?member schema:additionalProperty ?groupValue }
+        }
+        UNION
+        {
+          ?member schema:additionalProperty ?memberValue .
+          ?memberValue schema:propertyID ?factor .
+          FILTER NOT EXISTS {
+            $this schema:additionalProperty ?groupValue .
+            ?groupValue schema:propertyID ?factor .
+          }
+        }
+      }
+    """
+  ] ;
+  sh:sparql [
+    sh:message "hasMember and belongsToGroup must agree in both directions." ;
+    sh:select """
+      PREFIX hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#>
+      SELECT $this WHERE {
+        {
+          $this hcm-bio:hasMember ?member .
+          FILTER NOT EXISTS { ?member hcm-bio:belongsToGroup $this }
+        }
+        UNION
+        {
+          ?member hcm-bio:belongsToGroup $this .
+          FILTER NOT EXISTS { $this hcm-bio:hasMember ?member }
+        }
+      }
+    """
+  ] .
+
+ex:RepeatedObservationShape a sh:NodeShape ;
+  sh:targetClass hcm-obs:BehaviorObservation ;
+  sh:property [ sh:path sosa:observedProperty ; sh:hasValue ex:dependent-variable-dark-phase-activity ; sh:minCount 1 ; sh:maxCount 1 ] ;
+  sh:property [
+    sh:path sosa:phenomenonTime ; sh:minCount 1 ; sh:maxCount 1 ;
+    sh:node [
+      sh:class time:Interval ;
+      sh:property [
+        sh:path time:hasBeginning ; sh:minCount 1 ; sh:maxCount 1 ;
+        sh:node [ sh:property [ sh:path time:inXSDDateTime ; sh:datatype xsd:dateTime ; sh:minCount 1 ; sh:maxCount 1 ] ]
+      ] ;
+      sh:property [
+        sh:path time:hasEnd ; sh:minCount 1 ; sh:maxCount 1 ;
+        sh:node [ sh:property [ sh:path time:inXSDDateTime ; sh:datatype xsd:dateTime ; sh:minCount 1 ; sh:maxCount 1 ] ]
+      ]
+    ]
+  ] ;
+  sh:sparql [
+    sh:message "An observation enclosure must match the subject's authoritative housing assignment throughout the phenomenon interval." ;
+    sh:select """
+      PREFIX hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#>
+      PREFIX hcm-obs: <https://w3id.org/hcmo/ontology/hcm/obs#>
+      PREFIX sosa: <http://www.w3.org/ns/sosa/>
+      PREFIX time: <http://www.w3.org/2006/time#>
+      SELECT $this WHERE {
+        $this sosa:hasFeatureOfInterest ?subject ;
+              hcm-obs:occursIn ?enclosure ;
+              sosa:phenomenonTime ?phenomenon .
+        ?phenomenon time:hasBeginning/time:inXSDDateTime ?observationStart ;
+                    time:hasEnd/time:inXSDDateTime ?observationEnd .
+        FILTER NOT EXISTS {
+          ?subject hcm-bio:hasHousingAssignment ?assignment .
+          ?assignment hcm-bio:assignedToEnclosure ?enclosure ;
+                      time:hasTime ?validity .
+          ?validity time:hasBeginning/time:inXSDDateTime ?assignmentStart ;
+                    time:hasEnd/time:inXSDDateTime ?assignmentEnd .
+          FILTER (
+            ?assignmentStart <= ?observationStart &&
+            ?observationEnd <= ?assignmentEnd
+          )
+        }
+      }
+    """
+  ] .
+
+ex:StatisticalResultFragmentShape a sh:NodeShape ;
+  sh:targetNode ex:fitted-linear-mixed-model, ex:treatment-contrast-estimate,
+    ex:treatment-contrast-95ci, ex:treatment-contrast-p-value ;
+  sh:property [ sh:path prov:wasGeneratedBy ; sh:hasValue ex:process-linear-mixed-model ; sh:minCount 1 ; sh:maxCount 1 ] ;
+  sh:sparql [
+    sh:message "Each semantic STATO result must be represented by exactly one fragment contained in exactly one file." ;
+    sh:select """
+      PREFIX schema: <http://schema.org/>
+      SELECT $this (COUNT(DISTINCT ?pair) AS ?count)
+      WHERE {
+        OPTIONAL {
+          ?fragment schema:about $this .
+          ?file schema:hasPart ?fragment .
+          BIND(CONCAT(STR(?file), "|", STR(?fragment)) AS ?pair)
+        }
+      }
+      GROUP BY $this
+      HAVING (COUNT(DISTINCT ?pair) != 1)
+    """
+  ] .
+
+ex:FittedModelContentShape a sh:NodeShape ;
+  sh:targetNode ex:fitted-linear-mixed-model ;
+  sh:property [ sh:path schema:value ; sh:hasValue "activity_count ~ treatment * enrichment + day; random intercept: animal" ; sh:minCount 1 ; sh:maxCount 1 ] .
+
+ex:ContrastEstimateMeaningShape a sh:NodeShape ;
+  sh:targetNode ex:treatment-contrast-estimate ;
+  sh:property [ sh:path schema:about ; sh:hasValue ex:active-versus-vehicle-contrast ; sh:minCount 1 ; sh:maxCount 1 ] ;
+  sh:property [ sh:path schema:unitText ; sh:minCount 1 ; sh:maxCount 1 ] ;
+  sh:property [ sh:path schema:value ; sh:datatype xsd:decimal ; sh:minCount 1 ; sh:maxCount 1 ] .
+
+ex:ConfidenceIntervalMeaningShape a sh:NodeShape ;
+  sh:targetNode ex:treatment-contrast-95ci ;
+  sh:property [ sh:path schema:about ; sh:hasValue ex:treatment-contrast-estimate ; sh:minCount 1 ; sh:maxCount 1 ] ;
+  sh:property [ sh:path schema:unitText ; sh:minCount 1 ; sh:maxCount 1 ] .
+
+ex:PValueMeaningShape a sh:NodeShape ;
+  sh:targetNode ex:treatment-contrast-p-value ;
+  sh:property [ sh:path schema:about ; sh:hasValue ex:active-versus-vehicle-null-hypothesis ; sh:minCount 1 ; sh:maxCount 1 ] ;
+  sh:property [ sh:path schema:value ; sh:datatype xsd:decimal ; sh:minCount 1 ; sh:maxCount 1 ] .
+
+ex:NoFalseMaterialRoleShape a sh:NodeShape ;
+  sh:targetClass hcm:MonitoredEnclosure ;
+  sh:not [ sh:class bioschemas:Sample ] ;
+  sh:not [ sh:class hcm-bio:StudyFactors ] .

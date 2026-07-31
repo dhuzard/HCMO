@@ -26,11 +26,11 @@ reference is not counted as implemented reuse or alignment.
 | SOSA 2017 terms | Implemented selective reuse/alignment | Reviewed sensor, actuator, observation, result, and relation terms |
 | Schema.org | Implemented selective reuse | Contributor, place, and exchange terms |
 | OWL-Time | Validated interoperability evidence | Supported example and duration-query pattern |
-| PROV-O, OBI, STATO, and ISA/Bioschemas | Validated interoperability evidence | One pinned recording-to-statistical-result workflow; no HCMO class mappings |
+| PROV-O, OBI, STATO, and ISA/Bioschemas | Validated interoperability evidence | Pinned recording workflow plus lossless extended-crate 2 × 2, housing, Source/Sample, and statistical-result fixtures; no HCMO class mappings |
 | SemTS | Provisional; not implemented reuse | Canonical IRIs and semantic fit unresolved |
 | `sosa:Property` from the developing 2023 Edition | Provisional; not stable alignment | Edition choice and exact semantics unresolved |
 | QUDT/OM | Future work | No implemented alignment |
-| ISA RO-Crate | No formal conformance claim | Evidence slice only; no complete profile validation or round trip |
+| ISA RO-Crate | Validated interoperability evidence; no formal conformance claim | HCMO RDF/extended-crate graph round trip, RO-Crate 1.2 required validation, and ISA-specific required validation pass; permanent ISA profile URI/base-version decision remains external |
 
 ## Upper-level anchors
 

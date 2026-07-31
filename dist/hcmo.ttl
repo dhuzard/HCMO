@@ -971,7 +971,7 @@ hcm:hasDimensions a owl:ObjectProperty ;
 
 hcm:hasMonitoredAnimals a owl:ObjectProperty ;
     rdfs:label "has monitored animals" ;
-    rdfs:comment "Relates a monitored enclosure to the biological subjects housed or tracked within it." ;
+    rdfs:comment "A derived convenience relation from a monitored enclosure to biological subjects housed or tracked within it at a stated evaluation time. Time-bounded HousingAssignment records, not this shortcut, are authoritative for housing history." ;
     rdfs:domain hcm:MonitoredEnclosure ;
     rdfs:range hcm-bio:Subject .
 
@@ -984,7 +984,7 @@ hcm:hasUnit a owl:DatatypeProperty ;
 
 hcm-bio:StudyFactors a owl:Class ;
     rdfs:label "Study Factor" ;
-    rdfs:comment "An independent variable that an investigation is designed to vary systematically in order to determine its effect on subjects or observations." ;
+    rdfs:comment "An independent-variable specification that is part of a study design and identifies a variable the investigation is designed to vary systematically in order to determine its effect on subjects or observations." ;
     rdfs:subClassOf IAO:0000030 .
 
 hcm-bio:assignedToEnclosure a owl:ObjectProperty ;
@@ -1190,7 +1190,7 @@ hcm-tech:monitoredBy a owl:ObjectProperty ;
 
 hcm-bio:HousingAssignment a owl:Class ;
     rdfs:label "Housing Assignment" ;
-    rdfs:comment "A record assigning a subject or group to an enclosure in a study or housing context." ;
+    rdfs:comment "An information-content record documenting the actual housing of a subject or group in an enclosure during a stated validity interval. It is distinct from a planned assignment and from the allocation execution that establishes the housing." ;
     rdfs:subClassOf IAO:0000030 .
 
 hcm-obs:BehaviorObservation a owl:Class ;
