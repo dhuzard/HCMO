@@ -46,6 +46,18 @@ duration competency query consumes this representation. These are selective
 references, not claims that HCMO imports or reproduces the full external
 ontologies.
 
+**Claim strength.** We distinguish implemented semantic reuse or alignment,
+validated interoperability evidence, and formal profile conformance.
+Implemented alignment requires canonical versioned terms, reviewed semantic
+fit, and a normative role in HCMO; its assertion strength is stated per term
+and never generalized to a whole vocabulary. Interoperability evidence means
+that a pinned mixed-vocabulary example is validated and queried, but does not
+by itself establish ontology mappings or complete round trips. Formal
+conformance is reserved for a declared version and scope in which every
+applicable normative profile requirement has been tested. “Provisional”
+identifies work that has not yet qualified as implemented alignment; it is not
+a conformance level.
+
 SemTS alignment remains provisional. HCMO currently contains references derived
 from an earlier SemTS model, but their canonical IRIs and semantic fit have not
 yet been validated. These references are not counted as implemented

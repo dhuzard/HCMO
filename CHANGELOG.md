@@ -23,7 +23,7 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 - Added a checksummed HermiT evaluation report for the canonical HCMO 0.2.0
   OWL artifact and updated the resource-paper claims to match implemented
   modules, alignments, SHACL validation, and competency-query results.
-- Added the signed A06 class audit for all 29 active local classes and 13
+- Added the signed A06 class audit for all 29 active local classes and 12
   directly used external class anchors, with reproducible metadata,
   generated-profile, restriction, coverage, and decision checks.
 - Expanded the signed C01 property audit across all 81 active local
@@ -58,6 +58,10 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
   LabProcess output.
 - Exposed Experimental Group under Material entity by default and retained its
   more precise BFO object-aggregate parent in the optional developer profile.
+- Adopted the paper's three-level claim-strength policy: implemented semantic
+  reuse/alignment, validated interoperability evidence, and formal profile
+  conformance. Recorded the accepted vocabulary-by-vocabulary classification;
+  provisional references are not counted as implemented reuse.
 - No HCMO class mapping axiom or new local process/statistics term was added.
 
 ### Renamed

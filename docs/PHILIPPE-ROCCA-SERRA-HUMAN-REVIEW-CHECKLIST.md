@@ -26,6 +26,28 @@ For each item, record the reviewer, date, decision, rationale, evidence link,
 and follow-up issue or pull request in the review record at the end of this
 document.
 
+### Accepted paper claim-strength policy
+
+Status: accepted by Damien Huzard on 2026-07-31.
+
+The paper and alignment documentation distinguish:
+
+1. **Implemented semantic reuse/alignment** for canonical, versioned, reviewed
+   terms that participate in normative HCMO semantics;
+2. **Validated interoperability evidence** for pinned, executable examples
+   covered by validation and exact-answer competency questions, without
+   generalizing them into ontology mappings or round-trip claims; and
+3. **Formal profile conformance** only when every applicable normative
+   requirement of a declared external profile version and scope is tested.
+
+The accepted current classification is: BFO/IAO and reviewed SOSA 2017 and
+Schema.org terms are selective implemented reuse/alignment; OWL-Time and the
+PROV-O/OBI/STATO/ISA-Bioschemas workflow are validated interoperability
+evidence; SemTS and the developing `sosa:Property` choice remain provisional;
+QUDT/OM remains future work; and HCMO makes no formal ISA RO-Crate conformance
+claim. “Provisional” is a review status and is not counted as a fourth
+achievement level.
+
 ## Current repository facts
 
 These facts prevent the meeting observations from being applied mechanically to
@@ -40,10 +62,9 @@ an ontology that has changed since the reviewed file was produced.
   verify semantic correctness, not merely presence.
 - The active graph has no `owl:imports`. It references BFO, IAO, SOSA, and
   Schema.org terms by IRI.
-- The external axiom targets currently lacking labels in the merged graph are
-  `BFO_0000019`, `BFO_0000027`, `BFO_0000040`, `IAO_0000030`,
-  `sosa:Actuator`, `sosa:Observation`, `sosa:Property`, `sosa:Result`,
-  `sosa:Sensor`, `sosa:observes`, and `schema:Place`.
+- The default merged graph includes labels and source definitions for the five
+  reviewed BFO/IAO presentation anchors. Other external terms retain their
+  authoritative IRIs and are not locally relabelled merely for display.
 - HCMO has no active local `Person` class. `schema:Person` is used only for
   contributor instances in the ontology header.
 - HCMO has no active local `Place` class. `hcm:locatedIn` currently has
