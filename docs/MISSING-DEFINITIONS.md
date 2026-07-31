@@ -27,7 +27,8 @@ with OWL-Time temporal entities.
 ## Open semantic decisions
 
 - `hcm:hasUnit`, `hcm-obs:hasNumericValue`, and environmental literal values
-  remain a lightweight pattern pending a reviewed choice between QUDT and OM.
+  use the reviewed QUDT 3.4.0 QuantityValue pattern; remaining work concerns
+  domain-specific property and unit vocabularies, not the value-node model.
 - `hcm-obs:hasCondition` deliberately has `owl:Thing` as its range until an
   experimental-condition model is selected with domain experts.
 - Deprecated 0.0.1 IRIs remain in `hcm-compat.ttl` for compatibility. Consumers

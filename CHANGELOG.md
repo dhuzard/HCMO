@@ -7,6 +7,15 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Added
 
+- Added accepted environmental/temporal and QUDT 3.4.0 decision records,
+  migration guidance, and a checksummed external-vocabulary contract for the
+  QUDT schema and unit vocabulary.
+- Added explicit environmental specification relations, QUDT quantity roles
+  for dimensions and sampling rates, and evidence-backed operational and
+  calibration activities/records with validity intervals.
+- Added conforming environmental, status, and calibration examples plus three
+  exact-answer competency questions for specification versus observation,
+  housing membership at a stated time, and status provenance at a stated time.
 - Added ADR-0002 and a migration guide establishing SOSA 2017 as the normative
   sensing edition and documenting safe repair of earlier SemTS/SOSA references.
 - Added executable external-contract checks that reject versioned SemTS entity
@@ -66,6 +75,18 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Changed
 
+- Separated environmental profile composition, property specification, and
+  SOSA observation relations. `ThriveProfile` is now an environment-profile
+  specialization without implying compliance or outcome.
+- Replaced free-text value/unit pairs with the pinned QUDT
+  `QuantityValue`/`numericValue`/`hasUnit` pattern in all positive examples and
+  in the lossless ISA round-trip fixture.
+- Made time-bounded HousingAssignment records authoritative for current
+  membership and occupancy; operational and calibration state now require a
+  time interval and generating PROV activity.
+- Deprecated role-conflating environmental predicates, timeless state
+  booleans, subject-observation shortcuts, ambiguous treatment text, and local
+  numeric/unit properties without deleting their published IRIs.
 - Replaced the developing-edition `sosa:Property` references with SOSA 2017
   `sosa:ObservableProperty` and pinned the immutable 2017 W3C ontology artifact.
 - Corrected SemTS reuse to canonical unversioned 1.2.0 entity IRIs. Location

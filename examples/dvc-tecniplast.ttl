@@ -4,9 +4,11 @@
 @prefix hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#> .
 @prefix hcm-env: <https://w3id.org/hcmo/ontology/hcm/env#> .
 @prefix hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
 
 # This is a product/profile graph. Concrete dimensions and individual housing
 # assignments are not asserted because they are absent from the local source.
@@ -39,7 +41,7 @@ dvc:capacitive-electrode-board a hcm-tech:Sensor ;
   dcterms:type "12-electrode capacitive sensing board" ;
   hcm-tech:hasSensorIdentifier "DVC capacitive electrode board" ;
   hcm-tech:hasSensorTechnology "capacitance" ;
-  hcm-tech:hasSamplingRate "4 Hz" ;
+  hcm-tech:hasSamplingRateQuantity dvc:raw-sampling-rate ;
   hcm-tech:installedIn dvc:cage ;
   hcm-tech:captures dvc:locomotor-activity .
 
@@ -52,6 +54,10 @@ dvc:rack-environment-monitor a hcm-tech:Sensor ;
 dvc:locomotor-activity a sosa:ObservableProperty ;
   rdfs:label "activation density / Animal Locomotion Index" .
 
+dvc:raw-sampling-rate a qudt:QuantityValue ;
+  qudt:numericValue 4.0 ;
+  qudt:hasUnit unit:HZ .
+
 dvc:mouse-subject-profile a hcm-bio:Subject ;
   rdfs:label "DVC supported mouse subject profile" ;
   rdfs:comment "DVC literature in the local profile supports mouse use; individual attribution is direct only for single-housed cages." ;
@@ -62,28 +68,28 @@ dvc:group-housed-cage-profile a hcm-bio:ExperimentalGroup ;
   rdfs:comment "Group-housed DVC signals are cage-level aggregate measurements rather than native per-animal tracks." .
 
 dvc:environment-profile a hcm-env:EnvironmentProfile ;
-  hcm-env:hasMeasurementSpec dvc:measurement-activation-density,
-    dvc:measurement-bedding-status,
-    dvc:measurement-rack-temperature,
+  hcm-env:hasMeasurementSpec dvc:measurement-rack-temperature,
     dvc:measurement-rack-humidity .
 
-dvc:measurement-activation-density a hcm-env:MeasurementSpecification ;
-  rdfs:label "Activation density / Animal Locomotion Index" .
-
-dvc:measurement-bedding-status a hcm-env:MeasurementSpecification ;
-  rdfs:label "Bedding Status Index" .
-
 dvc:measurement-rack-temperature a hcm-env:MeasurementSpecification ;
-  rdfs:label "Rack temperature" .
+  rdfs:label "Rack temperature measurement specification" ;
+  hcm-env:specifiesProperty dvc:rack-temperature .
 
 dvc:measurement-rack-humidity a hcm-env:MeasurementSpecification ;
-  rdfs:label "Rack relative humidity" .
+  rdfs:label "Rack relative-humidity measurement specification" ;
+  hcm-env:specifiesProperty dvc:rack-relative-humidity .
+
+dvc:rack-temperature a hcm-env:EnvironmentalProperty ;
+  rdfs:label "rack ambient temperature" .
+
+dvc:rack-relative-humidity a hcm-env:EnvironmentalProperty ;
+  rdfs:label "rack relative humidity" .
 
 dvc:data-product a hcm-tech:TimeSeries ;
   rdfs:label "DVC CSV export data product" ;
   rdfs:comment "Profile graph for the real cohort export and synthetic mock traces in the DVC example folder." ;
   hcm-tech:hasFileFormat "text/csv" ;
-  hcm-tech:hasSamplingRate "4 Hz raw stream; 1 minute binned example exports" ;
+  hcm-tech:hasSamplingRateQuantity dvc:raw-sampling-rate ;
   hcm-tech:hasStoragePath "docs/hcm-systems/systems/DVC_Tecniplast/datasets/real/Cohort7623_animal_loc__index_smoothed.csv",
     "docs/hcm-systems/systems/DVC_Tecniplast/datasets/mock/mock_B6_M_animal_loc__index_smoothed.csv" ;
   dcterms:source "https://doi.org/10.1016/j.heliyon.2019.e01454",

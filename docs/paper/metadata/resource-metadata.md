@@ -30,7 +30,7 @@ Supplementary links (provide for reviewers):
 | **A1** Retrievable by ID over open protocol | HTTPS dereference + download | repo/dist | ✓ PURL 303 content negotiation confirmed |
 | **A2** Metadata persist | Zenodo archival | DOI | — |
 | **I1** Formal knowledge representation | OWL 2 in Turtle/RDF/XML/JSON-LD | `dist/` | — |
-| **I2** FAIR vocabularies | Reuse SOSA/SSN, OWL-Time, PROV, BFO | alignments | Add QUDT/OM (roadmap) |
+| **I2** FAIR vocabularies | Reuse SOSA/SSN, OWL-Time, PROV, BFO/IAO, and pinned QUDT 3.4.0 | alignments | Extend only with reviewed mappings and quantity roles |
 | **I3** Qualified references | `rdfs:subClassOf`/alignment axioms | `docs/ALIGNMENTS.md` | — |
 | **R1** Rich, accurate attributes | labels/comments, provenance | modules | Complete defs (T5) |
 | **R1.1** Clear license | CC BY 4.0 | LICENSE, header | — |

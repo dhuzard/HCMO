@@ -11,8 +11,9 @@ Review branch: `cyril/property-audit`
 
 ## Scope and method
 
-The audit covers the 81 active, non-deprecated local object and datatype
-properties declared in the five active source modules. The 49 deprecated
+The audit covers the 69 active, non-deprecated local object and datatype
+properties plus 25 newly deprecated properties declared in the five active
+source modules. The 49 deprecated
 properties in `hcm-compat.ttl` will be reviewed separately. External
 properties directly used in HCMO axioms, shapes, examples, or competency
 queries remain in scope.
@@ -82,7 +83,8 @@ not restore a context-free equivalence between monitoring and installation.
 
 ## Active local property decisions
 
-The following tables cover all 81 active local properties. Asserted type,
+The following tables cover all 94 authored local properties: 69 active and 25
+deprecated by the accepted environmental, temporal, and quantity policies. Asserted type,
 domain, range, parent, inverse, restrictions, examples, shapes, and CQ usage
 are reproduced directly from the sources by:
 
@@ -95,33 +97,40 @@ it is not a claim that the property is mandatory in every data profile.
 `needs evidence` identifies a concrete unresolved meaning or inference and
 blocks an ontology edit until the stated evidence is available.
 
-### Core: 23 properties
+### Core: 30 properties
 
 | Property | Decision | Review rationale |
 | --- | --- | --- |
 | `hcm:hasCapacity` | `keep` | Enclosure capacity with a non-negative integer range is intentional; cardinality remains a profile concern. |
 | `hcm:hasDescription` | `keep` | Generic descriptive metadata has no class-specific inference beyond `owl:Thing`. |
-| `hcm:hasDimUnit` | `needs evidence` | The dimension-unit string is coherent temporarily, but the QUDT/OM decision may revise its range and representation. |
+| `hcm:hasDimUnit` | `deprecate` | Replaced by a unit on each QUDT quantity value. |
 | `hcm:hasDimensions` | `keep` | The enclosure-to-dimensions-record relation has aligned domain, range, examples, and shape use. |
 | `hcm:hasEnclosureIdentifier` | `keep` | Identifier semantics and string range are aligned with enclosure examples and SHACL. |
 | `hcm:hasEnrichment` | `keep` | Relates an enclosure to a material enrichment; requirement text remains a separate property. |
 | `hcm:hasEnrichmentRequirement` | `keep` | Records a requirement rather than asserting the presence of an enrichment. Controlled values belong to a later profile. |
 | `hcm:hasEnrichmentType` | `keep` | Type text is scoped to an enrichment resource and creates the intended domain inference. |
 | `hcm:hasFacilityType` | `keep` | A descriptive enclosure-location category is distinct from the `locatedIn` place relation. |
-| `hcm:hasFloorArea` | `keep` | Decimal value is correctly scoped to the dimensions record; its unit is supplied separately. |
+| `hcm:hasFloorArea` | `deprecate` | Replaced by `hasFloorAreaQuantity` so value and unit remain inseparable. |
 | `hcm:hasFoodRequirement` | `keep` | Requirement semantics are distinct from actual provisioning and are used by the provisioning CQ. |
-| `hcm:hasHeight` | `keep` | Decimal dimension value is consistently scoped to `EnclosureDimensions`. |
-| `hcm:hasLength` | `keep` | Decimal dimension value is consistently scoped to `EnclosureDimensions`. |
+| `hcm:hasHeight` | `deprecate` | Replaced by `hasHeightQuantity`. |
+| `hcm:hasLength` | `deprecate` | Replaced by `hasLengthQuantity`. |
 | `hcm:hasManufacturer` | `keep` | Manufacturer text is scoped to the enclosure; organization linking can be reviewed as a separate enhancement. |
-| `hcm:hasMonitoredAnimals` | `needs evidence` | The direct current-state shortcut may disagree with time-bounded `HousingAssignment`; validity-time behavior needs a CQ and edge case. |
+| `hcm:hasMonitoredAnimals` | `deprecate` | Membership is derived at an explicit time from authoritative HousingAssignment intervals. |
 | `hcm:hasName` | `keep` | Generic display metadata has no class-specific inference beyond `owl:Thing`. |
 | `hcm:hasSafetyRequirement` | `keep` | Requirement text is distinct from an assertion that a safety condition is satisfied. |
-| `hcm:hasUnit` | `needs evidence` | The shared result/specification string pattern is explicitly temporary pending QUDT or OM. |
+| `hcm:hasUnit` | `deprecate` | Replaced by canonical `qudt:hasUnit` on a QUDT QuantityValue. |
 | `hcm:hasWaterRequirement` | `keep` | Requirement semantics are distinct from actual provisioning and are used by the provisioning CQ. |
-| `hcm:hasWidth` | `keep` | Decimal dimension value is consistently scoped to `EnclosureDimensions`. |
-| `hcm:isOccupied` | `needs evidence` | “Currently” has no reference time or validity interval and may conflict with housing-assignment history. |
-| `hcm:isOperational` | `needs evidence` | Operational state is time-dependent but the property currently carries no temporal context. |
+| `hcm:hasWidth` | `deprecate` | Replaced by `hasWidthQuantity`. |
+| `hcm:isOccupied` | `deprecate` | Occupancy is derived at an explicit time from HousingAssignment intervals. |
+| `hcm:isOperational` | `deprecate` | Replaced by a time-bounded, evidence-backed operational status record. |
 | `hcm:locatedIn` | `keep` | The broad `schema:Place` exchange range matches accepted decision A04; physical/site distinctions remain in the place value. |
+| `hcm:assessesEnclosure` | `keep` | Connects an operational assessment to the enclosure it evaluates. |
+| `hcm:hasOperationalStatusRecord` | `keep` | Links an enclosure to its evidence-backed, time-bounded status record. |
+| `hcm:hasOperationalStatusValue` | `keep` | Boolean value is scoped to the time-bounded record rather than the enclosure. |
+| `hcm:hasFloorAreaQuantity` | `keep` | QUDT quantity preserves the numeric floor area and unit together. |
+| `hcm:hasHeightQuantity` | `keep` | QUDT quantity preserves the numeric height and unit together. |
+| `hcm:hasLengthQuantity` | `keep` | QUDT quantity preserves the numeric length and unit together. |
+| `hcm:hasWidthQuantity` | `keep` | QUDT quantity preserves the numeric width and unit together. |
 
 ### Biology: 13 properties
 
@@ -129,41 +138,43 @@ blocks an ontology edit until the stated evidence is available.
 | --- | --- | --- |
 | `hcm-bio:assignedToEnclosure` | `keep` | Assignment record to enclosure is the stable direction and preserves room for assignment metadata and time. |
 | `hcm-bio:belongsToGroup` | `keep` | Subject-to-group membership is coherent; an inverse remains deferred until membership temporality is agreed. |
-| `hcm-bio:hasBehaviorObservation` | `needs evidence` | The shortcut does not entail the canonical `sosa:hasFeatureOfInterest` assertion and can drift from it. |
+| `hcm-bio:hasBehaviorObservation` | `deprecate` | Query the inverse of canonical `sosa:hasFeatureOfInterest`; do not maintain duplicate subject links. |
 | `hcm-bio:hasBiologicalSex` | `keep` | The property is subject-scoped; controlled values and external vocabulary alignment are separate review items. |
 | `hcm-bio:hasDateOfBirth` | `keep` | The OWL-compatible literal range plus SHACL `xsd:date` enforcement is intentional. |
-| `hcm-bio:hasHealthStatusObservation` | `needs evidence` | The shortcut duplicates subject navigation without enforcing the SOSA feature-of-interest relation. |
+| `hcm-bio:hasHealthStatusObservation` | `deprecate` | Query the inverse of canonical `sosa:hasFeatureOfInterest`. |
 | `hcm-bio:hasHousingAssignment` | `keep` | Subject or group to assignment is intentional; a union domain avoids incorrectly inferring one named disjunct. |
 | `hcm-bio:hasMember` | `keep` | Group-to-subject membership is coherent; exact inverse status with `belongsToGroup` remains evidence-dependent. |
 | `hcm-bio:hasSocialRequirement` | `needs evidence` | Subject/group scope is plausible, but requirement ownership and assignment-time variation need examples. |
 | `hcm-bio:hasSpecies` | `keep` | Subject scope is correct; taxon-IRI migration is a separate mapping decision. |
 | `hcm-bio:hasStrain` | `keep` | Subject scope is correct; strain registry alignment is a separate mapping decision. |
-| `hcm-bio:hasTreatment` | `needs evidence` | A treatment may be a plan, assignment, or executed intervention and may vary over time; a string on subject/group loses that distinction. |
-| `hcm-bio:hasWeightObservation` | `needs evidence` | The shortcut does not guarantee the canonical SOSA feature-of-interest assertion. |
+| `hcm-bio:hasTreatment` | `deprecate` | Planned factor assignment and executed treatment require distinct explicit patterns. |
+| `hcm-bio:hasWeightObservation` | `deprecate` | Query the inverse of canonical `sosa:hasFeatureOfInterest`. |
 
-### Environment: 19 properties
+### Environment: 21 properties
 
 | Property | Decision | Review rationale |
 | --- | --- | --- |
-| `hcm-env:AmbientTemperature` | `needs evidence` | One predicate spans profile, specification, and observation layers; split relations may be needed. |
-| `hcm-env:AmmoniaConcentration` | `needs evidence` | One predicate spans profile, specification, and observation layers; split relations may be needed. |
-| `hcm-env:CarbonDioxideConcentration` | `needs evidence` | One predicate spans profile, specification, and observation layers; split relations may be needed. |
-| `hcm-env:LightIntensity` | `needs evidence` | One predicate spans profile, specification, and observation layers; split relations may be needed. |
-| `hcm-env:LightState` | `needs evidence` | One predicate spans profile, specification, and observation layers; split relations may be needed. |
-| `hcm-env:OxygenConcentration` | `needs evidence` | One predicate spans profile, specification, and observation layers; split relations may be needed. |
-| `hcm-env:RelativeHumidity` | `needs evidence` | One predicate spans profile, specification, and observation layers; split relations may be needed. |
+| `hcm-env:AmbientTemperature` | `deprecate` | Role-conflating shortcut replaced by profile composition, specification property, and SOSA observation links. |
+| `hcm-env:AmmoniaConcentration` | `deprecate` | Role-conflating shortcut replaced by the three-layer pattern. |
+| `hcm-env:CarbonDioxideConcentration` | `deprecate` | Role-conflating shortcut replaced by the three-layer pattern. |
+| `hcm-env:LightIntensity` | `deprecate` | Role-conflating shortcut replaced by the three-layer pattern. |
+| `hcm-env:LightState` | `deprecate` | Role-conflating shortcut replaced by the three-layer pattern. |
+| `hcm-env:OxygenConcentration` | `deprecate` | Role-conflating shortcut replaced by the three-layer pattern. |
+| `hcm-env:RelativeHumidity` | `deprecate` | Role-conflating shortcut replaced by the three-layer pattern. |
 | `hcm-env:hasDarkPhaseDuration` | `keep` | Light-cycle duration with SHACL datatype validation follows the accepted OWL/SHACL boundary. |
 | `hcm-env:hasDarkPhaseStart` | `keep` | Light-cycle start time with SHACL datatype validation follows the accepted OWL/SHACL boundary. |
 | `hcm-env:hasDawnDuration` | `keep` | Transition duration is correctly scoped to `LightCycle`. |
 | `hcm-env:hasDuskDuration` | `keep` | Transition duration is correctly scoped to `LightCycle`. |
 | `hcm-env:hasEnvironment` | `keep` | Enclosure-to-profile relation is distinct from an individual observation. |
 | `hcm-env:hasGasConcentrationProfile` | `keep` | Profile composition has aligned domain and range. |
-| `hcm-env:hasGasType` | `keep` | Gas-type text is scoped to a gas-concentration profile; vocabulary alignment can follow later. |
+| `hcm-env:hasGasType` | `deprecate` | Gas identity is represented by the environmental property resource specified. |
 | `hcm-env:hasLightCycle` | `keep` | Profile composition has aligned domain and range. |
 | `hcm-env:hasLightPhaseDuration` | `keep` | Light-cycle duration with SHACL datatype validation follows the accepted OWL/SHACL boundary. |
 | `hcm-env:hasMeasurementSpec` | `keep` | Profile-to-specification composition is distinct from recording an observed result. |
 | `hcm-env:hasThriveProfile` | `keep` | Monitored-enclosure to husbandry profile is coherent and does not imply compliance. |
-| `hcm-env:hasValue` | `needs evidence` | A generic literal across measurement specifications and gas profiles lacks explicit quantity/unit semantics. |
+| `hcm-env:hasValue` | `deprecate` | Replaced by `hasSpecifiedValue` with a QUDT QuantityValue. |
+| `hcm-env:specifiesProperty` | `keep` | Gives a measurement specification one explicit environmental-property role. |
+| `hcm-env:hasSpecifiedValue` | `keep` | Carries the target or required value as a QUDT quantity. |
 
 ### Observation: 8 properties
 
@@ -171,14 +182,14 @@ blocks an ontology edit until the stated evidence is available.
 | --- | --- | --- |
 | `hcm-obs:hasBehaviorType` | `needs evidence` | The same predicate spans observation and result layers; representative data must establish whether the value describes the procedure, event, or result. |
 | `hcm-obs:hasCategory` | `keep` | Category text is limited to `CategoricalResult`, avoiding the earlier misplaced observation restriction. |
-| `hcm-obs:hasCondition` | `needs evidence` | `owl:Thing` deliberately leaves the condition model open but provides no useful range inference or condition identity policy. |
+| `hcm-obs:hasCondition` | `keep` | Retained only as a non-causal contextual link; it does not assert a study factor, treatment, or execution. |
 | `hcm-obs:hasConfidenceScore` | `keep` | Decimal confidence is scoped to an observation result; bounds are profile constraints. |
 | `hcm-obs:hasHealthStatusTerm` | `keep` | Text/coded value is scoped to health-status observations; vocabulary alignment remains separate. |
 | `hcm-obs:hasInterval` | `needs evidence` | A literal duration overlaps the richer `sosa:phenomenonTime`/OWL-Time pattern and needs a clear retained use case. |
-| `hcm-obs:hasNumericValue` | `keep` | Decimal value is correctly scoped to `QuantityValue`; unit representation is reviewed separately. |
+| `hcm-obs:hasNumericValue` | `deprecate` | Replaced by canonical `qudt:numericValue` on QUDT QuantityValue. |
 | `hcm-obs:occursIn` | `keep` | Observation-to-enclosure context is distinct from `sosa:hasFeatureOfInterest` and has aligned direction and range. |
 
-### Technology: 18 properties
+### Technology: 22 properties
 
 | Property | Decision | Review rationale |
 | --- | --- | --- |
@@ -189,19 +200,23 @@ blocks an ontology edit until the stated evidence is available.
 | `hcm-tech:hasFirmware` | `keep` | Firmware identifier is correctly limited to hardware and sensors. |
 | `hcm-tech:hasModelNumber` | `keep` | Manufacturer model metadata applies coherently to physical technical components. |
 | `hcm-tech:hasProtocol` | `needs evidence` | Communication, acquisition, and processing protocols are different notions currently collapsed into one string property. |
-| `hcm-tech:hasSamplingRate` | `needs evidence` | Sensor and time-series scope is plausible, but a string cannot support numeric/unit comparison or conversion. |
+| `hcm-tech:hasSamplingRate` | `deprecate` | Replaced by `hasSamplingRateQuantity` with a QUDT QuantityValue. |
 | `hcm-tech:hasSensorIdentifier` | `keep` | Identifier string is correctly scoped to sensors. |
 | `hcm-tech:hasSensorTechnology` | `keep` | Sensing technology/modality is correctly scoped to sensors pending vocabulary alignment. |
 | `hcm-tech:hasSensorType` | `keep` | Functional category is correctly scoped to sensors, distinct from model and technology. |
 | `hcm-tech:hasStoragePath` | `keep` | Locator metadata is intentionally non-inferential; URI/path normalization belongs to a profile. |
 | `hcm-tech:hasVersion` | `keep` | Version text applies coherently to hardware, software, and time-series artifacts. |
 | `hcm-tech:installedIn` | `keep` | Physical placement is retained as an optional relation independent of monitoring; it has no inverse or timeless SHACL cardinality. |
-| `hcm-tech:isCalibrated` | `needs evidence` | Calibration is time- and procedure-dependent; a timeless boolean may only be suitable for an intake snapshot. |
+| `hcm-tech:isCalibrated` | `deprecate` | Replaced by an evidence-backed, time-bounded calibration record. |
 | `hcm-tech:monitoredBy` | `keep` | Monitoring association is retained independently of physical installation; the incorrect inverse axiom was removed. |
 | `hcm-tech:runsOn` | `keep` | Software-to-hardware execution direction and domain/range are coherent. |
 | `hcm-tech:supportsEnclosure` | `needs evidence` | “Supports” is underspecified and may overlap installation, monitoring, acquisition, or software processing. |
+| `hcm-tech:calibratesSensor` | `keep` | Connects a calibration activity to the sensor calibrated. |
+| `hcm-tech:hasCalibrationRecord` | `keep` | Links a sensor to a time-bounded calibration status record. |
+| `hcm-tech:hasCalibrationStatusValue` | `keep` | Boolean value is scoped to the evidence record, not the sensor. |
+| `hcm-tech:hasSamplingRateQuantity` | `keep` | Represents sampling rate as a comparable QUDT quantity. |
 
-Coverage total: **23 core + 13 bio + 19 env + 8 obs + 18 tech = 81**.
+Coverage total: **30 core + 13 bio + 21 env + 8 obs + 22 tech = 94**.
 
 ## Directly used external properties
 
@@ -216,7 +231,9 @@ External source/version pinning remains governed by B01.
 | SOSA observation pattern | `sosa:hasFeatureOfInterest`, `sosa:hasResult`, `sosa:madeBySensor`, `sosa:observedProperty`, `sosa:phenomenonTime` | `keep`; these are the canonical observation links used by restrictions, shapes, examples, or CQs. Confirm their pinned SOSA version under B01. |
 | SOSA sensor capability | `sosa:observes` | `keep`; `hcm-tech:captures` is narrower and has the SOSA 2017-compatible `ObservableProperty` range. |
 | SemTS time-series structure | `semts:segmentDimension` | `keep`; canonical SemTS 1.2.0 relation used only from a location `TimeSeriesSegment` to `DataDimension`. The ill-fitting `semts:generated` and nonexistent `semts:hasDimension` references were removed. |
-| OWL-Time example/query | `time:hasBeginning`, `time:hasEnd`, `time:inXSDDateTime`, `time:numericDuration`, `time:unitType` | `keep`; confined to temporal example/query behavior. Pin the OWL-Time source and keep execution, phenomenon, and assignment times distinct. |
+| OWL-Time temporal pattern | `time:hasTime`, `time:hasBeginning`, `time:hasEnd`, `time:inXSDDateTime`, `time:numericDuration`, `time:unitType` | `keep`; housing, status, calibration, and observation intervals are validated and queried at explicit times. |
+| PROV evidence pattern | `prov:wasGeneratedBy`, plus workflow `prov:generated` and `prov:used` | `keep`; status records identify their evidence-generating activity and the ISA/STATO fixture retains execution provenance. |
+| QUDT quantity pattern | `qudt:numericValue`, `qudt:hasUnit` | `keep`; QUDT 3.4.0 is pinned and SHACL validates one value/unit pair per QuantityValue. |
 | Schema.org exchange examples | `schema:about`, `schema:additionalType`, `schema:affiliation`, `schema:email`, `schema:encodingFormat`, `schema:hasPart`, `schema:name`, `schema:object`, `schema:result`, `schema:roleName` | `keep outside canonical HCMO inference`; these support ISA/RO-Crate-style exchange examples and do not assert OWL mappings. |
 | Dublin Core example metadata | `dcterms:contributor`, `dcterms:license`, `dcterms:relation`, `dcterms:source`, `dcterms:type` | `keep as metadata`; these predicates must not be interpreted as HCMO domain-property mappings. |
 | Release annotations | `bibo:authorList`, `dcterms:bibliographicCitation`, `dcterms:created`, `dcterms:creator`, `dcterms:identifier`, `dcterms:issued`, `dcterms:license`, `dcterms:modified`, `dcterms:publisher`, `dcterms:source`, `mod:createdWith`, `schema:logo`, `schema:name`, `vann:preferredNamespacePrefix`, `vann:preferredNamespaceUri` | `keep as annotations`; no domain/range inference is intended from release metadata. |

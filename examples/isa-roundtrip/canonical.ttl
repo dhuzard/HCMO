@@ -7,6 +7,7 @@
 @prefix hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#> .
 @prefix hcm-obs: <https://w3id.org/hcmo/ontology/hcm/obs#> .
 @prefix hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#> .
+@prefix ns1: <http://qudt.org/schema/qudt/> .
 @prefix obi: <http://purl.obolibrary.org/obo/OBI_> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -15,6 +16,454 @@
 @prefix stato: <http://purl.obolibrary.org/obo/STATO_> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:observation-1-day-1 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-1 ;
+    sosa:hasResult ex:result-1-day-1 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-1-day-1 ;
+    hcm-obs:occursIn ex:cage-9 .
+
+ex:observation-1-day-2 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-1 ;
+    sosa:hasResult ex:result-1-day-2 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-1-day-2 ;
+    hcm-obs:occursIn ex:cage-9 .
+
+ex:observation-1-day-3 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-1 ;
+    sosa:hasResult ex:result-1-day-3 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-1-day-3 ;
+    hcm-obs:occursIn ex:cage-9 .
+
+ex:observation-1-day-4 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-1 ;
+    sosa:hasResult ex:result-1-day-4 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-1-day-4 ;
+    hcm-obs:occursIn ex:cage-9 .
+
+ex:observation-1-day-5 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-1 ;
+    sosa:hasResult ex:result-1-day-5 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-1-day-5 ;
+    hcm-obs:occursIn ex:cage-9 .
+
+ex:observation-1-day-6 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-1 ;
+    sosa:hasResult ex:result-1-day-6 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-1-day-6 ;
+    hcm-obs:occursIn ex:cage-9 .
+
+ex:observation-1-day-7 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-1 ;
+    sosa:hasResult ex:result-1-day-7 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-1-day-7 ;
+    hcm-obs:occursIn ex:cage-9 .
+
+ex:observation-2-day-1 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-2 ;
+    sosa:hasResult ex:result-2-day-1 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-2-day-1 ;
+    hcm-obs:occursIn ex:cage-2 .
+
+ex:observation-2-day-2 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-2 ;
+    sosa:hasResult ex:result-2-day-2 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-2-day-2 ;
+    hcm-obs:occursIn ex:cage-2 .
+
+ex:observation-2-day-3 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-2 ;
+    sosa:hasResult ex:result-2-day-3 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-2-day-3 ;
+    hcm-obs:occursIn ex:cage-2 .
+
+ex:observation-2-day-4 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-2 ;
+    sosa:hasResult ex:result-2-day-4 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-2-day-4 ;
+    hcm-obs:occursIn ex:cage-2 .
+
+ex:observation-2-day-5 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-2 ;
+    sosa:hasResult ex:result-2-day-5 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-2-day-5 ;
+    hcm-obs:occursIn ex:cage-2 .
+
+ex:observation-2-day-6 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-2 ;
+    sosa:hasResult ex:result-2-day-6 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-2-day-6 ;
+    hcm-obs:occursIn ex:cage-2 .
+
+ex:observation-2-day-7 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-2 ;
+    sosa:hasResult ex:result-2-day-7 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-2-day-7 ;
+    hcm-obs:occursIn ex:cage-2 .
+
+ex:observation-3-day-1 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-3 ;
+    sosa:hasResult ex:result-3-day-1 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-3-day-1 ;
+    hcm-obs:occursIn ex:cage-3 .
+
+ex:observation-3-day-2 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-3 ;
+    sosa:hasResult ex:result-3-day-2 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-3-day-2 ;
+    hcm-obs:occursIn ex:cage-3 .
+
+ex:observation-3-day-3 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-3 ;
+    sosa:hasResult ex:result-3-day-3 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-3-day-3 ;
+    hcm-obs:occursIn ex:cage-3 .
+
+ex:observation-3-day-4 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-3 ;
+    sosa:hasResult ex:result-3-day-4 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-3-day-4 ;
+    hcm-obs:occursIn ex:cage-3 .
+
+ex:observation-3-day-5 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-3 ;
+    sosa:hasResult ex:result-3-day-5 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-3-day-5 ;
+    hcm-obs:occursIn ex:cage-3 .
+
+ex:observation-3-day-6 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-3 ;
+    sosa:hasResult ex:result-3-day-6 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-3-day-6 ;
+    hcm-obs:occursIn ex:cage-3 .
+
+ex:observation-3-day-7 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-3 ;
+    sosa:hasResult ex:result-3-day-7 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-3-day-7 ;
+    hcm-obs:occursIn ex:cage-3 .
+
+ex:observation-4-day-1 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-4 ;
+    sosa:hasResult ex:result-4-day-1 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-4-day-1 ;
+    hcm-obs:occursIn ex:cage-4 .
+
+ex:observation-4-day-2 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-4 ;
+    sosa:hasResult ex:result-4-day-2 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-4-day-2 ;
+    hcm-obs:occursIn ex:cage-4 .
+
+ex:observation-4-day-3 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-4 ;
+    sosa:hasResult ex:result-4-day-3 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-4-day-3 ;
+    hcm-obs:occursIn ex:cage-4 .
+
+ex:observation-4-day-4 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-4 ;
+    sosa:hasResult ex:result-4-day-4 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-4-day-4 ;
+    hcm-obs:occursIn ex:cage-4 .
+
+ex:observation-4-day-5 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-4 ;
+    sosa:hasResult ex:result-4-day-5 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-4-day-5 ;
+    hcm-obs:occursIn ex:cage-4 .
+
+ex:observation-4-day-6 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-4 ;
+    sosa:hasResult ex:result-4-day-6 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-4-day-6 ;
+    hcm-obs:occursIn ex:cage-4 .
+
+ex:observation-4-day-7 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-4 ;
+    sosa:hasResult ex:result-4-day-7 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-4-day-7 ;
+    hcm-obs:occursIn ex:cage-4 .
+
+ex:observation-5-day-1 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-5 ;
+    sosa:hasResult ex:result-5-day-1 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-5-day-1 ;
+    hcm-obs:occursIn ex:cage-5 .
+
+ex:observation-5-day-2 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-5 ;
+    sosa:hasResult ex:result-5-day-2 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-5-day-2 ;
+    hcm-obs:occursIn ex:cage-5 .
+
+ex:observation-5-day-3 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-5 ;
+    sosa:hasResult ex:result-5-day-3 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-5-day-3 ;
+    hcm-obs:occursIn ex:cage-5 .
+
+ex:observation-5-day-4 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-5 ;
+    sosa:hasResult ex:result-5-day-4 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-5-day-4 ;
+    hcm-obs:occursIn ex:cage-5 .
+
+ex:observation-5-day-5 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-5 ;
+    sosa:hasResult ex:result-5-day-5 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-5-day-5 ;
+    hcm-obs:occursIn ex:cage-5 .
+
+ex:observation-5-day-6 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-5 ;
+    sosa:hasResult ex:result-5-day-6 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-5-day-6 ;
+    hcm-obs:occursIn ex:cage-5 .
+
+ex:observation-5-day-7 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-5 ;
+    sosa:hasResult ex:result-5-day-7 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-5-day-7 ;
+    hcm-obs:occursIn ex:cage-5 .
+
+ex:observation-6-day-1 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-6 ;
+    sosa:hasResult ex:result-6-day-1 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-6-day-1 ;
+    hcm-obs:occursIn ex:cage-6 .
+
+ex:observation-6-day-2 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-6 ;
+    sosa:hasResult ex:result-6-day-2 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-6-day-2 ;
+    hcm-obs:occursIn ex:cage-6 .
+
+ex:observation-6-day-3 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-6 ;
+    sosa:hasResult ex:result-6-day-3 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-6-day-3 ;
+    hcm-obs:occursIn ex:cage-6 .
+
+ex:observation-6-day-4 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-6 ;
+    sosa:hasResult ex:result-6-day-4 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-6-day-4 ;
+    hcm-obs:occursIn ex:cage-6 .
+
+ex:observation-6-day-5 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-6 ;
+    sosa:hasResult ex:result-6-day-5 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-6-day-5 ;
+    hcm-obs:occursIn ex:cage-6 .
+
+ex:observation-6-day-6 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-6 ;
+    sosa:hasResult ex:result-6-day-6 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-6-day-6 ;
+    hcm-obs:occursIn ex:cage-6 .
+
+ex:observation-6-day-7 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-6 ;
+    sosa:hasResult ex:result-6-day-7 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-6-day-7 ;
+    hcm-obs:occursIn ex:cage-6 .
+
+ex:observation-7-day-1 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-7 ;
+    sosa:hasResult ex:result-7-day-1 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-7-day-1 ;
+    hcm-obs:occursIn ex:cage-7 .
+
+ex:observation-7-day-2 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-7 ;
+    sosa:hasResult ex:result-7-day-2 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-7-day-2 ;
+    hcm-obs:occursIn ex:cage-7 .
+
+ex:observation-7-day-3 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-7 ;
+    sosa:hasResult ex:result-7-day-3 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-7-day-3 ;
+    hcm-obs:occursIn ex:cage-7 .
+
+ex:observation-7-day-4 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-7 ;
+    sosa:hasResult ex:result-7-day-4 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-7-day-4 ;
+    hcm-obs:occursIn ex:cage-7 .
+
+ex:observation-7-day-5 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-7 ;
+    sosa:hasResult ex:result-7-day-5 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-7-day-5 ;
+    hcm-obs:occursIn ex:cage-7 .
+
+ex:observation-7-day-6 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-7 ;
+    sosa:hasResult ex:result-7-day-6 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-7-day-6 ;
+    hcm-obs:occursIn ex:cage-7 .
+
+ex:observation-7-day-7 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-7 ;
+    sosa:hasResult ex:result-7-day-7 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-7-day-7 ;
+    hcm-obs:occursIn ex:cage-7 .
+
+ex:observation-8-day-1 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-8 ;
+    sosa:hasResult ex:result-8-day-1 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-8-day-1 ;
+    hcm-obs:occursIn ex:cage-8 .
+
+ex:observation-8-day-2 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-8 ;
+    sosa:hasResult ex:result-8-day-2 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-8-day-2 ;
+    hcm-obs:occursIn ex:cage-8 .
+
+ex:observation-8-day-3 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-8 ;
+    sosa:hasResult ex:result-8-day-3 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-8-day-3 ;
+    hcm-obs:occursIn ex:cage-8 .
+
+ex:observation-8-day-4 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-8 ;
+    sosa:hasResult ex:result-8-day-4 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-8-day-4 ;
+    hcm-obs:occursIn ex:cage-8 .
+
+ex:observation-8-day-5 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-8 ;
+    sosa:hasResult ex:result-8-day-5 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-8-day-5 ;
+    hcm-obs:occursIn ex:cage-8 .
+
+ex:observation-8-day-6 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-8 ;
+    sosa:hasResult ex:result-8-day-6 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-8-day-6 ;
+    hcm-obs:occursIn ex:cage-8 .
+
+ex:observation-8-day-7 a hcm-obs:BehaviorObservation ;
+    sosa:hasFeatureOfInterest ex:animal-8 ;
+    sosa:hasResult ex:result-8-day-7 ;
+    sosa:madeBySensor ex:rack-activity-sensor ;
+    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
+    sosa:phenomenonTime ex:interval-observation-8-day-7 ;
+    hcm-obs:occursIn ex:cage-8 .
 
 <ro-crate-metadata.json> a schema1:CreativeWork ;
     dcterms:conformsTo <https://w3id.org/ro/crate/1.2> ;
@@ -710,454 +1159,6 @@ ex:interval-observation-8-day-7 a time:Interval ;
     time:hasBeginning ex:instant-observation-8-day-7-begin ;
     time:hasEnd ex:instant-observation-8-day-7-end .
 
-ex:observation-1-day-1 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-1 ;
-    sosa:hasResult ex:result-1-day-1 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-1-day-1 ;
-    hcm-obs:occursIn ex:cage-9 .
-
-ex:observation-1-day-2 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-1 ;
-    sosa:hasResult ex:result-1-day-2 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-1-day-2 ;
-    hcm-obs:occursIn ex:cage-9 .
-
-ex:observation-1-day-3 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-1 ;
-    sosa:hasResult ex:result-1-day-3 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-1-day-3 ;
-    hcm-obs:occursIn ex:cage-9 .
-
-ex:observation-1-day-4 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-1 ;
-    sosa:hasResult ex:result-1-day-4 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-1-day-4 ;
-    hcm-obs:occursIn ex:cage-9 .
-
-ex:observation-1-day-5 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-1 ;
-    sosa:hasResult ex:result-1-day-5 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-1-day-5 ;
-    hcm-obs:occursIn ex:cage-9 .
-
-ex:observation-1-day-6 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-1 ;
-    sosa:hasResult ex:result-1-day-6 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-1-day-6 ;
-    hcm-obs:occursIn ex:cage-9 .
-
-ex:observation-1-day-7 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-1 ;
-    sosa:hasResult ex:result-1-day-7 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-1-day-7 ;
-    hcm-obs:occursIn ex:cage-9 .
-
-ex:observation-2-day-1 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-2 ;
-    sosa:hasResult ex:result-2-day-1 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-2-day-1 ;
-    hcm-obs:occursIn ex:cage-2 .
-
-ex:observation-2-day-2 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-2 ;
-    sosa:hasResult ex:result-2-day-2 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-2-day-2 ;
-    hcm-obs:occursIn ex:cage-2 .
-
-ex:observation-2-day-3 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-2 ;
-    sosa:hasResult ex:result-2-day-3 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-2-day-3 ;
-    hcm-obs:occursIn ex:cage-2 .
-
-ex:observation-2-day-4 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-2 ;
-    sosa:hasResult ex:result-2-day-4 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-2-day-4 ;
-    hcm-obs:occursIn ex:cage-2 .
-
-ex:observation-2-day-5 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-2 ;
-    sosa:hasResult ex:result-2-day-5 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-2-day-5 ;
-    hcm-obs:occursIn ex:cage-2 .
-
-ex:observation-2-day-6 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-2 ;
-    sosa:hasResult ex:result-2-day-6 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-2-day-6 ;
-    hcm-obs:occursIn ex:cage-2 .
-
-ex:observation-2-day-7 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-2 ;
-    sosa:hasResult ex:result-2-day-7 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-2-day-7 ;
-    hcm-obs:occursIn ex:cage-2 .
-
-ex:observation-3-day-1 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-3 ;
-    sosa:hasResult ex:result-3-day-1 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-3-day-1 ;
-    hcm-obs:occursIn ex:cage-3 .
-
-ex:observation-3-day-2 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-3 ;
-    sosa:hasResult ex:result-3-day-2 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-3-day-2 ;
-    hcm-obs:occursIn ex:cage-3 .
-
-ex:observation-3-day-3 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-3 ;
-    sosa:hasResult ex:result-3-day-3 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-3-day-3 ;
-    hcm-obs:occursIn ex:cage-3 .
-
-ex:observation-3-day-4 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-3 ;
-    sosa:hasResult ex:result-3-day-4 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-3-day-4 ;
-    hcm-obs:occursIn ex:cage-3 .
-
-ex:observation-3-day-5 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-3 ;
-    sosa:hasResult ex:result-3-day-5 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-3-day-5 ;
-    hcm-obs:occursIn ex:cage-3 .
-
-ex:observation-3-day-6 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-3 ;
-    sosa:hasResult ex:result-3-day-6 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-3-day-6 ;
-    hcm-obs:occursIn ex:cage-3 .
-
-ex:observation-3-day-7 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-3 ;
-    sosa:hasResult ex:result-3-day-7 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-3-day-7 ;
-    hcm-obs:occursIn ex:cage-3 .
-
-ex:observation-4-day-1 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-4 ;
-    sosa:hasResult ex:result-4-day-1 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-4-day-1 ;
-    hcm-obs:occursIn ex:cage-4 .
-
-ex:observation-4-day-2 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-4 ;
-    sosa:hasResult ex:result-4-day-2 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-4-day-2 ;
-    hcm-obs:occursIn ex:cage-4 .
-
-ex:observation-4-day-3 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-4 ;
-    sosa:hasResult ex:result-4-day-3 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-4-day-3 ;
-    hcm-obs:occursIn ex:cage-4 .
-
-ex:observation-4-day-4 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-4 ;
-    sosa:hasResult ex:result-4-day-4 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-4-day-4 ;
-    hcm-obs:occursIn ex:cage-4 .
-
-ex:observation-4-day-5 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-4 ;
-    sosa:hasResult ex:result-4-day-5 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-4-day-5 ;
-    hcm-obs:occursIn ex:cage-4 .
-
-ex:observation-4-day-6 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-4 ;
-    sosa:hasResult ex:result-4-day-6 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-4-day-6 ;
-    hcm-obs:occursIn ex:cage-4 .
-
-ex:observation-4-day-7 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-4 ;
-    sosa:hasResult ex:result-4-day-7 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-4-day-7 ;
-    hcm-obs:occursIn ex:cage-4 .
-
-ex:observation-5-day-1 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-5 ;
-    sosa:hasResult ex:result-5-day-1 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-5-day-1 ;
-    hcm-obs:occursIn ex:cage-5 .
-
-ex:observation-5-day-2 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-5 ;
-    sosa:hasResult ex:result-5-day-2 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-5-day-2 ;
-    hcm-obs:occursIn ex:cage-5 .
-
-ex:observation-5-day-3 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-5 ;
-    sosa:hasResult ex:result-5-day-3 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-5-day-3 ;
-    hcm-obs:occursIn ex:cage-5 .
-
-ex:observation-5-day-4 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-5 ;
-    sosa:hasResult ex:result-5-day-4 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-5-day-4 ;
-    hcm-obs:occursIn ex:cage-5 .
-
-ex:observation-5-day-5 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-5 ;
-    sosa:hasResult ex:result-5-day-5 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-5-day-5 ;
-    hcm-obs:occursIn ex:cage-5 .
-
-ex:observation-5-day-6 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-5 ;
-    sosa:hasResult ex:result-5-day-6 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-5-day-6 ;
-    hcm-obs:occursIn ex:cage-5 .
-
-ex:observation-5-day-7 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-5 ;
-    sosa:hasResult ex:result-5-day-7 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-5-day-7 ;
-    hcm-obs:occursIn ex:cage-5 .
-
-ex:observation-6-day-1 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-6 ;
-    sosa:hasResult ex:result-6-day-1 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-6-day-1 ;
-    hcm-obs:occursIn ex:cage-6 .
-
-ex:observation-6-day-2 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-6 ;
-    sosa:hasResult ex:result-6-day-2 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-6-day-2 ;
-    hcm-obs:occursIn ex:cage-6 .
-
-ex:observation-6-day-3 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-6 ;
-    sosa:hasResult ex:result-6-day-3 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-6-day-3 ;
-    hcm-obs:occursIn ex:cage-6 .
-
-ex:observation-6-day-4 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-6 ;
-    sosa:hasResult ex:result-6-day-4 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-6-day-4 ;
-    hcm-obs:occursIn ex:cage-6 .
-
-ex:observation-6-day-5 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-6 ;
-    sosa:hasResult ex:result-6-day-5 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-6-day-5 ;
-    hcm-obs:occursIn ex:cage-6 .
-
-ex:observation-6-day-6 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-6 ;
-    sosa:hasResult ex:result-6-day-6 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-6-day-6 ;
-    hcm-obs:occursIn ex:cage-6 .
-
-ex:observation-6-day-7 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-6 ;
-    sosa:hasResult ex:result-6-day-7 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-6-day-7 ;
-    hcm-obs:occursIn ex:cage-6 .
-
-ex:observation-7-day-1 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-7 ;
-    sosa:hasResult ex:result-7-day-1 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-7-day-1 ;
-    hcm-obs:occursIn ex:cage-7 .
-
-ex:observation-7-day-2 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-7 ;
-    sosa:hasResult ex:result-7-day-2 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-7-day-2 ;
-    hcm-obs:occursIn ex:cage-7 .
-
-ex:observation-7-day-3 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-7 ;
-    sosa:hasResult ex:result-7-day-3 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-7-day-3 ;
-    hcm-obs:occursIn ex:cage-7 .
-
-ex:observation-7-day-4 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-7 ;
-    sosa:hasResult ex:result-7-day-4 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-7-day-4 ;
-    hcm-obs:occursIn ex:cage-7 .
-
-ex:observation-7-day-5 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-7 ;
-    sosa:hasResult ex:result-7-day-5 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-7-day-5 ;
-    hcm-obs:occursIn ex:cage-7 .
-
-ex:observation-7-day-6 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-7 ;
-    sosa:hasResult ex:result-7-day-6 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-7-day-6 ;
-    hcm-obs:occursIn ex:cage-7 .
-
-ex:observation-7-day-7 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-7 ;
-    sosa:hasResult ex:result-7-day-7 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-7-day-7 ;
-    hcm-obs:occursIn ex:cage-7 .
-
-ex:observation-8-day-1 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-8 ;
-    sosa:hasResult ex:result-8-day-1 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-8-day-1 ;
-    hcm-obs:occursIn ex:cage-8 .
-
-ex:observation-8-day-2 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-8 ;
-    sosa:hasResult ex:result-8-day-2 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-8-day-2 ;
-    hcm-obs:occursIn ex:cage-8 .
-
-ex:observation-8-day-3 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-8 ;
-    sosa:hasResult ex:result-8-day-3 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-8-day-3 ;
-    hcm-obs:occursIn ex:cage-8 .
-
-ex:observation-8-day-4 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-8 ;
-    sosa:hasResult ex:result-8-day-4 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-8-day-4 ;
-    hcm-obs:occursIn ex:cage-8 .
-
-ex:observation-8-day-5 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-8 ;
-    sosa:hasResult ex:result-8-day-5 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-8-day-5 ;
-    hcm-obs:occursIn ex:cage-8 .
-
-ex:observation-8-day-6 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-8 ;
-    sosa:hasResult ex:result-8-day-6 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-8-day-6 ;
-    hcm-obs:occursIn ex:cage-8 .
-
-ex:observation-8-day-7 a hcm-obs:BehaviorObservation ;
-    sosa:hasFeatureOfInterest ex:animal-8 ;
-    sosa:hasResult ex:result-8-day-7 ;
-    sosa:madeBySensor ex:rack-activity-sensor ;
-    sosa:observedProperty ex:dependent-variable-dark-phase-activity ;
-    sosa:phenomenonTime ex:interval-observation-8-day-7 ;
-    hcm-obs:occursIn ex:cage-8 .
-
 ex:process-specimen-collection a prov:Activity,
         bioschemas:LabProcess ;
     schema1:name "Collect tissue from animal 8" ;
@@ -1178,283 +1179,295 @@ ex:protocol-specimen-collection a bioschemas:LabProtocol ;
 
 ex:result-1-day-1 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 99.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 99.0 .
 
 ex:result-1-day-2 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 102.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 102.0 .
 
 ex:result-1-day-3 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 105.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 105.0 .
 
 ex:result-1-day-4 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 104.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 104.0 .
 
 ex:result-1-day-5 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 110.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 110.0 .
 
 ex:result-1-day-6 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 110.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 110.0 .
 
 ex:result-1-day-7 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 113.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 113.0 .
 
 ex:result-2-day-1 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 105.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 105.0 .
 
 ex:result-2-day-2 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 105.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 105.0 .
 
 ex:result-2-day-3 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 108.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 108.0 .
 
 ex:result-2-day-4 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 112.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 112.0 .
 
 ex:result-2-day-5 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 110.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 110.0 .
 
 ex:result-2-day-6 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 115.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 115.0 .
 
 ex:result-2-day-7 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 116.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 116.0 .
 
 ex:result-3-day-1 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 106.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 106.0 .
 
 ex:result-3-day-2 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 109.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 109.0 .
 
 ex:result-3-day-3 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 109.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 109.0 .
 
 ex:result-3-day-4 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 114.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 114.0 .
 
 ex:result-3-day-5 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 114.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 114.0 .
 
 ex:result-3-day-6 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 114.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 114.0 .
 
 ex:result-3-day-7 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 119.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 119.0 .
 
 ex:result-4-day-1 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 107.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 107.0 .
 
 ex:result-4-day-2 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 112.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 112.0 .
 
 ex:result-4-day-3 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 112.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 112.0 .
 
 ex:result-4-day-4 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 113.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 113.0 .
 
 ex:result-4-day-5 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 117.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 117.0 .
 
 ex:result-4-day-6 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 118.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 118.0 .
 
 ex:result-4-day-7 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 118.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 118.0 .
 
 ex:result-5-day-1 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 114.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 114.0 .
 
 ex:result-5-day-2 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 113.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 113.0 .
 
 ex:result-5-day-3 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 117.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 117.0 .
 
 ex:result-5-day-4 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 118.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 118.0 .
 
 ex:result-5-day-5 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 118.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 118.0 .
 
 ex:result-5-day-6 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 123.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 123.0 .
 
 ex:result-5-day-7 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 123.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 123.0 .
 
 ex:result-6-day-1 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 116.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 116.0 .
 
 ex:result-6-day-2 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 116.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 116.0 .
 
 ex:result-6-day-3 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 122.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 122.0 .
 
 ex:result-6-day-4 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 123.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 123.0 .
 
 ex:result-6-day-5 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 123.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 123.0 .
 
 ex:result-6-day-6 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 126.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 126.0 .
 
 ex:result-6-day-7 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 129.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 129.0 .
 
 ex:result-7-day-1 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 122.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 122.0 .
 
 ex:result-7-day-2 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 123.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 123.0 .
 
 ex:result-7-day-3 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 123.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 123.0 .
 
 ex:result-7-day-4 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 129.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 129.0 .
 
 ex:result-7-day-5 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 128.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 128.0 .
 
 ex:result-7-day-6 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 132.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 132.0 .
 
 ex:result-7-day-7 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 133.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 133.0 .
 
 ex:result-8-day-1 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 121.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 121.0 .
 
 ex:result-8-day-2 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 126.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 126.0 .
 
 ex:result-8-day-3 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 127.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 127.0 .
 
 ex:result-8-day-4 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 128.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 128.0 .
 
 ex:result-8-day-5 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 133.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 133.0 .
 
 ex:result-8-day-6 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 133.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 133.0 .
 
 ex:result-8-day-7 a hcm-obs:BehaviorResult,
         hcm-obs:QuantityValue ;
-    hcm:hasUnit "activity counts per dark phase" ;
-    hcm-obs:hasNumericValue 136.0 .
+    ns1:hasUnit <http://qudt.org/vocab/unit/UNITLESS> ;
+    ns1:numericValue 136.0 .
+
+ex:standard-cage-height-quantity a ns1:QuantityValue ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/CentiM> ;
+    ns1:numericValue 18.0 .
+
+ex:standard-cage-length-quantity a ns1:QuantityValue ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/CentiM> ;
+    ns1:numericValue 36.0 .
+
+ex:standard-cage-width-quantity a ns1:QuantityValue ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/CentiM> ;
+    ns1:numericValue 20.0 .
 
 <studies/hcmo-2x2/> a schema1:Dataset ;
     schema1:about ex:process-initial-allocation,
@@ -1814,10 +1827,9 @@ ex:process-initial-allocation a prov:Activity,
     bioschemas-prop:executesLabProtocol ex:protocol-allocation .
 
 ex:standard-cage-dimensions a hcm:EnclosureDimensions ;
-    hcm:hasDimUnit "cm" ;
-    hcm:hasHeight 18.0 ;
-    hcm:hasLength 36.0 ;
-    hcm:hasWidth 20.0 .
+    hcm:hasHeightQuantity ex:standard-cage-height-quantity ;
+    hcm:hasLengthQuantity ex:standard-cage-length-quantity ;
+    hcm:hasWidthQuantity ex:standard-cage-width-quantity .
 
 ex:animal-2 a bioschemas:Sample,
         hcm-bio:Subject ;
@@ -1827,13 +1839,6 @@ ex:animal-2 a bioschemas:Sample,
     schema1:additionalType "Source" ;
     schema1:name "animal-2" ;
     hcm-bio:belongsToGroup ex:group-vehicle-standard ;
-    hcm-bio:hasBehaviorObservation ex:observation-2-day-1,
-        ex:observation-2-day-2,
-        ex:observation-2-day-3,
-        ex:observation-2-day-4,
-        ex:observation-2-day-5,
-        ex:observation-2-day-6,
-        ex:observation-2-day-7 ;
     hcm-bio:hasHousingAssignment ex:assignment-2 ;
     hcm-bio:hasSpecies "Mus musculus" .
 
@@ -1845,13 +1850,6 @@ ex:animal-3 a bioschemas:Sample,
     schema1:additionalType "Source" ;
     schema1:name "animal-3" ;
     hcm-bio:belongsToGroup ex:group-vehicle-enriched ;
-    hcm-bio:hasBehaviorObservation ex:observation-3-day-1,
-        ex:observation-3-day-2,
-        ex:observation-3-day-3,
-        ex:observation-3-day-4,
-        ex:observation-3-day-5,
-        ex:observation-3-day-6,
-        ex:observation-3-day-7 ;
     hcm-bio:hasHousingAssignment ex:assignment-3 ;
     hcm-bio:hasSpecies "Mus musculus" .
 
@@ -1863,13 +1861,6 @@ ex:animal-4 a bioschemas:Sample,
     schema1:additionalType "Source" ;
     schema1:name "animal-4" ;
     hcm-bio:belongsToGroup ex:group-vehicle-enriched ;
-    hcm-bio:hasBehaviorObservation ex:observation-4-day-1,
-        ex:observation-4-day-2,
-        ex:observation-4-day-3,
-        ex:observation-4-day-4,
-        ex:observation-4-day-5,
-        ex:observation-4-day-6,
-        ex:observation-4-day-7 ;
     hcm-bio:hasHousingAssignment ex:assignment-4 ;
     hcm-bio:hasSpecies "Mus musculus" .
 
@@ -1881,13 +1872,6 @@ ex:animal-5 a bioschemas:Sample,
     schema1:additionalType "Source" ;
     schema1:name "animal-5" ;
     hcm-bio:belongsToGroup ex:group-active-standard ;
-    hcm-bio:hasBehaviorObservation ex:observation-5-day-1,
-        ex:observation-5-day-2,
-        ex:observation-5-day-3,
-        ex:observation-5-day-4,
-        ex:observation-5-day-5,
-        ex:observation-5-day-6,
-        ex:observation-5-day-7 ;
     hcm-bio:hasHousingAssignment ex:assignment-5 ;
     hcm-bio:hasSpecies "Mus musculus" .
 
@@ -1899,13 +1883,6 @@ ex:animal-6 a bioschemas:Sample,
     schema1:additionalType "Source" ;
     schema1:name "animal-6" ;
     hcm-bio:belongsToGroup ex:group-active-standard ;
-    hcm-bio:hasBehaviorObservation ex:observation-6-day-1,
-        ex:observation-6-day-2,
-        ex:observation-6-day-3,
-        ex:observation-6-day-4,
-        ex:observation-6-day-5,
-        ex:observation-6-day-6,
-        ex:observation-6-day-7 ;
     hcm-bio:hasHousingAssignment ex:assignment-6 ;
     hcm-bio:hasSpecies "Mus musculus" .
 
@@ -1917,13 +1894,6 @@ ex:animal-7 a bioschemas:Sample,
     schema1:additionalType "Source" ;
     schema1:name "animal-7" ;
     hcm-bio:belongsToGroup ex:group-active-enriched ;
-    hcm-bio:hasBehaviorObservation ex:observation-7-day-1,
-        ex:observation-7-day-2,
-        ex:observation-7-day-3,
-        ex:observation-7-day-4,
-        ex:observation-7-day-5,
-        ex:observation-7-day-6,
-        ex:observation-7-day-7 ;
     hcm-bio:hasHousingAssignment ex:assignment-7 ;
     hcm-bio:hasSpecies "Mus musculus" .
 
@@ -1935,13 +1905,6 @@ ex:animal-1 a bioschemas:Sample,
     schema1:additionalType "Source" ;
     schema1:name "animal-1" ;
     hcm-bio:belongsToGroup ex:group-vehicle-standard ;
-    hcm-bio:hasBehaviorObservation ex:observation-1-day-1,
-        ex:observation-1-day-2,
-        ex:observation-1-day-3,
-        ex:observation-1-day-4,
-        ex:observation-1-day-5,
-        ex:observation-1-day-6,
-        ex:observation-1-day-7 ;
     hcm-bio:hasHousingAssignment ex:assignment-1,
         ex:assignment-1-rehousing ;
     hcm-bio:hasSpecies "Mus musculus" .
@@ -1954,13 +1917,6 @@ ex:animal-8 a bioschemas:Sample,
     schema1:additionalType "Source" ;
     schema1:name "animal-8" ;
     hcm-bio:belongsToGroup ex:group-active-enriched ;
-    hcm-bio:hasBehaviorObservation ex:observation-8-day-1,
-        ex:observation-8-day-2,
-        ex:observation-8-day-3,
-        ex:observation-8-day-4,
-        ex:observation-8-day-5,
-        ex:observation-8-day-6,
-        ex:observation-8-day-7 ;
     hcm-bio:hasHousingAssignment ex:assignment-8 ;
     hcm-bio:hasSpecies "Mus musculus" .
 

@@ -1,0 +1,28 @@
+PREFIX ex: <https://example.org/hcmo/minimal/>
+PREFIX hcm: <https://w3id.org/hcmo/ontology/hcm#>
+PREFIX hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?enclosure ?operational ?operationalAssessment ?sensor ?calibrated ?calibrationActivity
+WHERE {
+  VALUES ?referenceTime { "2026-01-01T12:00:00Z"^^xsd:dateTime }
+  BIND(ex:cage-12 AS ?enclosure)
+  ?enclosure hcm:hasOperationalStatusRecord ?operationalRecord .
+  ?operationalRecord hcm:hasOperationalStatusValue ?operational ;
+                     prov:wasGeneratedBy ?operationalAssessment ;
+                     time:hasTime ?operationalInterval .
+  ?operationalInterval time:hasBeginning/time:inXSDDateTime ?operationalStart ;
+                       time:hasEnd/time:inXSDDateTime ?operationalEnd .
+  FILTER (?operationalStart <= ?referenceTime && ?referenceTime < ?operationalEnd)
+
+  ?enclosure hcm-tech:monitoredBy ?sensor .
+  ?sensor hcm-tech:hasCalibrationRecord ?calibrationRecord .
+  ?calibrationRecord hcm-tech:hasCalibrationStatusValue ?calibrated ;
+                     prov:wasGeneratedBy ?calibrationActivity ;
+                     time:hasTime ?calibrationInterval .
+  ?calibrationInterval time:hasBeginning/time:inXSDDateTime ?calibrationStart ;
+                       time:hasEnd/time:inXSDDateTime ?calibrationEnd .
+  FILTER (?calibrationStart <= ?referenceTime && ?referenceTime < ?calibrationEnd)
+}

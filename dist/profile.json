@@ -93,6 +93,16 @@
       "label": "Observation Window"
     },
     {
+      "comment": "An activity that assesses whether a monitored enclosure is operational and generates a time-bounded operational status record.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#OperationalAssessment",
+      "label": "Operational Assessment"
+    },
+    {
+      "comment": "An evidence-backed information record stating the operational status of a monitored enclosure during a specified validity interval.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#OperationalStatusRecord",
+      "label": "Operational Status Record"
+    },
+    {
       "comment": "Deprecated in HCMO 0.1.0. A spatial region associated with an enclosure.",
       "iri": "https://w3id.org/hcmo/ontology/hcm#PhysicalSpace",
       "label": "Physical Space"
@@ -183,7 +193,7 @@
       "label": "Environmental Property"
     },
     {
-      "comment": "A profile describing concentrations of gases relevant to the monitored enclosure environment.",
+      "comment": "A measurement specification describing a target or required concentration for a gas-specific environmental property.",
       "iri": "https://w3id.org/hcmo/ontology/hcm/env#GasConcentrationProfile",
       "label": "Gas Concentration Profile"
     },
@@ -198,7 +208,7 @@
       "label": "Measurement Specification"
     },
     {
-      "comment": "A welfare or husbandry profile describing environmental conditions intended to support animal thriving.",
+      "comment": "A normative environment profile specifying husbandry and environmental conditions intended to support animal thriving; linking one to an enclosure does not assert compliance or an animal outcome.",
       "iri": "https://w3id.org/hcmo/ontology/hcm/env#ThriveProfile",
       "label": "Thrive Profile"
     },
@@ -248,7 +258,7 @@
       "label": "Observation Result"
     },
     {
-      "comment": "An observation result that represents a quantitative value, typically with a numeric value and unit.",
+      "comment": "An observation result represented as a QUDT quantity value with a numeric value and unit.",
       "iri": "https://w3id.org/hcmo/ontology/hcm/obs#QuantityValue",
       "label": "Quantity Value"
     },
@@ -261,6 +271,16 @@
       "comment": "A device that elicits or perturbs behavior, physiology, or the monitored environment.",
       "iri": "https://w3id.org/hcmo/ontology/hcm/tech#Actuator",
       "label": "Actuator"
+    },
+    {
+      "comment": "An activity that calibrates a sensor and generates a time-bounded calibration record.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm/tech#CalibrationActivity",
+      "label": "Calibration Activity"
+    },
+    {
+      "comment": "An evidence-backed information record stating a sensor's calibration status during a specified validity interval.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm/tech#CalibrationRecord",
+      "label": "Calibration Record"
     },
     {
       "comment": "Physical computing hardware component of a home-cage monitoring system.",
@@ -285,10 +305,10 @@
   ],
   "counts": {
     "annotation_properties": 0,
-    "classes": 56,
-    "datatype_properties": 73,
-    "object_properties": 57,
-    "triples": 1280
+    "classes": 60,
+    "datatype_properties": 75,
+    "object_properties": 68,
+    "triples": 1397
   },
   "datatype_properties": [
     {
@@ -312,7 +332,7 @@
       "label": "has description"
     },
     {
-      "comment": "Records the unit used for enclosure dimension values.",
+      "comment": "Deprecated shared unit string. Each dimension now links to its own QUDT QuantityValue carrying qudt:hasUnit.",
       "iri": "https://w3id.org/hcmo/ontology/hcm#hasDimUnit",
       "label": "has dim unit"
     },
@@ -352,7 +372,7 @@
       "label": "has file format"
     },
     {
-      "comment": "Records the floor area value for an enclosure dimensions record.",
+      "comment": "Deprecated numeric literal. Use hasFloorAreaQuantity with a QUDT QuantityValue.",
       "iri": "https://w3id.org/hcmo/ontology/hcm#hasFloorArea",
       "label": "has floor area"
     },
@@ -367,12 +387,12 @@
       "label": "has food requirement"
     },
     {
-      "comment": "Records the height value of an enclosure dimensions record.",
+      "comment": "Deprecated numeric literal. Use hasHeightQuantity with a QUDT QuantityValue.",
       "iri": "https://w3id.org/hcmo/ontology/hcm#hasHeight",
       "label": "has height"
     },
     {
-      "comment": "Records the length value of an enclosure dimensions record.",
+      "comment": "Deprecated numeric literal. Use hasLengthQuantity with a QUDT QuantityValue.",
       "iri": "https://w3id.org/hcmo/ontology/hcm#hasLength",
       "label": "has length"
     },
@@ -390,6 +410,11 @@
       "comment": "Deprecated HCMO 0.0.1 term retained for backward compatibility.",
       "iri": "https://w3id.org/hcmo/ontology/hcm#hasNumericValue",
       "label": "has numeric value"
+    },
+    {
+      "comment": "Records the assessed operational-status value within a time-bounded operational status record.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#hasOperationalStatusValue",
+      "label": "has operational status value"
     },
     {
       "comment": "Deprecated in HCMO 0.1.0. Boolean flag indicating whether safety from threat is provided in a legacy need profile.",
@@ -417,7 +442,7 @@
       "label": "has storage path"
     },
     {
-      "comment": "Records the measurement unit associated with a quantitative observation result or measurement specification.",
+      "comment": "Deprecated unit string. Use qudt:hasUnit on a QUDT QuantityValue.",
       "iri": "https://w3id.org/hcmo/ontology/hcm#hasUnit",
       "label": "has unit"
     },
@@ -437,7 +462,7 @@
       "label": "has water requirement"
     },
     {
-      "comment": "Records the width value of an enclosure dimensions record.",
+      "comment": "Deprecated numeric literal. Use hasWidthQuantity with a QUDT QuantityValue.",
       "iri": "https://w3id.org/hcmo/ontology/hcm#hasWidth",
       "label": "has width"
     },
@@ -452,12 +477,12 @@
       "label": "is extendable"
     },
     {
-      "comment": "Indicates whether an enclosure is currently occupied by animals.",
+      "comment": "Deprecated timeless occupancy flag. Determine occupancy at an explicit reference time from HousingAssignment validity intervals.",
       "iri": "https://w3id.org/hcmo/ontology/hcm#isOccupied",
       "label": "is occupied"
     },
     {
-      "comment": "Indicates whether a monitored enclosure is currently operational.",
+      "comment": "Deprecated timeless operational flag. Use hasOperationalStatusRecord with a validity interval and generating assessment.",
       "iri": "https://w3id.org/hcmo/ontology/hcm#isOperational",
       "label": "is operational"
     },
@@ -507,7 +532,7 @@
       "label": "has strain"
     },
     {
-      "comment": "Records a treatment, intervention, or experimental condition assigned to a subject or group.",
+      "comment": "Deprecated ambiguous treatment string. Represent planned factor assignment through the study-factor model and executed treatment through an explicit provenance process.",
       "iri": "https://w3id.org/hcmo/ontology/hcm/bio#hasTreatment",
       "label": "has treatment"
     },
@@ -537,7 +562,7 @@
       "label": "has dusk duration"
     },
     {
-      "comment": "Records the gas type measured or specified in a gas concentration profile.",
+      "comment": "Deprecated gas-name string. Identify a gas-specific EnvironmentalProperty resource with specifiesProperty.",
       "iri": "https://w3id.org/hcmo/ontology/hcm/env#hasGasType",
       "label": "has gas type"
     },
@@ -562,7 +587,7 @@
       "label": "has unit"
     },
     {
-      "comment": "Records a literal value for an environmental measurement or specification.",
+      "comment": "Deprecated untyped literal. Use hasSpecifiedValue for specifications or sosa:hasResult for observations with QUDT QuantityValue nodes.",
       "iri": "https://w3id.org/hcmo/ontology/hcm/env#hasValue",
       "label": "has value"
     },
@@ -597,9 +622,14 @@
       "label": "has interval"
     },
     {
-      "comment": "Records the numeric value of a quantity result or measurement.",
+      "comment": "Deprecated numeric literal. Use qudt:numericValue on the QUDT QuantityValue result.",
       "iri": "https://w3id.org/hcmo/ontology/hcm/obs#hasNumericValue",
       "label": "has numeric value"
+    },
+    {
+      "comment": "Records the assessed calibration-status value within a time-bounded calibration record.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm/tech#hasCalibrationStatusValue",
+      "label": "has calibration status value"
     },
     {
       "comment": "Records the file format of a software or time-series artifact.",
@@ -622,7 +652,7 @@
       "label": "has protocol"
     },
     {
-      "comment": "Records the rate at which a sensor or data stream is sampled, including its unit.",
+      "comment": "Deprecated sampling-rate string. Use hasSamplingRateQuantity with a QUDT QuantityValue.",
       "iri": "https://w3id.org/hcmo/ontology/hcm/tech#hasSamplingRate",
       "label": "has sampling rate"
     },
@@ -652,13 +682,18 @@
       "label": "has version"
     },
     {
-      "comment": "Indicates whether a sensor or device has been calibrated.",
+      "comment": "Deprecated timeless calibration flag. Use hasCalibrationRecord with a validity interval and generating calibration activity.",
       "iri": "https://w3id.org/hcmo/ontology/hcm/tech#isCalibrated",
       "label": "is calibrated"
     }
   ],
   "namespace": "https://w3id.org/hcmo/ontology/hcm#",
   "object_properties": [
+    {
+      "comment": "Relates an operational assessment to the monitored enclosure whose operational state it evaluates.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#assessesEnclosure",
+      "label": "assesses enclosure"
+    },
     {
       "comment": "Deprecated in HCMO 0.1.0. Relates a sensor to a behavior or physiology process it captures.",
       "iri": "https://w3id.org/hcmo/ontology/hcm#captures",
@@ -720,14 +755,34 @@
       "label": "has enrichment"
     },
     {
+      "comment": "Relates an enclosure dimensions record to a QUDT quantity value for floor area.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#hasFloorAreaQuantity",
+      "label": "has floor area quantity"
+    },
+    {
       "comment": "Deprecated in HCMO 0.1.0. Links a system to its hardware component.",
       "iri": "https://w3id.org/hcmo/ontology/hcm#hasHardware",
       "label": "has hardware"
     },
     {
-      "comment": "A derived convenience relation from a monitored enclosure to biological subjects housed or tracked within it at a stated evaluation time. Time-bounded HousingAssignment records, not this shortcut, are authoritative for housing history.",
+      "comment": "Relates an enclosure dimensions record to a QUDT quantity value for height.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#hasHeightQuantity",
+      "label": "has height quantity"
+    },
+    {
+      "comment": "Relates an enclosure dimensions record to a QUDT quantity value for length.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#hasLengthQuantity",
+      "label": "has length quantity"
+    },
+    {
+      "comment": "Deprecated timeless shortcut. Derive enclosure membership at an explicit reference time from time-bounded HousingAssignment records.",
       "iri": "https://w3id.org/hcmo/ontology/hcm#hasMonitoredAnimals",
       "label": "has monitored animals"
+    },
+    {
+      "comment": "Relates a monitored enclosure to an evidence-backed, time-bounded operational status record.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#hasOperationalStatusRecord",
+      "label": "has operational status record"
     },
     {
       "comment": "Deprecated in HCMO 0.1.0. Deprecated legacy relation from an observation window to an observation condition.",
@@ -758,6 +813,11 @@
       "comment": "Deprecated HCMO 0.0.1 term retained for backward compatibility.",
       "iri": "https://w3id.org/hcmo/ontology/hcm#hasThriveProfile",
       "label": "has thrive profile"
+    },
+    {
+      "comment": "Relates an enclosure dimensions record to a QUDT quantity value for width.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm#hasWidthQuantity",
+      "label": "has width quantity"
     },
     {
       "comment": "Deprecated HCMO 0.0.1 term retained for backward compatibility.",
@@ -810,12 +870,12 @@
       "label": "belongs to group"
     },
     {
-      "comment": "Relates a subject to a behavior observation about that subject.",
+      "comment": "Deprecated subject-to-observation shortcut. Query the inverse of sosa:hasFeatureOfInterest instead.",
       "iri": "https://w3id.org/hcmo/ontology/hcm/bio#hasBehaviorObservation",
       "label": "has behavior observation"
     },
     {
-      "comment": "Relates a subject to a health-status observation about that subject.",
+      "comment": "Deprecated subject-to-observation shortcut. Query the inverse of sosa:hasFeatureOfInterest instead.",
       "iri": "https://w3id.org/hcmo/ontology/hcm/bio#hasHealthStatusObservation",
       "label": "has health status observation"
     },
@@ -830,42 +890,42 @@
       "label": "has member"
     },
     {
-      "comment": "Relates a subject to a weight observation about that subject.",
+      "comment": "Deprecated subject-to-observation shortcut. Query the inverse of sosa:hasFeatureOfInterest instead.",
       "iri": "https://w3id.org/hcmo/ontology/hcm/bio#hasWeightObservation",
       "label": "has weight observation"
     },
     {
-      "comment": "Relates an environmental profile, specification, or observation to the environmental property representing ambient temperature.",
+      "comment": "Deprecated role-conflating relation. Profiles use hasMeasurementSpec, specifications use specifiesProperty, and observations use sosa:observedProperty.",
       "iri": "https://w3id.org/hcmo/ontology/hcm/env#AmbientTemperature",
       "label": "ambient temperature"
     },
     {
-      "comment": "Relates an environmental profile, specification, or observation to the environmental property representing ammonia concentration.",
+      "comment": "Deprecated role-conflating relation. Profiles use hasMeasurementSpec, specifications use specifiesProperty, and observations use sosa:observedProperty.",
       "iri": "https://w3id.org/hcmo/ontology/hcm/env#AmmoniaConcentration",
       "label": "ammonia concentration"
     },
     {
-      "comment": "Relates an environmental profile, specification, or observation to the environmental property representing carbon dioxide concentration.",
+      "comment": "Deprecated role-conflating relation. Profiles use hasMeasurementSpec, specifications use specifiesProperty, and observations use sosa:observedProperty.",
       "iri": "https://w3id.org/hcmo/ontology/hcm/env#CarbonDioxideConcentration",
       "label": "carbon dioxide concentration"
     },
     {
-      "comment": "Relates an environmental profile, specification, or observation to the environmental property representing light intensity.",
+      "comment": "Deprecated role-conflating relation. Profiles use hasMeasurementSpec, specifications use specifiesProperty, and observations use sosa:observedProperty.",
       "iri": "https://w3id.org/hcmo/ontology/hcm/env#LightIntensity",
       "label": "light intensity"
     },
     {
-      "comment": "Relates an environmental profile, specification, or observation to the environmental property representing light state.",
+      "comment": "Deprecated role-conflating relation. Profiles use hasMeasurementSpec, specifications use specifiesProperty, and observations use sosa:observedProperty.",
       "iri": "https://w3id.org/hcmo/ontology/hcm/env#LightState",
       "label": "light state"
     },
     {
-      "comment": "Relates an environmental profile, specification, or observation to the environmental property representing oxygen concentration.",
+      "comment": "Deprecated role-conflating relation. Profiles use hasMeasurementSpec, specifications use specifiesProperty, and observations use sosa:observedProperty.",
       "iri": "https://w3id.org/hcmo/ontology/hcm/env#OxygenConcentration",
       "label": "oxygen concentration"
     },
     {
-      "comment": "Relates an environmental profile, specification, or observation to the environmental property representing relative humidity.",
+      "comment": "Deprecated role-conflating relation. Profiles use hasMeasurementSpec, specifications use specifiesProperty, and observations use sosa:observedProperty.",
       "iri": "https://w3id.org/hcmo/ontology/hcm/env#RelativeHumidity",
       "label": "relative humidity"
     },
@@ -890,9 +950,19 @@
       "label": "has measurement spec"
     },
     {
+      "comment": "Relates a measurement specification to a QUDT quantity value expressing its target or required value.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm/env#hasSpecifiedValue",
+      "label": "has specified value"
+    },
+    {
       "comment": "Relates a monitored enclosure to the thrive profile that specifies suitable husbandry or environmental conditions.",
       "iri": "https://w3id.org/hcmo/ontology/hcm/env#hasThriveProfile",
       "label": "has thrive profile"
+    },
+    {
+      "comment": "Relates a measurement specification to the environmental property for which it specifies a target or requirement.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm/env#specifiesProperty",
+      "label": "specifies property"
     },
     {
       "comment": "Deprecated HCMO 0.0.1 term retained for backward compatibility.",
@@ -900,7 +970,7 @@
       "label": "assigned to enclosure"
     },
     {
-      "comment": "Relates an observation to the condition under which it was made or interpreted; the condition model is intentionally left open.",
+      "comment": "A non-causal contextual link from an observation to a resource describing a condition relevant during interpretation. It does not assert a study factor, factor value, treatment assignment, or executed intervention.",
       "iri": "https://w3id.org/hcmo/ontology/hcm/obs#hasCondition",
       "label": "has condition"
     },
@@ -908,6 +978,11 @@
       "comment": "Relates an observation to the enclosure in which it occurs.",
       "iri": "https://w3id.org/hcmo/ontology/hcm/obs#occursIn",
       "label": "occurs in"
+    },
+    {
+      "comment": "Relates a calibration activity to the sensor that it calibrates.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm/tech#calibratesSensor",
+      "label": "calibrates sensor"
     },
     {
       "comment": "Relates a sensor to the property it observes or captures.",
@@ -923,6 +998,16 @@
       "comment": "Relates a monitored enclosure to an actuator associated with it.",
       "iri": "https://w3id.org/hcmo/ontology/hcm/tech#hasActuator",
       "label": "has actuator"
+    },
+    {
+      "comment": "Relates a sensor to an evidence-backed, time-bounded calibration record.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm/tech#hasCalibrationRecord",
+      "label": "has calibration record"
+    },
+    {
+      "comment": "Relates a sensor or time series to a QUDT quantity value expressing its sampling rate.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm/tech#hasSamplingRateQuantity",
+      "label": "has sampling rate quantity"
     },
     {
       "comment": "Relates a sensor to a monitored enclosure in which the sensor is physically installed. This relation does not imply that the sensor monitors that enclosure.",

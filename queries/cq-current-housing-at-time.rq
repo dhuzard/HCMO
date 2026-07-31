@@ -1,0 +1,16 @@
+PREFIX ex: <https://example.org/hcmo/minimal/>
+PREFIX hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?subject ?enclosure ?assignment
+WHERE {
+  VALUES ?referenceTime { "2026-01-01T12:00:00Z"^^xsd:dateTime }
+  ?subject hcm-bio:hasHousingAssignment ?assignment .
+  ?assignment hcm-bio:assignedToEnclosure ?enclosure ;
+              time:hasTime ?interval .
+  ?interval time:hasBeginning/time:inXSDDateTime ?start ;
+            time:hasEnd/time:inXSDDateTime ?end .
+  FILTER (?start <= ?referenceTime && ?referenceTime < ?end)
+  FILTER (?subject = ex:mouse-1)
+}
