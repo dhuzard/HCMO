@@ -8,7 +8,8 @@ A `hcm:MonitoredEnclosure` is a physical enclosure that:
 - houses one or more `hcm-bio:Subject` instances through
   `hcm:hasMonitoredAnimals`;
 - is monitored by `hcm-tech:Sensor` instances through
-  `hcm-tech:monitoredBy` (inverse: `hcm-tech:installedIn`); and
+  `hcm-tech:monitoredBy`; physical cage installation is represented separately
+  with `hcm-tech:installedIn`; and
 - may have an `hcm-env:EnvironmentProfile`.
 
 Animal-to-cage allocation is modeled explicitly with
@@ -64,8 +65,14 @@ passing merely because it failed to select the intended focus node.
 
 Competency questions run against the canonical ontology plus all positive
 example graphs. Negative fixtures are excluded. Every indexed CQ records its
-expected row count; successful parsing with an unreviewed empty result is not
-considered sufficient evidence.
+complete expected answer rows; the validator compares bindings, unbound values,
+values, and multiplicity. A matching count or an unreviewed empty result is not
+sufficient evidence.
+
+The ISA/STATO bridge has a separate evidence shape. It constrains the pinned
+Investigation/Study/Assay and LabProcess/File slice and includes an injected
+process/data cycle that must be non-conformant. This profile is evidence for the
+example boundary, not a claim of formal ISA RO-Crate conformance.
 
 ## Deferred decisions
 

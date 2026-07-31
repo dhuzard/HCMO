@@ -4,35 +4,67 @@
 @prefix hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#> .
 @prefix hcm-obs: <https://w3id.org/hcmo/ontology/hcm/obs#> .
 @prefix hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#> .
+@prefix obi: <http://purl.obolibrary.org/obo/OBI_> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix stato: <http://purl.obolibrary.org/obo/STATO_> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 ex:investigation a schema:Dataset ;
   schema:additionalType "Investigation" ;
+  schema:identifier "HCMO-ISA-EVIDENCE-001" ;
   schema:name "Example home-cage monitoring investigation" ;
+  schema:description "A minimal evidence graph linking an ISA-style sensor-recording workflow to HCMO, OBI, PROV-O, and STATO instances." ;
+  schema:license <https://creativecommons.org/publicdomain/zero/1.0/> ;
+  schema:datePublished "2026-07-30"^^xsd:date ;
   schema:hasPart ex:study .
 
 ex:study a schema:Dataset ;
   schema:additionalType "Study" ;
+  schema:identifier "HCMO-ISA-EVIDENCE-001-STUDY-1" ;
   schema:name "Example longitudinal housing study" ;
-  schema:about ex:housing-process, ex:acquisition-process ;
+  schema:about ex:ambient-temperature-factor, ex:ambient-temperature-group,
+    ex:housing-process, ex:acquisition-process, ex:activity-summary-process ;
   schema:hasPart ex:assay .
 
 ex:assay a schema:Dataset ;
   schema:additionalType "Assay" ;
+  schema:identifier "HCMO-ISA-EVIDENCE-001-ASSAY-1" ;
   schema:name "Home-cage activity assay" ;
-  schema:hasPart ex:activity-file .
+  schema:about ex:acquisition-process, ex:activity-summary-process ;
+  schema:hasPart ex:activity-file, ex:activity-summary-file .
 
 ex:animal-1 a bioschemas:Sample, hcm-bio:Subject ;
   schema:additionalType "Source" ;
   schema:name "animal-1" ;
+  schema:additionalProperty ex:ambient-temperature-22c ;
   rdfs:label "animal-1" ;
   hcm-bio:hasSpecies "Mus musculus" ;
+  hcm-bio:belongsToGroup ex:ambient-temperature-group ;
   hcm-bio:hasHousingAssignment ex:assignment-1 .
 
+ex:ambient-temperature-factor a hcm-bio:StudyFactors, obi:0000750 ;
+  schema:name "Ambient temperature study factor" ;
+  rdfs:label "Ambient temperature study factor" .
+
+ex:ambient-temperature-22c a schema:PropertyValue, stato:0000265 ;
+  schema:additionalType "FactorValue" ;
+  schema:name "Ambient temperature factor value" ;
+  schema:propertyID ex:ambient-temperature-factor ;
+  schema:value "22"^^xsd:decimal ;
+  schema:unitText "degree Celsius" .
+
+ex:ambient-temperature-group a hcm-bio:ExperimentalGroup, stato:0000193 ;
+  schema:name "22 degree Celsius group" ;
+  schema:additionalProperty ex:ambient-temperature-22c ;
+  rdfs:label "22 degree Celsius group" ;
+  hcm-bio:hasMember ex:animal-1 .
+
 ex:assignment-1 a hcm-bio:HousingAssignment ;
-  hcm-bio:assignedToEnclosure ex:cage-12 .
+  hcm-bio:assignedToEnclosure ex:cage-12 ;
+  prov:wasGeneratedBy ex:housing-process .
 
 ex:cage-12 a hcm:MonitoredEnclosure ;
   schema:name "Rack 3, cage 12" ;
@@ -48,14 +80,14 @@ ex:cage-12-dimensions a hcm:EnclosureDimensions ;
   hcm:hasHeight 18.0 ;
   hcm:hasDimUnit "cm" .
 
-ex:housing-protocol a bioschemas:LabProtocol ;
+ex:housing-protocol a bioschemas:LabProtocol, prov:Plan ;
   schema:name "Animal-to-cage allocation protocol" .
 
-ex:housing-process a bioschemas:LabProcess ;
+ex:housing-process a prov:Activity ;
   schema:name "Allocate animal-1 to cage-12" ;
-  schema:object ex:animal-1 ;
-  schema:result ex:assignment-1 ;
-  bioschemas:executesLabProtocol ex:housing-protocol .
+  rdfs:comment "Housing-assignment round-tripping remains an HCMO extension: this activity is deliberately not asserted as an ISA LabProcess because the generated HousingAssignment is neither a biological Sample nor a File." ;
+  prov:used ex:animal-1, ex:cage-12, ex:housing-protocol ;
+  prov:generated ex:assignment-1 .
 
 ex:sensor-1 a hcm-tech:Sensor ;
   schema:name "Infrared activity sensor" ;
@@ -63,10 +95,17 @@ ex:sensor-1 a hcm-tech:Sensor ;
   hcm-tech:hasSensorIdentifier "ir-1" ;
   hcm-tech:installedIn ex:cage-12 .
 
-ex:acquisition-process a bioschemas:LabProcess ;
-  schema:name "Acquire cage activity" ;
+ex:recording-protocol a bioschemas:LabProtocol, prov:Plan ;
+  schema:name "Infrared activity recording protocol" .
+
+ex:acquisition-process a bioschemas:LabProcess, prov:Activity, obi:0000070 ;
+  schema:name "Record cage activity" ;
+  rdfs:comment "The example IRI is retained for continuity. This execution generates new sensor observations and data; it is an OBI assay, not an OBI material-acquisition or information-acquisition process." ;
   schema:object ex:animal-1 ;
-  schema:result ex:activity-file .
+  schema:result ex:activity-file ;
+  bioschemas:executesLabProtocol ex:recording-protocol ;
+  prov:used ex:animal-1, ex:sensor-1 ;
+  prov:generated ex:activity-file .
 
 ex:activity-observation a hcm-obs:BehaviorObservation ;
   sosa:hasFeatureOfInterest ex:animal-1 ;
@@ -77,8 +116,32 @@ ex:activity-observation a hcm-obs:BehaviorObservation ;
 ex:activity-result a hcm-obs:BehaviorResult ;
   hcm-obs:hasBehaviorType "locomotor activity" .
 
-ex:activity-file a schema:MediaObject, hcm-tech:TimeSeries ;
+ex:activity-file a schema:MediaObject, hcm-tech:TimeSeries, prov:Entity ;
   schema:name "cage-12-activity.csv" ;
   schema:encodingFormat "text/csv" ;
   hcm-tech:hasFileFormat "text/csv" ;
-  hcm-tech:hasStoragePath "data/cage-12-activity.csv" .
+  hcm-tech:hasStoragePath "data/cage-12-activity.csv" ;
+  prov:wasGeneratedBy ex:acquisition-process .
+
+ex:summary-protocol a bioschemas:LabProtocol, prov:Plan ;
+  schema:name "Daily mean activity calculation" .
+
+ex:activity-summary-process a bioschemas:LabProcess, prov:Activity, obi:0200000 ;
+  schema:name "Calculate daily mean activity" ;
+  schema:object ex:activity-file ;
+  schema:result ex:activity-summary-file ;
+  bioschemas:executesLabProtocol ex:summary-protocol ;
+  prov:used ex:activity-file ;
+  prov:generated ex:activity-summary-file, ex:mean-activity .
+
+ex:activity-summary-file a schema:MediaObject, prov:Entity ;
+  schema:name "cage-12-daily-mean-activity.csv" ;
+  schema:encodingFormat "text/csv" ;
+  schema:about ex:mean-activity ;
+  prov:wasGeneratedBy ex:activity-summary-process .
+
+ex:mean-activity a schema:PropertyValue, prov:Entity, stato:0000401 ;
+  schema:name "Daily sample mean activity" ;
+  schema:value "143.2"^^xsd:decimal ;
+  schema:unitText "activity counts per hour" ;
+  prov:wasGeneratedBy ex:activity-summary-process .

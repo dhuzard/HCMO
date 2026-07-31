@@ -34,18 +34,24 @@ JSON-LD context.
 > downstream tools (e.g. the `hcmo-kgqa-lab` sync layer) read. Its shape is
 > treated as an API and kept stable across releases.
 
+See [`docs/UPPER-LEVEL-VIEW.md`](docs/UPPER-LEVEL-VIEW.md) for the simple
+end-user hierarchy and the optional source-faithful ontology-developer view.
+
 ## Repository layout
 
 ```
 hcmo.yaml                      # release manifest (name, version, namespace, modules, dist, shapes, queries, examples)
 ontology/
   modules/                     # hand-authored modular sources
+    external-upper.ttl         #   five-anchor end-user upper presentation
     hcm-core.ttl               #   core terms + owl:Ontology header (attribution)
     hcm-bio.ttl                #   subjects, experimental groups        (…/hcm/bio#)
     hcm-env.ttl                #   environment & measurements           (…/hcm/env#)
     hcm-obs.ttl                #   observations & results               (…/hcm/obs#)
     hcm-tech.ttl               #   sensors, devices, software & data    (…/hcm/tech#)
     hcm-compat.ttl             #   deprecated 0.0.1 IRIs + replacements
+  profiles/
+    external-upper-developer.ttl # optional source-faithful BFO/IAO hierarchy
   context.jsonld               # JSON-LD context for app developers
   legacy/                      # previous HCMO 1.0.0 + HCMO/MAPP 0.0.1 sources (not merged)
 dist/                          # GENERATED — never hand-edit
@@ -68,7 +74,8 @@ webapp/                        # optional Node.js authoring/blueprint app
 pip install -r tooling/requirements.txt
 
 python tooling/build.py      # regenerate dist/ + profile.json (idempotent, reproducible)
-python tooling/validate.py   # parse all TTL + pySHACL + competency queries (the CI gate)
+python tooling/validate.py   # parse + contract + SHACL + exact-answer CQs (the CI gate)
+python tooling/external_vocab.py --verify-network  # recheck pinned source bytes
 ```
 
 - **`tooling/build.py`** merges `ontology/modules/*.ttl` into `dist/` using a
@@ -76,8 +83,9 @@ python tooling/validate.py   # parse all TTL + pySHACL + competency queries (the
   output (clean diffs). Everything in `dist/` is generated — edit the modules,
   not the artifacts.
 - **`tooling/validate.py`** parses every TTL, runs the SHACL shapes against the
-  examples, and runs every `queries/cq-*.rq` against the merged graph; it exits
-  non-zero on failure. It is the same check the PR workflow runs.
+  examples, validates the dedicated acyclic ISA/STATO evidence slice, and checks
+  every `queries/cq-*.rq` against complete reviewed answers; it exits non-zero
+  on failure. It is the same check the PR workflow runs.
 
 ## Consuming the ontology
 
@@ -88,7 +96,11 @@ python tooling/validate.py   # parse all TTL + pySHACL + competency queries (the
   counts — ideal for sync layers and UIs.
 - **JSON-LD apps:** apply `ontology/context.jsonld` when exchanging data.
 - **Validation:** use `shapes/hcm-shapes.ttl` to validate payloads during
-  ingestion; see `examples/` for conformant and intentionally-invalid ABoxes.
+  ingestion; `shapes/isa-hcmo-evidence-shapes.ttl` covers the pinned ISA/STATO
+  bridge evidence. See `examples/` for conformant and intentionally-invalid
+  ABoxes.
+- **External source contract:** read `external-vocabularies.yaml` for pinned
+  versions, canonical term namespaces, used-term allowlists, and checksums.
 - **Everything is discoverable from `hcmo.yaml`** — resolve module, dist, shapes,
   queries, and example paths from there rather than hard-coding them.
 

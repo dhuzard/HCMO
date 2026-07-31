@@ -1,5 +1,7 @@
 {
   "@context": {
+    "BFO": "http://purl.obolibrary.org/obo/BFO_",
+    "IAO": "http://purl.obolibrary.org/obo/IAO_",
     "bibo": "http://purl.org/ontology/bibo/",
     "brick": "https://brickschema.org/schema/Brick#",
     "csvw": "http://www.w3.org/ns/csvw#",
@@ -451,16 +453,6 @@
       }
     },
     {
-      "@id": "_:cb2c85423b11c3882a7b16642ff1e482506431b0d742ab1502a033f5ed64335a7eb",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "hcm-tech:installedIn"
-      },
-      "owl:someValuesFrom": {
-        "@id": "hcm:MonitoredEnclosure"
-      }
-    },
-    {
       "@id": "_:cb2e2fa47f588537ba27e3abfcc8b262b6966da498cb153e5c1b0723f614306e65e",
       "@type": "owl:Restriction",
       "owl:allValuesFrom": {
@@ -630,7 +622,7 @@
       "rdfs:comment": "A group of biological subjects sharing an experimental condition, treatment, or study role.",
       "rdfs:label": "Experimental Group",
       "rdfs:subClassOf": {
-        "@id": "http://purl.obolibrary.org/obo/BFO_0000027"
+        "@id": "http://purl.obolibrary.org/obo/BFO_0000040"
       }
     },
     {
@@ -1478,9 +1470,6 @@
       "rdfs:label": "Sensor",
       "rdfs:subClassOf": [
         {
-          "@id": "_:cb2c85423b11c3882a7b16642ff1e482506431b0d742ab1502a033f5ed64335a7eb"
-        },
-        {
           "@id": "http://purl.obolibrary.org/obo/BFO_0000040"
         },
         {
@@ -1668,7 +1657,7 @@
     {
       "@id": "hcm-tech:installedIn",
       "@type": "owl:ObjectProperty",
-      "rdfs:comment": "Relates a sensor to the monitored enclosure in which it is installed.",
+      "rdfs:comment": "Relates a sensor to a monitored enclosure in which the sensor is physically installed. This relation does not imply that the sensor monitors that enclosure.",
       "rdfs:domain": {
         "@id": "hcm-tech:Sensor"
       },
@@ -1692,10 +1681,7 @@
     {
       "@id": "hcm-tech:monitoredBy",
       "@type": "owl:ObjectProperty",
-      "owl:inverseOf": {
-        "@id": "hcm-tech:installedIn"
-      },
-      "rdfs:comment": "Relates a monitored enclosure to a sensor installed in or monitoring it.",
+      "rdfs:comment": "Relates a monitored enclosure to a sensor that monitors it, independently of whether the sensor is physically installed in that enclosure.",
       "rdfs:domain": {
         "@id": "hcm:MonitoredEnclosure"
       },
@@ -2516,7 +2502,7 @@
         "@id": "https://w3id.org/hcmo/ontology/hcm/0.0.1"
       },
       "owl:deprecated": true,
-      "rdfs:comment": "Deprecated in HCMO 0.1.0 with no context-free replacement because its subject was an aggregate system. For a sensor monitoring an enclosure, use hcm-tech:monitoredBy and its inverse hcm-tech:installedIn.",
+      "rdfs:comment": "Deprecated in HCMO 0.1.0 with no context-free replacement because its subject was an aggregate system. For a sensor monitoring an enclosure, use hcm-tech:monitoredBy. Use hcm-tech:installedIn separately only for physical installation.",
       "rdfs:label": "has sensor"
     },
     {
@@ -2819,6 +2805,100 @@
       "rdfs:label": "width"
     },
     {
+      "@id": "http://purl.obolibrary.org/obo/BFO_0000001",
+      "@type": "owl:Class",
+      "dcterms:source": {
+        "@id": "http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "entity"
+      },
+      "rdfs:subClassOf": {
+        "@id": "owl:Thing"
+      },
+      "skos:definition": {
+        "@language": "en",
+        "@value": "(Elucidation) An entity is anything that exists or has existed or will exist"
+      }
+    },
+    {
+      "@id": "http://purl.obolibrary.org/obo/BFO_0000015",
+      "@type": "owl:Class",
+      "dcterms:source": {
+        "@id": "http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "process"
+      },
+      "rdfs:subClassOf": {
+        "@id": "http://purl.obolibrary.org/obo/BFO_0000001"
+      },
+      "skos:definition": {
+        "@language": "en",
+        "@value": "(Elucidation) p is a process means p is an occurrent that has some temporal proper part and for some time t, p has some material entity as participant"
+      }
+    },
+    {
+      "@id": "http://purl.obolibrary.org/obo/BFO_0000019",
+      "@type": "owl:Class",
+      "dcterms:source": {
+        "@id": "http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "quality"
+      },
+      "rdfs:subClassOf": {
+        "@id": "http://purl.obolibrary.org/obo/BFO_0000001"
+      },
+      "skos:definition": {
+        "@language": "en",
+        "@value": "(Elucidation) A quality is a specifically dependent continuant that, in contrast to roles and dispositions, does not require any further process in order to be realized"
+      }
+    },
+    {
+      "@id": "http://purl.obolibrary.org/obo/BFO_0000040",
+      "@type": "owl:Class",
+      "dcterms:source": {
+        "@id": "http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "material entity"
+      },
+      "rdfs:subClassOf": {
+        "@id": "http://purl.obolibrary.org/obo/BFO_0000001"
+      },
+      "skos:definition": {
+        "@language": "en",
+        "@value": "(Elucidation) A material entity is an independent continuant that at all times at which it exists has some portion of matter as continuant part"
+      }
+    },
+    {
+      "@id": "http://purl.obolibrary.org/obo/IAO_0000030",
+      "@type": "owl:Class",
+      "dcterms:source": {
+        "@id": "http://purl.obolibrary.org/obo/iao/2026-03-30/iao.owl"
+      },
+      "rdfs:label": {
+        "@language": "en",
+        "@value": "information content entity"
+      },
+      "rdfs:subClassOf": {
+        "@id": "http://purl.obolibrary.org/obo/BFO_0000001"
+      },
+      "skos:altLabel": {
+        "@language": "en",
+        "@value": "information entity"
+      },
+      "skos:definition": {
+        "@language": "en",
+        "@value": "A generically dependent continuant that is about some thing."
+      }
+    },
+    {
       "@id": "https://orcid.org/0000-0002-2923-9790",
       "@type": "schema:Person",
       "schema:name": "Pierre Larmande"
@@ -2852,6 +2932,21 @@
       "@id": "https://orcid.org/0009-0008-2489-8106",
       "@type": "schema:Person",
       "schema:name": "Cyril Gilbert"
+    },
+    {
+      "@id": "https://w3id.org/hcmo/ontology/external/upper-presentation",
+      "@type": "owl:Ontology",
+      "dcterms:source": [
+        {
+          "@id": "http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl"
+        },
+        {
+          "@id": "http://purl.obolibrary.org/obo/iao/2026-03-30/iao.owl"
+        }
+      ],
+      "owl:versionInfo": "2026-07-31",
+      "rdfs:comment": "A checksummed, flattened presentation of five canonical BFO/IAO anchors for HCMO end users. Its shortcut hierarchy is entailed by the pinned sources; it does not replace BFO or IAO and does not assert equivalence with PROV-O, SIO, SULO, or ONTOP.",
+      "rdfs:label": "HCMO end-user upper-level presentation"
     },
     {
       "@id": "https://w3id.org/hcmo/ontology/hcm",

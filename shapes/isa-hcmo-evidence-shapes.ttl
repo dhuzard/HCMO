@@ -1,0 +1,119 @@
+@prefix bioschemas: <https://bioschemas.org/> .
+@prefix ex: <https://example.org/hcmo/isa-crate/> .
+@prefix hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix stato: <http://purl.obolibrary.org/obo/STATO_> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:InvestigationEvidenceShape a sh:NodeShape ;
+  sh:targetNode ex:investigation ;
+  sh:class schema:Dataset ;
+  sh:property [ sh:path schema:additionalType ; sh:hasValue "Investigation" ] ;
+  sh:property [ sh:path schema:identifier ; sh:minCount 1 ; sh:maxCount 1 ] ;
+  sh:property [ sh:path schema:name ; sh:minCount 1 ] ;
+  sh:property [ sh:path schema:description ; sh:minCount 1 ] ;
+  sh:property [ sh:path schema:license ; sh:minCount 1 ] ;
+  sh:property [
+    sh:path schema:datePublished ;
+    sh:datatype xsd:date ;
+    sh:minCount 1 ;
+    sh:maxCount 1
+  ] ;
+  sh:property [ sh:path schema:hasPart ; sh:hasValue ex:study ] .
+
+ex:StudyEvidenceShape a sh:NodeShape ;
+  sh:targetNode ex:study ;
+  sh:class schema:Dataset ;
+  sh:property [ sh:path schema:additionalType ; sh:hasValue "Study" ] ;
+  sh:property [ sh:path schema:identifier ; sh:minCount 1 ; sh:maxCount 1 ] ;
+  sh:property [ sh:path schema:name ; sh:minCount 1 ] ;
+  sh:property [ sh:path schema:hasPart ; sh:hasValue ex:assay ] .
+
+ex:AssayEvidenceShape a sh:NodeShape ;
+  sh:targetNode ex:assay ;
+  sh:class schema:Dataset ;
+  sh:property [ sh:path schema:additionalType ; sh:hasValue "Assay" ] ;
+  sh:property [ sh:path schema:identifier ; sh:minCount 1 ; sh:maxCount 1 ] ;
+  sh:property [ sh:path schema:name ; sh:minCount 1 ] ;
+  sh:property [ sh:path schema:hasPart ; sh:hasValue ex:activity-file ] ;
+  sh:property [ sh:path schema:hasPart ; sh:hasValue ex:activity-summary-file ] .
+
+ex:LabProcessEvidenceShape a sh:NodeShape ;
+  sh:targetClass bioschemas:LabProcess ;
+  sh:property [
+    sh:path bioschemas:executesLabProtocol ;
+    sh:class bioschemas:LabProtocol ;
+    sh:minCount 1 ;
+    sh:maxCount 1
+  ] ;
+  sh:property [ sh:path schema:object ; sh:nodeKind sh:IRI ; sh:minCount 1 ] ;
+  sh:property [
+    sh:path schema:result ;
+    sh:minCount 1 ;
+    sh:or (
+      [ sh:class bioschemas:Sample ]
+      [ sh:class schema:MediaObject ]
+    )
+  ] ;
+  sh:property [ sh:path prov:used ; sh:minCount 1 ] ;
+  sh:property [ sh:path prov:generated ; sh:minCount 1 ] ;
+  sh:sparql [
+    sh:message "The ISA process/data graph must be acyclic." ;
+    sh:select """
+      PREFIX schema: <https://schema.org/>
+      SELECT $this
+      WHERE {
+        $this (schema:result/^schema:object)+ $this .
+      }
+    """
+  ] ;
+  sh:sparql [
+    sh:message "An HCMO HousingAssignment is not an ISA Sample or File result." ;
+    sh:select """
+      PREFIX hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#>
+      PREFIX schema: <https://schema.org/>
+      SELECT $this
+      WHERE {
+        $this schema:result ?result .
+        ?result a hcm-bio:HousingAssignment .
+      }
+    """
+  ] .
+
+ex:RawFileEvidenceShape a sh:NodeShape ;
+  sh:targetNode ex:activity-file ;
+  sh:class schema:MediaObject ;
+  sh:class prov:Entity ;
+  sh:property [
+    sh:path prov:wasGeneratedBy ;
+    sh:hasValue ex:acquisition-process ;
+    sh:minCount 1 ;
+    sh:maxCount 1
+  ] .
+
+ex:FactorValueEvidenceShape a sh:NodeShape ;
+  sh:targetNode ex:ambient-temperature-22c ;
+  sh:class schema:PropertyValue ;
+  sh:class stato:0000265 ;
+  sh:property [ sh:path schema:additionalType ; sh:hasValue "FactorValue" ] ;
+  sh:property [
+    sh:path schema:propertyID ;
+    sh:hasValue ex:ambient-temperature-factor ;
+    sh:minCount 1 ;
+    sh:maxCount 1
+  ] ;
+  sh:property [ sh:path schema:value ; sh:minCount 1 ; sh:maxCount 1 ] .
+
+ex:StatisticalResultEvidenceShape a sh:NodeShape ;
+  sh:targetNode ex:mean-activity ;
+  sh:class stato:0000401 ;
+  sh:class prov:Entity ;
+  sh:property [
+    sh:path prov:wasGeneratedBy ;
+    sh:hasValue ex:activity-summary-process ;
+    sh:minCount 1 ;
+    sh:maxCount 1
+  ] .

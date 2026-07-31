@@ -9,11 +9,19 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
    xmlns:schema="https://schema.org/"
+   xmlns:skos="http://www.w3.org/2004/02/skos/core#"
    xmlns:vann="http://purl.org/vocab/vann/"
 >
   <rdf:Description rdf:nodeID="cbf75d79e2c71e2536381f40cb0dc0b847de19d7f047e8bb469ae5918d1a4f7962">
     <rdf:first rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#EnvironmentProfile"/>
     <rdf:rest rdf:nodeID="cb188eef46dca4ef9d088086ce126c4cce9502f0d99f10239be362774b694c09c64"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000040">
+    <dcterms:source rdf:resource="http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">material entity</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000001"/>
+    <skos:definition xml:lang="en">(Elucidation) A material entity is an independent continuant that at all times at which it exists has some portion of matter as continuant part</skos:definition>
   </rdf:Description>
   <rdf:Description rdf:nodeID="cb13893241617ffd78af4c17a3453b4e005c3ae52d6ac5192a6c91220266bcd7de1">
     <rdf:first rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#Sensor"/>
@@ -336,11 +344,17 @@
     <rdfs:label>Protocol</rdfs:label>
     <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
   </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#installedIn">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment>Relates a sensor to a monitored enclosure in which the sensor is physically installed. This relation does not imply that the sensor monitors that enclosure.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#Sensor"/>
+    <rdfs:label>installed in</rdfs:label>
+    <rdfs:range rdf:resource="https://w3id.org/hcmo/ontology/hcm#MonitoredEnclosure"/>
+  </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#Sensor">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:comment>A device that captures signals related to behavior, physiology, or enclosure environment.</rdfs:comment>
     <rdfs:label>Sensor</rdfs:label>
-    <rdfs:subClassOf rdf:nodeID="cb2c85423b11c3882a7b16642ff1e482506431b0d742ab1502a033f5ed64335a7eb"/>
     <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
     <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/sosa/Sensor"/>
   </rdf:Description>
@@ -514,6 +528,13 @@
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <owl:unionOf rdf:nodeID="cb1016c1014e375a4eb8eea2ea88b7d2e77cf0960b695e840a2d388b08c4411ed1c"/>
   </rdf:Description>
+  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000015">
+    <dcterms:source rdf:resource="http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">process</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000001"/>
+    <skos:definition xml:lang="en">(Elucidation) p is a process means p is an occurrent that has some temporal proper part and for some time t, p has some material entity as participant</skos:definition>
+  </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#length">
     <dcterms:isReplacedBy rdf:resource="https://w3id.org/hcmo/ontology/hcm#hasLength"/>
     <dcterms:source rdf:resource="https://w3id.org/hcmo/ontology/hcm/0.0.1"/>
@@ -637,6 +658,14 @@
     <rdfs:label>has width</rdfs:label>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
   </rdf:Description>
+  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/IAO_0000030">
+    <dcterms:source rdf:resource="http://purl.obolibrary.org/obo/iao/2026-03-30/iao.owl"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">information content entity</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000001"/>
+    <skos:altLabel xml:lang="en">information entity</skos:altLabel>
+    <skos:definition xml:lang="en">A generically dependent continuant that is about some thing.</skos:definition>
+  </rdf:Description>
   <rdf:Description rdf:nodeID="cb1b5e7ce0a8702fc2e5ad885d909ee8fad903adad8453dd1e674f16403e06d74be">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <owl:unionOf rdf:nodeID="cb26cf125c2997ec9c247a20bd5a2fe0941e892feb598b69ad1e9bb033a54b2a345"/>
@@ -704,13 +733,6 @@
     <rdfs:label>Study Factors</rdfs:label>
     <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
   </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#installedIn">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:comment>Relates a sensor to the monitored enclosure in which it is installed.</rdfs:comment>
-    <rdfs:domain rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#Sensor"/>
-    <rdfs:label>installed in</rdfs:label>
-    <rdfs:range rdf:resource="https://w3id.org/hcmo/ontology/hcm#MonitoredEnclosure"/>
-  </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#BehaviorObservation">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:comment>A SOSA-style observation about the behavior of a subject in a home-cage monitoring context.</rdfs:comment>
@@ -736,6 +758,14 @@
     <rdfs:domain rdf:nodeID="cb117924e50c2c64c53c39c30f238998341fb79810495ffdb7e760c10eb169b7eb0"/>
     <rdfs:label>carbon dioxide concentration</rdfs:label>
     <rdfs:range rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#EnvironmentalProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/external/upper-presentation">
+    <dcterms:source rdf:resource="http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl"/>
+    <dcterms:source rdf:resource="http://purl.obolibrary.org/obo/iao/2026-03-30/iao.owl"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <rdfs:comment>A checksummed, flattened presentation of five canonical BFO/IAO anchors for HCMO end users. Its shortcut hierarchy is entailed by the pinned sources; it does not replace BFO or IAO and does not assert equivalence with PROV-O, SIO, SULO, or ONTOP.</rdfs:comment>
+    <rdfs:label>HCMO end-user upper-level presentation</rdfs:label>
+    <owl:versionInfo>2026-07-31</owl:versionInfo>
   </rdf:Description>
   <rdf:Description rdf:nodeID="cb267d4d105c2ddc6181a39af02fe0ac92d9559c10796ba13ef7391e66a1d40e1f3">
     <rdf:first rdf:resource="https://w3id.org/hcmo/ontology/hcm/bio#ExperimentalGroup"/>
@@ -893,6 +923,13 @@
     <owl:allValuesFrom rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#LightCycle"/>
     <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#hasLightCycle"/>
   </rdf:Description>
+  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000019">
+    <dcterms:source rdf:resource="http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">quality</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000001"/>
+    <skos:definition xml:lang="en">(Elucidation) A quality is a specifically dependent continuant that, in contrast to roles and dispositions, does not require any further process in order to be realized</skos:definition>
+  </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#hasSensorType">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
     <rdfs:comment>Records the functional type or category of a sensor.</rdfs:comment>
@@ -968,14 +1005,6 @@
     <rdfs:label>Enclosure</rdfs:label>
     <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#monitoredBy">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:comment>Relates a monitored enclosure to a sensor installed in or monitoring it.</rdfs:comment>
-    <rdfs:domain rdf:resource="https://w3id.org/hcmo/ontology/hcm#MonitoredEnclosure"/>
-    <rdfs:label>monitored by</rdfs:label>
-    <rdfs:range rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#Sensor"/>
-    <owl:inverseOf rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#installedIn"/>
-  </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#isCalibrated">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
     <rdfs:comment>Indicates whether a sensor or device has been calibrated.</rdfs:comment>
@@ -1009,6 +1038,13 @@
   <rdf:Description rdf:nodeID="cb16d6e8ffe5d223218a28922ba7a439def1b4ab44417fce6742af984053e4ac90b">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <owl:unionOf rdf:nodeID="cb13faf2cbedfb2c67bdf1c3253f27dfcb8a041d6767da0094cc966e80e0d37a85b"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#monitoredBy">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment>Relates a monitored enclosure to a sensor that monitors it, independently of whether the sensor is physically installed in that enclosure.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/hcmo/ontology/hcm#MonitoredEnclosure"/>
+    <rdfs:label>monitored by</rdfs:label>
+    <rdfs:range rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#Sensor"/>
   </rdf:Description>
   <rdf:Description rdf:nodeID="cb236c2967ad9b3b4e9c1122096685de1178c66157d5db4b7034f3b8a69c7eb748b">
     <rdf:first rdf:resource="https://w3id.org/hcmo/ontology/hcm/obs#EnvironmentObservation"/>
@@ -1084,13 +1120,20 @@
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#hasSensor">
     <dcterms:source rdf:resource="https://w3id.org/hcmo/ontology/hcm/0.0.1"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:comment>Deprecated in HCMO 0.1.0 with no context-free replacement because its subject was an aggregate system. For a sensor monitoring an enclosure, use hcm-tech:monitoredBy and its inverse hcm-tech:installedIn.</rdfs:comment>
+    <rdfs:comment>Deprecated in HCMO 0.1.0 with no context-free replacement because its subject was an aggregate system. For a sensor monitoring an enclosure, use hcm-tech:monitoredBy. Use hcm-tech:installedIn separately only for physical installation.</rdfs:comment>
     <rdfs:label>has sensor</rdfs:label>
     <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
   </rdf:Description>
   <rdf:Description rdf:nodeID="cb13faf2cbedfb2c67bdf1c3253f27dfcb8a041d6767da0094cc966e80e0d37a85b">
     <rdf:first rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#MeasurementSpecification"/>
     <rdf:rest rdf:nodeID="cb1aeddc7151121e09dd8d6351d4b5e23861848f8b13722ed3f2d3f605fa0e0c655"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000001">
+    <dcterms:source rdf:resource="http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">entity</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <skos:definition xml:lang="en">(Elucidation) An entity is anything that exists or has existed or will exist</skos:definition>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#hasDateOfBirth">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
@@ -1716,12 +1759,6 @@
     <rdf:first rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#Hardware"/>
     <rdf:rest rdf:nodeID="cb25ed1587224cf963a7ab8517e40354b90a0979994730a4dc521a908c427068335"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#ExperimentalGroup">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:comment>A group of biological subjects sharing an experimental condition, treatment, or study role.</rdfs:comment>
-    <rdfs:label>Experimental Group</rdfs:label>
-    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000027"/>
-  </rdf:Description>
   <rdf:Description rdf:nodeID="cb1927c465fe67d6061244df711e478e344fe04c3c7a8f4c8877d678c13a7c536b2">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
     <owl:allValuesFrom rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#Sensor"/>
@@ -1800,6 +1837,12 @@
     <rdf:first rdf:resource="https://w3id.org/hcmo/ontology/hcm/obs#EnvironmentObservation"/>
     <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
   </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#ExperimentalGroup">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>A group of biological subjects sharing an experimental condition, treatment, or study role.</rdfs:comment>
+    <rdfs:label>Experimental Group</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  </rdf:Description>
   <rdf:Description rdf:about="https://orcid.org/0000-0003-2204-2466">
     <rdf:type rdf:resource="https://schema.org/Person"/>
     <schema:name>Gaoussou Sanou</schema:name>
@@ -1823,11 +1866,6 @@
   <rdf:Description rdf:nodeID="cb2afc07bfbe78e7778680cae7ddec5128f9342b2f094b9b039b0fd6d664b310ec3">
     <rdf:first rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#Sensor"/>
     <rdf:rest rdf:nodeID="cb1d3a8b688f2bddc32f7795c8de7e37b27b70e47e20564e46e9bbee179d4a048ac"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="cb2c85423b11c3882a7b16642ff1e482506431b0d742ab1502a033f5ed64335a7eb">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#installedIn"/>
-    <owl:someValuesFrom rdf:resource="https://w3id.org/hcmo/ontology/hcm#MonitoredEnclosure"/>
   </rdf:Description>
   <rdf:Description rdf:nodeID="cb245b80691df53cfdfcc739764ab62396227a9903aa5efe0cfc1a0c092ef1ee4f8">
     <rdf:first rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#MeasurementSpecification"/>

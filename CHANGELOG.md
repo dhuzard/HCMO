@@ -7,10 +7,24 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Added
 
-- Added a checksummed HermiT evaluation report for the canonical HCMO 0.2.0
-  OWL artifact and updated the resource-paper claims to match implemented
-  modules, alignments, SHACL validation, and competency-query results.
-- Added the signed A06 class audit for all 29 active local classes and 13
+- Added `external-vocabularies.yaml` with authoritative versions, canonical
+  namespaces, used-term allowlists, and SHA-256 checksums for ten external
+  semantic/exchange sources; added offline contract validation plus optional
+  network checksum verification.
+- Added a five-anchor BFO 2020 / IAO 2026-03-30 end-user presentation plus an
+  optional source-faithful developer profile. The default hierarchy hides
+  continuant/dependent-continuant intermediates while retaining canonical IRIs,
+  source definitions, and developer compatibility without full imports.
+- Added a pinned, acyclic ISA/STATO evidence slice linking a recording protocol,
+  OBI assay, raw file, OBI data transformation, derived file, STATO sample mean,
+  study factor, factor level, experimental group, subject, sensor, and enclosure.
+- Added dedicated ISA evidence shapes, including an injected cycle-rejection
+  probe, and three provenance/factor/statistical-result competency questions.
+- Added a checksummed HermiT evaluation report and scoped human Protégé review
+  for the canonical HCMO 0.2.0 OWL artifact; updated the resource-paper claims
+  to match implemented modules, alignments, SHACL validation, and
+  competency-query results.
+- Added the signed A06 class audit for all 29 active local classes and 12
   directly used external class anchors, with reproducible metadata,
   generated-profile, restriction, coverage, and decision checks.
 - Expanded the signed C01 property audit across all 81 active local
@@ -22,14 +36,34 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Changed
 
+- Separated enclosure monitoring from physical sensor installation: removed the
+  incorrect `monitoredBy`/`installedIn` inverse axiom, removed the Sensor
+  installation existential, relaxed the SHACL installation cardinality, and
+  added a conforming rack-level monitoring example.
+- Recorded Philippe Rocca-Serra's follow-up guidance on a readable upper-level
+  presentation, corrected the process-side PROV-O term to `prov:Activity`, and
+  distinguished sensor procurement, retrieval of existing information, and
+  sensor recording in the OBI/ISA design notes and bridge example. STATO/HCMO
+  class mappings and formal ISA conformance remain review work; no new
+  alignment axiom is asserted.
 - Qualified SemTS alignment as provisional and documented that its canonical
   term IRIs and semantic fit remain unvalidated; added an explicit provisional
   edition policy for the developing `sosa:Property` term.
 - Made pySHACL validation ontology-aware with the documented RDFS entailment
   contract, while keeping OWL consistency checking in HermiT.
 - Run competency questions over the ontology plus positive examples and require
-  reviewed exact row counts instead of accepting unexamined empty results.
-- No ontology terms, axioms, shapes, or generated release artifacts changed.
+  complete reviewed answer rows rather than accepting matching counts or
+  unexamined empty results.
+- Kept housing assignment outside `schema:result`: the unresolved allocation is
+  a PROV activity that generates an HCMO record, not a claimed conformant ISA
+  LabProcess output.
+- Exposed Experimental Group under Material entity by default and retained its
+  more precise BFO object-aggregate parent in the optional developer profile.
+- Adopted the paper's three-level claim-strength policy: implemented semantic
+  reuse/alignment, validated interoperability evidence, and formal profile
+  conformance. Recorded the accepted vocabulary-by-vocabulary classification;
+  provisional references are not counted as implemented reuse.
+- No HCMO class mapping axiom or new local process/statistics term was added.
 
 ### Renamed
 

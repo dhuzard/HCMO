@@ -19,6 +19,7 @@ version_iri: https://w3id.org/hcmo/ontology/hcm/0.2.0
 
 # Hand-authored modular sources, in load order. The merged graph is the union.
 modules:
+  - ontology/modules/external-upper.ttl
   - ontology/modules/hcm-core.ttl
   - ontology/modules/hcm-bio.ttl
   - ontology/modules/hcm-env.ttl

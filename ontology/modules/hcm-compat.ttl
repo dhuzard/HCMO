@@ -311,7 +311,7 @@
 <https://w3id.org/hcmo/ontology/hcm#hasSensor> a <http://www.w3.org/2002/07/owl#ObjectProperty> ;
     owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "has sensor" ;
-    rdfs:comment "Deprecated in HCMO 0.1.0 with no context-free replacement because its subject was an aggregate system. For a sensor monitoring an enclosure, use hcm-tech:monitoredBy and its inverse hcm-tech:installedIn." ;
+    rdfs:comment "Deprecated in HCMO 0.1.0 with no context-free replacement because its subject was an aggregate system. For a sensor monitoring an enclosure, use hcm-tech:monitoredBy. Use hcm-tech:installedIn separately only for physical installation." ;
     dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> .
 
 <https://w3id.org/hcmo/ontology/hcm#hasSocialContacts> a <http://www.w3.org/2002/07/owl#DatatypeProperty> ;

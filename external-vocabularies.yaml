@@ -1,0 +1,234 @@
+# Pinned external semantic and exchange sources used by HCMO.
+#
+# This contract is intentionally separate from hcmo.yaml. The shape of
+# hcmo.yaml remains the downstream release API; this file governs source
+# identity, canonical namespaces, used-term allowlists, and byte checksums.
+contract_version: 1
+reviewed_on: 2026-07-31
+scope: semantic anchors, temporal and sensing terms, and ISA/STATO evidence
+
+curated_upper_subset:
+  path: ontology/modules/external-upper.ttl
+  terms:
+    - http://purl.obolibrary.org/obo/BFO_0000001
+    - http://purl.obolibrary.org/obo/BFO_0000015
+    - http://purl.obolibrary.org/obo/BFO_0000019
+    - http://purl.obolibrary.org/obo/BFO_0000040
+    - http://purl.obolibrary.org/obo/IAO_0000030
+
+developer_upper_profile:
+  path: ontology/profiles/external-upper-developer.ttl
+  terms:
+    - http://purl.obolibrary.org/obo/BFO_0000001
+    - http://purl.obolibrary.org/obo/BFO_0000002
+    - http://purl.obolibrary.org/obo/BFO_0000003
+    - http://purl.obolibrary.org/obo/BFO_0000004
+    - http://purl.obolibrary.org/obo/BFO_0000015
+    - http://purl.obolibrary.org/obo/BFO_0000019
+    - http://purl.obolibrary.org/obo/BFO_0000020
+    - http://purl.obolibrary.org/obo/BFO_0000027
+    - http://purl.obolibrary.org/obo/BFO_0000031
+    - http://purl.obolibrary.org/obo/BFO_0000040
+    - http://purl.obolibrary.org/obo/IAO_0000030
+
+vocabularies:
+  bfo:
+    status: active-anchor
+    authoritative_version: "BFO 2020 / ISO 21838-2 projection"
+    version_iri: http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl
+    canonical_term_namespaces:
+      - http://purl.obolibrary.org/obo/BFO_
+    artifacts:
+      - role: ontology
+        url: https://raw.githubusercontent.com/BFO-ontology/BFO-2020/dd89f4a193038b66ef0e891d546c05a5b477f40f/21838-2/owl/bfo-core.owl
+        sha256: b65c817a7a25501499d287981aea972f2ce33146dcfb855915a459f6a051718d
+    used_terms:
+      - http://purl.obolibrary.org/obo/BFO_0000001
+      - http://purl.obolibrary.org/obo/BFO_0000002
+      - http://purl.obolibrary.org/obo/BFO_0000003
+      - http://purl.obolibrary.org/obo/BFO_0000004
+      - http://purl.obolibrary.org/obo/BFO_0000015
+      - http://purl.obolibrary.org/obo/BFO_0000019
+      - http://purl.obolibrary.org/obo/BFO_0000020
+      - http://purl.obolibrary.org/obo/BFO_0000027
+      - http://purl.obolibrary.org/obo/BFO_0000031
+      - http://purl.obolibrary.org/obo/BFO_0000040
+
+  iao:
+    status: active-anchor
+    authoritative_version: "2026-03-30"
+    version_iri: http://purl.obolibrary.org/obo/iao/2026-03-30/iao.owl
+    canonical_term_namespaces:
+      - http://purl.obolibrary.org/obo/IAO_
+    artifacts:
+      - role: ontology
+        url: https://raw.githubusercontent.com/information-artifact-ontology/IAO/3006aedacbf813ffd1d2ac15cda10766ca9ed388/iao.owl
+        sha256: c27ff2964a2ad8165bc365698b628aae95108411384aa4450e6e1b1e82bf0f41
+    used_terms:
+      - http://purl.obolibrary.org/obo/IAO_0000030
+
+  sosa-2017:
+    status: active-recommendation
+    authoritative_version: "W3C Recommendation 2017-10-19"
+    version_iri: https://www.w3.org/TR/2017/REC-vocab-ssn-20171019/
+    canonical_term_namespaces:
+      - http://www.w3.org/ns/sosa/
+    artifacts:
+      - role: ontology
+        url: https://www.w3.org/ns/sosa/sosa.ttl
+        sha256: c70b0d1c843c0047e4c98e0a89392e46a05752ff6365bda7f7f55303905a0392
+    used_terms:
+      - http://www.w3.org/ns/sosa/Actuator
+      - http://www.w3.org/ns/sosa/Observation
+      - http://www.w3.org/ns/sosa/Result
+      - http://www.w3.org/ns/sosa/Sensor
+      - http://www.w3.org/ns/sosa/hasFeatureOfInterest
+      - http://www.w3.org/ns/sosa/hasResult
+      - http://www.w3.org/ns/sosa/madeBySensor
+      - http://www.w3.org/ns/sosa/observedProperty
+      - http://www.w3.org/ns/sosa/observes
+      - http://www.w3.org/ns/sosa/phenomenonTime
+
+  sosa-2023:
+    status: provisional-working-draft
+    authoritative_version: "developing 2023 Edition at commit 1c3b44c"
+    version_iri: https://www.w3.org/TR/vocab-ssn-2023/
+    canonical_term_namespaces:
+      - http://www.w3.org/ns/sosa/
+    artifacts:
+      - role: ontology
+        url: https://raw.githubusercontent.com/w3c/sdw-sosa-ssn/1c3b44c27db530021ca27e0242b159cde8e16aa0/ssn/rdf/ontology/core/sosa.ttl
+        sha256: a1875d19988b0bd17e5cd3a61f76440b6e0f7b1e07bd30237e6fb7341c170305
+    used_terms:
+      - http://www.w3.org/ns/sosa/Property
+
+  semts-120:
+    status: provisional-invalid-reference
+    authoritative_version: "1.2.0"
+    version_iri: https://w3id.org/semts/ontology/120#
+    canonical_term_namespaces:
+      - https://w3id.org/semts/ontology#
+    artifacts:
+      - role: ontology
+        url: https://semts-ontology.github.io/SemTS/ontology/versioned/120/ontology.owl
+        sha256: 29c5b90f5d0f2b96383b203e14a496b5452190be95415f55e3d43eef47a2d738
+    used_terms:
+      - https://w3id.org/semts/ontology/120#DataDimension
+      - https://w3id.org/semts/ontology/120#TimeSeriesSegment
+      - https://w3id.org/semts/ontology/120#generated
+      - https://w3id.org/semts/ontology/120#hasDimension
+
+  owl-time:
+    status: example-and-query
+    authoritative_version: "W3C Recommendation 2017-10-19"
+    version_iri: https://www.w3.org/TR/2017/REC-owl-time-20171019/
+    canonical_term_namespaces:
+      - http://www.w3.org/2006/time#
+    artifacts:
+      - role: ontology
+        url: https://www.w3.org/2006/time
+        sha256: 251bd6970b0d7a5efa97ff681afe81a297df85deab3d860fa4f8eeba72d8f16c
+    used_terms:
+      - http://www.w3.org/2006/time#Instant
+      - http://www.w3.org/2006/time#Interval
+      - http://www.w3.org/2006/time#hasBeginning
+      - http://www.w3.org/2006/time#hasEnd
+      - http://www.w3.org/2006/time#inXSDDateTime
+      - http://www.w3.org/2006/time#numericDuration
+      - http://www.w3.org/2006/time#unitDay
+      - http://www.w3.org/2006/time#unitHour
+      - http://www.w3.org/2006/time#unitType
+
+  prov-o:
+    status: evidence-only
+    authoritative_version: "W3C Recommendation 2013-04-30"
+    version_iri: http://www.w3.org/ns/prov-o-20130430
+    canonical_term_namespaces:
+      - http://www.w3.org/ns/prov#
+    artifacts:
+      - role: ontology
+        url: https://www.w3.org/ns/prov-o.owl
+        sha256: 02a4d7409ee3e1f697a04e4980d8d208a847cc7fa5180ca0d187540abb66919f
+    used_terms:
+      - http://www.w3.org/ns/prov#Activity
+      - http://www.w3.org/ns/prov#Entity
+      - http://www.w3.org/ns/prov#Plan
+      - http://www.w3.org/ns/prov#generated
+      - http://www.w3.org/ns/prov#used
+      - http://www.w3.org/ns/prov#wasGeneratedBy
+
+  obi:
+    status: evidence-only
+    authoritative_version: "2026-05-08"
+    version_iri: http://purl.obolibrary.org/obo/obi/2026-05-08/obi.owl
+    canonical_term_namespaces:
+      - http://purl.obolibrary.org/obo/OBI_
+    artifacts:
+      - role: ontology
+        url: https://raw.githubusercontent.com/obi-ontology/obi/v2026-05-08/obi.owl
+        sha256: c503bb614c319d2a333e9fd377a47eb1000015d3d2a7e988090dc010ceda97a0
+    used_terms:
+      - http://purl.obolibrary.org/obo/OBI_0000070
+      - http://purl.obolibrary.org/obo/OBI_0000750
+      - http://purl.obolibrary.org/obo/OBI_0200000
+      - http://purl.obolibrary.org/obo/OBI_0600010
+      - http://purl.obolibrary.org/obo/OBI_0600013
+
+  stato:
+    status: evidence-only
+    authoritative_version: "2026-04-20"
+    version_iri: http://purl.obolibrary.org/obo/stato/releases/2026-04-20/stato.owl
+    canonical_term_namespaces:
+      - http://purl.obolibrary.org/obo/STATO_
+    artifacts:
+      - role: ontology
+        url: https://raw.githubusercontent.com/ISA-tools/stato/a5910e6115217a88ee86e2666e12983ef2ef2a42/releases/2026-04-20/stato.owl
+        sha256: 7e8f945ee30c6b24139f0064d57c2edbcfc988f3f74811cad6b5c84819ce1494
+    used_terms:
+      - http://purl.obolibrary.org/obo/STATO_0000193
+      - http://purl.obolibrary.org/obo/STATO_0000265
+      - http://purl.obolibrary.org/obo/STATO_0000401
+
+  isa-ro-crate:
+    status: pinned-draft-evidence
+    authoritative_version: "1.0.0-draft.1 at d77e5a9"
+    version_iri: https://github.com/nfdi4plants/isa-ro-crate-profile/tree/d77e5a90aee0d23289c2174b229146a5bf2e18c7
+    canonical_term_namespaces:
+      - https://bioschemas.org/
+      - https://schema.org/
+    artifacts:
+      - role: mapping
+        url: https://raw.githubusercontent.com/nfdi4plants/isa-ro-crate-profile/d77e5a90aee0d23289c2174b229146a5bf2e18c7/profile/isa_ro_crate_mapping.md
+        sha256: 3e3bafeb07bfc5a8d90bb1be8b7b72bcbf8a5924905f286a7e5af05650859960
+      - role: profile
+        url: https://raw.githubusercontent.com/nfdi4plants/isa-ro-crate-profile/d77e5a90aee0d23289c2174b229146a5bf2e18c7/profile/isa_ro_crate.md
+        sha256: a47d80984bfa5fb2a51d4f83762b6c82581f57052a84203def3ae6f8d1ed6239
+    used_terms:
+      - https://bioschemas.org/LabProcess
+      - https://bioschemas.org/LabProtocol
+      - https://bioschemas.org/Sample
+      - https://bioschemas.org/executesLabProtocol
+      - https://schema.org/Dataset
+      - https://schema.org/MediaObject
+      - https://schema.org/Person
+      - https://schema.org/Place
+      - https://schema.org/PropertyValue
+      - https://schema.org/about
+      - https://schema.org/additionalProperty
+      - https://schema.org/additionalType
+      - https://schema.org/affiliation
+      - https://schema.org/datePublished
+      - https://schema.org/description
+      - https://schema.org/email
+      - https://schema.org/encodingFormat
+      - https://schema.org/hasPart
+      - https://schema.org/identifier
+      - https://schema.org/license
+      - https://schema.org/logo
+      - https://schema.org/name
+      - https://schema.org/object
+      - https://schema.org/propertyID
+      - https://schema.org/result
+      - https://schema.org/roleName
+      - https://schema.org/unitText
+      - https://schema.org/value

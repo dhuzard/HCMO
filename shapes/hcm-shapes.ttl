@@ -92,7 +92,7 @@ hcm-tech:SensorShape a sh:NodeShape ;
     sh:path hcm-tech:hasSensorIdentifier ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1
   ] ;
   sh:property [
-    sh:path hcm-tech:installedIn ; sh:class hcm:MonitoredEnclosure ; sh:minCount 1 ; sh:maxCount 1
+    sh:path hcm-tech:installedIn ; sh:class hcm:MonitoredEnclosure
   ] .
 
 hcm-obs:BehaviorObservationShape a sh:NodeShape ;

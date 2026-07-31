@@ -1,0 +1,22 @@
+PREFIX bioschemas: <https://bioschemas.org/>
+PREFIX ex: <https://example.org/hcmo/isa-crate/>
+PREFIX hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#>
+PREFIX hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX schema: <https://schema.org/>
+
+SELECT ?file ?execution ?protocol ?sensor ?enclosure
+WHERE {
+  ?file a schema:MediaObject ;
+        prov:wasGeneratedBy ?execution .
+  ?execution a bioschemas:LabProcess ;
+             bioschemas:executesLabProtocol ?protocol ;
+             prov:used ?sensor ;
+             schema:object ?subject .
+  ?sensor a hcm-tech:Sensor .
+  ?subject a hcm-bio:Subject ;
+           hcm-bio:hasHousingAssignment/hcm-bio:assignedToEnclosure ?enclosure .
+  ?enclosure hcm-tech:monitoredBy ?sensor .
+  FILTER (?file = ex:activity-file)
+}
+ORDER BY ?file ?execution

@@ -1,6 +1,8 @@
 # DO NOT EDIT — GENERATED FILE.
 # Produced by tooling/build.py from ontology/modules/*.ttl.
 # Edit the modules and re-run `python tooling/build.py` to regenerate.
+@prefix BFO: <http://purl.obolibrary.org/obo/BFO_> .
+@prefix IAO: <http://purl.obolibrary.org/obo/IAO_> .
 @prefix bibo: <http://purl.org/ontology/bibo/> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
@@ -15,9 +17,16 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
 @prefix semts: <https://w3id.org/semts/ontology/120#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+BFO:0000015 a owl:Class ;
+    rdfs:label "process"@en ;
+    dcterms:source <http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl> ;
+    rdfs:subClassOf BFO:0000001 ;
+    skos:definition "(Elucidation) p is a process means p is an occurrent that has some temporal proper part and for some time t, p has some material entity as participant"@en .
 
 dc:creator a owl:AnnotationProperty .
 
@@ -52,6 +61,13 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
 owl:versionInfo a owl:AnnotationProperty .
 
 schema:logo a owl:AnnotationProperty .
+
+<https://w3id.org/hcmo/ontology/external/upper-presentation> a owl:Ontology ;
+    rdfs:label "HCMO end-user upper-level presentation" ;
+    dcterms:source <http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl>,
+        <http://purl.obolibrary.org/obo/iao/2026-03-30/iao.owl> ;
+    rdfs:comment "A checksummed, flattened presentation of five canonical BFO/IAO anchors for HCMO end users. Its shortcut hierarchy is entailed by the pinned sources; it does not replace BFO or IAO and does not assert equivalence with PROV-O, SIO, SULO, or ONTOP." ;
+    owl:versionInfo "2026-07-31" .
 
 <https://w3id.org/hcmo/ontology/hcm> a owl:Ontology ;
     dc:description "Ontology for home-cage monitoring of laboratory animals" ;
@@ -458,7 +474,7 @@ hcm:hasSamplingRate a owl:DatatypeProperty ;
 hcm:hasSensor a owl:ObjectProperty ;
     rdfs:label "has sensor" ;
     dcterms:source <https://w3id.org/hcmo/ontology/hcm/0.0.1> ;
-    rdfs:comment "Deprecated in HCMO 0.1.0 with no context-free replacement because its subject was an aggregate system. For a sensor monitoring an enclosure, use hcm-tech:monitoredBy and its inverse hcm-tech:installedIn." ;
+    rdfs:comment "Deprecated in HCMO 0.1.0 with no context-free replacement because its subject was an aggregate system. For a sensor monitoring an enclosure, use hcm-tech:monitoredBy. Use hcm-tech:installedIn separately only for physical installation." ;
     owl:deprecated true .
 
 hcm:hasSocialContacts a owl:DatatypeProperty ;
@@ -941,6 +957,12 @@ mod:createdWith a owl:AnnotationProperty .
 
 mod:status a owl:AnnotationProperty .
 
+BFO:0000019 a owl:Class ;
+    rdfs:label "quality"@en ;
+    dcterms:source <http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl> ;
+    rdfs:subClassOf BFO:0000001 ;
+    skos:definition "(Elucidation) A quality is a specifically dependent continuant that, in contrast to roles and dispositions, does not require any further process in order to be realized"@en .
+
 hcm:hasDimensions a owl:ObjectProperty ;
     rdfs:label "has dimensions" ;
     rdfs:comment "Links an enclosure to its dimensions record." ;
@@ -963,7 +985,7 @@ hcm:hasUnit a owl:DatatypeProperty ;
 hcm-bio:StudyFactors a owl:Class ;
     rdfs:label "Study Factor" ;
     rdfs:comment "An independent variable that an investigation is designed to vary systematically in order to determine its effect on subjects or observations." ;
-    rdfs:subClassOf <http://purl.obolibrary.org/obo/IAO_0000030> .
+    rdfs:subClassOf IAO:0000030 .
 
 hcm-bio:assignedToEnclosure a owl:ObjectProperty ;
     rdfs:label "assigned to enclosure" ;
@@ -980,7 +1002,7 @@ hcm-bio:hasBehaviorObservation a owl:ObjectProperty ;
 hcm-env:ThriveProfile a owl:Class ;
     rdfs:label "Thrive Profile" ;
     rdfs:comment "A welfare or husbandry profile describing environmental conditions intended to support animal thriving." ;
-    rdfs:subClassOf <http://purl.obolibrary.org/obo/IAO_0000030> .
+    rdfs:subClassOf IAO:0000030 .
 
 hcm-env:hasGasConcentrationProfile a owl:ObjectProperty ;
     rdfs:label "has gas concentration profile" ;
@@ -1080,6 +1102,12 @@ hcm-tech:hasVersion a owl:DatatypeProperty ;
             owl:unionOf ( hcm-tech:Hardware hcm-tech:Software hcm-tech:TimeSeries ) ] ;
     rdfs:range xsd:string .
 
+hcm-tech:installedIn a owl:ObjectProperty ;
+    rdfs:label "installed in" ;
+    rdfs:comment "Relates a sensor to a monitored enclosure in which the sensor is physically installed. This relation does not imply that the sensor monitors that enclosure." ;
+    rdfs:domain hcm-tech:Sensor ;
+    rdfs:range hcm:MonitoredEnclosure .
+
 <https://orcid.org/0000-0002-2923-9790> a schema:Person ;
     schema:name "Pierre Larmande" .
 
@@ -1104,7 +1132,7 @@ hcm-tech:hasVersion a owl:DatatypeProperty ;
 hcm:Enrichment a owl:Class ;
     rdfs:label "Enrichment" ;
     rdfs:comment "A material or structure provided within an enclosure to support animal welfare or experimental conditions." ;
-    rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000040> .
+    rdfs:subClassOf BFO:0000040 .
 
 hcm:hasDimUnit a owl:DatatypeProperty ;
     rdfs:label "has dim unit" ;
@@ -1156,15 +1184,14 @@ hcm-obs:HealthStatusObservation a owl:Class ;
 
 hcm-tech:monitoredBy a owl:ObjectProperty ;
     rdfs:label "monitored by" ;
-    rdfs:comment "Relates a monitored enclosure to a sensor installed in or monitoring it." ;
+    rdfs:comment "Relates a monitored enclosure to a sensor that monitors it, independently of whether the sensor is physically installed in that enclosure." ;
     rdfs:domain hcm:MonitoredEnclosure ;
-    rdfs:range hcm-tech:Sensor ;
-    owl:inverseOf hcm-tech:installedIn .
+    rdfs:range hcm-tech:Sensor .
 
 hcm-bio:HousingAssignment a owl:Class ;
     rdfs:label "Housing Assignment" ;
     rdfs:comment "A record assigning a subject or group to an enclosure in a study or housing context." ;
-    rdfs:subClassOf <http://purl.obolibrary.org/obo/IAO_0000030> .
+    rdfs:subClassOf IAO:0000030 .
 
 hcm-obs:BehaviorObservation a owl:Class ;
     rdfs:label "Behavior Observation" ;
@@ -1177,16 +1204,16 @@ hcm-obs:BehaviorObservation a owl:Class ;
             owl:someValuesFrom hcm-obs:BehaviorResult ],
         sosa:Observation .
 
-hcm-tech:installedIn a owl:ObjectProperty ;
-    rdfs:label "installed in" ;
-    rdfs:comment "Relates a sensor to the monitored enclosure in which it is installed." ;
-    rdfs:domain hcm-tech:Sensor ;
-    rdfs:range hcm:MonitoredEnclosure .
+BFO:0000001 a owl:Class ;
+    rdfs:label "entity"@en ;
+    dcterms:source <http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl> ;
+    rdfs:subClassOf owl:Thing ;
+    skos:definition "(Elucidation) An entity is anything that exists or has existed or will exist"@en .
 
 hcm-env:GasConcentrationProfile a owl:Class ;
     rdfs:label "Gas Concentration Profile" ;
     rdfs:comment "A profile describing concentrations of gases relevant to the monitored enclosure environment." ;
-    rdfs:subClassOf <http://purl.obolibrary.org/obo/IAO_0000030> .
+    rdfs:subClassOf IAO:0000030 .
 
 hcm-obs:QuantityValue a owl:Class ;
     rdfs:label "Quantity Value" ;
@@ -1196,51 +1223,41 @@ hcm-obs:QuantityValue a owl:Class ;
 hcm-bio:ExperimentalGroup a owl:Class ;
     rdfs:label "Experimental Group" ;
     rdfs:comment "A group of biological subjects sharing an experimental condition, treatment, or study role." ;
-    rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000027> .
+    rdfs:subClassOf BFO:0000040 .
 
 hcm-tech:Actuator a owl:Class ;
     rdfs:label "Actuator" ;
     rdfs:comment "A device that elicits or perturbs behavior, physiology, or the monitored environment." ;
-    rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000040>,
+    rdfs:subClassOf BFO:0000040,
         sosa:Actuator .
 
 hcm-tech:TimeSeries a owl:Class ;
     rdfs:label "Time Series" ;
     rdfs:comment "An ordered sequence of time-indexed measurements or outputs produced in a monitoring workflow." ;
-    rdfs:subClassOf <http://purl.obolibrary.org/obo/IAO_0000030> .
+    rdfs:subClassOf IAO:0000030 .
 
 hcm-obs:ObservationResult a owl:Class ;
     rdfs:label "Observation Result" ;
     rdfs:comment "An information artifact produced as the result of a home-cage monitoring observation." ;
-    rdfs:subClassOf <http://purl.obolibrary.org/obo/IAO_0000030>,
+    rdfs:subClassOf IAO:0000030,
         sosa:Result .
+
+BFO:0000040 a owl:Class ;
+    rdfs:label "material entity"@en ;
+    dcterms:source <http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl> ;
+    rdfs:subClassOf BFO:0000001 ;
+    skos:definition "(Elucidation) A material entity is an independent continuant that at all times at which it exists has some portion of matter as continuant part"@en .
 
 hcm-env:EnvironmentalProperty a owl:Class ;
     rdfs:label "Environmental Property" ;
     rdfs:comment "An environmental parameter that may be measured, specified, or controlled in a home-cage monitoring context." ;
-    rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000019>,
+    rdfs:subClassOf BFO:0000019,
         sosa:Property .
 
 hcm-env:LightCycle a owl:Class ;
     rdfs:label "Light Cycle" ;
     rdfs:comment "A description of the timing and transitions of light and dark phases in an enclosure environment." ;
-    rdfs:subClassOf <http://purl.obolibrary.org/obo/IAO_0000030> .
-
-hcm-obs:EnvironmentObservation a owl:Class ;
-    rdfs:label "Environment Observation" ;
-    rdfs:comment "A SOSA-style observation about an environmental property of a monitored enclosure." ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty sosa:hasFeatureOfInterest ;
-            owl:someValuesFrom hcm:MonitoredEnclosure ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom semts:DataDimension ;
-            owl:onProperty semts:hasDimension ],
-        sosa:Observation .
-
-hcm:EnclosureDimensions a owl:Class ;
-    rdfs:label "Enclosure Dimensions" ;
-    rdfs:comment "A dimensions record describing the physical size of an enclosure." ;
-    rdfs:subClassOf <http://purl.obolibrary.org/obo/IAO_0000030> .
+    rdfs:subClassOf IAO:0000030 .
 
 hcm:MonitoredEnclosure a owl:Class ;
     rdfs:label "Monitored Enclosure" ;
@@ -1259,20 +1276,43 @@ hcm:MonitoredEnclosure a owl:Class ;
             owl:onProperty hcm:hasDimensions ],
         hcm:Enclosure .
 
+hcm-obs:EnvironmentObservation a owl:Class ;
+    rdfs:label "Environment Observation" ;
+    rdfs:comment "A SOSA-style observation about an environmental property of a monitored enclosure." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty sosa:hasFeatureOfInterest ;
+            owl:someValuesFrom hcm:MonitoredEnclosure ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom semts:DataDimension ;
+            owl:onProperty semts:hasDimension ],
+        sosa:Observation .
+
+hcm:EnclosureDimensions a owl:Class ;
+    rdfs:label "Enclosure Dimensions" ;
+    rdfs:comment "A dimensions record describing the physical size of an enclosure." ;
+    rdfs:subClassOf IAO:0000030 .
+
 hcm-tech:Hardware a owl:Class ;
     rdfs:label "Hardware" ;
     rdfs:comment "Physical computing hardware component of a home-cage monitoring system." ;
-    rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000040> .
+    rdfs:subClassOf BFO:0000040 .
 
 hcm-tech:Software a owl:Class ;
     rdfs:label "Software" ;
     rdfs:comment "Software component used to acquire, process, store, or analyse home-cage monitoring data." ;
-    rdfs:subClassOf <http://purl.obolibrary.org/obo/IAO_0000030> .
+    rdfs:subClassOf IAO:0000030 .
+
+IAO:0000030 a owl:Class ;
+    rdfs:label "information content entity"@en ;
+    dcterms:source <http://purl.obolibrary.org/obo/iao/2026-03-30/iao.owl> ;
+    rdfs:subClassOf BFO:0000001 ;
+    skos:altLabel "information entity"@en ;
+    skos:definition "A generically dependent continuant that is about some thing."@en .
 
 hcm-env:MeasurementSpecification a owl:Class ;
     rdfs:label "Measurement Specification" ;
     rdfs:comment "A specification describing how an environmental property is measured, represented, or constrained." ;
-    rdfs:subClassOf <http://purl.obolibrary.org/obo/IAO_0000030> .
+    rdfs:subClassOf IAO:0000030 .
 
 hcm-env:EnvironmentProfile a owl:Class ;
     rdfs:label "Environment Profile" ;
@@ -1286,21 +1326,18 @@ hcm-env:EnvironmentProfile a owl:Class ;
         [ a owl:Restriction ;
             owl:allValuesFrom hcm-env:GasConcentrationProfile ;
             owl:onProperty hcm-env:hasGasConcentrationProfile ],
-        <http://purl.obolibrary.org/obo/IAO_0000030> .
+        IAO:0000030 .
 
 hcm-tech:Sensor a owl:Class ;
     rdfs:label "Sensor" ;
     rdfs:comment "A device that captures signals related to behavior, physiology, or enclosure environment." ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty hcm-tech:installedIn ;
-            owl:someValuesFrom hcm:MonitoredEnclosure ],
-        <http://purl.obolibrary.org/obo/BFO_0000040>,
+    rdfs:subClassOf BFO:0000040,
         sosa:Sensor .
 
 hcm:Enclosure a owl:Class ;
     rdfs:label "Enclosure" ;
     rdfs:comment "A physical housing enclosure used as part of a home-cage monitoring system." ;
-    rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000040> .
+    rdfs:subClassOf BFO:0000040 .
 
 hcm-bio:Subject a owl:Class ;
     rdfs:label "Subject" ;
@@ -1308,5 +1345,5 @@ hcm-bio:Subject a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom hcm-obs:BehaviorObservation ;
             owl:onProperty hcm-bio:hasBehaviorObservation ],
-        <http://purl.obolibrary.org/obo/BFO_0000040> .
+        BFO:0000040 .
 

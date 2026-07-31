@@ -28,8 +28,9 @@ manifest identify release 0.2.0.
 **Continuous validation.** A validation step parses every Turtle file, runs the
 SHACL shapes with RDFS entailment against isolated positive and intentionally
 invalid example ABoxes, and executes each competency-question query against the
-ontology plus positive examples. Reviewed expected row counts make empty or
-changed answers a validation failure. The same check runs in CI as the pull-request gate,
+ontology plus positive examples. Complete expected answer rows make changed
+bindings, multiplicities, values, and unexamined empty results a validation
+failure even when the row count is unchanged. The same check runs in CI as the pull-request gate,
 and a tag-triggered workflow attaches the distributions to a GitHub release. This
 makes the resource's quality claims reproducible by any third party.
 
@@ -48,8 +49,10 @@ makes the resource's quality claims reproducible by any third party.
   \cite{sosa} anchors, with Schema.org; example data reuse OWL-Time
   \cite{owltime}. The `sosa:Property` choice remains provisional pending a
   pinned SOSA edition, and SemTS-derived references are not counted as
-  implemented reuse. PROV-O \cite{provo}, SemTS, and quantity-vocabulary
-  integration are future alignment work. A JSON-LD context is shipped for
+  implemented reuse. A pinned example-level evidence slice uses PROV-O
+  \cite{provo}, OBI, STATO, and ISA/Bioschemas without asserting HCMO class
+  mappings or formal ISA RO-Crate conformance. SemTS and quantity-vocabulary
+  integration remain future alignment work. A JSON-LD context is shipped for
   application developers exchanging data.
 - *Reusable.* The resource is licensed CC BY 4.0, carries provenance on the
   ontology header (creators with ORCIDs, version IRI), and provides a canonical

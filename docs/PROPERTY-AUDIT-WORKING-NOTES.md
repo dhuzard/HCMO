@@ -37,73 +37,48 @@ as the final inventory.
 
 ## C01-01: monitoredBy and installedIn
 
-Review status: `needs evidence`
+Review status: `revise axiom` — implemented after review
 
 Owning module: `ontology/modules/hcm-tech.ttl`
 
-### Asserted semantics
+### Reviewed semantics
 
 | Property | Definition summary | Domain | Range | Other axiom |
 | --- | --- | --- | --- | --- |
-| `hcm-tech:monitoredBy` | enclosure to a sensor installed in or monitoring it | `hcm:MonitoredEnclosure` | `hcm-tech:Sensor` | inverse of `hcm-tech:installedIn` |
-| `hcm-tech:installedIn` | sensor to the enclosure in which it is installed | `hcm-tech:Sensor` | `hcm:MonitoredEnclosure` | inverse entailed from the declaration above |
+| `hcm-tech:monitoredBy` | enclosure to a sensor that monitors it, regardless of physical installation | `hcm:MonitoredEnclosure` | `hcm-tech:Sensor` | no inverse |
+| `hcm-tech:installedIn` | sensor to an enclosure in which it is physically installed | `hcm-tech:Sensor` | `hcm:MonitoredEnclosure` | no inverse |
 
-`hcm-tech:Sensor` also has an existential restriction requiring installation
-in some monitored enclosure. This restriction is relevant to the same
-portable, remote, and not-yet-deployed sensor cases, but it is a distinct axiom
-that requires its own decision.
+`hcm-tech:Sensor` no longer has an `installedIn` existential restriction.
+Portable, remote, rack-level, and not-yet-deployed sensors can therefore be
+represented without inventing an enclosure-level installation.
 
-### Current use
+### Evidence and use
 
 - Positive examples assert both properties in `abox-minimal.ttl`,
-  `isa-hcmo-bridge.ttl`, and `user-submission.ttl`; the DVC example also uses
-  both relations.
+  `isa-hcmo-bridge.ttl`, and `user-submission.ttl` where both relations are
+  independently known.
+- The DVC example includes a rack environmental monitor connected only through
+  `monitoredBy`, demonstrating conforming monitoring without cage installation.
 - `hcm-shapes.ttl` requires at least one `monitoredBy` value for a monitored
-  enclosure and exactly one `installedIn` value for a sensor.
+  enclosure. When `installedIn` is present, its value must be a
+  `MonitoredEnclosure`, but installation is optional and has no timeless
+  cardinality.
 - competency question `sensors-behaviors` navigates from an enclosure through
   `monitoredBy` and then through `captures`.
-- no current edge-case fixture represents remote or portable monitoring.
 
-Because the positive examples explicitly assert both directions, they do not
-test whether the inverse axiom itself is correct or necessary.
+### Verified inference
 
-### Observed inference
+The executable property audit starts from each relation separately. With the
+reviewed axioms:
 
-The executable test starts from each relation separately. With the current
-axioms:
-
-1. `cage monitoredBy sensor` entails `sensor installedIn cage`;
-2. `sensor installedIn cage` entails `cage monitoredBy sensor`; and
+1. `cage monitoredBy sensor` does not entail `sensor installedIn cage`;
+2. `sensor installedIn cage` does not entail `cage monitoredBy sensor`; and
 3. each assertion also entails the declared subject and object types through
    domain and range.
 
-The first entailment is too strong if a remote or portable sensor can monitor
-an enclosure without being physically installed in it. HermiT can confirm that
-the ontology is consistent, but consistency alone cannot establish that this
-domain claim is true.
-
-### Preliminary decision
-
-Decision: `needs evidence` from domain experts and representative systems.
-
-The definitions currently differ: `monitoredBy` explicitly permits monitoring
-without installation, whereas `installedIn` is a physical placement relation.
-Under the accepted C02 inverse policy, that wording does not justify an exact
-inverse.
-
-Candidate resolutions for review:
-
-1. Keep the relations distinct and remove the inverse axiom. Reverse query
-   navigation can use a SPARQL inverse path where needed.
-2. Narrow `monitoredBy` to installed sensors and retain the inverse, only if all
-   intended HCM systems satisfy that stronger meaning.
-3. Introduce a separately justified deployment or monitoring-assignment model
-   if installation and monitoring vary over time or by recording session.
-
-No candidate is implemented by this audit note. Before a change, the project
-needs at least one portable or remote sensor example, an agreed competency
-question, and explicit decisions for both the inverse and the Sensor
-existential restriction.
+Reverse query navigation can use a SPARQL inverse path where needed. A future
+deployment or monitoring-assignment model may add temporal context, but it must
+not restore a context-free equivalence between monitoring and installation.
 
 ## Active local property decisions
 
@@ -220,9 +195,9 @@ blocks an ontology edit until the stated evidence is available.
 | `hcm-tech:hasSensorType` | `keep` | Functional category is correctly scoped to sensors, distinct from model and technology. |
 | `hcm-tech:hasStoragePath` | `keep` | Locator metadata is intentionally non-inferential; URI/path normalization belongs to a profile. |
 | `hcm-tech:hasVersion` | `keep` | Version text applies coherently to hardware, software, and time-series artifacts. |
-| `hcm-tech:installedIn` | `needs evidence` | Its physical placement meaning is narrower than monitoring, so exact inverse status is unresolved. |
+| `hcm-tech:installedIn` | `keep` | Physical placement is retained as an optional relation independent of monitoring; it has no inverse or timeless SHACL cardinality. |
 | `hcm-tech:isCalibrated` | `needs evidence` | Calibration is time- and procedure-dependent; a timeless boolean may only be suitable for an intake snapshot. |
-| `hcm-tech:monitoredBy` | `needs evidence` | Current inverse semantics incorrectly equate all monitoring with physical installation unless the intended scope is narrowed. |
+| `hcm-tech:monitoredBy` | `keep` | Monitoring association is retained independently of physical installation; the incorrect inverse axiom was removed. |
 | `hcm-tech:runsOn` | `keep` | Software-to-hardware execution direction and domain/range are coherent. |
 | `hcm-tech:supportsEnclosure` | `needs evidence` | “Supports” is underspecified and may overlap installation, monitoring, acquisition, or software processing. |
 
@@ -342,13 +317,12 @@ The property-by-property pass is complete, but `needs evidence` decisions are
 not implementation approvals. The next semantic work should resolve, in this
 order:
 
-1. installation versus monitoring and the Sensor existential restriction;
-2. temporal occupancy, operation, calibration, and housing assignment;
-3. profile/specification/observation separation for environmental properties;
-4. SOSA consistency for subject-to-observation shortcuts;
-5. the condition model and literal interval overlap with OWL-Time;
-6. unit and sampling-rate representation; and
-7. underspecified technical relations and protocol categories.
+1. temporal occupancy, operation, calibration, and housing assignment;
+2. profile/specification/observation separation for environmental properties;
+3. SOSA consistency for subject-to-observation shortcuts;
+4. the condition model and literal interval overlap with OWL-Time;
+5. unit and sampling-rate representation; and
+6. underspecified technical relations and protocol categories.
 
 Each resolved item must become a separate semantic change with a positive
 example, an edge or invalid example, a CQ where applicable, and reasoner plus
