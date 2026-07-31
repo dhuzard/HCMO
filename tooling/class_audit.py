@@ -25,13 +25,13 @@ EXTERNAL_ANCHORS = {
     URIRef("http://purl.obolibrary.org/obo/IAO_0000030"),
     URIRef("http://www.w3.org/ns/sosa/Actuator"),
     URIRef("http://www.w3.org/ns/sosa/Observation"),
-    URIRef("http://www.w3.org/ns/sosa/Property"),
+    URIRef("http://www.w3.org/ns/sosa/ObservableProperty"),
     URIRef("http://www.w3.org/ns/sosa/Result"),
     URIRef("http://www.w3.org/ns/sosa/Sensor"),
     URIRef("https://schema.org/Person"),
     URIRef("https://schema.org/Place"),
-    URIRef("https://w3id.org/semts/ontology/120#DataDimension"),
-    URIRef("https://w3id.org/semts/ontology/120#TimeSeriesSegment"),
+    URIRef("https://w3id.org/semts/ontology#DataDimension"),
+    URIRef("https://w3id.org/semts/ontology#TimeSeriesSegment"),
 }
 
 DECISIONS = (
@@ -189,7 +189,7 @@ def check_documented_decisions(graph: Graph, classes: set[URIRef]) -> None:
             f"missing={missing}; unexpected={unexpected}"
         )
     decision_counts = Counter(decision for _, decision in rows)
-    expected_counts = Counter({"keep": 24, "needs evidence": 5})
+    expected_counts = Counter({"keep": 25, "needs evidence": 4})
     if decision_counts != expected_counts:
         raise SystemExit(
             "ERROR: active class decision totals mismatch; "

@@ -392,8 +392,8 @@ def check_priority_entailments(manifest: dict) -> None:
     )
     require(
         captures_graph,
-        (observed_property, RDF.type, SOSA.Property),
-        "object rdf:type sosa:Property",
+        (observed_property, RDF.type, SOSA.ObservableProperty),
+        "object rdf:type sosa:ObservableProperty",
     )
 
 

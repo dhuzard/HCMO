@@ -56,8 +56,8 @@ ontology modules use:
 - SOSA for observation, result, sensor, actuator, observed-property, and
   feature-of-interest roles;
 - Schema.org for contributor and place exchange types;
-- provisional SemTS-derived references whose canonical IRIs and semantic fit
-  remain under review; and
+- SemTS 1.2.0 for the reviewed time-series-segment and segment-dimension
+  pattern; and
 - Dublin Core Terms for ontology metadata and provenance.
 
 The current example data and competency queries reuse OWL-Time for observation
@@ -66,9 +66,10 @@ STATO, and ISA/Bioschemas instances without asserting ontology mappings. A
 lossless HCMO RDF/extended ISA RO-Crate fixture is validated separately, but
 formal ISA profile conformance remains deferred. Quantity/unit alignment
 remains roadmap work.
-SemTS-derived references are likewise not counted as implemented reuse, and the
-`sosa:Property` reference remains provisional until HCMO pins an explicit SOSA
-edition.
+The normative sensing policy is pinned to SOSA 2017 and uses
+`sosa:ObservableProperty`; no developing-edition `sosa:Property` term is mixed
+into the release. SemTS reuse is limited to canonical 1.2.0
+time-series-segment and segment-dimension terms.
 
 `external-vocabularies.yaml` is the external-source contract. It records the
 authoritative version, canonical term namespace, used-term allowlist, immutable

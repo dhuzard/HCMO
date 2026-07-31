@@ -16,7 +16,7 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
-@prefix semts: <https://w3id.org/semts/ontology/120#> .
+@prefix semts: <https://w3id.org/semts/ontology#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
 @prefix vann: <http://purl.org/vocab/vann/> .
@@ -1030,11 +1030,12 @@ hcm-env:hasThriveProfile a owl:ObjectProperty ;
 
 hcm-obs:LocationResultTable a owl:Class ;
     rdfs:label "Location Result Table" ;
-    rdfs:comment "A tabular observation result containing location values or generated time-series segments." ;
+    rdfs:comment "A tabular observation result representing a time-series segment of location values, optionally described by one or more data dimensions." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom semts:TimeSeriesSegment ;
-            owl:onProperty semts:generated ],
-        hcm-obs:ObservationResult .
+            owl:allValuesFrom semts:DataDimension ;
+            owl:onProperty semts:segmentDimension ],
+        hcm-obs:ObservationResult,
+        semts:TimeSeriesSegment .
 
 hcm-obs:WeightObservation a owl:Class ;
     rdfs:label "Weight Observation" ;
@@ -1063,7 +1064,7 @@ hcm-tech:captures a owl:ObjectProperty ;
     rdfs:label "captures" ;
     rdfs:comment "Relates a sensor to the property it observes or captures." ;
     rdfs:domain hcm-tech:Sensor ;
-    rdfs:range sosa:Property ;
+    rdfs:range sosa:ObservableProperty ;
     rdfs:subPropertyOf sosa:observes .
 
 hcm-tech:communicatesWith a owl:ObjectProperty ;
@@ -1248,12 +1249,6 @@ BFO:0000040 a owl:Class ;
     rdfs:subClassOf BFO:0000001 ;
     skos:definition "(Elucidation) A material entity is an independent continuant that at all times at which it exists has some portion of matter as continuant part"@en .
 
-hcm-env:EnvironmentalProperty a owl:Class ;
-    rdfs:label "Environmental Property" ;
-    rdfs:comment "An environmental parameter that may be measured, specified, or controlled in a home-cage monitoring context." ;
-    rdfs:subClassOf BFO:0000019,
-        sosa:Property .
-
 hcm-env:LightCycle a owl:Class ;
     rdfs:label "Light Cycle" ;
     rdfs:comment "A description of the timing and transitions of light and dark phases in an enclosure environment." ;
@@ -1276,15 +1271,21 @@ hcm:MonitoredEnclosure a owl:Class ;
             owl:onProperty hcm:hasDimensions ],
         hcm:Enclosure .
 
+hcm-env:EnvironmentalProperty a owl:Class ;
+    rdfs:label "Environmental Property" ;
+    rdfs:comment "An environmental parameter that may be measured, specified, or controlled in a home-cage monitoring context." ;
+    rdfs:subClassOf BFO:0000019,
+        sosa:ObservableProperty .
+
 hcm-obs:EnvironmentObservation a owl:Class ;
     rdfs:label "Environment Observation" ;
     rdfs:comment "A SOSA-style observation about an environmental property of a monitored enclosure." ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom hcm-env:EnvironmentalProperty ;
+            owl:onProperty sosa:observedProperty ],
+        [ a owl:Restriction ;
             owl:onProperty sosa:hasFeatureOfInterest ;
             owl:someValuesFrom hcm:MonitoredEnclosure ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom semts:DataDimension ;
-            owl:onProperty semts:hasDimension ],
         sosa:Observation .
 
 hcm:EnclosureDimensions a owl:Class ;

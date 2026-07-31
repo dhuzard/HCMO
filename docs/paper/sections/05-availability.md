@@ -47,12 +47,12 @@ makes the resource's quality claims reproducible by any third party.
   querying. *[pending: host the endpoint — T6b.]*
 - *Interoperable.* The current model reuses BFO \cite{bfo}, IAO, and SOSA/SSN
   \cite{sosa} anchors, with Schema.org; example data reuse OWL-Time
-  \cite{owltime}. The `sosa:Property` choice remains provisional pending a
-  pinned SOSA edition, and SemTS-derived references are not counted as
-  implemented reuse. A pinned example-level evidence slice uses PROV-O
+  \cite{owltime}. SOSA is pinned to the 2017 Recommendation and uses
+  `sosa:ObservableProperty`. Canonical SemTS 1.2.0 segment and dimension terms
+  are selectively reused for location result tables. A pinned example-level evidence slice uses PROV-O
   \cite{provo}, OBI, STATO, and ISA/Bioschemas without asserting HCMO class
-  mappings or formal ISA RO-Crate conformance. SemTS and quantity-vocabulary
-  integration remain future alignment work. A JSON-LD context is shipped for
+  mappings or formal ISA RO-Crate conformance. Broader SemTS and
+  quantity-vocabulary integration remain future alignment work. A JSON-LD context is shipped for
   application developers exchanging data.
 - *Reusable.* The resource is licensed CC BY 4.0, carries provenance on the
   ontology header (creators with ORCIDs, version IRI), and provides a canonical

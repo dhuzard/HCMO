@@ -46,7 +46,7 @@ hcm-env:EnvironmentProfile a owl:Class ;
 hcm-env:EnvironmentalProperty a owl:Class ;
     rdfs:label "Environmental Property" ;
     rdfs:comment "An environmental parameter that may be measured, specified, or controlled in a home-cage monitoring context." ;
-    rdfs:subClassOf BFO:0000019, sosa:Property .
+    rdfs:subClassOf BFO:0000019, sosa:ObservableProperty .
 
 hcm-env:LightIntensity a owl:ObjectProperty ;
     rdfs:label "light intensity" ;

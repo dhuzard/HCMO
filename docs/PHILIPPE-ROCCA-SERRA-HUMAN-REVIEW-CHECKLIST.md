@@ -50,11 +50,11 @@ The paper and alignment documentation distinguish:
 3. **Formal profile conformance** only when every applicable normative
    requirement of a declared external profile version and scope is tested.
 
-The accepted current classification is: BFO/IAO and reviewed SOSA 2017 and
-Schema.org terms are selective implemented reuse/alignment; OWL-Time and the
-PROV-O/OBI/STATO/ISA-Bioschemas workflow are validated interoperability
-evidence; SemTS and the developing `sosa:Property` choice remain provisional;
-QUDT/OM remains future work; and HCMO makes no formal ISA RO-Crate conformance
+The accepted current classification is: BFO/IAO, reviewed SOSA 2017,
+Schema.org terms, and the reviewed SemTS 1.2.0 segment pattern are selective
+implemented reuse/alignment; OWL-Time and the PROV-O/OBI/STATO/ISA-Bioschemas
+workflow are validated interoperability evidence; QUDT/OM remains future work;
+and HCMO makes no formal ISA RO-Crate conformance
 claim. “Provisional” is a review status and is not counted as a fourth
 achievement level.
 

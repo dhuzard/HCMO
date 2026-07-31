@@ -7,6 +7,10 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Added
 
+- Added ADR-0002 and a migration guide establishing SOSA 2017 as the normative
+  sensing edition and documenting safe repair of earlier SemTS/SOSA references.
+- Added executable external-contract checks that reject versioned SemTS entity
+  IRIs, developing-edition `sosa:Property`, and the rejected SemTS relations.
 - Added the accepted ISA/STATO round-trip policy, separate review-only SSSOM
   and exchange-transformation registries, and controlled-loss contracts for
   ISA-JSON and ISA-Tab.
@@ -62,6 +66,12 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Changed
 
+- Replaced the developing-edition `sosa:Property` references with SOSA 2017
+  `sosa:ObservableProperty` and pinned the immutable 2017 W3C ontology artifact.
+- Corrected SemTS reuse to canonical unversioned 1.2.0 entity IRIs. Location
+  result tables now specialize `semts:TimeSeriesSegment` and use
+  `semts:segmentDimension`; the observation-level dimension restriction and
+  knowledge-generation-specific `semts:generated` axiom were removed.
 - Clarified `HousingAssignment` as an actual time-bounded information record,
   `StudyFactors` as an independent-variable specification belonging to a study
   design, and `hasMonitoredAnimals` as an optional time-evaluated derived

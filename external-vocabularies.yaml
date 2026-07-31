@@ -5,7 +5,7 @@
 # identity, canonical namespaces, used-term allowlists, and byte checksums.
 contract_version: 1
 reviewed_on: 2026-07-31
-scope: semantic anchors, temporal and sensing terms, and ISA/STATO evidence
+scope: semantic anchors, temporal, sensing, and time-series terms, and ISA/STATO evidence
 
 curated_upper_subset:
   path: ontology/modules/external-upper.ttl
@@ -75,11 +75,12 @@ vocabularies:
       - http://www.w3.org/ns/sosa/
     artifacts:
       - role: ontology
-        url: https://www.w3.org/ns/sosa/sosa.ttl
+        url: https://raw.githubusercontent.com/w3c/sdw/6dc6059362b82955707937401d8d3db340429293/ssn/integrated/sosa.ttl
         sha256: c70b0d1c843c0047e4c98e0a89392e46a05752ff6365bda7f7f55303905a0392
     used_terms:
       - http://www.w3.org/ns/sosa/Actuator
       - http://www.w3.org/ns/sosa/Observation
+      - http://www.w3.org/ns/sosa/ObservableProperty
       - http://www.w3.org/ns/sosa/Result
       - http://www.w3.org/ns/sosa/Sensor
       - http://www.w3.org/ns/sosa/hasFeatureOfInterest
@@ -89,21 +90,8 @@ vocabularies:
       - http://www.w3.org/ns/sosa/observes
       - http://www.w3.org/ns/sosa/phenomenonTime
 
-  sosa-2023:
-    status: provisional-working-draft
-    authoritative_version: "developing 2023 Edition at commit 1c3b44c"
-    version_iri: https://www.w3.org/TR/vocab-ssn-2023/
-    canonical_term_namespaces:
-      - http://www.w3.org/ns/sosa/
-    artifacts:
-      - role: ontology
-        url: https://raw.githubusercontent.com/w3c/sdw-sosa-ssn/1c3b44c27db530021ca27e0242b159cde8e16aa0/ssn/rdf/ontology/core/sosa.ttl
-        sha256: a1875d19988b0bd17e5cd3a61f76440b6e0f7b1e07bd30237e6fb7341c170305
-    used_terms:
-      - http://www.w3.org/ns/sosa/Property
-
   semts-120:
-    status: provisional-invalid-reference
+    status: active-selective-reuse
     authoritative_version: "1.2.0"
     version_iri: https://w3id.org/semts/ontology/120#
     canonical_term_namespaces:
@@ -113,10 +101,9 @@ vocabularies:
         url: https://semts-ontology.github.io/SemTS/ontology/versioned/120/ontology.owl
         sha256: 29c5b90f5d0f2b96383b203e14a496b5452190be95415f55e3d43eef47a2d738
     used_terms:
-      - https://w3id.org/semts/ontology/120#DataDimension
-      - https://w3id.org/semts/ontology/120#TimeSeriesSegment
-      - https://w3id.org/semts/ontology/120#generated
-      - https://w3id.org/semts/ontology/120#hasDimension
+      - https://w3id.org/semts/ontology#DataDimension
+      - https://w3id.org/semts/ontology#TimeSeriesSegment
+      - https://w3id.org/semts/ontology#segmentDimension
 
   owl-time:
     status: example-and-query

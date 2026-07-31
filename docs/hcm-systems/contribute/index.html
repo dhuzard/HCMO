@@ -1078,7 +1078,7 @@
       addLiteral(lines, environment, "rdfs:comment", [d.conditions.environment, d.measurements.circadian].filter(Boolean).join("; "));
     }
     if (d.measurements.behaviors) {
-      addTriple(lines, observedProperty, "rdf:type", "sosa:Property");
+      addTriple(lines, observedProperty, "rdf:type", "sosa:ObservableProperty");
       addLiteral(lines, observedProperty, "rdfs:label", d.measurements.behaviors);
     }
 

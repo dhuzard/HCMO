@@ -111,7 +111,7 @@ hcm-tech:captures a owl:ObjectProperty ;
     rdfs:label "captures" ;
     rdfs:comment "Relates a sensor to the property it observes or captures." ;
     rdfs:domain hcm-tech:Sensor ;
-    rdfs:range sosa:Property ;
+    rdfs:range sosa:ObservableProperty ;
     rdfs:subPropertyOf sosa:observes .
 
 hcm-tech:hasActuator a owl:ObjectProperty ;

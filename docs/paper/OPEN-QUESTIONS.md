@@ -29,7 +29,7 @@ the relevant doc and logged in `TODO.md`.
 | # | Aspect | Conf. | Answer |
 |---|--------|-------|--------|
 | Q6 | HCMO vs MAPP branding | 🟢 | **Drop MAPP** — use HCMO only in the paper (repo reconcile = T7b). |
-| Q12 | Reused vocabularies in V1 | 🟡 | Implemented references include BFO, IAO, SOSA/SSN, Schema.org, and OWL-Time. The `sosa:Property` edition choice and all SemTS-derived references remain provisional and are not counted as stable implemented alignments. |
+| Q12 | Reused vocabularies in V1 | 🟢 | Implemented references include BFO, IAO, SOSA 2017, Schema.org, and the reviewed SemTS 1.2.0 segment pattern; OWL-Time is validated interoperability evidence. HCMO uses `sosa:ObservableProperty` and does not mix in the developing-edition `sosa:Property`. |
 | Q13 | SPARQL endpoint | 🟢 | **Yes — will host one** (T6b). |
 | Q14 | Governance/maintenance | 🟢 | **Lab-maintained** (Huzard team, GitHub); TEATIME = feedback channel. |
 

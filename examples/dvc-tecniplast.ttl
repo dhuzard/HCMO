@@ -49,7 +49,7 @@ dvc:rack-environment-monitor a hcm-tech:Sensor ;
   dcterms:type "Rack temperature and relative-humidity monitor" ;
   hcm-tech:hasSensorIdentifier "DVC rack environmental monitor" .
 
-dvc:locomotor-activity a sosa:Property ;
+dvc:locomotor-activity a sosa:ObservableProperty ;
   rdfs:label "activation density / Animal Locomotion Index" .
 
 dvc:mouse-subject-profile a hcm-bio:Subject ;

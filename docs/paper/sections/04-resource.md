@@ -27,7 +27,7 @@ First, housing context is not reduced to the animal: a housing assignment is an
 explicit record linking a subject or group to an enclosure. Second, a physical
 sensor, the observation it performs, and the result it produces are separate
 entities. For example, `hcm-tech:Sensor` is linked to a monitored enclosure,
-captures a `sosa:Property`, and may make a `sosa:Observation`; the observation
+captures a `sosa:ObservableProperty`, and may make a `sosa:Observation`; the observation
 then identifies its feature of interest and result using SOSA relations. This
 supports provenance-sensitive queries without treating a device, event, and
 data value as the same thing.
@@ -58,19 +58,15 @@ applicable normative profile requirement has been tested. “Provisional”
 identifies work that has not yet qualified as implemented alignment; it is not
 a conformance level.
 
-SemTS alignment remains provisional. HCMO currently contains references derived
-from an earlier SemTS model, but their canonical IRIs and semantic fit have not
-yet been validated. These references are not counted as implemented
-external-vocabulary reuse.
-
-HCMO also requires an explicit SOSA edition policy. Most reused SOSA terms occur
-in the 2017 W3C Recommendation \cite{sosa}, while `sosa:Property` follows the
-developing 2023 Edition, currently published as a W3C Working Draft
-\cite{sosa2023}; the 2017 edition instead uses `sosa:ObservableProperty`. HCMO
-retains the current
-`sosa:Property` reference provisionally, but must pin a dated SOSA source and
-review the resulting semantics before treating that choice as a stable
-alignment. A pinned example-level evidence slice now uses PROV-O, specific OBI
+HCMO normatively follows the 2017 SOSA/SSN Recommendation \cite{sosa}, pinned
+to an immutable copy of the 2017 ontology artifact. Environmental and
+sensor-captured properties use `sosa:ObservableProperty`; terms introduced by
+the developing later edition are not mixed into this release. HCMO also
+selectively reuses canonical unversioned SemTS 1.2.0 terms: a location result
+table is a `semts:TimeSeriesSegment` whose dimensions may be linked with
+`semts:segmentDimension` to `semts:DataDimension`. The earlier observation
+dimension restriction and knowledge-generation-specific `semts:generated`
+relation were removed after semantic review. A pinned example-level evidence slice now uses PROV-O, specific OBI
 and STATO types, and ISA/Bioschemas exchange terms in one acyclic workflow. This is
 validated interoperability evidence, not an HCMO class mapping or a claim of
 formal ISA RO-Crate conformance. A second generated 2 × 2 fixture preserves

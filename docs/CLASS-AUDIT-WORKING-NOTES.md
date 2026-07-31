@@ -89,10 +89,10 @@ Table columns:
 | `hcm-obs:BehaviorObservation` | `keep` | HCM behavior observation; direct SOSA Observation specialization. | Requires some behavior result and some subject feature of interest; no additional local named parent. | `systems-24h-limited`; observation/result/subject roles are explicit. |
 | `hcm-obs:BehaviorResult` | `keep` | Detected or classified behavior result; local observation-result specialization. | Inferred `hcm-obs:ObservationResult`, SOSA Result, and IAO information content entity. | none; result remains with its observation module. |
 | `hcm-obs:CategoricalResult` | `keep` | Observation result represented by a category. | Inferred `hcm-obs:ObservationResult`, SOSA Result, and IAO information content entity. | none; representation is distinct from numeric quantity. |
-| `hcm-obs:EnvironmentObservation` | `keep` | Observation about an enclosure environmental property; direct SOSA Observation specialization. | Requires some monitored-enclosure feature of interest; dimension values use a provisional SemTS-derived `DataDimension` reference. | none; observation is distinct from environment profile/specification, while the external reference requires separate review. |
+| `hcm-obs:EnvironmentObservation` | `keep` | Observation about an enclosure environmental property; direct SOSA Observation specialization. | Requires some monitored-enclosure feature of interest; observed values are limited to HCMO environmental properties through `sosa:observedProperty`. | none; the earlier SemTS dimension restriction was removed because dimensions belong to time-series segments, not observations. |
 | `hcm-obs:GasConcentrationObservation` | `keep` | Environmental observation specialized for gas concentration. | Inferred `hcm-obs:EnvironmentObservation` and SOSA Observation. | none; specialization is coherent with environmental observation. |
 | `hcm-obs:HealthStatusObservation` | `keep` | Health-status observation about a subject; direct SOSA Observation specialization. | Requires some subject feature of interest; no additional local named parent. | none; scope and feature of interest agree. |
-| `hcm-obs:LocationResultTable` | `needs evidence` | Tabular location result with generated time-series segments; local observation-result specialization. | Generated values use a provisional SemTS-derived `TimeSeriesSegment` reference; inferred ObservationResult, SOSA Result, and IAO information content entity. | none; the canonical SemTS IRI, `generated` semantics, and whether every location table uses that representation need evidence. |
+| `hcm-obs:LocationResultTable` | `keep` | Tabular location observation result and SemTS time-series segment. | Uses canonical SemTS 1.2.0 `segmentDimension` only for `DataDimension` values; inferred ObservationResult, SOSA Result, IAO information content entity, and TimeSeriesSegment. | none; the knowledge-generation-specific `generated` relation was removed after semantic review. |
 | `hcm-obs:ObservationResult` | `keep` | Information artifact produced by an HCM observation; dual SOSA Result and IAO information content entity anchor. | No restriction; none beyond asserted external parents. | none; accepted policy keeps results with observations. |
 | `hcm-obs:QuantityValue` | `keep` | Quantitative observation result with value and unit. | Inferred `hcm-obs:ObservationResult`, SOSA Result, and IAO information content entity. | none; numeric and unit properties support this representation. |
 | `hcm-obs:WeightObservation` | `keep` | Body-weight observation about a subject; direct SOSA Observation specialization. | Requires some subject feature and some quantity result; no additional local named parent. | none; observation/result structure is explicit. |
@@ -105,7 +105,7 @@ Table columns:
 | `hcm-tech:Hardware` | `keep` | Physical computing component; asserted BFO material entity. | No restriction; none beyond asserted. | none; physical-device scope is clear. |
 | `hcm-tech:Sensor` | `keep` | Physical sensing device; asserted BFO material entity and SOSA Sensor. | No installation restriction; no additional local named parent. | `sensors-behaviors`; rack-level and remote sensors are supported without asserting cage installation. |
 | `hcm-tech:Software` | `needs evidence` | Software used in HCM workflows; currently asserted IAO information content entity. | No restriction; none beyond asserted. | none; executable artifact versus information-content representation needs an explicit upper-ontology policy. |
-| `hcm-tech:TimeSeries` | `keep` | Ordered time-indexed measurement/output artifact; asserted IAO information content entity. | No restriction; none beyond asserted. | none; artifact interpretation is coherent, pending separate SemTS mapping review. |
+| `hcm-tech:TimeSeries` | `keep` | Ordered time-indexed measurement/output artifact; asserted IAO information content entity. | No restriction; none beyond asserted. | none; generic time-series artifacts remain broader than the reviewed SemTS specialization on location result tables. |
 
 ## Directly used external class anchors
 
@@ -127,13 +127,13 @@ issue is resolved.
 | `IAO:0000030` | Parent of records, profiles, results, software, and time series. | IAO 2026-03-30 source, commit and checksum pinned; canonical definition included in the upper projection. | `keep` |
 | `sosa:Actuator` | Parent of `hcm-tech:Actuator`. | SOSA/SSN 2017 Recommendation artifact and checksum pinned. | `keep` |
 | `sosa:Observation` | Parent/domain anchor for observation classes and properties. | SOSA/SSN 2017 Recommendation artifact and checksum pinned. | `keep` |
-| `sosa:Property` | Parent/range anchor for environmental and captured properties. | Developing SOSA/SSN 2023 Edition source pinned at commit `1c3b44c`; the 2017 Recommendation uses `sosa:ObservableProperty`. Edition choice and semantic fit remain provisional. | `needs evidence` |
+| `sosa:ObservableProperty` | Parent/range anchor for environmental and captured properties. | SOSA/SSN 2017 Recommendation artifact and checksum pinned at immutable W3C repository commit `6dc6059`. | `keep` |
 | `sosa:Result` | Parent of `hcm-obs:ObservationResult`. | SOSA/SSN 2017 Recommendation artifact and checksum pinned. | `keep` |
 | `sosa:Sensor` | Parent of `hcm-tech:Sensor`. | SOSA/SSN 2017 Recommendation artifact and checksum pinned. | `keep` |
 | `schema:Person` | Contributor exchange type for ORCID-identified creators. | Schema.org; version not pinned. | `needs evidence` |
 | `schema:Place` | Range of `hcm:locatedIn`. | Schema.org; version not pinned. | `needs evidence` |
-| `semts:DataDimension` | Restriction filler on environment observations. | HCMO uses SemTS 1.2.0's version IRI (`.../ontology/120#`) as a term namespace, but SemTS declares `DataDimension` in `.../ontology#`; canonical IRI and semantic fit are unvalidated. | `needs evidence` |
-| `semts:TimeSeriesSegment` | Restriction filler on location result tables. | HCMO uses SemTS 1.2.0's version IRI (`.../ontology/120#`) as a term namespace, but SemTS declares `TimeSeriesSegment` in `.../ontology#`; canonical IRI and semantic fit are unvalidated. | `needs evidence` |
+| `semts:DataDimension` | Restriction filler for dimensions of location result tables. | Canonical unversioned entity IRI from checksummed SemTS 1.2.0; used with its declared `segmentDimension` relation. | `keep` |
+| `semts:TimeSeriesSegment` | Parent of location result tables. | Canonical unversioned entity IRI from checksummed SemTS 1.2.0; semantic fit reviewed for time-indexed location tables. | `keep` |
 
 The optional developer profile additionally restores
 `hcm-bio:ExperimentalGroup rdfs:subClassOf BFO:0000027` and BFO's canonical

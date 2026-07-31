@@ -397,6 +397,92 @@ def _check_contract(notes: list[str]) -> tuple[bool, dict]:
             f"{uncovered}"
         )
 
+    # Edition and namespace policy accepted in ADR-0002. These checks make the
+    # semantic contract executable instead of relying on documentation alone.
+    invalid_semts_namespace = "https://w3id.org/semts/ontology/120#"
+    invalid_semts_iris = sorted(
+        iri for iri in used_iris if iri.startswith(invalid_semts_namespace)
+    )
+    if invalid_semts_iris:
+        ok = False
+        notes.append(
+            "[FAIL] active RDF uses the SemTS version IRI as an entity "
+            f"namespace: {invalid_semts_iris}"
+        )
+
+    sosa_property = URIRef("http://www.w3.org/ns/sosa/Property")
+    if any(sosa_property in triple for triple in source_graph):
+        ok = False
+        notes.append(
+            "[FAIL] active RDF uses sosa:Property outside the pinned SOSA "
+            "2017 edition"
+        )
+
+    observable_property = URIRef(
+        "http://www.w3.org/ns/sosa/ObservableProperty"
+    )
+    environmental_property = URIRef(
+        "https://w3id.org/hcmo/ontology/hcm/env#EnvironmentalProperty"
+    )
+    captures = URIRef(
+        "https://w3id.org/hcmo/ontology/hcm/tech#captures"
+    )
+    environmental_anchor_present = (
+        environmental_property,
+        RDFS.subClassOf,
+        observable_property,
+    ) in source_graph
+    captures_range_present = (
+        captures,
+        RDFS.range,
+        observable_property,
+    ) in source_graph
+    if not environmental_anchor_present or not captures_range_present:
+        ok = False
+        notes.append(
+            "[FAIL] SOSA 2017 ObservableProperty anchors are incomplete"
+        )
+
+    semts = "https://w3id.org/semts/ontology#"
+    location_result_table = URIRef(
+        "https://w3id.org/hcmo/ontology/hcm/obs#LocationResultTable"
+    )
+    time_series_segment = URIRef(semts + "TimeSeriesSegment")
+    segment_dimension = URIRef(semts + "segmentDimension")
+    data_dimension = URIRef(semts + "DataDimension")
+    correct_dimension_restriction = any(
+        (restriction, OWL.onProperty, segment_dimension) in source_graph
+        and (restriction, OWL.allValuesFrom, data_dimension) in source_graph
+        for restriction in source_graph.objects(
+            location_result_table, RDFS.subClassOf
+        )
+    )
+    if (
+        location_result_table,
+        RDFS.subClassOf,
+        time_series_segment,
+    ) not in source_graph or not correct_dimension_restriction:
+        ok = False
+        notes.append(
+            "[FAIL] LocationResultTable does not implement the reviewed "
+            "SemTS segment/dimension pattern"
+        )
+    ill_fitting_semts_terms = {
+        URIRef(semts + "generated"),
+        URIRef(semts + "hasDimension"),
+    }
+    used_ill_fitting_terms = sorted(
+        str(term)
+        for term in ill_fitting_semts_terms
+        if any(term in triple for triple in source_graph)
+    )
+    if used_ill_fitting_terms:
+        ok = False
+        notes.append(
+            "[FAIL] active RDF retains rejected SemTS relations: "
+            f"{used_ill_fitting_terms}"
+        )
+
     if ok:
         notes.append(
             f"[OK]   external contract: {len(vocabularies)} vocabularies, "
@@ -411,6 +497,7 @@ def _check_contract(notes: list[str]) -> tuple[bool, dict]:
             "source terms"
         )
         notes.append("[OK]   active RDF and query IRIs covered by term allowlists")
+        notes.append("[OK]   SOSA 2017 and SemTS 1.2.0 semantic policy enforced")
     return ok, contract
 
 

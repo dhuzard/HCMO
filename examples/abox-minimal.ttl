@@ -51,7 +51,7 @@ ex:ir-sensor-1 a hcm-tech:Sensor ;
   hcm-tech:installedIn ex:cage-12 ;
   hcm-tech:captures ex:locomotor-activity .
 
-ex:locomotor-activity a sosa:Property ;
+ex:locomotor-activity a sosa:ObservableProperty ;
   rdfs:label "locomotor activity" .
 
 ex:observation-1 a hcm-obs:BehaviorObservation ;
