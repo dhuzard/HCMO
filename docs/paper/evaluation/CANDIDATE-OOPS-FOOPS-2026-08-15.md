@@ -1,10 +1,10 @@
-# OOPS! and FOOPS! review of the post-0.2.0 candidate
+# OOPS! and FOOPS! review of the HCMO 0.3.0 release candidate
 
 Date: 2026-08-15
 
-Scope: the post-PR #26 graph used by the paper draft. This graph is 24 commits
-ahead of tag `v0.2.0`; the report therefore calls it the paper-matching
-candidate rather than release 0.2.0.
+Scope: the HCMO 0.3.0 release-candidate graph used by the paper draft. This
+graph succeeds the immutable `v0.2.0` tag but is not called a published 0.3.0
+release until its matching commit is merged, tagged, and deployed.
 
 ## OOPS!
 
@@ -50,10 +50,11 @@ score can be attributed to the released PURL representation.
 
 The candidate passes logical, SHACL, competency-question, interoperability, and
 FOOPS! file-assessment gates. OOPS! findings are triaged rather than hidden.
-Both services must be rerun after the final version IRI, tag, and PURL target are
-fixed.
+This report records the final 0.3.0 version IRI. Both services must be rerun only
+if the graph changes before tagging; PURL content negotiation must be verified
+after deployment.
 
 ## Raw-report checksums
 
-- OOPS! XML SHA-256: `192FAEBAC4C378FFB76AA528D9C5EE095B999E3ADFC1E159653622AC7F11D6A0`
+- OOPS! XML SHA-256: `C257A3DA7025ADFDC646B43058C8F0C67749C13B1D417A7A37314184021F9454`
 - FOOPS! JSON SHA-256: `57C9D39782EB14A58D31817829655E85B14F5DE39BE493C69D367C51C31770D2`

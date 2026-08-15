@@ -3270,7 +3270,7 @@
       },
       "dcterms:modified": {
         "@type": "xsd:date",
-        "@value": "2026-07-17"
+        "@value": "2026-08-15"
       },
       "dcterms:publisher": "Huzard group",
       "dcterms:source": {
@@ -3281,12 +3281,12 @@
       },
       "mod:status": "draft",
       "owl:priorVersion": {
-        "@id": "https://w3id.org/hcmo/ontology/hcm/0.1.0"
-      },
-      "owl:versionIRI": {
         "@id": "https://w3id.org/hcmo/ontology/hcm/0.2.0"
       },
-      "owl:versionInfo": "0.2.0",
+      "owl:versionIRI": {
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.3.0"
+      },
+      "owl:versionInfo": "0.3.0",
       "schema:logo": {
         "@id": "https://raw.githubusercontent.com/dhuzard/HCMO/main/HCMO-logo3.png"
       },

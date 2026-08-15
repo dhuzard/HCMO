@@ -1,135 +1,166 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<oops:OOPSResponse xmlns:oops="http://www.oeg-upm.net/oops">
-<oops:Pitfall>
-<oops:Code>P04</oops:Code><oops:Name>Creating unconnected ontology elements</oops:Name>
-<oops:Description>Ontology elements (classes, object properties and datatype properties) are created isolated, with no relation to the rest of the ontology.	</oops:Description>
-<oops:Importance>Minor</oops:Importance>
-<oops:NumberAffectedElements>1</oops:NumberAffectedElements>
-<oops:Affects>
-<oops:AffectedElement>http://purl.obolibrary.org/obo/BFO_0000001</oops:AffectedElement>
-</oops:Affects>
-</oops:Pitfall>
-<oops:Pitfall>
-<oops:Code>P08</oops:Code><oops:Name>Missing annotations</oops:Name>
-<oops:Description>This pitfall consists in creating an ontology element and failing to provide human readable annotations attached to it. Consequently, ontology elements lack annotation properties that label them (e.g. rdfs:label, lemon:LexicalEntry, skos:prefLabel or skos:altLabel) or that define them (e.g. rdfs:comment or dc:description). This pitfall is related to the guidelines provided in [5].	</oops:Description>
-<oops:Importance>Minor</oops:Importance>
-<oops:NumberAffectedElements>5</oops:NumberAffectedElements>
-<oops:Affects>
-<oops:AffectedElement>http://www.w3.org/ns/sosa/Result</oops:AffectedElement>
-<oops:AffectedElement>http://www.w3.org/ns/prov#Activity</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/semts/ontology#TimeSeriesSegment</oops:AffectedElement>
-<oops:AffectedElement>http://www.w3.org/ns/sosa/Actuator</oops:AffectedElement>
-<oops:AffectedElement>http://www.w3.org/ns/sosa/Sensor</oops:AffectedElement>
-</oops:Affects>
-</oops:Pitfall>
-<oops:Pitfall>
-<oops:Code>P10</oops:Code><oops:Name>Missing disjointness</oops:Name>
-<oops:Description>The ontology lacks disjoint axioms between classes or between properties that should be defined as disjoint. This pitfall is related with the guidelines provided in [6], [2] and [7].	</oops:Description>
-<oops:Importance>Important</oops:Importance>
-</oops:Pitfall>
-<oops:NumberAffectedElements>1</oops:NumberAffectedElements>
-<oops:Pitfall>
-<oops:Code>P13</oops:Code><oops:Name>Inverse relationships not explicitly declared</oops:Name>
-<oops:Description>This pitfall appears when any relationship (except for those that are defined as symmetric properties using owl:SymmetricProperty) does not have an inverse relationship (owl:inverseOf) defined within the ontology.	</oops:Description>
-<oops:Importance>Minor</oops:Importance>
-<oops:NumberAffectedElements>32</oops:NumberAffectedElements>
-<oops:Affects>
-<oops:MightBeInverse>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/tech#monitoredBy</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/tech#installedIn</oops:AffectedElement>
-</oops:MightBeInverse>
-<oops:MightBeInverse>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/bio#hasMember</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/bio#belongsToGroup</oops:AffectedElement>
-</oops:MightBeInverse>
-<oops:NoInverseSuggestion>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/bio#hasHousingAssignment</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/env#hasMeasurementSpec</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/env#hasLightCycle</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/tech#hasCalibrationRecord</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm#hasHeightQuantity</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/env#hasThriveProfile</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/env#hasSpecifiedValue</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/env#hasGasConcentrationProfile</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm#hasFloorAreaQuantity</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/bio#assignedToEnclosure</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/tech#calibratesSensor</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/tech#supportsEnclosure</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/env#specifiesProperty</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm#hasWidthQuantity</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/obs#hasCondition</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/tech#communicatesWith</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/env#hasEnvironment</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm#hasEnrichment</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/tech#hasActuator</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm#hasDimensions</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm#assessesEnclosure</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/tech#runsOn</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/tech#captures</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/obs#occursIn</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm#locatedIn</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm#hasLengthQuantity</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/tech#hasSamplingRateQuantity</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm#hasOperationalStatusRecord</oops:AffectedElement>
-</oops:NoInverseSuggestion>
-</oops:Affects>
-</oops:Pitfall>
-<oops:Pitfall>
-<oops:Code>P22</oops:Code><oops:Name>Using different naming conventions in the ontology</oops:Name>
-<oops:Description>The ontology elements are not named following the same convention (for example CamelCase or use of delimiters as &quot;-&quot; or &quot;_&quot;) . Some notions about naming conventions are provided in [2].	</oops:Description>
-<oops:Importance>Minor</oops:Importance>
-<oops:NumberAffectedElements>1</oops:NumberAffectedElements>
-<oops:Affects>
-<oops:AffectedElement>http://purl.obolibrary.org/obo/BFO_0000015</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/obs#HealthStatusObservation</oops:AffectedElement>
-</oops:Affects>
-</oops:Pitfall>
-<oops:Pitfall>
-<oops:Code>P34</oops:Code><oops:Name>Untyped class</oops:Name>
-<oops:Description>An ontology element is used as a class without having been explicitly declared as such using the primitives owl:Class or rdfs:Class. This pitfall is related with the common problems listed in [8].	</oops:Description>
-<oops:Importance>Important</oops:Importance>
-<oops:NumberAffectedElements>18</oops:NumberAffectedElements>
-<oops:Affects>
-<oops:AffectedElement>http://www.w3.org/ns/sosa/Observation</oops:AffectedElement>
-<oops:AffectedElement>https://schema.org/Person</oops:AffectedElement>
-<oops:AffectedElement>http://www.w3.org/ns/sosa/ObservableProperty</oops:AffectedElement>
-<oops:AffectedElement>http://qudt.org/schema/qudt/QuantityValue</oops:AffectedElement>
-<oops:AffectedElement>https://schema.org/Place</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/semts/ontology#TimeSeriesSegment</oops:AffectedElement>
-<oops:AffectedElement>http://www.w3.org/ns/sosa/Actuator</oops:AffectedElement>
-<oops:AffectedElement>http://www.w3.org/ns/sosa/Result</oops:AffectedElement>
-<oops:AffectedElement>http://www.w3.org/ns/sosa/Sensor</oops:AffectedElement>
-<oops:AffectedElement>http://www.w3.org/ns/prov#Activity</oops:AffectedElement>
-<oops:AffectedElement>http://www.w3.org/ns/sosa/hasFeatureOfInterest</oops:AffectedElement>
-<oops:AffectedElement>http://www.w3.org/ns/sosa/observedProperty</oops:AffectedElement>
-<oops:AffectedElement>http://www.w3.org/ns/sosa/hasFeatureOfInterest</oops:AffectedElement>
-<oops:AffectedElement>http://www.w3.org/ns/sosa/hasResult</oops:AffectedElement>
-<oops:AffectedElement>http://www.w3.org/ns/sosa/hasFeatureOfInterest</oops:AffectedElement>
-<oops:AffectedElement>https://w3id.org/semts/ontology#segmentDimension</oops:AffectedElement>
-<oops:AffectedElement>http://www.w3.org/ns/sosa/hasFeatureOfInterest</oops:AffectedElement>
-<oops:AffectedElement>http://www.w3.org/ns/sosa/hasResult</oops:AffectedElement>
-<oops:AffectedElement>http://www.w3.org/ns/sosa/Observation</oops:AffectedElement>
-<oops:AffectedElement>https://schema.org/Person</oops:AffectedElement>
-<oops:AffectedElement>http://www.w3.org/ns/sosa/ObservableProperty</oops:AffectedElement>
-<oops:AffectedElement>http://qudt.org/schema/qudt/QuantityValue</oops:AffectedElement>
-<oops:AffectedElement>https://schema.org/Place</oops:AffectedElement>
-</oops:Affects>
-</oops:Pitfall>
-<oops:Pitfall>
-<oops:Code>P35</oops:Code><oops:Name>Untyped property</oops:Name>
-<oops:Description>An ontology element is used as a property without having been explicitly declared as such using the primitives rdf:Property, owl:ObjectProperty or owl:DatatypeProperty. This pitfall is related with the common problems listed in [8].	</oops:Description>
-<oops:Importance>Important</oops:Importance>
-<oops:NumberAffectedElements>1</oops:NumberAffectedElements>
-<oops:Affects>
-<oops:AffectedElement>http://www.w3.org/ns/sosa/observes</oops:AffectedElement>
-</oops:Affects>
-</oops:Pitfall>
-<oops:Suggestion>
-<oops:Name>SUGGESTION: symmetric or transitive object properties.</oops:Name>
-<oops:Description>The domain and range axioms are equal for each of the following object properties. Could they be symmetric or transitive?</oops:Description>
-<oops:NumberAffectedElements>1</oops:NumberAffectedElements>
-<oops:Affects>
-<oops:AffectedElement>https://w3id.org/hcmo/ontology/hcm/tech#communicatesWith</oops:AffectedElement>
-</oops:Affects>
-</oops:Suggestion>
-</oops:OOPSResponse>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:oops="http://oops.linkeddata.es/def#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#" >
+  <rdf:Description rdf:about="http://oops.linkeddata.es/data/482f138c-a71b-4734-b8c6-686dbb1fc1a8">
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://w3id.org/hcmo/ontology/hcm/tech#communicatesWith</oops:hasAffectedElement>
+    <oops:hasNumberAffectedElements rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</oops:hasNumberAffectedElements>
+    <oops:hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The domain and range axioms are equal for each of the following object properties. Could they be symmetric or transitive?</oops:hasDescription>
+    <oops:hasCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SUGGESTION: symmetric or transitive object properties.</oops:hasCode>
+    <rdf:type rdf:resource="http://oops.linkeddata.es/def#suggestion"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://oops.linkeddata.es/data/88092ad9-22ca-4d5f-aa69-51d920353f46">
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/ns/prov#Activity</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/ns/sosa/Sensor</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/ns/sosa/Result</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/ns/sosa/Actuator</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://w3id.org/semts/ontology#TimeSeriesSegment</oops:hasAffectedElement>
+    <oops:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WARNING: the following classes do not have rdf:type owl:Class or equivalent.</oops:hasName>
+    <rdf:type rdf:resource="http://oops.linkeddata.es/def#warning"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://oops.linkeddata.es/data/b39c52aa-341e-44af-99b8-29d558ea09fd">
+    <oops:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Missing annotations</oops:hasName>
+    <oops:hasCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">P08</oops:hasCode>
+    <oops:hasImportanceLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Minor</oops:hasImportanceLevel>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://w3id.org/semts/ontology#TimeSeriesSegment</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/ns/sosa/Sensor</oops:hasAffectedElement>
+    <oops:hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This pitfall consists in creating an ontology element and failing to provide human readable annotations attached to it. Consequently, ontology elements lack annotation properties that label them (e.g. rdfs:label, lemon:LexicalEntry, skos:prefLabel or skos:altLabel) or that define them (e.g. rdfs:comment or dc:description). This pitfall is related to the guidelines provided in [5].	</oops:hasDescription>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/ns/sosa/Result</oops:hasAffectedElement>
+    <rdf:type rdf:resource="http://oops.linkeddata.es/def#pitfall"/>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/ns/prov#Activity</oops:hasAffectedElement>
+    <oops:hasNumberAffectedElements rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</oops:hasNumberAffectedElements>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/ns/sosa/Actuator</oops:hasAffectedElement>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://oops.linkeddata.es/data/45cd3699-c6cb-4c53-b377-0b454a66a722">
+    <oops:hasImportanceLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Minor</oops:hasImportanceLevel>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://purl.obolibrary.org/obo/BFO_0000001</oops:hasAffectedElement>
+    <oops:hasNumberAffectedElements rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</oops:hasNumberAffectedElements>
+    <oops:hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ontology elements (classes, object properties and datatype properties) are created isolated, with no relation to the rest of the ontology.	</oops:hasDescription>
+    <oops:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Creating unconnected ontology elements</oops:hasName>
+    <oops:hasCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">P04</oops:hasCode>
+    <rdf:type rdf:resource="http://oops.linkeddata.es/def#pitfall"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://oops.linkeddata.es/def#suggestion">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://oops.linkeddata.es/data/d56371d6-df3a-4775-a3e1-897b98fa74ce">
+    <oops:hasImportanceLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Minor</oops:hasImportanceLevel>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">There are elements following different naming conventions as for example: http://purl.obolibrary.org/obo/BFO_0000015 https://w3id.org/hcmo/ontology/hcm/obs#HealthStatusObservation</oops:hasAffectedElement>
+    <oops:hasNumberAffectedElements rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</oops:hasNumberAffectedElements>
+    <oops:hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The ontology elements are not named following the same convention (for example CamelCase or use of delimiters as &amp;quot;-&amp;quot; or &amp;quot;_&amp;quot;) . Some notions about naming conventions are provided in [2].	</oops:hasDescription>
+    <oops:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Using different naming conventions in the ontology</oops:hasName>
+    <oops:hasCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">P22</oops:hasCode>
+    <rdf:type rdf:resource="http://oops.linkeddata.es/def#pitfall"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://oops.linkeddata.es/data/4995930d-9612-49cb-8859-5591fb3740f9">
+    <oops:hasImportanceLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Minor</oops:hasImportanceLevel>
+    <oops:noSuggestion rdf:resource="http://oops.linkeddata.es/data/7507b3df-345f-4429-9918-a99d4aba271b"/>
+    <oops:mightBeInverseRelationship rdf:resource="http://oops.linkeddata.es/data/460c9a57-3f8e-4a06-aaf0-aa70d3b523f7"/>
+    <oops:mightBeInverseRelationship rdf:resource="http://oops.linkeddata.es/data/d35558c2-a715-42d1-a8f3-4d5b66a0b4c4"/>
+    <oops:hasNumberAffectedElements rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">32</oops:hasNumberAffectedElements>
+    <oops:hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This pitfall appears when any relationship (except for those that are defined as symmetric properties using owl:SymmetricProperty) does not have an inverse relationship (owl:inverseOf) defined within the ontology.	</oops:hasDescription>
+    <oops:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Inverse relationships not explicitly declared</oops:hasName>
+    <oops:hasCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">P13</oops:hasCode>
+    <rdf:type rdf:resource="http://oops.linkeddata.es/def#pitfall"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://oops.linkeddata.es/data/83857466-ab8c-4a29-a229-35e87dc30bce">
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://schema.org/Person</oops:hasAffectedElement>
+    <oops:hasCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">P34</oops:hasCode>
+    <oops:hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An ontology element is used as a class without having been explicitly declared as such using the primitives owl:Class or rdfs:Class. This pitfall is related with the common problems listed in [8].	</oops:hasDescription>
+    <oops:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Untyped class</oops:hasName>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/ns/sosa/Sensor</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/ns/sosa/Observation</oops:hasAffectedElement>
+    <oops:hasImportanceLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Important</oops:hasImportanceLevel>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://schema.org/Place</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/ns/sosa/observedProperty</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/ns/sosa/hasFeatureOfInterest</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://w3id.org/semts/ontology#TimeSeriesSegment</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/ns/sosa/hasResult</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/ns/sosa/ObservableProperty</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/ns/sosa/Actuator</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://qudt.org/schema/qudt/QuantityValue</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/ns/prov#Activity</oops:hasAffectedElement>
+    <oops:hasNumberAffectedElements rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">18</oops:hasNumberAffectedElements>
+    <rdf:type rdf:resource="http://oops.linkeddata.es/def#pitfall"/>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://w3id.org/semts/ontology#segmentDimension</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/ns/sosa/Result</oops:hasAffectedElement>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://oops.linkeddata.es/def#warning">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://oops.linkeddata.es/data/429cc659-0fcd-4b0c-b30a-e1b8b19b0cf2">
+    <oops:hasImportanceLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Important</oops:hasImportanceLevel>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/ns/sosa/observes</oops:hasAffectedElement>
+    <oops:hasNumberAffectedElements rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</oops:hasNumberAffectedElements>
+    <oops:hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An ontology element is used as a property without having been explicitly declared as such using the primitives rdf:Property, owl:ObjectProperty or owl:DatatypeProperty. This pitfall is related with the common problems listed in [8].	</oops:hasDescription>
+    <oops:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Untyped property</oops:hasName>
+    <oops:hasCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">P35</oops:hasCode>
+    <rdf:type rdf:resource="http://oops.linkeddata.es/def#pitfall"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://oops.linkeddata.es/data/d35558c2-a715-42d1-a8f3-4d5b66a0b4c4">
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://w3id.org/hcmo/ontology/hcm/tech#installedIn</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://w3id.org/hcmo/ontology/hcm/tech#monitoredBy</oops:hasAffectedElement>
+    <rdf:type rdf:resource="http://oops.linkeddata.es/def#inverseProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://oops.linkeddata.es/def#pitfall">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://oops.linkeddata.es/data/dbbe26d3-1ebf-4808-91ee-0665d31895a3">
+    <oops:hasNumberAffectedElements rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</oops:hasNumberAffectedElements>
+    <oops:hasImportanceLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Important</oops:hasImportanceLevel>
+    <oops:hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The ontology lacks disjoint axioms between classes or between properties that should be defined as disjoint. This pitfall is related with the guidelines provided in [6], [2] and [7].	</oops:hasDescription>
+    <oops:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Missing disjointness</oops:hasName>
+    <oops:hasCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">P10</oops:hasCode>
+    <rdf:type rdf:resource="http://oops.linkeddata.es/def#pitfall"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://oops.linkeddata.es/data/460c9a57-3f8e-4a06-aaf0-aa70d3b523f7">
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://w3id.org/hcmo/ontology/hcm/bio#belongsToGroup</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://w3id.org/hcmo/ontology/hcm/bio#hasMember</oops:hasAffectedElement>
+    <rdf:type rdf:resource="http://oops.linkeddata.es/def#inverseProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://oops.linkeddata.es/data/7507b3df-345f-4429-9918-a99d4aba271b">
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://w3id.org/hcmo/ontology/hcm#locatedIn</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://w3id.org/hcmo/ontology/hcm/tech#captures</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://w3id.org/hcmo/ontology/hcm#assessesEnclosure</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://w3id.org/hcmo/ontology/hcm/env#hasLightCycle</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://w3id.org/hcmo/ontology/hcm/tech#communicatesWith</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://w3id.org/hcmo/ontology/hcm#hasOperationalStatusRecord</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://w3id.org/hcmo/ontology/hcm/obs#hasCondition</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://w3id.org/hcmo/ontology/hcm/env#hasGasConcentrationProfile</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://w3id.org/hcmo/ontology/hcm/tech#calibratesSensor</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://w3id.org/hcmo/ontology/hcm#hasEnrichment</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://w3id.org/hcmo/ontology/hcm/bio#assignedToEnclosure</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://w3id.org/hcmo/ontology/hcm#hasHeightQuantity</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://w3id.org/hcmo/ontology/hcm/bio#hasHousingAssignment</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://w3id.org/hcmo/ontology/hcm#hasFloorAreaQuantity</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://w3id.org/hcmo/ontology/hcm/obs#occursIn</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://w3id.org/hcmo/ontology/hcm#hasLengthQuantity</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://w3id.org/hcmo/ontology/hcm/tech#hasSamplingRateQuantity</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://w3id.org/hcmo/ontology/hcm/tech#hasActuator</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://w3id.org/hcmo/ontology/hcm/env#hasMeasurementSpec</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://w3id.org/hcmo/ontology/hcm/env#hasEnvironment</oops:hasAffectedElement>
+    <rdf:type rdf:resource="http://oops.linkeddata.es/def#noSuggestionProperty"/>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://w3id.org/hcmo/ontology/hcm#hasDimensions</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://w3id.org/hcmo/ontology/hcm/tech#supportsEnclosure</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://w3id.org/hcmo/ontology/hcm#hasWidthQuantity</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://w3id.org/hcmo/ontology/hcm/env#hasThriveProfile</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://w3id.org/hcmo/ontology/hcm/env#specifiesProperty</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://w3id.org/hcmo/ontology/hcm/tech#runsOn</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://w3id.org/hcmo/ontology/hcm/tech#hasCalibrationRecord</oops:hasAffectedElement>
+    <oops:hasAffectedElement rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://w3id.org/hcmo/ontology/hcm/env#hasSpecifiedValue</oops:hasAffectedElement>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://oops.linkeddata.es/data/bd462db7-1efb-4ebc-bd23-2f5f197b8da5">
+    <oops:hasPitfall rdf:resource="http://oops.linkeddata.es/data/429cc659-0fcd-4b0c-b30a-e1b8b19b0cf2"/>
+    <oops:hasPitfall rdf:resource="http://oops.linkeddata.es/data/4995930d-9612-49cb-8859-5591fb3740f9"/>
+    <oops:hasPitfall rdf:resource="http://oops.linkeddata.es/data/d56371d6-df3a-4775-a3e1-897b98fa74ce"/>
+    <oops:hasPitfall rdf:resource="http://oops.linkeddata.es/data/b39c52aa-341e-44af-99b8-29d558ea09fd"/>
+    <oops:hasWarning rdf:resource="http://oops.linkeddata.es/data/88092ad9-22ca-4d5f-aa69-51d920353f46"/>
+    <oops:hasPitfall rdf:resource="http://oops.linkeddata.es/data/dbbe26d3-1ebf-4808-91ee-0665d31895a3"/>
+    <oops:hasPitfall rdf:resource="http://oops.linkeddata.es/data/45cd3699-c6cb-4c53-b377-0b454a66a722"/>
+    <oops:hasSuggestion rdf:resource="http://oops.linkeddata.es/data/482f138c-a71b-4734-b8c6-686dbb1fc1a8"/>
+    <rdf:type rdf:resource="http://oops.linkeddata.es/def#response"/>
+    <oops:hasPitfall rdf:resource="http://oops.linkeddata.es/data/83857466-ab8c-4a29-a229-35e87dc30bce"/>
+  </rdf:Description>
+</rdf:RDF>

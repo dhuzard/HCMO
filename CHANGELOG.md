@@ -83,9 +83,11 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Changed
 
-- Distinguished the tagged `v0.2.0` artifact from the post-`0.2.0`
-  paper-matching candidate so that later semantic work is not attributed to an
-  older release.
+- Advanced the release-candidate metadata from `0.2.0` to `0.3.0`, including
+  the manifest, ontology version IRI, prior-version link, citation metadata, and
+  current documentation. No term IRI changed.
+- Distinguished the tagged `v0.2.0` artifact from the HCMO `0.3.0` release
+  candidate so that later semantic work is not attributed to an older release.
 
 - Aligned the resource-paper requirements, evaluation counts, round-trip size,
   bibliography, outline, and submission checklist with the implemented

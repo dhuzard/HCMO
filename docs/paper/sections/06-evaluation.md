@@ -1,6 +1,6 @@
 # 6. Evaluation
 
-> **Status:** full draft aligned with the post-0.2.0 paper candidate. Historical
+> **Status:** full draft aligned with the HCMO 0.3.0 release candidate. Historical
 > clean-v2 results are separated from checks rerun on the candidate graph.
 
 HCMO is evaluated at four complementary levels: common ontology pitfalls and
@@ -29,7 +29,8 @@ than the 1,397-triple candidate, so the perfect candidate-file score is not
 misreported as a score for the currently deployed representation. Raw outputs
 and term-level triage are archived in
 `docs/paper/evaluation/CANDIDATE-OOPS-FOOPS-2026-08-15.md`. Both scanners will be
-rerun after the candidate receives its final version IRI, tag, and PURL target.
+rerun only if the graph changes before tagging. After deployment, content
+negotiation will be checked separately against the tagged 0.3.0 artifact.
 
 **Logical consistency.** The canonical RDF/XML artifact was rebuilt and
 checksummed on 15 August 2026. `dist/hcmo.owl` contains 1,397 RDF triples; the

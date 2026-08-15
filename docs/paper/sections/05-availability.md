@@ -1,6 +1,6 @@
 # 5. Engineering, availability, and sustainability
 
-> **Status:** draft aligned with the post-0.2.0 paper candidate. External
+> **Status:** draft aligned with the HCMO 0.3.0 release candidate. External
 > services and governance decisions that are not yet operational remain marked
 > **[pending: ...]**.
 
@@ -23,11 +23,11 @@ re-run so that version-control diffs stay clean. The merged graph is published i
 three syntaxes — Turtle, RDF/XML (OWL), and JSON-LD — together with a flat term
 inventory (`profile.json`: IRIs, labels, comments, and counts) intended for sync
 layers and user interfaces. Everything under the distribution directory is
-generated; only the modules are edited by hand. The manifest still identifies
-version 0.2.0, but the paper-matching graph contains 24 later commits, including
-the ISA/STATO, SemTS/SOSA, temporal-state, and QUDT work. A new version and tag
-must therefore be assigned before submission; the tagged 0.2.0 artifact is not
-presented as the evaluated paper release.
+generated; only the modules are edited by hand. The manifest and root ontology
+header identify the paper-matching graph as version 0.3.0. This version succeeds
+the immutable 0.2.0 tag and includes the ISA/STATO, SemTS/SOSA, temporal-state,
+and QUDT work. It remains a release candidate until the matching tag, PURL
+deployment, and Zenodo record exist.
 
 **Continuous validation.** A validation step parses every Turtle file, runs the
 SHACL shapes with RDFS entailment against isolated positive and intentionally

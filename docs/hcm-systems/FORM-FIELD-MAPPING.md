@@ -1,6 +1,6 @@
 # HCMO contribution form field mapping
 
-This document records the contribution form's HCMO 0.2.0 RDF projection. The
+This document records the contribution form's HCMO 0.3.0 RDF projection. The
 form emits JSON staging data, current-model Turtle, and a three-column CSV in
 which every row is one RDF triple (`subject`, `predicate`, `object`). CSV terms
 use N-Triples lexical form and absolute IRIs so prefixed names never depend on a

@@ -14,7 +14,7 @@ ontology to model HCM as an integrated system. HCMO is organised into five modul
 covering monitored enclosures, biological subjects, environmental context,
 observations and results, and technical acquisition. It is built around an
 explicit separation of sensor, observation, and result, preserving the chain from
-device to interpreted measurement. The paper-matching development candidate
+device to interpreted measurement. The HCMO 0.3.0 release candidate
 reuses BFO, IAO, the
 2017 SOSA/SSN Recommendation, Schema.org, OWL-Time, and a reviewed SemTS 1.2.0
 time-series segment pattern where their semantics fit. Provenance-backed state
