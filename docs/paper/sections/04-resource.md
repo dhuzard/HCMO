@@ -1,7 +1,8 @@
 # 4. Resource description
 
-> **Status:** full draft aligned with HCMO 0.2.0. Claims about external
-> mappings are limited to axioms and examples present in the release.
+> **Status:** full draft aligned with the post-0.2.0 paper candidate. Claims
+> about external mappings are limited to axioms and examples present in that
+> candidate.
 
 HCMO uses the persistent ontology IRI
 `https://w3id.org/hcmo/ontology/hcm` and the stable term namespace
@@ -11,7 +12,8 @@ sub-namespaces beneath the same base: `hcm/bio#`, `hcm/env#`, `hcm/obs#`, and
 IRIs are retained in a compatibility module with deprecation and replacement
 metadata where a defensible replacement exists.
 
-**Modular organisation.** HCMO 0.2.0 is authored as five active modules. The
+**Modular organisation.** The paper-matching HCMO candidate is authored as five
+active modules. The
 minimal core centres on `hcm:Enclosure`, `hcm:MonitoredEnclosure`, enclosure
 dimensions, enrichment, and stable housing relations. The bio module represents
 subjects, experimental groups, housing assignments, and study factors. The env

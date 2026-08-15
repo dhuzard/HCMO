@@ -55,8 +55,8 @@ The CfP requires these fields right after the abstract (drafted in
 - [ ] **Quality evidence:** OOPS! pitfall scan + FOOPS! FAIR score + reasoner
       (no unsat/cycles) + SHACL validation + competency-question results (T5).
 - [x] Shapes, positive and negative examples, eleven canonical competency
-      questions, and five isolated round-trip questions target release 0.2.0 and
-      are checked against complete expected answers.
+      questions, and five isolated round-trip questions target the post-0.2.0
+      candidate and are checked against complete expected answers.
 
 ### 4. Impact, reusability & sustainability
 - [ ] Interest to the SW community **and** to society (animal welfare, 3Rs,
@@ -77,8 +77,8 @@ The CfP requires these fields right after the abstract (drafted in
 - [ ] No placeholder terms; all terms labelled + defined.
 - [x] Competency queries return reviewed results; the intentional zero-row
       missing-dimensions query is checked as an exact expected answer.
-- [ ] OOPS!/FOOPS! rerun on the final paper-matching distribution; current HermiT,
+- [x] OOPS!/FOOPS! rerun and triaged on the post-0.2.0 candidate; current HermiT,
       SHACL, CQ, ISA projection, and RO-Crate reports are archived under
-      `docs/paper/evaluation/`.
+      `docs/paper/evaluation/`. Repeat the external scans after the final tag.
 - [ ] Page count within limit; LNCS template; metadata block present.
 - [ ] Canonical citation + tagged release (e.g. `v0.x` matching the paper).

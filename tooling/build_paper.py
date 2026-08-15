@@ -5,11 +5,13 @@ from __future__ import annotations
 
 import re
 import shutil
+import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 PAPER = ROOT / "docs" / "paper"
 OUT = PAPER / "overleaf"
+ARCHIVE = PAPER / "hcmo-overleaf-upload.zip"
 SECTIONS = sorted((PAPER / "sections").glob("[0-9][0-9]-*.md"))
 
 
@@ -177,7 +179,17 @@ def main() -> int:
     if aggregate.exists():
         aggregate.unlink()
     shutil.copyfile(PAPER / "references.bib", OUT / "references.bib")
-    print(f"Exported {len(SECTIONS)} sections to {OUT.relative_to(ROOT).as_posix()}")
+    with zipfile.ZipFile(ARCHIVE, "w", compression=zipfile.ZIP_DEFLATED) as archive:
+        for path in sorted(item for item in OUT.rglob("*") if item.is_file()):
+            info = zipfile.ZipInfo(path.relative_to(OUT).as_posix())
+            info.date_time = (1980, 1, 1, 0, 0, 0)
+            info.compress_type = zipfile.ZIP_DEFLATED
+            info.external_attr = 0o100644 << 16
+            archive.writestr(info, path.read_bytes())
+    print(
+        f"Exported {len(SECTIONS)} sections to {OUT.relative_to(ROOT).as_posix()} "
+        f"and {ARCHIVE.relative_to(ROOT).as_posix()}"
+    )
     return 0
 
 

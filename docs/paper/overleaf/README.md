@@ -16,3 +16,7 @@ Edit prose in `docs/paper/sections/*.md`, not in generated
 hand-authored. Before sharing the hosted project, replace the affiliation and
 email placeholder in `main.tex`, confirm author order, and verify the live venue
 template and metadata-block requirements.
+
+The build also creates `docs/paper/hcmo-overleaf-upload.zip` with deterministic
+file ordering and timestamps. Import that archive with Overleaf's **New Project
+-> Upload Project** action.

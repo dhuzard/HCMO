@@ -7,6 +7,8 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Added
 
+- Added current-candidate OOPS!/FOOPS! raw evidence and triage, plus a
+  deterministic ZIP that can be imported directly into Overleaf.
 - Added a deterministic Markdown-to-LNCS exporter, an Overleaf-ready manuscript
   package, and three dependency-free TikZ figures for the release pipeline,
   five-module domain model, and ISA/STATO round-trip fixture.
@@ -80,6 +82,10 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
   after ontology domain/range inference.
 
 ### Changed
+
+- Distinguished the tagged `v0.2.0` artifact from the post-`0.2.0`
+  paper-matching candidate so that later semantic work is not attributed to an
+  older release.
 
 - Aligned the resource-paper requirements, evaluation counts, round-trip size,
   bibliography, outline, and submission checklist with the implemented
