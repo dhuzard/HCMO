@@ -1,0 +1,37 @@
+\begin{figure*}[t]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+  node distance=7mm and 9mm,
+  entity/.style={draw, rounded corners=1.5pt, align=center, minimum height=9mm, font=\scriptsize, inner xsep=5pt},
+  rel/.style={-{Latex[length=1.8mm]}, font=\tiny},
+  evidence/.style={draw, dashed, rounded corners=1.5pt, align=center, font=\scriptsize, inner sep=4pt}
+]
+\node[entity, fill=yellow!14] (cage) {\texttt{hcm:MonitoredEnclosure}\\central physical hub};
+\node[entity, fill=red!8, left=18mm of cage] (assignment) {\texttt{hcm-bio:HousingAssignment}\\time-bounded record};
+\node[entity, fill=red!8, above=of assignment] (subject) {\texttt{hcm-bio:Subject}\\stable animal identity};
+\node[entity, fill=violet!9, right=12mm of cage] (sensor) {\texttt{hcm-tech:Sensor}\\\texttt{sosa:Sensor}};
+\node[entity, fill=blue!8, below=10mm of sensor] (observation) {HCMO observation\\\texttt{sosa:Observation}};
+\node[entity, fill=blue!8, right=8mm of observation] (result) {\texttt{hcm-obs:}\\\texttt{ObservationResult} / \texttt{sosa:Result}};
+\node[entity, fill=green!9, below=10mm of cage] (profile) {\texttt{hcm-env:}\\\texttt{EnvironmentProfile}};
+\node[entity, fill=green!9, right=8mm of profile] (spec) {\texttt{hcm-env:}\\\texttt{MeasurementSpecification}};
+\node[entity, fill=green!9, below=8mm of spec] (quantity) {\texttt{hcm-obs:QuantityValue}\\\texttt{qudt:QuantityValue}};
+\node[evidence, below=of assignment] (time) {\texttt{time:Interval}\\assignment validity};
+
+\draw[rel] (subject) -- node[left]{\texttt{hasHousingAssignment}} (assignment);
+\draw[rel] (assignment) -- node[above]{\texttt{assignedToEnclosure}} (cage);
+\draw[rel] (assignment) -- node[left]{\texttt{time:hasTime}} (time);
+\draw[rel] (cage) -- node[above]{\texttt{monitoredBy}} (sensor);
+\draw[rel] (sensor) -- node[right]{\texttt{sosa:madeObservation}} (observation);
+\draw[rel] (observation) -- node[above]{\texttt{sosa:hasResult}} (result);
+\draw[rel, dashed] (quantity) to[bend right=12] node[right]{subclass} (result);
+\draw[rel] (observation) to[bend right=18] node[above]{\texttt{sosa:hasFeatureOfInterest}} (subject);
+\draw[rel] (cage) -- node[left]{\texttt{hasEnvironment}} (profile);
+\draw[rel] (profile) -- node[above]{\texttt{hasMeasurementSpec}} (spec);
+\draw[rel] (spec) -- node[above]{\texttt{hasSpecifiedValue}} (quantity);
+\end{tikzpicture}
+}
+\caption{The five-module HCMO model preserves animal identity, temporal housing,
+environmental specifications, sensing events, and results as distinct entities.}
+\label{fig:domain-model}
+\end{figure*}

@@ -1,7 +1,7 @@
 # 3. Requirements and competency questions
 
-> **Status:** full draft (artifact-independent), from Gilbert (2026) §4. The CQ
-> *answers/results* are artifact-dependent and deferred to §6 (parked on T0). ~1 pp.
+> **Status:** full draft aligned with the executable 0.2.0 competency-question
+> index. Exact answers are reported in §6. ~1 pp.
 
 **Stakeholders and use cases.** HCMO is intended for several roles: researchers
 comparing or aggregating behavioural and physiological data across studies and
@@ -43,19 +43,15 @@ which drive the model (forward references to §4):
   completeness checks (e.g. a numeric value without a unit, an animal not assigned
   to an enclosure over an interval).
 
-**Competency questions.** Requirements are operationalised as competency questions
-that the ontology must be able to answer \cite{noy2001,lot2022}. Representative
-examples (from the domain analysis):
-
-- **CQ1.** Which enclosure is `Subject_001` assigned to at time *T*? *(R1, R3)*
-- **CQ2.** Which subjects are currently housed in `Room_101`? *(R3)*
-- **CQ3.** What is the latest recorded weight of `Subject_001`? *(R1)*
-- **CQ4.** Which subjects were exposed to a temperature above 25 °C? *(R4)*
-- **CQ5.** Which sensors monitor `Enclosure_A2`? *(R5)*
-- **CQ6.** Are there observations with numeric values but no units? *(R8)*
-
-Each CQ maps onto a requirement and onto the module that satisfies it (CQ1–CQ3 →
-*bio*/*housing*; CQ4 → *env*; CQ5 → *tech*; CQ6 → cross-cutting data quality via
-SHACL). §6 reports, for the released artifact, the SPARQL realisation of these
-questions and their results over example data. *(Deferred: runnable CQ results and
-coverage figures depend on the clean V1 artifact — TODO T6, parked on T0.)*
+**Competency questions.** Requirements are operationalised as executable SPARQL
+questions \cite{noy2001,lot2022}. The release index contains eleven questions.
+They retrieve assignments by enclosure and at a reference time; missing enclosure
+dimensions; environment specifications paired with observed QUDT quantities;
+time-bounded operational and calibration evidence; husbandry provisioning gaps;
+sensor-captured properties; observations lasting at least 24 hours under a stated
+condition; and three ISA/STATO provenance paths. Complete expected bindings are
+versioned with the queries, including the intentionally empty missing-dimensions
+answer. Section 6 reports their exact results. Five additional queries exercise
+the isolated 2 × 2 round-trip fixture for housing history, factor assignments,
+repeated observations, statistical result/file-fragment separation, and the
+Source-to-Sample derivation.

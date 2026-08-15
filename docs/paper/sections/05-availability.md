@@ -51,9 +51,11 @@ makes the resource's quality claims reproducible by any third party.
   `sosa:ObservableProperty`. Canonical SemTS 1.2.0 segment and dimension terms
   are selectively reused for location result tables. A pinned example-level evidence slice uses PROV-O
   \cite{provo}, OBI, STATO, and ISA/Bioschemas without asserting HCMO class
-  mappings or formal ISA RO-Crate conformance. Broader SemTS and
-  quantity-vocabulary integration remain future alignment work. A JSON-LD context is shipped for
-  application developers exchanging data.
+  mappings or formal ISA RO-Crate conformance. The release also uses a pinned
+  QUDT 3.4.0 quantity-value pattern for dimensions, sampling rates,
+  specifications, and measured results. Broader vocabulary mappings remain
+  future alignment work. A JSON-LD context is shipped for application developers
+  exchanging data.
 - *Reusable.* The resource is licensed CC BY 4.0, carries provenance on the
   ontology header (creators with ORCIDs, version IRI), and provides a canonical
   citation (`CITATION.cff`) plus a DOI.

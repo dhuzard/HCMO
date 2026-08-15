@@ -42,9 +42,9 @@ The CfP requires these fields right after the abstract (drafted in
 ### 2. Description, metadata & FAIR
 - [ ] Human- **and** machine-readable description (encourages FAIR) → WIDOCO HTML
       ✔ + ontology metadata (rdfs:label/comment, dcterms, owl:versionIRI).
-- [ ] **GAP:** 143 terms lack `rdfs:comment`; 1 missing label; 43 Chowlk
-      placeholder/erroneous terms (`UNKNOWN:*`, `ns:Class2`, datatype-as-property).
-      → **Must be cleaned before submission** (T4). Reviewers will open the docs.
+- [x] Active terms have labels and textual definitions; no `UNKNOWN:` IRI or
+      object/datatype property punning remains in the generated release. Historical
+      Chowlk output is retained only as source material.
 - [ ] FAIR self-assessment table (F/A/I/R) in `metadata/resource-metadata.md`.
 
 ### 3. Design & technical quality
@@ -54,8 +54,9 @@ The CfP requires these fields right after the abstract (drafted in
 - [ ] Advantages, complexities, **limitations** explicitly described.
 - [ ] **Quality evidence:** OOPS! pitfall scan + FOOPS! FAIR score + reasoner
       (no unsat/cycles) + SHACL validation + competency-question results (T5).
-- [ ] **GAP:** shapes/examples/queries currently target the *legacy* term set →
-      competency queries return 0 rows. **Re-author against the clean V1 terms** (T6).
+- [x] Shapes, positive and negative examples, eleven canonical competency
+      questions, and five isolated round-trip questions target release 0.2.0 and
+      are checked against complete expected answers.
 
 ### 4. Impact, reusability & sustainability
 - [ ] Interest to the SW community **and** to society (animal welfare, 3Rs,
@@ -74,7 +75,10 @@ The CfP requires these fields right after the abstract (drafted in
 ## D. Pre-submission gate (all must be ✔)
 - [ ] w3id PURL resolves; DOI resolves; docs site live.
 - [ ] No placeholder terms; all terms labelled + defined.
-- [ ] Competency queries return non-zero, meaningful results.
-- [ ] OOPS!/FOOPS!/reasoner/SHACL reports archived under `figures/` or appendix.
+- [x] Competency queries return reviewed results; the intentional zero-row
+      missing-dimensions query is checked as an exact expected answer.
+- [ ] OOPS!/FOOPS! rerun on the final paper-matching distribution; current HermiT,
+      SHACL, CQ, ISA projection, and RO-Crate reports are archived under
+      `docs/paper/evaluation/`.
 - [ ] Page count within limit; LNCS template; metadata block present.
 - [ ] Canonical citation + tagged release (e.g. `v0.x` matching the paper).

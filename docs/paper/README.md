@@ -39,6 +39,8 @@ docs/paper/
   OUTLINE.md              # section-by-section outline with page budget
   metadata/               # resource-metadata block + FAIR table + authors
   sections/               # one Markdown file per paper section (drafts)
+  overleaf/               # generated LNCS source + hand-authored main/figures
+  evaluation/             # archived reasoner/interoperability/review evidence
   sources/                # Gilbert 2026 report (PDF + EN translation) + figures
   emails/                 # co-author comms (e.g. request-clean-v1.md)
   references.bib          # BibTeX bibliography
@@ -50,7 +52,9 @@ docs/paper/
 2. Keep `CALL-REQUIREMENTS.md` green — every mandatory criterion must be satisfied
    *before* submission.
 3. Track progress and decisions in `TODO.md` (status + change log).
-4. Port to LNCS LaTeX (Overleaf) only once content stabilises.
+4. Regenerate the LNCS/Overleaf export with
+   `uv run --python 3.13 tooling/build_paper.py`; edit prose in Markdown, not in
+   generated `overleaf/sections/*.tex`.
 
 ## The resource at a glance (evidence to cite)
 

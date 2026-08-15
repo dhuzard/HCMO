@@ -23,8 +23,7 @@ corresponding (contact) authors.** Affiliations to be provided (placeholders bel
 >
 > **Name corrections (per ORCID records, 2026-06-29):** "Sonfack" → **Sonfack
 > Sounchio**; "Tofano" → **Toffano**. Applied to `CITATION.cff` + README. The
-> current ontology header (`hcm-core.ttl`) still has these as ORCID-less blank
-> nodes with the old spellings → **fix when committing the clean V1 (T0)**.
+> ontology header and citation metadata use the corrected names and ORCID IRIs.
 >
 > **Acknowledge** (not authors): COST **TEATIME** working group — Benoît
 > Petit-Demoulière, Davor Virag, Vootele Voikar (domain feedback).

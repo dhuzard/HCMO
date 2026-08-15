@@ -7,6 +7,12 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Added
 
+- Added a deterministic Markdown-to-LNCS exporter, an Overleaf-ready manuscript
+  package, and three dependency-free TikZ figures for the release pipeline,
+  five-module domain model, and ISA/STATO round-trip fixture.
+- Added a dated post-PR #24--#26 semantic review recording current build,
+  HermiT, SHACL, competency-question, external-vocabulary, RO-Crate, and native
+  ISA projection evidence.
 - Added accepted environmental/temporal and QUDT 3.4.0 decision records,
   migration guidance, and a checksummed external-vocabulary contract for the
   QUDT schema and unit vocabulary.
@@ -74,6 +80,10 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
   after ontology domain/range inference.
 
 ### Changed
+
+- Aligned the resource-paper requirements, evaluation counts, round-trip size,
+  bibliography, outline, and submission checklist with the implemented
+  ISA/STATO, SemTS/SOSA, environmental/temporal, and QUDT policies.
 
 - Separated environmental profile composition, property specification, and
   SOSA observation relations. `ThriveProfile` is now an environment-profile

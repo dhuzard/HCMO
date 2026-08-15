@@ -1,0 +1,52 @@
+\documentclass[runningheads]{llncs}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{microtype}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric}
+
+\title{HCMO: A FAIR Ontology for Home-Cage Monitoring}
+\titlerunning{HCMO: A FAIR Ontology for Home-Cage Monitoring}
+
+\author{Cyril Gilbert\inst{1} \and
+Pierre Larmande\inst{1} \and
+Gaoussou Sanou\inst{1} \and
+Serge Sonfack Sounchio\inst{1} \and
+Antoine Toffano\inst{1} \and
+Konstantin Todorov\inst{1} \and
+Damien Huzard\inst{1}}
+\authorrunning{C. Gilbert et al.}
+\institute{Affiliations and corresponding-author emails to be confirmed before submission}
+
+\begin{document}
+\maketitle
+
+\input{sections/00-abstract.tex}
+
+\begin{center}
+\begin{minipage}{0.94\linewidth}
+\small
+\textbf{Resource type:} Ontology with SHACL shapes, SPARQL competency queries,
+JSON-LD context, and example datasets\\
+\textbf{License:} CC BY 4.0\\
+\textbf{DOI:} \href{https://doi.org/10.5281/zenodo.18925285}{10.5281/zenodo.18925285}\\
+\textbf{URL:} \url{https://w3id.org/hcmo/ontology/hcm}
+\end{minipage}
+\end{center}
+
+\input{sections/01-introduction.tex}
+\input{sections/02-related-work.tex}
+\input{sections/03-requirements.tex}
+\input{sections/04-resource.tex}
+\input{sections/05-availability.tex}
+\input{sections/06-evaluation.tex}
+\input{sections/07-impact.tex}
+\input{sections/08-conclusion.tex}
+
+\bibliographystyle{splncs04}
+\bibliography{references}
+\end{document}
