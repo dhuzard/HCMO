@@ -113,7 +113,7 @@
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm">
     <dc:description>Ontology for home-cage monitoring of laboratory animals</dc:description>
     <dc:title>Home-Cage Monitoring Ontology</dc:title>
-    <dcterms:bibliographicCitation>The Home-Cage Monitoring Ontology (HCMO). Zenodo. https://doi.org/10.5281/zenodo.18925285</dcterms:bibliographicCitation>
+    <dcterms:bibliographicCitation>The Home-Cage Monitoring Ontology (HCMO). Zenodo. https://doi.org/10.5281/zenodo.18925284</dcterms:bibliographicCitation>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-03-09</dcterms:created>
     <dcterms:creator rdf:resource="https://orcid.org/0000-0002-2923-9790"/>
     <dcterms:creator rdf:resource="https://orcid.org/0000-0002-6085-6818"/>
@@ -122,14 +122,14 @@
     <dcterms:creator rdf:resource="https://orcid.org/0000-0003-4820-7951"/>
     <dcterms:creator rdf:resource="https://orcid.org/0009-0008-0575-8490"/>
     <dcterms:creator rdf:resource="https://orcid.org/0009-0008-2489-8106"/>
-    <dcterms:identifier>https://doi.org/10.5281/zenodo.18925285</dcterms:identifier>
+    <dcterms:identifier>https://doi.org/10.5281/zenodo.18925284</dcterms:identifier>
     <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-03-09</dcterms:issued>
     <dcterms:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-08-15</dcterms:modified>
     <dcterms:publisher>Huzard group</dcterms:publisher>
     <dcterms:source rdf:resource="https://github.com/dhuzard/HCMO"/>
     <bibo:authorList rdf:nodeID="cb1e97f7adf5ac9ee4d12b800eb2f05f554c08b4c118df20610e2af8ea6389c5e88"/>
-    <bibo:doi>10.5281/zenodo.18925285</bibo:doi>
+    <bibo:doi>10.5281/zenodo.18925284</bibo:doi>
     <vann:preferredNamespacePrefix>hcm</vann:preferredNamespacePrefix>
     <vann:preferredNamespaceUri>https://w3id.org/hcmo/ontology/hcm#</vann:preferredNamespaceUri>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>

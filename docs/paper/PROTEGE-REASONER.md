@@ -3,7 +3,7 @@
 Status: the automated reasoner targets the active HCMO release artifacts. The
 pre-promotion v2 results remain recorded below as historical evidence.
 
-## Current 0.2.0 result
+## Archived 0.2.0 result
 
 The canonical `dist/hcmo.owl` artifact was rebuilt and checked on 2026-07-31.
 Its SHA-256 is

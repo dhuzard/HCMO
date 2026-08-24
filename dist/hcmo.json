@@ -3229,10 +3229,10 @@
           }
         ]
       },
-      "bibo:doi": "10.5281/zenodo.18925285",
+      "bibo:doi": "10.5281/zenodo.18925284",
       "dc:description": "Ontology for home-cage monitoring of laboratory animals",
       "dc:title": "Home-Cage Monitoring Ontology",
-      "dcterms:bibliographicCitation": "The Home-Cage Monitoring Ontology (HCMO). Zenodo. https://doi.org/10.5281/zenodo.18925285",
+      "dcterms:bibliographicCitation": "The Home-Cage Monitoring Ontology (HCMO). Zenodo. https://doi.org/10.5281/zenodo.18925284",
       "dcterms:created": {
         "@type": "xsd:date",
         "@value": "2026-03-09"
@@ -3260,7 +3260,7 @@
           "@id": "https://orcid.org/0009-0008-2489-8106"
         }
       ],
-      "dcterms:identifier": "https://doi.org/10.5281/zenodo.18925285",
+      "dcterms:identifier": "https://doi.org/10.5281/zenodo.18925284",
       "dcterms:issued": {
         "@type": "xsd:date",
         "@value": "2026-03-09"

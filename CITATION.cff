@@ -29,7 +29,7 @@ authors:
     given-names: "Antoine"
     orcid: "https://orcid.org/0009-0008-0575-8490"
 version: 0.3.0
-doi: 10.5281/zenodo.18925285
+doi: 10.5281/zenodo.18925284
 url: "https://github.com/dhuzard/HCMO"
 repository-code: "https://github.com/dhuzard/HCMO"
 license: CC-BY-4.0

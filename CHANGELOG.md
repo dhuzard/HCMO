@@ -83,6 +83,12 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Changed
 
+- Aligned release-bearing query, contribution-form, citation, and paper metadata
+  with the 0.3.0 candidate; candidate citations now use the stable Zenodo
+  concept DOI until the version-specific 0.3.0 record is published.
+- Qualified the paper's observation-context requirement to match the subtype-
+  specific SHACL profile, made the Overleaf ZIP newline-independent and
+  compression-independent, and added paper-export freshness to CI.
 - Advanced the release-candidate metadata from `0.2.0` to `0.3.0`, including
   the manifest, ontology version IRI, prior-version link, citation metadata, and
   current documentation. No term IRI changed.

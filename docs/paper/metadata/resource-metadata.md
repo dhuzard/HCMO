@@ -7,9 +7,12 @@ DOI/URL/version once the paper-matching release is cut, T9).
 Resource type: Ontology (with SHACL shapes, SPARQL competency queries,
                JSON-LD context, and example datasets)
 License:       CC BY 4.0
-DOI:           10.5281/zenodo.18925285
+DOI:           10.5281/zenodo.18925284
 URL:           https://w3id.org/hcmo/ontology/hcm
 ```
+
+The candidate uses the stable Zenodo concept DOI. Replace or supplement it with
+the version-specific 0.3.0 DOI when that record is published.
 
 Supplementary links (provide for reviewers):
 

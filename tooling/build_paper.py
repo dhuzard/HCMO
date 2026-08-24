@@ -4,7 +4,6 @@
 from __future__ import annotations
 
 import re
-import shutil
 import zipfile
 from pathlib import Path
 
@@ -13,6 +12,7 @@ PAPER = ROOT / "docs" / "paper"
 OUT = PAPER / "overleaf"
 ARCHIVE = PAPER / "hcmo-overleaf-upload.zip"
 SECTIONS = sorted((PAPER / "sections").glob("[0-9][0-9]-*.md"))
+ARCHIVE_TEXT_SUFFIXES = {".bib", ".md", ".tex"}
 
 
 def latex_plain(value: str) -> str:
@@ -168,6 +168,15 @@ def convert_section(path: Path) -> str:
     return "\n".join(output).strip() + "\n"
 
 
+def archive_payload(path: Path) -> bytes:
+    """Return platform-independent bytes for a paper-package member."""
+    data = path.read_bytes()
+    if path.suffix.lower() not in ARCHIVE_TEXT_SUFFIXES:
+        return data
+    text = data.decode("utf-8").replace("\r\n", "\n").replace("\r", "\n")
+    return text.encode("utf-8")
+
+
 def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
     section_out = OUT / "sections"
@@ -178,14 +187,16 @@ def main() -> int:
     aggregate = OUT / "paper.tex"
     if aggregate.exists():
         aggregate.unlink()
-    shutil.copyfile(PAPER / "references.bib", OUT / "references.bib")
-    with zipfile.ZipFile(ARCHIVE, "w", compression=zipfile.ZIP_DEFLATED) as archive:
+    references = (PAPER / "references.bib").read_text(encoding="utf-8")
+    (OUT / "references.bib").write_text(references, encoding="utf-8", newline="\n")
+    with zipfile.ZipFile(ARCHIVE, "w", compression=zipfile.ZIP_STORED) as archive:
         for path in sorted(item for item in OUT.rglob("*") if item.is_file()):
             info = zipfile.ZipInfo(path.relative_to(OUT).as_posix())
             info.date_time = (1980, 1, 1, 0, 0, 0)
-            info.compress_type = zipfile.ZIP_DEFLATED
+            info.create_system = 3
+            info.compress_type = zipfile.ZIP_STORED
             info.external_attr = 0o100644 << 16
-            archive.writestr(info, path.read_bytes())
+            archive.writestr(info, archive_payload(path))
     print(
         f"Exported {len(SECTIONS)} sections to {OUT.relative_to(ROOT).as_posix()} "
         f"and {ARCHIVE.relative_to(ROOT).as_posix()}"

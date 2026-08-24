@@ -15,13 +15,15 @@ of its production.
 \cite{kiryk2026,huzard2026tech,forrest2026} yields the following requirements,
 which drive the model (forward references to §4):
 
-- **R1 — Context-complete observations.** Every observation must record the
-  concerned subject, the observed property, the time, the procedure, and, where
-  available, the result, so that no measurement is stranded without context.
+- **R1 — Context-aware observations.** An observation must remain linkable,
+  where applicable, to its feature of interest, observed property, time,
+  procedure, sensor, and result. The standard shapes enforce fields per profiled
+  observation subtype rather than imposing one biologically inappropriate
+  completeness rule on every SOSA observation.
 - **R2 — Separation of device, observation, and result.** A sensor (a technical
   device), an observation (the measurement event in context), and a result (the
   produced value/interpretation) must be modelled distinctly, preserving the
-  chain *device → observation → measurement → interpretation*. HCM outputs are
+  chain *device → observation → result/interpretation*. HCM outputs are
   often signals later transformed by software into inferred behaviours.
 - **R3 — Temporal housing assignment.** Membership of an animal in an enclosure is
   time-bounded, not permanent, and must be represented as an assignment over an
@@ -43,8 +45,9 @@ which drive the model (forward references to §4):
   completeness checks (e.g. a numeric value without a unit, an animal not assigned
   to an enclosure over an interval).
 
-**Competency questions.** Requirements are operationalised as executable SPARQL
-questions \cite{noy2001,lot2022}. The release index contains eleven questions.
+**Competency questions.** Selected retrieval aspects of the requirements are
+operationalised as executable SPARQL questions \cite{noy2001,lot2022}; structural
+requiredness is tested separately with SHACL. The release index contains eleven questions.
 They retrieve assignments by enclosure and at a reference time; missing enclosure
 dimensions; environment specifications paired with observed QUDT quantities;
 time-bounded operational and calibration evidence; husbandry provisioning gaps;

@@ -28,12 +28,15 @@ check found that the public PURL still served the older 1,252-triple graph rathe
 than the 1,397-triple candidate, so the perfect candidate-file score is not
 misreported as a score for the currently deployed representation. Raw outputs
 and term-level triage are archived in
-`docs/paper/evaluation/CANDIDATE-OOPS-FOOPS-2026-08-15.md`. Both scanners will be
-rerun only if the graph changes before tagging. After deployment, content
-negotiation will be checked separately against the tagged 0.3.0 artifact.
+`docs/paper/evaluation/CANDIDATE-OOPS-FOOPS-2026-08-15.md`. A later correction
+replaced the historical version-specific DOI with the stable concept DOI; it did
+not change term axioms, but it changed the RDF bytes. Both scanners will therefore
+be rerun on the tagged artifact. After deployment, content negotiation will be
+checked separately against the tagged 0.3.0 artifact.
 
 **Logical consistency.** The canonical RDF/XML artifact was rebuilt and
-checksummed on 15 August 2026. `dist/hcmo.owl` contains 1,397 RDF triples; the
+checksummed again on 24 August 2026 after the metadata-only DOI correction.
+`dist/hcmo.owl` contains 1,397 RDF triples; the
 generated profile contains 60 declared release classes, 68 object properties,
 and 75 datatype properties, including compatibility and directly referenced
 external terms. HermiT loaded 65 classes and reported zero

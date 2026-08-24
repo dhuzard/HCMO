@@ -42,17 +42,17 @@
 | 14 | Ontologie | Exemples d'instances représentatifs | Oui | ✅ | `examples/abox-minimal.ttl`, `examples/isa-hcmo-bridge.ttl`, `examples/dvc-tecniplast.ttl` | Exemples HCMO courants, cas ISA/RO-Crate et profil DVC présents. |
 | 15 | Ontologie | Requêtes SPARQL des competency questions | Oui | ✅ | `queries/competency_questions.yaml`, `queries/cq-*.rq` | Onze requêtes canoniques et cinq requêtes isolées de round trip passent avec leurs réponses complètes attendues. |
 | 16 | Ontologie | SHACL valides/invalides | Oui | ✅ | `shapes/hcm-shapes.ttl`, `examples/` | Les exemples positifs et négatifs sont exécutés par `tooling/validate.py`. |
-| 17 | Ontologie | Lancer OOPS! + FOOPS! FAIR ontology assessment + noter problèmes | Oui | 🟡 | `docs/paper/FOOPS-REPORT-2026-07-09.md`, `docs/paper/evaluation/OOPS-REPORT-2026-07-10.md`, `sections/06-evaluation.md` | Historique clean-v2 archivé: FOOPS 1.0 et aucun OOPS critique/important. À relancer sur l'artefact final 0.2.0 cité dans le papier. |
+| 17 | Ontologie | Lancer OOPS! + FOOPS! FAIR ontology assessment + noter problèmes | Oui | 🟡 | `docs/paper/evaluation/CANDIDATE-OOPS-FOOPS-2026-08-15.md`, `sections/06-evaluation.md` | Scan du candidat 0.3.0 archivé et trié; à relancer après les dernières corrections de métadonnées et sur l'artefact tagué. |
 | 18 | Évaluation | Définir les competency questions de l'article | Oui | ✅ | `sections/03-requirements.md`, `queries/competency_questions.yaml` | Le texte décrit les onze questions canoniques et les cinq questions du fixture de round trip. |
 | 19 | Évaluation | Chaque requête répond à une CQ | Oui | ✅ | `queries/competency_questions.yaml`, `tooling/validate.py` | Index, fichiers et réponses exactes sont contrôlés automatiquement; aucune requête orpheline. |
 | 20 | Évaluation | Bilan OOPS!/FOOPS!/SHACL/WIDOCO/HermiT | Oui | 🟡 | `sections/06-evaluation.md`, `evaluation/POST-PR24-26-REVIEW-2026-08-15.md` | Build, HermiT, SHACL, CQ, vocabulaires, RO-Crate et projection ISA passent sur le main post-PR #26. OOPS!/FOOPS! restent à relancer sur la release finale. |
 | 21 | Ontologie | Documentation WIDOCO | Oui | ✅ | `README.md` → <https://dhuzard.github.io/HCMO/index-en.html> | Lien ajouté au README. |
 | 22 | Availability | Dépôt GitHub propre & compréhensible | Oui | ✅ | `README.md`, `docs/README.md`, `docs/ARCHITECTURE.md` | Architecture active, sources historiques, génération et validation sont documentées. |
 | 23 | Availability | Release versionnée figée | Oui | ⬜ | `TODO.md` (T9) | À cadrer sur la version citée. |
-| 24 | Availability | DOI Zenodo | Oui | ✅ | `CITATION.cff` → 10.5281/zenodo.18925285 | Existe; à refigers sur la release du papier (T9). |
+| 24 | Availability | DOI Zenodo | Oui | 🟡 | `CITATION.cff` → concept DOI 10.5281/zenodo.18925284 | Le concept DOI est stable; publier et reporter le DOI de version 0.3.0 au moment de la release (T9). |
 | 25 | Availability | Vérifier la licence | Oui | ✅ | `LICENSE`, `README.md` | CC BY 4.0 (fichier vérifié). ⚠ **Consentement des co-auteurs à confirmer** (CC BY 4.0 vs CC0) — voir OPEN-QUESTIONS Q19 / TODO T23b. |
 | 26 | Availability | CITATION.cff | Oui | ✅ | `CITATION.cff` | Présent + ORCIDs ajoutés. |
-| 27 | Availability | Namespace persistant w3id | Oui | 🟡 | <https://github.com/perma-id/w3id.org/pull/6261>, <https://w3id.org/hcmo/ontology/hcm> | Namespace HCMO live depuis le 2026-06-30. Vérifier la négociation de contenu vers les artefacts et la documentation 0.2.0, sans changer l'IRI de base. |
+| 27 | Availability | Namespace persistant w3id | Oui | 🟡 | <https://github.com/perma-id/w3id.org/pull/6261>, <https://w3id.org/hcmo/ontology/hcm> | Namespace HCMO live depuis le 2026-06-30. Après publication de la release, vérifier la négociation vers les artefacts et la documentation 0.3.0 sans changer l'IRI de base. |
 | 28 | Availability | README : comment utiliser l'ontologie | Oui | ✅ | `README.md` | Quickstart + "Consuming the ontology". |
 | 29 | Availability | Release/doc/DOI = même version | Oui | ⬜ | `TODO.md` (T9) | À faire au moment de la release. |
 | 30 | Availability | Section Availability prête à coller | Oui | ✅ | `sections/05-availability.md`, `metadata/resource-metadata.md` | GitHub/DOI/licence/docs/examples/queries. |
@@ -73,7 +73,7 @@
 
 ## What's drafted (article) — for items 2–6, 18, 30, 36–37, 39, 41
 All eight numbered article sections and the abstract have a current draft in
-`docs/paper/sections/`. They were reviewed against the post-PR #26 HCMO 0.2.0
+`docs/paper/sections/`. They were reviewed against the post-PR #26 HCMO 0.3.0
 artifact on 2026-08-15. A deterministic LNCS/Overleaf export, three TikZ figures,
 and a bibliography with all referenced keys are available under `overleaf/`.
 

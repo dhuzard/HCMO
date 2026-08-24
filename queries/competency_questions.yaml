@@ -2,7 +2,7 @@
 # Every query is checked against its complete reviewed answer rows, including
 # unbound variables represented as null. Counts alone are not acceptance
 # evidence.
-version: 0.2.0
+version: 0.3.0
 dir: queries
 questions:
   - id: animals-by-enclosure

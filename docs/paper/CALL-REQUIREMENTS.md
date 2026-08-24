@@ -25,7 +25,8 @@ The CfP requires these fields right after the abstract (drafted in
 - [ ] **Resource type:** Ontology (+ SHACL shapes, SPARQL competency queries,
       JSON-LD context, examples)
 - [ ] **License:** CC BY 4.0
-- [ ] **DOI:** 10.5281/zenodo.18925285
+- [ ] **DOI:** concept DOI 10.5281/zenodo.18925284; replace or supplement it
+      with the 0.3.0 version DOI when that record is published.
 - [ ] **URL:** https://w3id.org/hcmo/ontology/hcm (+ repo + docs)
 
 ## C. Review criteria → how HCMO must answer each

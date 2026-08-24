@@ -31,9 +31,11 @@ PURL, and archived as a release.
    check, RO-Crate validation, and the native ISA projection.
 5. Run OOPS! on the generated RDF/XML artifact and FOOPS! through the public
    ontology PURL; archive both raw responses and their triage.
-6. Deploy the candidate and confirm that PURL content negotiation returns the
-   same 1,397-triple graph in the supported RDF serializations.
-7. Confirm documentation, DOI metadata, and release files.
-8. Create the matching Git tag and GitHub/Zenodo release.
+6. Create and publish the matching Git tag and GitHub release so that the
+   `releases/latest` PURL targets can resolve the 0.3.0 assets.
+7. Publish the matching Zenodo version and documentation, then confirm the
+   version-specific DOI metadata and release files.
+8. Confirm that PURL content negotiation returns the same 1,397-triple graph in
+   every supported RDF serialization.
 9. Replace "release candidate" with "release" in the paper only after the tag
    and public artifacts exist.

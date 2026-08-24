@@ -68,7 +68,7 @@ schema:logo a owl:AnnotationProperty .
 <https://w3id.org/hcmo/ontology/hcm> a owl:Ontology ;
     dc:description "Ontology for home-cage monitoring of laboratory animals" ;
     dc:title "Home-Cage Monitoring Ontology" ;
-    dcterms:bibliographicCitation "The Home-Cage Monitoring Ontology (HCMO). Zenodo. https://doi.org/10.5281/zenodo.18925285" ;
+    dcterms:bibliographicCitation "The Home-Cage Monitoring Ontology (HCMO). Zenodo. https://doi.org/10.5281/zenodo.18925284" ;
     dcterms:created "2026-03-09"^^xsd:date ;
     dcterms:creator <https://orcid.org/0000-0002-2923-9790>,
         <https://orcid.org/0000-0002-6085-6818>,
@@ -77,14 +77,14 @@ schema:logo a owl:AnnotationProperty .
         <https://orcid.org/0000-0003-4820-7951>,
         <https://orcid.org/0009-0008-0575-8490>,
         <https://orcid.org/0009-0008-2489-8106> ;
-    dcterms:identifier "https://doi.org/10.5281/zenodo.18925285" ;
+    dcterms:identifier "https://doi.org/10.5281/zenodo.18925284" ;
     dcterms:issued "2026-03-09"^^xsd:date ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     dcterms:modified "2026-08-15"^^xsd:date ;
     dcterms:publisher "Huzard group" ;
     dcterms:source <https://github.com/dhuzard/HCMO> ;
     bibo:authorList ( <https://orcid.org/0000-0003-4820-7951> <https://orcid.org/0000-0002-9116-6692> <https://orcid.org/0009-0008-2489-8106> <https://orcid.org/0000-0002-2923-9790> <https://orcid.org/0000-0003-2204-2466> <https://orcid.org/0000-0002-6085-6818> <https://orcid.org/0009-0008-0575-8490> ) ;
-    bibo:doi "10.5281/zenodo.18925285" ;
+    bibo:doi "10.5281/zenodo.18925284" ;
     vann:preferredNamespacePrefix "hcm" ;
     vann:preferredNamespaceUri "https://w3id.org/hcmo/ontology/hcm#" ;
     owl:priorVersion <https://w3id.org/hcmo/ontology/hcm/0.2.0> ;

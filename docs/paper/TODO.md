@@ -33,7 +33,7 @@ column and append to the **Change log** whenever something moves.
 | T7 | Write **lab-maintained** governance/versioning policy (Huzard team, GitHub, SemVer+versionIRI; TEATIME = feedback channel) | ☐ | HITL R3. Feeds §7. |
 | T7b | **Drop MAPP branding** in paper docs and reconcile repository branding | ☑ | Active ontology metadata, manifest, README, citation metadata, and current documentation consistently use HCMO. |
 | T8 | Run **quality evaluation**: OOPS!, FOOPS! (FAIR), reasoner (HermiT/ELK), pySHACL, CQ results — archive reports | ☑ | Candidate build, HermiT, parse, SHACL, ISA evidence, CQs, OOPS and FOOPS are archived and triaged. Repeat external scans after the final tag. |
-| T9 | Cut a **tagged release** greater than `v0.2.0` + refreshed Zenodo DOI matching the paper | ◐ | Version metadata is prepared as `0.3.0`; the matching merge, tag, PURL deployment, and Zenodo release remain. Procedure and rationale are in `RELEASE-GATE.md`. |
+| T9 | Cut a **tagged release** greater than `v0.2.0` + refreshed Zenodo DOI matching the paper | ◐ | Version metadata is prepared as `0.3.0` and uses the stable concept DOI; the matching merge, tag, GitHub release, version-specific Zenodo DOI, and PURL verification remain. Procedure and rationale are in `RELEASE-GATE.md`. |
 
 ## Phase 2 — Write the paper
 
@@ -68,6 +68,7 @@ column and append to the **Change log** whenever something moves.
 
 | Date | Change | By |
 |------|--------|----|
+| 2026-08-24 | **PR #27 review corrections** — aligned release-bearing 0.3.0 metadata, switched candidate citations to the stable Zenodo concept DOI, qualified observation-context requirements, made the paper ZIP newline-stable, and reordered release/PURL verification. No class or property axiom changed. | Codex |
 | 2026-08-15 | **HCMO 0.3.0 release candidate prepared** — advanced manifest, ontology header, citation metadata, current documentation, and paper wording without changing any term IRI; regenerated and re-evaluated canonical artifacts. The matching tag, PURL deployment, and Zenodo release remain post-merge gates. | Cyril/Codex |
 | 2026-08-15 | **Release-boundary and external-scanner audit** — identified that tag `v0.2.0` predates the paper candidate by 24 commits; reran OOPS and FOOPS on the current graph/PURL; archived raw reports and triage; corrected paper claims; added a deterministic Overleaf upload archive. No ontology axioms changed. | Cyril/Codex |
 | 2026-08-15 | **Post-PR #24–#26 submission review** — reran build, HermiT, SHACL/CQ, RO-Crate and native ISA projection checks; reviewed semantic/deprecation and claim-strength policies; corrected current counts and round-trip size; aligned requirements, outline, bibliography and paper claims; added an LNCS/Overleaf source package. No ontology axioms changed. | Cyril/Codex |

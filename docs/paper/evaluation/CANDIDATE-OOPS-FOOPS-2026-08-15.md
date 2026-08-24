@@ -6,6 +6,12 @@ Scope: the HCMO 0.3.0 release-candidate graph used by the paper draft. This
 graph succeeds the immutable `v0.2.0` tag but is not called a published 0.3.0
 release until its matching commit is merged, tagged, and deployed.
 
+Follow-up (2026-08-24): PR review replaced the historical version-specific DOI
+with the stable Zenodo concept DOI in ontology and citation metadata. This did
+not change any class or property axiom, but it changed the assessed RDF bytes;
+therefore the raw scans below remain dated evidence and must be rerun on the
+tagged artifact before release claims are finalized.
+
 ## OOPS!
 
 The official OOPS! REST service assessed `dist/hcmo.owl` as embedded RDF/XML.
@@ -50,9 +56,9 @@ score can be attributed to the released PURL representation.
 
 The candidate passes logical, SHACL, competency-question, interoperability, and
 FOOPS! file-assessment gates. OOPS! findings are triaged rather than hidden.
-This report records the final 0.3.0 version IRI. Both services must be rerun only
-if the graph changes before tagging; PURL content negotiation must be verified
-after deployment.
+This report records the 0.3.0 version IRI. Because citation metadata changed in
+the 2026-08-24 follow-up, both services must be rerun on the tagged artifact;
+PURL content negotiation must then be verified after deployment.
 
 ## Raw-report checksums
 
