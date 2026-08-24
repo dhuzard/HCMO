@@ -1,7 +1,8 @@
 # 4. Resource description
 
-> **Status:** full draft aligned with HCMO 0.2.0. Claims about external
-> mappings are limited to axioms and examples present in the release.
+> **Status:** full draft aligned with the HCMO 0.3.0 release candidate. Claims
+> about external mappings are limited to axioms and examples present in that
+> candidate.
 
 HCMO uses the persistent ontology IRI
 `https://w3id.org/hcmo/ontology/hcm` and the stable term namespace
@@ -11,7 +12,7 @@ sub-namespaces beneath the same base: `hcm/bio#`, `hcm/env#`, `hcm/obs#`, and
 IRIs are retained in a compatibility module with deprecation and replacement
 metadata where a defensible replacement exists.
 
-**Modular organisation.** HCMO 0.2.0 is authored as five active modules. The
+**Modular organisation.** HCMO 0.3.0 is authored as five active modules. The
 minimal core centres on `hcm:Enclosure`, `hcm:MonitoredEnclosure`, enclosure
 dimensions, enrichment, and stable housing relations. The bio module represents
 subjects, experimental groups, housing assignments, and study factors. The env
@@ -56,7 +57,7 @@ ontologies.
 
 Numeric dimensions, sampling rates, environmental targets, and observation
 results use the pinned QUDT 3.4.0 `QuantityValue`, `numericValue`, and `hasUnit`
-pattern. HCMO role properties state what each quantity describes. This is
+pattern \cite{qudt}. HCMO role properties state what each quantity describes. This is
 selective reuse of the checksummed schema and unit vocabulary, not a claim of
 full QUDT conformance.
 
@@ -76,12 +77,13 @@ HCMO normatively follows the 2017 SOSA/SSN Recommendation \cite{sosa}, pinned
 to an immutable copy of the 2017 ontology artifact. Environmental and
 sensor-captured properties use `sosa:ObservableProperty`; terms introduced by
 the developing later edition are not mixed into this release. HCMO also
-selectively reuses canonical unversioned SemTS 1.2.0 terms: a location result
-table is a `semts:TimeSeriesSegment` whose dimensions may be linked with
+selectively reuses canonical unversioned SemTS 1.2.0 terms \cite{semts}: a
+location result table is a `semts:TimeSeriesSegment` whose dimensions may be linked with
 `semts:segmentDimension` to `semts:DataDimension`. The earlier observation
 dimension restriction and knowledge-generation-specific `semts:generated`
 relation were removed after semantic review. A pinned example-level evidence slice now uses PROV-O, specific OBI
-and STATO types, and ISA/Bioschemas exchange terms in one acyclic workflow. This is
+and STATO types, and ISA/Bioschemas exchange terms in one acyclic workflow
+\cite{isa,rocrate}. This is
 validated interoperability evidence, not an HCMO class mapping or a claim of
 formal ISA RO-Crate conformance. A second generated 2 × 2 fixture preserves
 animal identity, time-bounded housing, Source/Sample roles, repeated

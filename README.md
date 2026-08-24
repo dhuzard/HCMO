@@ -2,7 +2,7 @@
 
 [![Validate](https://github.com/Neuronautix/HCMO/actions/workflows/validate.yml/badge.svg)](https://github.com/Neuronautix/HCMO/actions/workflows/validate.yml)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-blue.svg)](LICENSE)
-[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.18925285-blue.svg)](https://doi.org/10.5281/zenodo.18925285)
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.18925284-blue.svg)](https://doi.org/10.5281/zenodo.18925284)
 
 <p align="center">
   <img src="HCMO-logo3.png" alt="HCMO logo" width="720">
@@ -23,7 +23,7 @@ JSON-LD context.
 | **Ontology IRI**          | `https://w3id.org/hcmo/ontology/hcm`                                                      |
 | **Base namespace**        | `https://w3id.org/hcmo/ontology/hcm#`                                                     |
 | **Module sub-namespaces** | `…/hcm/bio#`, `…/hcm/env#`, `…/hcm/obs#`, `…/hcm/tech#`                             |
-| **Version**               | `0.2.0` (versionIRI `…/hcm/0.2.0`)                                                     |
+| **Version**               | `0.3.0` (versionIRI `…/hcm/0.3.0`)                                                     |
 | **Prefix**                | `hcm`                                                                                     |
 | **License**               | CC BY 4.0                                                                                   |
 | **Logo**                  | [`HCMO-logo3.png`](HCMO-logo3.png)                                                        |
@@ -138,15 +138,16 @@ definitions (see `docs/MISSING-DEFINITIONS.md`) render with empty descriptions.
 
 ## Status & known issues
 
-HCMO `0.2.0` is the current modular release of the early Chowlk-derived term
+HCMO `0.3.0` is the current modular release candidate of the early Chowlk-derived term
 set. Active classes and properties have labels, textual definitions, explicit
 upper/domain anchors, and property domain/range axioms. Invalid `UNKNOWN:` and
 bare-namespace artifacts are retained only in the archived 0.0.1 source; valid
 published 0.0.1 HCMO IRIs remain available as deprecated mapped terms.
 
 The remaining modeling decisions are tracked in `docs/MISSING-DEFINITIONS.md`.
-Most notably, quantity/unit modeling is still a lightweight HCMO pattern pending
-a pinned QUDT 3.4.0 quantity-value pattern.
+Quantity-bearing dimensions, sampling rates, environmental specifications, and
+observation results use the pinned QUDT 3.4.0 quantity-value pattern; extensions
+to additional quantity roles remain subject to semantic review.
 
 ## Web authoring app (optional)
 
@@ -172,7 +173,7 @@ using ORCID IRIs where known) and in [`CITATION.cff`](CITATION.cff).
 ## Citation
 
 If you use HCMO, please cite it via [`CITATION.cff`](CITATION.cff) (GitHub's
-"Cite this repository") or the DOI [10.5281/zenodo.18925285](https://doi.org/10.5281/zenodo.18925285).
+"Cite this repository") or the concept DOI [10.5281/zenodo.18925284](https://doi.org/10.5281/zenodo.18925284).
 
 ## License
 

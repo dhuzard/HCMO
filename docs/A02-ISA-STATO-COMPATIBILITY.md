@@ -158,7 +158,7 @@ HCMO classes and external classes. Three competency questions assert the exact
 recording-provenance, factor/group, and statistical-result answer rows.
 
 The generated fixture under `examples/isa-roundtrip/` adds a graph-isomorphic
-1,587-triple HCMO RDF/extended ISA RO-Crate pair, eight individually housed
+1,539-triple HCMO RDF/extended ISA RO-Crate pair, eight individually housed
 animals in a 2 × 2 design, 56 repeated observations, re-housing without animal
 identity change, a real derived tissue Sample, a fitted model, estimate,
 confidence interval, p-value, and exact result-file fragment. Five additional

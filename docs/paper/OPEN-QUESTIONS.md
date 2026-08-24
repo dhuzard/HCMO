@@ -5,7 +5,7 @@ asked to the author in batched rounds (human-paced loop). Answers are applied to
 the relevant doc and logged in `TODO.md`.
 
 **Confidence legend:** 🔴 low (<60%) · 🟠 medium (60–90%) · 🟢 resolved (≥90%)
-**Last updated:** 2026-06-29
+**Last updated:** 2026-08-24
 
 ## Round 1 — foundational ✅ RESOLVED (2026-06-29)
 | # | Aspect | Conf. | Answer |
@@ -48,11 +48,11 @@ the relevant doc and logged in `TODO.md`.
 | Q20 | Where do results live? (Decision 0 vs 1 conflict.) | 🟢 | **Drop results from core entirely → `core = enclosure only`; all result/value classes (`ObservationResult`, `QuantityValue`, `CategoricalResult`, `Structural&LocationTable`) move to `obs`.** Reference scan confirmed: once Chowlk cruft (`MonitoredEnclosure ⊑ ObservationResult`) is cleaned, all result usage is obs-internal → zero cross-module edges. Core reduces to the single hub concept: **MonitoredEnclosure**. |
 | Q21 | Adopt **QUDT/OM** for units & quantities? | 🟢 | **QUDT 3.4.0 selected now.** One pinned QuantityValue/numericValue/hasUnit pattern covers dimensions, sampling rates, environmental specifications, and observations; earlier local literal/unit properties are deprecated. See ADR-0004. |
 
-## Parked — artifact-dependent (until clean V1 arrives, T0; author: "soon, days")
+## Artifact-dependent decisions — resolved for the 0.3.0 candidate
 | # | Aspect | Conf. | Answer |
 |---|--------|-------|--------|
-| Q9 | Runnable competency-question SPARQL against the active terms | 🟢 | Eight indexed queries run against HCMO 0.2.0 with complete reviewed answer rows, including three ISA/STATO evidence queries. |
-| Q10 | OOPS!/FOOPS!/reasoner/SHACL reports run? | 🟠 | HermiT and ontology-aware SHACL/CQ results are current for 0.2.0. Historical OOPS!/FOOPS! runs are archived; final-release reruns and Protege UI captures remain. |
+| Q9 | Runnable competency-question SPARQL against the active terms | 🟢 | Eleven canonical queries run against HCMO 0.3.0 with complete reviewed answers; five additional exact-answer queries exercise the isolated round-trip fixture. |
+| Q10 | OOPS!/FOOPS!/reasoner/SHACL reports run? | 🟠 | HermiT, ontology-aware SHACL/CQ, and interoperability results are current for the 0.3.0 candidate. The archived OOPS!/FOOPS! scan predates the final concept-DOI metadata correction and must be repeated on the tagged artifact. |
 | Q11 | Confirm release term counts | 🟢 | Current generated profile: 60 declared classes, 68 object properties, and 75 datatype properties including compatibility terms; active source audit: 33 classes and 69 non-deprecated properties. |
 
 ## Change log

@@ -7,7 +7,7 @@ integrated system spanning the animal subject, its housing, the environment, and
 the technical acquisition chain. HCMO captures HCM data together with the
 experimental context that makes them interpretable, keeps sensor, observation, and
 result distinct, and reuses selected terms from BFO, IAO, SOSA/SSN, Schema.org,
-and OWL-Time rather than duplicating them. HCMO pins SOSA to the 2017
+OWL-Time, and QUDT rather than duplicating them. HCMO pins SOSA to the 2017
 Recommendation and selectively reuses canonical SemTS 1.2.0 segment terms. A pinned instance-level
 ISA/Bioschemas, PROV-O, OBI, and STATO evidence slice demonstrates one acyclic
 recording-to-statistical-result workflow without claiming HCMO class mappings or
@@ -37,7 +37,8 @@ pathologies and AI models on the data remain outside the stabilised core.
 axioms identified by the class and property audits; systematic alignment
 decisions (reuse as-is vs specialise vs keep HCMO-specific) and bridge modules
 to adjacent ontologies (e.g. OBI, PROV-O, STATO, MEDO) and to
-taxa/anatomy/device vocabularies; extending the pinned QUDT quantity pattern;
+taxa/anatomy/device vocabularies; extending the current selective QUDT pattern
+to additional quantity roles where justified;
 populating the ontology with real datasets via the TEATIME network and publishing
 the corresponding SPARQL queries; and supporting the downstream uses outlined in
 §7. Through these steps, HCMO aims to become a community reference that improves the

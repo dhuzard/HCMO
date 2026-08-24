@@ -1,0 +1,25 @@
+\begin{figure}[t]
+\centering
+\resizebox{\linewidth}{!}{%
+\begin{tikzpicture}[
+  node distance=4mm and 6mm,
+  box/.style={draw, rounded corners=1.5pt, align=center, minimum height=8mm, font=\scriptsize, inner xsep=5pt},
+  flow/.style={-{Latex[length=2mm]}, thick}
+]
+\node[box, fill=blue!8] (src) {Five source modules\\+ compatibility};
+\node[box, fill=yellow!12, right=of src] (manifest) {Stable manifest\\\texttt{hcmo.yaml}};
+\node[box, fill=green!10, right=of manifest] (build) {Deterministic build\\\texttt{build.py}};
+\node[box, fill=green!10, right=of build] (dist) {TTL / OWL / JSON-LD\\profile inventory};
+\node[box, fill=red!7, below=of build] (validate) {Parse + SHACL + 11 CQs\\audits + HermiT + ISA tests};
+\node[box, fill=violet!8, right=of validate] (release) {CI gate\\tag + Zenodo + docs};
+\draw[flow] (src) -- (manifest);
+\draw[flow] (manifest) -- (build);
+\draw[flow] (build) -- (dist);
+\draw[flow] (dist) |- (validate);
+\draw[flow] (validate) -- (release);
+\draw[flow] (manifest) |- (validate);
+\end{tikzpicture}
+}
+\caption{HCMO's manifest-driven, reproducible build and validation pipeline.}
+\label{fig:pipeline}
+\end{figure}

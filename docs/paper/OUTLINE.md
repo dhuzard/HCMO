@@ -13,11 +13,11 @@ must be re-modularised first (see `AUDIT.md`, `TODO.md` T0).
 | 1 | **Introduction & motivation** | 1.5 | Home-cage monitoring (24/7, non-invasive); preclinical reproducibility, 3Rs, FAIR; vendor data silos & interoperability gap; contributions (bulleted). |
 | 2 | **Related work** | 1.0 | Existing HCM/animal data models; SOSA/SSN-based sensor ontologies; biomedical/animal ontologies (e.g. OBI, anatomy/taxonomy); why none cover HCM end-to-end. |
 | 3 | **Requirements & competency questions** | 1.0 | Use cases; competency questions (cite `queries/`); design requirements driving the model. |
-| 4 | **Resource description** | 2.5 | HCMO (no MAPP); modules **bio/housing/env/tech**; key classes (Subject, HousingAssignment, observations, Sensor/Hardware/Software) & the sensor≠observation≠result split; standards reuse (SOSA/SSN, OWL-Time, UO, PROV, BFO, schema, semts); JSON-LD context. Figure: ontology overview. |
+| 4 | **Resource description** | 2.5 | Five modules: enclosure-centred **core**, **bio**, **env**, **obs**, **tech**, plus migration-only compatibility; sensor≠observation≠result; temporal assignments and state evidence; selective SOSA 2017, SemTS 1.2.0, QUDT 3.4.0, OWL-Time, PROV, BFO/IAO reuse; ISA/STATO interoperability boundary; JSON-LD context. Figure: ontology overview. |
 | 5 | **Engineering & availability** | 1.5 | Release manifest as a stable contract; modular Turtle → reproducible dist (TTL/OWL/JSON-LD); CI validation gate; SHACL; PURL (w3id) + DOI + CC BY 4.0; WIDOCO docs; FAIR mapping. Figure: architecture/build pipeline. |
 | 6 | **Evaluation** | 1.5 | OOPS! pitfalls; FOOPS! FAIR score; reasoner consistency; SHACL validation on examples; competency-query results; coverage/completeness; comparison to alternatives. |
 | 7 | **Impact, use cases & sustainability** | 1.0 | KGQA (NL querying) layer; authoring webapp; vendor-data mapping ambition; adoption path; welfare/3Rs/open-science impact; governance, versioning, maintenance plan. |
-| 8 | **Conclusion & future work** | 0.5 | Honest limitations (early stage); roadmap (QUDT/OM units, bridge modules, more data). |
+| 8 | **Conclusion & future work** | 0.5 | Honest limitations; roadmap (broader reviewed alignments and quantity roles, bridge modules, more real data). |
 | — | References | 1.5 | LNCS bib. |
 
 ## Narrative spine (the argument)

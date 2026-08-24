@@ -7,6 +7,14 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Added
 
+- Added current-candidate OOPS!/FOOPS! raw evidence and triage, plus a
+  deterministic ZIP that can be imported directly into Overleaf.
+- Added a deterministic Markdown-to-LNCS exporter, an Overleaf-ready manuscript
+  package, and three dependency-free TikZ figures for the release pipeline,
+  five-module domain model, and ISA/STATO round-trip fixture.
+- Added a dated post-PR #24--#26 semantic review recording current build,
+  HermiT, SHACL, competency-question, external-vocabulary, RO-Crate, and native
+  ISA projection evidence.
 - Added accepted environmental/temporal and QUDT 3.4.0 decision records,
   migration guidance, and a checksummed external-vocabulary contract for the
   QUDT schema and unit vocabulary.
@@ -74,6 +82,22 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
   after ontology domain/range inference.
 
 ### Changed
+
+- Aligned release-bearing query, contribution-form, citation, and paper metadata
+  with the 0.3.0 candidate; candidate citations now use the stable Zenodo
+  concept DOI until the version-specific 0.3.0 record is published.
+- Qualified the paper's observation-context requirement to match the subtype-
+  specific SHACL profile, made the Overleaf ZIP newline-, compression-, and
+  platform-order-independent, and added paper-export freshness to CI.
+- Advanced the release-candidate metadata from `0.2.0` to `0.3.0`, including
+  the manifest, ontology version IRI, prior-version link, citation metadata, and
+  current documentation. No term IRI changed.
+- Distinguished the tagged `v0.2.0` artifact from the HCMO `0.3.0` release
+  candidate so that later semantic work is not attributed to an older release.
+
+- Aligned the resource-paper requirements, evaluation counts, round-trip size,
+  bibliography, outline, and submission checklist with the implemented
+  ISA/STATO, SemTS/SOSA, environmental/temporal, and QUDT policies.
 
 - Separated environmental profile composition, property specification, and
   SOSA observation relations. `ThriveProfile` is now an environment-profile

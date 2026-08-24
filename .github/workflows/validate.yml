@@ -23,6 +23,14 @@ jobs:
             git --no-pager diff --stat -- dist/
             exit 1
           fi
+      - name: Build paper package (verify it is up to date)
+        run: |
+          python tooling/build_paper.py
+          if ! git diff --quiet -- docs/paper/overleaf/ docs/paper/hcmo-overleaf-upload.zip; then
+            echo "::error::Paper export is out of date. Run 'python tooling/build_paper.py' and commit the result."
+            git --no-pager diff --stat -- docs/paper/overleaf/ docs/paper/hcmo-overleaf-upload.zip
+            exit 1
+          fi
       - name: Validate (parse + SHACL + competency queries)
         run: python tooling/validate.py
 

@@ -1,6 +1,6 @@
 # Ontology architecture
 
-HCMO 0.2.0 is authored as a checksummed end-user upper-level presentation, five
+HCMO 0.3.0 is authored as a checksummed end-user upper-level presentation, five
 domain modules, and one migration-only compatibility module. The release
 manifest `hcmo.yaml` is the authoritative module list; `dist/` is generated
 from that manifest.

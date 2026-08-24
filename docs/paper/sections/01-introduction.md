@@ -68,8 +68,9 @@ knowledge it is the first ontology to model HCM as an integrated system. Concret
    anchors, while example data reuse OWL-Time \cite{owltime}. A pinned
    example-level evidence slice uses PROV-O \cite{provo}, OBI, STATO, and
    ISA/Bioschemas without asserting HCMO class mappings or formal ISA
-   conformance. Broader provenance/process mappings and quantity/unit
-   vocabularies remain explicit alignment work.
+   conformance. The release also implements the reviewed SemTS 1.2.0 segment
+   pattern and a pinned QUDT 3.4.0 quantity-value pattern. Broader mappings
+   remain explicit alignment work.
 3. **A FAIR, tool-consumable resource package**: a stable release manifest,
    modular Turtle sources, a reproducibly generated merged graph (TTL/OWL/JSON-LD),
    SHACL shapes, a JSON-LD context, competency-question SPARQL, HTML documentation,

@@ -1,0 +1,23 @@
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+  node distance=5mm and 5mm,
+  box/.style={draw, rounded corners=1.5pt, align=center, font=\scriptsize, inner sep=4pt},
+  flow/.style={-{Latex[length=1.8mm]}, font=\tiny}
+]
+\node[box, fill=red!8] (animal) {animal Source};
+\node[box, fill=yellow!12, right=of animal] (housing) {housing history\\9 reviewed rows};
+\node[box, fill=blue!8, below=of animal] (obs) {56 repeated\\observations};
+\node[box, fill=violet!8, right=of obs] (model) {fitted model\\STATO results};
+\node[box, fill=green!9, right=of model] (files) {Files and exact\\row fragments};
+\node[box, fill=red!8, below=of files] (sample) {derived tissue Sample};
+\draw[flow] (animal) -- (housing);
+\draw[flow] (animal) -- (obs);
+\draw[flow] (obs) -- (model);
+\draw[flow] (model) -- (files);
+\draw[flow] (animal) to[bend right=20] node[below]{collection} (sample);
+\end{tikzpicture}
+\caption{Executable 2 $\times$ 2 fixture used to test identity, housing,
+repeated observations, statistical semantics, and ISA projection boundaries.}
+\label{fig:roundtrip}
+\end{figure}

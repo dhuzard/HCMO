@@ -16,11 +16,12 @@ subject ↔ housing ↔ environment ↔ device ↔ observation ↔ result) end-t
 
 **Standards reused, not duplicated.** HCMO builds on W3C and community vocabularies.
 SOSA/SSN provides the sensor/observation/platform backbone \cite{sosa}; OWL-Time
-models temporal entities and intervals \cite{owltime}; UO provides units of
-measurement \cite{uo}; PROV captures provenance \cite{provo}; and BFO supplies an
-upper-ontology grounding for processes such as behaviour \cite{bfo}. HCMO reuses
-these as-is or by specialisation, contributing the HCM-specific concepts and the
-relations that bind them.
+models temporal entities and intervals \cite{owltime}; QUDT provides quantity
+values and units \cite{qudt}; PROV captures provenance \cite{provo}; and BFO
+supplies an upper-ontology grounding for processes such as behaviour \cite{bfo}.
+SemTS provides a vocabulary for time-series segments and their dimensions
+\cite{semts}. HCMO reuses reviewed portions of these resources, contributing the
+HCM-specific concepts and relations that bind them.
 
 **Adjacent biomedical and laboratory-animal ontologies.** Several resources cover
 neighbouring concerns. The Ontology for Biomedical Investigations (OBI) models
@@ -32,6 +33,13 @@ notions. Reporting guidelines such as ARRIVE \cite{arrive} prescribe *what* to
 report about in-vivo experiments but are not machine-readable ontologies. None of
 these model continuous in-cage acquisition; HCMO is complementary to them and can
 bridge to OBI and MEDO where appropriate.
+
+The ISA framework provides a widely used investigation--study--assay exchange
+model \cite{isa}, while RO-Crate packages research data and contextual metadata
+as JSON-LD \cite{rocrate}. HCMO uses these as exchange targets in executable
+fixtures. This differs from asserting OWL mappings or complete formal conformance:
+the native ISA projections intentionally expose losses for HCM-specific housing,
+repeated-observation, and statistical-result structures.
 
 **Ontology engineering.** Methodologically, HCMO follows an incremental,
 competency-question-driven process in the spirit of LOT \cite{lot2022} and SAMOD

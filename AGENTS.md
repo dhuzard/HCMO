@@ -37,7 +37,7 @@ If these paths change, update this map and `hcmo.yaml` before editing.
 
 ## Namespace (authoritative)
 - Base namespace: `https://w3id.org/hcmo/ontology/hcm#`
-- Ontology IRI: `https://w3id.org/hcmo/ontology/hcm` · versionIRI `…/hcm/0.2.0`
+- Ontology IRI: `https://w3id.org/hcmo/ontology/hcm` · versionIRI `…/hcm/0.3.0`
 - Module sub-namespaces: `…/hcm/bio#`, `…/hcm/env#`, `…/hcm/obs#`, `…/hcm/tech#`
 - Never re-mint IRIs for existing concepts. Deprecate instead. Keep the namespace exactly as authored; if it must change, call it out and bump `owl:versionIRI`.
 

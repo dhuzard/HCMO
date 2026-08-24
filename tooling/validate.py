@@ -4,7 +4,8 @@
 Steps (any failure -> non-zero exit):
   1. Parse every TTL under ontology/, shapes/, and examples/, plus all generated
      RDF distribution serializations declared in hcmo.yaml.
-  2. Validate the pinned external-vocabulary contract without network access.
+  2. Validate release-bearing metadata surfaces and the pinned external-
+     vocabulary contract without network access.
   3. Run pySHACL of shapes/ against each isolated example with the canonical
      ontology supplied as an ontology graph and RDFS inference enabled.
      Examples whose name contains "edge" or "invalid" are NEGATIVE tests
@@ -26,6 +27,7 @@ from __future__ import annotations
 import glob
 import csv
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -59,12 +61,60 @@ def is_negative_example(relative_path: str) -> bool:
 def competency_questions(manifest: dict) -> list[dict]:
     index_path = ROOT / manifest["queries"]["index"]
     index = yaml.safe_load(index_path.read_text(encoding="utf-8"))
+    if str(index.get("version")) != str(manifest.get("version")):
+        raise ValueError(
+            "competency question index version "
+            f"{index.get('version')!r} does not match hcmo.yaml "
+            f"{manifest.get('version')!r}"
+        )
     questions = index.get("questions", [])
     if not isinstance(questions, list):
         raise ValueError("competency question index must contain a questions list")
     if not all(isinstance(question, dict) for question in questions):
         raise ValueError("every competency question entry must be a mapping")
     return questions
+
+
+def step_release_surfaces(
+    manifest: dict, ontology_graph: Graph
+) -> tuple[bool, list[str]]:
+    """Require release-bearing machine surfaces to agree with hcmo.yaml."""
+    expected_version = str(manifest["version"])
+    notes: list[str] = []
+    mismatches: list[str] = []
+
+    citation = yaml.safe_load((ROOT / "CITATION.cff").read_text(encoding="utf-8"))
+    if str(citation.get("version")) != expected_version:
+        mismatches.append(
+            f"CITATION.cff version {citation.get('version')!r} != {expected_version!r}"
+        )
+
+    form_path = ROOT / "docs/hcm-systems/contribute/index.html"
+    form_text = form_path.read_text(encoding="utf-8")
+    form_match = re.search(r'ontologyVersion:\s*"([^"]+)"', form_text)
+    form_version = form_match.group(1) if form_match else None
+    if form_version != expected_version:
+        mismatches.append(
+            f"contribution-form ontologyVersion {form_version!r} != {expected_version!r}"
+        )
+
+    ontology = URIRef(manifest["ontology_iri"])
+    bibo_doi = URIRef("http://purl.org/ontology/bibo/doi")
+    ontology_dois = {str(value) for value in ontology_graph.objects(ontology, bibo_doi)}
+    citation_doi = str(citation.get("doi"))
+    if ontology_dois != {citation_doi}:
+        mismatches.append(
+            f"ontology bibo:doi {sorted(ontology_dois)!r} != CITATION.cff {citation_doi!r}"
+        )
+
+    if mismatches:
+        notes.extend(f"[FAIL] release metadata: {item}" for item in mismatches)
+        return False, notes
+    notes.append(
+        f"[OK]   release metadata surfaces agree on HCMO {expected_version} "
+        f"and DOI {citation_doi}"
+    )
+    return True, notes
 
 
 def evaluation_graph(manifest: dict, ontology_graph: Graph) -> Graph:
@@ -562,7 +612,11 @@ def main() -> int:
     print("\n".join(notes))
     all_ok &= ok
 
-    print("\n== 2. External vocabulary contract ==")
+    print("\n== 2. Release and external vocabulary contracts ==")
+    ok, notes = step_release_surfaces(manifest, ontology_graph)
+    print("\n".join(notes))
+    all_ok &= ok
+
     ok, notes = validate_contract(verify_network=False)
     print("\n".join(notes))
     all_ok &= ok
