@@ -18,6 +18,6 @@ email placeholder in `main.tex`, confirm author order, and verify the live venue
 template and metadata-block requirements.
 
 The build also creates `docs/paper/hcmo-overleaf-upload.zip` with deterministic
-file ordering, timestamps, permissions, LF-normalized text, and uncompressed ZIP
+case-sensitive POSIX-name ordering, timestamps, permissions, LF-normalized text, and uncompressed ZIP
 members so its bytes do not depend on checkout line endings or zlib versions.
 Import that archive with Overleaf's **New Project -> Upload Project** action.

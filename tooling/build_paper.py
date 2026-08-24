@@ -190,7 +190,8 @@ def main() -> int:
     references = (PAPER / "references.bib").read_text(encoding="utf-8")
     (OUT / "references.bib").write_text(references, encoding="utf-8", newline="\n")
     with zipfile.ZipFile(ARCHIVE, "w", compression=zipfile.ZIP_STORED) as archive:
-        for path in sorted(item for item in OUT.rglob("*") if item.is_file()):
+        members = (item for item in OUT.rglob("*") if item.is_file())
+        for path in sorted(members, key=lambda item: item.relative_to(OUT).as_posix()):
             info = zipfile.ZipInfo(path.relative_to(OUT).as_posix())
             info.date_time = (1980, 1, 1, 0, 0, 0)
             info.create_system = 3
