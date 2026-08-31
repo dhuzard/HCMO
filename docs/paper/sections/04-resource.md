@@ -1,6 +1,6 @@
 # 4. Resource description
 
-> **Status:** full draft aligned with the HCMO 0.3.0 release candidate. Claims
+> **Status:** full draft aligned with the published HCMO 0.3.0 release. Claims
 > about external mappings are limited to axioms and examples present in that
 > candidate.
 

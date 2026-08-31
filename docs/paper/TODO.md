@@ -1,7 +1,7 @@
 # HCMO Resource Paper — TODO & change tracking
 
 **Status legend:** ☐ todo · ◐ in progress · ☑ done · ⚠ blocked
-**Last updated:** 2026-08-15
+**Last updated:** 2026-08-31
 
 This is the single source of truth for paper progress. Update the **status**
 column and append to the **Change log** whenever something moves.
@@ -12,10 +12,10 @@ column and append to the **Change log** whenever something moves.
 
 | ID | Task | Owner | Status | Notes |
 |----|------|-------|--------|-------|
-| T0 | **Clean ontology artifact for paper/release** | Cyril/Codex | ☑ | Five reviewed modules plus a compatibility module are active as the HCMO 0.3.0 release candidate; see `RELEASE-GATE.md`. |
+| T0 | **Clean ontology artifact for paper/release** | Cyril/Codex | ☑ | Five reviewed modules plus a compatibility module are published as HCMO 0.3.0; see `RELEASE-GATE.md`. |
 | T1 | ~~Lock venue~~ → **ESWC 2027 Resources Track, 15 pp** (HITL R1) | — | ☑ | Re-confirm dates/template when CfP opens. |
-| T2 | ~~Create the w3id PURL redirect~~ → **live**: `https://w3id.org/hcmo/ontology/hcm#` resolves (303 → docs site) | — | ☑ | **Availability hard gate cleared.** [w3id PR #6261](https://github.com/perma-id/w3id.org/pull/6261) merged 2026-06-30; verified 2026-07-03. Re-check with the paper-matching release (T9). |
-| T2b | **Verify w3id content negotiation for the current release** while keeping the base ontology IRI stable. | — | ☐ | After merge/deployment, confirm that ontology, documentation, Turtle, RDF/XML, and JSON-LD requests resolve to the 0.3.0 publication targets; do not re-mint term IRIs. |
+| T2 | ~~Create the w3id PURL redirect~~ → **live**: `https://w3id.org/hcmo/ontology/hcm#` resolves | — | ☑ | **Availability hard gate cleared.** [w3id PR #6261](https://github.com/perma-id/w3id.org/pull/6261) merged 2026-06-30; release routing re-verified 2026-08-31 (T2b). |
+| T2b | **Verify w3id content negotiation for the current release** while keeping the base ontology IRI stable. | — | ☑ | Verified 2026-08-31 after restoring the GitHub release assets: unversioned and 0.3.0 RDF requests route to the release, and HTML routes to the HCMO WIDOCO site; no IRI was re-minted. |
 | T3 | Create Overleaf project from **LNCS** template; mirror `sections/` | — | ◐ | The LNCS package compiles to 16 pages including references (15-page body budget plus references); deterministic Markdown-to-LaTeX export and reviewed TikZ figures are in `docs/paper/overleaf/`. Create/share the hosted Overleaf project after co-author metadata is confirmed. |
 | T3b | **Re-modularise** to the **DECIDED** R5 shape (2026-07-03): **5 modules — `hcm` core = enclosure only · `bio` · `obs` (observations + results) · `env` · `tech`**. `HousingAssignment` → bio (out of obs); `EnclosureDimensions` → core; all result/value classes → obs; `Sensor/Hardware/Software/TimeSeries` → new `tech` (`…/hcm/tech#`). Supersedes bio/housing/env/tech. | — | ☑ | Promoted into `ontology/modules/` and retained in the 0.3.0 release-candidate build manifest. Spec and decision record: `docs/paper/MODULE-MAP.md`. |
 | T3c | **Decide which module owns the bio↔obs linking properties** (Subject→observation vs Observation→subject). The two modules are mutually dependent; **accept the bio/obs cycle for V1 knowingly** (harmless in the merged graph; blocks strict `owl:imports` layering only). | — | ☑ | Decision applied in v2 and documented in `docs/ARCHITECTURE.md`/`MODEL.md`: subject-to-observation convenience links stay in `bio`; observation-to-subject semantics use SOSA `hasFeatureOfInterest` in `obs`. |
@@ -28,12 +28,12 @@ column and append to the **Change log** whenever something moves.
 |----|------|--------|-------|
 | T4 | Replace/remove **Chowlk placeholders** (`UNKNOWN:*`, `ns:Class2`, `ns:objectProperty`, `xsd:boolean/integer` as properties) | ☑ | No placeholder is present in the active graph. The original export is archived and valid old HCMO IRIs are handled in the compatibility module. |
 | T5 | Add **labels + `rdfs:comment`/IAO definitions** for all terms | ☑ | Every active HCMO class/property has a label and textual definition; wording remains open to ordinary expert review. |
-| T6 | **Re-author SHACL shapes, examples & competency queries** against the active term set | ☑ | Shapes, three positive and two negative examples, eleven canonical competency queries, and five isolated round-trip queries target the 0.3.0 release candidate; ontology-aware RDFS target selection, negative probes, and exact answer rows are enforced. |
-| T6b | **Host a public SPARQL endpoint** (HITL R3) | ☐ | Strongest availability story; depends on T0. |
-| T7 | Write **lab-maintained** governance/versioning policy (Huzard team, GitHub, SemVer+versionIRI; TEATIME = feedback channel) | ☐ | HITL R3. Feeds §7. |
+| T6 | **Re-author SHACL shapes, examples & competency queries** against the active term set | ☑ | Shapes, three positive and two negative examples, eleven canonical competency queries, and five isolated round-trip queries target the published 0.3.0 graph; ontology-aware RDFS target selection, negative probes, and exact answer rows are enforced. |
+| T6b | **Host a public SPARQL endpoint** (HITL R3) | ☐ | Future service enhancement; explicitly not part of, or a publication blocker for, the downloadable 0.3.0 release. |
+| T7 | Write governance/versioning policy (public GitHub maintainers, SemVer+versionIRI; TEATIME = feedback channel) | ☑ | Documented in §5 without claiming a no-longer-current Huzard lab structure. |
 | T7b | **Drop MAPP branding** in paper docs and reconcile repository branding | ☑ | Active ontology metadata, manifest, README, citation metadata, and current documentation consistently use HCMO. |
-| T8 | Run **quality evaluation**: OOPS!, FOOPS! (FAIR), reasoner (HermiT/ELK), pySHACL, CQ results — archive reports | ☑ | Candidate build, HermiT, parse, SHACL, ISA evidence, CQs, OOPS and FOOPS are archived and triaged. Repeat external scans after the final tag. |
-| T9 | Cut a **tagged release** greater than `v0.2.0` + refreshed Zenodo DOI matching the paper | ◐ | Version metadata is prepared as `0.3.0` and uses the stable concept DOI; the matching merge, tag, GitHub release, version-specific Zenodo DOI, and PURL verification remain. Procedure and rationale are in `RELEASE-GATE.md`. |
+| T8 | Run **quality evaluation**: OOPS!, FOOPS! (FAIR), reasoner (HermiT/ELK), pySHACL, CQ results — archive reports | ☑ | Build, HermiT, parse, SHACL, ISA evidence, CQs, OOPS and FOOPS are archived and triaged. AskWol now adds non-blocking raw release evidence with documented exceptions. |
+| T9 | Cut a **tagged release** greater than `v0.2.0` + refreshed Zenodo DOI matching the paper | ☑ | `v0.3.0`, its five GitHub assets, WIDOCO deployment, version DOI `10.5281/zenodo.22208202`, and PURL routing were verified on 2026-08-31. |
 
 ## Phase 2 — Write the paper
 
@@ -57,8 +57,8 @@ column and append to the **Change log** whenever something moves.
 |----|------|--------|
 | T21 | Complete **CALL-REQUIREMENTS.md** checklist — all ✔ | ☐ |
 | T22 | Internal review pass (co-authors) + proofread, page-count check | ☐ |
-| T23 | Confirm affiliations + ORCIDs of all 7 authors (Gilbert lead, Huzard corresponding — see `metadata/authors.md`) | ☐ |
-| T23b | **Confirm the license with all co-authors** (CC BY 4.0 vs CC0 for an ontology) — currently asserted but unconfirmed. See OPEN-QUESTIONS Q19. Pre-submission gate. | ☐ |
+| T23 | Confirm affiliations + ORCIDs of all 7 authors and corresponding emails — see `metadata/authors.md` | ◐ |
+| T23b | **Confirm the license with all co-authors** | ☑ | CC BY 4.0 confirmed 2026-08-31. |
 | T24 | Submit **abstract** by pre-submission deadline | ☐ |
 | T25 | Submit **full paper** (+ supplementary material link) | ☐ |
 
@@ -68,6 +68,7 @@ column and append to the **Change log** whenever something moves.
 
 | Date | Change | By |
 |------|--------|----|
+| 2026-08-31 | **Publication alignment** — restored the exact v0.3.0 GitHub release assets, redeployed HCMO WIDOCO documentation, verified PURL routing, recorded the version DOI, confirmed CC BY 4.0 and author order, added funding/COI text, and integrated AskWol as non-blocking archived evidence. No ontology IRI or term axiom changed. | Damien/Codex |
 | 2026-08-24 | **PR #27 review corrections** — aligned release-bearing 0.3.0 metadata, switched candidate citations to the stable Zenodo concept DOI, qualified observation-context requirements, made the paper ZIP newline-stable, and reordered release/PURL verification. No class or property axiom changed. | Codex |
 | 2026-08-15 | **HCMO 0.3.0 release candidate prepared** — advanced manifest, ontology header, citation metadata, current documentation, and paper wording without changing any term IRI; regenerated and re-evaluated canonical artifacts. The matching tag, PURL deployment, and Zenodo release remain post-merge gates. | Cyril/Codex |
 | 2026-08-15 | **Release-boundary and external-scanner audit** — identified that tag `v0.2.0` predates the paper candidate by 24 commits; reran OOPS and FOOPS on the current graph/PURL; archived raw reports and triage; corrected paper claims; added a deterministic Overleaf upload archive. No ontology axioms changed. | Cyril/Codex |

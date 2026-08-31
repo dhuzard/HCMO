@@ -7,6 +7,8 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Added
 
+- Added a non-blocking AskWol beta release-evidence workflow that archives the
+  raw response and a deterministic summary, with documented HCMO exceptions.
 - Added current-candidate OOPS!/FOOPS! raw evidence and triage, plus a
   deterministic ZIP that can be imported directly into Overleaf.
 - Added a deterministic Markdown-to-LNCS exporter, an Overleaf-ready manuscript
@@ -83,6 +85,10 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Changed
 
+- Aligned current citation and manuscript metadata with the published v0.3.0
+  release and version DOI, confirmed CC BY 4.0 and author order, and documented
+  funding, conflict-of-interest, PURL, and public-documentation status. No
+  ontology IRI or term axiom changed.
 - Aligned release-bearing query, contribution-form, citation, and paper metadata
   with the 0.3.0 candidate; candidate citations now use the stable Zenodo
   concept DOI until the version-specific 0.3.0 record is published.

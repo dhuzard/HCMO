@@ -1,7 +1,7 @@
 # 6. Evaluation
 
-> **Status:** full draft aligned with the HCMO 0.3.0 release candidate. Historical
-> clean-v2 results are separated from checks rerun on the candidate graph.
+> **Status:** full draft aligned with the published HCMO 0.3.0 release. Historical
+> clean-v2 and candidate results remain explicitly dated.
 
 HCMO is evaluated at four complementary levels: common ontology pitfalls and
 FAIR metadata, OWL consistency, instance-data validation, and executable
@@ -23,16 +23,23 @@ entailments merely to satisfy a scanner.
 
 FOOPS! was rerun by uploading the canonical candidate RDF/XML distribution and
 scored 1.0. All ontology metadata, licensing, provenance, resolvability,
-vocabulary-reuse, label, and definition tests passed. A separate deployment
-check found that the public PURL still served the older 1,252-triple graph rather
-than the 1,397-triple candidate, so the perfect candidate-file score is not
-misreported as a score for the currently deployed representation. Raw outputs
-and term-level triage are archived in
-`docs/paper/evaluation/CANDIDATE-OOPS-FOOPS-2026-08-15.md`. A later correction
-replaced the historical version-specific DOI with the stable concept DOI; it did
-not change term axioms, but it changed the RDF bytes. Both scanners will therefore
-be rerun on the tagged artifact. After deployment, content negotiation will be
-checked separately against the tagged 0.3.0 artifact.
+vocabulary-reuse, label, and definition tests passed. Raw outputs and term-level
+triage are archived in
+`docs/paper/evaluation/CANDIDATE-OOPS-FOOPS-2026-08-15.md`. Both official
+services were rerun on the immutable 0.3.0 RDF/XML artifact on 31 August 2026.
+FOOPS! again scored 1.0 with a byte-identical response; OOPS! returned the same
+finding codes and affected counts. The release assets and PURL content-
+negotiation targets were also verified that day.
+
+AskWol was also run on the final RDF/XML artifact after deployment. It resolved
+the HCMO core and module namespaces, accepted the domain/range, datatype,
+license, IRI-scheme, and reasoner checks, and reported no contradiction or
+unsatisfiable named class. Because AskWol remains beta, its release workflow is
+informational and archives the raw JSON and a summary without blocking a release.
+Its mixed-strategy warning reflects HCMO's stable core-plus-module namespace
+architecture; the IRIs are not re-minted to satisfy this heuristic. Other known
+tool-selection and provenance exceptions are documented in
+`docs/paper/evaluation/ASKWOL-TRIAGE.md`.
 
 **Logical consistency.** The canonical RDF/XML artifact was rebuilt and
 checksummed again on 24 August 2026 after the metadata-only DOI correction.

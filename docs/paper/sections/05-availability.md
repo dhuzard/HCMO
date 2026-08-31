@@ -1,8 +1,6 @@
 # 5. Engineering, availability, and sustainability
 
-> **Status:** draft aligned with the HCMO 0.3.0 release candidate. External
-> services and governance decisions that are not yet operational remain marked
-> **[pending: ...]**.
+> **Status:** draft aligned with the published HCMO 0.3.0 release.
 
 HCMO is released not as a single file but as a **tool-consumable package** designed
 so that downstream tools can resolve every component programmatically.
@@ -26,8 +24,11 @@ layers and user interfaces. Everything under the distribution directory is
 generated; only the modules are edited by hand. The manifest and root ontology
 header identify the paper-matching graph as version 0.3.0. This version succeeds
 the immutable 0.2.0 tag and includes the ISA/STATO, SemTS/SOSA, temporal-state,
-and QUDT work. It remains a release candidate until the matching tag, PURL
-deployment, and Zenodo record exist.
+and QUDT work. The immutable `v0.3.0` tag is published with its generated
+artifacts, and the same version is archived on Zenodo under DOI
+`10.5281/zenodo.22208202`. The header's `mod:status "draft"` describes ontology
+maturity, while *published release* describes the availability of this fixed,
+citable version.
 
 **Continuous validation.** A validation step parses every Turtle file, runs the
 SHACL shapes with RDFS entailment against isolated positive and intentionally
@@ -44,11 +45,11 @@ makes the resource's quality claims reproducible by any third party.
 - *Findable / Interoperable identification.* The ontology and its terms are
   identified by a persistent `w3id.org` IRI (`https://w3id.org/hcmo/ontology/hcm#`,
   which dereferences via HTTP 303 content negotiation to the documentation); the
-  resource is archived on Zenodo with a DOI.
+  resource is archived on Zenodo with a version-specific DOI.
 - *Accessible.* Sources and distributions are openly available from the public
   Git repository and the Zenodo deposit (download), with HTML documentation served
-  via GitHub Pages. A public **SPARQL endpoint** will be provided for live
-  querying. *[pending: host the endpoint — T6b.]*
+  via GitHub Pages. No hosted SPARQL service is part of 0.3.0; the distributions
+  can be loaded into any standards-compliant local or hosted triple store.
 - *Interoperable.* The current model reuses BFO \cite{bfo}, IAO, and SOSA/SSN
   \cite{sosa} anchors, with Schema.org; example data reuse OWL-Time
   \cite{owltime}. SOSA is pinned to the 2017 Recommendation and uses
@@ -68,13 +69,13 @@ Human- and machine-readable documentation is generated from the merged graph wit
 WIDOCO \cite{widoco2017} (overview, term cross-reference, namespace declarations, a
 WebVOWL diagram, and provenance), published at the project's documentation site.
 
-**Sustainability and governance.** HCMO is **lab-maintained** by the Huzard group:
-development is on GitHub with public issues and pull requests, versioning follows
-SemVer mirrored by `owl:versionIRI`, and terms are deprecated rather than deleted
-or re-minted to protect external references. The COST **TEATIME** network serves as
-the community feedback channel grounding the model in real domain needs. A FAIR
-self-assessment (F/A/I/R) is given in the appendix (see
-`metadata/resource-metadata.md`).
+**Sustainability and governance.** HCMO is maintained through its public GitHub
+repository by its contributors: development uses public issues and pull requests,
+versioning follows SemVer mirrored by `owl:versionIRI`, and terms are deprecated
+rather than deleted or re-minted to protect external references. The COST
+**TEATIME** network serves as the community feedback channel grounding the model
+in real domain needs. A FAIR self-assessment (F/A/I/R) is given in the appendix
+(see `metadata/resource-metadata.md`).
 
 *Figure F1: HCMO architecture and the reproducible build/release pipeline
 (sources → merged distributions → validation/CI → tagged release + Zenodo).*

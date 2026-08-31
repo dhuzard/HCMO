@@ -1,8 +1,8 @@
 ﻿# HCMO — Home-Cage Monitoring Ontology
 
-[![Validate](https://github.com/Neuronautix/HCMO/actions/workflows/validate.yml/badge.svg)](https://github.com/Neuronautix/HCMO/actions/workflows/validate.yml)
+[![Validate](https://github.com/dhuzard/HCMO/actions/workflows/validate.yml/badge.svg)](https://github.com/dhuzard/HCMO/actions/workflows/validate.yml)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-blue.svg)](LICENSE)
-[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.18925284-blue.svg)](https://doi.org/10.5281/zenodo.18925284)
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.22208202-blue.svg)](https://doi.org/10.5281/zenodo.22208202)
 
 <p align="center">
   <img src="HCMO-logo3.png" alt="HCMO logo" width="720">
@@ -138,8 +138,10 @@ definitions (see `docs/MISSING-DEFINITIONS.md`) render with empty descriptions.
 
 ## Status & known issues
 
-HCMO `0.3.0` is the current modular release candidate of the early Chowlk-derived term
-set. Active classes and properties have labels, textual definitions, explicit
+HCMO `0.3.0` is the current published, citable modular release of the early
+Chowlk-derived term set. Its ontology metadata retains `mod:status "draft"` as
+the model-maturity label; this does not negate publication of the immutable
+versioned release. Active classes and properties have labels, textual definitions, explicit
 upper/domain anchors, and property domain/range axioms. Invalid `UNKNOWN:` and
 bare-namespace artifacts are retained only in the archived 0.0.1 source; valid
 published 0.0.1 HCMO IRIs remain available as deprecated mapped terms.
@@ -172,8 +174,10 @@ using ORCID IRIs where known) and in [`CITATION.cff`](CITATION.cff).
 
 ## Citation
 
-If you use HCMO, please cite it via [`CITATION.cff`](CITATION.cff) (GitHub's
-"Cite this repository") or the concept DOI [10.5281/zenodo.18925284](https://doi.org/10.5281/zenodo.18925284).
+If you use HCMO 0.3.0, please cite it via [`CITATION.cff`](CITATION.cff)
+(GitHub's "Cite this repository") or the version DOI
+[10.5281/zenodo.22208202](https://doi.org/10.5281/zenodo.22208202). The stable
+concept DOI is [10.5281/zenodo.18925284](https://doi.org/10.5281/zenodo.18925284).
 
 ## License
 

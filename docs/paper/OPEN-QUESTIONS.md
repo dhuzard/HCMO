@@ -5,7 +5,7 @@ asked to the author in batched rounds (human-paced loop). Answers are applied to
 the relevant doc and logged in `TODO.md`.
 
 **Confidence legend:** 🔴 low (<60%) · 🟠 medium (60–90%) · 🟢 resolved (≥90%)
-**Last updated:** 2026-08-24
+**Last updated:** 2026-08-31
 
 ## Round 1 — foundational ✅ RESOLVED (2026-06-29)
 | # | Aspect | Conf. | Answer |
@@ -30,15 +30,15 @@ the relevant doc and logged in `TODO.md`.
 |---|--------|-------|--------|
 | Q6 | HCMO vs MAPP branding | 🟢 | **Drop MAPP** — use HCMO only in the paper (repo reconcile = T7b). |
 | Q12 | Reused vocabularies in V1 | 🟢 | Implemented references include BFO, IAO, SOSA 2017, Schema.org, and the reviewed SemTS 1.2.0 segment pattern; OWL-Time is validated interoperability evidence. HCMO uses `sosa:ObservableProperty` and does not mix in the developing-edition `sosa:Property`. |
-| Q13 | SPARQL endpoint | 🟢 | **Yes — will host one** (T6b). |
-| Q14 | Governance/maintenance | 🟢 | **Lab-maintained** (Huzard team, GitHub); TEATIME = feedback channel. |
+| Q13 | SPARQL endpoint | 🟢 | A hosted endpoint remains future work (T6b), not a blocker for downloadable 0.3.0 distributions. |
+| Q14 | Governance/maintenance | 🟢 | Maintained by contributors through public GitHub issues/PRs; TEATIME = feedback channel. |
 
 ## Round 4 — authorship, novelty, availability ✅ RESOLVED (2026-06-29)
 | # | Aspect | Conf. | Answer |
 |---|--------|-------|--------|
 | Q15 | w3id PURL redirect resolves today? (availability hard gate) | 🟢 | **YES — resolved.** `https://w3id.org/hcmo/ontology/hcm#` returns 303 → docs site (verified 2026-07-03; w3id PR #6261 merged 2026-06-30). **T2 done.** |
-| Q16 | Authorship / order | 🟢 | **Gilbert first author; Todorov & Huzard co-lead / co-corresponding (contact).** TEATIME = acknowledgement. See `metadata/authors.md`. |
-| Q17 | Affiliations + missing ORCIDs | 🟠 | **ORCIDs provided** (2026-06-29) → CITATION.cff, README, authors.md; names fixed (Sonfack **Sounchio**, To**ff**ano). **Affiliations still pending.** Fold ORCIDs into V1 ontology header at T0. |
+| Q16 | Authorship / order | 🟢 | **Gilbert first; Sanou, Sonfack Sounchio, Toffano, Larmande; Todorov and Huzard co-last, with Huzard final. Gilbert, Todorov, and Huzard corresponding.** See `metadata/authors.md`. |
+| Q17 | Affiliations + ORCIDs/emails | 🟠 | All seven ORCIDs are recorded. Exact author-confirmed affiliation strings and Cyril Gilbert's corresponding email remain pending; public discovery evidence is in `metadata/authors.md`. |
 | Q18 | Novelty verification | 🟢 | **Search run** → no HCM ontology exists; adjacents = OBI/OLAM/MEDO + ARRIVE. See `NOVELTY.md`; applied to §2. |
 
 ## Round 5 — ontology architecture ◐ (Q19–Q20 RESOLVED 2026-07-03 · Q21 open)
@@ -48,11 +48,11 @@ the relevant doc and logged in `TODO.md`.
 | Q20 | Where do results live? (Decision 0 vs 1 conflict.) | 🟢 | **Drop results from core entirely → `core = enclosure only`; all result/value classes (`ObservationResult`, `QuantityValue`, `CategoricalResult`, `Structural&LocationTable`) move to `obs`.** Reference scan confirmed: once Chowlk cruft (`MonitoredEnclosure ⊑ ObservationResult`) is cleaned, all result usage is obs-internal → zero cross-module edges. Core reduces to the single hub concept: **MonitoredEnclosure**. |
 | Q21 | Adopt **QUDT/OM** for units & quantities? | 🟢 | **QUDT 3.4.0 selected now.** One pinned QuantityValue/numericValue/hasUnit pattern covers dimensions, sampling rates, environmental specifications, and observations; earlier local literal/unit properties are deprecated. See ADR-0004. |
 
-## Artifact-dependent decisions — resolved for the 0.3.0 candidate
+## Artifact-dependent decisions — resolved for the published 0.3.0 graph
 | # | Aspect | Conf. | Answer |
 |---|--------|-------|--------|
 | Q9 | Runnable competency-question SPARQL against the active terms | 🟢 | Eleven canonical queries run against HCMO 0.3.0 with complete reviewed answers; five additional exact-answer queries exercise the isolated round-trip fixture. |
-| Q10 | OOPS!/FOOPS!/reasoner/SHACL reports run? | 🟠 | HermiT, ontology-aware SHACL/CQ, and interoperability results are current for the 0.3.0 candidate. The archived OOPS!/FOOPS! scan predates the final concept-DOI metadata correction and must be repeated on the tagged artifact. |
+| Q10 | OOPS!/FOOPS!/AskWol/reasoner/SHACL reports run? | 🟢 | HermiT, ontology-aware SHACL/CQ, interoperability, and dated OOPS!/FOOPS! evidence are archived. AskWol is integrated as non-blocking archived release evidence with documented beta-tool exceptions. |
 | Q11 | Confirm release term counts | 🟢 | Current generated profile: 60 declared classes, 68 object properties, and 75 datatype properties including compatibility terms; active source audit: 33 classes and 69 non-deprecated properties. |
 
 ## Change log

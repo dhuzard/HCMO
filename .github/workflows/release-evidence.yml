@@ -1,0 +1,58 @@
+name: Release evidence
+
+# AskWol is a beta, external service. Its report is archived for review, but it
+# is deliberately not a release gate and cannot change HCMO's published IRIs.
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: Git ref or release tag to assess
+        required: true
+        default: v0.3.0
+
+permissions:
+  contents: read
+
+jobs:
+  askwol:
+    name: AskWol archived evidence (non-blocking)
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.release.tag_name || inputs.ref || github.ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Build the assessed release artifact
+        run: |
+          pip install -r tooling/requirements.txt
+          python tooling/build.py
+      - name: Request and summarize AskWol evidence
+        env:
+          ASKWOL_REF: ${{ github.event.release.tag_name || inputs.ref || github.ref }}
+        run: |
+          mkdir -p evidence/askwol
+          request_status=0
+          curl --silent --show-error --fail-with-body \
+            --retry 2 --retry-all-errors --max-time 180 \
+            -F "file=@dist/hcmo.owl;type=application/rdf+xml" \
+            https://lod-4tu.tudelft.nl/askwol/api/validate \
+            > evidence/askwol/raw-response.json \
+            2> evidence/askwol/request.log || request_status=$?
+          python tooling/askwol_evidence.py \
+            evidence/askwol/raw-response.json \
+            evidence/askwol/summary.md \
+            --ref "$ASKWOL_REF" \
+            --request-exit-code "$request_status"
+      - name: Upload immutable run evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: askwol-${{ github.run_id }}
+          path: evidence/askwol/
+          retention-days: 90
+          if-no-files-found: warn

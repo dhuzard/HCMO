@@ -24,21 +24,21 @@ The CfP requires these fields right after the abstract (drafted in
 
 - [ ] **Resource type:** Ontology (+ SHACL shapes, SPARQL competency queries,
       JSON-LD context, examples)
-- [ ] **License:** CC BY 4.0
-- [ ] **DOI:** concept DOI 10.5281/zenodo.18925284; replace or supplement it
-      with the 0.3.0 version DOI when that record is published.
-- [ ] **URL:** https://w3id.org/hcmo/ontology/hcm (+ repo + docs)
+- [x] **License:** CC BY 4.0
+- [x] **DOI:** version DOI 10.5281/zenodo.22208202 (concept DOI
+      10.5281/zenodo.18925284).
+- [x] **URL:** https://w3id.org/hcmo/ontology/hcm (+ repo + docs)
 
 ## C. Review criteria → how HCMO must answer each
 
 ### 1. Availability  (hard gate)
-- [ ] Published at a **persistent URI** (PURL / DOI / **w3id**) → `w3id.org` ✔,
-      Zenodo DOI ✔ — **verify the w3id redirect actually resolves** (T2).
-- [ ] **Open license** clearly specified → CC BY 4.0 ✔.
-- [ ] **Publicly available** (API / Linked Open Data / download / open repo) →
+- [x] Published at a **persistent URI** (PURL / DOI / **w3id**) → verified
+      against the 0.3.0 release on 2026-08-31.
+- [x] **Open license** clearly specified → CC BY 4.0 ✔.
+- [x] **Publicly available** (Linked Open Data / download / open repo) →
       GitHub + Zenodo + dist artifacts ✔.
-- [ ] **Permanent, resource-specific citation** provided → CITATION.cff ✔; ensure
-      a canonical bib entry in `references.bib`.
+- [x] **Permanent, resource-specific citation** provided → CITATION.cff +
+      version-specific canonical BibTeX entry.
 
 ### 2. Description, metadata & FAIR
 - [ ] Human- **and** machine-readable description (encourages FAIR) → WIDOCO HTML
@@ -74,12 +74,13 @@ The CfP requires these fields right after the abstract (drafted in
 - [ ] Provide exact versions, commands, and a tagged release matching the paper.
 
 ## D. Pre-submission gate (all must be ✔)
-- [ ] w3id PURL resolves; DOI resolves; docs site live.
+- [x] w3id PURL resolves; version DOI resolves; HCMO 0.3.0 docs site is live.
 - [ ] No placeholder terms; all terms labelled + defined.
 - [x] Competency queries return reviewed results; the intentional zero-row
       missing-dimensions query is checked as an exact expected answer.
-- [x] OOPS!/FOOPS! rerun and triaged on the 0.3.0 release candidate; current HermiT,
-      SHACL, CQ, ISA projection, and RO-Crate reports are archived under
-      `docs/paper/evaluation/`. Repeat the external scans after the final tag.
+- [x] OOPS!/FOOPS! evidence is archived and triaged; current HermiT, SHACL, CQ,
+      ISA projection, and RO-Crate reports are archived under
+      `docs/paper/evaluation/`. AskWol release evidence is non-blocking and
+      retains documented exceptions while the service remains beta.
 - [ ] Page count within limit; LNCS template; metadata block present.
-- [ ] Canonical citation + tagged release (e.g. `v0.x` matching the paper).
+- [x] Canonical citation + tagged `v0.3.0` release matching the paper.

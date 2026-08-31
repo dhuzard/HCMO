@@ -61,7 +61,8 @@ docs/paper/
 - Ontology IRI / PURL: <https://w3id.org/hcmo/ontology/hcm>
 - Documentation (WIDOCO): <https://dhuzard.github.io/HCMO/index-en.html>
 - Code repository: <https://github.com/dhuzard/HCMO>
-- Concept DOI (Zenodo): <https://doi.org/10.5281/zenodo.18925284>
+- Version DOI (Zenodo, v0.3.0): <https://doi.org/10.5281/zenodo.22208202>
+- Concept DOI (all versions): <https://doi.org/10.5281/zenodo.18925284>
 - License: CC BY 4.0
 - Standards reused: SOSA/SSN, OWL-Time, PROV, BFO/IAO, QUDT 3.4.0; SHACL; JSON-LD
 - Engineering: release manifest, modular Turtle, reproducible build, CI gate,
