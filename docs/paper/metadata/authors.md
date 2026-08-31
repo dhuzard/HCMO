@@ -32,13 +32,13 @@ Damien Huzard are the three corresponding authors.
 - [x] Author order and three corresponding authors. *(confirmed 2026-08-31)*
 - [ ] **Exact submission affiliations for all 7 authors.** Public records above
       are discovery evidence, not author-confirmed affiliation strings.
-- [ ] Corresponding email for **Cyril Gilbert**. Publicly verifiable addresses
-      available for Konstantin Todorov (`konstantin.todorov@lirmm.fr`) and
-      Damien Huzard (`damien.huzard@gmail.com`) still need final author approval.
-- [ ] Update the published Zenodo record's creator order. Its current metadata
-      still lists Huzard, Todorov, Gilbert, Larmande, Sanou, Sonfack Sounchio,
-      Toffano; the confirmed order is the table above. This is a Zenodo metadata
-      edit and must not move the Git tag or alter the archived ontology graph.
+- [x] Corresponding emails confirmed 2026-08-31: Cyril Gilbert
+      (`cyril.gilbert8@gmail.com`), Konstantin Todorov
+      (`konstantin.todorov@lirmm.fr`), and Damien Huzard
+      (`damien.huzard@gmail.com`).
+- [x] Published Zenodo creator order updated and verified 2026-08-31: Gilbert,
+      Sanou, Sonfack Sounchio, Toffano, Larmande, Todorov, Huzard. This was a
+      metadata-only edit; the Git tag and archived ontology graph were unchanged.
 - [x] Funding/acknowledgement and Damien Huzard conflict-of-interest facts
       supplied on 2026-08-31; final prose is in the Overleaf manuscript.
 

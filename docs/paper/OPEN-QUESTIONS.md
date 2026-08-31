@@ -38,7 +38,7 @@ the relevant doc and logged in `TODO.md`.
 |---|--------|-------|--------|
 | Q15 | w3id PURL redirect resolves today? (availability hard gate) | 🟢 | **YES — resolved.** `https://w3id.org/hcmo/ontology/hcm#` returns 303 → docs site (verified 2026-07-03; w3id PR #6261 merged 2026-06-30). **T2 done.** |
 | Q16 | Authorship / order | 🟢 | **Gilbert first; Sanou, Sonfack Sounchio, Toffano, Larmande; Todorov and Huzard co-last, with Huzard final. Gilbert, Todorov, and Huzard corresponding.** See `metadata/authors.md`. |
-| Q17 | Affiliations + ORCIDs/emails | 🟠 | All seven ORCIDs are recorded. Exact author-confirmed affiliation strings and Cyril Gilbert's corresponding email remain pending; public discovery evidence is in `metadata/authors.md`. |
+| Q17 | Affiliations + ORCIDs/emails | 🟠 | All seven ORCIDs and all three corresponding emails are confirmed. Exact author-confirmed affiliation strings remain pending; public discovery evidence is in `metadata/authors.md`. |
 | Q18 | Novelty verification | 🟢 | **Search run** → no HCM ontology exists; adjacents = OBI/OLAM/MEDO + ARRIVE. See `NOVELTY.md`; applied to §2. |
 
 ## Round 5 — ontology architecture ◐ (Q19–Q20 RESOLVED 2026-07-03 · Q21 open)

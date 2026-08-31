@@ -17,10 +17,9 @@
   `bibo:authorList` order. These do not affect term IRIs or graph availability,
   but correcting them in RDF (or promoting `mod:status`) requires a metadata-only
   patch release such as 0.3.1 rather than rewriting the 0.3.0 tag.
-- The Zenodo title, version, date, DOI, file, and CC BY 4.0 license are correct,
-  but its creator list still uses the pre-confirmation order. Correct that
-  deposit metadata to the order in `metadata/authors.md`; this does not require
-  changing the tag or ontology IRIs.
+- The Zenodo title, version, date, DOI, file, CC BY 4.0 license, and confirmed
+  creator order were verified on 31 August 2026. The creator-order correction
+  was metadata-only and did not change the tag or ontology IRIs.
 
 ## Publication decision
 

@@ -10,6 +10,7 @@ authors:
   - family-names: "Gilbert"
     given-names: "Cyril"
     orcid: "https://orcid.org/0009-0008-2489-8106"
+    email: "cyril.gilbert8@gmail.com"
   - family-names: "Sanou"
     given-names: "Gaoussou"
     orcid: "https://orcid.org/0000-0003-2204-2466"
@@ -25,9 +26,11 @@ authors:
   - family-names: "Todorov"
     given-names: "Konstantin"
     orcid: "https://orcid.org/0000-0002-9116-6692"
+    email: "konstantin.todorov@lirmm.fr"
   - family-names: "Huzard"
     given-names: "Damien"
     orcid: "https://orcid.org/0000-0003-4820-7951"
+    email: "damien.huzard@gmail.com"
 version: 0.3.0
 date-released: 2026-08-31
 doi: 10.5281/zenodo.22208202
