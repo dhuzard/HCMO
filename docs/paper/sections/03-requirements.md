@@ -1,6 +1,6 @@
 # 3. Requirements and competency questions
 
-> **Status:** full draft aligned with the executable 0.3.0 release-candidate competency-question
+> **Status:** full draft aligned with the published HCMO 0.3.0 competency-question
 > index. Exact answers are reported in §6. ~1 pp.
 
 **Stakeholders and use cases.** HCMO is intended for several roles: researchers

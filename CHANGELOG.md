@@ -5,13 +5,38 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ## [Unreleased]
 
+### Changed
+
+- Added Philippe Rocca-Serra as a middle author, with ORCID, Oxford affiliation,
+  and CRediT roles reflecting his ontology and interoperability review.
+- Recorded the eight authors' confirmed institutional affiliations in the
+  citation metadata, public contributor list, and paper author-metadata record.
+- Adopted the supplied PLMLatex export as the authoritative paper source,
+  preserved its manuscript-wide edits, and changed the deterministic paper
+  builder to package rather than overwrite the online-edited LaTeX tree.
+- Consolidated the manuscript acknowledgement into one structured
+  acknowledgements and non-author-contributions section covering TEATIME,
+  mobility-grant scoping, auxiliary field categorisation, early Metadatapp
+  architecture, domain feedback, and incubator/business-development support.
+- Added the author-approved CRediT contribution statement to the manuscript and
+  its author-metadata record.
+- Expanded the paper's development-provenance acknowledgement to distinguish
+  the COST TEATIME Olog precursor, pre-COST formalisation, the September 2025
+  COST mobility-grant work, and the October 2025--October 2026 Exogene-funded
+  redesign and evaluation, with stage-specific attribution and collaborators.
+
 ### Added
 
+- Added a development-provenance record documenting HCMO's four stages and the
+  repository evidence and attribution limits for the auxiliary
+  Mandatory/Recommended/Optional field inventory.
+- Added a non-blocking AskWol beta release-evidence workflow that archives the
+  raw response and a deterministic summary, with documented HCMO exceptions.
 - Added current-candidate OOPS!/FOOPS! raw evidence and triage, plus a
   deterministic ZIP that can be imported directly into Overleaf.
-- Added a deterministic Markdown-to-LNCS exporter, an Overleaf-ready manuscript
-  package, and three dependency-free TikZ figures for the release pipeline,
-  five-module domain model, and ISA/STATO round-trip fixture.
+- Added an Overleaf-ready manuscript package and three dependency-free TikZ
+  figures for the release pipeline, five-module domain model, and ISA/STATO
+  round-trip fixture.
 - Added a dated post-PR #24--#26 semantic review recording current build,
   HermiT, SHACL, competency-question, external-vocabulary, RO-Crate, and native
   ISA projection evidence.
@@ -83,6 +108,10 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Changed
 
+- Aligned current citation and manuscript metadata with the published v0.3.0
+  release and version DOI, confirmed CC BY 4.0 and author order, and documented
+  funding, conflict-of-interest, PURL, and public-documentation status. No
+  ontology IRI or term axiom changed.
 - Aligned release-bearing query, contribution-form, citation, and paper metadata
   with the 0.3.0 candidate; candidate citations now use the stable Zenodo
   concept DOI until the version-specific 0.3.0 record is published.

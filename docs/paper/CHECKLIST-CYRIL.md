@@ -45,16 +45,16 @@
 | 17 | Ontologie | Lancer OOPS! + FOOPS! FAIR ontology assessment + noter problèmes | Oui | 🟡 | `docs/paper/evaluation/CANDIDATE-OOPS-FOOPS-2026-08-15.md`, `sections/06-evaluation.md` | Scan du candidat 0.3.0 archivé et trié; à relancer après les dernières corrections de métadonnées et sur l'artefact tagué. |
 | 18 | Évaluation | Définir les competency questions de l'article | Oui | ✅ | `sections/03-requirements.md`, `queries/competency_questions.yaml` | Le texte décrit les onze questions canoniques et les cinq questions du fixture de round trip. |
 | 19 | Évaluation | Chaque requête répond à une CQ | Oui | ✅ | `queries/competency_questions.yaml`, `tooling/validate.py` | Index, fichiers et réponses exactes sont contrôlés automatiquement; aucune requête orpheline. |
-| 20 | Évaluation | Bilan OOPS!/FOOPS!/SHACL/WIDOCO/HermiT | Oui | 🟡 | `sections/06-evaluation.md`, `evaluation/POST-PR24-26-REVIEW-2026-08-15.md` | Build, HermiT, SHACL, CQ, vocabulaires, RO-Crate et projection ISA passent sur le main post-PR #26. OOPS!/FOOPS! restent à relancer sur la release finale. |
+| 20 | Évaluation | Bilan OOPS!/FOOPS!/AskWol/SHACL/WIDOCO/HermiT | Oui | ✅ | `sections/06-evaluation.md`, `evaluation/ASKWOL-TRIAGE.md` | Les preuves datées sont archivées; AskWol est non bloquant avec exceptions documentées. |
 | 21 | Ontologie | Documentation WIDOCO | Oui | ✅ | `README.md` → <https://dhuzard.github.io/HCMO/index-en.html> | Lien ajouté au README. |
 | 22 | Availability | Dépôt GitHub propre & compréhensible | Oui | ✅ | `README.md`, `docs/README.md`, `docs/ARCHITECTURE.md` | Architecture active, sources historiques, génération et validation sont documentées. |
-| 23 | Availability | Release versionnée figée | Oui | ⬜ | `TODO.md` (T9) | À cadrer sur la version citée. |
-| 24 | Availability | DOI Zenodo | Oui | 🟡 | `CITATION.cff` → concept DOI 10.5281/zenodo.18925284 | Le concept DOI est stable; publier et reporter le DOI de version 0.3.0 au moment de la release (T9). |
-| 25 | Availability | Vérifier la licence | Oui | ✅ | `LICENSE`, `README.md` | CC BY 4.0 (fichier vérifié). ⚠ **Consentement des co-auteurs à confirmer** (CC BY 4.0 vs CC0) — voir OPEN-QUESTIONS Q19 / TODO T23b. |
+| 23 | Availability | Release versionnée figée | Oui | ✅ | `v0.3.0`, `RELEASE-GATE.md` | Tag, release et cinq artefacts vérifiés le 2026-08-31. |
+| 24 | Availability | DOI Zenodo | Oui | ✅ | `CITATION.cff` → DOI de version 10.5281/zenodo.22208202 | Le concept DOI stable reste 10.5281/zenodo.18925284. |
+| 25 | Availability | Vérifier la licence | Oui | ✅ | `LICENSE`, `README.md`, `TODO.md` | CC BY 4.0 confirmé par les coauteurs le 2026-08-31. |
 | 26 | Availability | CITATION.cff | Oui | ✅ | `CITATION.cff` | Présent + ORCIDs ajoutés. |
-| 27 | Availability | Namespace persistant w3id | Oui | 🟡 | <https://github.com/perma-id/w3id.org/pull/6261>, <https://w3id.org/hcmo/ontology/hcm> | Namespace HCMO live depuis le 2026-06-30. Après publication de la release, vérifier la négociation vers les artefacts et la documentation 0.3.0 sans changer l'IRI de base. |
+| 27 | Availability | Namespace persistant w3id | Oui | ✅ | <https://w3id.org/hcmo/ontology/hcm>, `RELEASE-GATE.md` | Négociation vérifiée vers les artefacts 0.3.0 et la documentation HCMO le 2026-08-31, sans changer les IRI. |
 | 28 | Availability | README : comment utiliser l'ontologie | Oui | ✅ | `README.md` | Quickstart + "Consuming the ontology". |
-| 29 | Availability | Release/doc/DOI = même version | Oui | ⬜ | `TODO.md` (T9) | À faire au moment de la release. |
+| 29 | Availability | Release/doc/DOI = même version | Oui | ✅ | `RELEASE-GATE.md`, `CITATION.cff` | Release et documentation 0.3.0; DOI de version 10.5281/zenodo.22208202. |
 | 30 | Availability | Section Availability prête à coller | Oui | ✅ | `sections/05-availability.md`, `metadata/resource-metadata.md` | GitHub/DOI/licence/docs/examples/queries. |
 | 31 | KGQA | Rôle du repo hcmo-kgqa-lab dans le papier | Non | ✅ | `sections/07-impact.md`, `OPEN-QUESTIONS.md` (R2) | **Outlook**, pas contribution principale (décidé). |
 | 32 | KGQA | Fuseki se lance avec données d'exemple | Non | ⬜ | — | Hors périmètre principal; à tester si temps. |
@@ -66,8 +66,8 @@
 | 38 | Soumission | Figures principales | Oui | ✅ | `overleaf/figures/f1.tex`, `f2.tex`, `f3.tex` | Trois figures TikZ vectorielles et sans dépendance draw.io: pipeline, modèle 5 modules et fixture de round trip. |
 | 39 | Soumission | Tableau récap des ressources | Oui | ✅ | `metadata/resource-metadata.md` | GitHub/DOI/docs/examples/SHACL/queries. |
 | 40 | Soumission | Relecture interne complète | Oui | ⬜ | `TODO.md` (T22) | À faire en fin de rédaction. |
-| 41 | Soumission | Liste auteurs & contributions | Oui | ✅ | `metadata/authors.md` | Gilbert 1ᵉʳ; Todorov & Huzard co-corresp. |
-| 42 | Soumission | Version soumissionnable | Oui | 🟡 | `sections/`, `overleaf/`, `tooling/build_paper.py` | Draft complet exporté en LNCS/Overleaf; restent métadonnées auteurs, rerun final OOPS!/FOOPS!, release/DOI et revue collective. |
+| 41 | Soumission | Liste auteurs & contributions | Oui | ✅ | `metadata/authors.md` | Ordre confirmé; Gilbert, Todorov et Huzard correspondants; Todorov/Huzard co-derniers. |
+| 42 | Soumission | Version soumissionnable | Oui | 🟡 | `sections/`, `overleaf/`, `tooling/build_paper.py` | Draft complet exporté; restent affiliations exactes, email correspondant de Cyril et revue collective. |
 | 43 | Soumission | Archive interne (preuves & liens) | Non | ✅ | `docs/paper/` (OPEN-QUESTIONS, AUDIT, NOVELTY…) | Ce dossier sert d'archive de décisions. |
 | 44 | Availability | Liens valides après soumission/publication | Oui | ⬜ | — | À revérifier avant soumission. |
 

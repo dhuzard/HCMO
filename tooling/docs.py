@@ -28,10 +28,13 @@ import os
 import shutil
 import subprocess
 import sys
+import tempfile
 import urllib.request
 from pathlib import Path
 
 import yaml
+from rdflib import Graph, URIRef
+from rdflib.namespace import OWL, RDF
 
 ROOT = Path(__file__).resolve().parent.parent
 MANIFEST = ROOT / "hcmo.yaml"
@@ -40,6 +43,9 @@ CACHE_DIR = ROOT / "tooling" / ".widoco"
 
 WIDOCO_VERSION = os.environ.get("WIDOCO_VERSION", "1.4.25")
 WIDOCO_JDK = os.environ.get("WIDOCO_JDK", "11")
+AUXILIARY_ONTOLOGY = URIRef(
+    "https://w3id.org/hcmo/ontology/external/upper-presentation"
+)
 
 
 def load_manifest() -> dict:
@@ -101,6 +107,23 @@ def write_index_shim() -> None:
     )
 
 
+def write_documentation_input(source: Path, destination: Path, ontology_iri: str) -> None:
+    """Give WIDOCO one root owl:Ontology node without changing the release graph."""
+    graph = Graph().parse(source, format="turtle")
+    auxiliary_declaration = (AUXILIARY_ONTOLOGY, RDF.type, OWL.Ontology)
+    if auxiliary_declaration not in graph:
+        raise SystemExit("ERROR: expected external-upper ontology declaration is absent")
+    graph.remove(auxiliary_declaration)
+    ontology_nodes = set(graph.subjects(RDF.type, OWL.Ontology))
+    expected = URIRef(ontology_iri)
+    if ontology_nodes != {expected}:
+        raise SystemExit(
+            "ERROR: documentation input must contain exactly the root ontology "
+            f"declaration; found {sorted(map(str, ontology_nodes))}"
+        )
+    graph.serialize(destination=destination, format="turtle")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--jar", help="Path to a WIDOCO jar-with-dependencies.")
@@ -129,20 +152,26 @@ def main() -> int:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
 
     extra = [a for a in args.extra if a != "--"]
-    cmd = [
-        "java", "-jar", str(jar),
-        "-ontFile", str(ont_file),
-        "-outFolder", str(OUT_DIR),
-        "-rewriteAll",            # overwrite previous output
-        "-getOntologyMetadata",   # read title/version/license/creators from the header
-        "-uniteSections",         # one HTML page instead of split sections
-        "-includeAnnotationProperties",
-        "-webVowl",               # embed a WebVOWL diagram
-        "-lang", "en",
-        *extra,
-    ]
-    print("Running:\n  " + " ".join(cmd))
-    result = subprocess.run(cmd, cwd=ROOT)
+    with tempfile.TemporaryDirectory(prefix="hcmo-widoco-") as temp_dir:
+        documentation_input = Path(temp_dir) / "hcmo-documentation.ttl"
+        write_documentation_input(
+            ont_file, documentation_input, manifest["ontology_iri"]
+        )
+        cmd = [
+            "java", "-jar", str(jar),
+            "-ontFile", str(documentation_input),
+            "-outFolder", str(OUT_DIR),
+            "-rewriteAll",            # overwrite previous output
+            "-getOntologyMetadata",   # read metadata from the single root header
+            "-uniteSections",         # one HTML page instead of split sections
+            "-includeAnnotationProperties",
+            "-webVowl",               # embed a WebVOWL diagram
+            "-noPlaceHolderText",      # never publish WIDOCO template prose
+            "-lang", "en",
+            *extra,
+        ]
+        print("Running:\n  " + " ".join(cmd))
+        result = subprocess.run(cmd, cwd=ROOT)
     if result.returncode != 0:
         return result.returncode
 

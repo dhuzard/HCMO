@@ -102,9 +102,19 @@ def step_release_surfaces(
     bibo_doi = URIRef("http://purl.org/ontology/bibo/doi")
     ontology_dois = {str(value) for value in ontology_graph.objects(ontology, bibo_doi)}
     citation_doi = str(citation.get("doi"))
-    if ontology_dois != {citation_doi}:
+    citation_identifiers = citation.get("identifiers", [])
+    if not isinstance(citation_identifiers, list):
+        citation_identifiers = []
+    cited_dois = {citation_doi}
+    cited_dois.update(
+        str(identifier.get("value"))
+        for identifier in citation_identifiers
+        if isinstance(identifier, dict) and identifier.get("type") == "doi"
+    )
+    if not ontology_dois or not ontology_dois.issubset(cited_dois):
         mismatches.append(
-            f"ontology bibo:doi {sorted(ontology_dois)!r} != CITATION.cff {citation_doi!r}"
+            f"ontology bibo:doi {sorted(ontology_dois)!r} is not represented "
+            f"by CITATION.cff DOI identifiers {sorted(cited_dois)!r}"
         )
 
     if mismatches:
@@ -112,7 +122,7 @@ def step_release_surfaces(
         return False, notes
     notes.append(
         f"[OK]   release metadata surfaces agree on HCMO {expected_version} "
-        f"and DOI {citation_doi}"
+        f"with preferred DOI {citation_doi}; ontology DOI metadata is represented"
     )
     return True, notes
 

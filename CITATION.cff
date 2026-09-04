@@ -7,29 +7,48 @@ abstract: >-
   hardware and software in a shared, standards-aligned semantic model.
 type: dataset
 authors:
-  - family-names: "Huzard"
-    given-names: "Damien"
-    orcid: "https://orcid.org/0000-0003-4820-7951"
-  - family-names: "Todorov"
-    given-names: "Konstantin"
-    orcid: "https://orcid.org/0000-0002-9116-6692"
   - family-names: "Gilbert"
     given-names: "Cyril"
     orcid: "https://orcid.org/0009-0008-2489-8106"
-  - family-names: "Larmande"
-    given-names: "Pierre"
-    orcid: "https://orcid.org/0000-0002-2923-9790"
+    email: "cyril.gilbert8@gmail.com"
+    affiliation: "LIRMM, Université de Montpellier, CNRS, Montpellier, France"
   - family-names: "Sanou"
     given-names: "Gaoussou"
     orcid: "https://orcid.org/0000-0003-2204-2466"
+    affiliation: "IMGT®, IGH, Université de Montpellier, CNRS, Montpellier, France"
   - family-names: "Sonfack Sounchio"
     given-names: "Serge"
     orcid: "https://orcid.org/0000-0002-6085-6818"
+    affiliation: "Production Engineering Laboratory/UFTMiP, France"
   - family-names: "Toffano"
     given-names: "Antoine"
     orcid: "https://orcid.org/0009-0008-0575-8490"
+    affiliation: "LIRMM, Université de Montpellier, CNRS, Montpellier, France"
+  - family-names: "Larmande"
+    given-names: "Pierre"
+    orcid: "https://orcid.org/0000-0002-2923-9790"
+    affiliation: "DIADE, Université de Montpellier, IRD, CIRAD, Montpellier, France"
+  - family-names: "Rocca-Serra"
+    given-names: "Philippe"
+    orcid: "https://orcid.org/0000-0001-9853-5668"
+    affiliation: "Oxford e-Research Centre, Department of Engineering Science, University of Oxford, Oxford OX1 3QG, United Kingdom"
+  - family-names: "Todorov"
+    given-names: "Konstantin"
+    orcid: "https://orcid.org/0000-0002-9116-6692"
+    email: "konstantin.todorov@lirmm.fr"
+    affiliation: "LIRMM, Université de Montpellier, CNRS, Montpellier, France"
+  - family-names: "Huzard"
+    given-names: "Damien"
+    orcid: "https://orcid.org/0000-0003-4820-7951"
+    email: "damien.huzard@gmail.com"
+    affiliation: "Neuronautix, Montpellier, France"
 version: 0.3.0
-doi: 10.5281/zenodo.18925284
+date-released: 2026-08-31
+doi: 10.5281/zenodo.22208202
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.18925284
+    description: Zenodo concept DOI for all HCMO versions
 url: "https://github.com/dhuzard/HCMO"
 repository-code: "https://github.com/dhuzard/HCMO"
 license: CC-BY-4.0

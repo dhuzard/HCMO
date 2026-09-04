@@ -1,8 +1,8 @@
 ﻿# HCMO — Home-Cage Monitoring Ontology
 
-[![Validate](https://github.com/Neuronautix/HCMO/actions/workflows/validate.yml/badge.svg)](https://github.com/Neuronautix/HCMO/actions/workflows/validate.yml)
+[![Validate](https://github.com/dhuzard/HCMO/actions/workflows/validate.yml/badge.svg)](https://github.com/dhuzard/HCMO/actions/workflows/validate.yml)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-blue.svg)](LICENSE)
-[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.18925284-blue.svg)](https://doi.org/10.5281/zenodo.18925284)
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.22208202-blue.svg)](https://doi.org/10.5281/zenodo.22208202)
 
 <p align="center">
   <img src="HCMO-logo3.png" alt="HCMO logo" width="720">
@@ -138,8 +138,10 @@ definitions (see `docs/MISSING-DEFINITIONS.md`) render with empty descriptions.
 
 ## Status & known issues
 
-HCMO `0.3.0` is the current modular release candidate of the early Chowlk-derived term
-set. Active classes and properties have labels, textual definitions, explicit
+HCMO `0.3.0` is the current published, citable modular release of the early
+Chowlk-derived term set. Its ontology metadata retains `mod:status "draft"` as
+the model-maturity label; this does not negate publication of the immutable
+versioned release. Active classes and properties have labels, textual definitions, explicit
 upper/domain anchors, and property domain/range axioms. Invalid `UNKNOWN:` and
 bare-namespace artifacts are retained only in the archived 0.0.1 source; valid
 published 0.0.1 HCMO IRIs remain available as deprecated mapped terms.
@@ -159,21 +161,36 @@ contribution form under
 
 ## Contributors
 
-- **Damien Huzard** — [0000-0003-4820-7951](https://orcid.org/0000-0003-4820-7951) · [@dhuzard](https://github.com/dhuzard)
-- **Konstantin Todorov** — [0000-0002-9116-6692](https://orcid.org/0000-0002-9116-6692)
-- **Cyril Gilbert** — [0009-0008-2489-8106](https://orcid.org/0009-0008-2489-8106) · [@cyrilbonus](https://github.com/cyrilbonus)
-- **Pierre Larmande** — [0000-0002-2923-9790](https://orcid.org/0000-0002-2923-9790) · [@pierrelarmande](https://github.com/pierrelarmande)
-- **Gaoussou Sanou** — [0000-0003-2204-2466](https://orcid.org/0000-0003-2204-2466) · [@gsanou](https://github.com/gsanou)
-- **Serge Sonfack Sounchio** — [0000-0002-6085-6818](https://orcid.org/0000-0002-6085-6818) · [@sonfack](https://github.com/sonfack)
-- **Antoine Toffano** — [0009-0008-0575-8490](https://orcid.org/0009-0008-0575-8490)
+- **Cyril Gilbert** — LIRMM, Université de Montpellier, CNRS, Montpellier,
+  France · [0009-0008-2489-8106](https://orcid.org/0009-0008-2489-8106) · [@cyrilbonus](https://github.com/cyrilbonus)
+- **Gaoussou Sanou** — IMGT®, IGH, Université de Montpellier, CNRS,
+  Montpellier, France · [0000-0003-2204-2466](https://orcid.org/0000-0003-2204-2466) · [@gsanou](https://github.com/gsanou)
+- **Serge Sonfack Sounchio** — Production Engineering Laboratory/UFTMiP,
+  France · [0000-0002-6085-6818](https://orcid.org/0000-0002-6085-6818) · [@sonfack](https://github.com/sonfack)
+- **Antoine Toffano** — LIRMM, Université de Montpellier, CNRS, Montpellier,
+  France · [0009-0008-0575-8490](https://orcid.org/0009-0008-0575-8490)
+- **Pierre Larmande** — DIADE, Université de Montpellier, IRD, CIRAD,
+  Montpellier, France · [0000-0002-2923-9790](https://orcid.org/0000-0002-2923-9790) · [@pierrelarmande](https://github.com/pierrelarmande)
+- **Philippe Rocca-Serra** — Oxford e-Research Centre, Department of Engineering
+  Science, University of Oxford, Oxford OX1 3QG, United Kingdom ·
+  [0000-0001-9853-5668](https://orcid.org/0000-0001-9853-5668)
+- **Konstantin Todorov** — LIRMM, Université de Montpellier, CNRS, Montpellier,
+  France · [0000-0002-9116-6692](https://orcid.org/0000-0002-9116-6692)
+- **Damien Huzard** — Neuronautix, Montpellier, France · [0000-0003-4820-7951](https://orcid.org/0000-0003-4820-7951) · [@dhuzard](https://github.com/dhuzard)
 
 Attribution is also recorded on the `owl:Ontology` header (`dcterms:creator`,
-using ORCID IRIs where known) and in [`CITATION.cff`](CITATION.cff).
+using ORCID IRIs where known); ORCIDs and affiliations are recorded in
+[`CITATION.cff`](CITATION.cff).
+The project's historical development and the evidential limits around the
+auxiliary field-tier inventory are documented in
+[`docs/PROVENANCE.md`](docs/PROVENANCE.md).
 
 ## Citation
 
-If you use HCMO, please cite it via [`CITATION.cff`](CITATION.cff) (GitHub's
-"Cite this repository") or the concept DOI [10.5281/zenodo.18925284](https://doi.org/10.5281/zenodo.18925284).
+If you use HCMO 0.3.0, please cite it via [`CITATION.cff`](CITATION.cff)
+(GitHub's "Cite this repository") or the version DOI
+[10.5281/zenodo.22208202](https://doi.org/10.5281/zenodo.22208202). The stable
+concept DOI is [10.5281/zenodo.18925284](https://doi.org/10.5281/zenodo.18925284).
 
 ## License
 

@@ -1,23 +1,23 @@
-# Overleaf / LNCS export
+# Authoritative Overleaf / LNCS manuscript
 
-This directory is the reviewable, near-submission LaTeX export of the Markdown
-draft. Upload the directory to an Overleaf project created from the Springer LNCS
-template, or copy `llncs.cls` and `splncs04.bst` from that template into this
-directory.
+This directory contains the authoritative manuscript maintained in the PLMLatex
+project. Changes exported from PLMLatex must be imported here before the paper
+package is rebuilt. The older Markdown drafts under `docs/paper/sections/` are
+retained as review history and no longer generate these LaTeX files.
 
-Regenerate the derived section files and bibliography from the repository root:
+Build the deterministic upload/archive ZIP from the repository root:
 
 ```powershell
 uv run --python 3.13 tooling/build_paper.py
 ```
 
-Edit prose in `docs/paper/sections/*.md`, not in generated
-`overleaf/sections/*.tex`. `main.tex`, `figures/*.tex`, and this README are
-hand-authored. Before sharing the hosted project, replace the affiliation and
-email placeholder in `main.tex`, confirm author order, and verify the live venue
-template and metadata-block requirements.
+Edit the manuscript in PLMLatex, then export and synchronize its `.tex`, `.bib`,
+figure, and README sources into this directory. Before submission, replace the
+affiliation placeholder in `main.tex` and verify the live venue template and
+metadata-block requirements.
 
 The build also creates `docs/paper/hcmo-overleaf-upload.zip` with deterministic
-case-sensitive POSIX-name ordering, timestamps, permissions, LF-normalized text, and uncompressed ZIP
-members so its bytes do not depend on checkout line endings or zlib versions.
-Import that archive with Overleaf's **New Project -> Upload Project** action.
+case-sensitive POSIX-name ordering, timestamps, permissions, LF-normalized text,
+and uncompressed ZIP members, so its bytes do not depend on checkout line
+endings or zlib versions. Import that archive with Overleaf's **New Project ->
+Upload Project** action.
