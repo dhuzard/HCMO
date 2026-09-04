@@ -57,7 +57,7 @@ column and append to the **Change log** whenever something moves.
 |----|------|--------|
 | T21 | Complete **CALL-REQUIREMENTS.md** checklist — all ✔ | ☐ |
 | T22 | Internal review pass (co-authors) + proofread, page-count check | ☐ |
-| T23 | Confirm affiliations + ORCIDs of all 7 authors and corresponding emails — see `metadata/authors.md` | ◐ | All ORCIDs, author order, Zenodo creator order, and three corresponding emails are confirmed; only exact affiliation strings remain. |
+| T23 | Confirm affiliations + ORCIDs of all 8 authors and corresponding emails — see `metadata/authors.md` | ☑ | All ORCIDs, author order, affiliations, and three corresponding emails are confirmed. Philippe Rocca-Serra must still be added to the published Zenodo creator metadata. |
 | T23b | **Confirm the license with all co-authors** | ☑ | CC BY 4.0 confirmed 2026-08-31. |
 | T24 | Submit **abstract** by pre-submission deadline | ☐ |
 | T25 | Submit **full paper** (+ supplementary material link) | ☐ |
@@ -68,6 +68,7 @@ column and append to the **Change log** whenever something moves.
 
 | Date | Change | By |
 |------|--------|----|
+| 2026-09-04 | **Author metadata updated** — added Philippe Rocca-Serra as the final middle author, with confirmed ORCID, Oxford affiliation, and CRediT roles; Zenodo creator-metadata synchronization remains. | Damien/Codex |
 | 2026-08-31 | **Final contact metadata** — confirmed all three corresponding emails and verified the corrected Zenodo creator order; refreshed the citation and Overleaf package. | Damien/Codex |
 | 2026-08-31 | **Publication alignment** — restored the exact v0.3.0 GitHub release assets, redeployed HCMO WIDOCO documentation, verified PURL routing, recorded the version DOI, confirmed CC BY 4.0 and author order, added funding/COI text, and integrated AskWol as non-blocking archived evidence. No ontology IRI or term axiom changed. | Damien/Codex |
 | 2026-08-24 | **PR #27 review corrections** — aligned release-bearing 0.3.0 metadata, switched candidate citations to the stable Zenodo concept DOI, qualified observation-context requirements, made the paper ZIP newline-stable, and reordered release/PURL verification. No class or property axiom changed. | Codex |

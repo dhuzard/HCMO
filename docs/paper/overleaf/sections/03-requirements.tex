@@ -1,5 +1,5 @@
 \section{Requirements and competency questions}
-\textbf{Stakeholders and use cases.} HCMO is intended for several roles: researchers comparing or aggregating behavioural and physiological data across studies and laboratories; facility managers and welfare committees auditing housing and husbandry; data engineers ingesting heterogeneous device exports; and, in the longer term, downstream AI consumers querying the resulting knowledge graph. These roles share one need --- to interpret a measurement together with the full context of its production.
+\textbf{Stakeholders and use cases.} HCMO is intended for several roles: researchers comparing or aggregating behavioural and physiological data across studies and laboratories; facility managers and welfare committees auditing housing and husbandry; data engineers ingesting heterogeneous device exports; HCM system manufacturers and, in the longer term, downstream AI consumers querying the resulting knowledge graph. These heterogeneous roles and profiles share a common need --- to interpret a measurement together with the full context of its production.
 
 \textbf{Requirements from domain analysis.} Analysis of the HCM domain \cite{kiryk2026,huzard2026tech,forrest2026} yields the following requirements, which drive the model (forward references to \S{}4):
 
@@ -10,17 +10,16 @@ where applicable, to its feature of interest, observed property, time, procedure
 \item \textbf{R2 --- Separation of device, observation, and result.} A sensor (a technical
 device), an observation (the measurement event in context), and a result (the produced value/interpretation) must be modelled distinctly, preserving the chain \emph{device $\rightarrow$ observation $\rightarrow$ result/interpretation}. HCM outputs are often signals later transformed by software into inferred behaviours.
 
-\item \textbf{R3 --- Temporal housing assignment.} Membership of an animal in an enclosure is
-time-bounded, not permanent, and must be represented as an assignment over an interval, linked to experimental groups and study factors.
+\item \textbf{R3 --- Temporal housing assignment.} Placing/assigning an animal in an enclosure is
+time-bounded, not permanent, and must be represented as an assignment over an interval of time, linked to experimental groups and study factors.
 
-\item \textbf{R4 --- Environment as interpretable context.} Enclosure dimensions, enrichment,
-light cycles, and measurable conditions (temperature, humidity, gas, light) must be representable, distinguishing a \emph{property} from the \emph{values} observed for it.
+\item \textbf{R4 --- Environment as interpretable context.} Enclosure dimensions, bedding, enrichment, water/food, light cycles, and measurable conditions (temperature, humidity, gas composition, air pressure, light, noise) must be representable, distinguishing a \emph{property} from the \emph{values} observed for it.
 
 \item \textbf{R5 --- Technical provenance.} Hardware, sensors, software, and their
 organisation of data into time series/segments must be captured without conflating technical provenance with biological interpretation.
 
 \item \textbf{R6 --- Rich, machine-readable metadata.} Species, strain, sex, age, housing,
-enrichment, device configuration, sampling rate, software, and protocol must be first-class, supporting FAIR reuse \cite{fair,forrest2026}.
+enrichment, device configuration, sampling rate, software, and protocol must be first-class, supporting the FAIR Reuse principle \cite{fair,forrest2026}.
 
 \item \textbf{R7 --- Standards reuse and interoperability.} Where a suitable standard
 exists, it must be reused rather than re-minted. Candidate standards include SOSA/SSN, OWL-Time, BFO/IAO, PROV-O, and reviewed quantity/unit vocabularies; each mapping strength must be justified separately.
@@ -30,4 +29,4 @@ completeness checks (e.g. a numeric value without a unit, an animal not assigned
 
 \end{itemize}
 
-\textbf{Competency questions.} Selected retrieval aspects of the requirements are operationalised as executable SPARQL questions \cite{noy2001,lot2022}; structural requiredness is tested separately with SHACL. The release index contains eleven questions. They retrieve assignments by enclosure and at a reference time; missing enclosure dimensions; environment specifications paired with observed QUDT quantities; time-bounded operational and calibration evidence; husbandry provisioning gaps; sensor-captured properties; observations lasting at least 24 hours under a stated condition; and three ISA/STATO provenance paths. Complete expected bindings are versioned with the queries, including the intentionally empty missing-dimensions answer. Section 6 reports their exact results. Five additional queries exercise the isolated 2 $\times$ 2 round-trip fixture for housing history, factor assignments, repeated observations, statistical result/file-fragment separation, and the Source-to-Sample derivation.
+\textbf{Competency questions.} [SHOULD WE ADD THE COMPETENCY QUESTIONS IN THE MS? As annex?!]  Selected retrieval aspects of the requirements are operationalised as executable SPARQL questions \cite{noy2001,lot2022}; structural requiredness is tested separately with SHACL. The release index contains eleven questions. They retrieve assignments by enclosure and at a reference time; missing enclosure dimensions; environment specifications paired with observed QUDT quantities; time-bounded operational and calibration evidence; husbandry provisioning gaps; sensor-captured properties; observations lasting at least 24 hours under a stated condition; and three ISA/STATO provenance paths. Complete expected bindings are versioned with the queries, including the intentionally empty missing-dimensions answer. Section 6 reports their exact results. Five additional queries exercise the isolated 2 $\times$ 2 round-trip fixture for housing history, factor assignments, repeated observations, statistical result/file-fragment separation, and the Source-to-Sample derivation.

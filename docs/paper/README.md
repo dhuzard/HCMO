@@ -38,23 +38,24 @@ docs/paper/
   CALL-REQUIREMENTS.md    # distilled track requirements + compliance checklist
   OUTLINE.md              # section-by-section outline with page budget
   metadata/               # resource-metadata block + FAIR table + authors
-  sections/               # one Markdown file per paper section (drafts)
-  overleaf/               # generated LNCS source + hand-authored main/figures
+  sections/               # earlier Markdown drafts retained as review history
+  overleaf/               # authoritative PLMLatex/LNCS manuscript source
   evaluation/             # archived reasoner/interoperability/review evidence
   sources/                # Gilbert 2026 report (PDF + EN translation) + figures
   emails/                 # co-author comms (e.g. request-clean-v1.md)
-  references.bib          # BibTeX bibliography
+  references.bib          # earlier Markdown-draft bibliography
 ```
 
 ## Workflow
 
-1. Draft prose in `sections/*.md` (easy to review/diff).
-2. Keep `CALL-REQUIREMENTS.md` green — every mandatory criterion must be satisfied
+1. Edit and review the authoritative manuscript in the shared PLMLatex project.
+2. Export the PLMLatex source ZIP and synchronize it into `overleaf/`.
+3. Keep `CALL-REQUIREMENTS.md` green — every mandatory criterion must be satisfied
    *before* submission.
-3. Track progress and decisions in `TODO.md` (status + change log).
-4. Regenerate the LNCS/Overleaf export with
-   `uv run --python 3.13 tooling/build_paper.py`; edit prose in Markdown, not in
-   generated `overleaf/sections/*.tex`.
+4. Track progress and decisions in `TODO.md` (status + change log).
+5. Rebuild the deterministic upload ZIP with
+   `uv run --python 3.13 tooling/build_paper.py`. This packages the authoritative
+   LaTeX tree without regenerating it from the older Markdown drafts.
 
 ## The resource at a glance (evidence to cite)
 

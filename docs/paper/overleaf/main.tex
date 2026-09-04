@@ -6,8 +6,15 @@
 \usepackage{hyperref}
 \usepackage{microtype}
 \usepackage{tabularx}
+
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta,positioning,shapes.geometric}
+\usepackage{xcolor}
+\usepackage{pdfcomment}
+
+\newcommand{\reviewcomment}[2]{%
+  \pdfmarkupcomment[markup=Highlight,color={1 1 0}]{#1}{#2}%
+}
 
 \title{HCMO: A FAIR Ontology for Home-Cage Monitoring}
 \titlerunning{HCMO: A FAIR Ontology for Home-Cage Monitoring}
@@ -36,6 +43,7 @@ konstantin.todorov@lirmm.fr, damien.huzard@gmail.com}}
 JSON-LD context, and example datasets\\
 \textbf{License:} CC BY 4.0\\
 \textbf{DOI:} \href{https://doi.org/10.5281/zenodo.22208202}{10.5281/zenodo.22208202}\\
+\textbf{GitHub repository:} \url{https://github.com/dhuzard/HCMO}\\
 \textbf{URL:} \url{https://w3id.org/hcmo/ontology/hcm}
 \end{minipage}
 \end{center}
@@ -49,16 +57,111 @@ JSON-LD context, and example datasets\\
 \input{sections/07-impact.tex}
 \input{sections/08-conclusion.tex}
 
-\section*{Acknowledgements}
-This work received support through an Exogene grant delivered to Metadatapp for
-collaboration involving Damien Huzard and Konstantin Todorov. Metadatapp,
-formerly Damien Huzard's entrepreneurial venture, is now maintained as an
-open-source software program. The authors acknowledge the COST TEATIME working
-group for domain feedback.
+\textbf{Funding.}
+Preliminary mapping and implementation work on HCMO was supported by a COST
+mobility grant (EUR~750) awarded to Damien Huzard for the project
+\emph{Mapping the Home-Cage Monitoring Ontology to Device Metadata}, with
+contributions from Leonardo Restivo and Benoit Girard. The subsequent
+substantial redevelopment of HCMO was supported by an Exogene grant
+(EUR~23,000), administered by the Pôle Universitaire d'Innovation (PUI) of the
+University of Montpellier and awarded to Metadatapp to support collaboration
+between Damien Huzard and Konstantin Todorov. As part of an
+Exogene-funded Master's project, Cyril Gilbert redesigned and
+implemented the HCMO version presented in this article.
 
-\section*{Conflict of interest}
-Damien Huzard maintains the Metadatapp open-source program and is a consultant
-to Neuronautix.
+\textbf{Project and software provenance.}
+HCMO developed through four stages. First, the community-developed TEATIME Olog
+established structured terminology for home-cage monitoring and is HCMO's
+closest conceptual precursor. Second, during the first half of 2025, Damien
+Huzard began translating the broader domain need into a machine-actionable
+ontology through Metadatapp's semantic-development work and related grant
+preparation. Third, the COST mobility-grant phase supported limited preliminary
+device-metadata mapping, project scoping, and publication of an early GitHub
+version in September 2025, with contributions from Leonardo Restivo and Benoit
+Girard. Fourth, during the Exogene-supported phase from October 2025 to October
+2026, the present author team comprehensively redesigned and formally evaluated
+HCMO. This phase produced the semantic model, modular ontology architecture,
+external alignments, SHACL validation framework, competency questions,
+evaluation procedures, and reproducible release infrastructure reported here.
+
+The complete development history is available at
+\url{https://github.com/dhuzard/HCMO}. The version described in this article
+corresponds to release \texttt{v0.3.0} and is archived at
+\url{https://doi.org/10.5281/zenodo.22208202}.
+
+\section*{CRediT author statement}
+\textbf{Cyril Gilbert:} Conceptualization, Investigation, Methodology, Software,
+Validation, Visualization, Writing -- original draft, Writing -- review \&
+editing.
+
+\textbf{Pierre Larmande:} Validation, Writing -- review \& editing.
+
+\textbf{Gaoussou Sanou:} Conceptualization, Methodology, Visualization, Writing
+-- review \& editing.
+
+\textbf{Serge Sonfack Sounchio:} Methodology, Validation, Writing -- review \&
+editing.
+
+\textbf{Antoine Toffano:} Validation, Writing -- review \& editing.
+
+\textbf{Konstantin Todorov:} Conceptualization, Methodology, Supervision,
+Validation, Writing -- review \& editing.
+
+\textbf{Damien Huzard:} Conceptualization, Funding acquisition, Methodology,
+Project administration, Software, Supervision, Validation, Writing -- original
+draft, Writing -- review \& editing.
+
+\section*{Acknowledgements and non-author contributions}
+
+The authors acknowledge the TEATIME Olog and the COST Action TEATIME
+community as sources of domain terminology, expertise, and feedback. The
+following non-author contributions are recognised:
+
+\begin{itemize}
+
+\item \textbf{Initial HCM profile of the TEATIME Olog:}
+Leonardo Restivo and Davor Virag.
+
+\item \textbf{Preparation and preliminary scoping of the COST mobility-grant
+project and early categorisation of metadata elements used in auxiliary
+authoring tools:}
+Benoit Girard and Leonardo Restivo.
+
+\item \textbf{Early conceptual and software architecture developed for HCMO
+within Metadatapp:}
+Laurent Huzard.
+
+\item \textbf{Domain expertise and feedback:}
+Benoit Petit-Demoulière, Vootele Voikar, Leonardo Restivo, Davor Virag, and
+Marion Rivalan.
+
+\end{itemize}
+
+Damien Huzard also thanks the INITIUM incubator team, particularly Rémi
+Przybylski and Kate Rivière, as well as Frédéric Deverre, Loïc Clementz, and
+Geoffrey Galibert for their contributions to the technical and business
+development of Metadatapp.
+
+\section*{Competing interests}
+
+Damien Huzard initiated Metadatapp as an entrepreneurial project and currently
+maintains it as open-source software. He also provides consultancy services in
+preclinical research and research metadata through Neuronautix
+(\url{https://www.neuronautix.com}). The other authors declare no competing
+interests.
+
+
+\section*{Supplementary material and reproducibility}
+The resources required to reproduce the machine-executable validation and
+evaluation results reported in this article are available in the archived HCMO
+\texttt{v0.3.0} release
+(\url{https://doi.org/10.5281/zenodo.22208202}) and the corresponding
+versioned GitHub repository
+(\url{https://github.com/dhuzard/HCMO/tree/v0.3.0}). These resources include
+the ontology distributions, SHACL shapes, example datasets, executable SPARQL
+competency questions and their expected results, evaluation reports, and build
+and validation tooling. The FAIR self-assessment is available at
+\url{https://github.com/dhuzard/HCMO/blob/v0.3.0/docs/paper/metadata/resource-metadata.md}.
 
 \bibliographystyle{splncs04}
 \bibliography{references}

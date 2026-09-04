@@ -161,16 +161,29 @@ contribution form under
 
 ## Contributors
 
-- **Damien Huzard** — [0000-0003-4820-7951](https://orcid.org/0000-0003-4820-7951) · [@dhuzard](https://github.com/dhuzard)
-- **Konstantin Todorov** — [0000-0002-9116-6692](https://orcid.org/0000-0002-9116-6692)
-- **Cyril Gilbert** — [0009-0008-2489-8106](https://orcid.org/0009-0008-2489-8106) · [@cyrilbonus](https://github.com/cyrilbonus)
-- **Pierre Larmande** — [0000-0002-2923-9790](https://orcid.org/0000-0002-2923-9790) · [@pierrelarmande](https://github.com/pierrelarmande)
-- **Gaoussou Sanou** — [0000-0003-2204-2466](https://orcid.org/0000-0003-2204-2466) · [@gsanou](https://github.com/gsanou)
-- **Serge Sonfack Sounchio** — [0000-0002-6085-6818](https://orcid.org/0000-0002-6085-6818) · [@sonfack](https://github.com/sonfack)
-- **Antoine Toffano** — [0009-0008-0575-8490](https://orcid.org/0009-0008-0575-8490)
+- **Cyril Gilbert** — LIRMM, Université de Montpellier, CNRS, Montpellier,
+  France · [0009-0008-2489-8106](https://orcid.org/0009-0008-2489-8106) · [@cyrilbonus](https://github.com/cyrilbonus)
+- **Gaoussou Sanou** — IMGT®, IGH, Université de Montpellier, CNRS,
+  Montpellier, France · [0000-0003-2204-2466](https://orcid.org/0000-0003-2204-2466) · [@gsanou](https://github.com/gsanou)
+- **Serge Sonfack Sounchio** — Production Engineering Laboratory/UFTMiP,
+  France · [0000-0002-6085-6818](https://orcid.org/0000-0002-6085-6818) · [@sonfack](https://github.com/sonfack)
+- **Antoine Toffano** — LIRMM, Université de Montpellier, CNRS, Montpellier,
+  France · [0009-0008-0575-8490](https://orcid.org/0009-0008-0575-8490)
+- **Pierre Larmande** — DIADE, Université de Montpellier, IRD, CIRAD,
+  Montpellier, France · [0000-0002-2923-9790](https://orcid.org/0000-0002-2923-9790) · [@pierrelarmande](https://github.com/pierrelarmande)
+- **Philippe Rocca-Serra** — Oxford e-Research Centre, Department of Engineering
+  Science, University of Oxford, Oxford OX1 3QG, United Kingdom ·
+  [0000-0001-9853-5668](https://orcid.org/0000-0001-9853-5668)
+- **Konstantin Todorov** — LIRMM, Université de Montpellier, CNRS, Montpellier,
+  France · [0000-0002-9116-6692](https://orcid.org/0000-0002-9116-6692)
+- **Damien Huzard** — Neuronautix, Montpellier, France · [0000-0003-4820-7951](https://orcid.org/0000-0003-4820-7951) · [@dhuzard](https://github.com/dhuzard)
 
 Attribution is also recorded on the `owl:Ontology` header (`dcterms:creator`,
-using ORCID IRIs where known) and in [`CITATION.cff`](CITATION.cff).
+using ORCID IRIs where known); ORCIDs and affiliations are recorded in
+[`CITATION.cff`](CITATION.cff).
+The project's historical development and the evidential limits around the
+auxiliary field-tier inventory are documented in
+[`docs/PROVENANCE.md`](docs/PROVENANCE.md).
 
 ## Citation
 

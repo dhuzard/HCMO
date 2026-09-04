@@ -13,8 +13,11 @@ HCMO is released not as a single file but as a \textbf{tool-consumable package} 
 \item \emph{Findable / Interoperable identification.} The ontology and its terms are
 identified by a persistent \nolinkurl{w3id.org} IRI (\nolinkurl{https://w3id.org/hcmo/ontology/hcm#}, which dereferences via HTTP 303 content negotiation to the documentation); the resource is archived on Zenodo with a version-specific DOI.
 
-\item \emph{Accessible.} Sources and distributions are openly available from the public
-Git repository and the Zenodo deposit (download), with HTML documentation served via GitHub Pages. No hosted SPARQL service is part of 0.3.0; the distributions can be loaded into any standards-compliant local or hosted triple store.
+\item \emph{Accessible.} Sources and distributions are openly available from the
+public GitHub repository (\url{https://github.com/dhuzard/HCMO}) and the Zenodo
+deposit (download), with HTML documentation served via GitHub Pages. \reviewcomment
+  {No hosted SPARQL service is part of HCMO 0.3.0.}
+  {À confirmer avec Gaoussou et Konstantin.} [OR CAN WE HAVE THE SPARQL SERRVICE READY?! GAOUSSOU? KONSTANTIN?]; the distributions can be loaded into any standards-compliant local or hosted triple store.
 
 \item \emph{Interoperable.} The current model reuses BFO \cite{bfo}, IAO, and SOSA/SSN
 \cite{sosa} anchors, with Schema.org; example data reuse OWL-Time \cite{owltime}. SOSA is pinned to the 2017 Recommendation and uses \nolinkurl{sosa:ObservableProperty}. Canonical SemTS 1.2.0 segment and dimension terms are selectively reused for location result tables. A pinned example-level evidence slice uses PROV-O \cite{provo}, OBI, STATO, and ISA/Bioschemas without asserting HCMO class mappings or formal ISA RO-Crate conformance. The release also uses a pinned QUDT 3.4.0 quantity-value pattern for dimensions, sampling rates, specifications, and measured results. Broader vocabulary mappings remain future alignment work. A JSON-LD context is shipped for application developers exchanging data.
@@ -24,8 +27,8 @@ ontology header (creators with ORCIDs, version IRI), and provides a canonical ci
 
 \end{itemize}
 
-Human- and machine-readable documentation is generated from the merged graph with WIDOCO \cite{widoco2017} (overview, term cross-reference, namespace declarations, a WebVOWL diagram, and provenance), published at the project's documentation site.
+Human- and machine-readable documentation is generated from the merged graph with WIDOCO \cite{widoco2017} (overview, term cross-reference, namespace declarations, a WebVOWL diagram, and provenance), published at the project's documentation site \url{https://dhuzard.github.io/HCMO/index-en.html}.
 
-\textbf{Sustainability and governance.} HCMO is maintained through its public GitHub repository by its contributors: development uses public issues and pull requests, versioning follows SemVer mirrored by \nolinkurl{owl:versionIRI}, and terms are deprecated rather than deleted or re-minted to protect external references. The COST \textbf{TEATIME} network serves as the community feedback channel grounding the model in real domain needs. A FAIR self-assessment (F/A/I/R) is given in the appendix (see \nolinkurl{metadata/resource-metadata.md}).
+\textbf{Sustainability and governance.} HCMO is maintained through its public GitHub repository (\url{https://github.com/dhuzard/HCMO}) by its contributors: development uses public issues and pull requests, versioning follows SemVer mirrored by \nolinkurl{owl:versionIRI}, and terms are deprecated rather than deleted or re-minted to protect external references. A subgroup of collaborators from the COST \textbf{TEATIME} network serves as the community feedback channel grounding the model in real domain needs. A FAIR self-assessment (F/A/I/R) is available in the supplementary material at the versioned HCMO repository.
 
 \input{figures/f1.tex}
