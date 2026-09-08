@@ -159,6 +159,18 @@ checklist. From `webapp/`: `npm install` then `npm run dev` (serves on
 contribution form under
 `docs/hcm-systems/contribute/` exports current-model Turtle and triple CSV.
 
+## Conceptual provenance
+
+HCMO is an independently authored formal ontology informed by the
+[Home Cage Monitoring Definition Olog](https://github.com/NeuroBAU/HCM-Definition)
+developed by [COST Action TEATIME (CA20135)](https://www.cost-teatime.org/).
+We gratefully acknowledge the Olog's authors and the TEATIME community: the
+Olog established an important conceptual foundation and domain vocabulary;
+HCMO independently formalises and substantially extends the domain using OWL,
+established external ontologies, SHACL constraints, competency questions, and
+reproducible validation. The versioned Olog source is available from its
+[`v1.0.0` release](https://github.com/NeuroBAU/HCM-Definition/releases/tag/v1.0.0).
+
 ## Contributors
 
 - **Cyril Gilbert** — LIRMM, Université de Montpellier, CNRS, Montpellier,
