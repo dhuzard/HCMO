@@ -5,7 +5,38 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ## [Unreleased]
 
+### Added
+
+- Added a multi-system coverage evaluation (`evaluation/`): four HCM systems
+  (Tecniplast DVC from a real cohort export; TSE PhenoMaster, Noldus PhenoTyper
+  with EthoVision XT and FED3 from schema-faithful synthetic exports) each with a
+  system profile, a native-concept → HCMO mapping table, a deterministic
+  generator and a SHACL-conformant instance graph under `examples/systems/`.
+- Added fourteen cross-system competency questions with complete expected
+  answers (`evaluation/queries/`), executed over the union of the ontology and
+  the four instance graphs; two are reported as partial because the DVC export
+  states no light schedule and no documented derivation procedure.
+- Added `tooling/evaluate.py`, which writes deterministic coverage,
+  competency-question, SHACL, ontology-metrics and HermiT reports under
+  `evaluation/reports/`, and `tooling/hcmo_instance.py`, the shared ABox
+  builder used by the generators. `tooling/validate.py` gained step 8 (system
+  graphs must conform, injected faults must be rejected, cross-system answers
+  must match), and CI verifies that graphs and reports are regenerated.
+- Added a worked sensor → observation → result figure for a real DVC bin and an
+  availability-and-sustainability paragraph to the paper draft.
+
+### Fixed
+
+- Rewrote the SHACL constraint rejecting deprecated timeless booleans without a
+  `VALUES` clause, which the SHACL specification forbids in SPARQL constraints;
+  pySHACL had raised a validation failure that the gate counted as
+  non-conformance. The edge-case fixture now fails with genuine violations.
+
 ### Changed
+
+- Extended the external-vocabulary allowlists with the pinned SOSA procedure,
+  OWL-Time minute/second, PROV attribution, QUDT unit and Schema.org terms used
+  by the evaluation graphs, and made the contract scan those graphs and queries.
 
 - Added Philippe Rocca-Serra as a middle author, with ORCID, Oxford affiliation,
   and CRediT roles reflecting his ontology and interoperability review.

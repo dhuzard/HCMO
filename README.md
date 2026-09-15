@@ -61,8 +61,10 @@ dist/                          # GENERATED — never hand-edit
   profile.json                 #   flat term inventory {iri,label,comment} + counts
 shapes/hcm-shapes.ttl          # SHACL constraints
 examples/                      # ABox examples (abox-minimal, abox-edge-cases)
+  systems/                     #   GENERATED instance graphs of real HCM systems (coverage evaluation)
 queries/                       # competency_questions.yaml + cq-*.rq
-tooling/                       # build.py, validate.py, docs.py, requirements.txt
+evaluation/                    # multi-system coverage evaluation: index, cross-system CQs, GENERATED reports
+tooling/                       # build.py, validate.py, evaluate.py, docs.py, requirements.txt
 docs/                          # documentation (incl. MISSING-DEFINITIONS.md)
 .github/workflows/             # validate.yml (PR gate), release.yml (tag → assets)
 webapp/                        # optional Node.js authoring/blueprint app
@@ -74,7 +76,8 @@ webapp/                        # optional Node.js authoring/blueprint app
 pip install -r tooling/requirements.txt
 
 python tooling/build.py      # regenerate dist/ + profile.json (idempotent, reproducible)
-python tooling/validate.py   # parse + contract + SHACL + exact-answer CQs (the CI gate)
+python tooling/validate.py   # parse + contract + SHACL + exact-answer CQs + multi-system evaluation (the CI gate)
+python tooling/evaluate.py   # regenerate evaluation/reports/ (coverage, cross-system CQs, SHACL, metrics)
 python tooling/external_vocab.py --verify-network  # recheck pinned source bytes
 pip install -r tooling/interoperability-requirements.txt
 python tooling/validate_interoperability.py  # independent RO-Crate/ISA evidence gate
@@ -93,6 +96,16 @@ python tooling/validate_isa_native_projection.py  # controlled-loss ISA-JSON/ISA
   overlap through ISA-JSON → ISA-Tab → ISA-JSON: one animal Source generates
   one real tissue Sample. It tests identity preservation without fabricating an
   animal Sample proxy; all non-native HCMO/STATO losses remain explicit.
+
+## Evaluation against real HCM systems
+
+[`evaluation/`](evaluation/README.md) maps four heterogeneous systems (Tecniplast
+DVC from a real export; TSE PhenoMaster, Noldus PhenoTyper/EthoVision XT and FED3
+from schema-faithful synthetic exports) to HCMO, validates the resulting instance
+graphs with the shapes, runs fourteen cross-system competency questions with exact
+answers, and reports ontology metrics, SHACL and HermiT results. The per-system
+profiles, mapping tables and generators live under
+[`docs/hcm-systems/systems/`](docs/hcm-systems/systems/).
 
 ## Consuming the ontology
 

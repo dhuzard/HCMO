@@ -89,6 +89,8 @@ vocabularies:
       - http://www.w3.org/ns/sosa/observedProperty
       - http://www.w3.org/ns/sosa/observes
       - http://www.w3.org/ns/sosa/phenomenonTime
+      - http://www.w3.org/ns/sosa/Procedure
+      - http://www.w3.org/ns/sosa/usedProcedure
 
   semts-120:
     status: active-selective-reuse
@@ -126,6 +128,8 @@ vocabularies:
       - http://www.w3.org/2006/time#unitDay
       - http://www.w3.org/2006/time#unitHour
       - http://www.w3.org/2006/time#unitType
+      - http://www.w3.org/2006/time#unitMinute
+      - http://www.w3.org/2006/time#unitSecond
 
   prov-o:
     status: active-selective-reuse-and-evidence
@@ -145,6 +149,8 @@ vocabularies:
       - http://www.w3.org/ns/prov#used
       - http://www.w3.org/ns/prov#wasDerivedFrom
       - http://www.w3.org/ns/prov#wasGeneratedBy
+      - http://www.w3.org/ns/prov#wasAssociatedWith
+      - http://www.w3.org/ns/prov#wasAttributedTo
 
   qudt-340:
     status: active-selective-reuse
@@ -168,6 +174,14 @@ vocabularies:
       - http://qudt.org/vocab/unit/DEG_C
       - http://qudt.org/vocab/unit/HZ
       - http://qudt.org/vocab/unit/UNITLESS
+      - http://qudt.org/vocab/unit/CentiM-PER-SEC
+      - http://qudt.org/vocab/unit/GM
+      - http://qudt.org/vocab/unit/KiloCAL_TH-PER-HR
+      - http://qudt.org/vocab/unit/MilliL
+      - http://qudt.org/vocab/unit/MilliL-PER-HR
+      - http://qudt.org/vocab/unit/NUM
+      - http://qudt.org/vocab/unit/PERCENT
+      - http://qudt.org/vocab/unit/SEC
 
   obi:
     status: evidence-only
@@ -267,3 +281,8 @@ vocabularies:
       - https://schema.org/logo
       - https://schema.org/name
       - https://schema.org/roleName
+      - https://schema.org/Dataset
+      - https://schema.org/Organization
+      - https://schema.org/description
+      - https://schema.org/isPartOf
+      - https://schema.org/manufacturer

@@ -1,44 +1,92 @@
 \section{Evaluation}
-HCMO is evaluated at four complementary levels: common ontology pitfalls and FAIR metadata, OWL consistency, instance-data validation, and executable competency questions. Reports and raw outputs are retained in the repository so that historical scores are not silently attributed to a later artifact.
+HCMO is evaluated at five complementary levels: coverage of real HCM systems by mapping their native exports to instance graphs, executable competency questions over those instance graphs, common ontology pitfalls and FAIR metadata, OWL consistency with structural metrics, and SHACL validation. Every artifact behind the numbers below (mapping tables, generators, instance graphs, queries with complete expected answers, and generated reports) is versioned under \nolinkurl{evaluation/} and \nolinkurl{docs/hcm-systems/systems/} in the repository and is regenerated deterministically by the CI gate, so that historical scores cannot be silently attributed to a later artifact.
 
-\textbf{Pitfalls and FAIRness.} Historical scans of the clean-v2 precursor are kept as remediation evidence but are not attributed to the current graph. On 15 August 2026, OOPS!  [ADD REFERENCE + LINK] was rerun directly on the candidate RDF/XML distribution. It reported P04, P08, P10, P13, P22, P34, and P35. The important P10 finding is the scanner's ontology-wide missing-disjointness heuristic and names no affected pair. P34 and P35 concern reused SOSA, SemTS, QUDT, Schema.org, and PROV terms whose authoritative declarations are covered by HCMO's pinned external-vocabulary contract rather than copied into the merged graph. The minor P04, P08, and P22 findings likewise concern reused BFO or external terms. P13 marks 32 properties as lacking inverse declarations; candidate inverses are not asserted without definition-level evidence because doing so would create false entailments merely to satisfy a scanner.
-
-FOOPS!  [ADD REFERENCE + LINK] was rerun by uploading the canonical candidate RDF/XML distribution and scored 1.0. All ontology metadata, licensing, provenance, resolvability, vocabulary-reuse, label, and definition tests passed. Raw outputs and term-level triage are archived in \nolinkurl{docs/paper/evaluation/CANDIDATE-OOPS-FOOPS-2026-08-15.md}. Both official services were rerun on the immutable 0.3.0 RDF/XML artifact on 31 August 2026. FOOPS! again scored 1.0 with a byte-identical response; OOPS! returned the same finding codes and affected counts. The release assets and PURL content-negotiation targets were also verified that day.
-
-AskWol [ADD REFERENCE + LINK] was also run on the final RDF/XML artifact after deployment. It resolved the HCMO core and module namespaces, accepted the domain/range, datatype, license, IRI-scheme, and reasoner checks, and reported no contradiction or unsatisfiable named class. Because AskWol remains beta, its release workflow is informational and archives the raw JSON and a summary without blocking a release. Its mixed-strategy warning reflects HCMO's stable core-plus-module namespace architecture; the IRIs are not re-minted to satisfy this heuristic. Other known tool-selection and provenance exceptions are documented in \nolinkurl{docs/paper/evaluation/ASKWOL-TRIAGE.md}.
-
-\textbf{Logical consistency.} The canonical RDF/XML artifact was rebuilt and checksummed again on 24 August 2026 after the metadata-only DOI correction. \nolinkurl{dist/hcmo.owl} contains 1,397 RDF triples; the generated profile contains 60 declared release classes, 68 object properties, and 75 datatype properties, including compatibility and directly referenced external terms. HermiT loaded 65 classes and reported zero inconsistent classes. The pre-check also found no active \nolinkurl{UNKNOWN:} IRI and no property declared as both object and datatype. The exact checksum, environment, output, and triage are archived in \nolinkurl{docs/paper/evaluation/POST-PR24-26-REVIEW-2026-08-15.md}.
-
-\textbf{SHACL validation.} The validator supplies the canonical ontology as a separate ontology graph and enables RDFS entailment when validating each example. This allows domain, range, and subclass consequences to select the same \nolinkurl{sh:targetClass} constraints as explicit types. Three positive examples conform, while two edge-case examples produce their reviewed violations. One negative fixture deliberately omits explicit \nolinkurl{rdf:type}: it conforms when validated without the ontology, then fails when ontology-aware inference selects the intended targets. This differential test guards the validator's entailment contract while keeping profile requiredness in SHACL rather than translating it into OWL existential semantics. A separate ISA/STATO evidence shape validates the pinned workflow boundary; an injected process/data cycle is required to fail.
-
-The accepted round-trip fixture contains a 2 $\times$ 2 treatment-by-enrichment design with eight individually housed animals, 56 repeated dark-phase activity observations, non-overlapping re-housing, an actual derived tissue Sample, and separate fitted-model, estimate, confidence-interval, p-value, File, and file-fragment entities. Canonical HCMO RDF and extended ISA RO-Crate JSON-LD are graph-isomorphic at 1,539 triples. Dark-phase outcomes use phenomenon intervals, and the re-housed animal's observations resolve to its new enclosure through the authoritative assignment. The declared mixed model is executed against the generated CSV with pinned numerical dependencies; the model serialization and the active-versus-vehicle contrast at standard enrichment use distinct exact row fragments. Dedicated shapes and injected probes reject overlapping, orphaned, reversed, or incompletely generated housing assignments; generated replacement animals; observation/ housing mismatch; group/factor disagreement; and fabricated ISA assignment results.
-
-\textbf{Competency questions.} Eleven SPARQL queries run over the ontology plus all positive examples. Negative fixtures are isolated from the query graph. The validator checks both query-index completeness and the complete expected answer rows, including bindings, unbound values, and multiplicity:
+\textbf{Coverage of heterogeneous HCM systems.} Four systems spanning the heterogeneity HCMO claims to absorb were annotated (Table~\ref{tab:coverage}): a commercial capacitive cage-rack system (Tecniplast DVC), a commercial metabolic and environmental system (TSE PhenoMaster), a commercial video system with behaviour recognition (Noldus PhenoTyper with EthoVision XT), and an open-source operant feeding device placed inside a standard cage (FED3). For each system we documented sensors, raw outputs, derived variables and file formats, wrote a reviewed mapping table from every native concept or export variable to HCMO classes and properties, and generated an instance graph from a native export with a deterministic script. The DVC graph derives from a \emph{real} contributed export (cohort 7623: 24 cages, one rack, 14 days); all 24 cages, their real insertion and removal events and 720 real one-minute activation-index bins (four cages over three hours) are materialised. No other vendor export could be redistributed, so the three remaining graphs derive from synthetic exports that reproduce the documented column layout of each system (PhenoMaster table export, EthoVision track, time-bin and behaviour exports, FED3 SD-card log); the mapping is therefore exercised faithfully even though the values are generated, and every graph states its provenance. Each graph conforms to the standard shapes with ontology-aware RDFS entailment.
 
 \begin{table}[t]
 \centering
 \small
-\begin{tabularx}{\linewidth}{@{}Xr@{}}
+\caption{Coverage of four HCM systems. Cells give native concepts mapped over concepts assigned to the module (hcmo + external + partial); \% mapped counts all three kinds, \% native counts concepts expressed with HCMO's own terms.}
+\label{tab:coverage}
+\begin{tabularx}{\linewidth}{@{}Xlrrrrrrr@{}}
 \toprule
-Competency question & Exact answers \\
+System (data) & Modality & core & bio & env & obs & tech & \% mapped & \% native \\
 \midrule
-subjects assigned by monitored enclosure & 3 \\
-ISA factor/group assignment & 1 \\
-ISA raw-file recording provenance & 1 \\
-OBI transformation and STATO result provenance & 1 \\
-enclosures missing dimension records & 0 \\
-environmental specification and observation quantities & 1 \\
-current housing at the reviewed reference time & 1 \\
-operational and calibration evidence at the reviewed time & 1 \\
-housed subjects needing provisioning & 3 \\
-properties captured by enclosure sensors & 4 \\
-systems with observations lasting at least 24 hours under a condition & 1 \\
+Tecniplast DVC (real) & capacitive rack & 5/5 & 3/3 & 0/2 & 3/5 & 4/5 & 71 & 38 \\
+TSE PhenoMaster (synthetic) & calorimetry, intake, activity & 3/3 & 3/3 & 2/2 & 13/13 & 4/4 & 93 & 52 \\
+Noldus PhenoTyper (synthetic) & video, behaviour recognition & 3/3 & 3/3 & 1/1 & 9/10 & 4/5 & 83 & 50 \\
+FED3 (synthetic) & operant feeding & 2/2 & 2/2 & 1/1 & 10/10 & 7/7 & 88 & 48 \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-The zero-row dimensions query is intentional: it verifies absence of missing records in the positive fixture rather than being accepted as an unexamined empty result. The three ISA/STATO questions establish a narrow executable evidence slice; they do not establish HCMO class mappings or formal ISA RO-Crate conformance.
+\input{figures/f4.tex}
 
-Five additional exact-answer questions run against the isolated round-trip fixture: nine housing-history rows, eight authoritative subject/group/factor rows, eight per-animal repeated-observation counts, four statistical-result/ file-fragment rows including exact values and meaning links, and one Source-to-derived-Sample row. \nolinkurl{roc-validator} 0.11.3 passes all RO-Crate 1.2 required rules and all ISA-specific required rules. Its full inherited ISA run has one isolated upstream conflict: the embedded ISA profile requires RO-Crate 1.1 although its minimal ISA fixture uses the 1.2 context. We report this as interoperability evidence, not formal conformance. Separately, pinned \nolinkurl{isatools} 0.14.3 validates an executable native projection and round trip for the genuine Source-to-Sample collection. Exact HCMO identifiers survive as ISA comments. The test deliberately excludes non-native housing, direct whole-animal assay, source-bound factor assignment, group, repeated-observation, and semantic-result/file-fragment structures and checks their loss manifests.
+Figure~\ref{fig:dvcchain} shows the sensor $\rightarrow$ observation $\rightarrow$ result chain for one real DVC bin. \emph{Lessons learned.} The mapping exposed where the heterogeneity is absorbed and where it is not. (i) Enclosure, housing, environment, sensor, actuator, software and file provenance mapped natively in all four systems, including the real DVC rack events as time-bounded operational status records and the EthoVision track as a SemTS location table. (ii) HCMO 0.3.0 has observation subtypes for behaviour, weight, environment and gas concentration, but none for a numeric activity, metabolic or operant result about an animal or a cage group; such results (DVC index, VO\textsubscript{2}, distance moved, retrieval latency) were expressed as generic \nolinkurl{sosa:Observation}s with \nolinkurl{hcm-obs:QuantityValue} results, which is why the obs column carries most partial mappings and why the native share stays near 50\%. (iii) The DVC export identifies cages, not animals: its feature of interest had to be a cage-level group, strain and sex cannot be asserted on a group, and the rack position has no history because \nolinkurl{hcm:locatedIn} is timeless. (iv) The DVC export carries neither enrichment nor light schedule, so environment-dependent questions are unanswerable for DVC \emph{because of the export}, not the ontology; the cohort aggregates, device lifecycle events and reference or telemetry channels were deliberately left out of scope. These gaps are the input to the next modelling round rather than silent extensions: no term was added to the 0.3.0 release to make a mapping fit.
+
+\textbf{Competency questions on instance data.} Fourteen cross-system questions were executed with rdflib over the union of the ontology and the four instance graphs (36\,648 triples); each is versioned with its complete expected answer rows and checked by the CI gate (Table~\ref{tab:cqms}). Ten questions join data from several systems, for example ``which animals or cage groups, across systems, were observed in enriched enclosures during the dark phase of their light cycle'' (derived from \nolinkurl{hcm-env:LightCycle}) or ``how many subjects or cage groups were housed in each system at two reference times''. Two are reported as \emph{partial}: the dark-phase and the procedure-provenance questions return rows for three systems and, correctly, none for DVC, whose export states no light schedule and whose index derivation is proprietary. One question (results without units) has a verified empty answer.
+
+\begin{table}[t]
+\centering
+\small
+\caption{Cross-system competency questions over the multi-system graph (queries and exact answers in \nolinkurl{evaluation/queries/}).}
+\label{tab:cqms}
+\begin{tabularx}{\linewidth}{@{}lXlrl@{}}
+\toprule
+ID & Question (abridged) & Modules & Rows & Result \\
+\midrule
+MS-01 & sensor technologies per system & tech, core & 7 & answered \\
+MS-02 & subjects vs cage-level groups per system & bio, core & 4 & answered \\
+MS-03 & entities in enriched enclosures during the dark phase & bio, env, obs & 5 & partial (no DVC) \\
+MS-04 & body-weight records and ranges & obs, bio, tech & 4 & answered \\
+MS-05 & environment values outside their specification & env, obs & 3 & answered \\
+MS-06 & gas-concentration ranges per enclosure & obs, env & 8 & answered \\
+MS-07 & evidence-backed offline periods (real DVC events) & core & 9 & answered \\
+MS-08 & recognised behaviour categories per sensor technology & obs, tech & 5 & answered \\
+MS-09 & documented derivation procedures per system & obs, tech & 4 & partial (no DVC) \\
+MS-10 & location result tables, dimensions, sampling rate & obs, tech & 2 & answered \\
+MS-11 & quantitative variables, units and means per system & obs & 18 & answered \\
+MS-12 & entities housed at two reference times & bio, core & 4 & answered \\
+MS-13 & export files and their attribution & tech & 7 & answered \\
+MS-14 & results without units & obs & 0 & answered (empty) \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The eleven canonical release questions continue to run over the ontology plus the positive examples, and five further questions over the isolated 2 $\times$ 2 round-trip fixture; the validator checks their complete expected answer rows, including the intentionally empty missing-dimensions answer, so an unexamined empty result is a validation failure.
+
+\textbf{Ontology metrics and formal checks.} Table~\ref{tab:metrics} summarises the release. Every class and property in the five domain modules carries a label and a textual definition. HermiT (via owlready2) loads 65 classes from the canonical RDF/XML artifact, reports zero unsatisfiable classes, and classification adds no named subclass edge beyond the 73 asserted ones: the inferred hierarchy equals the asserted one. OOPS! \cite{oops2012} rerun on the immutable 0.3.0 artifact reports P04, P08, P10, P13, P22, P34 and P35; P34/P35 concern reused SOSA, SemTS, QUDT, Schema.org and PROV terms whose authoritative declarations are governed by the pinned external-vocabulary contract rather than copied into the graph, P10 is the scanner's generic missing-disjointness heuristic naming no pair, and P13 marks 32 properties without inverses that are not asserted without definition-level evidence; no finding demonstrates an inconsistency. FOOPS! \cite{foops} scores 1.0 on the same artifact, and AskWol reported no contradiction or unsatisfiable class; raw responses and triage are archived under \nolinkurl{docs/paper/evaluation/}.
+
+\begin{table}[t]
+\centering
+\small
+\caption{Structural metrics of HCMO 0.3.0 per module (native terms) and formal checks.}
+\label{tab:metrics}
+\begin{tabularx}{\linewidth}{@{}Xrrrrrr@{}}
+\toprule
+Module & Classes & Obj.\ props & Data props & Deprecated & Restrictions & Triples \\
+\midrule
+core (enclosure) & 6 & 10 & 20 & 9 & 3 & 283 \\
+bio & 4 & 7 & 6 & 4 & 0 & 103 \\
+env & 6 & 14 & 7 & 9 & 3 & 214 \\
+obs & 10 & 2 & 6 & 1 & 8 & 123 \\
+tech & 7 & 10 & 12 & 2 & 0 & 226 \\
+compat (0.0.1 IRIs) & 27 & 25 & 24 & 76 & 0 & 416 \\
+\midrule
+merged release & 60 & 68 & 75 & 101 & 14 & 1\,397 \\
+\bottomrule
+\end{tabularx}
+\vspace{2pt}
+\begin{tabularx}{\linewidth}{@{}Xl@{}}
+External terms referenced by axioms & 23 (BFO, IAO, SOSA, SemTS, QUDT, PROV, Schema.org) \\
+HermiT & 65 classes loaded, 0 unsatisfiable, 0 inferred edges beyond 73 asserted \\
+OOPS! / FOOPS! & no critical pitfall, 7 triaged codes / score 1.0 \\
+SHACL & 18 node shapes, 62 property shapes, 6 SPARQL constraints \\
+\end{tabularx}
+\end{table}
+
+\textbf{SHACL validation.} The validator supplies the canonical ontology as a separate ontology graph and enables RDFS entailment, so that domain, range and subclass consequences select the same \nolinkurl{sh:targetClass} constraints as explicit types. On the four system graphs (35\,251 triples) the shapes produce zero violations, i.e.\ no false positive, while sixteen injected faults (a unit removed from a quantity, a reversed housing interval, an overlapping second assignment, an enclosure without sensor, on each graph) are all rejected; the intentionally invalid release fixtures produce 18 and 5 violations. One negative fixture deliberately omits explicit \nolinkurl{rdf:type}: it conforms without the ontology and fails with ontology-aware inference, guarding the entailment contract. Running the shapes against the instance graphs also revealed that the constraint rejecting deprecated timeless booleans used a \nolinkurl{VALUES} clause, which the SHACL specification forbids in SPARQL constraints; pySHACL had been reporting a validation failure that the gate counted as non-conformance. The constraint was rewritten with an equivalent \nolinkurl{FILTER}, and the fixture now fails with genuine violations.
+
+The accepted round-trip fixture contains a 2 $\times$ 2 treatment-by-enrichment design with eight individually housed animals, 56 repeated dark-phase activity observations, non-overlapping re-housing, an actual derived tissue Sample, and separate fitted-model, estimate, confidence-interval, p-value, File, and file-fragment entities. Canonical HCMO RDF and extended ISA RO-Crate JSON-LD are graph-isomorphic at 1,539 triples. Dedicated shapes and injected probes reject overlapping, orphaned, reversed, or incompletely generated housing assignments; generated replacement animals; observation/housing mismatch; group/factor disagreement; and fabricated ISA assignment results. \nolinkurl{roc-validator} 0.11.3 passes all RO-Crate 1.2 required rules and all ISA-specific required rules, and pinned \nolinkurl{isatools} 0.14.3 validates an executable native ISA-JSON/ISA-Tab projection whose controlled losses are reported explicitly; we report this as interoperability evidence, not formal conformance.
 
 \input{figures/f3.tex}

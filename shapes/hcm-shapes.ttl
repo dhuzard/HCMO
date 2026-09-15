@@ -306,8 +306,8 @@ hcm:RejectedTimelessStateShape a sh:NodeShape ;
       PREFIX hcm: <https://w3id.org/hcmo/ontology/hcm#>
       PREFIX hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#>
       SELECT $this WHERE {
-        VALUES ?property { hcm:isOccupied hcm:isOperational hcm-tech:isCalibrated }
         $this ?property ?value .
+        FILTER (?property IN (hcm:isOccupied, hcm:isOperational, hcm-tech:isCalibrated))
       }
     """
   ] .

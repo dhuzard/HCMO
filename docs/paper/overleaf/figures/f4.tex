@@ -1,0 +1,27 @@
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+  node distance=4mm and 6mm,
+  box/.style={draw, rounded corners=1.5pt, align=center, font=\scriptsize, inner sep=3.5pt},
+  flow/.style={-{Latex[length=1.8mm]}, font=\tiny}
+]
+\node[box, fill=orange!12] (sensor) {\texttt{hcm-tech:Sensor}\\DVC capacitive board\\12 electrodes, 4 Hz};
+\node[box, fill=blue!8, right=of sensor] (obs) {\texttt{sosa:Observation}\\bin 11:00--11:01\\(real cohort 7623)};
+\node[box, fill=green!9, right=of obs] (result) {\texttt{hcm-obs:QuantityValue}\\7.6 \texttt{unit:PERCENT}};
+\node[box, fill=red!8, below=of obs] (group) {\texttt{hcm-bio:ExperimentalGroup}\\animals of cage 3401};
+\node[box, fill=yellow!12, below=of sensor] (cage) {\texttt{hcm:MonitoredEnclosure}\\cage B6\_M\_12\_3401\\rack AAAA, position A6};
+\node[box, fill=violet!8, below=of result] (series) {\texttt{hcm-tech:TimeSeries}\\CSV export\\attributed to DVC Analytics};
+\draw[flow] (sensor) -- node[above]{madeBySensor} (obs);
+\draw[flow] (obs) -- node[above]{hasResult} (result);
+\draw[flow] (obs) -- node[right]{hasFeatureOfInterest} (group);
+\draw[flow] (obs) -- node[left, pos=0.35]{occursIn} (cage);
+\draw[flow] (sensor) -- node[left]{installedIn} (cage);
+\draw[flow] (group) -- node[below]{housing assignment} (cage);
+\draw[flow, dashed] (result) -- node[right]{row in} (series);
+\end{tikzpicture}
+\caption{Sensor $\rightarrow$ observation $\rightarrow$ result chain for one real
+DVC activation-index bin. The cage-level signal has no individual subject, so the
+feature of interest is the cage group; the derivation is proprietary, so only the
+export file carries an attribution.}
+\label{fig:dvcchain}
+\end{figure}

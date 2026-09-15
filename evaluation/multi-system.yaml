@@ -1,0 +1,65 @@
+# Multi-system coverage evaluation index for HCMO.
+#
+# Read by tooling/evaluate.py (report generation) and tooling/validate.py
+# (CI gate). Each system entry points to the system profile, the native export
+# used, the native-concept -> HCMO mapping table, the generator, and the
+# generated instance graph. `data` states whether the instance graph derives
+# from a real vendor export or from a schema-faithful synthetic export.
+version: 0.3.0
+systems:
+  - id: dvc-tecniplast
+    name: Tecniplast DVC (Digital Ventilated Cage)
+    modality: capacitive electrode array under each IVC (rack system)
+    data: real
+    profile: docs/hcm-systems/systems/DVC_Tecniplast/README.md
+    mapping: docs/hcm-systems/systems/DVC_Tecniplast/hcmo-mapping.tsv
+    generator: docs/hcm-systems/systems/DVC_Tecniplast/generate_hcmo_instance.py
+    graph: examples/systems/dvc-tecniplast.ttl
+    exports:
+      - docs/hcm-systems/systems/DVC_Tecniplast/datasets/real/Cohort7623_events.csv
+      - docs/hcm-systems/systems/DVC_Tecniplast/datasets/real/Cohort7623_animal_loc__index_smoothed.csv
+  - id: tse-phenomaster
+    name: TSE PhenoMaster (indirect calorimetry, feeding, drinking, activity)
+    modality: metabolic and environmental home-cage phenotyping
+    data: synthetic
+    profile: docs/hcm-systems/systems/tse-phenomaster/README.md
+    mapping: docs/hcm-systems/systems/tse-phenomaster/hcmo-mapping.tsv
+    generator: docs/hcm-systems/systems/tse-phenomaster/generate_hcmo_instance.py
+    graph: examples/systems/tse-phenomaster.ttl
+    exports:
+      - docs/hcm-systems/systems/tse-phenomaster/datasets/mock/phenomaster_mock_export.csv
+  - id: noldus-phenotyper
+    name: Noldus PhenoTyper with EthoVision XT
+    modality: video tracking and behaviour recognition
+    data: synthetic
+    profile: docs/hcm-systems/systems/noldus-phenotyper/README.md
+    mapping: docs/hcm-systems/systems/noldus-phenotyper/hcmo-mapping.tsv
+    generator: docs/hcm-systems/systems/noldus-phenotyper/generate_hcmo_instance.py
+    graph: examples/systems/noldus-phenotyper.ttl
+    exports:
+      - docs/hcm-systems/systems/noldus-phenotyper/datasets/mock/ethovision_track_sample_arena1.csv
+      - docs/hcm-systems/systems/noldus-phenotyper/datasets/mock/ethovision_time_bins.csv
+      - docs/hcm-systems/systems/noldus-phenotyper/datasets/mock/ethovision_behavior_events.csv
+  - id: fed3
+    name: FED3 (Feeding Experimentation Device 3)
+    modality: open-source operant feeding device inside a standard cage
+    data: synthetic
+    profile: docs/hcm-systems/systems/fed3/README.md
+    mapping: docs/hcm-systems/systems/fed3/hcmo-mapping.tsv
+    generator: docs/hcm-systems/systems/fed3/generate_hcmo_instance.py
+    graph: examples/systems/fed3.ttl
+    exports:
+      - docs/hcm-systems/systems/fed3/datasets/mock/FED001_060226_00.CSV
+
+# Cross-system competency questions executed over the union of the ontology
+# and all system graphs, with complete expected answer rows.
+queries:
+  index: evaluation/queries/competency_questions.yaml
+  dir: evaluation/queries
+
+# Generated, deterministic reports (tooling/evaluate.py). Never hand-edit.
+reports:
+  coverage: evaluation/reports/coverage.md
+  competency: evaluation/reports/competency-questions.md
+  shacl: evaluation/reports/shacl.md
+  metrics: evaluation/reports/ontology-metrics.md

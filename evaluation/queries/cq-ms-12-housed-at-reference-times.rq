@@ -1,0 +1,32 @@
+PREFIX hcm: <https://w3id.org/hcmo/ontology/hcm#>
+PREFIX hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#>
+PREFIX hcm-env: <https://w3id.org/hcmo/ontology/hcm/env#>
+PREFIX hcm-obs: <https://w3id.org/hcmo/ontology/hcm/obs#>
+PREFIX hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX qudt: <http://qudt.org/schema/qudt/>
+PREFIX unit: <http://qudt.org/vocab/unit/>
+PREFIX schema: <https://schema.org/>
+PREFIX semts: <https://w3id.org/semts/ontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+# CQ-MS-12 (bio, temporal, cross-system): How many subjects or cage groups were
+# housed in monitored enclosures in each system at two reference times, one
+# inside the real DVC recording and one inside the synthetic runs?
+SELECT ?system ?referenceTime (COUNT(DISTINCT ?holder) AS ?housed)
+WHERE {
+  VALUES ?referenceTime { "2025-10-20T12:00:00-04:00"^^xsd:dateTime "2026-06-02T19:30:00+02:00"^^xsd:dateTime }
+  ?holder hcm-bio:hasHousingAssignment ?assignment .
+  ?assignment hcm-bio:assignedToEnclosure ?enclosure ;
+              time:hasTime ?interval .
+  ?enclosure a hcm:MonitoredEnclosure .
+  ?interval time:hasBeginning/time:inXSDDateTime ?start ;
+            time:hasEnd/time:inXSDDateTime ?end .
+  FILTER (?start <= ?referenceTime && ?referenceTime < ?end)
+  BIND (REPLACE(STR(?holder), "^(https://w3id.org/hcmo/id/eval/[^/]+/).*$", "$1") AS ?system)
+}
+GROUP BY ?system ?referenceTime
+ORDER BY ?system ?referenceTime

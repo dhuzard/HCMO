@@ -53,8 +53,13 @@ The CfP requires these fields right after the abstract (drafted in
 - [ ] Design/coverage reasonable & logically correct; reuse of standards
       (SOSA/SSN, OWL-Time, PROV, BFO) justified.
 - [ ] Advantages, complexities, **limitations** explicitly described.
-- [ ] **Quality evidence:** OOPS! pitfall scan + FOOPS! FAIR score + reasoner
-      (no unsat/cycles) + SHACL validation + competency-question results (T5).
+- [x] **Quality evidence:** OOPS! pitfall scan + FOOPS! FAIR score + reasoner
+      (no unsat/cycles) + SHACL validation + competency-question results (T5) →
+      `evaluation/reports/` (metrics, SHACL, HermiT) + archived OOPS!/FOOPS!.
+- [x] **Coverage evidence:** four HCM systems mapped from native exports (one
+      real) with SHACL-conformant instance graphs and 14 cross-system CQs answered
+      on instance data → `evaluation/reports/coverage.md`,
+      `competency-questions.md`.
 - [x] Shapes, positive and negative examples, eleven canonical competency
       questions, and five isolated round-trip questions target the 0.3.0 release
       candidate and are checked against complete expected answers.
@@ -63,8 +68,9 @@ The CfP requires these fields right after the abstract (drafted in
 - [ ] Interest to the SW community **and** to society (animal welfare, 3Rs,
       reproducibility, FAIR preclinical data).
 - [ ] Reusability: modular design, JSON-LD context, alignments, examples.
-- [ ] **Sustainability/maintenance plan**: governance, versioning (SemVer +
-      versionIRI), issue tracker, release process, who maintains it (T7).
+- [x] **Sustainability/maintenance plan**: governance, versioning (SemVer +
+      versionIRI), issue tracker, release process, who maintains it (T7) → §5
+      "Availability and sustainability" (registry entries still planned).
 - [ ] Adoption evidence / intended uptake (KGQA layer, authoring webapp,
       vendor-data mapping ambitions).
 

@@ -34,15 +34,30 @@ hcm-systems/
       mock/                 #   synthetic data hand-authored to match the real schema
   systems/                  # one folder per system (same shape as _template/)
     DVC_Tecniplast/         #   ★ first worked example: profile + real export + mock traces
+    tse-phenomaster/        #   metabolic (synthetic schema-faithful export)
+    noldus-phenotyper/      #   video + EthoVision XT (synthetic schema-faithful exports)
+    fed3/                   #   open-source operant feeder (synthetic schema-faithful log)
 ```
+
+Each system folder also carries `hcmo-mapping.tsv` (native concept → HCMO) and a
+`generate_hcmo_instance.py` that writes the instance graph under
+`examples/systems/`. The multi-system coverage evaluation built on these folders
+is documented in [`../../evaluation/README.md`](../../evaluation/README.md).
 
 ## Worked examples
 
 - **[`systems/DVC_Tecniplast/`](systems/DVC_Tecniplast/)** — Tecniplast DVC®: a
   source-cited system profile, a **real** cohort export, and **synthetic traces that
   mirror the real CSV schema exactly** (with a deterministic generator). Its
-  RDF profile graph is [`../../examples/dvc-tecniplast.ttl`](../../examples/dvc-tecniplast.ttl).
+  RDF profile graph is [`../../examples/dvc-tecniplast.ttl`](../../examples/dvc-tecniplast.ttl),
+  and its real-data instance graph is `../../examples/systems/dvc-tecniplast.ttl`.
   Use it as the template for how a filled-in system folder should look.
+- **[`systems/tse-phenomaster/`](systems/tse-phenomaster/)**,
+  **[`systems/noldus-phenotyper/`](systems/noldus-phenotyper/)** and
+  **[`systems/fed3/`](systems/fed3/)** — metabolic, video and operant systems
+  mapped from **synthetic, schema-faithful** exports (no redistributable real data
+  yet). Each has a profile, a mapping table, a deterministic generator and an
+  instance graph under `examples/systems/`.
 
 ## How to add a system
 

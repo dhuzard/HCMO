@@ -1,0 +1,25 @@
+native_concept	source	description	module	mapping	hcmo_target	note
+Arena	export	EthoVision arena = one PhenoTyper cage	core	hcmo	hcm:MonitoredEnclosure, hcm:hasEnclosureIdentifier, hcm:hasManufacturer
+PhenoTyper 3000 geometry	profile	30 x 30 cm floor, 35 cm height	core	hcmo	hcm:hasDimensions, hcm:EnclosureDimensions	Vendor specification.
+shelter	profile	Hiding box inside the cage (also an EthoVision zone)	core	hcmo	hcm:hasEnrichment, hcm:Enrichment, hcm:hasEnrichmentType
+Subject	export	Subject name in the trial	bio	external	hcm-bio:Subject, dcterms:identifier
+animal metadata	profile	Species, strain, sex, birth date from the study record	bio	hcmo	hcm-bio:hasSpecies, hcm-bio:hasStrain, hcm-bio:hasBiologicalSex, hcm-bio:hasDateOfBirth
+animal-in-arena period	profile	Single housing during the trial	bio	hcmo	hcm-bio:HousingAssignment, hcm-bio:assignedToEnclosure, time:Interval
+Trial / Trial ID	export	EthoVision trial identity	—	not-covered	—	No protocol/trial entity in HCMO 0.3.0; the ISA evidence slice covers this outside the core.
+Trial time / Recording time	export	Seconds since trial start	obs	external	time:Instant, time:inXSDDateTime	Converted to absolute timestamps using the trial start time.
+Bin start / Bin duration	export	Time-bin boundaries of the statistics export	obs	external	time:Interval, time:hasBeginning, time:hasEnd
+X center / Y center	export	Centre-point coordinates (cm) at 25 samples/s	obs	hcmo	hcm-obs:LocationResultTable, semts:segmentDimension, semts:DataDimension	Native HCMO result class for location time-series segments.
+Area / Areachange / Elongation	profile	Body-shape descriptors per sample	obs	not-covered	—	Per-sample shape descriptors are not materialised; they stay in the referenced track file.
+Distance moved [cm]	export	Distance per bin	obs	partial	sosa:Observation, hcm-obs:QuantityValue, unit:CentiM, sosa:usedProcedure	No HCMO locomotion observation subtype; generic sosa:Observation.
+Velocity mean [cm/s]	export	Mean velocity per bin	obs	partial	sosa:Observation, hcm-obs:QuantityValue, unit:CentiM-PER-SEC	Generic sosa:Observation.
+In zone(Shelter) duration [s]	export	Time spent in the shelter zone per bin	obs	partial	sosa:Observation, hcm-obs:QuantityValue, unit:SEC	Zone semantics (shelter) live in the observable-property label only.
+Movement(Moving) duration [s]	export	Time in movement state per bin	obs	partial	sosa:Observation, hcm-obs:QuantityValue, unit:SEC	Generic sosa:Observation.
+Behavior / Start / Stop	export	Behaviour Recognition events (grooming, rearing, eating, sniffing)	obs	hcmo	hcm-obs:BehaviorObservation, hcm-obs:BehaviorResult, hcm-obs:hasBehaviorType, time:Interval	Native HCMO subtype; no confidence score is exported.
+top-unit IR camera	profile	Infrared-sensitive camera, 25 samples/s	tech	hcmo	hcm-tech:Sensor, hcm-tech:hasSensorTechnology, hcm-tech:hasSamplingRateQuantity, hcm-tech:installedIn, hcm-tech:captures
+white / infrared LED units	profile	Top-unit lighting under EthoVision schedule control	tech	hcmo	hcm-tech:Actuator, hcm-tech:hasActuator
+light-dark schedule	profile	12:12, dark from 19:00	env	hcmo	hcm-env:LightCycle, hcm-env:hasDarkPhaseStart, hcm-env:hasDarkPhaseDuration, hcm-env:hasLightPhaseDuration
+EthoVision XT / workstation	profile	Tracking software and acquisition computer	tech	hcmo	hcm-tech:Software, hcm-tech:hasVersion, hcm-tech:Hardware, hcm-tech:runsOn
+centre-point tracking / behaviour recognition	profile	Derivation procedures	obs	external	sosa:Procedure, sosa:usedProcedure
+Video file	export	Source video referenced in the track header	tech	not-covered	—	Only the CSV exports are referenced as hcm-tech:TimeSeries; the video itself is not modelled.
+track / bin / event export files	export	CSV exports	tech	hcmo	hcm-tech:TimeSeries, hcm-tech:hasFileFormat, hcm-tech:hasStoragePath, hcm-tech:hasSamplingRateQuantity
+Missing values marker	export	Header field of the track export	—	not-covered	—	File-format detail; out of scope.

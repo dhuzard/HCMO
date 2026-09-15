@@ -1,0 +1,25 @@
+PREFIX hcm: <https://w3id.org/hcmo/ontology/hcm#>
+PREFIX hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#>
+PREFIX hcm-env: <https://w3id.org/hcmo/ontology/hcm/env#>
+PREFIX hcm-obs: <https://w3id.org/hcmo/ontology/hcm/obs#>
+PREFIX hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX qudt: <http://qudt.org/schema/qudt/>
+PREFIX unit: <http://qudt.org/vocab/unit/>
+PREFIX schema: <https://schema.org/>
+PREFIX semts: <https://w3id.org/semts/ontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+# CQ-MS-09 (obs/tech, provenance): Which documented procedures produced
+# observations in each system, and how many observations cite each procedure?
+# Systems whose derivation is proprietary and undocumented (DVC) cite none.
+SELECT ?system ?procedure (COUNT(?observation) AS ?observations)
+WHERE {
+  ?observation sosa:usedProcedure ?procedure .
+  BIND (REPLACE(STR(?observation), "^(https://w3id.org/hcmo/id/eval/[^/]+/).*$", "$1") AS ?system)
+}
+GROUP BY ?system ?procedure
+ORDER BY ?system ?procedure

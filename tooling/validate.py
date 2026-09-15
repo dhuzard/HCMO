@@ -19,6 +19,10 @@ Steps (any failure -> non-zero exit):
   7. Run every indexed competency query against the canonical ontology plus all
      positive examples. The canonicalized result rows must equal the reviewed
      answers in queries/competency_questions.yaml.
+  8. Multi-system coverage evaluation (evaluation/multi-system.yaml): every
+     system instance graph must conform to the standard shapes, injected
+     faults must be rejected, and the cross-system competency queries must
+     return their complete reviewed answers over the union graph.
 
 Usage: python tooling/validate.py
 """
@@ -36,6 +40,7 @@ from rdflib import RDF, Graph, Literal, Namespace, URIRef, XSD
 from rdflib.compare import isomorphic
 from pyshacl import validate as shacl_validate
 from external_vocab import validate_contract
+from evaluate import check_all as evaluate_systems
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -654,6 +659,11 @@ def main() -> int:
     print("\n== 7. Competency queries vs ontology and positive examples ==")
     query_graph = evaluation_graph(manifest, ontology_graph)
     ok, notes, rowcounts = step_queries(manifest, query_graph)
+    print("\n".join(notes))
+    all_ok &= ok
+
+    print("\n== 8. Multi-system coverage evaluation ==")
+    ok, notes = evaluate_systems(ontology_graph)
     print("\n".join(notes))
     all_ok &= ok
 

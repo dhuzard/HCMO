@@ -1,0 +1,26 @@
+native_concept	source	description	module	mapping	hcmo_target	note
+home cage holding the FED3	profile	Standard shoebox cage	core	hcmo	hcm:MonitoredEnclosure, hcm:hasEnclosureIdentifier, hcm:hasDimensions	Dimensions assumed for the synthetic profile.
+nesting material	profile	Enrichment in the cage	core	hcmo	hcm:hasEnrichment, hcm:Enrichment, hcm:hasEnrichmentType
+mouse	profile	Single-housed subject (not in the log)	bio	hcmo	hcm-bio:Subject, hcm-bio:hasSpecies, hcm-bio:hasStrain, hcm-bio:hasBiologicalSex, hcm-bio:hasDateOfBirth
+mouse-in-cage period	profile	Housing during the session	bio	hcmo	hcm-bio:HousingAssignment, hcm-bio:assignedToEnclosure, time:Interval
+MM:DD:YYYY hh:mm:ss	log	Event timestamp (device clock, local time)	obs	external	time:Instant, time:inXSDDateTime	Offset added explicitly (UTC+02:00).
+Library_Version	log	FED3 Arduino library version	tech	hcmo	hcm-tech:Hardware, hcm-tech:hasFirmware
+Session_type	log	Programmed session (FR1, PR, ...)	obs	external	sosa:Procedure, sosa:usedProcedure
+Device_Number	log	Device identifier	tech	external	hcm-tech:Hardware, dcterms:identifier	hcm-tech:hasSensorIdentifier applies to sensors only; dcterms:identifier reused for the device.
+Battery_Voltage	log	Battery state per row	—	not-covered	—	Device telemetry; deliberately out of scope.
+Motor_Turns	log	Cumulative stepper-motor turns	—	not-covered	—	Actuator telemetry; deliberately out of scope.
+FR	log	Fixed-ratio requirement	obs	external	sosa:Procedure (rdfs:comment)	Procedure parameter as text.
+Event = Left / Right	log	Nose-poke in the left or right port	obs	partial	sosa:Observation, hcm-obs:CategoricalResult, hcm-obs:hasCategory	No HCMO operant-event observation subtype; generic sosa:Observation with a categorical result.
+Event = Pellet	log	Pellet dispensed and retrieved	obs	partial	sosa:Observation, hcm-obs:QuantityValue, unit:SEC	Retrieval latency becomes the quantitative result; the pellet delivery itself is only implied.
+Active_Poke	log	Which port is rewarded	obs	external	sosa:Procedure (rdfs:comment)
+Left_Poke_Count / Right_Poke_Count / Pellet_Count	log	Cumulative counters	obs	partial	—	Derivable by counting the observations; not materialised.
+Block_Pellet_Count	log	Pellets within the current block	—	not-covered	—	Session-block bookkeeping without an HCMO counterpart.
+Retrieval_Time	log	Seconds from dispensing to pellet removal	obs	hcmo	hcm-obs:QuantityValue, qudt:numericValue, unit:SEC, sosa:phenomenonTime	Also drives the observation's phenomenon interval.
+InterPellet_Interval	log	Seconds since the previous pellet	obs	partial	—	Derivable from consecutive pellet observations; not materialised.
+Poke_Time	log	Poke duration in seconds	obs	external	time:Interval, time:numericDuration, time:unitSecond	Encoded as the phenomenon-time duration of the poke observation.
+nose-poke photointerrupters	profile	Left and right IR beam sensors	tech	hcmo	hcm-tech:Sensor, hcm-tech:hasSensorTechnology, hcm-tech:installedIn, hcm-tech:captures
+pellet-well photointerrupter	profile	IR beam detecting pellet presence	tech	hcmo	hcm-tech:Sensor, hcm-tech:captures
+pellet dispenser stepper motor	profile	Actuator delivering 20-mg pellets	tech	hcmo	hcm-tech:Actuator, hcm-tech:hasActuator
+FED3 device	profile	Feather M0 Adalogger based device	tech	hcmo	hcm-tech:Hardware, hcm-tech:hasModelNumber, hcm-tech:supportsEnclosure, hcm-tech:communicatesWith
+SD-card log file	log	CSV log FED<device>_<MMDDYY>_<session>.CSV	tech	hcmo	hcm-tech:TimeSeries, hcm-tech:hasFileFormat, hcm-tech:hasStoragePath, prov:wasAttributedTo
+light-dark schedule	profile	12:12, dark from 19:00	env	hcmo	hcm-env:LightCycle, hcm-env:hasDarkPhaseStart, hcm-env:hasDarkPhaseDuration, hcm-env:hasLightPhaseDuration

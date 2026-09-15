@@ -24,3 +24,12 @@ jobs:
         run: pip install -r tooling/reasoning-requirements.txt
       - name: Run active HCMO HermiT check
         run: python tooling/reason.py --java-memory 2000
+      - name: Regenerate the reasoner evaluation report (verify it is up to date)
+        run: |
+          pip install -r tooling/requirements.txt
+          python tooling/evaluate.py --reason
+          if ! git diff --quiet -- evaluation/reports/reasoner.md; then
+            echo "::error::evaluation/reports/reasoner.md is stale. Run 'python tooling/evaluate.py --reason' and commit."
+            git --no-pager diff -- evaluation/reports/reasoner.md
+            exit 1
+          fi

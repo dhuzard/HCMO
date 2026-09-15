@@ -335,6 +335,14 @@ def _check_contract(notes: list[str]) -> tuple[bool, dict]:
         *sorted((ROOT / "shapes").glob("*.ttl")),
         ROOT / "examples" / "isa-roundtrip" / "canonical.ttl",
     ]
+    evaluation_index_path = ROOT / "evaluation" / "multi-system.yaml"
+    evaluation_query_dirs: list[Path] = []
+    if evaluation_index_path.exists():
+        evaluation_index = _load_yaml(evaluation_index_path)
+        source_paths.extend(
+            ROOT / system["graph"] for system in evaluation_index.get("systems", [])
+        )
+        evaluation_query_dirs.append(ROOT / evaluation_index["queries"]["dir"])
     source_graph = Graph()
     for path in source_paths:
         source_graph.parse(path, format="turtle")
@@ -370,7 +378,13 @@ def _check_contract(notes: list[str]) -> tuple[bool, dict]:
             for prefix, local in PREFIXED_TERM_RE.findall(query_text)
             if prefix in prefixes
         )
-    for query_path in sorted((ROOT / "examples" / "isa-roundtrip" / "queries").glob("*.rq")):
+    evaluation_queries = [
+        path for directory in evaluation_query_dirs for path in sorted(directory.glob("cq-*.rq"))
+    ]
+    for query_path in [
+        *sorted((ROOT / "examples" / "isa-roundtrip" / "queries").glob("*.rq")),
+        *evaluation_queries,
+    ]:
         query_text = query_path.read_text(encoding="utf-8")
         prefixes = dict(PREFIX_RE.findall(query_text))
         used_iris.update(set(IRI_RE.findall(query_text)) - set(prefixes.values()))

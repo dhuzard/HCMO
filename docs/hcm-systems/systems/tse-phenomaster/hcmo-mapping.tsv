@@ -1,0 +1,28 @@
+native_concept	source	description	module	mapping	hcmo_target	note
+Box	export	Calorimetry box number	core	hcmo	hcm:MonitoredEnclosure, hcm:hasEnclosureIdentifier, hcm:hasManufacturer	One enclosure per box.
+box geometry	profile	Sealed calorimetry home cage	core	hcmo	hcm:hasDimensions, hcm:EnclosureDimensions	Dimensions assumed for the synthetic profile.
+nesting material	profile	Enrichment placed in two of the four boxes	core	hcmo	hcm:hasEnrichment, hcm:Enrichment, hcm:hasEnrichmentType
+Animal No.	export	Animal number	bio	external	hcm-bio:Subject, dcterms:identifier	HCMO has no subject-identifier property; dcterms:identifier is reused.
+animal metadata (species, strain, sex, birth date)	profile	Not in the export; joined from the study record	bio	hcmo	hcm-bio:hasSpecies, hcm-bio:hasStrain, hcm-bio:hasBiologicalSex, hcm-bio:hasDateOfBirth
+animal-in-box period	profile	Single housing during the run	bio	hcmo	hcm-bio:HousingAssignment, hcm-bio:assignedToEnclosure, time:Interval
+Date / Time	export	Interval start (dd.mm.yyyy, hh:mm:ss, local time)	obs	external	time:Interval, time:Instant, time:inXSDDateTime	15-min bins; offset added explicitly (UTC+02:00).
+VO2(1) [ml/h]	export	Oxygen consumption rate	obs	partial	sosa:Observation, hcm-obs:QuantityValue, unit:MilliL-PER-HR, sosa:usedProcedure	No HCMO metabolic observation subtype; generic sosa:Observation about the subject.
+VCO2(1) [ml/h]	export	Carbon dioxide production rate	obs	partial	sosa:Observation, hcm-obs:QuantityValue, unit:MilliL-PER-HR	As VO2.
+RER	export	Respiratory exchange ratio VCO2/VO2	obs	partial	sosa:Observation, hcm-obs:QuantityValue, unit:UNITLESS	As VO2.
+H(1) [kcal/h]	export	Heat production (Weir equation)	obs	partial	sosa:Observation, hcm-obs:QuantityValue, unit:KiloCAL_TH-PER-HR	QUDT 3.4.0 has no generic kcal/h unit; the thermochemical kilocalorie per hour is used.
+Feed1 [g]	export	Cumulative food intake from the feeding sensor	obs	partial	sosa:Observation, hcm-obs:QuantityValue, unit:GM	Cumulative value; HCMO does not distinguish cumulative from interval quantities.
+Drink1 [ml]	export	Cumulative water intake from the drinking sensor	obs	partial	sosa:Observation, hcm-obs:QuantityValue, unit:MilliL	As Feed1.
+XT+YT [Cnt]	export	Horizontal light-beam interruptions (ActiMot)	obs	partial	sosa:Observation, hcm-obs:QuantityValue, unit:NUM	Generic sosa:Observation.
+Z [Cnt]	export	Vertical light-beam interruptions (rearing)	obs	partial	sosa:Observation, hcm-obs:QuantityValue, unit:NUM	Generic sosa:Observation.
+Weight [g]	export	Body weight from the platform	obs	hcmo	hcm-obs:WeightObservation, hcm-obs:QuantityValue, unit:GM	Native HCMO subtype.
+Temp [°C]	export	Box air temperature	obs	hcmo	hcm-obs:EnvironmentObservation, hcm-env:EnvironmentalProperty, unit:DEG_C	Native HCMO subtype with the enclosure as feature of interest.
+O2 [%] / CO2 [%]	export	Box air gas concentrations	obs	hcmo	hcm-obs:GasConcentrationObservation, hcm-env:EnvironmentalProperty, unit:PERCENT	Native HCMO subtype.
+Ref.O2 / Ref.CO2 [%]	profile	Reference (room) air channels used for the differential	—	not-covered	—	Calibration/reference channel of the analyzer; deliberately out of scope.
+Flow [l/min]	profile	Air flow through the box	—	not-covered	—	Device operating parameter; no HCMO sensor-setting property besides sampling rate.
+temperature target	profile	Room/box set point	env	hcmo	hcm-env:EnvironmentProfile, hcm-env:MeasurementSpecification, hcm-env:specifiesProperty, hcm-env:hasSpecifiedValue
+light-dark schedule	profile	12:12, dark from 19:00	env	hcmo	hcm-env:LightCycle, hcm-env:hasDarkPhaseStart, hcm-env:hasDarkPhaseDuration, hcm-env:hasLightPhaseDuration
+gas analyzer	profile	Shared O2/CO2 analyzer sampling boxes sequentially	tech	hcmo	hcm-tech:Sensor, hcm-tech:hasSensorTechnology, hcm-tech:captures, hcm-tech:monitoredBy	Not installedIn any single box; linked from each enclosure through monitoredBy.
+ActiMot frame / load cells / temperature sensor	profile	Per-box sensors	tech	hcmo	hcm-tech:Sensor, hcm-tech:installedIn, hcm-tech:captures
+control unit / PhenoMaster software	profile	Acquisition hardware and software	tech	hcmo	hcm-tech:Hardware, hcm-tech:Software, hcm-tech:runsOn, hcm-tech:communicatesWith
+calorimetry calculation	profile	Differential O2/CO2 to VO2/VCO2/RER/H	obs	external	sosa:Procedure, sosa:usedProcedure	Reused SOSA procedure; parameters are free text.
+export file	export	Semicolon-separated table export	tech	hcmo	hcm-tech:TimeSeries, hcm-tech:hasFileFormat, hcm-tech:hasStoragePath

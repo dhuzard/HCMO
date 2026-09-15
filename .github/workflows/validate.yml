@@ -31,8 +31,19 @@ jobs:
             git --no-pager diff --stat -- docs/paper/overleaf/ docs/paper/hcmo-overleaf-upload.zip
             exit 1
           fi
-      - name: Validate (parse + SHACL + competency queries)
+      - name: Validate (parse + SHACL + competency queries + multi-system evaluation)
         run: python tooling/validate.py
+      - name: Regenerate system instance graphs and evaluation reports (verify they are up to date)
+        run: |
+          for generator in $(python -c "import yaml; print(' '.join(s['generator'] for s in yaml.safe_load(open('evaluation/multi-system.yaml'))['systems']))"); do
+            python "$generator"
+          done
+          python tooling/evaluate.py
+          if ! git diff --quiet -- examples/systems/ evaluation/reports/ docs/hcm-systems/systems/; then
+            echo "::error::System instance graphs or evaluation reports are stale. Re-run the generators and 'python tooling/evaluate.py', then commit."
+            git --no-pager diff --stat -- examples/systems/ evaluation/reports/ docs/hcm-systems/systems/
+            exit 1
+          fi
 
   interoperability:
     runs-on: ubuntu-latest

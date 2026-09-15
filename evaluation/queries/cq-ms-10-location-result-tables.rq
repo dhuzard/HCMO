@@ -1,0 +1,28 @@
+PREFIX hcm: <https://w3id.org/hcmo/ontology/hcm#>
+PREFIX hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#>
+PREFIX hcm-env: <https://w3id.org/hcmo/ontology/hcm/env#>
+PREFIX hcm-obs: <https://w3id.org/hcmo/ontology/hcm/obs#>
+PREFIX hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX qudt: <http://qudt.org/schema/qudt/>
+PREFIX unit: <http://qudt.org/vocab/unit/>
+PREFIX schema: <https://schema.org/>
+PREFIX semts: <https://w3id.org/semts/ontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+# CQ-MS-10 (obs/tech): Which location result tables (SemTS segments) exist, with
+# which data dimensions, produced by which sensor at which sampling rate?
+SELECT ?table ?dimensionLabel ?sensor ?samplingRate ?rateUnit
+WHERE {
+  ?observation sosa:hasResult ?table ;
+               sosa:madeBySensor ?sensor .
+  ?table a hcm-obs:LocationResultTable ;
+         semts:segmentDimension/rdfs:label ?dimensionLabel .
+  ?sensor hcm-tech:hasSamplingRateQuantity ?rate .
+  ?rate qudt:numericValue ?samplingRate ;
+        qudt:hasUnit ?rateUnit .
+}
+ORDER BY ?table ?dimensionLabel

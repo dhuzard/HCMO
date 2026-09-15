@@ -1,0 +1,38 @@
+PREFIX hcm: <https://w3id.org/hcmo/ontology/hcm#>
+PREFIX hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#>
+PREFIX hcm-env: <https://w3id.org/hcmo/ontology/hcm/env#>
+PREFIX hcm-obs: <https://w3id.org/hcmo/ontology/hcm/obs#>
+PREFIX hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX qudt: <http://qudt.org/schema/qudt/>
+PREFIX unit: <http://qudt.org/vocab/unit/>
+PREFIX schema: <https://schema.org/>
+PREFIX semts: <https://w3id.org/semts/ontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+# CQ-MS-03 (bio/env/obs, cross-system): Which animals or cage groups, across
+# all systems, were observed in ENRICHED enclosures during the DARK phase of
+# the enclosure's light cycle, and how many such observations exist?
+# The dark phase is derived from hcm-env:LightCycle (dark start + duration);
+# systems whose export carries no light schedule (DVC) cannot answer.
+SELECT ?system ?holder ?enrichmentType (COUNT(DISTINCT ?observation) AS ?darkObservations)
+WHERE {
+  ?observation sosa:hasFeatureOfInterest ?holder ;
+               hcm-obs:occursIn ?enclosure ;
+               sosa:phenomenonTime/time:hasBeginning/time:inXSDDateTime ?start .
+  ?holder hcm-bio:hasHousingAssignment/hcm-bio:assignedToEnclosure ?enclosure .
+  ?enclosure hcm:hasEnrichment/hcm:hasEnrichmentType ?enrichmentType ;
+             hcm-env:hasEnvironment/hcm-env:hasLightCycle ?cycle .
+  ?cycle hcm-env:hasDarkPhaseStart ?darkStart ;
+         hcm-env:hasDarkPhaseDuration ?darkDuration .
+  BIND (xsd:integer(SUBSTR(STR(?darkStart), 1, 2)) AS ?darkStartHour)
+  BIND (xsd:integer(REPLACE(STR(?darkDuration), "^PT(\\d+)H$", "$1")) AS ?darkHours)
+  BIND (HOURS(?start) AS ?hour)
+  FILTER (?hour >= ?darkStartHour || ?hour < (?darkStartHour + ?darkHours - 24))
+  BIND (REPLACE(STR(?holder), "^(https://w3id.org/hcmo/id/eval/[^/]+/).*$", "$1") AS ?system)
+}
+GROUP BY ?system ?holder ?enrichmentType
+ORDER BY ?system ?holder

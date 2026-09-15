@@ -1,0 +1,480 @@
+# Cross-system competency questions for the HCMO multi-system evaluation.
+# Executed over the canonical ontology plus every system graph listed in
+# evaluation/multi-system.yaml. Expected answers are complete reviewed rows
+# (unbound values as null); tooling/validate.py fails on any difference.
+version: 0.3.0
+dir: evaluation/queries
+questions:
+- id: ms-01-sensor-technologies
+  question: Which sensor technologies monitor enclosures in each system, and how many enclosures does each technology cover?
+  file: evaluation/queries/cq-ms-01-sensor-technologies-by-system.rq
+  modules:
+  - tech
+  - core
+  cross_system: true
+  status: answered
+  expected_answers:
+  - system: https://w3id.org/hcmo/id/eval/fed3/
+    technology: infrared photointerrupter
+    enclosures: '1'
+  - system: https://w3id.org/hcmo/id/eval/noldus-phenotyper/
+    technology: infrared video
+    enclosures: '2'
+  - system: https://w3id.org/hcmo/id/eval/dvc-tecniplast/
+    technology: capacitance (12-electrode array)
+    enclosures: '24'
+  - system: https://w3id.org/hcmo/id/eval/tse-phenomaster/
+    technology: infrared light-beam interruption
+    enclosures: '4'
+  - system: https://w3id.org/hcmo/id/eval/tse-phenomaster/
+    technology: load cell
+    enclosures: '4'
+  - system: https://w3id.org/hcmo/id/eval/tse-phenomaster/
+    technology: paramagnetic O2 and infrared CO2 analysis
+    enclosures: '4'
+  - system: https://w3id.org/hcmo/id/eval/tse-phenomaster/
+    technology: thermistor
+    enclosures: '4'
+- id: ms-02-housed-entities
+  question: Per system, are animals housed as identifiable subjects or as cage-level groups, and how many holders and enclosures
+    are assigned?
+  file: evaluation/queries/cq-ms-02-housed-entities-by-system.rq
+  modules:
+  - bio
+  - core
+  cross_system: true
+  status: answered
+  note: DVC exports carry no animal identity, so its 24 cages are held by cage-level ExperimentalGroups; the three other systems
+    yield individual Subjects.
+  expected_answers:
+  - system: https://w3id.org/hcmo/id/eval/fed3/
+    holderType: https://w3id.org/hcmo/ontology/hcm/bio#Subject
+    holders: '1'
+    enclosures: '1'
+  - system: https://w3id.org/hcmo/id/eval/noldus-phenotyper/
+    holderType: https://w3id.org/hcmo/ontology/hcm/bio#Subject
+    holders: '2'
+    enclosures: '2'
+  - system: https://w3id.org/hcmo/id/eval/dvc-tecniplast/
+    holderType: https://w3id.org/hcmo/ontology/hcm/bio#ExperimentalGroup
+    holders: '24'
+    enclosures: '24'
+  - system: https://w3id.org/hcmo/id/eval/tse-phenomaster/
+    holderType: https://w3id.org/hcmo/ontology/hcm/bio#Subject
+    holders: '4'
+    enclosures: '4'
+- id: ms-03-enriched-dark-phase
+  question: Which animals or cage groups, across systems, were observed in enriched enclosures during the dark phase of the
+    enclosure's light cycle, and how many such observations exist?
+  file: evaluation/queries/cq-ms-03-enriched-enclosures-dark-phase.rq
+  modules:
+  - bio
+  - env
+  - obs
+  - core
+  cross_system: true
+  status: partial
+  note: 'Answered for PhenoMaster, PhenoTyper and FED3 (7 holders). Not answerable for DVC: the real export states neither
+    enrichment nor the light schedule, so no DVC row can qualify. The absence is a property of the export, not of the ontology.'
+  expected_answers:
+  - system: https://w3id.org/hcmo/id/eval/fed3/
+    holder: https://w3id.org/hcmo/id/eval/fed3/mouse-1
+    enrichmentType: nesting material
+    darkObservations: '188'
+  - system: https://w3id.org/hcmo/id/eval/noldus-phenotyper/
+    holder: https://w3id.org/hcmo/id/eval/noldus-phenotyper/mouse-1
+    enrichmentType: shelter
+    darkObservations: '253'
+  - system: https://w3id.org/hcmo/id/eval/noldus-phenotyper/
+    holder: https://w3id.org/hcmo/id/eval/noldus-phenotyper/mouse-2
+    enrichmentType: shelter
+    darkObservations: '253'
+  - system: https://w3id.org/hcmo/id/eval/tse-phenomaster/
+    holder: https://w3id.org/hcmo/id/eval/tse-phenomaster/mouse-1
+    enrichmentType: nesting material
+    darkObservations: '36'
+  - system: https://w3id.org/hcmo/id/eval/tse-phenomaster/
+    holder: https://w3id.org/hcmo/id/eval/tse-phenomaster/mouse-2
+    enrichmentType: nesting material
+    darkObservations: '36'
+- id: ms-04-body-weight
+  question: Which subjects have body-weight observations, from which sensor, and what are their minimum and maximum recorded
+    weights?
+  file: evaluation/queries/cq-ms-04-body-weight-records.rq
+  modules:
+  - obs
+  - bio
+  - tech
+  cross_system: true
+  status: answered
+  note: Only the metabolic system records body weight; the other systems correctly contribute no rows.
+  expected_answers:
+  - subject: https://w3id.org/hcmo/id/eval/tse-phenomaster/mouse-4
+    sensor: https://w3id.org/hcmo/id/eval/tse-phenomaster/weight-sensor-4
+    records: '12'
+    minWeight: '19.7'
+    maxWeight: '19.9'
+    unit: http://qudt.org/vocab/unit/GM
+  - subject: https://w3id.org/hcmo/id/eval/tse-phenomaster/mouse-3
+    sensor: https://w3id.org/hcmo/id/eval/tse-phenomaster/weight-sensor-3
+    records: '12'
+    minWeight: '20.3'
+    maxWeight: '20.5'
+    unit: http://qudt.org/vocab/unit/GM
+  - subject: https://w3id.org/hcmo/id/eval/tse-phenomaster/mouse-1
+    sensor: https://w3id.org/hcmo/id/eval/tse-phenomaster/weight-sensor-1
+    records: '12'
+    minWeight: '24.2'
+    maxWeight: '24.4'
+    unit: http://qudt.org/vocab/unit/GM
+  - subject: https://w3id.org/hcmo/id/eval/tse-phenomaster/mouse-2
+    sensor: https://w3id.org/hcmo/id/eval/tse-phenomaster/weight-sensor-2
+    records: '12'
+    minWeight: '25.0'
+    maxWeight: '25.2'
+    unit: http://qudt.org/vocab/unit/GM
+- id: ms-05-temperature-outside-specification
+  question: Which enclosures recorded an environmental value deviating by more than 0.4 units from the target in their environment
+    profile, and how often?
+  file: evaluation/queries/cq-ms-05-temperature-outside-specification.rq
+  modules:
+  - env
+  - obs
+  cross_system: false
+  status: answered
+  expected_answers:
+  - enclosure: https://w3id.org/hcmo/id/eval/tse-phenomaster/box-1
+    property: https://w3id.org/hcmo/id/eval/tse-phenomaster/box-air-temperature
+    target: '22.5'
+    deviations: '1'
+  - enclosure: https://w3id.org/hcmo/id/eval/tse-phenomaster/box-3
+    property: https://w3id.org/hcmo/id/eval/tse-phenomaster/box-air-temperature
+    target: '22.5'
+    deviations: '1'
+  - enclosure: https://w3id.org/hcmo/id/eval/tse-phenomaster/box-2
+    property: https://w3id.org/hcmo/id/eval/tse-phenomaster/box-air-temperature
+    target: '22.5'
+    deviations: '3'
+- id: ms-06-gas-concentration-ranges
+  question: For each enclosure with gas-concentration observations, what are the observed ranges per gas property?
+  file: evaluation/queries/cq-ms-06-gas-concentration-ranges.rq
+  modules:
+  - obs
+  - env
+  cross_system: false
+  status: answered
+  expected_answers:
+  - enclosure: https://w3id.org/hcmo/id/eval/tse-phenomaster/box-1
+    property: https://w3id.org/hcmo/id/eval/tse-phenomaster/box-carbon-dioxide-concentration
+    minimum: '0.31'
+    maximum: '0.54'
+    unit: http://qudt.org/vocab/unit/PERCENT
+  - enclosure: https://w3id.org/hcmo/id/eval/tse-phenomaster/box-1
+    property: https://w3id.org/hcmo/id/eval/tse-phenomaster/box-oxygen-concentration
+    minimum: '20.51'
+    maximum: '20.74'
+    unit: http://qudt.org/vocab/unit/PERCENT
+  - enclosure: https://w3id.org/hcmo/id/eval/tse-phenomaster/box-2
+    property: https://w3id.org/hcmo/id/eval/tse-phenomaster/box-carbon-dioxide-concentration
+    minimum: '0.34'
+    maximum: '0.54'
+    unit: http://qudt.org/vocab/unit/PERCENT
+  - enclosure: https://w3id.org/hcmo/id/eval/tse-phenomaster/box-2
+    property: https://w3id.org/hcmo/id/eval/tse-phenomaster/box-oxygen-concentration
+    minimum: '20.52'
+    maximum: '20.75'
+    unit: http://qudt.org/vocab/unit/PERCENT
+  - enclosure: https://w3id.org/hcmo/id/eval/tse-phenomaster/box-3
+    property: https://w3id.org/hcmo/id/eval/tse-phenomaster/box-carbon-dioxide-concentration
+    minimum: '0.31'
+    maximum: '0.54'
+    unit: http://qudt.org/vocab/unit/PERCENT
+  - enclosure: https://w3id.org/hcmo/id/eval/tse-phenomaster/box-3
+    property: https://w3id.org/hcmo/id/eval/tse-phenomaster/box-oxygen-concentration
+    minimum: '20.5'
+    maximum: '20.75'
+    unit: http://qudt.org/vocab/unit/PERCENT
+  - enclosure: https://w3id.org/hcmo/id/eval/tse-phenomaster/box-4
+    property: https://w3id.org/hcmo/id/eval/tse-phenomaster/box-carbon-dioxide-concentration
+    minimum: '0.31'
+    maximum: '0.51'
+    unit: http://qudt.org/vocab/unit/PERCENT
+  - enclosure: https://w3id.org/hcmo/id/eval/tse-phenomaster/box-4
+    property: https://w3id.org/hcmo/id/eval/tse-phenomaster/box-oxygen-concentration
+    minimum: '20.54'
+    maximum: '20.73'
+    unit: http://qudt.org/vocab/unit/PERCENT
+- id: ms-07-offline-periods
+  question: Which monitored enclosures have evidence-backed offline periods, when did they start, and how many minutes did
+    they last?
+  file: evaluation/queries/cq-ms-07-offline-periods.rq
+  modules:
+  - core
+  cross_system: true
+  status: answered
+  note: 'Real DVC rack events: nine cages were removed during cohort 7623; two of them (343, 3402) never re-appear as INSERTED
+    although the index file keeps streaming values for them.'
+  expected_answers:
+  - enclosure: https://w3id.org/hcmo/id/eval/dvc-tecniplast/cage-b6-m-12-3402
+    assessment: https://w3id.org/hcmo/id/eval/dvc-tecniplast/rack-aaaa-cage-detection
+    start: '2025-10-14T10:27:14.667000-04:00'
+    minutes: '17291'
+  - enclosure: https://w3id.org/hcmo/id/eval/dvc-tecniplast/cage-b6-m-12-3408
+    assessment: https://w3id.org/hcmo/id/eval/dvc-tecniplast/rack-aaaa-cage-detection
+    start: '2025-10-26T10:37:29.849000-04:00'
+    minutes: '1'
+  - enclosure: https://w3id.org/hcmo/id/eval/dvc-tecniplast/cage-b6-m-12-3410
+    assessment: https://w3id.org/hcmo/id/eval/dvc-tecniplast/rack-aaaa-cage-detection
+    start: '2025-10-25T11:48:25.151000-04:00'
+    minutes: '1370'
+  - enclosure: https://w3id.org/hcmo/id/eval/dvc-tecniplast/cage-b6-m-12-3412
+    assessment: https://w3id.org/hcmo/id/eval/dvc-tecniplast/rack-aaaa-cage-detection
+    start: '2025-10-23T10:36:58.993000-04:00'
+    minutes: '4322'
+  - enclosure: https://w3id.org/hcmo/id/eval/dvc-tecniplast/cage-b6-m-12-3414
+    assessment: https://w3id.org/hcmo/id/eval/dvc-tecniplast/rack-aaaa-cage-detection
+    start: '2025-10-23T10:36:28.937000-04:00'
+    minutes: '4322'
+  - enclosure: https://w3id.org/hcmo/id/eval/dvc-tecniplast/cage-b6-m-12-3416
+    assessment: https://w3id.org/hcmo/id/eval/dvc-tecniplast/rack-aaaa-cage-detection
+    start: '2025-10-21T09:04:23.186000-04:00'
+    minutes: '7294'
+  - enclosure: https://w3id.org/hcmo/id/eval/dvc-tecniplast/cage-b6-m-12-3418
+    assessment: https://w3id.org/hcmo/id/eval/dvc-tecniplast/rack-aaaa-cage-detection
+    start: '2025-10-16T11:19:19.729000-04:00'
+    minutes: '14359'
+  - enclosure: https://w3id.org/hcmo/id/eval/dvc-tecniplast/cage-b6-m-12-3420
+    assessment: https://w3id.org/hcmo/id/eval/dvc-tecniplast/rack-aaaa-cage-detection
+    start: '2025-10-16T00:12:53.829000-04:00'
+    minutes: '15026'
+  - enclosure: https://w3id.org/hcmo/id/eval/dvc-tecniplast/cage-b6-m-12-343
+    assessment: https://w3id.org/hcmo/id/eval/dvc-tecniplast/rack-aaaa-cage-detection
+    start: '2025-10-14T10:27:39.631000-04:00'
+    minutes: '17291'
+- id: ms-08-behaviour-categories
+  question: Which behaviour categories were recognised, by sensors of which technology, and how many events were recorded
+    per category?
+  file: evaluation/queries/cq-ms-08-behaviour-categories.rq
+  modules:
+  - obs
+  - tech
+  cross_system: false
+  status: answered
+  expected_answers:
+  - technology: infrared video
+    behaviorType: eating
+    events: '10'
+  - technology: infrared video
+    behaviorType: grooming
+    events: '9'
+  - technology: infrared video
+    behaviorType: rearing supported
+    events: '11'
+  - technology: infrared video
+    behaviorType: rearing unsupported
+    events: '13'
+  - technology: infrared video
+    behaviorType: sniffing
+    events: '10'
+- id: ms-09-derivation-procedures
+  question: Which documented procedures produced observations in each system, and how many observations cite each procedure?
+  file: evaluation/queries/cq-ms-09-derivation-procedures.rq
+  modules:
+  - obs
+  - tech
+  cross_system: true
+  status: partial
+  note: 'DVC contributes no row: its index is derived by proprietary, undocumented cloud software, so only file-level attribution
+    (CQ-MS-13) is possible.'
+  expected_answers:
+  - system: https://w3id.org/hcmo/id/eval/tse-phenomaster/
+    procedure: https://w3id.org/hcmo/id/eval/tse-phenomaster/indirect-calorimetry-procedure
+    observations: '192'
+  - system: https://w3id.org/hcmo/id/eval/fed3/
+    procedure: https://w3id.org/hcmo/id/eval/fed3/fr1-left-active
+    observations: '208'
+  - system: https://w3id.org/hcmo/id/eval/noldus-phenotyper/
+    procedure: https://w3id.org/hcmo/id/eval/noldus-phenotyper/behavior-recognition
+    observations: '53'
+  - system: https://w3id.org/hcmo/id/eval/noldus-phenotyper/
+    procedure: https://w3id.org/hcmo/id/eval/noldus-phenotyper/centre-point-tracking
+    observations: '961'
+- id: ms-10-location-result-tables
+  question: Which location result tables exist, with which data dimensions, produced by which sensor at which sampling rate?
+  file: evaluation/queries/cq-ms-10-location-result-tables.rq
+  modules:
+  - obs
+  - tech
+  cross_system: false
+  status: answered
+  expected_answers:
+  - table: https://w3id.org/hcmo/id/eval/noldus-phenotyper/track-table-arena-1
+    dimensionLabel: X center [cm]
+    sensor: https://w3id.org/hcmo/id/eval/noldus-phenotyper/arena-1-camera
+    samplingRate: '25.0'
+    rateUnit: http://qudt.org/vocab/unit/HZ
+  - table: https://w3id.org/hcmo/id/eval/noldus-phenotyper/track-table-arena-1
+    dimensionLabel: Y center [cm]
+    sensor: https://w3id.org/hcmo/id/eval/noldus-phenotyper/arena-1-camera
+    samplingRate: '25.0'
+    rateUnit: http://qudt.org/vocab/unit/HZ
+- id: ms-11-quantitative-variables
+  question: Which quantitative variables does each system deliver as observation results, in which unit, how many observations,
+    and with which mean value?
+  file: evaluation/queries/cq-ms-11-quantitative-variables-by-system.rq
+  modules:
+  - obs
+  cross_system: true
+  status: answered
+  expected_answers:
+  - system: https://w3id.org/hcmo/id/eval/tse-phenomaster/
+    propertyLabel: cumulative water intake
+    unit: http://qudt.org/vocab/unit/MilliL
+    observations: '48'
+    mean: '0.2'
+  - system: https://w3id.org/hcmo/id/eval/tse-phenomaster/
+    propertyLabel: heat production (energy expenditure)
+    unit: http://qudt.org/vocab/unit/KiloCAL_TH-PER-HR
+    observations: '48'
+    mean: '0.28'
+  - system: https://w3id.org/hcmo/id/eval/tse-phenomaster/
+    propertyLabel: cumulative food intake
+    unit: http://qudt.org/vocab/unit/GM
+    observations: '48'
+    mean: '0.29'
+  - system: https://w3id.org/hcmo/id/eval/tse-phenomaster/
+    propertyLabel: box air carbon dioxide concentration
+    unit: http://qudt.org/vocab/unit/PERCENT
+    observations: '48'
+    mean: '0.43'
+  - system: https://w3id.org/hcmo/id/eval/tse-phenomaster/
+    propertyLabel: respiratory exchange ratio RER
+    unit: http://qudt.org/vocab/unit/UNITLESS
+    observations: '48'
+    mean: '0.85'
+  - system: https://w3id.org/hcmo/id/eval/dvc-tecniplast/
+    propertyLabel: smoothed activation / locomotion index (share of active electrodes per bin)
+    unit: http://qudt.org/vocab/unit/PERCENT
+    observations: '720'
+    mean: '1.82'
+  - system: https://w3id.org/hcmo/id/eval/tse-phenomaster/
+    propertyLabel: vertical light-beam interruptions Z (rearing)
+    unit: http://qudt.org/vocab/unit/NUM
+    observations: '48'
+    mean: '11.9'
+  - system: https://w3id.org/hcmo/id/eval/tse-phenomaster/
+    propertyLabel: horizontal light-beam interruptions XT+YT
+    unit: http://qudt.org/vocab/unit/NUM
+    observations: '48'
+    mean: '185.21'
+  - system: https://w3id.org/hcmo/id/eval/tse-phenomaster/
+    propertyLabel: box air oxygen concentration
+    unit: http://qudt.org/vocab/unit/PERCENT
+    observations: '48'
+    mean: '20.63'
+  - system: https://w3id.org/hcmo/id/eval/noldus-phenotyper/
+    propertyLabel: distance moved (centre-point)
+    unit: http://qudt.org/vocab/unit/CentiM
+    observations: '240'
+    mean: '209.84'
+  - system: https://w3id.org/hcmo/id/eval/tse-phenomaster/
+    propertyLabel: body weight
+    unit: http://qudt.org/vocab/unit/GM
+    observations: '48'
+    mean: '22.4'
+  - system: https://w3id.org/hcmo/id/eval/tse-phenomaster/
+    propertyLabel: box air temperature
+    unit: http://qudt.org/vocab/unit/DEG_C
+    observations: '48'
+    mean: '22.47'
+  - system: https://w3id.org/hcmo/id/eval/noldus-phenotyper/
+    propertyLabel: time in movement state
+    unit: http://qudt.org/vocab/unit/SEC
+    observations: '240'
+    mean: '22.91'
+  - system: https://w3id.org/hcmo/id/eval/fed3/
+    propertyLabel: pellet retrieval latency
+    unit: http://qudt.org/vocab/unit/SEC
+    observations: '99'
+    mean: '24.24'
+  - system: https://w3id.org/hcmo/id/eval/noldus-phenotyper/
+    propertyLabel: time in shelter zone
+    unit: http://qudt.org/vocab/unit/SEC
+    observations: '240'
+    mean: '29.14'
+  - system: https://w3id.org/hcmo/id/eval/noldus-phenotyper/
+    propertyLabel: mean velocity (centre-point)
+    unit: http://qudt.org/vocab/unit/CentiM-PER-SEC
+    observations: '240'
+    mean: '3.5'
+  - system: https://w3id.org/hcmo/id/eval/tse-phenomaster/
+    propertyLabel: carbon dioxide production rate VCO2
+    unit: http://qudt.org/vocab/unit/MilliL-PER-HR
+    observations: '48'
+    mean: '49.29'
+  - system: https://w3id.org/hcmo/id/eval/tse-phenomaster/
+    propertyLabel: oxygen consumption rate VO2
+    unit: http://qudt.org/vocab/unit/MilliL-PER-HR
+    observations: '48'
+    mean: '57.89'
+- id: ms-12-housed-at-reference-times
+  question: How many subjects or cage groups were housed in monitored enclosures in each system at two reference times?
+  file: evaluation/queries/cq-ms-12-housed-at-reference-times.rq
+  modules:
+  - bio
+  - core
+  cross_system: true
+  status: answered
+  expected_answers:
+  - system: https://w3id.org/hcmo/id/eval/fed3/
+    referenceTime: '2026-06-02T19:30:00+02:00'
+    housed: '1'
+  - system: https://w3id.org/hcmo/id/eval/noldus-phenotyper/
+    referenceTime: '2026-06-02T19:30:00+02:00'
+    housed: '2'
+  - system: https://w3id.org/hcmo/id/eval/dvc-tecniplast/
+    referenceTime: '2025-10-20T12:00:00-04:00'
+    housed: '24'
+  - system: https://w3id.org/hcmo/id/eval/tse-phenomaster/
+    referenceTime: '2026-06-02T19:30:00+02:00'
+    housed: '4'
+- id: ms-13-export-files
+  question: Which native export files back each system's instance graph, in which format, and which software or hardware is
+    credited with producing them?
+  file: evaluation/queries/cq-ms-13-export-files-and-attribution.rq
+  modules:
+  - tech
+  cross_system: true
+  status: answered
+  expected_answers:
+  - series: https://w3id.org/hcmo/id/eval/dvc-tecniplast/cohort-7623-activation-index-series
+    format: text/csv
+    attributedTo: https://w3id.org/hcmo/id/eval/dvc-tecniplast/dvc-analytics
+  - series: https://w3id.org/hcmo/id/eval/dvc-tecniplast/cohort-7623-events-series
+    format: text/csv
+    attributedTo: https://w3id.org/hcmo/id/eval/dvc-tecniplast/dvc-analytics
+  - series: https://w3id.org/hcmo/id/eval/fed3/fed3-log-series
+    format: text/csv
+    attributedTo: https://w3id.org/hcmo/id/eval/fed3/fed3-device-1
+  - series: https://w3id.org/hcmo/id/eval/noldus-phenotyper/behavior-event-series
+    format: text/csv
+    attributedTo: https://w3id.org/hcmo/id/eval/noldus-phenotyper/ethovision-xt
+  - series: https://w3id.org/hcmo/id/eval/noldus-phenotyper/time-bin-series
+    format: text/csv
+    attributedTo: https://w3id.org/hcmo/id/eval/noldus-phenotyper/ethovision-xt
+  - series: https://w3id.org/hcmo/id/eval/noldus-phenotyper/track-series-arena-1
+    format: text/csv
+    attributedTo: https://w3id.org/hcmo/id/eval/noldus-phenotyper/ethovision-xt
+  - series: https://w3id.org/hcmo/id/eval/tse-phenomaster/phenomaster-export-series
+    format: text/csv
+    attributedTo: https://w3id.org/hcmo/id/eval/tse-phenomaster/phenomaster-software
+- id: ms-14-results-without-units
+  question: Which observation results carry a numeric value without a unit?
+  file: evaluation/queries/cq-ms-14-results-without-units.rq
+  modules:
+  - obs
+  cross_system: true
+  status: answered (empty)
+  note: 'The reviewed answer is empty: every quantity value in the multi-system graph carries a unit, and the query verifies
+    that absence rather than accepting an unexamined empty result.'
+  expected_answers: []
