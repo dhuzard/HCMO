@@ -12,6 +12,7 @@ ingestion, SHACL shapes, and competency queries without touching proprietary dat
 | `generate_dvc_traces.py` | Deterministic, stdlib-only generator (fixed seed → identical output). |
 | `mock_B6_M_animal_loc__index_smoothed.csv` | Index trace: 8 cages × 3 days × 1-min bins (4,320 rows). Same columns as the real index file. |
 | `mock_B6_M_events.csv` | Matching cage-lifecycle event log (REGISTERED → … → REMOVED). |
+| `mock_B6_F_animal_loc__index_smoothed.csv`, `mock_B6_F_events.csv` | Synthetic **female** cohort (8 cages × 3 days, rack `BBBB`, seed 11) used by the multi-system coverage evaluation alongside the real male cohort. |
 | `reconstructed-schema/` | An **earlier** mock built before the real headers were known — a *reconstructed* wide schema (`DateTime, ActivationDensityPct, BeddingStatusIndex, …`). Kept for reference; **superseded** by the real-schema traces above. |
 
 ## Why two mock schemas?
@@ -41,5 +42,5 @@ Value ranges are plausible, **not** a physiological model — the point is faith
 ```bash
 python3 generate_dvc_traces.py                 # defaults: B6_M, 8 cages, 3 days
 python3 generate_dvc_traces.py --cages 24 --days 14   # match the real cohort size
-python3 generate_dvc_traces.py --group B6_F --seed 11
+python3 generate_dvc_traces.py --group B6_F --seed 11 --rack BBBB
 ```

@@ -1,0 +1,39 @@
+PREFIX hcm: <https://w3id.org/hcmo/ontology/hcm#>
+PREFIX hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#>
+PREFIX hcm-env: <https://w3id.org/hcmo/ontology/hcm/env#>
+PREFIX hcm-obs: <https://w3id.org/hcmo/ontology/hcm/obs#>
+PREFIX hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX qudt: <http://qudt.org/schema/qudt/>
+PREFIX unit: <http://qudt.org/vocab/unit/>
+PREFIX schema: <https://schema.org/>
+PREFIX semts: <https://w3id.org/semts/ontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+# CQ-MS-16 (obs/bio/tech, cognitive testing): For each mouse strain tested on a
+# touch-screen task, how many trials were run, how many were correct, and what
+# was the mean response latency? Trials are recovered from the categorical
+# choice results and the latency observations that share their interval.
+SELECT ?strain
+       (COUNT(DISTINCT ?choice) AS ?trials)
+       (SUM(IF(?category = "correct", 1, 0)) AS ?correct)
+       (ROUND(AVG(?latency) * 100) / 100 AS ?meanLatencySeconds)
+WHERE {
+  ?choiceObs sosa:hasFeatureOfInterest ?subject ;
+             sosa:hasResult ?choice ;
+             sosa:phenomenonTime ?interval ;
+             sosa:usedProcedure ?procedure .
+  ?choice a hcm-obs:CategoricalResult ;
+          hcm-obs:hasCategory ?category .
+  ?subject hcm-bio:hasStrain ?strain .
+  ?latencyObs sosa:hasFeatureOfInterest ?subject ;
+              sosa:phenomenonTime ?interval ;
+              sosa:observedProperty ?latencyProperty ;
+              sosa:hasResult/qudt:numericValue ?latency .
+  ?latencyProperty rdfs:label "response latency from stimulus display to touch" .
+}
+GROUP BY ?strain
+ORDER BY ?strain

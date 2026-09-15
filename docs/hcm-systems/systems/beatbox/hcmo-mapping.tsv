@@ -1,0 +1,33 @@
+native_concept	source	description	module	mapping	hcmo_target	note
+home-cage compartment	manual	Cage body with door wall, tunnel and operant wall	core	hcmo	hcm:MonitoredEnclosure, hcm:hasEnclosureIdentifier, hcm:hasDimensions, hcm:EnclosureDimensions	Dimensions assumed for the synthetic profile; the manual publishes CAD, not a single inner size.
+nesting material	profile	Enrichment in the home-cage part	core	hcmo	hcm:hasEnrichment, hcm:Enrichment, hcm:hasEnrichmentType
+tunnel module	manual	Passage between home-cage and operant compartments	core	not-covered	—	HCMO has no compartment or passage concept; the box is one enclosure.
+door wall / door hardware	manual	Gate controlling access to the operant compartment	tech	not-covered	—	No actuator event is exported for the door in this scenario.
+animal (single-housed)	profile	One mouse per box, four strains in the scenario	bio	hcmo	hcm-bio:Subject, hcm-bio:hasSpecies, hcm-bio:hasStrain, hcm-bio:hasBiologicalSex, hcm-bio:hasDateOfBirth
+animal_id	trial table	Laboratory animal identifier	bio	external	dcterms:identifier	HCMO has no subject-identifier property.
+animal-in-box period	profile	Housing during the autonomous protocol	bio	hcmo	hcm-bio:HousingAssignment, hcm-bio:assignedToEnclosure, time:Interval
+session_day	trial table	Day of the autonomous protocol	obs	not-covered	—	HCMO has no session or study-stage entity; the day is implicit in the timestamps.
+task / S+ side / patterns	trial table	Two-choice visual discrimination with a rewarded pattern and a reversal schedule	obs	external	sosa:Procedure, sosa:usedProcedure	Task identity and parameters are free text on the reused SOSA procedure; HCMO has no task-parameter property.
+trial	trial table	One self-initiated trial	obs	partial	sosa:Observation, time:Interval	A trial is represented only by its observations and their shared interval; there is no trial entity to group them.
+trial_start	trial table	Trial onset (nose poke)	obs	external	time:Instant, time:inXSDDateTime	Offset added explicitly (UTC+02:00).
+response_side / correct	trial table	Which screen was touched and whether it was the rewarded one	obs	partial	sosa:Observation, hcm-obs:CategoricalResult, hcm-obs:hasCategory	No HCMO operant or cognitive observation subtype; correctness is a category on a generic observation. Which screen responded is recovered from sosa:madeBySensor.
+response_latency_s	trial table	Stimulus display to touch	obs	partial	sosa:Observation, hcm-obs:QuantityValue, unit:SEC	Generic observation; also the duration of the trial interval.
+collection_latency_s	trial table	Touch to feeder-barrier break	obs	partial	sosa:Observation, hcm-obs:QuantityValue, unit:SEC	Generic observation about the reward-collection interval.
+reward_delivered	trial table	Whether a pellet was dispensed	obs	partial	—	Derivable from the presence of a collection observation; the delivery act itself is not modelled because HCMO has no actuation event.
+light_phase	trial table	Light or dark at trial time	env	partial	hcm-env:LightCycle	Derivable from the light cycle and the timestamp; not materialised as a per-trial value.
+session accuracy / trial count	derived	Per-session summary computed by the GUI	obs	partial	sosa:Observation, hcm-obs:QuantityValue, unit:PERCENT, unit:NUM, prov:wasAttributedTo	Aggregates over the session interval; HCMO does not distinguish a summary from a primary observation.
+CAN timestamp	CAN log	Millisecond timestamp of an inter-module message	tech	external	time:Instant, time:inXSDDateTime
+CAN module ID	CAN log	MAIN, FEEDER, NOSEPOKE, SCREEN_LEFT/RIGHT, LIGHTING, IR_BARRIER	tech	hcmo	hcm-tech:Sensor, hcm-tech:Actuator, hcm-tech:Hardware	Each module becomes the sensor, actuator or controller it is.
+CAN identifier / PRIO / TYPE / CMD	CAN log	11-bit arbitration identifier and its fields	tech	not-covered	—	Bus-level addressing and priority; deliberately out of scope for a semantic layer.
+BEAM_EVENT (nosepoke)	CAN log	Nose-poke beam break that initiates a trial	obs	partial	sosa:Observation (trial onset), hcm-tech:Sensor	The poke is the trial's start instant rather than an observation of its own.
+TOUCH_EVENT (screen)	CAN log	Screen touch	obs	partial	sosa:Observation, hcm-obs:CategoricalResult	See response_side / correct.
+DISPLAY_PATTERN / _ACK	CAN log	Stimulus shown on a screen	tech	partial	hcm-tech:Actuator	The screens are actuators, but HCMO has no stimulus-presentation event, so the pattern identifiers stay in the CAN log and the procedure description.
+REQUEST_REWARD / REWARD_DELIVERED	CAN log	Feeder command and confirmation	tech	partial	hcm-tech:Actuator	The feeder is an actuator; the delivery event is not modelled.
+BARRIER_EVENT (IR barrier)	CAN log	Pellet collection detected at the feeder	obs	hcmo	sosa:Observation, hcm-obs:QuantityValue, hcm-tech:Sensor	Drives the collection-latency observation.
+SET_DUTY / DUTY_STATUS (lighting)	CAN log	White / red / infrared duty cycles that implement the light schedule	env	partial	hcm-tech:Actuator, hcm-env:LightCycle	The resulting schedule is expressed as a light cycle; the per-channel duty values have no HCMO counterpart.
+GET_STATUS / STATUS / ERROR / RESET / SCAN	CAN log	Common-namespace module housekeeping	—	not-covered	—	Module lifecycle and error telemetry; deliberately out of scope.
+Raspberry Pi shield (BB_RPi_shield_V1.1)	manual	Main controller PCB	tech	hcmo	hcm-tech:Hardware, hcm-tech:hasModelNumber, hcm-tech:hasProtocol, hcm-tech:supportsEnclosure	PCB identifiers from the manual's PCB table.
+feeder / lighting / IR-barrier PCBs	manual	BB_Feeder_main_V1.1, BP_Lighting_V1.1, BB_Feeder_IRBarrier_V1.1	tech	hcmo	hcm-tech:Actuator, hcm-tech:Sensor, hcm-tech:hasModelNumber
+BEATBox GUI	manual	Python control, monitoring and performance dashboard	tech	hcmo	hcm-tech:Software, hcm-tech:runsOn, prov:wasAttributedTo
+CAN event log / trial table files	outputs	The two exported files	tech	hcmo	hcm-tech:TimeSeries, hcm-tech:hasFileFormat, hcm-tech:hasStoragePath
+light-dark schedule	profile	12:12, dark from 19:00, driven by the lighting module	env	hcmo	hcm-env:LightCycle, hcm-env:hasDarkPhaseStart, hcm-env:hasDarkPhaseDuration, hcm-env:hasLightPhaseDuration

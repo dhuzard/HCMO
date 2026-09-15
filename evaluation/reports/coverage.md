@@ -8,20 +8,24 @@ Coverage is computed from each system's reviewed mapping table (`hcmo-mapping.ts
 
 | System | Modality | Data | Triples | Native concepts | hcmo | external | partial | not covered | % mapped | % HCMO-native |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Tecniplast DVC (Digital Ventilated Cage) | capacitive electrode array under each IVC (rack system) | real | 10682 | 21 | 8 | 2 | 5 | 6 | 71% | 38% |
+| Tecniplast DVC (Digital Ventilated Cage) | capacitive electrode array under each IVC (rack system) | real + synthetic | 17341 | 26 | 15 | 1 | 6 | 4 | 85% | 58% |
 | TSE PhenoMaster (indirect calorimetry, feeding, drinking, activity) | metabolic and environmental home-cage phenotyping | synthetic | 6971 | 27 | 14 | 3 | 8 | 2 | 93% | 52% |
 | Noldus PhenoTyper with EthoVision XT | video tracking and behaviour recognition | synthetic | 13347 | 24 | 12 | 4 | 4 | 4 | 83% | 50% |
 | FED3 (Feeding Experimentation Device 3) | open-source operant feeding device inside a standard cage | synthetic | 4251 | 25 | 12 | 6 | 4 | 3 | 88% | 48% |
+| Live Mouse Tracker (LMT) | infrared depth video with RFID identity, group-housed | synthetic | 7697 | 36 | 13 | 6 | 12 | 5 | 86% | 36% |
+| BEATBox (open-source autonomous operant box) | home-cage touch-screen operant conditioning and cognitive testing | synthetic | 13440 | 32 | 11 | 4 | 12 | 5 | 84% | 34% |
 
 
 ## Systems × HCMO modules (native concepts mapped / total assigned to the module)
 
 | System | core | bio | env | obs | tech | out of scope |
 | --- | --- | --- | --- | --- | --- | --- |
-| dvc-tecniplast | 5/5 | 3/3 | 0/2 | 3/5 | 4/5 | 1 |
+| dvc-tecniplast | 7/7 | 3/3 | 3/3 | 4/6 | 5/6 | 1 |
 | tse-phenomaster | 3/3 | 3/3 | 2/2 | 13/13 | 4/4 | 2 |
 | noldus-phenotyper | 3/3 | 3/3 | 1/1 | 9/10 | 4/5 | 2 |
 | fed3 | 2/2 | 2/2 | 1/1 | 10/10 | 7/7 | 3 |
+| live-mouse-tracker | 3/3 | 8/8 | 5/5 | 11/11 | 4/5 | 4 |
+| beatbox | 2/3 | 3/3 | 3/3 | 11/12 | 8/10 | 1 |
 
 
 ## Instance inventory per system
@@ -30,25 +34,33 @@ Coverage is computed from each system's reviewed mapping table (`hcmo-mapping.ts
 
 | Class | Instances |
 | --- | --- |
-| qudt:QuantityValue | 816 |
-| hcm-obs:QuantityValue | 720 |
-| sosa:Observation | 720 |
-| time:Instant | 313 |
-| time:Interval | 246 |
-| hcm:OperationalStatusRecord | 42 |
-| hcm-bio:ExperimentalGroup | 25 |
-| hcm-bio:HousingAssignment | 24 |
-| hcm-tech:Sensor | 24 |
-| hcm:EnclosureDimensions | 24 |
-| hcm:MonitoredEnclosure | 24 |
-| schema:Place | 18 |
-| hcm-tech:TimeSeries | 2 |
-| hcm-tech:Hardware | 1 |
+| qudt:QuantityValue | 1130 |
+| hcm-obs:QuantityValue | 1000 |
+| sosa:Observation | 960 |
+| time:Instant | 710 |
+| time:Interval | 524 |
+| hcm-bio:HousingAssignment | 96 |
+| hcm-bio:Subject | 64 |
+| prov:Activity | 58 |
+| hcm:OperationalStatusRecord | 52 |
+| hcm-obs:EnvironmentObservation | 40 |
+| hcm-bio:ExperimentalGroup | 34 |
+| hcm-tech:Sensor | 34 |
+| hcm:EnclosureDimensions | 32 |
+| hcm:Enrichment | 32 |
+| hcm:MonitoredEnclosure | 32 |
+| schema:Place | 26 |
+| hcm-tech:TimeSeries | 4 |
+| prov:Entity | 3 |
+| schema:Dataset | 3 |
+| hcm-env:EnvironmentalProperty | 2 |
+| hcm-env:MeasurementSpecification | 2 |
+| hcm-tech:Hardware | 2 |
+| hcm:Enclosure | 2 |
+| hcm:OperationalAssessment | 2 |
+| hcm-env:EnvironmentProfile | 1 |
+| hcm-env:LightCycle | 1 |
 | hcm-tech:Software | 1 |
-| hcm:OperationalAssessment | 1 |
-| prov:Activity | 1 |
-| prov:Entity | 1 |
-| schema:Dataset | 1 |
 | schema:Organization | 1 |
 | sosa:ObservableProperty | 1 |
 
@@ -144,6 +156,69 @@ Coverage is computed from each system's reviewed mapping table (`hcmo-mapping.ts
 | sosa:Procedure | 1 |
 
 
+### Live Mouse Tracker (LMT) (`examples/systems/live-mouse-tracker.ttl`)
+
+| Class | Instances |
+| --- | --- |
+| time:Instant | 616 |
+| hcm-obs:BehaviorObservation | 412 |
+| time:Interval | 308 |
+| hcm-obs:BehaviorResult | 288 |
+| qudt:QuantityValue | 57 |
+| hcm-obs:EnvironmentObservation | 50 |
+| hcm-obs:QuantityValue | 50 |
+| hcm-tech:Sensor | 18 |
+| semts:DataDimension | 10 |
+| hcm-env:EnvironmentalProperty | 5 |
+| hcm-bio:HousingAssignment | 4 |
+| hcm-bio:Subject | 4 |
+| hcm-obs:LocationResultTable | 4 |
+| hcm-tech:TimeSeries | 4 |
+| sosa:Observation | 4 |
+| sosa:ObservableProperty | 3 |
+| hcm-bio:ExperimentalGroup | 2 |
+| hcm-tech:Software | 2 |
+| hcm:Enrichment | 2 |
+| prov:Activity | 2 |
+| sosa:Procedure | 2 |
+| hcm-env:EnvironmentProfile | 1 |
+| hcm-env:LightCycle | 1 |
+| hcm-env:MeasurementSpecification | 1 |
+| hcm-tech:Hardware | 1 |
+| hcm:EnclosureDimensions | 1 |
+| hcm:MonitoredEnclosure | 1 |
+| prov:Entity | 1 |
+| schema:Dataset | 1 |
+
+
+### BEATBox (open-source autonomous operant box) (`examples/systems/beatbox.ttl`)
+
+| Class | Instances |
+| --- | --- |
+| time:Instant | 980 |
+| sosa:Observation | 765 |
+| qudt:QuantityValue | 502 |
+| hcm-obs:QuantityValue | 490 |
+| time:Interval | 490 |
+| hcm-obs:CategoricalResult | 275 |
+| hcm-tech:Actuator | 16 |
+| hcm-tech:Sensor | 16 |
+| sosa:ObservableProperty | 5 |
+| hcm-bio:HousingAssignment | 4 |
+| hcm-bio:Subject | 4 |
+| hcm-tech:Hardware | 4 |
+| hcm:EnclosureDimensions | 4 |
+| hcm:Enrichment | 4 |
+| hcm:MonitoredEnclosure | 4 |
+| hcm-tech:TimeSeries | 2 |
+| hcm-env:EnvironmentProfile | 1 |
+| hcm-env:LightCycle | 1 |
+| hcm-tech:Software | 1 |
+| prov:Entity | 1 |
+| schema:Dataset | 1 |
+| sosa:Procedure | 1 |
+
+
 ## Gaps and partial mappings
 
 ### Tecniplast DVC (Digital Ventilated Cage)
@@ -151,16 +226,15 @@ Coverage is computed from each system's reviewed mapping table (`hcmo-mapping.ts
 | Native concept | Mapping | HCMO target | Note |
 | --- | --- | --- | --- |
 | position | partial | hcm:locatedIn -> schema:Place | Only the latest position is kept: hcm:locatedIn is not time-bounded, so position history is lost. |
-| group (B6_M) | partial | hcm-bio:ExperimentalGroup (cohort), schema:isPartOf | Strain and sex cannot be asserted on a group in 0.3.0 (hcm-bio:hasStrain/hasBiologicalSex have domain Subject); recorded as rdfs:comment. |
-| animals in a cage | partial | hcm-bio:ExperimentalGroup (one per cage), hcm-bio:hasHousingAssignment | Cage-level group with unknown membership; individual hcm-bio:Subject instances cannot be created. |
+| group (B6_M / B6_F) | partial | hcm-bio:ExperimentalGroup (cohort), schema:isPartOf | Strain and sex cannot be asserted on a group in 0.3.0 (hcm-bio:hasStrain / hasBiologicalSex have domain Subject); they are asserted on the member subjects instead. |
+| cage-level attribution of the index | partial | sosa:hasFeatureOfInterest -> hcm-bio:ExperimentalGroup | The cage group is the feature of interest even though the individual subjects are known, because the sensor measures the cage. |
 | event = REGISTERED / ADDED / CAGE_ONLINE / UPDATED | not-covered | — | Software lifecycle events without a home-cage meaning; deliberately out of scope. |
 | day / hour / minute / relativeTime | partial | time:inXSDDateTime | Derivable from the timestamp; not materialised separately. |
 | per-cage smoothed activation index | partial | sosa:Observation, hcm-obs:QuantityValue, qudt:numericValue, unit:PERCENT, hcm-obs:occursIn | No HCMO observation subtype accepts a numeric activity result about a cage group; the generic sosa:Observation is used. |
 | <GROUP>_AVG / _SEM / _QRT / _SAMPLES | not-covered | — | Statistical summaries are derivable from the per-cage observations; HCMO records primary observations only. |
+| cage change | partial | prov:Activity, prov:used, time:Interval | Expressed as a PROV activity using the enclosure; HCMO has no husbandry-event class, so the cage change cannot interrupt the housing assignment. |
 | raw electrode capacitance stream | not-covered | — | Not present in the export; would map to hcm-tech:TimeSeries if available. |
-| rack temperature / relative humidity | not-covered | — | Would map to hcm-obs:EnvironmentObservation with hcm-env:EnvironmentalProperty; absent from cohort 7623 files. |
-| Bedding Status Index / Urination Index | not-covered | — | Dual environmental/physiological role; absent from cohort 7623 files. |
-| light programme (Leddy) | not-covered | — | hcm-env:LightCycle would apply; the export does not state the light schedule, so dark-phase questions are unanswerable for DVC. |
+| Bedding Status Index / Urination Index | not-covered | — | Dual environmental/physiological role; absent from the available exports. |
 
 
 ### TSE PhenoMaster (indirect calorimetry, feeding, drinking, activity)
@@ -204,4 +278,50 @@ Coverage is computed from each system's reviewed mapping table (`hcmo-mapping.ts
 | Left_Poke_Count / Right_Poke_Count / Pellet_Count | partial | — | Derivable by counting the observations; not materialised. |
 | Block_Pellet_Count | not-covered | — | Session-block bookkeeping without an HCMO counterpart. |
 | InterPellet_Interval | partial | — | Derivable from consecutive pellet observations; not materialised. |
+
+
+### Live Mouse Tracker (LMT)
+
+| Native concept | Mapping | HCMO target | Note |
+| --- | --- | --- | --- |
+| ANIMAL.GENOTYPE | partial | hcm-bio:ExperimentalGroup, hcm-bio:belongsToGroup, hcm-bio:hasMember | HCMO 0.3.0 has no genotype property; genotype is expressed as membership of a genotype group, which loses the distinction between genotype and any other grouping. |
+| ANIMAL.AGE | partial | hcm-bio:hasDateOfBirth | HCMO records a birth date, so the age is converted using the experiment start; the original free-text age string is not preserved. |
+| ANIMAL.SETUP | not-covered | — | Free-text configuration string with no HCMO counterpart; its content is modelled through the individual sensors instead. |
+| bedding change every 10 days | partial | prov:Activity, prov:used, time:Interval | Expressed as a PROV activity using the enclosure; HCMO has no husbandry-event class. |
+| FRAME.FRAMENUMBER | partial | time:Instant, time:inXSDDateTime | Frames are converted to absolute times through FRAME.TIMESTAMP; the frame number itself is not kept as an identifier. |
+| FRAME.NUMPARTICLE | not-covered | — | Tracking-quality telemetry; deliberately out of scope. |
+| FRAME.PAUSED | not-covered | — | Acquisition state of the software; deliberately out of scope. |
+| FRAME.SOUND | partial | hcm-obs:EnvironmentObservation, unit:UNITLESS | Vendor index without a physical unit; recorded as unitless. |
+| FRAME.LIGHTVISIBLE / LIGHTVISIBLEANDIR | partial | hcm-obs:EnvironmentObservation, unit:UNITLESS | Vendor indices without a physical unit; they evidence the light cycle but are not lux. |
+| DETECTION.FRONT_* / BACK_* | partial | hcm-obs:LocationResultTable, semts:segmentDimension | Carried as further dimensions of the same table; HCMO has no body-part semantics. |
+| DETECTION.REARING / LOOK_UP / LOOK_DOWN | partial | hcm-obs:LocationResultTable, semts:segmentDimension | Kept as table dimensions rather than as behaviour observations, because they are per-frame flags, not bouts. |
+| DETECTION.DATA | not-covered | — | Binary blob; deliberately out of scope. |
+| EVENT.NAME (dyadic) | partial | hcm-obs:BehaviorObservation (one per participant, shared BehaviorResult) | The shape requires exactly one feature of interest, so one observation per participating animal shares the single result; the dyad itself is not a first-class entity and the A/B roles are recorded only in a dcterms:description on the result. |
+| EVENT.NAME (group) | partial | hcm-obs:BehaviorObservation (one per participant, shared BehaviorResult) | As dyadic events; group membership of the event is not expressed as an ExperimentalGroup because the participants change per event. |
+| EVENT.IDANIMALA..IDANIMALD | partial | sosa:hasFeatureOfInterest, dcterms:description | Roles (initiator vs receiver) are lost: HCMO has no participant-role property. |
+| EVENT.DESCRIPTION / METADATA | not-covered | — | Builder-specific payloads; deliberately out of scope. |
+| RFID antennas (16) | partial | hcm-tech:Sensor, hcm-tech:installedIn, hcm-tech:captures | Each antenna is a sensor capturing animal identity, but HCMO cannot express that identity fusion feeds the tracker, nor the antennas' positions in the grid. |
+
+
+### BEATBox (open-source autonomous operant box)
+
+| Native concept | Mapping | HCMO target | Note |
+| --- | --- | --- | --- |
+| tunnel module | not-covered | — | HCMO has no compartment or passage concept; the box is one enclosure. |
+| door wall / door hardware | not-covered | — | No actuator event is exported for the door in this scenario. |
+| session_day | not-covered | — | HCMO has no session or study-stage entity; the day is implicit in the timestamps. |
+| trial | partial | sosa:Observation, time:Interval | A trial is represented only by its observations and their shared interval; there is no trial entity to group them. |
+| response_side / correct | partial | sosa:Observation, hcm-obs:CategoricalResult, hcm-obs:hasCategory | No HCMO operant or cognitive observation subtype; correctness is a category on a generic observation. Which screen responded is recovered from sosa:madeBySensor. |
+| response_latency_s | partial | sosa:Observation, hcm-obs:QuantityValue, unit:SEC | Generic observation; also the duration of the trial interval. |
+| collection_latency_s | partial | sosa:Observation, hcm-obs:QuantityValue, unit:SEC | Generic observation about the reward-collection interval. |
+| reward_delivered | partial | — | Derivable from the presence of a collection observation; the delivery act itself is not modelled because HCMO has no actuation event. |
+| light_phase | partial | hcm-env:LightCycle | Derivable from the light cycle and the timestamp; not materialised as a per-trial value. |
+| session accuracy / trial count | partial | sosa:Observation, hcm-obs:QuantityValue, unit:PERCENT, unit:NUM, prov:wasAttributedTo | Aggregates over the session interval; HCMO does not distinguish a summary from a primary observation. |
+| CAN identifier / PRIO / TYPE / CMD | not-covered | — | Bus-level addressing and priority; deliberately out of scope for a semantic layer. |
+| BEAM_EVENT (nosepoke) | partial | sosa:Observation (trial onset), hcm-tech:Sensor | The poke is the trial's start instant rather than an observation of its own. |
+| TOUCH_EVENT (screen) | partial | sosa:Observation, hcm-obs:CategoricalResult | See response_side / correct. |
+| DISPLAY_PATTERN / _ACK | partial | hcm-tech:Actuator | The screens are actuators, but HCMO has no stimulus-presentation event, so the pattern identifiers stay in the CAN log and the procedure description. |
+| REQUEST_REWARD / REWARD_DELIVERED | partial | hcm-tech:Actuator | The feeder is an actuator; the delivery event is not modelled. |
+| SET_DUTY / DUTY_STATUS (lighting) | partial | hcm-tech:Actuator, hcm-env:LightCycle | The resulting schedule is expressed as a light cycle; the per-channel duty values have no HCMO counterpart. |
+| GET_STATUS / STATUS / ERROR / RESET / SCAN | not-covered | — | Module lifecycle and error telemetry; deliberately out of scope. |
 

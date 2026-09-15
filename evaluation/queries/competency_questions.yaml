@@ -13,16 +13,40 @@ questions:
   - core
   cross_system: true
   status: answered
+  note: 'Eight distinct transduction principles across the six systems: capacitance, infrared beam-break and light curtain,
+    time-of-flight depth imaging, infrared video, load cells, paramagnetic/infrared gas analysis, capacitive touch and low-frequency
+    RFID.'
   expected_answers:
   - system: https://w3id.org/hcmo/id/eval/fed3/
     technology: infrared photointerrupter
+    enclosures: '1'
+  - system: https://w3id.org/hcmo/id/eval/live-mouse-tracker/
+    technology: low-frequency RFID reader
+    enclosures: '1'
+  - system: https://w3id.org/hcmo/id/eval/live-mouse-tracker/
+    technology: temperature, humidity, sound and light sensors
+    enclosures: '1'
+  - system: https://w3id.org/hcmo/id/eval/live-mouse-tracker/
+    technology: time-of-flight infrared depth imaging
     enclosures: '1'
   - system: https://w3id.org/hcmo/id/eval/noldus-phenotyper/
     technology: infrared video
     enclosures: '2'
   - system: https://w3id.org/hcmo/id/eval/dvc-tecniplast/
     technology: capacitance (12-electrode array)
-    enclosures: '24'
+    enclosures: '32'
+  - system: https://w3id.org/hcmo/id/eval/dvc-tecniplast/
+    technology: temperature and relative-humidity sensor
+    enclosures: '32'
+  - system: https://w3id.org/hcmo/id/eval/beatbox/
+    technology: capacitive touch screen
+    enclosures: '4'
+  - system: https://w3id.org/hcmo/id/eval/beatbox/
+    technology: infrared beam-break
+    enclosures: '4'
+  - system: https://w3id.org/hcmo/id/eval/beatbox/
+    technology: infrared light curtain
+    enclosures: '4'
   - system: https://w3id.org/hcmo/id/eval/tse-phenomaster/
     technology: infrared light-beam interruption
     enclosures: '4'
@@ -44,12 +68,17 @@ questions:
   - core
   cross_system: true
   status: answered
-  note: DVC exports carry no animal identity, so its 24 cages are held by cage-level ExperimentalGroups; the three other systems
-    yield individual Subjects.
+  note: 'The DVC appears twice: its 64 mock-metadata subjects are housed individually, while its 32 cage-level groups carry
+    the activation-index observations, because the capacitive signal cannot be attributed to an individual in a shared cage.
+    LMT shows four subjects sharing one enclosure.'
   expected_answers:
   - system: https://w3id.org/hcmo/id/eval/fed3/
     holderType: https://w3id.org/hcmo/ontology/hcm/bio#Subject
     holders: '1'
+    enclosures: '1'
+  - system: https://w3id.org/hcmo/id/eval/live-mouse-tracker/
+    holderType: https://w3id.org/hcmo/ontology/hcm/bio#Subject
+    holders: '4'
     enclosures: '1'
   - system: https://w3id.org/hcmo/id/eval/noldus-phenotyper/
     holderType: https://w3id.org/hcmo/ontology/hcm/bio#Subject
@@ -57,8 +86,16 @@ questions:
     enclosures: '2'
   - system: https://w3id.org/hcmo/id/eval/dvc-tecniplast/
     holderType: https://w3id.org/hcmo/ontology/hcm/bio#ExperimentalGroup
-    holders: '24'
-    enclosures: '24'
+    holders: '32'
+    enclosures: '32'
+  - system: https://w3id.org/hcmo/id/eval/dvc-tecniplast/
+    holderType: https://w3id.org/hcmo/ontology/hcm/bio#Subject
+    holders: '64'
+    enclosures: '32'
+  - system: https://w3id.org/hcmo/id/eval/beatbox/
+    holderType: https://w3id.org/hcmo/ontology/hcm/bio#Subject
+    holders: '4'
+    enclosures: '4'
   - system: https://w3id.org/hcmo/id/eval/tse-phenomaster/
     holderType: https://w3id.org/hcmo/ontology/hcm/bio#Subject
     holders: '4'
@@ -73,10 +110,26 @@ questions:
   - obs
   - core
   cross_system: true
-  status: partial
-  note: 'Answered for PhenoMaster, PhenoTyper and FED3 (7 holders). Not answerable for DVC: the real export states neither
-    enrichment nor the light schedule, so no DVC row can qualify. The absence is a property of the export, not of the ontology.'
+  status: answered
+  note: Answerable for all six systems once the DVC light programme and enrichment are stated as mock metadata; before that
+    the DVC could not answer at all. LMT animals appear twice because their arena holds two kinds of enrichment.
   expected_answers:
+  - system: https://w3id.org/hcmo/id/eval/beatbox/
+    holder: https://w3id.org/hcmo/id/eval/beatbox/mouse-2
+    enrichmentType: nesting material
+    darkObservations: '146'
+  - system: https://w3id.org/hcmo/id/eval/beatbox/
+    holder: https://w3id.org/hcmo/id/eval/beatbox/mouse-4
+    enrichmentType: nesting material
+    darkObservations: '151'
+  - system: https://w3id.org/hcmo/id/eval/beatbox/
+    holder: https://w3id.org/hcmo/id/eval/beatbox/mouse-3
+    enrichmentType: nesting material
+    darkObservations: '164'
+  - system: https://w3id.org/hcmo/id/eval/beatbox/
+    holder: https://w3id.org/hcmo/id/eval/beatbox/mouse-1
+    enrichmentType: nesting material
+    darkObservations: '172'
   - system: https://w3id.org/hcmo/id/eval/fed3/
     holder: https://w3id.org/hcmo/id/eval/fed3/mouse-1
     enrichmentType: nesting material
@@ -97,6 +150,46 @@ questions:
     holder: https://w3id.org/hcmo/id/eval/tse-phenomaster/mouse-2
     enrichmentType: nesting material
     darkObservations: '36'
+  - system: https://w3id.org/hcmo/id/eval/live-mouse-tracker/
+    holder: https://w3id.org/hcmo/id/eval/live-mouse-tracker/mouse-4
+    enrichmentType: house
+    darkObservations: '43'
+  - system: https://w3id.org/hcmo/id/eval/live-mouse-tracker/
+    holder: https://w3id.org/hcmo/id/eval/live-mouse-tracker/mouse-4
+    enrichmentType: nesting material
+    darkObservations: '43'
+  - system: https://w3id.org/hcmo/id/eval/live-mouse-tracker/
+    holder: https://w3id.org/hcmo/id/eval/live-mouse-tracker/mouse-1
+    enrichmentType: house
+    darkObservations: '47'
+  - system: https://w3id.org/hcmo/id/eval/live-mouse-tracker/
+    holder: https://w3id.org/hcmo/id/eval/live-mouse-tracker/mouse-1
+    enrichmentType: nesting material
+    darkObservations: '47'
+  - system: https://w3id.org/hcmo/id/eval/live-mouse-tracker/
+    holder: https://w3id.org/hcmo/id/eval/live-mouse-tracker/mouse-3
+    enrichmentType: house
+    darkObservations: '55'
+  - system: https://w3id.org/hcmo/id/eval/live-mouse-tracker/
+    holder: https://w3id.org/hcmo/id/eval/live-mouse-tracker/mouse-3
+    enrichmentType: nesting material
+    darkObservations: '55'
+  - system: https://w3id.org/hcmo/id/eval/live-mouse-tracker/
+    holder: https://w3id.org/hcmo/id/eval/live-mouse-tracker/mouse-2
+    enrichmentType: house
+    darkObservations: '59'
+  - system: https://w3id.org/hcmo/id/eval/live-mouse-tracker/
+    holder: https://w3id.org/hcmo/id/eval/live-mouse-tracker/mouse-2
+    enrichmentType: nesting material
+    darkObservations: '59'
+  - system: https://w3id.org/hcmo/id/eval/dvc-tecniplast/
+    holder: https://w3id.org/hcmo/id/eval/dvc-tecniplast/cage-group-b6-f-12-3400
+    enrichmentType: nesting material
+    darkObservations: '60'
+  - system: https://w3id.org/hcmo/id/eval/dvc-tecniplast/
+    holder: https://w3id.org/hcmo/id/eval/dvc-tecniplast/cage-group-b6-f-12-3401
+    enrichmentType: nesting material
+    darkObservations: '60'
 - id: ms-04-body-weight
   question: Which subjects have body-weight observations, from which sensor, and what are their minimum and maximum recorded
     weights?
@@ -107,7 +200,7 @@ questions:
   - tech
   cross_system: true
   status: answered
-  note: Only the metabolic system records body weight; the other systems correctly contribute no rows.
+  note: Only the metabolic system weighs animals; the other five correctly contribute no rows.
   expected_answers:
   - subject: https://w3id.org/hcmo/id/eval/tse-phenomaster/mouse-4
     sensor: https://w3id.org/hcmo/id/eval/tse-phenomaster/weight-sensor-4
@@ -140,9 +233,15 @@ questions:
   modules:
   - env
   - obs
-  cross_system: false
+  cross_system: true
   status: answered
+  note: 'Joins two systems with different environment layers: DVC rack temperature and humidity against room targets, PhenoMaster
+    box temperature against its set point.'
   expected_answers:
+  - enclosure: https://w3id.org/hcmo/id/eval/dvc-tecniplast/rack-aaaa
+    property: https://w3id.org/hcmo/id/eval/dvc-tecniplast/rack-air-temperature
+    target: '22.0'
+    deviations: '1'
   - enclosure: https://w3id.org/hcmo/id/eval/tse-phenomaster/box-1
     property: https://w3id.org/hcmo/id/eval/tse-phenomaster/box-air-temperature
     target: '22.5'
@@ -151,10 +250,22 @@ questions:
     property: https://w3id.org/hcmo/id/eval/tse-phenomaster/box-air-temperature
     target: '22.5'
     deviations: '1'
+  - enclosure: https://w3id.org/hcmo/id/eval/dvc-tecniplast/rack-aaaa
+    property: https://w3id.org/hcmo/id/eval/dvc-tecniplast/rack-relative-humidity
+    target: '50.0'
+    deviations: '11'
+  - enclosure: https://w3id.org/hcmo/id/eval/dvc-tecniplast/rack-bbbb
+    property: https://w3id.org/hcmo/id/eval/dvc-tecniplast/rack-air-temperature
+    target: '22.0'
+    deviations: '2'
   - enclosure: https://w3id.org/hcmo/id/eval/tse-phenomaster/box-2
     property: https://w3id.org/hcmo/id/eval/tse-phenomaster/box-air-temperature
     target: '22.5'
     deviations: '3'
+  - enclosure: https://w3id.org/hcmo/id/eval/dvc-tecniplast/rack-bbbb
+    property: https://w3id.org/hcmo/id/eval/dvc-tecniplast/rack-relative-humidity
+    target: '50.0'
+    deviations: '6'
 - id: ms-06-gas-concentration-ranges
   question: For each enclosure with gas-concentration observations, what are the observed ranges per gas property?
   file: evaluation/queries/cq-ms-06-gas-concentration-ranges.rq
@@ -212,8 +323,8 @@ questions:
   - core
   cross_system: true
   status: answered
-  note: 'Real DVC rack events: nine cages were removed during cohort 7623; two of them (343, 3402) never re-appear as INSERTED
-    although the index file keeps streaming values for them.'
+  note: 'Real DVC rack events: nine cages of the real male cohort were removed during cohort 7623, two of which never re-appear
+    although the index file keeps streaming values for them; the synthetic female cohort adds one short removal.'
   expected_answers:
   - enclosure: https://w3id.org/hcmo/id/eval/dvc-tecniplast/cage-b6-m-12-3402
     assessment: https://w3id.org/hcmo/id/eval/dvc-tecniplast/rack-aaaa-cage-detection
@@ -251,6 +362,10 @@ questions:
     assessment: https://w3id.org/hcmo/id/eval/dvc-tecniplast/rack-aaaa-cage-detection
     start: '2025-10-14T10:27:39.631000-04:00'
     minutes: '17291'
+  - enclosure: https://w3id.org/hcmo/id/eval/dvc-tecniplast/cage-b6-f-12-3400
+    assessment: https://w3id.org/hcmo/id/eval/dvc-tecniplast/rack-bbbb-cage-detection
+    start: '2025-10-16T19:32:00-04:00'
+    minutes: '5'
 - id: ms-08-behaviour-categories
   question: Which behaviour categories were recognised, by sensors of which technology, and how many events were recorded
     per category?
@@ -258,9 +373,104 @@ questions:
   modules:
   - obs
   - tech
-  cross_system: false
+  cross_system: true
   status: answered
+  note: 'Two vocabularies side by side: five EthoVision classifier categories from infrared video and thirty-one lmt-analysis
+    event names from depth imaging, kept verbatim rather than harmonised.'
   expected_answers:
+  - technology: time-of-flight infrared depth imaging
+    behaviorType: Approach contact
+    events: '10'
+  - technology: time-of-flight infrared depth imaging
+    behaviorType: Approach rear
+    events: '6'
+  - technology: time-of-flight infrared depth imaging
+    behaviorType: Center Zone
+    events: '20'
+  - technology: time-of-flight infrared depth imaging
+    behaviorType: Contact
+    events: '8'
+  - technology: time-of-flight infrared depth imaging
+    behaviorType: FollowZone Isolated
+    events: '14'
+  - technology: time-of-flight infrared depth imaging
+    behaviorType: Get away
+    events: '6'
+  - technology: time-of-flight infrared depth imaging
+    behaviorType: Group2
+    events: '20'
+  - technology: time-of-flight infrared depth imaging
+    behaviorType: Group3
+    events: '9'
+  - technology: time-of-flight infrared depth imaging
+    behaviorType: Group4
+    events: '8'
+  - technology: time-of-flight infrared depth imaging
+    behaviorType: Move high speed
+    events: '22'
+  - technology: time-of-flight infrared depth imaging
+    behaviorType: Move in contact
+    events: '16'
+  - technology: time-of-flight infrared depth imaging
+    behaviorType: Move isolated
+    events: '18'
+  - technology: time-of-flight infrared depth imaging
+    behaviorType: Nest3
+    events: '9'
+  - technology: time-of-flight infrared depth imaging
+    behaviorType: Nest4
+    events: '8'
+  - technology: time-of-flight infrared depth imaging
+    behaviorType: Oral-genital Contact
+    events: '8'
+  - technology: time-of-flight infrared depth imaging
+    behaviorType: Oral-oral Contact
+    events: '4'
+  - technology: time-of-flight infrared depth imaging
+    behaviorType: Periphery Zone
+    events: '15'
+  - technology: time-of-flight infrared depth imaging
+    behaviorType: Rear at periphery
+    events: '20'
+  - technology: time-of-flight infrared depth imaging
+    behaviorType: Rear in centerWindow
+    events: '20'
+  - technology: time-of-flight infrared depth imaging
+    behaviorType: Rear in contact
+    events: '16'
+  - technology: time-of-flight infrared depth imaging
+    behaviorType: Rear isolated
+    events: '23'
+  - technology: time-of-flight infrared depth imaging
+    behaviorType: Side by side Contact
+    events: '16'
+  - technology: time-of-flight infrared depth imaging
+    behaviorType: Side by side Contact, opposite way
+    events: '2'
+  - technology: time-of-flight infrared depth imaging
+    behaviorType: Social approach
+    events: '16'
+  - technology: time-of-flight infrared depth imaging
+    behaviorType: Social escape
+    events: '12'
+  - technology: time-of-flight infrared depth imaging
+    behaviorType: Stop in contact
+    events: '6'
+  - technology: time-of-flight infrared depth imaging
+    behaviorType: Stop isolated
+    events: '30'
+  - technology: time-of-flight infrared depth imaging
+    behaviorType: Train2
+    events: '16'
+  - technology: time-of-flight infrared depth imaging
+    behaviorType: Train3
+    events: '9'
+  - technology: time-of-flight infrared depth imaging
+    behaviorType: Train4
+    events: '8'
+  - technology: time-of-flight infrared depth imaging
+    behaviorType: Water Zone
+    events: '17'
   - technology: infrared video
     behaviorType: eating
     events: '10'
@@ -284,8 +494,8 @@ questions:
   - tech
   cross_system: true
   status: partial
-  note: 'DVC contributes no row: its index is derived by proprietary, undocumented cloud software, so only file-level attribution
-    (CQ-MS-13) is possible.'
+  note: 'Five of six systems document their derivation. The DVC contributes no row: its index is derived by proprietary, undocumented
+    cloud software, so only file-level attribution (CQ-MS-13) is possible.'
   expected_answers:
   - system: https://w3id.org/hcmo/id/eval/tse-phenomaster/
     procedure: https://w3id.org/hcmo/id/eval/tse-phenomaster/indirect-calorimetry-procedure
@@ -293,9 +503,18 @@ questions:
   - system: https://w3id.org/hcmo/id/eval/fed3/
     procedure: https://w3id.org/hcmo/id/eval/fed3/fr1-left-active
     observations: '208'
+  - system: https://w3id.org/hcmo/id/eval/live-mouse-tracker/
+    procedure: https://w3id.org/hcmo/id/eval/live-mouse-tracker/depth-tracking-procedure
+    observations: '4'
+  - system: https://w3id.org/hcmo/id/eval/live-mouse-tracker/
+    procedure: https://w3id.org/hcmo/id/eval/live-mouse-tracker/event-building-procedure
+    observations: '412'
   - system: https://w3id.org/hcmo/id/eval/noldus-phenotyper/
     procedure: https://w3id.org/hcmo/id/eval/noldus-phenotyper/behavior-recognition
     observations: '53'
+  - system: https://w3id.org/hcmo/id/eval/beatbox/
+    procedure: https://w3id.org/hcmo/id/eval/beatbox/visual-discrimination-task
+    observations: '765'
   - system: https://w3id.org/hcmo/id/eval/noldus-phenotyper/
     procedure: https://w3id.org/hcmo/id/eval/noldus-phenotyper/centre-point-tracking
     observations: '961'
@@ -305,9 +524,211 @@ questions:
   modules:
   - obs
   - tech
-  cross_system: false
+  cross_system: true
   status: answered
+  note: 'Two tracking systems with different dimension sets: EthoVision centre-point X/Y in centimetres at 25 Hz, LMT mass/front/back
+    points plus a rearing flag in depth-image pixels at 30 Hz.'
   expected_answers:
+  - table: https://w3id.org/hcmo/id/eval/live-mouse-tracker/detection-table-1
+    dimensionLabel: BACK_X [px]
+    sensor: https://w3id.org/hcmo/id/eval/live-mouse-tracker/kinect-v2
+    samplingRate: '30.0'
+    rateUnit: http://qudt.org/vocab/unit/HZ
+  - table: https://w3id.org/hcmo/id/eval/live-mouse-tracker/detection-table-2
+    dimensionLabel: BACK_X [px]
+    sensor: https://w3id.org/hcmo/id/eval/live-mouse-tracker/kinect-v2
+    samplingRate: '30.0'
+    rateUnit: http://qudt.org/vocab/unit/HZ
+  - table: https://w3id.org/hcmo/id/eval/live-mouse-tracker/detection-table-3
+    dimensionLabel: BACK_X [px]
+    sensor: https://w3id.org/hcmo/id/eval/live-mouse-tracker/kinect-v2
+    samplingRate: '30.0'
+    rateUnit: http://qudt.org/vocab/unit/HZ
+  - table: https://w3id.org/hcmo/id/eval/live-mouse-tracker/detection-table-4
+    dimensionLabel: BACK_X [px]
+    sensor: https://w3id.org/hcmo/id/eval/live-mouse-tracker/kinect-v2
+    samplingRate: '30.0'
+    rateUnit: http://qudt.org/vocab/unit/HZ
+  - table: https://w3id.org/hcmo/id/eval/live-mouse-tracker/detection-table-1
+    dimensionLabel: BACK_Y [px]
+    sensor: https://w3id.org/hcmo/id/eval/live-mouse-tracker/kinect-v2
+    samplingRate: '30.0'
+    rateUnit: http://qudt.org/vocab/unit/HZ
+  - table: https://w3id.org/hcmo/id/eval/live-mouse-tracker/detection-table-2
+    dimensionLabel: BACK_Y [px]
+    sensor: https://w3id.org/hcmo/id/eval/live-mouse-tracker/kinect-v2
+    samplingRate: '30.0'
+    rateUnit: http://qudt.org/vocab/unit/HZ
+  - table: https://w3id.org/hcmo/id/eval/live-mouse-tracker/detection-table-3
+    dimensionLabel: BACK_Y [px]
+    sensor: https://w3id.org/hcmo/id/eval/live-mouse-tracker/kinect-v2
+    samplingRate: '30.0'
+    rateUnit: http://qudt.org/vocab/unit/HZ
+  - table: https://w3id.org/hcmo/id/eval/live-mouse-tracker/detection-table-4
+    dimensionLabel: BACK_Y [px]
+    sensor: https://w3id.org/hcmo/id/eval/live-mouse-tracker/kinect-v2
+    samplingRate: '30.0'
+    rateUnit: http://qudt.org/vocab/unit/HZ
+  - table: https://w3id.org/hcmo/id/eval/live-mouse-tracker/detection-table-1
+    dimensionLabel: BACK_Z [mm]
+    sensor: https://w3id.org/hcmo/id/eval/live-mouse-tracker/kinect-v2
+    samplingRate: '30.0'
+    rateUnit: http://qudt.org/vocab/unit/HZ
+  - table: https://w3id.org/hcmo/id/eval/live-mouse-tracker/detection-table-2
+    dimensionLabel: BACK_Z [mm]
+    sensor: https://w3id.org/hcmo/id/eval/live-mouse-tracker/kinect-v2
+    samplingRate: '30.0'
+    rateUnit: http://qudt.org/vocab/unit/HZ
+  - table: https://w3id.org/hcmo/id/eval/live-mouse-tracker/detection-table-3
+    dimensionLabel: BACK_Z [mm]
+    sensor: https://w3id.org/hcmo/id/eval/live-mouse-tracker/kinect-v2
+    samplingRate: '30.0'
+    rateUnit: http://qudt.org/vocab/unit/HZ
+  - table: https://w3id.org/hcmo/id/eval/live-mouse-tracker/detection-table-4
+    dimensionLabel: BACK_Z [mm]
+    sensor: https://w3id.org/hcmo/id/eval/live-mouse-tracker/kinect-v2
+    samplingRate: '30.0'
+    rateUnit: http://qudt.org/vocab/unit/HZ
+  - table: https://w3id.org/hcmo/id/eval/live-mouse-tracker/detection-table-1
+    dimensionLabel: FRONT_X [px]
+    sensor: https://w3id.org/hcmo/id/eval/live-mouse-tracker/kinect-v2
+    samplingRate: '30.0'
+    rateUnit: http://qudt.org/vocab/unit/HZ
+  - table: https://w3id.org/hcmo/id/eval/live-mouse-tracker/detection-table-2
+    dimensionLabel: FRONT_X [px]
+    sensor: https://w3id.org/hcmo/id/eval/live-mouse-tracker/kinect-v2
+    samplingRate: '30.0'
+    rateUnit: http://qudt.org/vocab/unit/HZ
+  - table: https://w3id.org/hcmo/id/eval/live-mouse-tracker/detection-table-3
+    dimensionLabel: FRONT_X [px]
+    sensor: https://w3id.org/hcmo/id/eval/live-mouse-tracker/kinect-v2
+    samplingRate: '30.0'
+    rateUnit: http://qudt.org/vocab/unit/HZ
+  - table: https://w3id.org/hcmo/id/eval/live-mouse-tracker/detection-table-4
+    dimensionLabel: FRONT_X [px]
+    sensor: https://w3id.org/hcmo/id/eval/live-mouse-tracker/kinect-v2
+    samplingRate: '30.0'
+    rateUnit: http://qudt.org/vocab/unit/HZ
+  - table: https://w3id.org/hcmo/id/eval/live-mouse-tracker/detection-table-1
+    dimensionLabel: FRONT_Y [px]
+    sensor: https://w3id.org/hcmo/id/eval/live-mouse-tracker/kinect-v2
+    samplingRate: '30.0'
+    rateUnit: http://qudt.org/vocab/unit/HZ
+  - table: https://w3id.org/hcmo/id/eval/live-mouse-tracker/detection-table-2
+    dimensionLabel: FRONT_Y [px]
+    sensor: https://w3id.org/hcmo/id/eval/live-mouse-tracker/kinect-v2
+    samplingRate: '30.0'
+    rateUnit: http://qudt.org/vocab/unit/HZ
+  - table: https://w3id.org/hcmo/id/eval/live-mouse-tracker/detection-table-3
+    dimensionLabel: FRONT_Y [px]
+    sensor: https://w3id.org/hcmo/id/eval/live-mouse-tracker/kinect-v2
+    samplingRate: '30.0'
+    rateUnit: http://qudt.org/vocab/unit/HZ
+  - table: https://w3id.org/hcmo/id/eval/live-mouse-tracker/detection-table-4
+    dimensionLabel: FRONT_Y [px]
+    sensor: https://w3id.org/hcmo/id/eval/live-mouse-tracker/kinect-v2
+    samplingRate: '30.0'
+    rateUnit: http://qudt.org/vocab/unit/HZ
+  - table: https://w3id.org/hcmo/id/eval/live-mouse-tracker/detection-table-1
+    dimensionLabel: FRONT_Z [mm]
+    sensor: https://w3id.org/hcmo/id/eval/live-mouse-tracker/kinect-v2
+    samplingRate: '30.0'
+    rateUnit: http://qudt.org/vocab/unit/HZ
+  - table: https://w3id.org/hcmo/id/eval/live-mouse-tracker/detection-table-2
+    dimensionLabel: FRONT_Z [mm]
+    sensor: https://w3id.org/hcmo/id/eval/live-mouse-tracker/kinect-v2
+    samplingRate: '30.0'
+    rateUnit: http://qudt.org/vocab/unit/HZ
+  - table: https://w3id.org/hcmo/id/eval/live-mouse-tracker/detection-table-3
+    dimensionLabel: FRONT_Z [mm]
+    sensor: https://w3id.org/hcmo/id/eval/live-mouse-tracker/kinect-v2
+    samplingRate: '30.0'
+    rateUnit: http://qudt.org/vocab/unit/HZ
+  - table: https://w3id.org/hcmo/id/eval/live-mouse-tracker/detection-table-4
+    dimensionLabel: FRONT_Z [mm]
+    sensor: https://w3id.org/hcmo/id/eval/live-mouse-tracker/kinect-v2
+    samplingRate: '30.0'
+    rateUnit: http://qudt.org/vocab/unit/HZ
+  - table: https://w3id.org/hcmo/id/eval/live-mouse-tracker/detection-table-1
+    dimensionLabel: MASS_X [px]
+    sensor: https://w3id.org/hcmo/id/eval/live-mouse-tracker/kinect-v2
+    samplingRate: '30.0'
+    rateUnit: http://qudt.org/vocab/unit/HZ
+  - table: https://w3id.org/hcmo/id/eval/live-mouse-tracker/detection-table-2
+    dimensionLabel: MASS_X [px]
+    sensor: https://w3id.org/hcmo/id/eval/live-mouse-tracker/kinect-v2
+    samplingRate: '30.0'
+    rateUnit: http://qudt.org/vocab/unit/HZ
+  - table: https://w3id.org/hcmo/id/eval/live-mouse-tracker/detection-table-3
+    dimensionLabel: MASS_X [px]
+    sensor: https://w3id.org/hcmo/id/eval/live-mouse-tracker/kinect-v2
+    samplingRate: '30.0'
+    rateUnit: http://qudt.org/vocab/unit/HZ
+  - table: https://w3id.org/hcmo/id/eval/live-mouse-tracker/detection-table-4
+    dimensionLabel: MASS_X [px]
+    sensor: https://w3id.org/hcmo/id/eval/live-mouse-tracker/kinect-v2
+    samplingRate: '30.0'
+    rateUnit: http://qudt.org/vocab/unit/HZ
+  - table: https://w3id.org/hcmo/id/eval/live-mouse-tracker/detection-table-1
+    dimensionLabel: MASS_Y [px]
+    sensor: https://w3id.org/hcmo/id/eval/live-mouse-tracker/kinect-v2
+    samplingRate: '30.0'
+    rateUnit: http://qudt.org/vocab/unit/HZ
+  - table: https://w3id.org/hcmo/id/eval/live-mouse-tracker/detection-table-2
+    dimensionLabel: MASS_Y [px]
+    sensor: https://w3id.org/hcmo/id/eval/live-mouse-tracker/kinect-v2
+    samplingRate: '30.0'
+    rateUnit: http://qudt.org/vocab/unit/HZ
+  - table: https://w3id.org/hcmo/id/eval/live-mouse-tracker/detection-table-3
+    dimensionLabel: MASS_Y [px]
+    sensor: https://w3id.org/hcmo/id/eval/live-mouse-tracker/kinect-v2
+    samplingRate: '30.0'
+    rateUnit: http://qudt.org/vocab/unit/HZ
+  - table: https://w3id.org/hcmo/id/eval/live-mouse-tracker/detection-table-4
+    dimensionLabel: MASS_Y [px]
+    sensor: https://w3id.org/hcmo/id/eval/live-mouse-tracker/kinect-v2
+    samplingRate: '30.0'
+    rateUnit: http://qudt.org/vocab/unit/HZ
+  - table: https://w3id.org/hcmo/id/eval/live-mouse-tracker/detection-table-1
+    dimensionLabel: MASS_Z [mm]
+    sensor: https://w3id.org/hcmo/id/eval/live-mouse-tracker/kinect-v2
+    samplingRate: '30.0'
+    rateUnit: http://qudt.org/vocab/unit/HZ
+  - table: https://w3id.org/hcmo/id/eval/live-mouse-tracker/detection-table-2
+    dimensionLabel: MASS_Z [mm]
+    sensor: https://w3id.org/hcmo/id/eval/live-mouse-tracker/kinect-v2
+    samplingRate: '30.0'
+    rateUnit: http://qudt.org/vocab/unit/HZ
+  - table: https://w3id.org/hcmo/id/eval/live-mouse-tracker/detection-table-3
+    dimensionLabel: MASS_Z [mm]
+    sensor: https://w3id.org/hcmo/id/eval/live-mouse-tracker/kinect-v2
+    samplingRate: '30.0'
+    rateUnit: http://qudt.org/vocab/unit/HZ
+  - table: https://w3id.org/hcmo/id/eval/live-mouse-tracker/detection-table-4
+    dimensionLabel: MASS_Z [mm]
+    sensor: https://w3id.org/hcmo/id/eval/live-mouse-tracker/kinect-v2
+    samplingRate: '30.0'
+    rateUnit: http://qudt.org/vocab/unit/HZ
+  - table: https://w3id.org/hcmo/id/eval/live-mouse-tracker/detection-table-1
+    dimensionLabel: REARING [flag]
+    sensor: https://w3id.org/hcmo/id/eval/live-mouse-tracker/kinect-v2
+    samplingRate: '30.0'
+    rateUnit: http://qudt.org/vocab/unit/HZ
+  - table: https://w3id.org/hcmo/id/eval/live-mouse-tracker/detection-table-2
+    dimensionLabel: REARING [flag]
+    sensor: https://w3id.org/hcmo/id/eval/live-mouse-tracker/kinect-v2
+    samplingRate: '30.0'
+    rateUnit: http://qudt.org/vocab/unit/HZ
+  - table: https://w3id.org/hcmo/id/eval/live-mouse-tracker/detection-table-3
+    dimensionLabel: REARING [flag]
+    sensor: https://w3id.org/hcmo/id/eval/live-mouse-tracker/kinect-v2
+    samplingRate: '30.0'
+    rateUnit: http://qudt.org/vocab/unit/HZ
+  - table: https://w3id.org/hcmo/id/eval/live-mouse-tracker/detection-table-4
+    dimensionLabel: REARING [flag]
+    sensor: https://w3id.org/hcmo/id/eval/live-mouse-tracker/kinect-v2
+    samplingRate: '30.0'
+    rateUnit: http://qudt.org/vocab/unit/HZ
   - table: https://w3id.org/hcmo/id/eval/noldus-phenotyper/track-table-arena-1
     dimensionLabel: X center [cm]
     sensor: https://w3id.org/hcmo/id/eval/noldus-phenotyper/arena-1-camera
@@ -326,6 +747,7 @@ questions:
   - obs
   cross_system: true
   status: answered
+  note: 'Twenty-nine variables in twelve units across six systems: the cross-system inventory that an integration layer needs.'
   expected_answers:
   - system: https://w3id.org/hcmo/id/eval/tse-phenomaster/
     propertyLabel: cumulative water intake
@@ -352,11 +774,11 @@ questions:
     unit: http://qudt.org/vocab/unit/UNITLESS
     observations: '48'
     mean: '0.85'
-  - system: https://w3id.org/hcmo/id/eval/dvc-tecniplast/
-    propertyLabel: smoothed activation / locomotion index (share of active electrodes per bin)
-    unit: http://qudt.org/vocab/unit/PERCENT
-    observations: '720'
-    mean: '1.82'
+  - system: https://w3id.org/hcmo/id/eval/live-mouse-tracker/
+    propertyLabel: arena visible light index (LMT sensor board)
+    unit: http://qudt.org/vocab/unit/UNITLESS
+    observations: '10'
+    mean: '101.24'
   - system: https://w3id.org/hcmo/id/eval/tse-phenomaster/
     propertyLabel: vertical light-beam interruptions Z (rearing)
     unit: http://qudt.org/vocab/unit/NUM
@@ -367,6 +789,11 @@ questions:
     unit: http://qudt.org/vocab/unit/NUM
     observations: '48'
     mean: '185.21'
+  - system: https://w3id.org/hcmo/id/eval/dvc-tecniplast/
+    propertyLabel: smoothed activation / locomotion index (share of active electrodes per bin)
+    unit: http://qudt.org/vocab/unit/PERCENT
+    observations: '960'
+    mean: '2.25'
   - system: https://w3id.org/hcmo/id/eval/tse-phenomaster/
     propertyLabel: box air oxygen concentration
     unit: http://qudt.org/vocab/unit/PERCENT
@@ -377,6 +804,11 @@ questions:
     unit: http://qudt.org/vocab/unit/CentiM
     observations: '240'
     mean: '209.84'
+  - system: https://w3id.org/hcmo/id/eval/dvc-tecniplast/
+    propertyLabel: rack air temperature (REM)
+    unit: http://qudt.org/vocab/unit/DEG_C
+    observations: '20'
+    mean: '22.06'
   - system: https://w3id.org/hcmo/id/eval/tse-phenomaster/
     propertyLabel: body weight
     unit: http://qudt.org/vocab/unit/GM
@@ -387,11 +819,21 @@ questions:
     unit: http://qudt.org/vocab/unit/DEG_C
     observations: '48'
     mean: '22.47'
+  - system: https://w3id.org/hcmo/id/eval/live-mouse-tracker/
+    propertyLabel: arena temperature (LMT sensor board)
+    unit: http://qudt.org/vocab/unit/DEG_C
+    observations: '10'
+    mean: '22.5'
   - system: https://w3id.org/hcmo/id/eval/noldus-phenotyper/
     propertyLabel: time in movement state
     unit: http://qudt.org/vocab/unit/SEC
     observations: '240'
     mean: '22.91'
+  - system: https://w3id.org/hcmo/id/eval/live-mouse-tracker/
+    propertyLabel: arena visible+infrared light index (LMT sensor board)
+    unit: http://qudt.org/vocab/unit/UNITLESS
+    observations: '10'
+    mean: '234.81'
   - system: https://w3id.org/hcmo/id/eval/fed3/
     propertyLabel: pellet retrieval latency
     unit: http://qudt.org/vocab/unit/SEC
@@ -407,16 +849,51 @@ questions:
     unit: http://qudt.org/vocab/unit/CentiM-PER-SEC
     observations: '240'
     mean: '3.5'
+  - system: https://w3id.org/hcmo/id/eval/beatbox/
+    propertyLabel: reward collection latency (touch to feeder barrier)
+    unit: http://qudt.org/vocab/unit/SEC
+    observations: '207'
+    mean: '3.68'
+  - system: https://w3id.org/hcmo/id/eval/beatbox/
+    propertyLabel: response latency from stimulus display to touch
+    unit: http://qudt.org/vocab/unit/SEC
+    observations: '275'
+    mean: '3.9'
+  - system: https://w3id.org/hcmo/id/eval/live-mouse-tracker/
+    propertyLabel: arena sound level index (LMT sensor board)
+    unit: http://qudt.org/vocab/unit/UNITLESS
+    observations: '10'
+    mean: '39.92'
   - system: https://w3id.org/hcmo/id/eval/tse-phenomaster/
     propertyLabel: carbon dioxide production rate VCO2
     unit: http://qudt.org/vocab/unit/MilliL-PER-HR
     observations: '48'
     mean: '49.29'
+  - system: https://w3id.org/hcmo/id/eval/dvc-tecniplast/
+    propertyLabel: rack relative humidity (REM)
+    unit: http://qudt.org/vocab/unit/PERCENT
+    observations: '20'
+    mean: '49.71'
+  - system: https://w3id.org/hcmo/id/eval/live-mouse-tracker/
+    propertyLabel: arena relative humidity (LMT sensor board)
+    unit: http://qudt.org/vocab/unit/PERCENT
+    observations: '10'
+    mean: '51.01'
   - system: https://w3id.org/hcmo/id/eval/tse-phenomaster/
     propertyLabel: oxygen consumption rate VO2
     unit: http://qudt.org/vocab/unit/MilliL-PER-HR
     observations: '48'
     mean: '57.89'
+  - system: https://w3id.org/hcmo/id/eval/beatbox/
+    propertyLabel: number of self-initiated trials in the session
+    unit: http://qudt.org/vocab/unit/NUM
+    observations: '4'
+    mean: '68.75'
+  - system: https://w3id.org/hcmo/id/eval/beatbox/
+    propertyLabel: session accuracy (share of correct trials)
+    unit: http://qudt.org/vocab/unit/PERCENT
+    observations: '4'
+    mean: '75.05'
 - id: ms-12-housed-at-reference-times
   question: How many subjects or cage groups were housed in monitored enclosures in each system at two reference times?
   file: evaluation/queries/cq-ms-12-housed-at-reference-times.rq
@@ -425,6 +902,8 @@ questions:
   - core
   cross_system: true
   status: answered
+  note: One reference time inside the real DVC recording, one inside the synthetic runs; the DVC count of 72 combines 32 cage
+    groups and 40 subjects housed at that instant.
   expected_answers:
   - system: https://w3id.org/hcmo/id/eval/fed3/
     referenceTime: '2026-06-02T19:30:00+02:00'
@@ -432,12 +911,18 @@ questions:
   - system: https://w3id.org/hcmo/id/eval/noldus-phenotyper/
     referenceTime: '2026-06-02T19:30:00+02:00'
     housed: '2'
-  - system: https://w3id.org/hcmo/id/eval/dvc-tecniplast/
-    referenceTime: '2025-10-20T12:00:00-04:00'
-    housed: '24'
+  - system: https://w3id.org/hcmo/id/eval/beatbox/
+    referenceTime: '2026-06-02T19:30:00+02:00'
+    housed: '4'
+  - system: https://w3id.org/hcmo/id/eval/live-mouse-tracker/
+    referenceTime: '2026-06-02T19:30:00+02:00'
+    housed: '4'
   - system: https://w3id.org/hcmo/id/eval/tse-phenomaster/
     referenceTime: '2026-06-02T19:30:00+02:00'
     housed: '4'
+  - system: https://w3id.org/hcmo/id/eval/dvc-tecniplast/
+    referenceTime: '2025-10-20T12:00:00-04:00'
+    housed: '72'
 - id: ms-13-export-files
   question: Which native export files back each system's instance graph, in which format, and which software or hardware is
     credited with producing them?
@@ -446,16 +931,42 @@ questions:
   - tech
   cross_system: true
   status: answered
+  note: Eighteen files in two media types; attribution distinguishes acquisition software, analysis software and the logging
+    device itself.
   expected_answers:
-  - series: https://w3id.org/hcmo/id/eval/dvc-tecniplast/cohort-7623-activation-index-series
+  - series: https://w3id.org/hcmo/id/eval/beatbox/can-event-log
+    format: text/csv
+    attributedTo: https://w3id.org/hcmo/id/eval/beatbox/beatbox-gui
+  - series: https://w3id.org/hcmo/id/eval/beatbox/trial-table
+    format: text/csv
+    attributedTo: https://w3id.org/hcmo/id/eval/beatbox/beatbox-gui
+  - series: https://w3id.org/hcmo/id/eval/dvc-tecniplast/b6-f-activation-index-series
     format: text/csv
     attributedTo: https://w3id.org/hcmo/id/eval/dvc-tecniplast/dvc-analytics
-  - series: https://w3id.org/hcmo/id/eval/dvc-tecniplast/cohort-7623-events-series
+  - series: https://w3id.org/hcmo/id/eval/dvc-tecniplast/b6-f-events-series
+    format: text/csv
+    attributedTo: https://w3id.org/hcmo/id/eval/dvc-tecniplast/dvc-analytics
+  - series: https://w3id.org/hcmo/id/eval/dvc-tecniplast/b6-m-activation-index-series
+    format: text/csv
+    attributedTo: https://w3id.org/hcmo/id/eval/dvc-tecniplast/dvc-analytics
+  - series: https://w3id.org/hcmo/id/eval/dvc-tecniplast/b6-m-events-series
     format: text/csv
     attributedTo: https://w3id.org/hcmo/id/eval/dvc-tecniplast/dvc-analytics
   - series: https://w3id.org/hcmo/id/eval/fed3/fed3-log-series
     format: text/csv
     attributedTo: https://w3id.org/hcmo/id/eval/fed3/fed3-device-1
+  - series: https://w3id.org/hcmo/id/eval/live-mouse-tracker/lmt-table-event
+    format: text/csv
+    attributedTo: https://w3id.org/hcmo/id/eval/live-mouse-tracker/lmt-analysis
+  - series: https://w3id.org/hcmo/id/eval/live-mouse-tracker/lmt-table-detection
+    format: application/gzip
+    attributedTo: https://w3id.org/hcmo/id/eval/live-mouse-tracker/lmt-software
+  - series: https://w3id.org/hcmo/id/eval/live-mouse-tracker/lmt-table-animal
+    format: text/csv
+    attributedTo: https://w3id.org/hcmo/id/eval/live-mouse-tracker/lmt-software
+  - series: https://w3id.org/hcmo/id/eval/live-mouse-tracker/lmt-table-frame
+    format: text/csv
+    attributedTo: https://w3id.org/hcmo/id/eval/live-mouse-tracker/lmt-software
   - series: https://w3id.org/hcmo/id/eval/noldus-phenotyper/behavior-event-series
     format: text/csv
     attributedTo: https://w3id.org/hcmo/id/eval/noldus-phenotyper/ethovision-xt
@@ -478,3 +989,111 @@ questions:
   note: 'The reviewed answer is empty: every quantity value in the multi-system graph carries a unit, and the query verifies
     that absence rather than accepting an unexamined empty result.'
   expected_answers: []
+- id: ms-15-multi-animal-behaviour
+  question: Which recorded behaviours involve more than one animal at the same time, how many animals participate, and how
+    many such behaviour results were recorded?
+  file: evaluation/queries/cq-ms-15-multi-animal-behaviour.rq
+  modules:
+  - obs
+  - bio
+  cross_system: true
+  status: answered
+  note: Only the group-housed tracking system produces these. Because HCMO's behaviour shape allows exactly one feature of
+    interest, an n-ary LMT event is stored as one shared BehaviorResult observed about each participant; counting distinct
+    features of interest per result recovers the original group size (2, 3 or 4). The participant roles are not recoverable.
+  expected_answers:
+  - behaviorType: Approach contact
+    participants: '2'
+    results: '5'
+  - behaviorType: Approach rear
+    participants: '2'
+    results: '3'
+  - behaviorType: Contact
+    participants: '2'
+    results: '4'
+  - behaviorType: FollowZone Isolated
+    participants: '2'
+    results: '7'
+  - behaviorType: Get away
+    participants: '2'
+    results: '3'
+  - behaviorType: Group2
+    participants: '2'
+    results: '10'
+  - behaviorType: Group3
+    participants: '3'
+    results: '3'
+  - behaviorType: Group4
+    participants: '4'
+    results: '2'
+  - behaviorType: Move in contact
+    participants: '2'
+    results: '8'
+  - behaviorType: Nest3
+    participants: '3'
+    results: '3'
+  - behaviorType: Nest4
+    participants: '4'
+    results: '2'
+  - behaviorType: Oral-genital Contact
+    participants: '2'
+    results: '4'
+  - behaviorType: Oral-oral Contact
+    participants: '2'
+    results: '2'
+  - behaviorType: Rear in contact
+    participants: '2'
+    results: '8'
+  - behaviorType: Side by side Contact
+    participants: '2'
+    results: '8'
+  - behaviorType: Side by side Contact, opposite way
+    participants: '2'
+    results: '1'
+  - behaviorType: Social approach
+    participants: '2'
+    results: '8'
+  - behaviorType: Social escape
+    participants: '2'
+    results: '6'
+  - behaviorType: Stop in contact
+    participants: '2'
+    results: '3'
+  - behaviorType: Train2
+    participants: '2'
+    results: '8'
+  - behaviorType: Train3
+    participants: '3'
+    results: '3'
+  - behaviorType: Train4
+    participants: '4'
+    results: '2'
+- id: ms-16-cognitive-performance-by-strain
+  question: For each mouse strain tested on a touch-screen task, how many trials were run, how many were correct, and what
+    was the mean response latency?
+  file: evaluation/queries/cq-ms-16-cognitive-performance-by-strain.rq
+  modules:
+  - obs
+  - bio
+  - tech
+  cross_system: true
+  status: answered
+  note: Cognitive-testing data joined to strain metadata. A trial has no entity of its own in HCMO 0.3.0, so trials are recovered
+    from the categorical choice results and the latency observations that share their phenomenon interval.
+  expected_answers:
+  - strain: BALB/cJ
+    trials: '63'
+    correct: '43'
+    meanLatencySeconds: '3.81'
+  - strain: 129S1/SvImJ
+    trials: '70'
+    correct: '50'
+    meanLatencySeconds: '3.81'
+  - strain: DBA/2J
+    trials: '71'
+    correct: '52'
+    meanLatencySeconds: '3.76'
+  - strain: C57BL/6J
+    trials: '71'
+    correct: '62'
+    meanLatencySeconds: '4.22'

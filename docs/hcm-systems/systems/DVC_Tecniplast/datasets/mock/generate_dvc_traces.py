@@ -35,7 +35,7 @@ byte-identical output. Standard library only.
 Usage:
     python3 generate_dvc_traces.py                 # defaults: B6_M, 8 cages, 3 days
     python3 generate_dvc_traces.py --cages 24 --days 14
-    python3 generate_dvc_traces.py --group B6_F --outdir .
+    python3 generate_dvc_traces.py --group B6_F --rack BBBB --outdir .
 """
 from __future__ import annotations
 
@@ -103,6 +103,7 @@ def main() -> None:
     ap.add_argument("--lights-on", type=int, default=7, help="lights-on hour (default 7)")
     ap.add_argument("--lights-off", type=int, default=19, help="lights-off hour (default 19)")
     ap.add_argument("--seed", type=int, default=7, help="RNG seed (default 7)")
+    ap.add_argument("--rack", default="AAAA", help="rack identifier written to INSERTED events (default AAAA)")
     ap.add_argument("--outdir", default=".", help="output directory (default .)")
     args = ap.parse_args()
 
@@ -182,7 +183,7 @@ def main() -> None:
         add(insert_dt - timedelta(seconds=rng.randint(30, 90)), c, "REGISTERED")
         add(insert_dt - timedelta(seconds=rng.randint(10, 25)), c, "ADDED")
         add(insert_dt - timedelta(seconds=rng.randint(3, 8)), c, "CAGE_ONLINE")
-        add(insert_dt, c, "INSERTED", rack="AAAA", pos=rack_position(i))
+        add(insert_dt, c, "INSERTED", rack=args.rack, pos=rack_position(i))
 
     # periodic UPDATED metadata pings, a few per day across random cages
     for d in range(args.days):
@@ -199,7 +200,7 @@ def main() -> None:
         add(cc, cages[0], "REMOVED")
         add(cc + timedelta(minutes=rng.randint(2, 6), seconds=rng.randint(0, 59),
                            milliseconds=rng.randint(0, 999)),
-            cages[0], "INSERTED", rack="AAAA", pos=rack_position(0))
+            cages[0], "INSERTED", rack=args.rack, pos=rack_position(0))
 
     events.sort(key=lambda e: e[0])
     with open(ev_path, "w", newline="", encoding="utf-8") as fh:

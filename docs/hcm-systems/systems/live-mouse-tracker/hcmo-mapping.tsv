@@ -1,0 +1,37 @@
+native_concept	source	description	module	mapping	hcmo_target	note
+arena	profile	One 50 x 50 cm open-top cage tracked by the depth camera	core	hcmo	hcm:MonitoredEnclosure, hcm:hasEnclosureIdentifier, hcm:hasDimensions, hcm:EnclosureDimensions	Height assumed for the synthetic profile; floor dimensions from the LMT setup.
+house / nesting material	profile	Shelter and nest material inside the arena	core	hcmo	hcm:hasEnrichment, hcm:Enrichment, hcm:hasEnrichmentType
+ANIMAL.ID	SQLite	Internal animal number used as IDANIMALA..D in EVENT	bio	external	hcm-bio:Subject, dcterms:identifier	HCMO has no subject-identifier property.
+ANIMAL.RFID	SQLite	Transponder code that gives each animal its identity in the group	bio	external	dcterms:identifier	Recorded as the subject's identifier; the RFID device itself is a separate sensor.
+ANIMAL.NAME	SQLite	Human-readable animal name	bio	external	rdfs:label
+ANIMAL.GENOTYPE	SQLite	WT or KO in this Shank3 scenario	bio	partial	hcm-bio:ExperimentalGroup, hcm-bio:belongsToGroup, hcm-bio:hasMember	HCMO 0.3.0 has no genotype property; genotype is expressed as membership of a genotype group, which loses the distinction between genotype and any other grouping.
+ANIMAL.STRAIN	SQLite	Mouse strain	bio	hcmo	hcm-bio:hasStrain
+ANIMAL.SEX	SQLite	Animal sex	bio	hcmo	hcm-bio:hasBiologicalSex
+ANIMAL.AGE	SQLite	Age at the start of the experiment	bio	partial	hcm-bio:hasDateOfBirth	HCMO records a birth date, so the age is converted using the experiment start; the original free-text age string is not preserved.
+ANIMAL.SETUP	SQLite	Free-text setup description (arena, camera, antennas, scale)	tech	not-covered	—	Free-text configuration string with no HCMO counterpart; its content is modelled through the individual sensors instead.
+animals-in-arena period	profile	Group of four animals living in the arena for the experiment	bio	hcmo	hcm-bio:HousingAssignment, hcm-bio:assignedToEnclosure, time:Interval	One time-bounded assignment per animal over the 30-day experiment.
+bedding change every 10 days	profile	Husbandry schedule	core	partial	prov:Activity, prov:used, time:Interval	Expressed as a PROV activity using the enclosure; HCMO has no husbandry-event class.
+FRAME.FRAMENUMBER	SQLite	Frame index, the time base of DETECTION and EVENT	obs	partial	time:Instant, time:inXSDDateTime	Frames are converted to absolute times through FRAME.TIMESTAMP; the frame number itself is not kept as an identifier.
+FRAME.TIMESTAMP	SQLite	Epoch milliseconds of the frame	obs	external	time:Instant, time:inXSDDateTime	Offset added explicitly (UTC+02:00).
+FRAME.NUMPARTICLE	SQLite	Number of detected particles (tracking quality indicator)	—	not-covered	—	Tracking-quality telemetry; deliberately out of scope.
+FRAME.PAUSED	SQLite	Acquisition-paused flag	—	not-covered	—	Acquisition state of the software; deliberately out of scope.
+FRAME.TEMPERATURE	SQLite	Arena temperature from the LMT sensor board	env	hcmo	hcm-obs:EnvironmentObservation, hcm-env:EnvironmentalProperty, unit:DEG_C	Aggregated to one observation per minute.
+FRAME.HUMIDITY	SQLite	Arena relative humidity	env	hcmo	hcm-obs:EnvironmentObservation, hcm-env:EnvironmentalProperty, unit:PERCENT	Aggregated to one observation per minute.
+FRAME.SOUND	SQLite	Sound-level index	env	partial	hcm-obs:EnvironmentObservation, unit:UNITLESS	Vendor index without a physical unit; recorded as unitless.
+FRAME.LIGHTVISIBLE / LIGHTVISIBLEANDIR	SQLite	Visible and visible+infrared light indices	env	partial	hcm-obs:EnvironmentObservation, unit:UNITLESS	Vendor indices without a physical unit; they evidence the light cycle but are not lux.
+DETECTION.MASS_X / MASS_Y / MASS_Z	SQLite	Centre-of-mass position per animal per frame (depth-image pixels, height)	obs	hcmo	hcm-obs:LocationResultTable, semts:segmentDimension, semts:DataDimension	One table per animal for the materialised window; the pixel-to-cm scale lives in the profile, not in the graph.
+DETECTION.FRONT_* / BACK_*	SQLite	Head and tail-base points per frame	obs	partial	hcm-obs:LocationResultTable, semts:segmentDimension	Carried as further dimensions of the same table; HCMO has no body-part semantics.
+DETECTION.REARING / LOOK_UP / LOOK_DOWN	SQLite	Per-frame posture flags	obs	partial	hcm-obs:LocationResultTable, semts:segmentDimension	Kept as table dimensions rather than as behaviour observations, because they are per-frame flags, not bouts.
+DETECTION.DATA	SQLite	Binary animal mask per detection	—	not-covered	—	Binary blob; deliberately out of scope.
+EVENT.NAME (individual)	SQLite	Single-animal events: Move isolated, Stop isolated, Rear isolated, Center/Periphery Zone, Water Zone, ...	obs	hcmo	hcm-obs:BehaviorObservation, hcm-obs:BehaviorResult, hcm-obs:hasBehaviorType	The exact lmt-analysis event names are kept verbatim as the behaviour type.
+EVENT.NAME (dyadic)	SQLite	Two-animal events: Contact, Oral-oral Contact, Social approach, Train2, ...	obs	partial	hcm-obs:BehaviorObservation (one per participant, shared BehaviorResult)	The shape requires exactly one feature of interest, so one observation per participating animal shares the single result; the dyad itself is not a first-class entity and the A/B roles are recorded only in a dcterms:description on the result.
+EVENT.NAME (group)	SQLite	Three- and four-animal events: Group3, Group4, Train3, Train4, Nest3, Nest4	obs	partial	hcm-obs:BehaviorObservation (one per participant, shared BehaviorResult)	As dyadic events; group membership of the event is not expressed as an ExperimentalGroup because the participants change per event.
+EVENT.IDANIMALA..IDANIMALD	SQLite	Participants of an event, in role order	obs	partial	sosa:hasFeatureOfInterest, dcterms:description	Roles (initiator vs receiver) are lost: HCMO has no participant-role property.
+EVENT.STARTFRAME / ENDFRAME	SQLite	Event bounds in frames	obs	external	time:Interval, time:numericDuration, time:unitSecond	Converted to absolute times through FRAME.TIMESTAMP.
+EVENT.DESCRIPTION / METADATA	SQLite	Free-text and JSON annotations attached by event builders	—	not-covered	—	Builder-specific payloads; deliberately out of scope.
+Kinect v2 depth camera	profile	Time-of-flight depth camera above the arena, 30 frames/s	tech	hcmo	hcm-tech:Sensor, hcm-tech:hasSensorTechnology, hcm-tech:hasModelNumber, hcm-tech:hasSamplingRateQuantity, hcm-tech:installedIn, hcm-tech:captures
+RFID antennas (16)	profile	4 x 4 grid of low-frequency readers under the floor giving identity	tech	partial	hcm-tech:Sensor, hcm-tech:installedIn, hcm-tech:captures	Each antenna is a sensor capturing animal identity, but HCMO cannot express that identity fusion feeds the tracker, nor the antennas' positions in the grid.
+LMT software / lmt-analysis	profile	Real-time tracking software and the Python event builders	tech	hcmo	hcm-tech:Software, hcm-tech:runsOn, prov:wasAttributedTo	The two software layers are distinguished, and events are attributed to the analysis layer.
+tracking and event-building procedures	profile	Depth segmentation plus identity assignment; frame-based event detection	obs	external	sosa:Procedure, sosa:usedProcedure
+SQLite tables as files	SQLite	ANIMAL, FRAME, DETECTION, EVENT	tech	hcmo	hcm-tech:TimeSeries, hcm-tech:hasFileFormat, hcm-tech:hasStoragePath, hcm-tech:hasSamplingRateQuantity	Each table is referenced as a time series; the single SQLite container is not modelled as a dataset of tables.
+light-dark schedule	profile	12:12, dark from 19:00	env	hcmo	hcm-env:LightCycle, hcm-env:hasDarkPhaseStart, hcm-env:hasDarkPhaseDuration, hcm-env:hasLightPhaseDuration

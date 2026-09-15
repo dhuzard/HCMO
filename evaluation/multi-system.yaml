@@ -10,7 +10,7 @@ systems:
   - id: dvc-tecniplast
     name: Tecniplast DVC (Digital Ventilated Cage)
     modality: capacitive electrode array under each IVC (rack system)
-    data: real
+    data: real + synthetic
     profile: docs/hcm-systems/systems/DVC_Tecniplast/README.md
     mapping: docs/hcm-systems/systems/DVC_Tecniplast/hcmo-mapping.tsv
     generator: docs/hcm-systems/systems/DVC_Tecniplast/generate_hcmo_instance.py
@@ -18,6 +18,8 @@ systems:
     exports:
       - docs/hcm-systems/systems/DVC_Tecniplast/datasets/real/Cohort7623_events.csv
       - docs/hcm-systems/systems/DVC_Tecniplast/datasets/real/Cohort7623_animal_loc__index_smoothed.csv
+      - docs/hcm-systems/systems/DVC_Tecniplast/datasets/mock/mock_B6_F_events.csv
+      - docs/hcm-systems/systems/DVC_Tecniplast/datasets/mock/mock_B6_F_animal_loc__index_smoothed.csv
   - id: tse-phenomaster
     name: TSE PhenoMaster (indirect calorimetry, feeding, drinking, activity)
     modality: metabolic and environmental home-cage phenotyping
@@ -50,6 +52,31 @@ systems:
     graph: examples/systems/fed3.ttl
     exports:
       - docs/hcm-systems/systems/fed3/datasets/mock/FED001_060226_00.CSV
+
+  - id: live-mouse-tracker
+    name: Live Mouse Tracker (LMT)
+    modality: infrared depth video with RFID identity, group-housed
+    data: synthetic
+    profile: docs/hcm-systems/systems/live-mouse-tracker/README.md
+    mapping: docs/hcm-systems/systems/live-mouse-tracker/hcmo-mapping.tsv
+    generator: docs/hcm-systems/systems/live-mouse-tracker/generate_hcmo_instance.py
+    graph: examples/systems/live-mouse-tracker.ttl
+    exports:
+      - docs/hcm-systems/systems/live-mouse-tracker/datasets/mock/ANIMAL.csv
+      - docs/hcm-systems/systems/live-mouse-tracker/datasets/mock/FRAME.csv
+      - docs/hcm-systems/systems/live-mouse-tracker/datasets/mock/DETECTION.csv.gz
+      - docs/hcm-systems/systems/live-mouse-tracker/datasets/mock/EVENT.csv
+  - id: beatbox
+    name: BEATBox (open-source autonomous operant box)
+    modality: home-cage touch-screen operant conditioning and cognitive testing
+    data: synthetic
+    profile: docs/hcm-systems/systems/beatbox/README.md
+    mapping: docs/hcm-systems/systems/beatbox/hcmo-mapping.tsv
+    generator: docs/hcm-systems/systems/beatbox/generate_hcmo_instance.py
+    graph: examples/systems/beatbox.ttl
+    exports:
+      - docs/hcm-systems/systems/beatbox/datasets/mock/beatbox_can_event_log.csv
+      - docs/hcm-systems/systems/beatbox/datasets/mock/beatbox_trials.csv
 
 # Cross-system competency questions executed over the union of the ontology
 # and all system graphs, with complete expected answer rows.

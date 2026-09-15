@@ -2,35 +2,46 @@
 
 # Cross-system competency questions
 
-Executed with rdflib over the union of the canonical ontology and all system instance graphs (36648 triples). `Status` is *answered* when the complete reviewed answer rows are returned, *answered (empty)* when the reviewed answer is the verified absence of rows, and *partial* when the question is answerable only for a subset of systems for a documented reason.
+Executed with rdflib over the union of the canonical ontology and all system instance graphs (64444 triples). `Status` is *answered* when the complete reviewed answer rows are returned, *answered (empty)* when the reviewed answer is the verified absence of rows, and *partial* when the question is answerable only for a subset of systems for a documented reason.
 
 | ID | Question | Modules | Scope | Query | Rows | Status |
 | --- | --- | --- | --- | --- | --- | --- |
-| ms-01-sensor-technologies | Which sensor technologies monitor enclosures in each system, and how many enclosures does each technology cover? | tech, core | cross-system | `evaluation/queries/cq-ms-01-sensor-technologies-by-system.rq` | 7 | answered |
-| ms-02-housed-entities | Per system, are animals housed as identifiable subjects or as cage-level groups, and how many holders and enclosures are assigned? | bio, core | cross-system | `evaluation/queries/cq-ms-02-housed-entities-by-system.rq` | 4 | answered |
-| ms-03-enriched-dark-phase | Which animals or cage groups, across systems, were observed in enriched enclosures during the dark phase of the enclosure's light cycle, and how many such observations exist? | bio, env, obs, core | cross-system | `evaluation/queries/cq-ms-03-enriched-enclosures-dark-phase.rq` | 5 | partial |
+| ms-01-sensor-technologies | Which sensor technologies monitor enclosures in each system, and how many enclosures does each technology cover? | tech, core | cross-system | `evaluation/queries/cq-ms-01-sensor-technologies-by-system.rq` | 14 | answered |
+| ms-02-housed-entities | Per system, are animals housed as identifiable subjects or as cage-level groups, and how many holders and enclosures are assigned? | bio, core | cross-system | `evaluation/queries/cq-ms-02-housed-entities-by-system.rq` | 7 | answered |
+| ms-03-enriched-dark-phase | Which animals or cage groups, across systems, were observed in enriched enclosures during the dark phase of the enclosure's light cycle, and how many such observations exist? | bio, env, obs, core | cross-system | `evaluation/queries/cq-ms-03-enriched-enclosures-dark-phase.rq` | 19 | answered |
 | ms-04-body-weight | Which subjects have body-weight observations, from which sensor, and what are their minimum and maximum recorded weights? | obs, bio, tech | cross-system | `evaluation/queries/cq-ms-04-body-weight-records.rq` | 4 | answered |
-| ms-05-temperature-outside-specification | Which enclosures recorded an environmental value deviating by more than 0.4 units from the target in their environment profile, and how often? | env, obs | single-system | `evaluation/queries/cq-ms-05-temperature-outside-specification.rq` | 3 | answered |
+| ms-05-temperature-outside-specification | Which enclosures recorded an environmental value deviating by more than 0.4 units from the target in their environment profile, and how often? | env, obs | cross-system | `evaluation/queries/cq-ms-05-temperature-outside-specification.rq` | 7 | answered |
 | ms-06-gas-concentration-ranges | For each enclosure with gas-concentration observations, what are the observed ranges per gas property? | obs, env | single-system | `evaluation/queries/cq-ms-06-gas-concentration-ranges.rq` | 8 | answered |
-| ms-07-offline-periods | Which monitored enclosures have evidence-backed offline periods, when did they start, and how many minutes did they last? | core | cross-system | `evaluation/queries/cq-ms-07-offline-periods.rq` | 9 | answered |
-| ms-08-behaviour-categories | Which behaviour categories were recognised, by sensors of which technology, and how many events were recorded per category? | obs, tech | single-system | `evaluation/queries/cq-ms-08-behaviour-categories.rq` | 5 | answered |
-| ms-09-derivation-procedures | Which documented procedures produced observations in each system, and how many observations cite each procedure? | obs, tech | cross-system | `evaluation/queries/cq-ms-09-derivation-procedures.rq` | 4 | partial |
-| ms-10-location-result-tables | Which location result tables exist, with which data dimensions, produced by which sensor at which sampling rate? | obs, tech | single-system | `evaluation/queries/cq-ms-10-location-result-tables.rq` | 2 | answered |
-| ms-11-quantitative-variables | Which quantitative variables does each system deliver as observation results, in which unit, how many observations, and with which mean value? | obs | cross-system | `evaluation/queries/cq-ms-11-quantitative-variables-by-system.rq` | 18 | answered |
-| ms-12-housed-at-reference-times | How many subjects or cage groups were housed in monitored enclosures in each system at two reference times? | bio, core | cross-system | `evaluation/queries/cq-ms-12-housed-at-reference-times.rq` | 4 | answered |
-| ms-13-export-files | Which native export files back each system's instance graph, in which format, and which software or hardware is credited with producing them? | tech | cross-system | `evaluation/queries/cq-ms-13-export-files-and-attribution.rq` | 7 | answered |
+| ms-07-offline-periods | Which monitored enclosures have evidence-backed offline periods, when did they start, and how many minutes did they last? | core | cross-system | `evaluation/queries/cq-ms-07-offline-periods.rq` | 10 | answered |
+| ms-08-behaviour-categories | Which behaviour categories were recognised, by sensors of which technology, and how many events were recorded per category? | obs, tech | cross-system | `evaluation/queries/cq-ms-08-behaviour-categories.rq` | 36 | answered |
+| ms-09-derivation-procedures | Which documented procedures produced observations in each system, and how many observations cite each procedure? | obs, tech | cross-system | `evaluation/queries/cq-ms-09-derivation-procedures.rq` | 7 | partial |
+| ms-10-location-result-tables | Which location result tables exist, with which data dimensions, produced by which sensor at which sampling rate? | obs, tech | cross-system | `evaluation/queries/cq-ms-10-location-result-tables.rq` | 42 | answered |
+| ms-11-quantitative-variables | Which quantitative variables does each system deliver as observation results, in which unit, how many observations, and with which mean value? | obs | cross-system | `evaluation/queries/cq-ms-11-quantitative-variables-by-system.rq` | 29 | answered |
+| ms-12-housed-at-reference-times | How many subjects or cage groups were housed in monitored enclosures in each system at two reference times? | bio, core | cross-system | `evaluation/queries/cq-ms-12-housed-at-reference-times.rq` | 6 | answered |
+| ms-13-export-files | Which native export files back each system's instance graph, in which format, and which software or hardware is credited with producing them? | tech | cross-system | `evaluation/queries/cq-ms-13-export-files-and-attribution.rq` | 15 | answered |
 | ms-14-results-without-units | Which observation results carry a numeric value without a unit? | obs | cross-system | `evaluation/queries/cq-ms-14-results-without-units.rq` | 0 | answered (empty) |
+| ms-15-multi-animal-behaviour | Which recorded behaviours involve more than one animal at the same time, how many animals participate, and how many such behaviour results were recorded? | obs, bio | cross-system | `evaluation/queries/cq-ms-15-multi-animal-behaviour.rq` | 22 | answered |
+| ms-16-cognitive-performance-by-strain | For each mouse strain tested on a touch-screen task, how many trials were run, how many were correct, and what was the mean response latency? | obs, bio, tech | cross-system | `evaluation/queries/cq-ms-16-cognitive-performance-by-strain.rq` | 4 | answered |
 
 
 ## Answers
 
 ### ms-01-sensor-technologies
 
+Eight distinct transduction principles across the six systems: capacitance, infrared beam-break and light curtain, time-of-flight depth imaging, infrared video, load cells, paramagnetic/infrared gas analysis, capacitive touch and low-frequency RFID.
+
 | system | technology | enclosures |
 | --- | --- | --- |
 | eval:fed3/ | infrared photointerrupter | 1 |
+| eval:live-mouse-tracker/ | low-frequency RFID reader | 1 |
+| eval:live-mouse-tracker/ | temperature, humidity, sound and light sensors | 1 |
+| eval:live-mouse-tracker/ | time-of-flight infrared depth imaging | 1 |
 | eval:noldus-phenotyper/ | infrared video | 2 |
-| eval:dvc-tecniplast/ | capacitance (12-electrode array) | 24 |
+| eval:dvc-tecniplast/ | capacitance (12-electrode array) | 32 |
+| eval:dvc-tecniplast/ | temperature and relative-humidity sensor | 32 |
+| eval:beatbox/ | capacitive touch screen | 4 |
+| eval:beatbox/ | infrared beam-break | 4 |
+| eval:beatbox/ | infrared light curtain | 4 |
 | eval:tse-phenomaster/ | infrared light-beam interruption | 4 |
 | eval:tse-phenomaster/ | load cell | 4 |
 | eval:tse-phenomaster/ | paramagnetic O2 and infrared CO2 analysis | 4 |
@@ -39,32 +50,49 @@ Executed with rdflib over the union of the canonical ontology and all system ins
 
 ### ms-02-housed-entities
 
-DVC exports carry no animal identity, so its 24 cages are held by cage-level ExperimentalGroups; the three other systems yield individual Subjects.
+The DVC appears twice: its 64 mock-metadata subjects are housed individually, while its 32 cage-level groups carry the activation-index observations, because the capacitive signal cannot be attributed to an individual in a shared cage. LMT shows four subjects sharing one enclosure.
 
 | system | holderType | holders | enclosures |
 | --- | --- | --- | --- |
 | eval:fed3/ | hcm-bio:Subject | 1 | 1 |
+| eval:live-mouse-tracker/ | hcm-bio:Subject | 4 | 1 |
 | eval:noldus-phenotyper/ | hcm-bio:Subject | 2 | 2 |
-| eval:dvc-tecniplast/ | hcm-bio:ExperimentalGroup | 24 | 24 |
+| eval:dvc-tecniplast/ | hcm-bio:ExperimentalGroup | 32 | 32 |
+| eval:dvc-tecniplast/ | hcm-bio:Subject | 64 | 32 |
+| eval:beatbox/ | hcm-bio:Subject | 4 | 4 |
 | eval:tse-phenomaster/ | hcm-bio:Subject | 4 | 4 |
 
 
 ### ms-03-enriched-dark-phase
 
-Answered for PhenoMaster, PhenoTyper and FED3 (7 holders). Not answerable for DVC: the real export states neither enrichment nor the light schedule, so no DVC row can qualify. The absence is a property of the export, not of the ontology.
+Answerable for all six systems once the DVC light programme and enrichment are stated as mock metadata; before that the DVC could not answer at all. LMT animals appear twice because their arena holds two kinds of enrichment.
 
 | system | holder | enrichmentType | darkObservations |
 | --- | --- | --- | --- |
+| eval:beatbox/ | eval:beatbox/mouse-2 | nesting material | 146 |
+| eval:beatbox/ | eval:beatbox/mouse-4 | nesting material | 151 |
+| eval:beatbox/ | eval:beatbox/mouse-3 | nesting material | 164 |
+| eval:beatbox/ | eval:beatbox/mouse-1 | nesting material | 172 |
 | eval:fed3/ | eval:fed3/mouse-1 | nesting material | 188 |
 | eval:noldus-phenotyper/ | eval:noldus-phenotyper/mouse-1 | shelter | 253 |
 | eval:noldus-phenotyper/ | eval:noldus-phenotyper/mouse-2 | shelter | 253 |
 | eval:tse-phenomaster/ | eval:tse-phenomaster/mouse-1 | nesting material | 36 |
 | eval:tse-phenomaster/ | eval:tse-phenomaster/mouse-2 | nesting material | 36 |
+| eval:live-mouse-tracker/ | eval:live-mouse-tracker/mouse-4 | house | 43 |
+| eval:live-mouse-tracker/ | eval:live-mouse-tracker/mouse-4 | nesting material | 43 |
+| eval:live-mouse-tracker/ | eval:live-mouse-tracker/mouse-1 | house | 47 |
+| eval:live-mouse-tracker/ | eval:live-mouse-tracker/mouse-1 | nesting material | 47 |
+| eval:live-mouse-tracker/ | eval:live-mouse-tracker/mouse-3 | house | 55 |
+| eval:live-mouse-tracker/ | eval:live-mouse-tracker/mouse-3 | nesting material | 55 |
+| eval:live-mouse-tracker/ | eval:live-mouse-tracker/mouse-2 | house | 59 |
+| eval:live-mouse-tracker/ | eval:live-mouse-tracker/mouse-2 | nesting material | 59 |
+| eval:dvc-tecniplast/ | eval:dvc-tecniplast/cage-group-b6-f-12-3400 | nesting material | 60 |
+| eval:dvc-tecniplast/ | eval:dvc-tecniplast/cage-group-b6-f-12-3401 | nesting material | 60 |
 
 
 ### ms-04-body-weight
 
-Only the metabolic system records body weight; the other systems correctly contribute no rows.
+Only the metabolic system weighs animals; the other five correctly contribute no rows.
 
 | subject | sensor | records | minWeight | maxWeight | unit |
 | --- | --- | --- | --- | --- | --- |
@@ -76,11 +104,17 @@ Only the metabolic system records body weight; the other systems correctly contr
 
 ### ms-05-temperature-outside-specification
 
+Joins two systems with different environment layers: DVC rack temperature and humidity against room targets, PhenoMaster box temperature against its set point.
+
 | enclosure | property | target | deviations |
 | --- | --- | --- | --- |
+| eval:dvc-tecniplast/rack-aaaa | eval:dvc-tecniplast/rack-air-temperature | 22.0 | 1 |
 | eval:tse-phenomaster/box-1 | eval:tse-phenomaster/box-air-temperature | 22.5 | 1 |
 | eval:tse-phenomaster/box-3 | eval:tse-phenomaster/box-air-temperature | 22.5 | 1 |
+| eval:dvc-tecniplast/rack-aaaa | eval:dvc-tecniplast/rack-relative-humidity | 50.0 | 11 |
+| eval:dvc-tecniplast/rack-bbbb | eval:dvc-tecniplast/rack-air-temperature | 22.0 | 2 |
 | eval:tse-phenomaster/box-2 | eval:tse-phenomaster/box-air-temperature | 22.5 | 3 |
+| eval:dvc-tecniplast/rack-bbbb | eval:dvc-tecniplast/rack-relative-humidity | 50.0 | 6 |
 
 
 ### ms-06-gas-concentration-ranges
@@ -99,7 +133,7 @@ Only the metabolic system records body weight; the other systems correctly contr
 
 ### ms-07-offline-periods
 
-Real DVC rack events: nine cages were removed during cohort 7623; two of them (343, 3402) never re-appear as INSERTED although the index file keeps streaming values for them.
+Real DVC rack events: nine cages of the real male cohort were removed during cohort 7623, two of which never re-appear although the index file keeps streaming values for them; the synthetic female cohort adds one short removal.
 
 | enclosure | assessment | start | minutes |
 | --- | --- | --- | --- |
@@ -112,12 +146,46 @@ Real DVC rack events: nine cages were removed during cohort 7623; two of them (3
 | eval:dvc-tecniplast/cage-b6-m-12-3418 | eval:dvc-tecniplast/rack-aaaa-cage-detection | 2025-10-16T11:19:19.729000-04:00 | 14359 |
 | eval:dvc-tecniplast/cage-b6-m-12-3420 | eval:dvc-tecniplast/rack-aaaa-cage-detection | 2025-10-16T00:12:53.829000-04:00 | 15026 |
 | eval:dvc-tecniplast/cage-b6-m-12-343 | eval:dvc-tecniplast/rack-aaaa-cage-detection | 2025-10-14T10:27:39.631000-04:00 | 17291 |
+| eval:dvc-tecniplast/cage-b6-f-12-3400 | eval:dvc-tecniplast/rack-bbbb-cage-detection | 2025-10-16T19:32:00-04:00 | 5 |
 
 
 ### ms-08-behaviour-categories
 
+Two vocabularies side by side: five EthoVision classifier categories from infrared video and thirty-one lmt-analysis event names from depth imaging, kept verbatim rather than harmonised.
+
 | technology | behaviorType | events |
 | --- | --- | --- |
+| time-of-flight infrared depth imaging | Approach contact | 10 |
+| time-of-flight infrared depth imaging | Approach rear | 6 |
+| time-of-flight infrared depth imaging | Center Zone | 20 |
+| time-of-flight infrared depth imaging | Contact | 8 |
+| time-of-flight infrared depth imaging | FollowZone Isolated | 14 |
+| time-of-flight infrared depth imaging | Get away | 6 |
+| time-of-flight infrared depth imaging | Group2 | 20 |
+| time-of-flight infrared depth imaging | Group3 | 9 |
+| time-of-flight infrared depth imaging | Group4 | 8 |
+| time-of-flight infrared depth imaging | Move high speed | 22 |
+| time-of-flight infrared depth imaging | Move in contact | 16 |
+| time-of-flight infrared depth imaging | Move isolated | 18 |
+| time-of-flight infrared depth imaging | Nest3 | 9 |
+| time-of-flight infrared depth imaging | Nest4 | 8 |
+| time-of-flight infrared depth imaging | Oral-genital Contact | 8 |
+| time-of-flight infrared depth imaging | Oral-oral Contact | 4 |
+| time-of-flight infrared depth imaging | Periphery Zone | 15 |
+| time-of-flight infrared depth imaging | Rear at periphery | 20 |
+| time-of-flight infrared depth imaging | Rear in centerWindow | 20 |
+| time-of-flight infrared depth imaging | Rear in contact | 16 |
+| time-of-flight infrared depth imaging | Rear isolated | 23 |
+| time-of-flight infrared depth imaging | Side by side Contact | 16 |
+| time-of-flight infrared depth imaging | Side by side Contact, opposite way | 2 |
+| time-of-flight infrared depth imaging | Social approach | 16 |
+| time-of-flight infrared depth imaging | Social escape | 12 |
+| time-of-flight infrared depth imaging | Stop in contact | 6 |
+| time-of-flight infrared depth imaging | Stop isolated | 30 |
+| time-of-flight infrared depth imaging | Train2 | 16 |
+| time-of-flight infrared depth imaging | Train3 | 9 |
+| time-of-flight infrared depth imaging | Train4 | 8 |
+| time-of-flight infrared depth imaging | Water Zone | 17 |
 | infrared video | eating | 10 |
 | infrared video | grooming | 9 |
 | infrared video | rearing supported | 11 |
@@ -127,25 +195,72 @@ Real DVC rack events: nine cages were removed during cohort 7623; two of them (3
 
 ### ms-09-derivation-procedures
 
-DVC contributes no row: its index is derived by proprietary, undocumented cloud software, so only file-level attribution (CQ-MS-13) is possible.
+Five of six systems document their derivation. The DVC contributes no row: its index is derived by proprietary, undocumented cloud software, so only file-level attribution (CQ-MS-13) is possible.
 
 | system | procedure | observations |
 | --- | --- | --- |
 | eval:tse-phenomaster/ | eval:tse-phenomaster/indirect-calorimetry-procedure | 192 |
 | eval:fed3/ | eval:fed3/fr1-left-active | 208 |
+| eval:live-mouse-tracker/ | eval:live-mouse-tracker/depth-tracking-procedure | 4 |
+| eval:live-mouse-tracker/ | eval:live-mouse-tracker/event-building-procedure | 412 |
 | eval:noldus-phenotyper/ | eval:noldus-phenotyper/behavior-recognition | 53 |
+| eval:beatbox/ | eval:beatbox/visual-discrimination-task | 765 |
 | eval:noldus-phenotyper/ | eval:noldus-phenotyper/centre-point-tracking | 961 |
 
 
 ### ms-10-location-result-tables
 
+Two tracking systems with different dimension sets: EthoVision centre-point X/Y in centimetres at 25 Hz, LMT mass/front/back points plus a rearing flag in depth-image pixels at 30 Hz.
+
 | table | dimensionLabel | sensor | samplingRate | rateUnit |
 | --- | --- | --- | --- | --- |
+| eval:live-mouse-tracker/detection-table-1 | BACK_X [px] | eval:live-mouse-tracker/kinect-v2 | 30.0 | unit:HZ |
+| eval:live-mouse-tracker/detection-table-2 | BACK_X [px] | eval:live-mouse-tracker/kinect-v2 | 30.0 | unit:HZ |
+| eval:live-mouse-tracker/detection-table-3 | BACK_X [px] | eval:live-mouse-tracker/kinect-v2 | 30.0 | unit:HZ |
+| eval:live-mouse-tracker/detection-table-4 | BACK_X [px] | eval:live-mouse-tracker/kinect-v2 | 30.0 | unit:HZ |
+| eval:live-mouse-tracker/detection-table-1 | BACK_Y [px] | eval:live-mouse-tracker/kinect-v2 | 30.0 | unit:HZ |
+| eval:live-mouse-tracker/detection-table-2 | BACK_Y [px] | eval:live-mouse-tracker/kinect-v2 | 30.0 | unit:HZ |
+| eval:live-mouse-tracker/detection-table-3 | BACK_Y [px] | eval:live-mouse-tracker/kinect-v2 | 30.0 | unit:HZ |
+| eval:live-mouse-tracker/detection-table-4 | BACK_Y [px] | eval:live-mouse-tracker/kinect-v2 | 30.0 | unit:HZ |
+| eval:live-mouse-tracker/detection-table-1 | BACK_Z [mm] | eval:live-mouse-tracker/kinect-v2 | 30.0 | unit:HZ |
+| eval:live-mouse-tracker/detection-table-2 | BACK_Z [mm] | eval:live-mouse-tracker/kinect-v2 | 30.0 | unit:HZ |
+| eval:live-mouse-tracker/detection-table-3 | BACK_Z [mm] | eval:live-mouse-tracker/kinect-v2 | 30.0 | unit:HZ |
+| eval:live-mouse-tracker/detection-table-4 | BACK_Z [mm] | eval:live-mouse-tracker/kinect-v2 | 30.0 | unit:HZ |
+| eval:live-mouse-tracker/detection-table-1 | FRONT_X [px] | eval:live-mouse-tracker/kinect-v2 | 30.0 | unit:HZ |
+| eval:live-mouse-tracker/detection-table-2 | FRONT_X [px] | eval:live-mouse-tracker/kinect-v2 | 30.0 | unit:HZ |
+| eval:live-mouse-tracker/detection-table-3 | FRONT_X [px] | eval:live-mouse-tracker/kinect-v2 | 30.0 | unit:HZ |
+| eval:live-mouse-tracker/detection-table-4 | FRONT_X [px] | eval:live-mouse-tracker/kinect-v2 | 30.0 | unit:HZ |
+| eval:live-mouse-tracker/detection-table-1 | FRONT_Y [px] | eval:live-mouse-tracker/kinect-v2 | 30.0 | unit:HZ |
+| eval:live-mouse-tracker/detection-table-2 | FRONT_Y [px] | eval:live-mouse-tracker/kinect-v2 | 30.0 | unit:HZ |
+| eval:live-mouse-tracker/detection-table-3 | FRONT_Y [px] | eval:live-mouse-tracker/kinect-v2 | 30.0 | unit:HZ |
+| eval:live-mouse-tracker/detection-table-4 | FRONT_Y [px] | eval:live-mouse-tracker/kinect-v2 | 30.0 | unit:HZ |
+| eval:live-mouse-tracker/detection-table-1 | FRONT_Z [mm] | eval:live-mouse-tracker/kinect-v2 | 30.0 | unit:HZ |
+| eval:live-mouse-tracker/detection-table-2 | FRONT_Z [mm] | eval:live-mouse-tracker/kinect-v2 | 30.0 | unit:HZ |
+| eval:live-mouse-tracker/detection-table-3 | FRONT_Z [mm] | eval:live-mouse-tracker/kinect-v2 | 30.0 | unit:HZ |
+| eval:live-mouse-tracker/detection-table-4 | FRONT_Z [mm] | eval:live-mouse-tracker/kinect-v2 | 30.0 | unit:HZ |
+| eval:live-mouse-tracker/detection-table-1 | MASS_X [px] | eval:live-mouse-tracker/kinect-v2 | 30.0 | unit:HZ |
+| eval:live-mouse-tracker/detection-table-2 | MASS_X [px] | eval:live-mouse-tracker/kinect-v2 | 30.0 | unit:HZ |
+| eval:live-mouse-tracker/detection-table-3 | MASS_X [px] | eval:live-mouse-tracker/kinect-v2 | 30.0 | unit:HZ |
+| eval:live-mouse-tracker/detection-table-4 | MASS_X [px] | eval:live-mouse-tracker/kinect-v2 | 30.0 | unit:HZ |
+| eval:live-mouse-tracker/detection-table-1 | MASS_Y [px] | eval:live-mouse-tracker/kinect-v2 | 30.0 | unit:HZ |
+| eval:live-mouse-tracker/detection-table-2 | MASS_Y [px] | eval:live-mouse-tracker/kinect-v2 | 30.0 | unit:HZ |
+| eval:live-mouse-tracker/detection-table-3 | MASS_Y [px] | eval:live-mouse-tracker/kinect-v2 | 30.0 | unit:HZ |
+| eval:live-mouse-tracker/detection-table-4 | MASS_Y [px] | eval:live-mouse-tracker/kinect-v2 | 30.0 | unit:HZ |
+| eval:live-mouse-tracker/detection-table-1 | MASS_Z [mm] | eval:live-mouse-tracker/kinect-v2 | 30.0 | unit:HZ |
+| eval:live-mouse-tracker/detection-table-2 | MASS_Z [mm] | eval:live-mouse-tracker/kinect-v2 | 30.0 | unit:HZ |
+| eval:live-mouse-tracker/detection-table-3 | MASS_Z [mm] | eval:live-mouse-tracker/kinect-v2 | 30.0 | unit:HZ |
+| eval:live-mouse-tracker/detection-table-4 | MASS_Z [mm] | eval:live-mouse-tracker/kinect-v2 | 30.0 | unit:HZ |
+| eval:live-mouse-tracker/detection-table-1 | REARING [flag] | eval:live-mouse-tracker/kinect-v2 | 30.0 | unit:HZ |
+| eval:live-mouse-tracker/detection-table-2 | REARING [flag] | eval:live-mouse-tracker/kinect-v2 | 30.0 | unit:HZ |
+| eval:live-mouse-tracker/detection-table-3 | REARING [flag] | eval:live-mouse-tracker/kinect-v2 | 30.0 | unit:HZ |
+| eval:live-mouse-tracker/detection-table-4 | REARING [flag] | eval:live-mouse-tracker/kinect-v2 | 30.0 | unit:HZ |
 | eval:noldus-phenotyper/track-table-arena-1 | X center [cm] | eval:noldus-phenotyper/arena-1-camera | 25.0 | unit:HZ |
 | eval:noldus-phenotyper/track-table-arena-1 | Y center [cm] | eval:noldus-phenotyper/arena-1-camera | 25.0 | unit:HZ |
 
 
 ### ms-11-quantitative-variables
+
+Twenty-nine variables in twelve units across six systems: the cross-system inventory that an integration layer needs.
 
 | system | propertyLabel | unit | observations | mean |
 | --- | --- | --- | --- | --- |
@@ -154,38 +269,63 @@ DVC contributes no row: its index is derived by proprietary, undocumented cloud 
 | eval:tse-phenomaster/ | cumulative food intake | unit:GM | 48 | 0.29 |
 | eval:tse-phenomaster/ | box air carbon dioxide concentration | unit:PERCENT | 48 | 0.43 |
 | eval:tse-phenomaster/ | respiratory exchange ratio RER | unit:UNITLESS | 48 | 0.85 |
-| eval:dvc-tecniplast/ | smoothed activation / locomotion index (share of active electrodes per bin) | unit:PERCENT | 720 | 1.82 |
+| eval:live-mouse-tracker/ | arena visible light index (LMT sensor board) | unit:UNITLESS | 10 | 101.24 |
 | eval:tse-phenomaster/ | vertical light-beam interruptions Z (rearing) | unit:NUM | 48 | 11.9 |
 | eval:tse-phenomaster/ | horizontal light-beam interruptions XT+YT | unit:NUM | 48 | 185.21 |
+| eval:dvc-tecniplast/ | smoothed activation / locomotion index (share of active electrodes per bin) | unit:PERCENT | 960 | 2.25 |
 | eval:tse-phenomaster/ | box air oxygen concentration | unit:PERCENT | 48 | 20.63 |
 | eval:noldus-phenotyper/ | distance moved (centre-point) | unit:CentiM | 240 | 209.84 |
+| eval:dvc-tecniplast/ | rack air temperature (REM) | unit:DEG_C | 20 | 22.06 |
 | eval:tse-phenomaster/ | body weight | unit:GM | 48 | 22.4 |
 | eval:tse-phenomaster/ | box air temperature | unit:DEG_C | 48 | 22.47 |
+| eval:live-mouse-tracker/ | arena temperature (LMT sensor board) | unit:DEG_C | 10 | 22.5 |
 | eval:noldus-phenotyper/ | time in movement state | unit:SEC | 240 | 22.91 |
+| eval:live-mouse-tracker/ | arena visible+infrared light index (LMT sensor board) | unit:UNITLESS | 10 | 234.81 |
 | eval:fed3/ | pellet retrieval latency | unit:SEC | 99 | 24.24 |
 | eval:noldus-phenotyper/ | time in shelter zone | unit:SEC | 240 | 29.14 |
 | eval:noldus-phenotyper/ | mean velocity (centre-point) | unit:CentiM-PER-SEC | 240 | 3.5 |
+| eval:beatbox/ | reward collection latency (touch to feeder barrier) | unit:SEC | 207 | 3.68 |
+| eval:beatbox/ | response latency from stimulus display to touch | unit:SEC | 275 | 3.9 |
+| eval:live-mouse-tracker/ | arena sound level index (LMT sensor board) | unit:UNITLESS | 10 | 39.92 |
 | eval:tse-phenomaster/ | carbon dioxide production rate VCO2 | unit:MilliL-PER-HR | 48 | 49.29 |
+| eval:dvc-tecniplast/ | rack relative humidity (REM) | unit:PERCENT | 20 | 49.71 |
+| eval:live-mouse-tracker/ | arena relative humidity (LMT sensor board) | unit:PERCENT | 10 | 51.01 |
 | eval:tse-phenomaster/ | oxygen consumption rate VO2 | unit:MilliL-PER-HR | 48 | 57.89 |
+| eval:beatbox/ | number of self-initiated trials in the session | unit:NUM | 4 | 68.75 |
+| eval:beatbox/ | session accuracy (share of correct trials) | unit:PERCENT | 4 | 75.05 |
 
 
 ### ms-12-housed-at-reference-times
+
+One reference time inside the real DVC recording, one inside the synthetic runs; the DVC count of 72 combines 32 cage groups and 40 subjects housed at that instant.
 
 | system | referenceTime | housed |
 | --- | --- | --- |
 | eval:fed3/ | 2026-06-02T19:30:00+02:00 | 1 |
 | eval:noldus-phenotyper/ | 2026-06-02T19:30:00+02:00 | 2 |
-| eval:dvc-tecniplast/ | 2025-10-20T12:00:00-04:00 | 24 |
+| eval:beatbox/ | 2026-06-02T19:30:00+02:00 | 4 |
+| eval:live-mouse-tracker/ | 2026-06-02T19:30:00+02:00 | 4 |
 | eval:tse-phenomaster/ | 2026-06-02T19:30:00+02:00 | 4 |
+| eval:dvc-tecniplast/ | 2025-10-20T12:00:00-04:00 | 72 |
 
 
 ### ms-13-export-files
 
+Eighteen files in two media types; attribution distinguishes acquisition software, analysis software and the logging device itself.
+
 | series | format | attributedTo |
 | --- | --- | --- |
-| eval:dvc-tecniplast/cohort-7623-activation-index-series | text/csv | eval:dvc-tecniplast/dvc-analytics |
-| eval:dvc-tecniplast/cohort-7623-events-series | text/csv | eval:dvc-tecniplast/dvc-analytics |
+| eval:beatbox/can-event-log | text/csv | eval:beatbox/beatbox-gui |
+| eval:beatbox/trial-table | text/csv | eval:beatbox/beatbox-gui |
+| eval:dvc-tecniplast/b6-f-activation-index-series | text/csv | eval:dvc-tecniplast/dvc-analytics |
+| eval:dvc-tecniplast/b6-f-events-series | text/csv | eval:dvc-tecniplast/dvc-analytics |
+| eval:dvc-tecniplast/b6-m-activation-index-series | text/csv | eval:dvc-tecniplast/dvc-analytics |
+| eval:dvc-tecniplast/b6-m-events-series | text/csv | eval:dvc-tecniplast/dvc-analytics |
 | eval:fed3/fed3-log-series | text/csv | eval:fed3/fed3-device-1 |
+| eval:live-mouse-tracker/lmt-table-event | text/csv | eval:live-mouse-tracker/lmt-analysis |
+| eval:live-mouse-tracker/lmt-table-detection | application/gzip | eval:live-mouse-tracker/lmt-software |
+| eval:live-mouse-tracker/lmt-table-animal | text/csv | eval:live-mouse-tracker/lmt-software |
+| eval:live-mouse-tracker/lmt-table-frame | text/csv | eval:live-mouse-tracker/lmt-software |
 | eval:noldus-phenotyper/behavior-event-series | text/csv | eval:noldus-phenotyper/ethovision-xt |
 | eval:noldus-phenotyper/time-bin-series | text/csv | eval:noldus-phenotyper/ethovision-xt |
 | eval:noldus-phenotyper/track-series-arena-1 | text/csv | eval:noldus-phenotyper/ethovision-xt |
@@ -197,4 +337,46 @@ DVC contributes no row: its index is derived by proprietary, undocumented cloud 
 The reviewed answer is empty: every quantity value in the multi-system graph carries a unit, and the query verifies that absence rather than accepting an unexamined empty result.
 
 _no rows (verified empty answer)_
+
+
+### ms-15-multi-animal-behaviour
+
+Only the group-housed tracking system produces these. Because HCMO's behaviour shape allows exactly one feature of interest, an n-ary LMT event is stored as one shared BehaviorResult observed about each participant; counting distinct features of interest per result recovers the original group size (2, 3 or 4). The participant roles are not recoverable.
+
+| behaviorType | participants | results |
+| --- | --- | --- |
+| Approach contact | 2 | 5 |
+| Approach rear | 2 | 3 |
+| Contact | 2 | 4 |
+| FollowZone Isolated | 2 | 7 |
+| Get away | 2 | 3 |
+| Group2 | 2 | 10 |
+| Group3 | 3 | 3 |
+| Group4 | 4 | 2 |
+| Move in contact | 2 | 8 |
+| Nest3 | 3 | 3 |
+| Nest4 | 4 | 2 |
+| Oral-genital Contact | 2 | 4 |
+| Oral-oral Contact | 2 | 2 |
+| Rear in contact | 2 | 8 |
+| Side by side Contact | 2 | 8 |
+| Side by side Contact, opposite way | 2 | 1 |
+| Social approach | 2 | 8 |
+| Social escape | 2 | 6 |
+| Stop in contact | 2 | 3 |
+| Train2 | 2 | 8 |
+| Train3 | 3 | 3 |
+| Train4 | 4 | 2 |
+
+
+### ms-16-cognitive-performance-by-strain
+
+Cognitive-testing data joined to strain metadata. A trial has no entity of its own in HCMO 0.3.0, so trials are recovered from the categorical choice results and the latency observations that share their phenomenon interval.
+
+| strain | trials | correct | meanLatencySeconds |
+| --- | --- | --- | --- |
+| BALB/cJ | 63 | 43 | 3.81 |
+| 129S1/SvImJ | 70 | 50 | 3.81 |
+| DBA/2J | 71 | 52 | 3.76 |
+| C57BL/6J | 71 | 62 | 4.22 |
 

@@ -47,9 +47,10 @@ values.
 
 | System | Authors | Modality | Key measured parameters | Data / links | Prio | slug |
 |---|---|---|---|---|---|---|
-| **Live Mouse Tracker (LMT)** | de Chaumont et al. | Video (IR depth) + RFID | Group social behavior, individual ID, trajectories | https://micecraft.org/lmt/ ; de Chaumont et al. 2019; Huzard et al. 2022 | P1 | `live-mouse-tracker` |
+| **Live Mouse Tracker (LMT)** ✅ [coverage example](systems/live-mouse-tracker/) | de Chaumont et al. | Video (IR depth) + RFID | Group social behavior, individual ID, trajectories | https://micecraft.org/lmt/ ; de Chaumont et al. 2019; Huzard et al. 2022 | P1 | `live-mouse-tracker` |
 | **MIROSLAV + EnviroSLAV** | Virag et al. | PIR activity + environment | Activity per cage; illumination/temp/humidity | Virag et al. 2024 (bioRxiv), 2025 (Behav Res Methods) | P1 | `miroslav` |
 | **FED3** ✅ [coverage example](systems/fed3/) | Matikainen-Ankney et al. | Operant (nose-poke) + food intake | Pellet retrieval, operant events; SD-card logging | eLife 2021, 10.7554/eLife.66173 | P1 | `fed3` |
+| **BEATBox** ✅ [coverage example](systems/beatbox/) | Open-BeatBox project | Operant (touch screens, nose poke, feeder, IR barriers) in the home cage | Autonomous cognitive testing: trial accuracy, response and reward-collection latencies; CAN inter-module messages | https://open-beatbox.github.io/ ; manual + assembly tutorials | P1 | `beatbox` |
 | **MouseVUER** | Salem et al. | Video (open-source home-cage) | Home-cage video monitoring | Sci Rep 2024, 14:2662 | P2 | `mousevuer` |
 | **MoPSS** (Mouse Position Surveillance System) | Habedank et al. | RFID tunnel reader (Arduino) | Cage-to-cage position / preference test | Behav Res Methods 2022 | P2 | `mopss` |
 | **MyVivarium** | Vidva et al. | IoT / Raspberry Pi | Colony management + real-time ambient sensing (cloud) | Comput Struct Biotechnol J 2025 | P2 | `myvivarium` |

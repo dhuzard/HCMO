@@ -99,11 +99,13 @@ python tooling/validate_isa_native_projection.py  # controlled-loss ISA-JSON/ISA
 
 ## Evaluation against real HCM systems
 
-[`evaluation/`](evaluation/README.md) maps four heterogeneous systems (Tecniplast
-DVC from a real export; TSE PhenoMaster, Noldus PhenoTyper/EthoVision XT and FED3
-from schema-faithful synthetic exports) to HCMO, validates the resulting instance
-graphs with the shapes, runs fourteen cross-system competency questions with exact
-answers, and reports ontology metrics, SHACL and HermiT results. The per-system
+[`evaluation/`](evaluation/README.md) maps six heterogeneous systems to HCMO —
+Tecniplast DVC (from a real export, plus a synthetic cohort and declared
+experimental metadata), TSE PhenoMaster, Noldus PhenoTyper/EthoVision XT, FED3,
+Live Mouse Tracker and BEATBox (from schema-faithful synthetic exports) —
+validates the resulting instance graphs with the shapes, runs sixteen
+cross-system competency questions with exact answers, and reports ontology
+metrics, SHACL and HermiT results. The per-system
 profiles, mapping tables and generators live under
 [`docs/hcm-systems/systems/`](docs/hcm-systems/systems/).
 

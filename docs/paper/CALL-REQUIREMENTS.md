@@ -56,8 +56,8 @@ The CfP requires these fields right after the abstract (drafted in
 - [x] **Quality evidence:** OOPS! pitfall scan + FOOPS! FAIR score + reasoner
       (no unsat/cycles) + SHACL validation + competency-question results (T5) →
       `evaluation/reports/` (metrics, SHACL, HermiT) + archived OOPS!/FOOPS!.
-- [x] **Coverage evidence:** four HCM systems mapped from native exports (one
-      real) with SHACL-conformant instance graphs and 14 cross-system CQs answered
+- [x] **Coverage evidence:** six HCM systems mapped from native exports (one
+      real) with SHACL-conformant instance graphs and 16 cross-system CQs answered
       on instance data → `evaluation/reports/coverage.md`,
       `competency-questions.md`.
 - [x] Shapes, positive and negative examples, eleven canonical competency

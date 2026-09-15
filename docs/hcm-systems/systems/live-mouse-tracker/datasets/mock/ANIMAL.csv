@@ -1,0 +1,5 @@
+ID,RFID,NAME,GENOTYPE,AGE,SEX,STRAIN,SETUP
+1,000000000001,Mouse A,WT,12,male,B6.129-Shank3tm2Gfng/J,"LMT arena 50x50 cm, Kinect v2 30 fps, 16 RFID antennas, scale 0.1250 cm/px"
+2,000000000002,Mouse B,WT,12,male,B6.129-Shank3tm2Gfng/J,"LMT arena 50x50 cm, Kinect v2 30 fps, 16 RFID antennas, scale 0.1250 cm/px"
+3,000000000003,Mouse C,KO,12,male,B6.129-Shank3tm2Gfng/J,"LMT arena 50x50 cm, Kinect v2 30 fps, 16 RFID antennas, scale 0.1250 cm/px"
+4,000000000004,Mouse D,KO,12,male,B6.129-Shank3tm2Gfng/J,"LMT arena 50x50 cm, Kinect v2 30 fps, 16 RFID antennas, scale 0.1250 cm/px"

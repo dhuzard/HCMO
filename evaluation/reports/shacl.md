@@ -21,10 +21,12 @@ Validation runs with the canonical ontology as `ont_graph` and RDFS entailment, 
 
 | System | Triples | Conforms | Violations |
 | --- | --- | --- | --- |
-| dvc-tecniplast | 10682 | yes | 0 |
+| dvc-tecniplast | 17341 | yes | 0 |
 | tse-phenomaster | 6971 | yes | 0 |
 | noldus-phenotyper | 13347 | yes | 0 |
 | fed3 | 4251 | yes | 0 |
+| live-mouse-tracker | 7697 | yes | 0 |
+| beatbox | 13440 | yes | 0 |
 
 
 ## Injected negative probes on the system graphs (must be rejected)
@@ -47,6 +49,14 @@ Validation runs with the canonical ontology as `ont_graph` and RDFS entailment, 
 | fed3 | reversed housing interval | no | 2 |
 | fed3 | overlapping housing assignment | no | 2 |
 | fed3 | enclosure without sensor | no | 1 |
+| live-mouse-tracker | unitless quantity value | no | 3 |
+| live-mouse-tracker | reversed housing interval | no | 2 |
+| live-mouse-tracker | overlapping housing assignment | no | 2 |
+| live-mouse-tracker | enclosure without sensor | no | 1 |
+| beatbox | unitless quantity value | no | 3 |
+| beatbox | reversed housing interval | no | 2 |
+| beatbox | overlapping housing assignment | no | 2 |
+| beatbox | enclosure without sensor | no | 1 |
 
 
 ## Intentionally invalid fixtures from the release manifest

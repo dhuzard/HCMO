@@ -7,15 +7,32 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Added
 
+- Extended the multi-system coverage evaluation to **six** HCM systems by adding
+  the **Live Mouse Tracker** (group-housed depth video with RFID identity; the
+  `lmt-analysis` ANIMAL/FRAME/DETECTION/EVENT table layout and its exact event
+  vocabulary, in a four-mouse Shank3 WT/KO scenario) and **BEATBox** (open-source
+  home-cage touch-screen operant box; the published inter-module CAN protocol
+  plus a designed trial table, with four single-housed mice of different strains
+  on a two-choice visual discrimination task).
+- Completed the **Tecniplast DVC** profile with the experimental metadata its
+  export omits, each linked to a dataset note that marks it as declared rather
+  than measured: light programme (lights off 19:00-07:00), rack temperature and
+  humidity from the rack environmental monitor, two C57BL/6J mice per cage with
+  male and female cohorts, weekly Wednesday cage changes, GM500 cages and DVC
+  Analytics 3.5. Added a synthetic female cohort on a second rack, so the graph
+  now covers 32 cages, 64 subjects and 960 activation-index bins.
+- Added two cross-system competency questions exercising the new systems:
+  behaviours involving several animals at once (recovering LMT group sizes of
+  two, three and four from the shared-result pattern) and touch-screen trial
+  count, accuracy and latency per mouse strain.
 - Added a multi-system coverage evaluation (`evaluation/`): four HCM systems
   (Tecniplast DVC from a real cohort export; TSE PhenoMaster, Noldus PhenoTyper
   with EthoVision XT and FED3 from schema-faithful synthetic exports) each with a
   system profile, a native-concept → HCMO mapping table, a deterministic
   generator and a SHACL-conformant instance graph under `examples/systems/`.
-- Added fourteen cross-system competency questions with complete expected
-  answers (`evaluation/queries/`), executed over the union of the ontology and
-  the four instance graphs; two are reported as partial because the DVC export
-  states no light schedule and no documented derivation procedure.
+- Added cross-system competency questions with complete expected answers
+  (`evaluation/queries/`), executed over the union of the ontology and every
+  instance graph; sixteen questions now run over six systems.
 - Added `tooling/evaluate.py`, which writes deterministic coverage,
   competency-question, SHACL, ontology-metrics and HermiT reports under
   `evaluation/reports/`, and `tooling/hcmo_instance.py`, the shared ABox

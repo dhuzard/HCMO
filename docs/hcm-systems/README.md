@@ -37,6 +37,8 @@ hcm-systems/
     tse-phenomaster/        #   metabolic (synthetic schema-faithful export)
     noldus-phenotyper/      #   video + EthoVision XT (synthetic schema-faithful exports)
     fed3/                   #   open-source operant feeder (synthetic schema-faithful log)
+    live-mouse-tracker/     #   group-housed depth video + RFID (synthetic schema-faithful SQLite tables)
+    beatbox/                #   open-source touch-screen operant box (synthetic outputs)
 ```
 
 Each system folder also carries `hcmo-mapping.tsv` (native concept → HCMO) and a
@@ -53,8 +55,10 @@ is documented in [`../../evaluation/README.md`](../../evaluation/README.md).
   and its real-data instance graph is `../../examples/systems/dvc-tecniplast.ttl`.
   Use it as the template for how a filled-in system folder should look.
 - **[`systems/tse-phenomaster/`](systems/tse-phenomaster/)**,
-  **[`systems/noldus-phenotyper/`](systems/noldus-phenotyper/)** and
-  **[`systems/fed3/`](systems/fed3/)** — metabolic, video and operant systems
+  **[`systems/noldus-phenotyper/`](systems/noldus-phenotyper/)**,
+  **[`systems/fed3/`](systems/fed3/)**,
+  **[`systems/live-mouse-tracker/`](systems/live-mouse-tracker/)** and
+  **[`systems/beatbox/`](systems/beatbox/)** — metabolic, video, group-social and operant systems
   mapped from **synthetic, schema-faithful** exports (no redistributable real data
   yet). Each has a profile, a mapping table, a deterministic generator and an
   instance graph under `examples/systems/`.
