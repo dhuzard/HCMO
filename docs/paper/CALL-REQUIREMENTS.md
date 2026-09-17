@@ -9,6 +9,12 @@ Until that call is published, the requirements below use the
 as an explicitly provisional planning baseline. Re-verify every provisional
 item against the 2027 call before submission.
 
+Reference examples: the official
+[ESWC 2026 accepted main-track papers page](https://2026.eswc-conferences.org/program/accepted-papers/main-tracks/)
+lists the Resources Track papers separately and links to their available PDFs.
+Use these papers as structural and presentation examples, not as substitutes
+for the forthcoming ESWC 2027 submission rules.
+
 ## A. Submission mechanics
 
 - [ ] **Format / template:** Springer **LNCS** (LaTeX strongly preferred).
