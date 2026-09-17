@@ -4,7 +4,10 @@ HCMO developed through four stages:
 
 1. The community-developed [COST TEATIME Olog](https://www.cost-teatime.org/about/hcm-definition/)
    established structured terminology for the home-cage monitoring domain and
-   is the closest conceptual precursor to HCMO.
+   is the closest conceptual precursor to HCMO. Its deposited source is archived
+   as Zenodo version DOI
+   [10.5281/zenodo.22646369](https://doi.org/10.5281/zenodo.22646369), with
+   concept DOI [10.5281/zenodo.22646368](https://doi.org/10.5281/zenodo.22646368).
 2. During the first half of 2025, Damien Huzard began translating the broader
    domain need into a machine-actionable ontology through Metadatapp's
    semantic-development work and related grant preparation.

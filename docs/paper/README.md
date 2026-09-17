@@ -64,6 +64,9 @@ docs/paper/
 - Code repository: <https://github.com/dhuzard/HCMO>
 - Version DOI (Zenodo, v0.3.0): <https://doi.org/10.5281/zenodo.22208202>
 - Concept DOI (all versions): <https://doi.org/10.5281/zenodo.18925284>
+- Conceptual precursor: HCM Definition Olog on Zenodo, version DOI
+  <https://doi.org/10.5281/zenodo.22646369> and concept DOI
+  <https://doi.org/10.5281/zenodo.22646368>
 - License: CC BY 4.0
 - Standards reused: SOSA/SSN, OWL-Time, PROV, BFO/IAO, QUDT 3.4.0; SHACL; JSON-LD
 - Engineering: release manifest, modular Turtle, reproducible build, CI gate,

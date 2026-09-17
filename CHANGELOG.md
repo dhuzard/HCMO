@@ -5,6 +5,13 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ## [Unreleased]
 
+### Added
+
+- Recorded the deposited COST TEATIME Home Cage Monitoring Definition Olog
+  Zenodo DOI in provenance, README, system references, and paper bibliography
+  metadata. This is a documentation/provenance update only; no HCMO term IRI,
+  axiom, or release DOI changed.
+
 ### Changed
 
 - Added Philippe Rocca-Serra as a middle author, with ORCID, Oxford affiliation,

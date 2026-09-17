@@ -168,7 +168,10 @@ We gratefully acknowledge the Olog's authors and the TEATIME community: the
 Olog established an important conceptual foundation and domain vocabulary;
 HCMO independently formalises and substantially extends the domain using OWL,
 established external ontologies, SHACL constraints, competency questions, and
-reproducible validation. The versioned Olog source is available from its
+reproducible validation. The deposited Olog source is archived on Zenodo as
+version DOI [10.5281/zenodo.22646369](https://doi.org/10.5281/zenodo.22646369)
+with concept DOI [10.5281/zenodo.22646368](https://doi.org/10.5281/zenodo.22646368);
+the corresponding repository source is available from its
 [`v1.0.0` release](https://github.com/NeuroBAU/HCM-Definition/releases/tag/v1.0.0).
 
 ## Contributors
