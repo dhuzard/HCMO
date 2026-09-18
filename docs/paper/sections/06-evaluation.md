@@ -75,7 +75,15 @@ and the re-housed animal's observations resolve to its new enclosure through
 the authoritative assignment. The declared mixed model is executed against the
 generated CSV with pinned numerical dependencies; the model serialization and
 the active-versus-vehicle contrast at standard enrichment use distinct exact
-row fragments. Dedicated shapes and
+row fragments. The generated input matrix is available at
+[`examples/isa-roundtrip/data/dark-phase-activity.csv`](https://github.com/dhuzard/HCMO/blob/main/examples/isa-roundtrip/data/dark-phase-activity.csv),
+and the STATO-annotated result matrix at
+[`examples/isa-roundtrip/data/model-results.csv`](https://github.com/dhuzard/HCMO/blob/main/examples/isa-roundtrip/data/model-results.csv).
+Its STATO-typed entities and exact fragment links are in
+[`examples/isa-roundtrip/canonical.ttl`](https://github.com/dhuzard/HCMO/blob/main/examples/isa-roundtrip/canonical.ttl),
+with an artifact guide at
+[`examples/isa-roundtrip/README.md`](https://github.com/dhuzard/HCMO/blob/main/examples/isa-roundtrip/README.md).
+Dedicated shapes and
 injected probes reject overlapping, orphaned, reversed, or incompletely
 generated housing assignments; generated replacement animals; observation/
 housing mismatch; group/factor disagreement; and fabricated ISA assignment
@@ -115,11 +123,14 @@ required rules and all ISA-specific required rules. Its full inherited ISA run
 has one isolated upstream conflict: the embedded ISA profile requires RO-Crate
 1.1 although its minimal ISA fixture uses the 1.2 context. We report this as
 interoperability evidence, not formal conformance. Separately, pinned
-`isatools` 0.14.3 validates an executable native projection and round trip for
-the genuine Source-to-Sample collection. Exact HCMO identifiers survive as ISA
-comments. The test deliberately excludes non-native housing, direct whole-
+`isatools` 0.14.3 reproducibly generates checked-in ISA-JSON and ISA-Tab files
+and validates their round trip for the genuine Source-to-Sample collection.
+Exact HCMO identifiers survive as ISA comments. The test deliberately excludes non-native housing, direct whole-
 animal assay, source-bound factor assignment, group, repeated-observation, and
-semantic-result/file-fragment structures and checks their loss manifests.
+semantic-result/file-fragment structures and checks their loss manifests. The
+generated files and modeling decisions are documented under
+`examples/isa-roundtrip/native-isa/`.
 
-*Figure F3: Executable 2 × 2 round-trip fixture and its tested identity,
-housing, observation, statistical-result, file-fragment, and Source/Sample paths.*
+*Figure F3: Process/output roles in the executable 2 × 2 fixture. The native
+ISA-API Source-to-Sample path is distinguished from the richer HCMO
+RDF/extended-crate paths and their declared native-projection losses.*

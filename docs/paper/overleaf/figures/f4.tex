@@ -1,0 +1,57 @@
+\begin{figure*}[t]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+  node distance=7mm and 10mm,
+  layer/.style={draw, rounded corners=1.5pt, align=left, minimum height=16mm,
+    text width=49mm, font=\scriptsize, inner sep=5pt},
+  evidence/.style={draw, dashed, rounded corners=1.5pt, align=left,
+    minimum height=19mm, text width=49mm, font=\scriptsize, inner sep=5pt},
+  check/.style={draw, rounded corners=1.5pt, align=left, minimum height=17mm,
+    text width=49mm, font=\scriptsize, inner sep=5pt},
+  claim/.style={draw, very thick, rounded corners=1.5pt, align=left,
+    minimum height=17mm, text width=49mm, font=\scriptsize, inner sep=5pt},
+  flow/.style={-{Latex[length=1.8mm]}, thick, font=\tiny, align=center}
+]
+\node[layer, fill=blue!8] (ontology) {\textbf{Normative HCMO ontology (schema level)}\\
+  \texttt{ontology/modules/*.ttl}\\
+  \texttt{dist/hcmo.owl}\\
+  HCMO classes, properties, and\\reviewed external anchors};
+
+\node[layer, fill=yellow!12, right=of ontology] (contract) {\textbf{External-vocabulary contract}\\
+  \texttt{external-vocabularies.yaml}\\
+  Pins versions and checksums; OBI and\\STATO are classified as evidence-only};
+
+\node[evidence, fill=violet!8, below=of ontology] (slice) {\textbf{Minimal instance evidence slice}\\
+  \texttt{examples/isa-hcmo-bridge.ttl}\\
+  Recording, transformation, factor, group,\\and result instances use PROV-O, OBI,\\STATO, and ISA/Bioschemas types};
+
+\node[evidence, fill=violet!8, below=of contract] (roundtrip) {\textbf{Generated round-trip fixture}\\
+  \texttt{examples/isa-roundtrip/canonical.ttl}\\
+  \texttt{examples/isa-roundtrip/}\\
+  Canonical HCMO RDF and extended ISA\\RO-Crate; native ISA projection;\\controlled-loss manifests};
+
+\node[check, fill=green!9, below=of slice] (checks) {\textbf{Executable checks for both fixtures}\\
+  \texttt{shapes/isa-hcmo-evidence-shapes.ttl}\\
+  \texttt{queries/cq-isa-*.rq}\\
+  \texttt{tooling/validate*.py}};
+
+\node[claim, fill=red!7, below=of roundtrip] (scope) {\textbf{Claim boundary}\\
+  Tested: instance-level interoperability.\\
+  Not asserted: HCMO--OBI/STATO\\class mappings.\\
+  Not claimed: formal ISA RO-Crate\\conformance.};
+
+\draw[flow] (ontology) -- node[left]{provides HCMO\\types and relations} (slice);
+\draw[flow] (contract) -- node[right]{pins external\\evidence terms} (roundtrip);
+\draw[flow] (slice) -- (checks);
+\draw[flow] (roundtrip.south) to[bend left=15] (checks.north east);
+\draw[flow] (checks) -- (scope);
+\end{tikzpicture}%
+}
+\caption{Separation between HCMO's normative ontology and its instance-level
+interoperability evidence. OBI, STATO, and ISA/Bioschemas occur in the linked
+example fixtures and checks; their use there is not an HCMO class mapping or a
+formal ISA conformance claim. Repository-relative paths identify the executable
+artifacts behind each claim.}
+\label{fig:evidence-layers}
+\end{figure*}
