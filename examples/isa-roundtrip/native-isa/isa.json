@@ -1,0 +1,116 @@
+{
+  "comments": [],
+  "description": "Native ISA Source-to-Sample overlap only",
+  "identifier": "HCMO-ISA-NATIVE-1",
+  "ontologySourceReferences": [],
+  "people": [],
+  "publicReleaseDate": "2026-07-31",
+  "publications": [],
+  "studies": [
+    {
+      "assays": [],
+      "characteristicCategories": [],
+      "comments": [],
+      "description": "One genuine Source-to-Sample collection",
+      "factors": [],
+      "filename": "s_hcmo.txt",
+      "identifier": "HCMO-S1",
+      "materials": {
+        "otherMaterials": [],
+        "samples": [
+          {
+            "@id": "#sample/tissue-specimen-animal-8",
+            "characteristics": [],
+            "comments": [
+              {
+                "name": "HCMO IRI",
+                "value": "https://example.org/hcmo/isa-roundtrip/tissue-sample-animal-8"
+              }
+            ],
+            "derivesFrom": [
+              {
+                "@id": "#source/animal-8"
+              }
+            ],
+            "factorValues": [],
+            "name": "tissue specimen animal 8"
+          }
+        ],
+        "sources": [
+          {
+            "@id": "#source/animal-8",
+            "characteristics": [],
+            "comments": [
+              {
+                "name": "HCMO IRI",
+                "value": "https://example.org/hcmo/isa-roundtrip/animal-8"
+              }
+            ],
+            "name": "animal-8"
+          }
+        ]
+      },
+      "people": [],
+      "processSequence": [
+        {
+          "@id": "#process/specimen-collection",
+          "comments": [
+            {
+              "name": "HCMO IRI",
+              "value": "https://example.org/hcmo/isa-roundtrip/process-specimen-collection"
+            }
+          ],
+          "date": "",
+          "executesProtocol": {
+            "@id": "#protocol/sample-collection"
+          },
+          "inputs": [
+            {
+              "@id": "#source/animal-8"
+            }
+          ],
+          "name": "sample collection",
+          "outputs": [
+            {
+              "@id": "#sample/tissue-specimen-animal-8"
+            }
+          ],
+          "parameterValues": [],
+          "performer": ""
+        }
+      ],
+      "protocols": [
+        {
+          "@id": "#protocol/sample-collection",
+          "comments": [
+            {
+              "name": "HCMO IRI",
+              "value": "https://example.org/hcmo/isa-roundtrip/protocol-specimen-collection"
+            }
+          ],
+          "components": [],
+          "description": "",
+          "name": "sample collection",
+          "parameters": [],
+          "protocolType": {
+            "@id": "#ontology-annotation/sample-collection",
+            "annotationValue": "sample collection",
+            "comments": [],
+            "termAccession": "",
+            "termSource": ""
+          },
+          "uri": "",
+          "version": ""
+        }
+      ],
+      "publicReleaseDate": "2026-07-31",
+      "publications": [],
+      "studyDesignDescriptors": [],
+      "submissionDate": "2026-07-31",
+      "title": "HCMO specimen-collection projection",
+      "unitCategories": []
+    }
+  ],
+  "submissionDate": "2026-07-31",
+  "title": "HCMO native ISA projection"
+}

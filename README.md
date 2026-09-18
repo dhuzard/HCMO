@@ -92,7 +92,9 @@ python tooling/validate_isa_native_projection.py  # controlled-loss ISA-JSON/ISA
 - **`tooling/validate_isa_native_projection.py`** executes the native ISA
   overlap through ISA-JSON → ISA-Tab → ISA-JSON: one animal Source generates
   one real tissue Sample. It tests identity preservation without fabricating an
-  animal Sample proxy; all non-native HCMO/STATO losses remain explicit.
+  animal Sample proxy; all non-native HCMO/STATO losses remain explicit. The
+  reproducible ISA-API outputs and the Figure 3 modeling decisions are under
+  **`examples/isa-roundtrip/native-isa/`**; pass `--write` to regenerate them.
 
 ## Consuming the ontology
 
@@ -106,7 +108,10 @@ python tooling/validate_isa_native_projection.py  # controlled-loss ISA-JSON/ISA
   ingestion; `shapes/isa-hcmo-evidence-shapes.ttl` covers the pinned ISA/STATO
   bridge, while `shapes/isa-hcmo-roundtrip-shapes.ttl` covers the generated
   2 × 2 extended ISA RO-Crate. See `examples/` for conformant,
-  intentionally-invalid, and controlled-loss fixtures.
+  intentionally-invalid, and controlled-loss fixtures. The
+  **`examples/isa-roundtrip/README.md`** artifact map links the raw matrix,
+  STATO-annotated result matrix, RDF/RO-Crate serializations, native ISA files,
+  loss manifests, and exact-answer queries.
 - **External source contract:** read `external-vocabularies.yaml` for pinned
   versions, canonical term namespaces, used-term allowlists, and checksums.
 - **Everything is discoverable from `hcmo.yaml`** — resolve module, dist, shapes,

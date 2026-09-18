@@ -9,6 +9,7 @@ its internal JSON identifiers.
 """
 from __future__ import annotations
 
+import argparse
 import io
 import json
 import logging
@@ -22,12 +23,19 @@ from rdflib import RDF, Graph, Namespace, URIRef
 EXPECTED_ISATOOLS = "0.14.3"
 ROOT = Path(__file__).resolve().parent.parent
 CANONICAL = ROOT / "examples" / "isa-roundtrip" / "canonical.ttl"
+GENERATED = ROOT / "examples" / "isa-roundtrip" / "native-isa"
 SOURCE_IRI = "https://example.org/hcmo/isa-roundtrip/animal-8"
 SAMPLE_IRI = "https://example.org/hcmo/isa-roundtrip/tissue-sample-animal-8"
 PROCESS_IRI = "https://example.org/hcmo/isa-roundtrip/process-specimen-collection"
+PROTOCOL_IRI = "https://example.org/hcmo/isa-roundtrip/protocol-specimen-collection"
 SCHEMA = Namespace("http://schema.org/")
 PROV = Namespace("http://www.w3.org/ns/prov#")
 BIOSCHEMAS = Namespace("https://bioschemas.org/")
+GENERATED_FILES = (
+    Path("isa.json"),
+    Path("isatab") / "i_investigation.txt",
+    Path("isatab") / "s_hcmo.txt",
+)
 
 
 def require_canonical_pattern() -> None:
@@ -108,19 +116,8 @@ def assert_returned_semantics(investigation) -> None:
         raise AssertionError("collection Process output is not the genuine Sample")
 
 
-def main() -> int:
-    try:
-        installed = version("isatools")
-    except PackageNotFoundError:
-        print("[FAIL] isatools is not installed; install tooling/interoperability-requirements.txt")
-        return 1
-    if installed != EXPECTED_ISATOOLS:
-        print(f"[FAIL] isatools {installed} installed; expected {EXPECTED_ISATOOLS}")
-        return 1
-
-    from isatools import isajson, isatab
-    from isatools.convert import isatab2json, json2isatab
-    from isatools.isajson import ISAJSONEncoder
+def build_investigation():
+    """Build the deterministic ISA-API representation of the native overlap."""
     from isatools.model import (
         Comment,
         Investigation,
@@ -132,78 +129,154 @@ def main() -> int:
         Study,
     )
 
+    investigation = Investigation(
+        id_="#investigation/hcmo-native",
+        filename="i_investigation.txt",
+        identifier="HCMO-ISA-NATIVE-1",
+        title="HCMO native ISA projection",
+        description="Native ISA Source-to-Sample overlap only",
+        submission_date="2026-07-31",
+        public_release_date="2026-07-31",
+    )
+    study = Study(
+        id_="#study/hcmo-specimen-collection",
+        filename="s_hcmo.txt",
+        identifier="HCMO-S1",
+        title="HCMO specimen-collection projection",
+        description="One genuine Source-to-Sample collection",
+        submission_date="2026-07-31",
+        public_release_date="2026-07-31",
+    )
+    investigation.studies.append(study)
+    source = Source(
+        id_="#source/animal-8",
+        name="animal-8",
+        comments=[Comment(name="HCMO IRI", value=SOURCE_IRI)],
+    )
+    sample = Sample(
+        id_="#sample/tissue-specimen-animal-8",
+        name="tissue specimen animal 8",
+        derives_from=[source],
+        comments=[Comment(name="HCMO IRI", value=SAMPLE_IRI)],
+    )
+    study.sources.append(source)
+    study.samples.append(sample)
+    protocol = Protocol(
+        id_="#protocol/sample-collection",
+        name="sample collection",
+        protocol_type=OntologyAnnotation(
+            id_="#ontology-annotation/sample-collection",
+            term="sample collection",
+        ),
+        comments=[Comment(name="HCMO IRI", value=PROTOCOL_IRI)],
+    )
+    study.protocols.append(protocol)
+    study.process_sequence.append(
+        Process(
+            id_="#process/specimen-collection",
+            name="sample collection",
+            executes_protocol=protocol,
+            inputs=[source],
+            outputs=[sample],
+            comments=[Comment(name="HCMO IRI", value=PROCESS_IRI)],
+        )
+    )
+    return investigation
+
+
+def render_projection(root: Path):
+    """Render ISA-JSON and ISA-Tab with ISA-API, then validate the round trip."""
+    from isatools import isajson, isatab
+    from isatools.convert import isatab2json, json2isatab
+    from isatools.isajson import ISAJSONEncoder
+
+    investigation = build_investigation()
+    json_path = root / "isa.json"
+    tab_dir = root / "isatab"
+    tab_dir.mkdir(parents=True)
+    json_path.write_text(
+        json.dumps(investigation, cls=ISAJSONEncoder, sort_keys=True, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    with json_path.open(encoding="utf-8") as stream:
+        validate_json(stream, "initial")
+    with json_path.open(encoding="utf-8") as stream:
+        json2isatab.convert(stream, str(tab_dir), validate_first=True)
+    investigation_path = tab_dir / "i_investigation.txt"
+    with investigation_path.open(encoding="utf-8") as stream:
+        tab_report = isatab.validate(stream, log_level=logging.ERROR)
+    if tab_report["errors"]:
+        raise AssertionError(f"ISA-Tab errors: {tab_report['errors']}")
+    returned_dict = isatab2json.convert(str(tab_dir), validate_first=True, use_new_parser=True)
+    if returned_dict is None:
+        raise AssertionError("ISA-Tab-to-ISA-JSON conversion returned no document")
+    returned_json = json.dumps(returned_dict)
+    validate_json(io.StringIO(returned_json), "returned")
+    returned = isajson.load(io.StringIO(returned_json))
+    assert_returned_semantics(returned)
+
+    actual_files = tuple(
+        sorted(path.relative_to(root) for path in root.rglob("*") if path.is_file())
+    )
+    if actual_files != tuple(sorted(GENERATED_FILES)):
+        raise AssertionError(f"unexpected generated file set: {actual_files}")
+
+
+def sync_or_check_generated(rendered: Path, write: bool) -> None:
+    """Write the checked-in projection or fail when it is stale."""
+    for relative_path in GENERATED_FILES:
+        source_path = rendered / relative_path
+        target_path = GENERATED / relative_path
+        if write:
+            target_path.parent.mkdir(parents=True, exist_ok=True)
+            target_path.write_bytes(source_path.read_bytes())
+        elif not target_path.exists():
+            raise AssertionError(
+                f"generated native ISA artifact is missing: {target_path.relative_to(ROOT)}; "
+                "run this command with --write"
+            )
+        elif source_path.read_bytes() != target_path.read_bytes():
+            raise AssertionError(
+                f"generated native ISA artifact is stale: {target_path.relative_to(ROOT)}; "
+                "run this command with --write"
+            )
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--write",
+        action="store_true",
+        help="regenerate the checked-in native ISA-JSON and ISA-Tab artifacts",
+    )
+    return parser.parse_args()
+
+
+def main() -> int:
+    args = parse_args()
+    try:
+        installed = version("isatools")
+    except PackageNotFoundError:
+        print("[FAIL] isatools is not installed; install tooling/interoperability-requirements.txt")
+        return 1
+    if installed != EXPECTED_ISATOOLS:
+        print(f"[FAIL] isatools {installed} installed; expected {EXPECTED_ISATOOLS}")
+        return 1
+
     try:
         require_canonical_pattern()
-        investigation = Investigation(
-            identifier="HCMO-ISA-NATIVE-1",
-            title="HCMO native ISA projection",
-            description="Native ISA Source-to-Sample overlap only",
-            submission_date="2026-07-31",
-            public_release_date="2026-07-31",
-        )
-        study = Study(
-            filename="s_hcmo.txt",
-            identifier="HCMO-S1",
-            title="HCMO specimen-collection projection",
-            description="One genuine Source-to-Sample collection",
-            submission_date="2026-07-31",
-            public_release_date="2026-07-31",
-        )
-        investigation.studies.append(study)
-        source = Source(
-            name="animal-8",
-            comments=[Comment(name="HCMO IRI", value=SOURCE_IRI)],
-        )
-        sample = Sample(
-            name="tissue specimen animal 8",
-            derives_from=[source],
-            comments=[Comment(name="HCMO IRI", value=SAMPLE_IRI)],
-        )
-        study.sources.append(source)
-        study.samples.append(sample)
-        protocol = Protocol(
-            name="sample collection",
-            protocol_type=OntologyAnnotation(term="sample collection"),
-        )
-        study.protocols.append(protocol)
-        study.process_sequence.append(
-            Process(
-                name="sample collection",
-                executes_protocol=protocol,
-                inputs=[source],
-                outputs=[sample],
-            )
-        )
-
         with tempfile.TemporaryDirectory(prefix="hcmo-native-isa-") as tmp:
             root = Path(tmp)
-            json_path = root / "isa.json"
-            tab_dir = root / "isatab"
-            tab_dir.mkdir()
-            json_path.write_text(
-                json.dumps(investigation, cls=ISAJSONEncoder, sort_keys=True, indent=2),
-                encoding="utf-8",
-            )
-            with json_path.open(encoding="utf-8") as stream:
-                validate_json(stream, "initial")
-            with json_path.open(encoding="utf-8") as stream:
-                json2isatab.convert(stream, str(tab_dir), validate_first=True)
-            investigation_path = tab_dir / "i_investigation.txt"
-            with investigation_path.open(encoding="utf-8") as stream:
-                tab_report = isatab.validate(stream, log_level=logging.ERROR)
-            if tab_report["errors"]:
-                raise AssertionError(f"ISA-Tab errors: {tab_report['errors']}")
-            returned_dict = isatab2json.convert(str(tab_dir), validate_first=True, use_new_parser=True)
-            if returned_dict is None:
-                raise AssertionError("ISA-Tab-to-ISA-JSON conversion returned no document")
-            returned_json = json.dumps(returned_dict)
-            validate_json(io.StringIO(returned_json), "returned")
-            returned = isajson.load(io.StringIO(returned_json))
-            assert_returned_semantics(returned)
+            render_projection(root)
+            sync_or_check_generated(root, args.write)
     except Exception as exc:  # noqa: BLE001
         print(f"[FAIL] native ISA-JSON/ISA-Tab projection: {exc}")
         return 1
 
+    if args.write:
+        print("[OK]   regenerated examples/isa-roundtrip/native-isa with ISA-API")
+    else:
+        print("[OK]   checked-in native ISA-JSON/ISA-Tab artifacts are reproducible")
     print("[OK]   native ISA-JSON validation (pinned isatools 0.14.3)")
     print("[OK]   ISA-JSON -> ISA-Tab -> ISA-JSON Source/Sample projection")
     print("[OK]   stable HCMO identities preserved through explicit ISA comments")
