@@ -41,9 +41,11 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
   raw response and a deterministic summary, with documented HCMO exceptions.
 - Added current-candidate OOPS!/FOOPS! raw evidence and triage, plus a
   deterministic ZIP that can be imported directly into Overleaf.
-- Added an Overleaf-ready manuscript package and three dependency-free TikZ
-  figures for the release pipeline, five-module domain model, and ISA/STATO
-  round-trip fixture.
+- Added an Overleaf-ready manuscript package and four dependency-free TikZ
+  figures for the release pipeline, five-module domain model, ISA/STATO
+  round-trip fixture, and the boundary between the normative ontology and
+  instance-level interoperability evidence. The resource section now links
+  directly to the immutable instance-level OBI/STATO bridge example.
 - Added a dated post-PR #24--#26 semantic review recording current build,
   HermiT, SHACL, competency-question, external-vocabulary, RO-Crate, and native
   ISA projection evidence.
@@ -75,6 +77,20 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
   ISA-Tab → ISA-JSON. Stable HCMO IRIs survive as explicit ISA comments; the
   loss manifests now expose that factor values on unchanged animal Sources are
   outside this projection instead of fabricating Sample proxies.
+- Added reproducible, checked-in ISA-API outputs for that native projection and
+  documented the Figure 3 decisions for animals, specimens, processes, files,
+  housing assignments, factors, groups, and statistical results. The validator
+  now fails when the generated ISA-JSON or ISA-Tab files are stale.
+- Recorded the still-undecided ISA configuration versus HCMO--ISA SHACL design
+  discussion, including their distinct validation scopes, a layered option, a
+  whole-animal feasibility test, claim boundaries, and questions for co-author
+  review. No ontology or formal-conformance decision was made.
+- Annotated the generated mixed-model result matrix with the pinned STATO class
+  IRIs and labels for the linear mixed model, contrast estimate, 95% confidence
+  interval, and p-value, plus links to their semantic entities. Added exact
+  validation, a fixture artifact map, direct manuscript links, and explicit
+  Figure 3 pointers without changing HCMO ontology axioms. The fixture
+  generator's deterministic re-execution now also works reliably on Windows.
 - Hardened the 2 × 2 fixture after expert audit: housing intervals are
   half-open and must be well-formed, assignment records require one bearer,
   observation intervals must resolve to the correct enclosure, and historical

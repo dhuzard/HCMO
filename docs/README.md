@@ -16,6 +16,8 @@ and time-series data.
   [`A02-ISA-STATO-COMPATIBILITY.md`](A02-ISA-STATO-COMPATIBILITY.md)
 - Philippe Rocca-Serra meeting record:
   [`meetings/PHILIPPE-ROCCA-SERRA-HCMO-NOTES.md`](meetings/PHILIPPE-ROCCA-SERRA-HCMO-NOTES.md)
+- Undecided ISA configuration/SHACL profile brainstorm:
+  [`meetings/ISA-CONFIGURATION-SHACL-BRAINSTORM-2026-09-18.md`](meetings/ISA-CONFIGURATION-SHACL-BRAINSTORM-2026-09-18.md)
 - Human review checklist:
   [`PHILIPPE-ROCCA-SERRA-HUMAN-REVIEW-CHECKLIST.md`](PHILIPPE-ROCCA-SERRA-HUMAN-REVIEW-CHECKLIST.md)
 
