@@ -11,9 +11,15 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
   the co-author vote. It documents the verified state — four genuinely
   dual-parented classes, four SOSA-only observation classes with no BFO anchor,
   and zero disjointness axioms in both the pinned SOSA 2017 artifact and the
-  merged HCMO graph — and breaks down the work required under each of the four
-  candidate options. This is a planning document only; no module, term IRI,
-  axiom, or generated artifact changed.
+  merged HCMO graph — reviews the tabled option (a) proposal axiom by axiom
+  against the pinned source, and breaks down the work required under each
+  candidate option. Two of the four proposed axioms are sound
+  (`sosa:Observation` under process, `sosa:Actuator` under material entity) and
+  two are not (`sosa:Sensor` under material entity contradicts SOSA's
+  "device, agent (including humans), or software" definition; `sosa:Result`
+  under information entity contradicts SOSA's physical-specimen sampling
+  results). This is a planning document only; no module, term IRI, axiom, or
+  generated artifact changed.
 
 - Recorded the deposited COST TEATIME Home Cage Monitoring Definition Olog
   Zenodo DOI in provenance, README, system references, and paper bibliography
