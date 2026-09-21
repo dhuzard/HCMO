@@ -7,6 +7,14 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Added
 
+- Recorded the BFO/SOSA double-hierarchy decision package and work plan for
+  the co-author vote. It documents the verified state — four genuinely
+  dual-parented classes, four SOSA-only observation classes with no BFO anchor,
+  and zero disjointness axioms in both the pinned SOSA 2017 artifact and the
+  merged HCMO graph — and breaks down the work required under each of the four
+  candidate options. This is a planning document only; no module, term IRI,
+  axiom, or generated artifact changed.
+
 - Recorded the deposited COST TEATIME Home Cage Monitoring Definition Olog
   Zenodo DOI in provenance, README, system references, and paper bibliography
   metadata. This is a documentation/provenance update only; no HCMO term IRI,
