@@ -20,6 +20,9 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
   under information entity contradicts SOSA's physical-specimen sampling
   results). This is a planning document only; no module, term IRI, axiom, or
   generated artifact changed.
+- Added a plain-language co-author decision sheet for the BFO/SOSA double
+  hierarchy, listing the nine choices that need a collective answer with
+  context, options, costs, blocking order, and a recommendation for each.
 
 - Recorded the deposited COST TEATIME Home Cage Monitoring Definition Olog
   Zenodo DOI in provenance, README, system references, and paper bibliography

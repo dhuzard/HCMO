@@ -18,7 +18,9 @@ and time-series data.
   [`meetings/PHILIPPE-ROCCA-SERRA-HCMO-NOTES.md`](meetings/PHILIPPE-ROCCA-SERRA-HCMO-NOTES.md)
 - Undecided ISA configuration/SHACL profile brainstorm:
   [`meetings/ISA-CONFIGURATION-SHACL-BRAINSTORM-2026-09-18.md`](meetings/ISA-CONFIGURATION-SHACL-BRAINSTORM-2026-09-18.md)
-- Undecided BFO/SOSA double-hierarchy decision package and work plan:
+- Undecided BFO/SOSA double hierarchy — co-author decision sheet:
+  [`BFO-SOSA-DECISIONS-TO-TAKE.md`](BFO-SOSA-DECISIONS-TO-TAKE.md), with the
+  technical workings in
   [`BFO-SOSA-DOUBLE-HIERARCHY-PLAN.md`](BFO-SOSA-DOUBLE-HIERARCHY-PLAN.md)
 - Human review checklist:
   [`PHILIPPE-ROCCA-SERRA-HUMAN-REVIEW-CHECKLIST.md`](PHILIPPE-ROCCA-SERRA-HUMAN-REVIEW-CHECKLIST.md)
