@@ -22,6 +22,9 @@ and time-series data.
   [`BFO-SOSA-DECISIONS-TO-TAKE.md`](BFO-SOSA-DECISIONS-TO-TAKE.md), with the
   technical workings in
   [`BFO-SOSA-DOUBLE-HIERARCHY-PLAN.md`](BFO-SOSA-DOUBLE-HIERARCHY-PLAN.md)
+- Reading notes on Prudhomme et al. 2025 (PROV-O → BFO alignment) and a
+  reasoner test of the composed SOSA → PROV → BFO chain against HCMO:
+  [`PROV-BFO-ALIGNMENT-PAPER-NOTES.md`](PROV-BFO-ALIGNMENT-PAPER-NOTES.md)
 - Human review checklist:
   [`PHILIPPE-ROCCA-SERRA-HUMAN-REVIEW-CHECKLIST.md`](PHILIPPE-ROCCA-SERRA-HUMAN-REVIEW-CHECKLIST.md)
 
