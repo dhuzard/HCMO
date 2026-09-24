@@ -1,12 +1,18 @@
 # HCMO Resource Paper — TODO & change tracking
 
 **Status legend:** ☐ todo · ◐ in progress · ☑ done · ⚠ blocked
-**Last updated:** 2026-09-18
+**Last updated:** 2026-09-24
 
 This is the single source of truth for paper progress. Update the **status**
 column and append to the **Change log** whenever something moves.
 
 ---
+
+## 🔴 Priority — fix ASAP
+
+| ID | Task | Owner | Status | Notes |
+|----|------|-------|--------|-------|
+| P1 | **Correct the `hcm-tech:Actuator` point of the BFO/SOSA email with Philippe.** Accepted review item A05 (`docs/PHILIPPE-ROCCA-SERRA-HUMAN-REVIEW-CHECKLIST.md`) *retains* `hcm-tech:Actuator` as the physical, home-cage-specific subclass of `sosa:Actuator`, because SOSA's Actuator also covers software and other systems — so it is narrower than the SOSA class. Point 4 of the drafted BFO/SOSA email says the opposite ("adds nothing beyond `sosa:Actuator`", retire it). Under the email's own "by meaning, not by name" rule, `hcm-tech:Actuator` must be **kept**, like `hcm-tech:Sensor`. | Damien | ☐ | If the email was sent: send Philippe a short correction. If not: fix point 4 before sending. Then update provisional position P5 in `docs/meetings/CO-AUTHOR-EMAIL-REPLIES-2026-09-24.md` §4.2 and the deduplication motion (Motion 3) in `docs/BFO-SOSA-DOUBLE-HIERARCHY-PLAN.md`. Found 2026-09-24. |
 
 ## Phase 0 — Decide & set up
 
