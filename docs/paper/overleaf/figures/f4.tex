@@ -44,7 +44,7 @@
 \draw[flow] (ontology) -- node[left]{provides HCMO\\types and relations} (slice);
 \draw[flow] (contract) -- node[right]{pins external\\evidence terms} (roundtrip);
 \draw[flow] (slice) -- (checks);
-\draw[flow] (roundtrip.south) to[bend left=15] (checks.north east);
+\draw[flow] (roundtrip.south) -- ++(0,-3.5mm) -| ([xshift=12mm]checks.north);
 \draw[flow] (checks) -- (scope);
 \end{tikzpicture}%
 }

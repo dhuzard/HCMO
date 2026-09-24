@@ -23,6 +23,10 @@
   \newcommand{\new}[1]{#1}
 \fi
 
+% Web links are given as footnotes; identifiers (IRIs, prefixed names, file
+% names) stay inline.
+\newcommand{\fnurl}[1]{\footnote{\url{#1}}}
+
 \newcommand{\reviewcomment}[2]{%
   \pdfmarkupcomment[markup=Highlight,color={1 1 0}]{#1}{#2}%
 }
@@ -82,15 +86,14 @@ Neuronautix, Montpellier, France\\
 \paragraph*{\emph{Resource Availability Statement.}}
 \new{HCMO~0.3.0 --- the modular Turtle sources, the merged Turtle, RDF/XML and
 JSON-LD distributions, the JSON-LD context, and the release manifest --- is
-available under CC~BY~4.0 from its persistent IRI
-\url{https://w3id.org/hcmo/ontology/hcm}, from the GitHub repository at tag
-\texttt{v0.3.0} (\url{https://github.com/dhuzard/HCMO/tree/v0.3.0}), and from
-Zenodo (\url{https://doi.org/10.5281/zenodo.22208202}); the canonical citation
+available under CC~BY~4.0 from its persistent IRI\fnurl{https://w3id.org/hcmo/ontology/hcm},
+from the GitHub repository at tag \texttt{v0.3.0}\fnurl{https://github.com/dhuzard/HCMO/tree/v0.3.0}, and
+from Zenodo\fnurl{https://doi.org/10.5281/zenodo.22208202}; the canonical citation
 is given in \texttt{CITATION.cff}. The SHACL shapes, example datasets including
 the 2 $\times$ 2 round-trip fixture, executable SPARQL competency questions with
 their expected answers, build and validation tooling, evaluation reports, and
 the FAIR self-assessment are in the same repository and archive. HTML
-documentation is at \url{https://dhuzard.github.io/HCMO/index-en.html}. No
+documentation is published online\fnurl{https://dhuzard.github.io/HCMO/index-en.html}. No
 resource is subject to access restrictions.}\todo[color=orange!40]{DH: the
 paper will describe the next release (v0.4). Before submission, update all
 version numbers, counts, DOIs, dates, and links to v0.4; the fixture README and
@@ -157,8 +160,8 @@ Writing -- review \& editing.
 \textbf{Competing interests.}
 Damien Huzard initiated Metadatapp as an entrepreneurial project and currently
 maintains it as open-source software. He also provides consultancy services in
-preclinical research and research metadata through Neuronautix
-(\url{https://www.neuronautix.com}). The other authors declare no competing
+preclinical research and research metadata through
+Neuronautix\fnurl{https://www.neuronautix.com}. The other authors declare no competing
 interests.
 
 \bibliographystyle{splncs04}
