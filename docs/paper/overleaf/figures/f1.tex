@@ -15,7 +15,7 @@
 \draw[flow] (src) -- (manifest);
 \draw[flow] (manifest) -- (build);
 \draw[flow] (build) -- (dist);
-\draw[flow] (dist) |- (validate);
+\draw[flow] (dist.south) -- ++(0,-2.2mm) -| (validate.north);
 \draw[flow] (validate) -- (release);
 \draw[flow] (manifest) |- (validate);
 \end{tikzpicture}
