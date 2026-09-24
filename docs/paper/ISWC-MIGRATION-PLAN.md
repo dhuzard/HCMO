@@ -328,4 +328,4 @@ provenance sentence were tightened. A review PDF is at
 margin).
 
 **Still open:** Benoit Girard's affiliation; hosted SPARQL question; v0.4
-reconciliation; co-author confirmation of the AI-use paragraph.
+reconciliation. (AI-use paragraph validated by Damien on 2026-09-24.)
