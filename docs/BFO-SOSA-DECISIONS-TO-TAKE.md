@@ -1,6 +1,11 @@
 # BFO / SOSA double hierarchy — decisions to take
 
 **Working document for the co-authors.** Nothing here has been implemented.
+
+> **2026-09-24 update:** vote received — option (a) preferred by all four
+> respondents, with (d) as fallback. Provisional position and the five points
+> put to Philippe:
+> [`meetings/CO-AUTHOR-EMAIL-REPLIES-2026-09-24.md`](meetings/CO-AUTHOR-EMAIL-REPLIES-2026-09-24.md) §4.2.
 This is the list of choices that need a collective answer, written for readers
 who are not ontology engineers.
 

@@ -1,6 +1,9 @@
 # Reply to Philippe Rocca-Serra — PROV-O → BFO paper (2026-09-23)
 
-**Status:** draft reply, kept for reuse. Not yet sent.
+**Status:** draft reply, not sent. Superseded by the group reply in
+[`CO-AUTHOR-EMAIL-REPLIES-2026-09-24.md`](CO-AUTHOR-EMAIL-REPLIES-2026-09-24.md)
+§5; kept as detailed technical background. Note: Prudhomme et al. is not
+Philippe's paper; he shared it.
 Background and evidence:
 [`../PROV-BFO-ALIGNMENT-PAPER-NOTES.md`](../PROV-BFO-ALIGNMENT-PAPER-NOTES.md).
 Decisions referenced:

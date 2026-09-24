@@ -22,6 +22,9 @@ and time-series data.
   [`BFO-SOSA-DECISIONS-TO-TAKE.md`](BFO-SOSA-DECISIONS-TO-TAKE.md), with the
   technical workings in
   [`BFO-SOSA-DOUBLE-HIERARCHY-PLAN.md`](BFO-SOSA-DOUBLE-HIERARCHY-PLAN.md)
+- Co-author email replies and decisions of 2026-09-24 (restructure, 2 x 2
+  wording and authorship settled; BFO/SOSA provisional):
+  [`meetings/CO-AUTHOR-EMAIL-REPLIES-2026-09-24.md`](meetings/CO-AUTHOR-EMAIL-REPLIES-2026-09-24.md)
 - Reading notes on Prudhomme et al. 2025 (PROV-O → BFO alignment) and a
   reasoner test of the composed SOSA → PROV → BFO chain against HCMO:
   [`PROV-BFO-ALIGNMENT-PAPER-NOTES.md`](PROV-BFO-ALIGNMENT-PAPER-NOTES.md)

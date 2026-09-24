@@ -1,5 +1,12 @@
 # BFO / SOSA double hierarchy — decision package and work plan
 
+> **2026-09-24 update:** co-authors voted for option (a) with (d) as fallback.
+> The provisional position — reuse the published SOSA→PROV-O→BFO alignments in
+> an opt-in, tested profile, with no direct equivalence — is recorded in
+> [`meetings/CO-AUTHOR-EMAIL-REPLIES-2026-09-24.md`](meetings/CO-AUTHOR-EMAIL-REPLIES-2026-09-24.md)
+> §4.2 and awaits Philippe's confirmation. It supersedes the narrowed Motion 2
+> in §5 below where the two differ (notably on `sosa:Sensor`).
+
 Status: **proposal for the co-author vote.** Nothing here is an approved
 ontology, claim, or generated-artifact change. No module under
 `ontology/modules/` is modified on this branch.

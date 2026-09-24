@@ -88,7 +88,8 @@ available at
 [`examples/isa-hcmo-bridge.ttl`](https://github.com/dhuzard/HCMO/blob/v0.3.0/examples/isa-hcmo-bridge.ttl)
 \cite{isa,rocrate}. This is
 validated interoperability evidence, not an HCMO class mapping or a claim of
-formal ISA RO-Crate conformance. A second generated 2 × 2 fixture preserves
+formal ISA RO-Crate conformance. A second generated fixture, a 2 × 2 factorial
+design with repeated measures, preserves
 animal identity, time-bounded housing, Source/Sample roles, repeated
 observations, factor/group structure, and separate STATO results and file
 fragments across a graph-isomorphic HCMO RDF/extended ISA RO-Crate pair.

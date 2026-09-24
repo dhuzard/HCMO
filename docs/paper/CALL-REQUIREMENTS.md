@@ -1,5 +1,12 @@
 # ESWC 2027 Resources Track — requirements & compliance checklist
 
+> **2026-09-24: target venue changed to the ISWC Resources Track.** The
+> provisional ISWC requirements (15 pages + references, mandatory Resource
+> Availability Statement counted in the limit, registry discoverability,
+> comparison with similar resources) and their consequences are in
+> [`ISWC-MIGRATION-PLAN.md`](ISWC-MIGRATION-PLAN.md) §3. The ESWC checklist
+> below is kept for history; sections B–D remain useful as a resource checklist.
+
 Target venue: **ESWC 2027 Resources Track**. The
 [official ESWC 2027 Resources Track page](https://2027.eswc-conferences.org/calls/papers-resource-track/)
 was checked on **2026-09-17** and still stated “Coming soon”; its submission

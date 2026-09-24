@@ -2,15 +2,25 @@
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
+\usepackage{newunicodechar}
+\newunicodechar{—}{---}
 \usepackage{booktabs}
 \usepackage{hyperref}
 \usepackage{microtype}
 \usepackage{tabularx}
-
+\usepackage{todonotes}
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta,positioning,shapes.geometric}
 \usepackage{xcolor}
 \usepackage{pdfcomment}
+
+\newif\ifreview
+\reviewtrue
+\ifreview
+  \newcommand{\new}[1]{\textcolor{blue!70!black}{#1}}
+\else
+  \newcommand{\new}[1]{#1}
+\fi
 
 \newcommand{\reviewcomment}[2]{%
   \pdfmarkupcomment[markup=Highlight,color={1 1 0}]{#1}{#2}%
@@ -19,21 +29,42 @@
 \title{HCMO: A FAIR Ontology for Home-Cage Monitoring}
 \titlerunning{HCMO: A FAIR Ontology for Home-Cage Monitoring}
 
-\author{Cyril Gilbert\inst{1}\thanks{First and corresponding author.} \and
-Gaoussou Sanou\inst{1} \and
-Serge Sonfack Sounchio\inst{1} \and
-Antoine Toffano\inst{1} \and
-Pierre Larmande\inst{1} \and
-Konstantin Todorov\inst{1}\thanks{Co-last author and corresponding author.} \and
-Damien Huzard\inst{1}\thanks{Co-last author and corresponding author.}}
+\author{
+Cyril Gilbert\inst{1}\orcidID{0009-0008-2489-8106}
+\thanks{First and corresponding author.} \and
+Gaoussou Sanou\inst{2}\orcidID{0000-0003-2204-2466} \and
+Serge Sonfack Sounchio\inst{3}\orcidID{0000-0002-6085-6818} \and
+Antoine Toffano\inst{1}\orcidID{0009-0008-0575-8490} \and
+Pierre Larmande\inst{4}\orcidID{0000-0002-2923-9790} \and
+Philippe Rocca-Serra\inst{5}\orcidID{0000-0001-9853-5668} \and
+Konstantin Todorov\inst{1}\orcidID{0000-0002-9116-6692}
+\thanks{Co-last author and corresponding author.} \and
+Damien Huzard\inst{6}\orcidID{0000-0003-4820-7951}
+\thanks{Co-last author and corresponding author.}
+}
+
 \authorrunning{C. Gilbert et al.}
-\institute{Affiliations to be confirmed before submission.\\
-\email{cyril.gilbert8@gmail.com,
-konstantin.todorov@lirmm.fr, damien.huzard@gmail.com}}
+
+\institute{
+LIRMM, Université de Montpellier, CNRS, Montpellier, France\\
+\email{cyril.gilbert8@gmail.com, konstantin.todorov@lirmm.fr}
+\and
+IMGT\textsuperscript{\textregistered}, IGH, Université de Montpellier, CNRS,
+Montpellier, France
+\and
+Production Engineering Laboratory/UFTMiP, France
+\and
+DIADE, Université de Montpellier, IRD, CIRAD, Montpellier, France
+\and
+Oxford e-Research Centre, Department of Engineering Science,
+University of Oxford, Oxford OX1 3QG, United Kingdom
+\and
+Neuronautix, Montpellier, France\\
+\email{damien.huzard@gmail.com}
+}
 
 \begin{document}
 \maketitle
-
 \input{sections/00-abstract.tex}
 
 \begin{center}
@@ -57,7 +88,20 @@ JSON-LD context, and example datasets\\
 \input{sections/07-impact.tex}
 \input{sections/08-conclusion.tex}
 
-\textbf{Funding.}
+\paragraph*{\new{\emph{Resource Availability Statement.}}}
+The resources required to reproduce the machine-executable validation and
+evaluation results reported in this article are available in the archived HCMO
+\texttt{v0.3.0} release
+(\url{https://doi.org/10.5281/zenodo.22208202}) and the corresponding
+versioned GitHub repository
+(\url{https://github.com/dhuzard/HCMO/tree/v0.3.0}). These resources include
+the ontology distributions, SHACL shapes, example datasets, executable SPARQL
+competency questions and their expected results, evaluation reports, and build
+and validation tooling. The FAIR self-assessment is available at
+\url{https://github.com/dhuzard/HCMO/blob/v0.3.0/docs/paper/metadata/resource-metadata.md}.
+
+\section*{Acknowledgements}
+\new{\textbf{Funding.}}
 Preliminary mapping and implementation work on HCMO was supported by a COST
 mobility grant (EUR~750) awarded to Damien Huzard for the project
 \emph{Mapping the Home-Cage Monitoring Ontology to Device Metadata}, with
@@ -89,38 +133,21 @@ The complete development history is available at
 corresponds to release \texttt{v0.3.0} and is archived at
 \url{https://doi.org/10.5281/zenodo.22208202}.
 
-\section*{CRediT author statement}
-\textbf{Cyril Gilbert:} Conceptualization, Investigation, Methodology, Software,
-Validation, Visualization, Writing -- original draft, Writing -- review \&
-editing.
+\new{\textbf{Non-author contributions.}}
+The authors acknowledge COST Action TEATIME (CA20135), particularly Working
+Group~2, as the collective producer of the HCM Definition Olog and as a source
+of domain terminology, expertise, and feedback. Leonardo Restivo is gratefully
+acknowledged for introducing the Olog approach and facilitating the iterative,
+community-based development of that definition.
 
-\textbf{Pierre Larmande:} Validation, Writing -- review \& editing.
+The authors separately acknowledge the related semantic-components model
+published as Fig.~1 in Bains et al.\ \cite{bains2025}. This model, led by
+Leonardo Restivo and developed with a contribution from Davor Virag, helped
+articulate important elements of HCM experiment and data structure.
 
-\textbf{Gaoussou Sanou:} Conceptualization, Methodology, Visualization, Writing
--- review \& editing.
-
-\textbf{Serge Sonfack Sounchio:} Methodology, Validation, Writing -- review \&
-editing.
-
-\textbf{Antoine Toffano:} Validation, Writing -- review \& editing.
-
-\textbf{Konstantin Todorov:} Conceptualization, Methodology, Supervision,
-Validation, Writing -- review \& editing.
-
-\textbf{Damien Huzard:} Conceptualization, Funding acquisition, Methodology,
-Project administration, Software, Supervision, Validation, Writing -- original
-draft, Writing -- review \& editing.
-
-\section*{Acknowledgements and non-author contributions}
-
-The authors acknowledge the TEATIME Olog and the COST Action TEATIME
-community as sources of domain terminology, expertise, and feedback. The
-following non-author contributions are recognised:
+The following additional non-author contributions are recognised:
 
 \begin{itemize}
-
-\item \textbf{Initial HCM profile of the TEATIME Olog:}
-Leonardo Restivo and Davor Virag.
 
 \item \textbf{Preparation and preliminary scoping of the COST mobility-grant
 project and early categorisation of metadata elements used in auxiliary
@@ -138,30 +165,49 @@ Marion Rivalan.
 \end{itemize}
 
 Damien Huzard also thanks the INITIUM incubator team, particularly Rémi
-Przybylski and Kate Rivière, as well as Frédéric Deverre, Loïc Clementz, and
-Geoffrey Galibert for their contributions to the technical and business
-development of Metadatapp.
+Przybylski, Noelline Meslin, and Kate Rivière, as well as Frédéric Deverre,
+Loïc Clementz, and Geoffrey Galibert for their contributions to the technical
+and business development of Metadatapp.
+
+\section*{CRediT author statement}
+
+\textbf{Cyril Gilbert:}
+Data curation, Methodology, Software, Formal analysis, Validation, Visualization, Writing -- original draft, Writing -- review \& editing.
+
+\textbf{Gaoussou Sanou:}
+Conceptualization, Methodology, Software, Formal analysis, Visualization, Writing -- review \& editing.
+
+\textbf{Philippe Rocca-Serra:}
+Conceptualization, Methodology, Validation, Writing -- review \& editing.
+
+\textbf{Pierre Larmande:}
+Methodology, Writing -- review \& editing.
+
+\textbf{Benoit Girard:}\todo[color=orange!40]{DH: Benoit Girard has CRediT roles here but is not in the author list, and is still thanked above as a non-author. Resolve once his co-authorship is confirmed.}
+Funding acquisition, Writing -- review \& editing.
+
+\textbf{Serge Sonfack Sounchio:}
+Methodology.
+
+\textbf{Antoine Toffano:}
+Methodology.
+
+\textbf{Konstantin Todorov:} 
+Conceptualization, Methodology, Supervision, Writing -- review \& editing.
+
+\textbf{Damien Huzard:}
+Conceptualization, Data curation, Formal analysis, Funding acquisition, Investigation,
+Methodology, Project administration, Resources, 
+Software, Supervision, Validation, Writing -- original draft,
+Writing -- review \& editing.
 
 \section*{Competing interests}
 
 Damien Huzard initiated Metadatapp as an entrepreneurial project and currently
 maintains it as open-source software. He also provides consultancy services in
 preclinical research and research metadata through Neuronautix
-(\url{https://www.neuronautix.com}). The other authors declare no competing
-interests.
-
-
-\section*{Supplementary material and reproducibility}
-The resources required to reproduce the machine-executable validation and
-evaluation results reported in this article are available in the archived HCMO
-\texttt{v0.3.0} release
-(\url{https://doi.org/10.5281/zenodo.22208202}) and the corresponding
-versioned GitHub repository
-(\url{https://github.com/dhuzard/HCMO/tree/v0.3.0}). These resources include
-the ontology distributions, SHACL shapes, example datasets, executable SPARQL
-competency questions and their expected results, evaluation reports, and build
-and validation tooling. The FAIR self-assessment is available at
-\url{https://github.com/dhuzard/HCMO/blob/v0.3.0/docs/paper/metadata/resource-metadata.md}.
+(\url{https://www.neuronautix.com}). 
+The other authors declare no competing interests.
 
 \bibliographystyle{splncs04}
 \bibliography{references}

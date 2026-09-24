@@ -5,7 +5,7 @@ paper describing HCMO for **ISWC** or **ESWC**. The resource being presented is
 the **Home-Cage Monitoring Ontology (HCMO)**. (Branding, HITL R3: use **HCMO
 only** — do not use the "MAPP" name in the paper.)
 
-## Target venue — **ESWC 2027, Resources Track** (decided, HITL Round 1)
+## Target venue — **ISWC, Resources Track** (changed 2026-09-24; see `ISWC-MIGRATION-PLAN.md`). Previously ESWC 2027 (HITL Round 1)
 
 Publishes in **Springer LNCS**, **single-anonymous** review (reviewers anonymous,
 **authors visible** — resource ownership must be checkable), **abstract

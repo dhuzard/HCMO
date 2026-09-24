@@ -65,9 +65,10 @@ into OWL existential semantics. A separate ISA/STATO evidence shape validates
 the pinned workflow boundary; an injected process/data cycle is required to
 fail.
 
-The accepted round-trip fixture contains a 2 × 2 treatment-by-enrichment
-design with eight individually housed animals, 56 repeated dark-phase activity
-observations, non-overlapping re-housing, an actual derived tissue Sample, and
+The accepted round-trip fixture contains a 2 × 2 factorial
+(treatment-by-enrichment) design with repeated measures: eight individually
+housed animals, each observed on seven days (56 dark-phase activity
+observations), non-overlapping re-housing, an actual derived tissue Sample, and
 separate fitted-model, estimate, confidence-interval, p-value, File, and file-
 fragment entities. Canonical HCMO RDF and extended ISA RO-Crate JSON-LD are
 graph-isomorphic at 1,539 triples. Dark-phase outcomes use phenomenon intervals,
