@@ -8,7 +8,7 @@
   native/.style={box, draw=green!45!black, very thick, fill=green!8},
   extended/.style={box, draw=blue!55!black, fill=blue!7},
   context/.style={box, draw=orange!70!black, fill=orange!9},
-  design/.style={box, draw=violet!60!black, fill=violet!7},
+  design/.style={box, draw=violet!60!black, fill=violet!7, text width=3.9cm},
   flow/.style={-{Latex[length=1.8mm]}, semithick},
   nativeflow/.style={flow, draw=green!45!black, very thick},
   contextflow/.style={flow, dashed, draw=orange!70!black},
@@ -18,8 +18,8 @@
 % no box or arrow overlaps another.
 
 % Top row: design, subject, contextual housing record.
-\node[design] (design) at (1.45,2.3)
-  {$2\!\times\!2$ design\\treatment:\\vehicle / active\\enrichment:\\standard/enriched\\4 groups $\times$ 2 animals};
+\node[design] (design) at (0.7,2.3)
+  {\mbox{$2\!\times\!2$ factorial design}\\\mbox{treatment: vehicle/active}\\\mbox{enrichment: standard/enriched}\\\mbox{4 groups $\times$ 2 animals}\\\mbox{\textbf{repeated measures}: 7 days}};
 \node[native] (animal) at (5.6,2.3)
   {animal-8\\\textbf{ISA Source}\\HCMO Subject};
 \node[context] (housing) at (9.9,2.3)
@@ -37,7 +37,7 @@
 
 % Full HCMO / extended ISA RO-Crate acquisition and analysis branch.
 \node[extended] (recording) at (7.4,0)
-  {recording\\Protocol + Process\\56 observations};
+  {recording\\Protocol + Process\\56 observations\\(8 animals $\times$ 7)};
 \node[extended] (raw) at (10.4,0)
   {raw ISA DataFile\\\texttt{dark-phase-}\\\texttt{activity.csv}};
 \node[extended] (model) at (10.4,-2.2)
