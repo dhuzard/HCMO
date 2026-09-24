@@ -264,8 +264,8 @@ Done in `docs/paper/overleaf/` after co-authors stopped editing online and the
 synced zip was uploaded.
 
 **New section files** (old `03-requirements`, `04-resource`, `05-availability`,
-`07-impact`, `08-conclusion` removed; **delete them in the online project too**
-when uploading, or create a fresh project from the zip):
+`07-impact`, `08-conclusion` removed). The old online project is abandoned; a
+new online project will be created from `hcmo-overleaf-upload.zip`:
 
 | File | Section |
 | --- | --- |
@@ -313,5 +313,19 @@ preliminary. **Version:** the submitted paper will describe the next release
 broken post-0.3.0 fixture links — is to be reconciled against that release,
 not patched now.
 
-**Still open:** Benoit Girard's affiliation; selection-criteria confirmation
-(§3); hosted SPARQL question; v0.4 reconciliation.
+**Second follow-up (same day):** the §3 selection criteria were approved by
+Damien (orange note removed). A *Use of AI assistants* paragraph was added to
+§3, based on the repository record: OpenAI Codex and Anthropic Claude Code
+connected to the GitHub repository, working on branches under `AGENTS.md`
+rules (20 commits authored by a Claude identity and 27 Claude co-author
+trailers out of 190 commits; `codex/` and `claude/` branches; Codex and
+Claude entries in the TODO log), with author review before merge, the same CI
+gate, and modelling decisions taken by the authors. To stay within 15 pages,
+the stakeholder and claim-strength paragraphs, one related-work sentence, the
+§6 query/SHACL/impact wording, the §5 opening, the §7 opening, and the
+provenance sentence were tightened. A review PDF is at
+`docs/paper/review/HCMO-draft-v4-review.pdf` (new text in blue, notes in the
+margin).
+
+**Still open:** Benoit Girard's affiliation; hosted SPARQL question; v0.4
+reconciliation; co-author confirmation of the AI-use paragraph.
