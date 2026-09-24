@@ -172,7 +172,7 @@ alignment paper".
 | P2 | **Reuse, don't author.** An HCMO alignment profile imports the two published alignments. HCMO adds a direct link only where an HCMO-specific requirement cannot be obtained compositionally. | Philippe Q2 |
 | P3 | **Opt-in.** The profile is not part of the default release; its status may be reconsidered once it proves stable. | Philippe Q3 |
 | P4 | **Software sensors.** Accept the entailed `sosa:Sensor ⊑ material entity`, modelling a software sensor as running software, which concretises the code (an information entity). Documented as a commitment introduced by the BFO alignment, not by SOSA. | Philippe Q1 |
-| P5 | **Duplicate terms by meaning, not name.** Retire `hcm-tech:Actuator` in favour of `sosa:Actuator` if it adds no narrower meaning. Keep `hcm-tech:Sensor`, `hcm-obs:ObservationResult`, and `hcm-env:EnvironmentalProperty` as documented specialisations. **Conflict found 2026-09-24:** decision A05 in `docs/PHILIPPE-ROCCA-SERRA-HUMAN-REVIEW-CHECKLIST.md` (accepted) already retains `hcm-tech:Actuator` as the *physical*, home-cage-specific subclass of `sosa:Actuator`, because the SOSA class also covers software and other systems. By the meaning-not-name criterion it is therefore narrower and should be kept; the email's point 4 premise ("adds nothing beyond `sosa:Actuator`") is wrong and should be corrected with Philippe. | Philippe Q4 |
+| P5 | **Duplicate terms by meaning, not name. Corrected 2026-09-24: keep all four** — `hcm-tech:Actuator`, `hcm-tech:Sensor`, `hcm-obs:ObservationResult`, and `hcm-env:EnvironmentalProperty` are narrower than their SOSA counterparts and are documented as specialisations; no HCMO class is retired. (The first version proposed retiring `hcm-tech:Actuator`.) **Conflict found 2026-09-24:** decision A05 in `docs/PHILIPPE-ROCCA-SERRA-HUMAN-REVIEW-CHECKLIST.md` (accepted) already retains `hcm-tech:Actuator` as the *physical*, home-cage-specific subclass of `sosa:Actuator`, because the SOSA class also covers software and other systems. By the meaning-not-name criterion it is therefore narrower and should be kept; the email's point 4 premise ("adds nothing beyond `sosa:Actuator`") is wrong and should be corrected with Philippe. | Philippe Q4 |
 | P6 | **Exact versions.** Test against the pinned SOSA 2017 artifact and its matching W3C alignment, with versions recorded in the profile metadata and CI; do not carry over conclusions from the 2023 edition. Our BFO pin differs slightly from the release the paper targets; test it, don't assume. | Philippe Q5 (edition of the disjointness remark) |
 | P7 | **Tested alignment module.** CI checks: satisfiability; consistency of `examples/` and targeted probes; conservativity (no change inside the HCMO, SOSA or BFO hierarchies, materialised and compared as in the paper); any new cross-derived disjointness listed and reviewed; provenance and rationale recorded for each mapping (SSSOM). The chain's BFO entailments are listed and documented; it is **not** presented as a complete BFO interpretation of SOSA. | Cyril's condition; no dissent |
 
@@ -181,7 +181,12 @@ recorded in ADR-0005 (plan §3.1) before any implementation.
 
 ## 5. Reply to the co-authors (draft, 2026-09-24)
 
-Status: draft prepared for Damien; send status not recorded here. It
+Status: **sent by Damien on 2026-09-24 (12:36)** to all co-authors. The sent
+version shortened points 1–3 (point 1: Damien does a first pass on the online
+manuscript for Cyril to share; point 3: Benoit will be added to the emails
+with the new manuscript) and otherwise matches the text below. Point 4
+(Actuator) was wrong and was **corrected by a reply-all the same day**; the
+correction is recorded after the draft. It
 supersedes the unsent
 [`PHILIPPE-PROV-BFO-REPLY-2026-09-23.md`](PHILIPPE-PROV-BFO-REPLY-2026-09-23.md),
 which remains as the detailed technical background.
@@ -237,9 +242,31 @@ which remains as the detailed technical background.
 > Many thanks again,
 > Damien
 
+### 5.1 Correction sent (2026-09-24)
+
+> **Subject:** Re: HCMO paper — one correction to point 4 (Actuator)
+>
+> One correction to point 4 of my previous message, before anyone confirms it.
+> I wrote that `hcm-tech:Actuator` adds nothing beyond `sosa:Actuator` and
+> should be retired. That is wrong. We decided in July (review item A05) to
+> keep it: `hcm-tech:Actuator` is a *physical* home-cage device that stimulates
+> or perturbs the animal, changes its environment, or reconfigures the system,
+> whereas `sosa:Actuator` also covers software and other systems. So our class
+> is narrower than SOSA's, exactly like our Sensor class, and by the same
+> "meaning, not name" rule we keep it. Several HCMO properties already depend
+> on it.
+>
+> Corrected point 4 — **Duplicate terms.** We decide by meaning, not by name.
+> Our Actuator, Sensor, Observation Result and Environmental Property classes
+> are all narrower than their SOSA counterparts, so we keep them and document
+> what each adds. No HCMO class is retired.
+>
+> (Serge and Antoine: I meant all five points, not four.)
+
 ## 6. Follow-ups
 
-1. Send the reply in section 5 (fill in the new co-author's name).
+1. ~~Send the reply in section 5.~~ Sent 2026-09-24; Actuator correction sent
+   the same day.
 2. Get Philippe's answers to Q1–Q5; then record the outcome and participants
    in ADR-0005 and mark 4.2 as decided.
 3. Ask Serge and Antoine for their replies.

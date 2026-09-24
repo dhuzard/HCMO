@@ -7,6 +7,15 @@
 > §4.2 and awaits Philippe's confirmation. It supersedes the narrowed Motion 2
 > in §5 below where the two differ (notably on `sosa:Sensor`).
 
+> **Correction (2026-09-24): `hcm-tech:Actuator` is kept.** Accepted review
+> item A05 (Damien Huzard, 2026-07-21) retains it as the physical,
+> home-cage-specific subclass of BFO material entity and `sosa:Actuator`,
+> which also covers software and other systems; it is therefore narrower
+> than the SOSA class. The "genuine near-duplicate" finding in §2.4, the
+> Actuator deprecation in Phase 4 (§3.4) and its estimate, and Motion 3 as
+> first drafted are superseded: no HCMO class is deprecated. A correction
+> was sent to the co-authors on 2026-09-24.
+
 Status: **proposal for the co-author vote.** Nothing here is an approved
 ontology, claim, or generated-artifact change. No module under
 `ontology/modules/` is modified on this branch.
@@ -520,11 +529,11 @@ is orthogonal to all four and should be adopted whatever happens.
 > pinned BFO and IAO closure, with negative probes for the software-sensor and
 > physical-sample cases, is a precondition of merging.
 >
-> **Motion 3 (deduplication).** `hcm-tech:Actuator` is deprecated with
-> `dcterms:isReplacedBy sosa:Actuator`. `hcm-tech:Sensor`,
-> `hcm-obs:ObservationResult`, and `hcm-env:EnvironmentalProperty` are
-> retained, because they are narrower than their SOSA counterparts and carry
-> HCMO domain, range, subclass, and shape commitments.
+> **Motion 3 (deduplication) — corrected 2026-09-24.** Duplicate terms are
+> decided by meaning, not by name. `hcm-tech:Actuator`, `hcm-tech:Sensor`,
+> `hcm-obs:ObservationResult`, and `hcm-env:EnvironmentalProperty` are all
+> narrower than their SOSA counterparts and carry HCMO commitments, so all are
+> retained and documented; no HCMO class is deprecated (see A05).
 >
 > **Open to the floor:** whether `sosa:ObservableProperty ⊑ BFO:0000020` is
 > added, and whether the decision extends to the BFO/PROV-O dual anchors.
