@@ -1,0 +1,33 @@
+\section{Methodology}
+\textbf{Development process.} HCMO follows an incremental, competency-question-driven process in the spirit of LOT \cite{lot2022} and SAMOD \cite{samod2017}, with requirements expressed as competency questions \cite{noy2001}. The current version was conceptualised graphically in diagrams.net and exported to OWL/Turtle with Chowlk \cite{chowlk2022}; LinkML was explored as an alternative serialisation \cite{linkml2021}. Documentation is produced with WIDOCO \cite{widoco2017}, and quality is assessed with OOPS! \cite{oops2014} and, for FAIRness, FOOPS! \cite{foops}, complemented by reasoning and SHACL validation \cite{gangemi2006}.
+
+\textbf{Stakeholders.} HCMO is intended for researchers comparing or aggregating behavioural and physiological data across studies and laboratories; facility managers and welfare committees auditing housing and husbandry; data engineers ingesting heterogeneous device exports; HCM system manufacturers; and, in the longer term, AI consumers querying the resulting knowledge graph. These roles share one need --- to interpret a measurement together with the full context of its production.
+
+\textbf{Requirements.} Analysis of the HCM domain \cite{kiryk2026,huzard2026tech,forrest2026} yields eight requirements (Table~\ref{tab:requirements}).
+
+\begin{table}[t]
+\centering
+\scriptsize
+\caption{\new{Requirements derived from the domain analysis.}}
+\label{tab:requirements}
+\begin{tabularx}{\linewidth}{@{}lX@{}}
+\toprule
+Requirement & Content \\
+\midrule
+R1 Context-aware observations & An observation remains linkable, where applicable, to its feature of interest, observed property, time, procedure, sensor, and result; shapes enforce fields per profiled observation subtype rather than one completeness rule for every SOSA observation. \\
+R2 Device $\neq$ observation $\neq$ result & A sensor, the measurement event in context, and the produced value or interpretation are distinct, preserving \emph{device $\rightarrow$ observation $\rightarrow$ result}; HCM outputs are often signals later transformed by software into inferred behaviours. \\
+R3 Temporal housing & Assigning an animal to an enclosure is time-bounded, represented over an interval, and linked to experimental groups and study factors. \\
+R4 Environment as context & Enclosure dimensions, bedding, enrichment, water/food, light cycles, and measurable conditions are representable, distinguishing a \emph{property} from the \emph{values} observed for it. \\
+R5 Technical provenance & Hardware, sensors, software, and their organisation of data into time series/segments are captured without conflating technical provenance with biological interpretation. \\
+R6 Rich metadata & Species, strain, sex, age, housing, enrichment, device configuration, sampling rate, software, and protocol are first-class, supporting FAIR reuse \cite{fair,forrest2026}. \\
+R7 Standards reuse & Suitable standards are reused rather than re-minted; each mapping strength is justified separately. \\
+R8 Data-quality checking & The model supports consistency and completeness checks (e.g.\ a numeric value without a unit, an animal not assigned to an enclosure over an interval). \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\textbf{Competency questions.} Selected retrieval aspects of the requirements are operationalised as executable SPARQL questions \cite{noy2001,lot2022}; structural requiredness is tested separately with SHACL. One representative question is: \emph{Which enclosure contains the reviewed animal at a stated reference time according to its time-bounded housing assignments?} The release index contains eleven questions covering assignments, dimensions, environment specifications, operational and calibration evidence, husbandry provisioning, sensor-captured properties, long observations, and ISA/STATO provenance paths. Complete expected bindings are versioned with the queries, including the intentionally empty missing-dimensions answer.
+
+\textbf{Selecting and reusing external resources.}\todo[color=orange!40]{DH: criteria reconstructed from the documented reuse policy and pinned-vocabulary contract; co-authors to confirm they match the decisions actually taken.} \new{External vocabularies were chosen by role: SOSA/SSN for the sensor/observation/platform backbone \cite{sosa}, OWL-Time for temporal entities and intervals \cite{owltime}, QUDT for quantity values and units \cite{qudt}, PROV-O for provenance \cite{provo}, BFO/IAO for upper-level grounding \cite{bfo}, and SemTS for time-series segments and their dimensions \cite{semts}. A term is reused when (i) its published definition fits the HCM meaning, reviewed term by term rather than per vocabulary; (ii) it has a canonical, versioned artifact that HCMO can pin and checksum --- hence the 2017 SOSA/SSN Recommendation rather than the evolving later edition; and (iii) its reasoning consequences are acceptable in the merged graph. Terms failing a review are removed rather than kept loosely (Sect.~4). We also distinguish two kinds of reuse: annotation properties used for ontology metadata (e.g.\ Dublin Core terms) and classes and properties that carry HCM semantics.}
+
+\textbf{Claim strength.} We distinguish implemented semantic reuse or alignment, validated interoperability evidence, and formal profile conformance. Implemented alignment requires canonical versioned terms, reviewed semantic fit, and a normative role in HCMO; its assertion strength is stated per term and never generalised to a whole vocabulary. Interoperability evidence means that a pinned mixed-vocabulary example is validated and queried, but does not by itself establish ontology mappings or complete round trips. Formal conformance is reserved for a declared version and scope in which every applicable normative profile requirement has been tested.

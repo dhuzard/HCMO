@@ -1,7 +1,7 @@
 # ISWC Resources Track — manuscript sync, comment resolution, and migration plan
 
-Date: 2026-09-24 · Owner: Damien · Status: **sync and comment pass done;
-migration planned, not started.**
+Date: 2026-09-24 · Owner: Damien · Status: **sync, comment pass, and first
+migration pass done (§8); co-author review of the migrated draft pending.**
 
 Decisions this plan implements (see
 [`../meetings/CO-AUTHOR-EMAIL-REPLIES-2026-09-24.md`](../meetings/CO-AUTHOR-EMAIL-REPLIES-2026-09-24.md) §4.1):
@@ -60,17 +60,17 @@ overfull boxes.
 | 3 | §1 contributions | PRS: "what about the separation with bio or env?" | **Fixed:** added "and keeps the monitored subject (bio) and its environmental conditions (env) distinct from the observations made about them (obs)". Matches the model: subjects are features of interest, `hcm-env:EnvironmentalProperty ⊑ sosa:ObservableProperty`, observations live in obs. |
 | 4 | §1 contributions | KT: "all of the above are the contributions" | **Already done online** ("These four elements constitute the contributions"); note removed. |
 | 5 | §1 end | KT: paper-structure paragraph + TEATIME link | **Already done online** (roadmap paragraph + footnote); note removed. The roadmap must be rewritten after migration. |
-| 6 | §1 ¶5 | PRS: "featuring or characterised by?" + flow: move HCMO presentation to results, set the scene with SOSA/PROV/BFO/OBI and TEATIME earlier | **Kept open → migration** (§4 of this plan: TEATIME and the standards landscape move earlier; HCMO description moves to §4). |
-| 7 | §2 | KT: "Standards reused" and "Ontology engineering" don't fit related work | **Half done online** (engineering moved to §3). "Standards reused" **kept open → migration** (moves to §3 Methodology as the resource-selection criteria, T20c). |
+| 6 | §1 ¶5 | PRS: "featuring or characterised by?" + flow: move HCMO presentation to results, set the scene with SOSA/PROV/BFO/OBI and TEATIME earlier | **Resolved by migration:** TEATIME and its WG2 definition are introduced in §1 ¶4; the HCMO description moved to §4; the sentence now reads "which formalises HCM as an integrated system … Its contributions are:". |
+| 7 | §2 | KT: "Standards reused" and "Ontology engineering" don't fit related work | **Resolved by migration:** both are now in §3 Methodology ("Development process"; "Selecting and reusing external resources"). |
 | 8 | §3 | PL: one CQ in the manuscript, the rest in annex/GitHub | **Already done online** (representative CQ + pointer); note removed. |
 | 9 | §4 | KT: missing statistics table and access links | **Already done online** (Table 1, values verified against `dist/profile.json`: 1,397 triples, 60 classes, 68 object and 75 datatype properties, 11 CQs). "Ratio of reused vocabulary" still missing → added in migration (§5.3). |
 | 10 | §5 | KT: figures 1 and 2 not referenced | **Already done online** (refs to `fig:pipeline`, `fig:domain-model`, `fig:roundtrip`); note removed. `fig:evidence-layers` was already referenced. |
 | 11 | §6 | PL: "is the capital here OK?" (`bioschemas:Sample`, `schema:MediaObject`) | **Answered — yes.** Class names are UpperCamelCase; both are the exact types used in `examples/isa-roundtrip/ro-crate-metadata.json`. Notes removed. |
 | 12 | §6 | PL: "do you mean competency questions?" | **Fixed** (the heading had lost its first word; repo already had "Competency questions"). |
 | 13 | back matter | KT: Funding should be a short unnumbered Acknowledgements section after the conclusion | **Fixed:** conclusion → *Resource Availability Statement* (ISWC requirement, replaces "Supplementary material") → `\section*{Acknowledgements}` (Funding, provenance, non-author contributions) → CRediT → Competing interests. Still long; shortened in migration. |
-| 14 | §7 | KT: quantitative adoption measures | **Kept open — needs data from co-authors** (see §6). Online caveat ("pathway rather than a demonstrated outcome") retained. |
+| 14 | §7 | KT: quantitative adoption measures | **Closed (2026-09-24, Damien):** figures are too preliminary to report. The online caveat ("adoption is presented as a pathway rather than a demonstrated outcome") is kept; note removed. |
 | 15 | §5 | `\reviewcomment` "À confirmer avec Gaoussou et Konstantin" (hosted SPARQL service) | **Kept open — question to Gaoussou/Konstantin.** |
-| 16 | CRediT | (new) Benoit Girard has CRediT roles but is not in the author list and is still thanked as a non-author | **Flagged** with an orange `\todo`; resolve with D3. |
+| 16 | CRediT | (new) Benoit Girard has CRediT roles but is not in the author list and is still thanked as a non-author | **Resolved:** added as co-author after Larmande; removed from the acknowledgements. Affiliation and ORCID still to be supplied (placeholder institute). |
 
 All my text changes are wrapped in `\new{}` so they show in blue while
 `\reviewtrue` is set.
@@ -257,3 +257,61 @@ Paragraph references are `file:line` in `docs/paper/overleaf/sections/`.
 5. Rebuild the upload zip, upload, circulate for a focused co-author read
    (T20k).
 6. Update `CALL-REQUIREMENTS.md` against the ISWC 2027 call when it appears.
+
+## 8. First migration pass (2026-09-24)
+
+Done in `docs/paper/overleaf/` after co-authors stopped editing online and the
+synced zip was uploaded.
+
+**New section files** (old `03-requirements`, `04-resource`, `05-availability`,
+`07-impact`, `08-conclusion` removed; **delete them in the online project too**
+when uploading, or create a fresh project from the zip):
+
+| File | Section |
+| --- | --- |
+| `01-introduction.tex` | 1 Introduction — TEATIME introduced early; four contributions; new roadmap |
+| `02-related-work.tex` | 2 Related work — HCM data/metadata; Olog + Bains model merged; adjacent resources; **new comparison table**; gap |
+| `03-methodology.tex` | 3 Methodology — development process; stakeholders; **requirements table**; CQs; **resource-selection criteria** (orange todo: co-authors to confirm); claim-strength policy |
+| `04-hcmo.tex` | 4 The HCMO resource — identity; **Table 1 with release/active counts and reuse ratio**; modules + Fig. 2; modelling decisions; reused standards (single home of the vocabulary inventory); engineering + Fig. 1; availability and sustainability (orange todo: registry entry) |
+| `05-use-case.tex` | 5 Interoperability use case — evidence slice + Fig. 4; **plain-language 2 × 2 factorial design with repeated measures**; three projections + Fig. 3 |
+| `06-evaluation.tex` | 6 Evaluation and potential impact — **scan table** (FOOPS!/OOPS!/AskWol); consistency; SHACL; CQs; impact; adoption (KT todo kept) |
+| `07-discussion.tex` | 7 Discussion, limitations, future work, conclusion — adds the experimental-unit limitation |
+
+**Back matter:** ISWC Resource Availability Statement (one line per resource
+kind); Acknowledgements shortened to Funding / Provenance / Non-author
+contributions, Benoit Girard removed (now an author), HCM-D (BioPortal, from
+March 2025) added to the provenance per Leonardo Restivo; CRediT in author
+order; competing interests.
+
+**Corrections made while migrating:**
+
+- Table 1's caption claimed the counts include "directly referenced external
+  terms". They do not: all 60/68/75 are HCMO-namespace terms, of which 27/36/38
+  are deprecated compatibility terms. The table now shows release and active
+  counts (33/32/37, matching the "33 classes and 69 properties" sentence it
+  replaces) and counts external reuse separately.
+- Links to the fixture data now point to the immutable `v0.3.0` tag where the
+  files exist there. `examples/isa-roundtrip/README.md` and `native-isa/` exist
+  only after `v0.3.0` (commit `5826a4a`) and are **not on GitHub `main`**, so
+  their links are broken for reviewers — orange todo in the availability
+  statement: merge to `main` or cut a 0.3.1 release before submission.
+
+**Length:** compiles with no errors or undefined references; **17 pages, body
+plus back matter end on p. 15, references from p. 16** — exactly at the
+15-page budget with no reserve. Any text added in review must be offset.
+
+**Build tooling:** `tooling/build_paper.py` now takes the section list from
+`main.tex` `\input` lines and fails on missing or orphan section files,
+instead of requiring exactly nine sections.
+
+**Follow-up (same day):** Benoit Girard's ORCID added
+(0000-0002-3914-6483); registry requirement met by the existing BioPortal
+entry <https://bioportal.bioontology.org/ontologies/HCMO>, now cited in §4 (to
+be updated with the final release); adoption figures dropped as too
+preliminary. **Version:** the submitted paper will describe the next release
+(probably v0.4), so every 0.3.0-specific number, DOI, date, and link — and the
+broken post-0.3.0 fixture links — is to be reconciled against that release,
+not patched now.
+
+**Still open:** Benoit Girard's affiliation; selection-criteria confirmation
+(§3); hosted SPARQL question; v0.4 reconciliation.

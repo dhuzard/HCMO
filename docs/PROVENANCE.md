@@ -8,14 +8,19 @@ HCMO developed through four stages:
    as Zenodo version DOI
    [10.5281/zenodo.22646369](https://doi.org/10.5281/zenodo.22646369), with
    concept DOI [10.5281/zenodo.22646368](https://doi.org/10.5281/zenodo.22646368).
-2. During the first half of 2025, Damien Huzard began translating the broader
-   domain need into a machine-actionable ontology through Metadatapp's
-   semantic-development work and related grant preparation.
+2. From early March 2025, Damien Huzard developed an earlier machine-actionable
+   ontology, HCM-D, published on BioPortal
+   (<https://bioportal.bioontology.org/ontologies/HCM-D>, no longer active),
+   through Metadatapp's semantic-development work and related grant
+   preparation. Leonardo Restivo confirmed this date (2026-09-24) and followed
+   the development through the CEDAR user list.
 3. A COST mobility grant (€750) awarded to Damien Huzard for *Mapping the
    Home-Cage Monitoring Ontology to Device Metadata* supported limited
    preliminary device-metadata mapping, project scoping, and publication of an
    early GitHub version in September 2025, with contributions from Leonardo
-   Restivo and Benoit Girard.
+   Restivo and Benoit Girard. Benoit Girard is a co-author of the HCMO article
+   (decided 2026-09-24) and is credited there in the CRediT statement rather
+   than in the acknowledgements.
 4. An Exogene grant (€23,000), administered by the Pôle Universitaire
    d'Innovation of the University of Montpellier and awarded to Metadatapp to
    support collaboration between Damien Huzard and Konstantin Todorov, supported
@@ -29,16 +34,27 @@ HCMO developed through four stages:
 - **Initial HCM profile of the TEATIME Olog:** Leonardo Restivo and Davor Virag.
 - **Preparation and preliminary scoping of the COST mobility-grant project and
   early categorisation of metadata elements used in auxiliary authoring tools:**
-  Benoit Girard and Leonardo Restivo.
+  Leonardo Restivo (non-author), with Benoit Girard (now a co-author).
 - **Early conceptual and software architecture developed for HCMO within
   Metadatapp:** Laurent Huzard.
 - **Domain expertise and feedback:** Benoit Petit-Demoulière, Vootele Voikar,
   Leonardo Restivo, Davor Virag, and Marion Rivalan.
 
 Damien Huzard also acknowledges the INITIUM incubator team, particularly Rémi
-Przybylski and Kate Rivière, as well as Frédéric Deverre, Loïc Clementz, and
-Geoffrey Galibert for their contributions to the technical and business
+Przybylski, Noelline Meslin, and Kate Rivière, as well as Frédéric Deverre,
+Loïc Clementz, and Geoffrey Galibert for their contributions to the technical and business
 development of Metadatapp.
+
+## Clarifications from contributors
+
+- **Davor Virag** (email to Damien Huzard, recorded 2026-09-24): he expressed interest in the COST
+  mobility-grant project on 7 September 2025 but was not included in its
+  submission, through an unintentional omission by the submitter. He was
+  invited to work on HCMO in April 2026 and again expressed interest; he
+  followed up on 14 July 2026, and scheduling conflicts have so far prevented
+  joint work. He did not decline to take part for lack of time. His credit in
+  the article (the Bains et al. semantic-components model, and domain
+  expertise and feedback) is unchanged.
 
 ## Auxiliary field-tier inventory
 

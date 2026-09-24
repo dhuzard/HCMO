@@ -4,6 +4,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{newunicodechar}
 \newunicodechar{—}{---}
+\usepackage{amssymb}
 \usepackage{booktabs}
 \usepackage{hyperref}
 \usepackage{microtype}
@@ -36,6 +37,7 @@ Gaoussou Sanou\inst{2}\orcidID{0000-0003-2204-2466} \and
 Serge Sonfack Sounchio\inst{3}\orcidID{0000-0002-6085-6818} \and
 Antoine Toffano\inst{1}\orcidID{0009-0008-0575-8490} \and
 Pierre Larmande\inst{4}\orcidID{0000-0002-2923-9790} \and
+Benoit Girard\inst{7}\orcidID{0000-0002-3914-6483} \and
 Philippe Rocca-Serra\inst{5}\orcidID{0000-0001-9853-5668} \and
 Konstantin Todorov\inst{1}\orcidID{0000-0002-9116-6692}
 \thanks{Co-last author and corresponding author.} \and
@@ -61,153 +63,104 @@ University of Oxford, Oxford OX1 3QG, United Kingdom
 \and
 Neuronautix, Montpellier, France\\
 \email{damien.huzard@gmail.com}
+\and
+\new{[Affiliation of Benoit Girard to be confirmed]}
 }
 
 \begin{document}
 \maketitle
 \input{sections/00-abstract.tex}
 
-\begin{center}
-\begin{minipage}{0.94\linewidth}
-\small
-\textbf{Resource type:} Ontology with SHACL shapes, SPARQL competency queries,
-JSON-LD context, and example datasets\\
-\textbf{License:} CC BY 4.0\\
-\textbf{DOI:} \href{https://doi.org/10.5281/zenodo.22208202}{10.5281/zenodo.22208202}\\
-\textbf{GitHub repository:} \url{https://github.com/dhuzard/HCMO}\\
-\textbf{URL:} \url{https://w3id.org/hcmo/ontology/hcm}
-\end{minipage}
-\end{center}
-
 \input{sections/01-introduction.tex}
 \input{sections/02-related-work.tex}
-\input{sections/03-requirements.tex}
-\input{sections/04-resource.tex}
-\input{sections/05-availability.tex}
+\input{sections/03-methodology.tex}
+\input{sections/04-hcmo.tex}
+\input{sections/05-use-case.tex}
 \input{sections/06-evaluation.tex}
-\input{sections/07-impact.tex}
-\input{sections/08-conclusion.tex}
+\input{sections/07-discussion.tex}
 
-\paragraph*{\new{\emph{Resource Availability Statement.}}}
-The resources required to reproduce the machine-executable validation and
-evaluation results reported in this article are available in the archived HCMO
-\texttt{v0.3.0} release
-(\url{https://doi.org/10.5281/zenodo.22208202}) and the corresponding
-versioned GitHub repository
-(\url{https://github.com/dhuzard/HCMO/tree/v0.3.0}). These resources include
-the ontology distributions, SHACL shapes, example datasets, executable SPARQL
-competency questions and their expected results, evaluation reports, and build
-and validation tooling. The FAIR self-assessment is available at
-\url{https://github.com/dhuzard/HCMO/blob/v0.3.0/docs/paper/metadata/resource-metadata.md}.
+\paragraph*{\emph{Resource Availability Statement.}}
+\new{HCMO~0.3.0 --- the modular Turtle sources, the merged Turtle, RDF/XML and
+JSON-LD distributions, the JSON-LD context, and the release manifest --- is
+available under CC~BY~4.0 from its persistent IRI
+\url{https://w3id.org/hcmo/ontology/hcm}, from the GitHub repository at tag
+\texttt{v0.3.0} (\url{https://github.com/dhuzard/HCMO/tree/v0.3.0}), and from
+Zenodo (\url{https://doi.org/10.5281/zenodo.22208202}); the canonical citation
+is given in \texttt{CITATION.cff}. The SHACL shapes, example datasets including
+the 2 $\times$ 2 round-trip fixture, executable SPARQL competency questions with
+their expected answers, build and validation tooling, evaluation reports, and
+the FAIR self-assessment are in the same repository and archive. HTML
+documentation is at \url{https://dhuzard.github.io/HCMO/index-en.html}. No
+resource is subject to access restrictions.}\todo[color=orange!40]{DH: the
+paper will describe the next release (v0.4). Before submission, update all
+version numbers, counts, DOIs, dates, and links to v0.4; the fixture README and
+native-isa/ files (post-0.3.0) are currently unreachable on GitHub main.}
 
 \section*{Acknowledgements}
-\new{\textbf{Funding.}}
+\textbf{Funding.}
 Preliminary mapping and implementation work on HCMO was supported by a COST
 mobility grant (EUR~750) awarded to Damien Huzard for the project
-\emph{Mapping the Home-Cage Monitoring Ontology to Device Metadata}, with
-contributions from Leonardo Restivo and Benoit Girard. The subsequent
-substantial redevelopment of HCMO was supported by an Exogene grant
-(EUR~23,000), administered by the Pôle Universitaire d'Innovation (PUI) of the
-University of Montpellier and awarded to Metadatapp to support collaboration
-between Damien Huzard and Konstantin Todorov. As part of an
-Exogene-funded Master's project, Cyril Gilbert redesigned and
-implemented the HCMO version presented in this article.
+\emph{Mapping the Home-Cage Monitoring Ontology to Device Metadata}\new{, with
+contributions from Leonardo Restivo}. The subsequent substantial redevelopment
+of HCMO was supported by an Exogene grant (EUR~23,000), administered by the
+Pôle Universitaire d'Innovation (PUI) of the University of Montpellier and
+awarded to Metadatapp to support collaboration between Damien Huzard and
+Konstantin Todorov. As part of an Exogene-funded Master's project, Cyril
+Gilbert redesigned and implemented the HCMO version presented in this article.
 
-\textbf{Project and software provenance.}
-HCMO developed through four stages. First, the community-developed TEATIME Olog
-established structured terminology for home-cage monitoring and is HCMO's
-closest conceptual precursor. Second, during the first half of 2025, Damien
-Huzard began translating the broader domain need into a machine-actionable
-ontology through Metadatapp's semantic-development work and related grant
-preparation. Third, the COST mobility-grant phase supported limited preliminary
-device-metadata mapping, project scoping, and publication of an early GitHub
-version in September 2025, with contributions from Leonardo Restivo and Benoit
-Girard. Fourth, during the Exogene-supported phase from October 2025 to October
-2026, the present author team comprehensively redesigned and formally evaluated
-HCMO. This phase produced the semantic model, modular ontology architecture,
-external alignments, SHACL validation framework, competency questions,
-evaluation procedures, and reproducible release infrastructure reported here.
+\textbf{Provenance.}
+\new{HCMO builds on the community-developed HCM Definition Olog (Sect.~2). From
+March 2025, Damien Huzard developed an earlier machine-actionable ontology,
+HCM-D, published on BioPortal and no longer maintained, within Metadatapp's
+semantic-development work. The COST mobility-grant phase supported preliminary
+device-metadata mapping, project scoping, and an early GitHub version in
+September 2025. From October 2025 to October 2026, the present author team
+comprehensively redesigned and formally evaluated HCMO, producing the model,
+architecture, alignments, validation framework, competency questions,
+evaluation procedures, and release infrastructure reported here.}
 
-The complete development history is available at
-\url{https://github.com/dhuzard/HCMO}. The version described in this article
-corresponds to release \texttt{v0.3.0} and is archived at
-\url{https://doi.org/10.5281/zenodo.22208202}.
-
-\new{\textbf{Non-author contributions.}}
-The authors acknowledge COST Action TEATIME (CA20135), particularly Working
+\textbf{Non-author contributions.}
+\new{The authors acknowledge COST Action TEATIME (CA20135), particularly Working
 Group~2, as the collective producer of the HCM Definition Olog and as a source
-of domain terminology, expertise, and feedback. Leonardo Restivo is gratefully
-acknowledged for introducing the Olog approach and facilitating the iterative,
-community-based development of that definition.
+of domain terminology, expertise, and feedback; Leonardo Restivo for
+introducing the Olog approach and facilitating its community-based
+development, and for preliminary scoping of the COST mobility-grant project and
+early categorisation of metadata elements used in auxiliary authoring tools;
+Leonardo Restivo and Davor Virag for the semantic-components model of Bains et
+al.\ \cite{bains2025}; Laurent Huzard for the early conceptual and
+software architecture developed for HCMO within Metadatapp; and Benoit
+Petit-Demoulière, Vootele Voikar, Leonardo Restivo, Davor Virag, and Marion
+Rivalan for domain expertise and feedback.} Damien Huzard also thanks the
+INITIUM incubator team, particularly Rémi Przybylski, Noelline Meslin, and
+Kate Rivière, as well as Frédéric Deverre, Loïc Clementz, and Geoffrey
+Galibert for their contributions to the technical and business development of
+Metadatapp.
 
-The authors separately acknowledge the related semantic-components model
-published as Fig.~1 in Bains et al.\ \cite{bains2025}. This model, led by
-Leonardo Restivo and developed with a contribution from Davor Virag, helped
-articulate important elements of HCM experiment and data structure.
-
-The following additional non-author contributions are recognised:
-
-\begin{itemize}
-
-\item \textbf{Preparation and preliminary scoping of the COST mobility-grant
-project and early categorisation of metadata elements used in auxiliary
-authoring tools:}
-Benoit Girard and Leonardo Restivo.
-
-\item \textbf{Early conceptual and software architecture developed for HCMO
-within Metadatapp:}
-Laurent Huzard.
-
-\item \textbf{Domain expertise and feedback:}
-Benoit Petit-Demoulière, Vootele Voikar, Leonardo Restivo, Davor Virag, and
-Marion Rivalan.
-
-\end{itemize}
-
-Damien Huzard also thanks the INITIUM incubator team, particularly Rémi
-Przybylski, Noelline Meslin, and Kate Rivière, as well as Frédéric Deverre,
-Loïc Clementz, and Geoffrey Galibert for their contributions to the technical
-and business development of Metadatapp.
-
-\section*{CRediT author statement}
-
-\textbf{Cyril Gilbert:}
-Data curation, Methodology, Software, Formal analysis, Validation, Visualization, Writing -- original draft, Writing -- review \& editing.
-
-\textbf{Gaoussou Sanou:}
-Conceptualization, Methodology, Software, Formal analysis, Visualization, Writing -- review \& editing.
-
-\textbf{Philippe Rocca-Serra:}
-Conceptualization, Methodology, Validation, Writing -- review \& editing.
-
-\textbf{Pierre Larmande:}
-Methodology, Writing -- review \& editing.
-
-\textbf{Benoit Girard:}\todo[color=orange!40]{DH: Benoit Girard has CRediT roles here but is not in the author list, and is still thanked above as a non-author. Resolve once his co-authorship is confirmed.}
-Funding acquisition, Writing -- review \& editing.
-
-\textbf{Serge Sonfack Sounchio:}
-Methodology.
-
-\textbf{Antoine Toffano:}
-Methodology.
-
-\textbf{Konstantin Todorov:} 
-Conceptualization, Methodology, Supervision, Writing -- review \& editing.
-
-\textbf{Damien Huzard:}
-Conceptualization, Data curation, Formal analysis, Funding acquisition, Investigation,
-Methodology, Project administration, Resources, 
-Software, Supervision, Validation, Writing -- original draft,
+\textbf{CRediT author statement.}
+\textbf{Cyril Gilbert:} Data curation, Methodology, Software, Formal analysis,
+Validation, Visualization, Writing -- original draft, Writing -- review \&
+editing.
+\textbf{Gaoussou Sanou:} Conceptualization, Methodology, Software, Formal
+analysis, Visualization, Writing -- review \& editing.
+\textbf{Serge Sonfack Sounchio:} Methodology.
+\textbf{Antoine Toffano:} Methodology.
+\textbf{Pierre Larmande:} Methodology, Writing -- review \& editing.
+\textbf{Benoit Girard:} Funding acquisition, Writing -- review \& editing.
+\textbf{Philippe Rocca-Serra:} Conceptualization, Methodology, Validation,
+Writing -- review \& editing.
+\textbf{Konstantin Todorov:} Conceptualization, Methodology, Supervision,
+Writing -- review \& editing.
+\textbf{Damien Huzard:} Conceptualization, Data curation, Formal analysis,
+Funding acquisition, Investigation, Methodology, Project administration,
+Resources, Software, Supervision, Validation, Writing -- original draft,
 Writing -- review \& editing.
 
-\section*{Competing interests}
-
+\textbf{Competing interests.}
 Damien Huzard initiated Metadatapp as an entrepreneurial project and currently
 maintains it as open-source software. He also provides consultancy services in
 preclinical research and research metadata through Neuronautix
-(\url{https://www.neuronautix.com}). 
-The other authors declare no competing interests.
+(\url{https://www.neuronautix.com}). The other authors declare no competing
+interests.
 
 \bibliographystyle{splncs04}
 \bibliography{references}
