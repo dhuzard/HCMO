@@ -132,6 +132,22 @@ def read_mapping(path: Path) -> list[dict[str, str]]:
     return rows
 
 
+def wilson_interval(k: int, n: int, z: float = 1.959964) -> tuple[float, float]:
+    """Wilson score 95 % interval for a proportion k/n, in percent."""
+    if n == 0:
+        return 0.0, 0.0
+    p = k / n
+    denom = 1 + z * z / n
+    centre = (p + z * z / (2 * n)) / denom
+    half = z * ((p * (1 - p) / n + z * z / (4 * n * n)) ** 0.5) / denom
+    return 100.0 * (centre - half), 100.0 * (centre + half)
+
+
+def pct_ci(k: int, n: int) -> str:
+    low, high = wilson_interval(k, n)
+    return f"{k}/{n} = {100.0 * k / n:.0f}% [{low:.0f}–{high:.0f}]" if n else "—"
+
+
 def coverage_stats(rows: list[dict[str, str]]) -> dict:
     kinds = Counter(row["mapping"] for row in rows)
     total = len(rows)
@@ -142,6 +158,8 @@ def coverage_stats(rows: list[dict[str, str]]) -> dict:
     return {
         "total": total,
         "kinds": kinds,
+        "native": kinds["hcmo"],
+        "native_or_external": kinds["hcmo"] + kinds["external"],
         "mapped": mapped,
         "pct_mapped": 100.0 * mapped / total if total else 0.0,
         "pct_native": 100.0 * kinds["hcmo"] / total if total else 0.0,
@@ -160,29 +178,50 @@ def instance_stats(graph: Graph) -> dict:
 def coverage_report(index: dict, graphs: dict[str, Graph]) -> str:
     lines = [GENERATED, "# Multi-system coverage of HCMO 0.3.0\n"]
     lines.append(
-        "Coverage is computed from each system's reviewed mapping table "
+        "Coverage is computed from each system's mapping table "
         "(`hcmo-mapping.tsv`): every native concept or export variable is mapped to "
         "an HCMO term (**hcmo**), expressed through a reused external term in the "
         "HCMO pattern (**external**), expressed only partially or through a generic "
-        "pattern (**partial**), or deliberately left uncovered (**not-covered**). "
-        "`% mapped` counts hcmo + external + partial; `% HCMO-native` counts hcmo only.\n"
+        "pattern (**partial**), or deliberately left uncovered (**not-covered**).\n"
+    )
+    lines.append(
+        "> **Read these figures with their limits.** (1) Every export is **synthetic**: "
+        "no system graph derives from recorded animal data. (2) Each mapping table was "
+        "written by a **single annotator**, who for most systems also designed the "
+        "synthetic export from the system's documentation; the review status column "
+        "tracks independent review by each system's developers. (3) The intervals are "
+        "Wilson 95 % score intervals over the native concepts of one system; they "
+        "reflect the small number of concepts, not disagreement between annotators, "
+        "and the differences between systems are descriptive, not tested. "
+        "**HCMO-native** is the headline figure; the cumulative columns show how much "
+        "more becomes expressible when reused external terms and generic or lossy "
+        "patterns are accepted.\n"
     )
     lines.append("## Systems\n")
     rows = []
+    totals = Counter()
     for system in index["systems"]:
         stats = coverage_stats(read_mapping(ROOT / system["mapping"]))
-        graph = graphs[system["id"]]
+        n = stats["total"]
+        totals.update({"n": n, "native": stats["native"], "native_or_external": stats["native_or_external"],
+                       "mapped": stats["mapped"], "not": stats["kinds"]["not-covered"]})
+        review = system.get("mapping_review", {}).get("status", "not reviewed")
         rows.append([
-            system["name"], system["modality"], system["data"],
-            len(graph), stats["total"], stats["kinds"]["hcmo"], stats["kinds"]["external"],
-            stats["kinds"]["partial"], stats["kinds"]["not-covered"],
-            f"{stats['pct_mapped']:.0f}%", f"{stats['pct_native']:.0f}%",
+            system["name"], system["data"], review, len(graphs[system["id"]]), n,
+            pct_ci(stats["native"], n), pct_ci(stats["native_or_external"], n),
+            pct_ci(stats["mapped"], n), stats["kinds"]["not-covered"],
         ])
+    rows.append([
+        "**All systems (pooled)**", "", "", "", totals["n"],
+        pct_ci(totals["native"], totals["n"]), pct_ci(totals["native_or_external"], totals["n"]),
+        pct_ci(totals["mapped"], totals["n"]), totals["not"],
+    ])
     lines.append(md_table(
-        ["System", "Modality", "Data", "Triples", "Native concepts", "hcmo", "external", "partial", "not covered", "% mapped", "% HCMO-native"],
+        ["System", "Data", "Mapping review", "Triples", "Native concepts",
+         "HCMO-native [95% CI]", "+ external (cumulative)", "+ partial (cumulative)", "Not covered"],
         rows,
     ))
-    lines.append("\n## Systems × HCMO modules (native concepts mapped / total assigned to the module)\n")
+    lines.append("\n## Systems × HCMO modules (HCMO-native / expressible at all / assigned to the module)\n")
     module_rows = []
     for system in index["systems"]:
         stats = coverage_stats(read_mapping(ROOT / system["mapping"]))
@@ -191,10 +230,25 @@ def coverage_report(index: dict, graphs: dict[str, Graph]) -> str:
             counts = stats["per_module"].get(module, Counter())
             total = sum(counts.values())
             mapped = counts["hcmo"] + counts["external"] + counts["partial"]
-            row.append("—" if total == 0 else f"{mapped}/{total}")
+            row.append("—" if total == 0 else f"{counts['hcmo']} / {mapped} / {total}")
         row.append(str(sum(stats["per_module"].get("—", Counter()).values())))
         module_rows.append(row)
     lines.append(md_table(["System", *MODULE_NAMESPACES, "out of scope"], module_rows))
+    lines.append("\n## HCMO modules, pooled over all systems\n")
+    pooled = defaultdict(Counter)
+    for system in index["systems"]:
+        for row in read_mapping(ROOT / system["mapping"]):
+            pooled[row["module"]][row["mapping"]] += 1
+    pooled_rows = []
+    for module in MODULE_NAMESPACES:
+        counts = pooled.get(module, Counter())
+        n = sum(counts.values())
+        pooled_rows.append([
+            module, n, pct_ci(counts["hcmo"], n),
+            pct_ci(counts["hcmo"] + counts["external"] + counts["partial"], n), counts["not-covered"],
+        ])
+    lines.append(md_table(["Module", "Native concepts", "HCMO-native [95% CI]", "Expressible at all [95% CI]", "Not covered"], pooled_rows))
+    lines.append(f"\nOut of scope (no module): {sum(pooled.get('—', Counter()).values())} concepts.\n")
     lines.append("\n## Instance inventory per system\n")
     for system in index["systems"]:
         graph = graphs[system["id"]]
@@ -392,6 +446,12 @@ def cq_report(results: list[dict], union: Graph) -> str:
         f"Executed with rdflib over the union of the canonical ontology and all system instance graphs ({len(union)} triples). "
         "`Status` is *answered* when the complete reviewed answer rows are returned, *answered (empty)* when the reviewed answer is the "
         "verified absence of rows, and *partial* when the question is answerable only for a subset of systems for a documented reason.\n"
+    )
+    lines.append(
+        "> **What a pass means.** The questions and their expected answers were written by the same author who built the graphs, "
+        "so a pass shows that the modelling pattern makes each question executable across systems and that nothing has "
+        "regressed; it is not an independent test of adequacy. Every value comes from a **synthetic** export, so counts, "
+        "means, accuracies and latencies in the answers are properties of the generators, not biological findings.\n"
     )
     rows = []
     for q in results:

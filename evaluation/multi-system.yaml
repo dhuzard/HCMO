@@ -4,16 +4,20 @@
 # (CI gate). Each system entry points to the system profile, the native export
 # used, the native-concept -> HCMO mapping table, the generator, and the
 # generated instance graph. `data` states whether the instance graph derives
-# from a real vendor export or from a schema-faithful synthetic export.
+# from a recorded vendor export or from a synthetic export. All six are
+# currently synthetic; mapping_review tracks independent review of each
+# mapping table by the system's developers (evaluation/CONTRIBUTOR-REVIEW.md).
 version: 0.3.0
 systems:
   - id: dvc-tecniplast
     name: Tecniplast DVC (Digital Ventilated Cage)
     modality: capacitive electrode array under each IVC (rack system)
-    data: real + synthetic
+    data: synthetic (mock cohort-7623 export + synthetic cohort + declared metadata)
     profile: docs/hcm-systems/systems/DVC_Tecniplast/README.md
     mapping: docs/hcm-systems/systems/DVC_Tecniplast/hcmo-mapping.tsv
     generator: docs/hcm-systems/systems/DVC_Tecniplast/generate_hcmo_instance.py
+    mapping_review:
+      status: single annotator, not yet reviewed
     graph: examples/systems/dvc-tecniplast.ttl
     exports:
       - docs/hcm-systems/systems/DVC_Tecniplast/datasets/real/Cohort7623_events.csv
@@ -27,6 +31,8 @@ systems:
     profile: docs/hcm-systems/systems/tse-phenomaster/README.md
     mapping: docs/hcm-systems/systems/tse-phenomaster/hcmo-mapping.tsv
     generator: docs/hcm-systems/systems/tse-phenomaster/generate_hcmo_instance.py
+    mapping_review:
+      status: single annotator, not yet reviewed
     graph: examples/systems/tse-phenomaster.ttl
     exports:
       - docs/hcm-systems/systems/tse-phenomaster/datasets/mock/phenomaster_mock_export.csv
@@ -37,6 +43,8 @@ systems:
     profile: docs/hcm-systems/systems/noldus-phenotyper/README.md
     mapping: docs/hcm-systems/systems/noldus-phenotyper/hcmo-mapping.tsv
     generator: docs/hcm-systems/systems/noldus-phenotyper/generate_hcmo_instance.py
+    mapping_review:
+      status: single annotator, not yet reviewed
     graph: examples/systems/noldus-phenotyper.ttl
     exports:
       - docs/hcm-systems/systems/noldus-phenotyper/datasets/mock/ethovision_track_sample_arena1.csv
@@ -49,6 +57,8 @@ systems:
     profile: docs/hcm-systems/systems/fed3/README.md
     mapping: docs/hcm-systems/systems/fed3/hcmo-mapping.tsv
     generator: docs/hcm-systems/systems/fed3/generate_hcmo_instance.py
+    mapping_review:
+      status: single annotator, not yet reviewed
     graph: examples/systems/fed3.ttl
     exports:
       - docs/hcm-systems/systems/fed3/datasets/mock/FED001_060226_00.CSV
@@ -60,6 +70,8 @@ systems:
     profile: docs/hcm-systems/systems/live-mouse-tracker/README.md
     mapping: docs/hcm-systems/systems/live-mouse-tracker/hcmo-mapping.tsv
     generator: docs/hcm-systems/systems/live-mouse-tracker/generate_hcmo_instance.py
+    mapping_review:
+      status: single annotator, not yet reviewed
     graph: examples/systems/live-mouse-tracker.ttl
     exports:
       - docs/hcm-systems/systems/live-mouse-tracker/datasets/mock/ANIMAL.csv
@@ -73,6 +85,8 @@ systems:
     profile: docs/hcm-systems/systems/beatbox/README.md
     mapping: docs/hcm-systems/systems/beatbox/hcmo-mapping.tsv
     generator: docs/hcm-systems/systems/beatbox/generate_hcmo_instance.py
+    mapping_review:
+      status: single annotator, not yet reviewed
     graph: examples/systems/beatbox.ttl
     exports:
       - docs/hcm-systems/systems/beatbox/datasets/mock/beatbox_can_event_log.csv

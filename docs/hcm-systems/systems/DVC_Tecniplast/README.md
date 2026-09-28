@@ -1,9 +1,14 @@
 # Tecniplast DVC® — HCMO reference example
 
 **First worked example** for HCMO validation: a commercial, capacitance-based
-home-cage monitoring platform, with a **source-cited system profile**, a **real
-export** (cohort 7623), and **synthetic look-alike traces** that mirror the real
-schema exactly.
+home-cage monitoring platform, with a **source-cited system profile**, a **mock
+export** (cohort 7623), and **synthetic look-alike traces** in the same schema.
+
+> **All DVC data here are mock.** Cohort 7623 is *not* a recorded export: it is a
+> mock in the DVC Analytics export schema, kept under `datasets/real/` for
+> historical reasons. Whether that schema matches a vendor-issued export still
+> has to be confirmed by Tecniplast contacts (see
+> [`evaluation/CONTRIBUTOR-REVIEW.md`](../../../../evaluation/CONTRIBUTOR-REVIEW.md)).
 
 | | |
 |---|---|
@@ -22,17 +27,17 @@ DVC_Tecniplast/
   README.md                    ← this file
   dvc-system-profile.md        ← full source-cited profile (9 sections + Sources)
   hcmo-mapping.tsv             ← native concept → HCMO mapping table (coverage evaluation)
-  generate_hcmo_instance.py    ← builds the instance graph below (real + synthetic + declared metadata)
+  generate_hcmo_instance.py    ← builds the instance graph below (mock + synthetic + declared metadata)
   ../../../../examples/dvc-tecniplast.ttl
                                ← profile-level RDF ABox graph
   ../../../../examples/systems/dvc-tecniplast.ttl
-                               ← GENERATED instance graph (real cohort 7623 + synthetic B6_F + metadata)
+                               ← GENERATED instance graph (mock cohort 7623 + synthetic B6_F + metadata)
   datasets/
-    real/                      ← real cohort-7623 export + data dictionary
+    real/                      ← MOCK cohort-7623 export + data dictionary (historical folder name)
       Cohort7623_animal_loc__index_smoothed.csv
       Cohort7623_events.csv
       README.md
-    mock/                      ← synthetic traces matching the REAL schema (+ generator)
+    mock/                      ← synthetic traces in the same schema (+ generator)
       generate_dvc_traces.py
       mock_B6_M_animal_loc__index_smoothed.csv
       mock_B6_M_events.csv
@@ -43,7 +48,7 @@ DVC_Tecniplast/
 - **Start here:** [`dvc-system-profile.md`](dvc-system-profile.md) — what the system is,
   its sensors, every measured/derived parameter, the data-output analysis, and full
   citations.
-- **Real data + schema:** [`datasets/real/README.md`](datasets/real/README.md).
+- **Cohort-7623 mock export + schema:** [`datasets/real/README.md`](datasets/real/README.md).
 - **Mock traces + generator:** [`datasets/mock/README.md`](datasets/mock/README.md).
 - **RDF ABox profile:** [`../../../../examples/dvc-tecniplast.ttl`](../../../../examples/dvc-tecniplast.ttl)
   organizes the DVC example as explicit `rdf:type` assertions,
@@ -59,11 +64,11 @@ SHACL shapes and queried by the cross-system competency questions in
 [`evaluation/`](../../../../evaluation/). It combines **three provenance
 classes**, each marked in the graph:
 
-1. **Real** — the cohort-7623 export (group `B6_M`, rack `AAAA`): all **24
-   cages** as `hcm:MonitoredEnclosure`s at their rack positions, the real
+1. **Mock export** — the cohort-7623 mock export (group `B6_M`, rack `AAAA`): all **24
+   cages** as `hcm:MonitoredEnclosure`s at their rack positions, the
    `INSERTED`/`REMOVED` events as `hcm:OperationalStatusRecord`s with validity
    intervals (nine cages were removed during the run; two never re-appear), and
-   **720 real 1-minute activation-index bins**.
+   **720 mock 1-minute activation-index bins**.
 2. **Synthetic** — a second cohort (group `B6_F`, rack `BBBB`, 8 cages) written
    by [`datasets/mock/generate_dvc_traces.py`](datasets/mock/) so that the
    scenario also contains cages of females, contributing 240 further bins.
@@ -115,8 +120,8 @@ From the profile §8 — how a DVC export populates HCMO:
 
 ## Provenance & licensing
 
-The profile and mock data are synthetic/derived and freely redistributable. The
-**real** cohort-7623 files are contributor-provided for HCMO validation — see
-[`datasets/real/README.md`](datasets/real/README.md) before redistributing. All factual
+The profile and all data, including the cohort-7623 files under the historically
+named `datasets/real/`, are synthetic or derived; no file here was recorded from
+animals. All factual
 claims in the profile carry a source URL; unavailable facts are marked
 "unknown — not found" rather than guessed.

@@ -323,7 +323,7 @@ questions:
   - core
   cross_system: true
   status: answered
-  note: 'Real DVC rack events: nine cages of the real male cohort were removed during cohort 7623, two of which never re-appear
+  note: 'Mock DVC rack events: nine cages of the cohort-7623 mock male cohort are removed during the run, two of which never re-appear
     although the index file keeps streaming values for them; the synthetic female cohort adds one short removal.'
   expected_answers:
   - enclosure: https://w3id.org/hcmo/id/eval/dvc-tecniplast/cage-b6-m-12-3402
@@ -902,7 +902,7 @@ questions:
   - core
   cross_system: true
   status: answered
-  note: One reference time inside the real DVC recording, one inside the synthetic runs; the DVC count of 72 combines 32 cage
+  note: One reference time inside the cohort-7623 mock DVC run, one inside the other synthetic runs; the DVC count of 72 combines 32 cage
     groups and 40 subjects housed at that instant.
   expected_answers:
   - system: https://w3id.org/hcmo/id/eval/fed3/

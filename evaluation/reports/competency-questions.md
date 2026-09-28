@@ -4,6 +4,8 @@
 
 Executed with rdflib over the union of the canonical ontology and all system instance graphs (64444 triples). `Status` is *answered* when the complete reviewed answer rows are returned, *answered (empty)* when the reviewed answer is the verified absence of rows, and *partial* when the question is answerable only for a subset of systems for a documented reason.
 
+> **What a pass means.** The questions and their expected answers were written by the same author who built the graphs, so a pass shows that the modelling pattern makes each question executable across systems and that nothing has regressed; it is not an independent test of adequacy. Every value comes from a **synthetic** export, so counts, means, accuracies and latencies in the answers are properties of the generators, not biological findings.
+
 | ID | Question | Modules | Scope | Query | Rows | Status |
 | --- | --- | --- | --- | --- | --- | --- |
 | ms-01-sensor-technologies | Which sensor technologies monitor enclosures in each system, and how many enclosures does each technology cover? | tech, core | cross-system | `evaluation/queries/cq-ms-01-sensor-technologies-by-system.rq` | 14 | answered |
@@ -133,7 +135,7 @@ Joins two systems with different environment layers: DVC rack temperature and hu
 
 ### ms-07-offline-periods
 
-Real DVC rack events: nine cages of the real male cohort were removed during cohort 7623, two of which never re-appear although the index file keeps streaming values for them; the synthetic female cohort adds one short removal.
+Mock DVC rack events: nine cages of the cohort-7623 mock male cohort are removed during the run, two of which never re-appear although the index file keeps streaming values for them; the synthetic female cohort adds one short removal.
 
 | enclosure | assessment | start | minutes |
 | --- | --- | --- | --- |
@@ -297,7 +299,7 @@ Twenty-nine variables in twelve units across six systems: the cross-system inven
 
 ### ms-12-housed-at-reference-times
 
-One reference time inside the real DVC recording, one inside the synthetic runs; the DVC count of 72 combines 32 cage groups and 40 subjects housed at that instant.
+One reference time inside the cohort-7623 mock DVC run, one inside the other synthetic runs; the DVC count of 72 combines 32 cage groups and 40 subjects housed at that instant.
 
 | system | referenceTime | housed |
 | --- | --- | --- |

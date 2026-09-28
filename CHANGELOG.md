@@ -26,7 +26,7 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
   two, three and four from the shared-result pattern) and touch-screen trial
   count, accuracy and latency per mouse strain.
 - Added a multi-system coverage evaluation (`evaluation/`): four HCM systems
-  (Tecniplast DVC from a real cohort export; TSE PhenoMaster, Noldus PhenoTyper
+  (Tecniplast DVC from a mock cohort export; TSE PhenoMaster, Noldus PhenoTyper
   with EthoVision XT and FED3 from schema-faithful synthetic exports) each with a
   system profile, a native-concept → HCMO mapping table, a deterministic
   generator and a SHACL-conformant instance graph under `examples/systems/`.
@@ -39,8 +39,12 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
   builder used by the generators. `tooling/validate.py` gained step 8 (system
   graphs must conform, injected faults must be rejected, cross-system answers
   must match), and CI verifies that graphs and reports are regenerated.
-- Added a worked sensor → observation → result figure for a real DVC bin and an
-  availability-and-sustainability paragraph to the paper draft.
+- Coverage is reported with HCMO-native coverage as the headline figure,
+  Wilson 95 % intervals and cumulative external/partial columns. Every export
+  is synthetic (including DVC cohort 7623) and every mapping table is
+  single-annotator until reviewed by the system's developers
+  (`evaluation/CONTRIBUTOR-REVIEW.md`). Candidate paper additions are listed in
+  `evaluation/ARTICLE-PROPOSALS.md`; the paper itself is unchanged.
 
 ### Fixed
 

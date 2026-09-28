@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Generate MOCK Tecniplast DVC(R) traces that mirror the REAL export schema.
+"""Generate MOCK Tecniplast DVC(R) traces in the cohort-7623 export schema.
 
-This reproduces the two file shapes found in a real DVC Analytics export
-(see ``../real/``), so HCMO ingestion/validation can be exercised against
+This reproduces the two file shapes of the cohort-7623 mock DVC Analytics
+export (see ``../real/``; also mock despite the folder name, and its schema is
+still to be confirmed against a vendor-issued export), so HCMO ingestion/validation can be exercised against
 synthetic-but-faithful data:
 
   1. ``mock_<GROUP>_animal_loc__index_smoothed.csv``
@@ -16,18 +17,18 @@ synthetic-but-faithful data:
        group, day, hour, minute, relativeTime, timestamp,
        cage, rack, position, event
 
-Conventions reverse-engineered from the real cohort file and reproduced here:
+Conventions of the cohort-7623 file, reproduced here:
   * relativeTime      = day*86400 + hour*3600 + minute*60 (+seconds for events),
                         i.e. seconds since local midnight of day 0.
   * <GROUP>_AVG       = mean of the online cages' activation values in the bin.
   * <GROUP>_SEM       = sample standard deviation (ddof=1) of those values
-                        (this is what the column contains in the real export).
+                        (this is what the column contains in the cohort-7623 file).
   * <GROUP>_QRT       = [min, min+.25R, min+.5R, min+.75R, max, min, max], R=max-min
                         (i.e. linspace(min,max,5) then min,max appended).
   * <GROUP>_SAMPLES   = ~ online_cages * 240  (4 Hz * 60 s), with small jitter.
   * timestamps        = ISO 8601 with milliseconds and a numeric offset (e.g. -0400).
   * cages come online progressively at the start (INSERTED events), so the first
-    minutes have empty cells for not-yet-inserted cages — exactly as in the real file.
+    minutes have empty cells for not-yet-inserted cages — exactly as in the cohort-7623 file.
 
 This is SYNTHETIC data (not real animals). Deterministic: a fixed seed yields
 byte-identical output. Standard library only.
@@ -96,8 +97,8 @@ def qrt(vals: list[float]) -> str:
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--group", default="B6_M", help="group label / column prefix (default B6_M)")
-    ap.add_argument("--cages", type=int, default=8, help="number of cages (default 8; real cohort had 24)")
-    ap.add_argument("--days", type=int, default=3, help="recording days (default 3; real cohort had 14)")
+    ap.add_argument("--cages", type=int, default=8, help="number of cages (default 8; cohort 7623 has 24)")
+    ap.add_argument("--days", type=int, default=3, help="recording days (default 3; cohort 7623 has 14)")
     ap.add_argument("--start", default="2025-10-14T10:15:00", help="local start datetime (ISO, no offset)")
     ap.add_argument("--offset", default="-0400", help="numeric UTC offset string (default -0400)")
     ap.add_argument("--lights-on", type=int, default=7, help="lights-on hour (default 7)")

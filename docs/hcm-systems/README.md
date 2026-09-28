@@ -33,7 +33,7 @@ hcm-systems/
       real/                 #   real exports (anonymised, license-checked)
       mock/                 #   synthetic data hand-authored to match the real schema
   systems/                  # one folder per system (same shape as _template/)
-    DVC_Tecniplast/         #   ★ first worked example: profile + real export + mock traces
+    DVC_Tecniplast/         #   ★ first worked example: profile + mock cohort export + mock traces
     tse-phenomaster/        #   metabolic (synthetic schema-faithful export)
     noldus-phenotyper/      #   video + EthoVision XT (synthetic schema-faithful exports)
     fed3/                   #   open-source operant feeder (synthetic schema-faithful log)
@@ -49,10 +49,10 @@ is documented in [`../../evaluation/README.md`](../../evaluation/README.md).
 ## Worked examples
 
 - **[`systems/DVC_Tecniplast/`](systems/DVC_Tecniplast/)** — Tecniplast DVC®: a
-  source-cited system profile, a **real** cohort export, and **synthetic traces that
-  mirror the real CSV schema exactly** (with a deterministic generator). Its
+  source-cited system profile, a **mock** cohort export (cohort 7623), and **synthetic
+  traces in the same CSV schema** (with a deterministic generator). Its
   RDF profile graph is [`../../examples/dvc-tecniplast.ttl`](../../examples/dvc-tecniplast.ttl),
-  and its real-data instance graph is `../../examples/systems/dvc-tecniplast.ttl`.
+  and its coverage-evaluation instance graph is `../../examples/systems/dvc-tecniplast.ttl`.
   Use it as the template for how a filled-in system folder should look.
 - **[`systems/tse-phenomaster/`](systems/tse-phenomaster/)**,
   **[`systems/noldus-phenotyper/`](systems/noldus-phenotyper/)**,

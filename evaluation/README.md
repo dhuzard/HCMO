@@ -1,7 +1,7 @@
 # HCMO multi-system evaluation
 
-This folder holds the evidence that HCMO absorbs the heterogeneity of real
-home-cage monitoring (HCM) systems: per-system instance graphs built from
+This folder tests how far HCMO absorbs the heterogeneity of real
+home-cage monitoring (HCM) systems, using **synthetic exports only**: per-system instance graphs built from
 native exports, native-concept → HCMO mapping tables, cross-system competency
 questions with exact answers, and generated quality reports.
 
@@ -27,26 +27,28 @@ the generated instance graphs live under [`examples/systems/`](../examples/syste
 
 | System | Modality | Data | Instance graph |
 |---|---|---|---|
-| Tecniplast DVC | capacitive electrode rack (commercial) | **real** cohort-7623 export (24 cages, real rack events, 960 real 1-min bins) **+ synthetic** female cohort **+ declared metadata** (light programme, rack temperature/humidity, 2 mice per cage, weekly cage changes) | `examples/systems/dvc-tecniplast.ttl` |
+| Tecniplast DVC | capacitive electrode rack (commercial) | **mock** cohort-7623 export (24 cages, rack events, 720 1-min bins) **+ synthetic** female cohort (240 bins) **+ declared metadata** (light programme, rack temperature/humidity, 2 mice per cage, weekly cage changes) | `examples/systems/dvc-tecniplast.ttl` |
 | TSE PhenoMaster | indirect calorimetry, feeding, drinking, activity (commercial) | synthetic, schema-faithful | `examples/systems/tse-phenomaster.ttl` |
 | Noldus PhenoTyper + EthoVision XT | video tracking and behaviour recognition (commercial) | synthetic, schema-faithful | `examples/systems/noldus-phenotyper.ttl` |
 | FED3 | open-source operant feeding device | synthetic, schema-faithful | `examples/systems/fed3.ttl` |
 | Live Mouse Tracker | depth video + RFID, group-housed (open source) | synthetic, schema-faithful (`lmt-analysis` table layout and event names) | `examples/systems/live-mouse-tracker.ttl` |
 | BEATBox | home-cage touch-screen operant box (open source) | synthetic (CAN messages per the published protocol; trial table designed here) | `examples/systems/beatbox.ttl` |
 
-Real vendor exports other than the contributed DVC cohort could not be
-redistributed; the synthetic exports reproduce the documented column layout of
-each system so that the *mapping* is exercised faithfully even though the
-*values* are generated. Every graph states its provenance in a `schema:Dataset`
+**No graph derives from recorded animal data.** The synthetic exports
+reproduce each system's column layout as documented publicly, so the *mapping*
+is exercised even though the *values* are generated; whether each layout matches
+what the system really writes is still to be confirmed by its developers (see
+[`CONTRIBUTOR-REVIEW.md`](CONTRIBUTOR-REVIEW.md)). Each mapping table was written
+by a single annotator, so the coverage figures are provisional until reviewed. Every graph states its provenance in a `schema:Dataset`
 node (`dcterms:type "real export"` or `"synthetic schema-faithful export"`).
 
 The DVC graph mixes three provenance classes on purpose, because that is what a
-real deployment looks like: measured values from the contributed export,
+real deployment looks like: values in the export (here the cohort-7623 mock),
 a synthetic second cohort so that the scenario holds cages of both sexes, and
 **declared experimental metadata** that the export simply does not carry (light
 programme, rack environment, housing density, cage-change schedule). Every node
 of the third kind links to a `mock-experimental-metadata` dataset note, so a
-query can separate what was measured from what was assumed.
+query can separate what an export carries from what was assumed.
 
 ## Reproduce
 

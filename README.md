@@ -61,7 +61,7 @@ dist/                          # GENERATED — never hand-edit
   profile.json                 #   flat term inventory {iri,label,comment} + counts
 shapes/hcm-shapes.ttl          # SHACL constraints
 examples/                      # ABox examples (abox-minimal, abox-edge-cases)
-  systems/                     #   GENERATED instance graphs of real HCM systems (coverage evaluation)
+  systems/                     #   GENERATED instance graphs of HCM systems from synthetic exports (coverage evaluation)
 queries/                       # competency_questions.yaml + cq-*.rq
 evaluation/                    # multi-system coverage evaluation: index, cross-system CQs, GENERATED reports
 tooling/                       # build.py, validate.py, evaluate.py, docs.py, requirements.txt
@@ -97,12 +97,13 @@ python tooling/validate_isa_native_projection.py  # controlled-loss ISA-JSON/ISA
   one real tissue Sample. It tests identity preservation without fabricating an
   animal Sample proxy; all non-native HCMO/STATO losses remain explicit.
 
-## Evaluation against real HCM systems
+## Evaluation against HCM system exports (synthetic)
 
 [`evaluation/`](evaluation/README.md) maps six heterogeneous systems to HCMO —
-Tecniplast DVC (from a real export, plus a synthetic cohort and declared
+Tecniplast DVC (a mock export plus a synthetic cohort and declared
 experimental metadata), TSE PhenoMaster, Noldus PhenoTyper/EthoVision XT, FED3,
-Live Mouse Tracker and BEATBox (from schema-faithful synthetic exports) —
+Live Mouse Tracker and BEATBox (synthetic exports built from each system's
+public documentation; no recorded animal data) —
 validates the resulting instance graphs with the shapes, runs sixteen
 cross-system competency questions with exact answers, and reports ontology
 metrics, SHACL and HermiT results. The per-system

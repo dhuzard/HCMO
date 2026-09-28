@@ -2,30 +2,47 @@
 
 # Multi-system coverage of HCMO 0.3.0
 
-Coverage is computed from each system's reviewed mapping table (`hcmo-mapping.tsv`): every native concept or export variable is mapped to an HCMO term (**hcmo**), expressed through a reused external term in the HCMO pattern (**external**), expressed only partially or through a generic pattern (**partial**), or deliberately left uncovered (**not-covered**). `% mapped` counts hcmo + external + partial; `% HCMO-native` counts hcmo only.
+Coverage is computed from each system's mapping table (`hcmo-mapping.tsv`): every native concept or export variable is mapped to an HCMO term (**hcmo**), expressed through a reused external term in the HCMO pattern (**external**), expressed only partially or through a generic pattern (**partial**), or deliberately left uncovered (**not-covered**).
+
+> **Read these figures with their limits.** (1) Every export is **synthetic**: no system graph derives from recorded animal data. (2) Each mapping table was written by a **single annotator**, who for most systems also designed the synthetic export from the system's documentation; the review status column tracks independent review by each system's developers. (3) The intervals are Wilson 95 % score intervals over the native concepts of one system; they reflect the small number of concepts, not disagreement between annotators, and the differences between systems are descriptive, not tested. **HCMO-native** is the headline figure; the cumulative columns show how much more becomes expressible when reused external terms and generic or lossy patterns are accepted.
 
 ## Systems
 
-| System | Modality | Data | Triples | Native concepts | hcmo | external | partial | not covered | % mapped | % HCMO-native |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Tecniplast DVC (Digital Ventilated Cage) | capacitive electrode array under each IVC (rack system) | real + synthetic | 17341 | 26 | 15 | 1 | 6 | 4 | 85% | 58% |
-| TSE PhenoMaster (indirect calorimetry, feeding, drinking, activity) | metabolic and environmental home-cage phenotyping | synthetic | 6971 | 27 | 14 | 3 | 8 | 2 | 93% | 52% |
-| Noldus PhenoTyper with EthoVision XT | video tracking and behaviour recognition | synthetic | 13347 | 24 | 12 | 4 | 4 | 4 | 83% | 50% |
-| FED3 (Feeding Experimentation Device 3) | open-source operant feeding device inside a standard cage | synthetic | 4251 | 25 | 12 | 6 | 4 | 3 | 88% | 48% |
-| Live Mouse Tracker (LMT) | infrared depth video with RFID identity, group-housed | synthetic | 7697 | 36 | 13 | 6 | 12 | 5 | 86% | 36% |
-| BEATBox (open-source autonomous operant box) | home-cage touch-screen operant conditioning and cognitive testing | synthetic | 13440 | 32 | 11 | 4 | 12 | 5 | 84% | 34% |
+| System | Data | Mapping review | Triples | Native concepts | HCMO-native [95% CI] | + external (cumulative) | + partial (cumulative) | Not covered |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Tecniplast DVC (Digital Ventilated Cage) | synthetic (mock cohort-7623 export + synthetic cohort + declared metadata) | single annotator, not yet reviewed | 17341 | 26 | 15/26 = 58% [39–74] | 16/26 = 62% [43–78] | 22/26 = 85% [66–94] | 4 |
+| TSE PhenoMaster (indirect calorimetry, feeding, drinking, activity) | synthetic | single annotator, not yet reviewed | 6971 | 27 | 14/27 = 52% [34–69] | 17/27 = 63% [44–78] | 25/27 = 93% [77–98] | 2 |
+| Noldus PhenoTyper with EthoVision XT | synthetic | single annotator, not yet reviewed | 13347 | 24 | 12/24 = 50% [31–69] | 16/24 = 67% [47–82] | 20/24 = 83% [64–93] | 4 |
+| FED3 (Feeding Experimentation Device 3) | synthetic | single annotator, not yet reviewed | 4251 | 25 | 12/25 = 48% [30–67] | 18/25 = 72% [52–86] | 22/25 = 88% [70–96] | 3 |
+| Live Mouse Tracker (LMT) | synthetic | single annotator, not yet reviewed | 7697 | 36 | 13/36 = 36% [22–52] | 19/36 = 53% [37–68] | 31/36 = 86% [71–94] | 5 |
+| BEATBox (open-source autonomous operant box) | synthetic | single annotator, not yet reviewed | 13440 | 32 | 11/32 = 34% [20–52] | 15/32 = 47% [31–64] | 27/32 = 84% [68–93] | 5 |
+| **All systems (pooled)** |  |  |  | 170 | 77/170 = 45% [38–53] | 101/170 = 59% [52–67] | 147/170 = 86% [81–91] | 23 |
 
 
-## Systems × HCMO modules (native concepts mapped / total assigned to the module)
+## Systems × HCMO modules (HCMO-native / expressible at all / assigned to the module)
 
 | System | core | bio | env | obs | tech | out of scope |
 | --- | --- | --- | --- | --- | --- | --- |
-| dvc-tecniplast | 7/7 | 3/3 | 3/3 | 4/6 | 5/6 | 1 |
-| tse-phenomaster | 3/3 | 3/3 | 2/2 | 13/13 | 4/4 | 2 |
-| noldus-phenotyper | 3/3 | 3/3 | 1/1 | 9/10 | 4/5 | 2 |
-| fed3 | 2/2 | 2/2 | 1/1 | 10/10 | 7/7 | 3 |
-| live-mouse-tracker | 3/3 | 8/8 | 5/5 | 11/11 | 4/5 | 4 |
-| beatbox | 2/3 | 3/3 | 3/3 | 11/12 | 8/10 | 1 |
+| dvc-tecniplast | 5 / 7 / 7 | 2 / 3 / 3 | 3 / 3 / 3 | 0 / 4 / 6 | 5 / 5 / 6 | 1 |
+| tse-phenomaster | 3 / 3 / 3 | 2 / 3 / 3 | 2 / 2 / 2 | 3 / 13 / 13 | 4 / 4 / 4 | 2 |
+| noldus-phenotyper | 3 / 3 / 3 | 2 / 3 / 3 | 1 / 1 / 1 | 2 / 9 / 10 | 4 / 4 / 5 | 2 |
+| fed3 | 2 / 2 / 2 | 2 / 2 / 2 | 1 / 1 / 1 | 1 / 10 / 10 | 6 / 7 / 7 | 3 |
+| live-mouse-tracker | 2 / 3 / 3 | 3 / 8 / 8 | 3 / 5 / 5 | 2 / 11 / 11 | 3 / 4 / 5 | 4 |
+| beatbox | 2 / 2 / 3 | 2 / 3 / 3 | 1 / 3 / 3 | 1 / 11 / 12 | 5 / 8 / 10 | 1 |
+
+
+## HCMO modules, pooled over all systems
+
+| Module | Native concepts | HCMO-native [95% CI] | Expressible at all [95% CI] | Not covered |
+| --- | --- | --- | --- | --- |
+| core | 21 | 17/21 = 81% [60–92] | 20/21 = 95% [77–99] | 1 |
+| bio | 22 | 13/22 = 59% [39–77] | 22/22 = 100% [85–100] | 0 |
+| env | 15 | 11/15 = 73% [48–89] | 15/15 = 100% [80–100] | 0 |
+| obs | 62 | 9/62 = 15% [8–25] | 58/62 = 94% [85–97] | 4 |
+| tech | 37 | 27/37 = 73% [57–85] | 32/37 = 86% [72–94] | 5 |
+
+
+Out of scope (no module): 13 concepts.
 
 
 ## Instance inventory per system

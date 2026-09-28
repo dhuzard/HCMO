@@ -1,9 +1,9 @@
 # Mock DVC® dataset — HCMO validation (reconstructed schema)
 
-> **⚠️ Superseded.** This mock was built **before** the real DVC export headers were
+> **⚠️ Superseded.** This mock was built **before** the cohort-7623 DVC export headers were
 > known, so its columns are a *reconstruction* (`DateTime, ActivationDensityPct,
-> BeddingStatusIndex, …`). The real cohort-7623 export has since revealed the actual
-> headers — use the **real-schema** traces one level up in [`../`](../) for validation.
+> BeddingStatusIndex, …`). The cohort-7623 mock export has since fixed a concrete set of
+> headers — use the **cohort-7623-schema** traces one level up in [`../`](../) for validation.
 > This folder is kept for reference only.
 >
 > The `dvc-system-profile.md` referenced below now lives at the system-folder root:

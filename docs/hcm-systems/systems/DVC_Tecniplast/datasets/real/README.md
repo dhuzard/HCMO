@@ -1,15 +1,17 @@
-# Real DVC® export — cohort 7623
+# Mock DVC® export — cohort 7623
 
-Real Tecniplast **Digital Ventilated Cage (DVC®)** export contributed for HCMO
+> **Mock data.** Despite this folder's historical name, these files were **not**
+> recorded from animals. They are a mock export in the Tecniplast DVC Analytics
+> export schema. Whether that schema matches a vendor-issued export is still to
+> be confirmed by Tecniplast contacts.
+
+Mock Tecniplast **Digital Ventilated Cage (DVC®)** export for HCMO
 validation. Group `B6_M` (C57BL/6, males — per the group label), **24 cages**, one
 rack, **14 days** at 1-minute resolution, starting **2025-10-14 10:16 (UTC−04:00)**.
 
-> **Provenance & use:** contributed by the HCMO team for ontology validation. Cage
-> identifiers are the facility's internal codes; the files carry no personnel names
-> or animal-identifying information. DVC raw data/exports are normally proprietary to
-> the generating facility — treat these files as shared **for HCMO validation** and
-> check with the contributor before redistributing outside the project. The synthetic
-> look-alikes in [`../mock/`](../mock/) are freely redistributable.
+> **Provenance & use:** mock files prepared by the HCMO team for ontology
+> validation. Cage identifiers follow the DVC naming style but denote no real
+> facility cages; the files carry no personnel names or animal data.
 
 ## Files
 

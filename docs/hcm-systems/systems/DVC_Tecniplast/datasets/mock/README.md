@@ -1,7 +1,7 @@
-# Mock DVC® traces — real-schema
+# Mock DVC® traces — cohort-7623 schema
 
 **Synthetic, freely redistributable** home-cage-monitoring traces shaped **exactly
-like the real DVC® export** in [`../real/`](../real/). Use them to exercise HCMO
+like the cohort-7623 mock export** in [`../real/`](../real/) (also mock, despite the folder name). Use them to exercise HCMO
 ingestion, SHACL shapes, and competency queries without touching proprietary data.
 **Not real animals.**
 
@@ -19,14 +19,14 @@ ingestion, SHACL shapes, and competency queries without touching proprietary dat
 
 The profile in [`../../dvc-system-profile.md`](../../dvc-system-profile.md) §5 was
 written when the exact vendor CSV headers were *unknown*, so its mock
-(`reconstructed-schema/`) used self-describing, reconstructed field names. The real
-cohort-7623 export has since given us the **actual** headers, so the traces here
-reproduce them verbatim (`day, hour, minute, relativeTime, <G>_AVG, <G>_SEM, <G>_QRT,
+(`reconstructed-schema/`) used self-describing, reconstructed field names. The
+cohort-7623 mock export has since fixed a concrete header set (still to be
+confirmed against a vendor-issued export), and the traces here reproduce it verbatim (`day, hour, minute, relativeTime, <G>_AVG, <G>_SEM, <G>_QRT,
 <G>_SAMPLES, <G>_<cageId>…`). Prefer these for validation.
 
 ## Fidelity
 
-Reproduces the conventions verified against the real file:
+Reproduces the conventions of the cohort-7623 file:
 - `relativeTime = day*86400 + hour*3600 + minute*60` (events add seconds).
 - `<G>_AVG` = mean of online cages; `<G>_SEM` = sample SD; `<G>_QRT` = `linspace(min,max,5)+[min,max]`.
 - `<G>_SAMPLES ≈ online_cages × 240` (12 electrodes @ 4 Hz × 60 s).
@@ -35,12 +35,12 @@ Reproduces the conventions verified against the real file:
   grounded in the DVC corpus (dark-phase-dominant activity). See profile §9.
 
 Value ranges are plausible, **not** a physiological model — the point is faithful
-*shape and structure*, so parsers/validators that work here work on real exports.
+*shape and structure*; parsers that work here should work on vendor exports once the schema is confirmed.
 
 ## Regenerate / rescale
 
 ```bash
 python3 generate_dvc_traces.py                 # defaults: B6_M, 8 cages, 3 days
-python3 generate_dvc_traces.py --cages 24 --days 14   # match the real cohort size
+python3 generate_dvc_traces.py --cages 24 --days 14   # match the cohort-7623 size
 python3 generate_dvc_traces.py --group B6_F --seed 11 --rack BBBB
 ```

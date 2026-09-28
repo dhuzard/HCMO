@@ -15,7 +15,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 # CQ-MS-12 (bio, temporal, cross-system): How many subjects or cage groups were
 # housed in monitored enclosures in each system at two reference times, one
-# inside the real DVC recording and one inside the synthetic runs?
+# inside the cohort-7623 mock DVC run and one inside the other synthetic runs?
 SELECT ?system ?referenceTime (COUNT(DISTINCT ?holder) AS ?housed)
 WHERE {
   VALUES ?referenceTime { "2025-10-20T12:00:00-04:00"^^xsd:dateTime "2026-06-02T19:30:00+02:00"^^xsd:dateTime }
