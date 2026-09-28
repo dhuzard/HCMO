@@ -110,7 +110,8 @@ development of Metadatapp.
      d'Innovation of the University of Montpellier and awarded to Metadatapp to
      support collaboration between Damien Huzard and Konstantin Todorov,
      supported the comprehensive redesign and formal evaluation from October
-     2025 to October 2026. As part of the Exogene-funded Master's project, Cyril
+     2025 to October 2026. As part of the Exogene-funded Master's project
+     (internship started January 2026), Cyril
      Gilbert redesigned and implemented the HCMO version presented in the
      article, with Pierre Larmande, Serge Sonfack Sounchio, Gaoussou Sanou, and
      Antoine Toffano contributing as recorded in the CRediT statement.

@@ -25,7 +25,8 @@ HCMO developed through four stages:
    d'Innovation of the University of Montpellier and awarded to Metadatapp to
    support collaboration between Damien Huzard and Konstantin Todorov, supported
    the comprehensive redesign and formal evaluation from October 2025 to
-   October 2026. As part of the Exogene-funded Master's project, Cyril Gilbert
+   October 2026. As part of the Exogene-funded Master's project (internship
+   started January 2026), Cyril Gilbert
    redesigned and implemented the HCMO version presented in the article, with
    the other authors contributing as recorded in the CRediT statement.
 
