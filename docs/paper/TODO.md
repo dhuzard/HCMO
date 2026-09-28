@@ -1,7 +1,7 @@
 # HCMO Resource Paper — TODO & change tracking
 
 **Status legend:** ☐ todo · ◐ in progress · ☑ done · ⚠ blocked
-**Last updated:** 2026-09-15
+**Last updated:** 2026-08-31
 
 This is the single source of truth for paper progress. Update the **status**
 column and append to the **Change log** whenever something moves.
@@ -32,7 +32,7 @@ column and append to the **Change log** whenever something moves.
 | T6b | **Host a public SPARQL endpoint** (HITL R3) | ☐ | Future service enhancement; explicitly not part of, or a publication blocker for, the downloadable 0.3.0 release. |
 | T7 | Write governance/versioning policy (public GitHub maintainers, SemVer+versionIRI; TEATIME = feedback channel) | ☑ | Documented in §5 without claiming a no-longer-current Huzard lab structure. |
 | T7b | **Drop MAPP branding** in paper docs and reconcile repository branding | ☑ | Active ontology metadata, manifest, README, citation metadata, and current documentation consistently use HCMO. |
-| T8 | Run **quality evaluation**: OOPS!, FOOPS! (FAIR), reasoner (HermiT/ELK), pySHACL, CQ results — archive reports | ☑ | Build, HermiT, parse, SHACL, ISA evidence, CQs, OOPS and FOOPS are archived and triaged. AskWol now adds non-blocking raw release evidence with documented exceptions. 2026-09-15: multi-system coverage (6 systems: DVC with real data, PhenoMaster, PhenoTyper, FED3, Live Mouse Tracker, BEATBox), 16 instance-level cross-system CQs, per-module metrics and SHACL/HermiT reports generated under `evaluation/reports/`. |
+| T8 | Run **quality evaluation**: OOPS!, FOOPS! (FAIR), reasoner (HermiT/ELK), pySHACL, CQ results — archive reports | ☑ | Build, HermiT, parse, SHACL, ISA evidence, CQs, OOPS and FOOPS are archived and triaged. AskWol now adds non-blocking raw release evidence with documented exceptions. |
 | T9 | Cut a **tagged release** greater than `v0.2.0` + refreshed Zenodo DOI matching the paper | ☑ | `v0.3.0`, its five GitHub assets, WIDOCO deployment, version DOI `10.5281/zenodo.22208202`, and PURL routing were verified on 2026-08-31. |
 
 ## Phase 2 — Write the paper
@@ -45,7 +45,7 @@ column and append to the **Change log** whenever something moves.
 | T13 | Requirements & competency questions — **drafted** (R1–R8 + CQ1–CQ6; results deferred T6) | `sections/03-requirements.md` | ☑ |
 | T14 | Resource description (modules, classes/properties, standards reuse) | `sections/04-resource.md` | ☑ |
 | T15 | Engineering & availability — **drafted** (manifest, build, CI, FAIR, license, endpoint, governance; pending items marked) | `sections/05-availability.md` | ☑ |
-| T16 | Evaluation (OOPS!/FOOPS!/reasoner/SHACL/CQs + completeness) | `sections/06-evaluation.md` | ☑ | Post-PR #24–#26 build, HermiT, SHACL, CQ, RO-Crate, native ISA, OOPS and FOOPS evidence is current and triaged. 2026-09-15: §6 rewritten around coverage of six real systems, CQs on instance data, and a metrics table; §5 gained an availability-and-sustainability paragraph (registry entries and adoption claims flagged for co-author confirmation). |
+| T16 | Evaluation (OOPS!/FOOPS!/reasoner/SHACL/CQs + completeness) | `sections/06-evaluation.md` | ☑ | Post-PR #24–#26 build, HermiT, SHACL, CQ, RO-Crate, native ISA, OOPS and FOOPS evidence is current and triaged. |
 | T17 | Impact, use cases & outlook — **drafted** (reasoning, KGQA/authoring/vendor as outlook, TEATIME adoption) | `sections/07-impact.md` | ☑ |
 | T18 | Conclusion & future work — **drafted** (honest limitations + roadmap) | `sections/08-conclusion.md` | ☑ |
 | T19 | Figures: architecture, ontology overview (WebVOWL), example ABox graph | `figures/` | ◐ |
@@ -68,8 +68,6 @@ column and append to the **Change log** whenever something moves.
 
 | Date | Change | By |
 |------|--------|----|
-| 2026-09-15 | **Coverage extended to six systems** — completed the DVC profile with the experimental metadata its export omits (light programme, rack environment, 2 mice/cage with male and female cohorts, weekly cage changes, GM500, DVC Analytics 3.5), raising its coverage from 71/38 % to 85/58 %; added Live Mouse Tracker (group-social, `lmt-analysis` schema and event vocabulary) and BEATBox (touch-screen cognitive testing, published CAN protocol); added CQ-MS-15 (multi-animal behaviours and group size) and CQ-MS-16 (trials, accuracy and latency per strain). The two new systems score lowest on native coverage and name the two largest gaps: no n-ary social event with participant roles, and no task/trial/session vocabulary. No ontology term changed. | Claude |
-| 2026-09-15 | **Multi-system evaluation added** — annotated four HCM systems (real DVC export; synthetic schema-faithful PhenoMaster, PhenoTyper/EthoVision, FED3) with mapping tables, generators and SHACL-conformant instance graphs; 14 cross-system CQs with exact answers; `tooling/evaluate.py` reports (coverage, CQ, SHACL, metrics, HermiT) wired into CI; §6 rewritten, §5 sustainability paragraph, F4 worked-example figure. Fixed an invalid `VALUES` clause in a SHACL SPARQL constraint. No ontology term changed. | Claude |
 | 2026-09-04 | **Author metadata updated** — added Philippe Rocca-Serra as the final middle author, with confirmed ORCID, Oxford affiliation, and CRediT roles; Zenodo creator-metadata synchronization remains. | Damien/Codex |
 | 2026-08-31 | **Final contact metadata** — confirmed all three corresponding emails and verified the corrected Zenodo creator order; refreshed the citation and Overleaf package. | Damien/Codex |
 | 2026-08-31 | **Publication alignment** — restored the exact v0.3.0 GitHub release assets, redeployed HCMO WIDOCO documentation, verified PURL routing, recorded the version DOI, confirmed CC BY 4.0 and author order, added funding/COI text, and integrated AskWol as non-blocking archived evidence. No ontology IRI or term axiom changed. | Damien/Codex |
