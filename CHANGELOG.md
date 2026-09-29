@@ -15,10 +15,13 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
   context terms and IRI-only SHACL constraints added. No existing IRI or axiom
   changed; `owl:versionIRI` stays 0.3.0 until the next release (#33, #31).
 - Added SKOS vocabularies in `vocabularies/`, outside the release manifest:
-  hand-authored file formats (generic formats with media-type notations, plus
-  the three sourced Tecniplast DVC Analytics exports as narrower concepts in a
-  provider collection) and data-access methods; vendor and HCM-system schemes
-  generated from `CATALOG.md` by the new `tooling/export_hcm_vocab.py`.
+  hand-authored file formats (generic formats with media-type notations,
+  including SQLite, plus the three sourced Tecniplast DVC Analytics exports and
+  the Live Mouse Tracker SQLite database as narrower concepts in per-provider
+  collections) and data-access methods; vendor and HCM-system schemes
+  generated from `CATALOG.md` by the new `tooling/export_hcm_vocab.py`, with
+  system short names (for example LMT, CLAMS, MoPSS) as `skos:altLabel` from a
+  new *System short names* table.
   `shapes/vocab-shapes.ttl` and validation step 8 check vocabulary integrity,
   generated-output freshness, example usage, and a negative probe.
 

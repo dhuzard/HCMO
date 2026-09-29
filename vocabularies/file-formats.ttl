@@ -28,7 +28,7 @@
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     dcterms:created "2026-09-29"^^xsd:date ;
     dcterms:source <https://github.com/dhuzard/HCMO/issues/33> ;
-    skos:hasTopConcept ff:csv, ff:excel-workbook, ff:json, ff:hdf5, ff:xml, ff:video, ff:proprietary-binary .
+    skos:hasTopConcept ff:csv, ff:excel-workbook, ff:json, ff:hdf5, ff:sqlite, ff:xml, ff:video, ff:proprietary-binary .
 
 # ---------------------------------------------------------------------------
 # Generic formats
@@ -88,6 +88,15 @@ ff:hdf5 a skos:Concept ;
     skos:definition "A binary container format that stores large numerical arrays and their metadata in a hierarchy of groups and datasets."@en ;
     skos:editorialNote "HDF5 has no IANA-registered media type; the notation is the commonly used unregistered type."@en ;
     dcterms:source <https://www.hdfgroup.org/solutions/hdf5/> .
+
+ff:sqlite a skos:Concept ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/file-format> ;
+    skos:topConceptOf <https://w3id.org/hcmo/id/vocab/file-format> ;
+    skos:prefLabel "SQLite database file"@en ;
+    skos:altLabel "SQLite"@en ;
+    skos:notation "application/vnd.sqlite3" ;
+    skos:definition "A single-file relational database in the SQLite format, holding tables that can be queried with SQL."@en ;
+    dcterms:source <https://www.iana.org/assignments/media-types/application/vnd.sqlite3>, <https://www.sqlite.org/fileformat.html> .
 
 ff:xml a skos:Concept ;
     skos:inScheme <https://w3id.org/hcmo/id/vocab/file-format> ;
@@ -164,6 +173,16 @@ ff:tecniplast-dvc-bedding-status-index-csv a skos:Concept ;
     skos:editorialNote "Column layout not yet documented in this repository."@en ;
     dcterms:source <https://github.com/Mortendall/UrinatoR>, <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/systems/DVC_Tecniplast/dvc-system-profile.md> .
 
+ff:live-mouse-tracker-sqlite a skos:Concept ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/file-format> ;
+    skos:broader ff:sqlite ;
+    skos:related sys:live-mouse-tracker ;
+    skos:prefLabel "Live Mouse Tracker experiment database (SQLite)"@en ;
+    skos:altLabel "LMT database"@en ;
+    skos:definition "An SQLite database file in which Live Mouse Tracker stores the recording of an experiment: the animals, their detections over time, and the behavioural events extracted from them."@en ;
+    skos:editorialNote "Format provided by the HCMO authors; table layout not yet documented in this repository."@en ;
+    dcterms:source <https://micecraft.org/lmt/>, <https://doi.org/10.1038/s41551-019-0396-1> .
+
 # ---------------------------------------------------------------------------
 # Collections
 # ---------------------------------------------------------------------------
@@ -173,9 +192,14 @@ ff:provider-tecniplast a skos:Collection ;
     dcterms:relation vendor:tecniplast ;
     skos:member ff:tecniplast-dvc-locomotion-index-csv, ff:tecniplast-dvc-events-csv, ff:tecniplast-dvc-bedding-status-index-csv .
 
+ff:provider-live-mouse-tracker a skos:Collection ;
+    skos:prefLabel "Live Mouse Tracker export formats"@en ;
+    dcterms:relation sys:live-mouse-tracker ;
+    skos:member ff:live-mouse-tracker-sqlite .
+
 # Options offered, in this order, by the contribution form
 # (docs/hcm-systems/contribute/). Regenerate the form with
 # python tooling/export_hcm_vocab.py after editing this list.
 ff:form-options a skos:OrderedCollection ;
     skos:prefLabel "Contribution form file-format options"@en ;
-    skos:memberList ( ff:csv ff:excel-workbook ff:json ff:hdf5 ff:xml ff:video ff:proprietary-binary ) .
+    skos:memberList ( ff:csv ff:excel-workbook ff:json ff:hdf5 ff:sqlite ff:xml ff:video ff:proprietary-binary ) .

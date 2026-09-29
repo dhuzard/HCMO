@@ -63,6 +63,30 @@ tables with `python tooling/export_hcm_vocab.py`.
 | **AMBER** (Automated Maternal Behavior during Early life in Rodents) | Lapp et al. | Video pipeline | Maternal behavior classification | Sci Rep 2023 | P3 | `amber` |
 | **PsiBox** | — | Operant (sensory discrimination) | Tone/frequency discrimination, sequence learning | (named only) | P3 | `psibox` |
 
+## System short names
+
+Short names and expansions under which the systems above are commonly cited.
+Keyed by `slug` (last path segment, lower-cased with hyphens); separate several
+names with `;`. They become `skos:altLabel` values in `vocabularies/systems.ttl`.
+
+| slug | Short names |
+|---|---|
+| `dvc-tecniplast` | DVC; Digital Ventilated Cage |
+| `dsi-telemetry` | PhysioTel |
+| `columbus-clams` | CLAMS; Oxymax; Comprehensive Lab Animal Monitoring System |
+| `tse-phenomaster` | PhenoMaster; AnimalGate |
+| `metris-laboras` | Laboratory Animal Behaviour Observation Registration & Analysis System |
+| `noldus-phenotyper` | PhenoTyper |
+| `sable-promethion` | Promethion |
+| `soho-telemetry` | SoHo |
+| `batsound-pettersson` | BatSound; Pettersson M500-USB |
+| `live-mouse-tracker` | LMT |
+| `miroslav` | MIROSLAV; EnviroSLAV |
+| `mopss` | MoPSS; Mouse Position Surveillance System |
+| `liq-hd` | LIQ HD; Lick Instance Quantifier Home-cage Device |
+| `pasta` | PASTA; Platform for Acoustic STArtle |
+| `amber` | AMBER; Automated Maternal Behavior during Early life in Rodents |
+
 ## Related data-management platforms (not HCM systems)
 
 These tools manage HCM metadata or data but do not build or sell HCM systems;

@@ -52,6 +52,8 @@ sys:2d-neuro a skos:Concept ;
 
 sys:amber a skos:Concept ;
     dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
+    skos:altLabel "AMBER"@en,
+        "Automated Maternal Behavior during Early life in Rodents"@en ;
     skos:inScheme <https://w3id.org/hcmo/id/vocab/system> ;
     skos:notation "amber" ;
     skos:note "Authors: Lapp et al."@en ;
@@ -70,6 +72,8 @@ sys:avisoft a skos:Concept ;
 
 sys:batsound-pettersson a skos:Concept ;
     dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
+    skos:altLabel "BatSound"@en,
+        "Pettersson M500-USB"@en ;
     skos:inScheme <https://w3id.org/hcmo/id/vocab/system> ;
     skos:notation "batsound-pettersson" ;
     skos:prefLabel "BatSound / Pettersson M500-USB"@en ;
@@ -79,6 +83,9 @@ sys:batsound-pettersson a skos:Concept ;
 
 sys:columbus-clams a skos:Concept ;
     dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
+    skos:altLabel "CLAMS"@en,
+        "Comprehensive Lab Animal Monitoring System"@en,
+        "Oxymax"@en ;
     skos:inScheme <https://w3id.org/hcmo/id/vocab/system> ;
     skos:notation "columbus-clams" ;
     skos:prefLabel "Oxymax / CLAMS (Comprehensive Lab Animal Monitoring System)"@en ;
@@ -97,6 +104,7 @@ sys:dodotronic a skos:Concept ;
 
 sys:dsi-telemetry a skos:Concept ;
     dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
+    skos:altLabel "PhysioTel"@en ;
     skos:inScheme <https://w3id.org/hcmo/id/vocab/system> ;
     skos:notation "dsi-telemetry" ;
     skos:prefLabel "Telemetry implants (PhysioTel / HD)"@en ;
@@ -106,6 +114,8 @@ sys:dsi-telemetry a skos:Concept ;
 
 sys:dvc-tecniplast a skos:Concept ;
     dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
+    skos:altLabel "DVC"@en,
+        "Digital Ventilated Cage"@en ;
     skos:inScheme <https://w3id.org/hcmo/id/vocab/system> ;
     skos:notation "dvc-tecniplast" ;
     skos:prefLabel "DVC® (Digital Ventilated Cage)"@en ;
@@ -141,6 +151,8 @@ sys:intellicage a skos:Concept ;
 
 sys:liq-hd a skos:Concept ;
     dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
+    skos:altLabel "LIQ HD"@en,
+        "Lick Instance Quantifier Home-cage Device"@en ;
     skos:inScheme <https://w3id.org/hcmo/id/vocab/system> ;
     skos:notation "liq-hd" ;
     skos:note "Authors: Petersen et al."@en ;
@@ -150,6 +162,7 @@ sys:liq-hd a skos:Concept ;
 
 sys:live-mouse-tracker a skos:Concept ;
     dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
+    skos:altLabel "LMT"@en ;
     skos:inScheme <https://w3id.org/hcmo/id/vocab/system> ;
     skos:notation "live-mouse-tracker" ;
     skos:note "Authors: de Chaumont et al."@en ;
@@ -159,6 +172,7 @@ sys:live-mouse-tracker a skos:Concept ;
 
 sys:metris-laboras a skos:Concept ;
     dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
+    skos:altLabel "Laboratory Animal Behaviour Observation Registration & Analysis System"@en ;
     skos:inScheme <https://w3id.org/hcmo/id/vocab/system> ;
     skos:notation "metris-laboras" ;
     skos:prefLabel "LABORAS"@en ;
@@ -168,6 +182,8 @@ sys:metris-laboras a skos:Concept ;
 
 sys:miroslav a skos:Concept ;
     dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
+    skos:altLabel "EnviroSLAV"@en,
+        "MIROSLAV"@en ;
     skos:inScheme <https://w3id.org/hcmo/id/vocab/system> ;
     skos:notation "miroslav" ;
     skos:note "Authors: Virag et al."@en ;
@@ -177,6 +193,8 @@ sys:miroslav a skos:Concept ;
 
 sys:mopss a skos:Concept ;
     dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
+    skos:altLabel "MoPSS"@en,
+        "Mouse Position Surveillance System"@en ;
     skos:inScheme <https://w3id.org/hcmo/id/vocab/system> ;
     skos:notation "mopss" ;
     skos:note "Authors: Habedank et al."@en ;
@@ -204,6 +222,7 @@ sys:myvivarium a skos:Concept ;
 
 sys:noldus-phenotyper a skos:Concept ;
     dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
+    skos:altLabel "PhenoTyper"@en ;
     skos:inScheme <https://w3id.org/hcmo/id/vocab/system> ;
     skos:notation "noldus-phenotyper" ;
     skos:prefLabel "PhenoTyper (2)"@en ;
@@ -240,6 +259,8 @@ sys:pallidus a skos:Concept ;
 
 sys:pasta a skos:Concept ;
     dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
+    skos:altLabel "PASTA"@en,
+        "Platform for Acoustic STArtle"@en ;
     skos:inScheme <https://w3id.org/hcmo/id/vocab/system> ;
     skos:notation "pasta" ;
     skos:note "Authors: Virag et al."@en ;
@@ -257,6 +278,7 @@ sys:psibox a skos:Concept ;
 
 sys:sable-promethion a skos:Concept ;
     dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
+    skos:altLabel "Promethion"@en ;
     skos:inScheme <https://w3id.org/hcmo/id/vocab/system> ;
     skos:notation "sable-promethion" ;
     skos:prefLabel "Promethion (\"Sable Promotion\" in text)"@en ;
@@ -266,6 +288,7 @@ sys:sable-promethion a skos:Concept ;
 
 sys:soho-telemetry a skos:Concept ;
     dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
+    skos:altLabel "SoHo"@en ;
     skos:inScheme <https://w3id.org/hcmo/id/vocab/system> ;
     skos:notation "soho-telemetry" ;
     skos:prefLabel "SoHo™ telemetry"@en ;
@@ -283,6 +306,8 @@ sys:sonotrack a skos:Concept ;
 
 sys:tse-phenomaster a skos:Concept ;
     dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
+    skos:altLabel "AnimalGate"@en,
+        "PhenoMaster"@en ;
     skos:inScheme <https://w3id.org/hcmo/id/vocab/system> ;
     skos:notation "tse-phenomaster" ;
     skos:prefLabel "PhenoMaster / AnimalGate"@en ;

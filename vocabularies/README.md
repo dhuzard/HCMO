@@ -28,6 +28,8 @@ ex:activity-export a hcm-tech:TimeSeries ;
   concepts (for example, the DVC Analytics exports under CSV), `skos:related` to
   the system that produces them and grouped in a per-provider `skos:Collection`.
   Only exports documented with a source are listed.
+- Systems carry their short names (for example `LMT` for Live Mouse Tracker)
+  as `skos:altLabel`, taken from the *System short names* table in `CATALOG.md`.
 - The ordered `form-options` collection in each hand-authored file drives the
   chips of the contribution form (`docs/hcm-systems/contribute/`).
 

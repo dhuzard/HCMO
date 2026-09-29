@@ -51,6 +51,7 @@ SYSTEM_SECTIONS = {
     "Commercial HCM platforms": ("commercial", "Commercial HCM platforms"),
     "Open-source / DIY systems": ("open-source", "Open-source and DIY HCM systems"),
 }
+SHORT_NAMES_SECTION = "System short names"
 NO_VENDOR = {"", "—", "-"}
 LEGAL_SUFFIX = re.compile(
     r"[,\s]+(S\.p\.A\.|Inc\.?|GmbH|Ltd\.?|AG|B\.V\.|LLC|S\.A\.S\.?|S\.A\.)$", re.IGNORECASE
@@ -152,6 +153,16 @@ def build_catalog_graphs() -> tuple[Graph, Graph]:
             # Cross-scheme links are recorded on both sides.
             vendors.add((vendor, SKOS.related, concept))
             systems.add((concept, SKOS.related, vendor))
+
+    for row in table_rows(markdown):
+        if row.get("_section") != SHORT_NAMES_SECTION:
+            continue
+        concept = SYSTEM[row.get("slug", "")]
+        if (concept, RDF.type, SKOS.Concept) not in systems:
+            raise SystemExit(f"[FAIL] short names given for unknown system slug {row.get('slug')!r}")
+        for name in row.get("Short names", "").split(";"):
+            if name.strip():
+                systems.add((concept, SKOS.altLabel, Literal(name.strip(), lang="en")))
 
     for g in (vendors, systems):
         labels: dict[URIRef, set[str]] = {}
