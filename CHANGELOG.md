@@ -5,8 +5,36 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ## [Unreleased]
 
+### Added
+
+- Added two object properties to `hcm-tech`, both with domain software or time
+  series and range `skos:Concept`: `hcm-tech:hasFileFormatConcept` (the
+  canonical file-format statement) and `hcm-tech:hasDataAccessMethod` (file
+  export, database, or API). `hcm-tech:hasFileFormat` is unchanged and kept for
+  backward compatibility; it should now carry the concept's notation. JSON-LD
+  context terms and IRI-only SHACL constraints added. No existing IRI or axiom
+  changed; `owl:versionIRI` stays 0.3.0 until the next release (#33, #31).
+- Added SKOS vocabularies in `vocabularies/`, outside the release manifest:
+  hand-authored file formats (generic formats with media-type notations, plus
+  the three sourced Tecniplast DVC Analytics exports as narrower concepts in a
+  provider collection) and data-access methods; vendor and HCM-system schemes
+  generated from `CATALOG.md` by the new `tooling/export_hcm_vocab.py`.
+  `shapes/vocab-shapes.ttl` and validation step 8 check vocabulary integrity,
+  generated-output freshness, example usage, and a negative probe.
+
 ### Changed
 
+- Contribution form (`hcmo-contribution/0.3`): file-format and new
+  data-access-method chips are generated from the SKOS vocabularies; the form
+  now emits the media type (for example `text/csv` instead of `CSV`) in
+  `hcm-tech:hasFileFormat`, plus the concept IRIs. "Database / API" moved from
+  the formats field to the new access-method field.
+- Normalised the Vendor column of `docs/hcm-systems/CATALOG.md` to one
+  organisation per cell (DSI, UID, IntelliCage/TSE Systems, SoHo), with notes
+  moved to *Data / links*, and moved Metadatapp to a new "not HCM systems"
+  section. The regenerated `catalog.ttl` therefore mints different
+  `catalog/agent/` IRIs for the four affected vendors (see #32 for that graph's
+  rework).
 - Added Philippe Rocca-Serra as a middle author, with ORCID, Oxford affiliation,
   and CRediT roles reflecting his ontology and interoperability review.
 - Recorded the eight authors' confirmed institutional affiliations in the

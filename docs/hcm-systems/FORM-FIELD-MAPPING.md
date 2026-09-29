@@ -53,7 +53,9 @@ Turtle view when importing the submission directly into Fuseki.
 | `recording.*` | Generic `sosa:Observation` profile with `hcm-obs:hasInterval` and `dcterms:type` | Recording duration and mode; recognized hour/day/week values become `xsd:duration`. |
 | `dataOutput.*` | `hcm-tech:TimeSeries` | Data/time-series artifact. |
 | `dataOutput.fileName` | `rdfs:label`, `dcterms:title` | File or series name. |
-| `dataOutput.formats[]` | `hcm-tech:hasFileFormat` | Repeatable file formats. |
+| `dataOutput.formats[]` | `hcm-tech:hasFileFormat` | Repeatable file formats: the chosen concept's media type (`skos:notation`), or its label when it has none. |
+| `dataOutput.formatConcepts[]` | `hcm-tech:hasFileFormatConcept` | Concept IRIs from `vocabularies/file-formats.ttl`; the canonical format statement. |
+| `dataOutput.accessMethods[]` | `hcm-tech:hasDataAccessMethod` | Concept IRIs from `vocabularies/data-access-methods.ttl` (file export, database, API). |
 | `dataOutput.datasetLinks[]` | `hcm-tech:hasStoragePath` | Repeatable local paths or remote locators. |
 | `dataOutput.sampling` | `hcm-tech:hasSamplingRate` | Time-series sampling rate or resolution. |
 | `dataOutput.version` | `hcm-tech:hasVersion` | Data or pipeline version. |

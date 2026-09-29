@@ -153,6 +153,20 @@
       }
     },
     {
+      "@id": "_:cb1624619a8e51a39839b4fe1064b53f11874bf2ba202b0473d8d6bd8cfec4e19a1",
+      "@type": "owl:Class",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "hcm-tech:Software"
+          },
+          {
+            "@id": "hcm-tech:TimeSeries"
+          }
+        ]
+      }
+    },
+    {
       "@id": "_:cb16d6e8ffe5d223218a28922ba7a439def1b4ab44417fce6742af984053e4ac90b",
       "@type": "owl:Class",
       "owl:unionOf": {
@@ -246,6 +260,20 @@
       },
       "owl:onProperty": {
         "@id": "hcm-tech:monitoredBy"
+      }
+    },
+    {
+      "@id": "_:cb195684d3e6fd4512822b1a1aac8da6c6329f1152651607b1df38124e9beafda31",
+      "@type": "owl:Class",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "hcm-tech:Software"
+          },
+          {
+            "@id": "hcm-tech:TimeSeries"
+          }
+        ]
       }
     },
     {
@@ -1637,6 +1665,21 @@
       }
     },
     {
+      "@id": "hcm-tech:hasDataAccessMethod",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": "Relates a software or time-series artifact to the SKOS concept that identifies how its data can be obtained, such as a database or an application programming interface, in the HCMO data-access-method vocabulary. It complements the file format, which describes the serialization of exported files.",
+      "rdfs:domain": {
+        "@id": "_:cb1624619a8e51a39839b4fe1064b53f11874bf2ba202b0473d8d6bd8cfec4e19a1"
+      },
+      "rdfs:label": "has data access method",
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      },
+      "rdfs:seeAlso": {
+        "@id": "https://w3id.org/hcmo/id/vocab/data-access-method"
+      }
+    },
+    {
       "@id": "hcm-tech:hasFileFormat",
       "@type": "owl:DatatypeProperty",
       "rdfs:comment": "Records the file format of a software or time-series artifact.",
@@ -1646,6 +1689,21 @@
       "rdfs:label": "has file format",
       "rdfs:range": {
         "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "hcm-tech:hasFileFormatConcept",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": "Relates a software or time-series artifact to the SKOS concept that identifies its file format in the HCMO file-format vocabulary. It is the canonical form of the file-format statement; the has file format string remains for backward compatibility and should carry the concept's notation.",
+      "rdfs:domain": {
+        "@id": "_:cb195684d3e6fd4512822b1a1aac8da6c6329f1152651607b1df38124e9beafda31"
+      },
+      "rdfs:label": "has file format concept",
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      },
+      "rdfs:seeAlso": {
+        "@id": "https://w3id.org/hcmo/id/vocab/file-format"
       }
     },
     {

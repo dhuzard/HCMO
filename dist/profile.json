@@ -307,8 +307,8 @@
     "annotation_properties": 0,
     "classes": 60,
     "datatype_properties": 75,
-    "object_properties": 68,
-    "triples": 1397
+    "object_properties": 70,
+    "triples": 1421
   },
   "datatype_properties": [
     {
@@ -1003,6 +1003,16 @@
       "comment": "Relates a sensor to an evidence-backed, time-bounded calibration record.",
       "iri": "https://w3id.org/hcmo/ontology/hcm/tech#hasCalibrationRecord",
       "label": "has calibration record"
+    },
+    {
+      "comment": "Relates a software or time-series artifact to the SKOS concept that identifies how its data can be obtained, such as a database or an application programming interface, in the HCMO data-access-method vocabulary. It complements the file format, which describes the serialization of exported files.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm/tech#hasDataAccessMethod",
+      "label": "has data access method"
+    },
+    {
+      "comment": "Relates a software or time-series artifact to the SKOS concept that identifies its file format in the HCMO file-format vocabulary. It is the canonical form of the file-format statement; the has file format string remains for backward compatibility and should carry the concept's notation.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm/tech#hasFileFormatConcept",
+      "label": "has file format concept"
     },
     {
       "comment": "Relates a sensor or time series to a QUDT quantity value expressing its sampling rate.",

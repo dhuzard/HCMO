@@ -324,5 +324,11 @@ hcm-tech:TimeSeriesShape a sh:NodeShape ;
     sh:path hcm-tech:hasFileFormat ; sh:datatype xsd:string ; sh:minCount 1
   ] ;
   sh:property [
+    sh:path hcm-tech:hasFileFormatConcept ; sh:nodeKind sh:IRI
+  ] ;
+  sh:property [
+    sh:path hcm-tech:hasDataAccessMethod ; sh:nodeKind sh:IRI
+  ] ;
+  sh:property [
     sh:path hcm-tech:hasStoragePath ; sh:datatype xsd:string ; sh:minCount 1
   ] .

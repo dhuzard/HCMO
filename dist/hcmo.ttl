@@ -953,6 +953,22 @@ hcm-tech:hasCalibrationStatusValue a owl:DatatypeProperty ;
     rdfs:domain hcm-tech:CalibrationRecord ;
     rdfs:range xsd:boolean .
 
+hcm-tech:hasDataAccessMethod a owl:ObjectProperty ;
+    rdfs:label "has data access method" ;
+    rdfs:comment "Relates a software or time-series artifact to the SKOS concept that identifies how its data can be obtained, such as a database or an application programming interface, in the HCMO data-access-method vocabulary. It complements the file format, which describes the serialization of exported files." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( hcm-tech:Software hcm-tech:TimeSeries ) ] ;
+    rdfs:range skos:Concept ;
+    rdfs:seeAlso <https://w3id.org/hcmo/id/vocab/data-access-method> .
+
+hcm-tech:hasFileFormatConcept a owl:ObjectProperty ;
+    rdfs:label "has file format concept" ;
+    rdfs:comment "Relates a software or time-series artifact to the SKOS concept that identifies its file format in the HCMO file-format vocabulary. It is the canonical form of the file-format statement; the has file format string remains for backward compatibility and should carry the concept's notation." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( hcm-tech:Software hcm-tech:TimeSeries ) ] ;
+    rdfs:range skos:Concept ;
+    rdfs:seeAlso <https://w3id.org/hcmo/id/vocab/file-format> .
+
 hcm-tech:hasFirmware a owl:DatatypeProperty ;
     rdfs:label "has firmware" ;
     rdfs:comment "Records the firmware identifier or version installed on a hardware or sensor component." ;
@@ -1377,11 +1393,6 @@ hcm-obs:ObservationResult a owl:Class ;
     rdfs:subClassOf IAO:0000030,
         sosa:Result .
 
-hcm-tech:TimeSeries a owl:Class ;
-    rdfs:label "Time Series" ;
-    rdfs:comment "An ordered sequence of time-indexed measurements or outputs produced in a monitoring workflow." ;
-    rdfs:subClassOf IAO:0000030 .
-
 BFO:0000040 a owl:Class ;
     rdfs:label "material entity"@en ;
     dcterms:source <http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl> ;
@@ -1404,6 +1415,11 @@ hcm-obs:EnvironmentObservation a owl:Class ;
             owl:someValuesFrom hcm:MonitoredEnclosure ],
         sosa:Observation .
 
+hcm-tech:TimeSeries a owl:Class ;
+    rdfs:label "Time Series" ;
+    rdfs:comment "An ordered sequence of time-indexed measurements or outputs produced in a monitoring workflow." ;
+    rdfs:subClassOf IAO:0000030 .
+
 hcm-env:EnvironmentalProperty a owl:Class ;
     rdfs:label "Environmental Property" ;
     rdfs:comment "An environmental parameter that may be measured, specified, or controlled in a home-cage monitoring context." ;
@@ -1414,11 +1430,6 @@ hcm-tech:Hardware a owl:Class ;
     rdfs:label "Hardware" ;
     rdfs:comment "Physical computing hardware component of a home-cage monitoring system." ;
     rdfs:subClassOf BFO:0000040 .
-
-hcm-tech:Software a owl:Class ;
-    rdfs:label "Software" ;
-    rdfs:comment "Software component used to acquire, process, store, or analyse home-cage monitoring data." ;
-    rdfs:subClassOf IAO:0000030 .
 
 hcm:MonitoredEnclosure a owl:Class ;
     rdfs:label "Monitored Enclosure" ;
@@ -1440,6 +1451,11 @@ IAO:0000030 a owl:Class ;
     rdfs:subClassOf BFO:0000001 ;
     skos:altLabel "information entity"@en ;
     skos:definition "A generically dependent continuant that is about some thing."@en .
+
+hcm-tech:Software a owl:Class ;
+    rdfs:label "Software" ;
+    rdfs:comment "Software component used to acquire, process, store, or analyse home-cage monitoring data." ;
+    rdfs:subClassOf IAO:0000030 .
 
 hcm:EnclosureDimensions a owl:Class ;
     rdfs:label "Enclosure Dimensions" ;

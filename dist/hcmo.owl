@@ -27,6 +27,14 @@
     <rdf:first rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#Sensor"/>
     <rdf:rest rdf:nodeID="cb1670570fa18e53b731cf3cb6172cdc551e512e91ddaf4cdeb69020b6290a5baf7"/>
   </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#hasFileFormatConcept">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment>Relates a software or time-series artifact to the SKOS concept that identifies its file format in the HCMO file-format vocabulary. It is the canonical form of the file-format statement; the has file format string remains for backward compatibility and should carry the concept's notation.</rdfs:comment>
+    <rdfs:domain rdf:nodeID="cb195684d3e6fd4512822b1a1aac8da6c6329f1152651607b1df38124e9beafda31"/>
+    <rdfs:label>has file format concept</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <rdfs:seeAlso rdf:resource="https://w3id.org/hcmo/id/vocab/file-format"/>
+  </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/env#hasEnvironment">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
     <rdfs:comment>Relates an enclosure to a structured environment profile.</rdfs:comment>
@@ -707,6 +715,10 @@
     <rdfs:label>calibrates sensor</rdfs:label>
     <rdfs:range rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#Sensor"/>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="cb1c094ff66a87bf657798fc6f415ebebfe100414d84214ba2877c586dd16230853">
+    <rdf:first rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#Software"/>
+    <rdf:rest rdf:nodeID="cb2581d0a99fc83559656fc99da4d71aefc7053b5d0dd0027ba4535e1c0ca0a84b9"/>
+  </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#isCalibrated">
     <dcterms:isReplacedBy rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#hasCalibrationRecord"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
@@ -1179,6 +1191,10 @@
     <rdfs:label>communicates with</rdfs:label>
     <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="cb16ffd0c6c3ab765ce4dea99bec27eea88f9d8a6eb9e272b4a6bba093f5f7a6a1a">
+    <rdf:first rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#Software"/>
+    <rdf:rest rdf:nodeID="cb29ce2b930e181eb1e2e0cc07b62bc2859bd37bbc2e4b089c9db69155d7b65a00d"/>
+  </rdf:Description>
   <rdf:Description rdf:about="https://orcid.org/0009-0008-2489-8106">
     <rdf:type rdf:resource="https://schema.org/Person"/>
     <schema:name>Cyril Gilbert</schema:name>
@@ -1190,6 +1206,10 @@
     <rdfs:comment>Deprecated in HCMO 0.1.0. Software component of a home-cage monitoring system.</rdfs:comment>
     <rdfs:label>Software</rdfs:label>
     <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="cb2581d0a99fc83559656fc99da4d71aefc7053b5d0dd0027ba4535e1c0ca0a84b9">
+    <rdf:first rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#TimeSeries"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#hasSensorTechnology">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
@@ -1775,6 +1795,14 @@
     <rdf:first rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#Actuator"/>
     <rdf:rest rdf:nodeID="cb14fc3bfc23fedc2de3ea8d46bc67e6eaef0e7bfa7c49198b99d9b82a61e5645e8"/>
   </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#hasDataAccessMethod">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment>Relates a software or time-series artifact to the SKOS concept that identifies how its data can be obtained, such as a database or an application programming interface, in the HCMO data-access-method vocabulary. It complements the file format, which describes the serialization of exported files.</rdfs:comment>
+    <rdfs:domain rdf:nodeID="cb1624619a8e51a39839b4fe1064b53f11874bf2ba202b0473d8d6bd8cfec4e19a1"/>
+    <rdfs:label>has data access method</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <rdfs:seeAlso rdf:resource="https://w3id.org/hcmo/id/vocab/data-access-method"/>
+  </rdf:Description>
   <rdf:Description rdf:nodeID="cb1fe7a9a26efa8ff1786e17466c4ef575e49d535066f84e56c03d4365fde575abc">
     <rdf:first rdf:resource="https://w3id.org/hcmo/ontology/hcm/obs#EnvironmentObservation"/>
     <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
@@ -1785,6 +1813,10 @@
   <rdf:Description rdf:nodeID="cb113d156ab24d149e3fbad485d059e9b6766494d33d4f53c52ab0ddc82f2d538e7">
     <rdf:first rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#EnvironmentProfile"/>
     <rdf:rest rdf:nodeID="cb1cd6668dec70122e49521c6899870c1f632038c84cc30b0b7628c0ec1679ff661"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="cb195684d3e6fd4512822b1a1aac8da6c6329f1152651607b1df38124e9beafda31">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="cb16ffd0c6c3ab765ce4dea99bec27eea88f9d8a6eb9e272b4a6bba093f5f7a6a1a"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#hasMonitoredAnimals">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -1815,6 +1847,10 @@
   <rdf:Description rdf:nodeID="cb278340d163072d0d7fd94b7932ac1895d28a0ebc352740fcc77d0c56e0cbf4222">
     <rdf:first rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#Hardware"/>
     <rdf:rest rdf:nodeID="cb15ebe1093d7486745aa4a254574a81c7f7ca75167d74ce3acdce2b7acace47460"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="cb1624619a8e51a39839b4fe1064b53f11874bf2ba202b0473d8d6bd8cfec4e19a1">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="cb1c094ff66a87bf657798fc6f415ebebfe100414d84214ba2877c586dd16230853"/>
   </rdf:Description>
   <rdf:Description rdf:nodeID="cb14adc610339e5e9bb24b90d867165364e8d03f86d52c5fff21a05db5054675e66">
     <rdf:first rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#Hardware"/>
@@ -1931,6 +1967,10 @@
     <rdfs:label>has height</rdfs:label>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
     <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="cb29ce2b930e181eb1e2e0cc07b62bc2859bd37bbc2e4b089c9db69155d7b65a00d">
+    <rdf:first rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#TimeSeries"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
   </rdf:Description>
   <rdf:Description rdf:nodeID="cb15bdd1fa7c3ad7d8781a6b8713d1661e8d7fd3b975a3e7cbdd68b354d7787055b">
     <rdf:first rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#Sensor"/>

@@ -38,7 +38,12 @@ For interval measurements, the observation enclosure must agree with the
 subject's authoritative housing assignment throughout the phenomenon interval.
 
 Time-series files use `hcm-tech:TimeSeries`; format and storage metadata use
-`hcm-tech:hasFileFormat` and `hcm-tech:hasStoragePath`.
+`hcm-tech:hasFileFormat` and `hcm-tech:hasStoragePath`. The canonical format
+statement is `hcm-tech:hasFileFormatConcept`, which points at a concept of the
+SKOS file-format vocabulary in `vocabularies/`; the `hasFileFormat` string is
+kept for backward compatibility and should carry that concept's notation (its
+media type). `hcm-tech:hasDataAccessMethod` records, from a second SKOS
+vocabulary, whether the data are obtained by file export, database, or API.
 
 ## Constraint strategy
 

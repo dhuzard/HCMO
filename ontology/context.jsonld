@@ -43,6 +43,8 @@
     "calibratesSensor": { "@id": "hcm-tech:calibratesSensor", "@type": "@id" },
     "hasCalibrationStatusValue": { "@id": "hcm-tech:hasCalibrationStatusValue", "@type": "xsd:boolean" },
     "hasActuator": { "@id": "hcm-tech:hasActuator", "@type": "@id" },
+    "hasFileFormatConcept": { "@id": "hcm-tech:hasFileFormatConcept", "@type": "@id" },
+    "hasDataAccessMethod": { "@id": "hcm-tech:hasDataAccessMethod", "@type": "@id" },
     "hasFeatureOfInterest": { "@id": "sosa:hasFeatureOfInterest", "@type": "@id" },
     "hasResult": { "@id": "sosa:hasResult", "@type": "@id" },
     "madeBySensor": { "@id": "sosa:madeBySensor", "@type": "@id" },
