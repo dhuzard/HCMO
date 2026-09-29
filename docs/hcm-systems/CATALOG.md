@@ -52,7 +52,7 @@ tables with `python tooling/export_hcm_vocab.py`.
 
 | System | Authors | Modality | Key measured parameters | Data / links | Prio | slug |
 |---|---|---|---|---|---|---|
-| **Live Mouse Tracker (LMT)** | de Chaumont et al. | Video (IR depth) + RFID | Group social behavior, individual ID, trajectories | https://micecraft.org/lmt/ ; de Chaumont et al. 2019; Huzard et al. 2022 | P1 | `live-mouse-tracker` |
+| **Live Mouse Tracker (LMT)** ✅ [worked example](systems/live-mouse-tracker/) | de Chaumont et al. | Video (IR depth) + RFID | Group social behavior, individual ID, trajectories | https://micecraft.org/lmt/ ; de Chaumont et al. 2019; Huzard et al. 2022; sample SQLite experiment (141 MB) https://micecraft.org/lmt/download/20180110_validation_4_ind_Experiment_6644_e.sqlite | P1 | `live-mouse-tracker` |
 | **MIROSLAV + EnviroSLAV** | Virag et al. | PIR activity + environment | Activity per cage; illumination/temp/humidity | Virag et al. 2024 (bioRxiv), 2025 (Behav Res Methods) | P1 | `miroslav` |
 | **FED3** | Matikainen-Ankney et al. | Operant (nose-poke) + food intake | Pellet retrieval, operant events; SD-card logging | eLife 2021, 10.7554/eLife.66173 | P1 | `fed3` |
 | **MouseVUER** | Salem et al. | Video (open-source home-cage) | Home-cage video monitoring | Sci Rep 2024, 14:2662 | P2 | `mousevuer` |

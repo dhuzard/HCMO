@@ -7,6 +7,10 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Added
 
+- Added a source-cited Live Mouse Tracker profile
+  (`docs/hcm-systems/systems/live-mouse-tracker/`) documenting the SQLite
+  schema, event types and a candidate HCMO mapping, read from the public sample
+  experiment (not committed; URL and SHA-256 recorded).
 - Added two object properties to `hcm-tech`, both with domain software or time
   series and range `skos:Concept`: `hcm-tech:hasFileFormatConcept` (the
   canonical file-format statement) and `hcm-tech:hasDataAccessMethod` (file
@@ -17,7 +21,8 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 - Added SKOS vocabularies in `vocabularies/`, outside the release manifest:
   hand-authored file formats (generic formats with media-type notations,
   including SQLite, plus the three sourced Tecniplast DVC Analytics exports and
-  the Live Mouse Tracker SQLite database as narrower concepts in per-provider
+  the Live Mouse Tracker SQLite database and MP4 video segments as narrower
+  concepts in per-provider
   collections) and data-access methods; vendor and HCM-system schemes
   generated from `CATALOG.md` by the new `tooling/export_hcm_vocab.py`, with
   system short names (for example LMT, CLAMS, MoPSS) as `skos:altLabel` from a

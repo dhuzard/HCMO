@@ -179,9 +179,18 @@ ff:live-mouse-tracker-sqlite a skos:Concept ;
     skos:related sys:live-mouse-tracker ;
     skos:prefLabel "Live Mouse Tracker experiment database (SQLite)"@en ;
     skos:altLabel "LMT database"@en ;
-    skos:definition "An SQLite database file in which Live Mouse Tracker stores the recording of an experiment: the animals, their detections over time, and the behavioural events extracted from them."@en ;
-    skos:editorialNote "Format provided by the HCMO authors; table layout not yet documented in this repository."@en ;
-    dcterms:source <https://micecraft.org/lmt/>, <https://doi.org/10.1038/s41551-019-0396-1> .
+    skos:definition "A standalone SQLite database in which Live Mouse Tracker stores one experiment: the animals and their RFID tags (ANIMAL), timestamped video frames (FRAME), per-frame positions and postures of each animal (DETECTION), and behavioural event intervals involving one to four animals (EVENT)."@en ;
+    skos:example "20180110_validation_4_ind_Experiment_6644_e.sqlite (public sample, 4 mice, 13 minutes at 30 frames per second)"@en ;
+    dcterms:source <https://micecraft.org/lmt/>, <https://doi.org/10.1038/s41551-019-0396-1>, <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/systems/live-mouse-tracker/lmt-system-profile.md> .
+
+ff:live-mouse-tracker-video a skos:Concept ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/file-format> ;
+    skos:broader ff:mp4 ;
+    skos:related sys:live-mouse-tracker ;
+    skos:prefLabel "Live Mouse Tracker video segments (MP4)"@en ;
+    skos:altLabel "LMT video"@en ;
+    skos:definition "MP4 video recorded by Live Mouse Tracker in 10-minute segments, synchronised with the frame numbers and timestamps of the experiment database."@en ;
+    dcterms:source <https://micecraft.org/lmt/> .
 
 # ---------------------------------------------------------------------------
 # Collections
@@ -195,7 +204,7 @@ ff:provider-tecniplast a skos:Collection ;
 ff:provider-live-mouse-tracker a skos:Collection ;
     skos:prefLabel "Live Mouse Tracker export formats"@en ;
     dcterms:relation sys:live-mouse-tracker ;
-    skos:member ff:live-mouse-tracker-sqlite .
+    skos:member ff:live-mouse-tracker-sqlite, ff:live-mouse-tracker-video .
 
 # Options offered, in this order, by the contribution form
 # (docs/hcm-systems/contribute/). Regenerate the form with

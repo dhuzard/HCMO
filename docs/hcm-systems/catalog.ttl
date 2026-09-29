@@ -257,7 +257,7 @@
 
 <https://w3id.org/hcmo/id/catalog/system/live-mouse-tracker> a hcm:System ;
     rdfs:label "Live Mouse Tracker (LMT)" ;
-    dcterms:source "https://micecraft.org/lmt/ ; de Chaumont et al. 2019; Huzard et al. 2022" ;
+    dcterms:source "https://micecraft.org/lmt/ ; de Chaumont et al. 2019; Huzard et al. 2022; sample SQLite experiment (141 MB) https://micecraft.org/lmt/download/20180110_validation_4_ind_Experiment_6644_e.sqlite" ;
     dcterms:subject "P1" ;
     dcterms:type "Video (IR depth) + RFID" ;
     hcm:hasCategory "Open-source / DIY systems" ;
