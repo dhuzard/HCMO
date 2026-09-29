@@ -20,7 +20,8 @@ experiment database.
 ```
 live-mouse-tracker/
   README.md                 ← this file
-  lmt-system-profile.md     ← source-cited profile: sensors, schema, events, HCMO notes
+  lmt-system-profile.md     ← source-cited profile: sensors, schema, events, HCMO mapping
+  event-mapping.csv         ← per-event rule: individual, directed or symmetric
 ```
 
 The public sample database (141 MB) is **not** committed; its URL, size and

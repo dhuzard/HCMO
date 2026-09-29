@@ -40,7 +40,7 @@ No actuators.
 
 | Parameter | Raw/derived | Where stored | Notes |
 |---|---|---|---|
-| Mass-centre, front and back points (x, y, z) | Derived per frame from depth | `DETECTION.MASS_*`, `FRONT_*`, `BACK_*` **[db]** | Pixels **[authors]**; x/y range 96–416 and 58–362, z 0–128 in the sample **[db]** |
+| Mass-centre, front and back points (x, y, z) | Derived per frame from depth | `DETECTION.MASS_*`, `FRONT_*`, `BACK_*` **[db]** | x and y in pixels; z is a pseudo-3D depth value from the Kinect, in pixels or arbitrary units **[authors]**; x/y range 96–416 and 58–362, z 0–128 in the sample **[db]** |
 | Rearing, looking up, looking down | Derived per frame | `DETECTION.REARING`, `LOOK_UP`, `LOOK_DOWN` (0/1) **[db]** | |
 | Behavioural events | Derived intervals | `EVENT` **[db]** | 62 distinct names in the sample, see §5.3 |
 | Identity matching | Derived | `EVENT` (`RFID MATCH`, `RFID MISMATCH`, `RFID ASSIGN ANONYMOUS TRACK`) **[db]** | |
@@ -128,19 +128,38 @@ directed behaviors add `hcm-obs:hasInitiator` and `hcm-obs:hasRecipient`.
 | The database file | `hcm-tech:TimeSeries` with `hcm-tech:hasFileFormatConcept ff:live-mouse-tracker-sqlite`, `hcm-tech:hasFileFormat "application/vnd.sqlite3"`, `hcm-tech:hasDataAccessMethod dam:file-export` |
 | Depth camera, RFID antennas | `hcm-tech:Sensor` |
 | `ANIMAL` row | `hcm-bio:Subject`, with the RFID as identifier |
-| `EVENT` with one animal | `hcm-obs:BehaviorObservation`; feature of interest = the subject |
-| `EVENT` with two to four animals | `hcm-obs:BehaviorObservation`; feature of interest = an `hcm-bio:InteractingGroup` whose members are `IDANIMALA`–`IDANIMALD` |
-| Directed `EVENT` | additionally `hcm-obs:hasInitiator` = `IDANIMALA`, `hcm-obs:hasRecipient` = `IDANIMALB` |
+| `EVENT` with only `IDANIMALA` | `hcm-obs:BehaviorObservation`; feature of interest = the subject |
+| `EVENT` with `IDANIMALB` filled | `hcm-obs:BehaviorObservation`; feature of interest = an `hcm-bio:InteractingGroup` whose members are the filled `IDANIMALA`–`IDANIMALD` |
+| Directed `EVENT` | additionally `hcm-obs:hasInitiator` = `IDANIMALA`, `hcm-obs:hasRecipient` = `IDANIMALB`; `IDANIMALC`/`D` are members only |
+| Symmetric `EVENT` | group only, no roles; all rows with the same name, frames and set of animals become **one** observation |
 | `EVENT.NAME` | `hcm-obs:hasBehaviorType` on the `hcm-obs:BehaviorResult` |
 | `STARTFRAME`, `ENDFRAME` | `sosa:phenomenonTime` interval, via `FRAME.TIMESTAMP` |
 | `DETECTION` rows | `hcm-obs:LocationResultTable` |
 
-**Still to confirm** against the lmt-analysis code: which events are directed,
-and that `IDANIMALA` is always the initiator. Likely directed: `Approach`,
-`Social approach`, `Approach contact`, `Approach rear`, `Follow`, `FollowZone`,
-`Escape`, `Social escape`, `Get away`, `Oral-genital Contact`, `Train2`. Likely
-symmetric (group only): `Contact`, `Oral-oral Contact`, `Side by side Contact`,
-`Side by side Contact, opposite way`, `Group2`, `Group3`, `Group4`.
+**Rules** (proposed in
+[ADR-0006](../../../decisions/ADR-0006-MULTI-ANIMAL-BEHAVIOR.md), pending
+co-author review):
+
+1. An event involves several animals exactly when `IDANIMALB` is filled
+   **[authors]**.
+2. `IDANIMALA` initiates and `IDANIMALB` receives **[authors]**.
+3. `Group2`, `Group3` and `Group4` are symmetric **[authors]**. LMT stores
+   symmetric events in every ordering of the animals: each `Group3` interval
+   appears in all 6 permutations, and `Contact`, `Oral-oral Contact` and both
+   side-by-side contacts appear in both orders for every interval **[db]**. The
+   sample's `Group4` rows use a single ordering **[db]**, so a converter must
+   collapse permutations rather than rely on them all being present.
+
+The per-event decision for all 62 names in the sample is in
+[`event-mapping.csv`](event-mapping.csv): 30 individual, 19 directed, 11
+symmetric, `coucou` excluded (test label), and `Nest4_` unassigned (its rows
+name no animal). Rows marked "to confirm" rely on storage evidence alone: the
+four symmetric automatic contacts and the four manual contact annotations,
+which are stored once but annotate symmetric behaviours. Directed events with
+some mirrored rows (`Follow` 33 %, `Move in contact` 21 %, `Stop in contact`
+13 %) stay directed: only some of their intervals are detected in both
+directions, which the directed reading keeps as two observations, one per
+initiator.
 
 ## Sources
 

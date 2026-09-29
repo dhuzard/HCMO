@@ -17,7 +17,9 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
   negative probe (`examples/abox-social-invalid.ttl`) checks each rule. The
   minimal example gains a second mouse, a depth camera and a directed
   "approach", and the new competency question `social-interaction-partners`
-  answers who interacted with whom and in which role.
+  answers who interacted with whom and in which role. Recorded as proposed
+  ADR-0006, pending co-author review; the LMT per-event mapping table
+  (`event-mapping.csv`) applies it to the 62 event names of the sample.
 
 - Added a source-cited Live Mouse Tracker profile
   (`docs/hcm-systems/systems/live-mouse-tracker/`) documenting the SQLite
