@@ -153,9 +153,15 @@ co-author review):
 The per-event decision for all 62 names in the sample is in
 [`event-mapping.csv`](event-mapping.csv): 30 individual, 19 directed, 11
 symmetric, `coucou` excluded (test label), and `Nest4_` unassigned (its rows
-name no animal). Rows marked "to confirm" rely on storage evidence alone: the
-four symmetric automatic contacts and the four manual contact annotations,
-which are stored once but annotate symmetric behaviours. Directed events with
+name no animal). Each row cites its evidence: the authors' rules, the
+`EVENT.DESCRIPTION` text where LMT fills it (for example `Contact`: "Animals are
+touching each other"; `Approach`: "Mouse A … getting to B"), and the
+event-building code in lmt-analysis (commit `c284e35`). The code settles the
+contacts: `Oral-oral Contact` and both side-by-side contacts use tests that give
+the same result for A–B and B–A, so they are symmetric, whereas
+`Oral-genital Contact` measures the head of A to the hindquarters of B, so it is
+directed. Only the five manual annotations (`manual*`, no code and no
+description; stored once) and `Nest4_` remain "to confirm". Directed events with
 some mirrored rows (`Follow` 33 %, `Move in contact` 21 %, `Stop in contact`
 13 %) stay directed: only some of their intervals are detected in both
 directions, which the directed reading keeps as two observations, one per
