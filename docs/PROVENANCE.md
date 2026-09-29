@@ -20,7 +20,10 @@ HCMO developed through four stages:
    early GitHub version in September 2025, with contributions from Leonardo
    Restivo and Benoit Girard. Benoit Girard is a co-author of the HCMO article
    (decided 2026-09-24) and is credited there in the CRediT statement rather
-   than in the acknowledgements.
+   than in the acknowledgements. His Conceptualization role is qualified as
+   *initial project framing* (agreed 2026-09-29): it covers the early-stage
+   conceptual framework of this stage, not the later development and
+   conceptualization of HCMO in stage 4.
 4. An Exogene grant (€23,000), administered by the Pôle Universitaire
    d'Innovation of the University of Montpellier and awarded to Metadatapp to
    support collaboration between Damien Huzard and Konstantin Todorov, supported

@@ -31,6 +31,10 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Changed
 
+- Added "Conceptualization (initial project framing)" to Benoit Girard's CRediT
+  roles in the manuscript and author-metadata record, with his agreement; the
+  qualifier separates the early-stage project framing from the later
+  development and conceptualization of HCMO.
 - Added Philippe Rocca-Serra as a middle author, with ORCID, Oxford affiliation,
   and CRediT roles reflecting his ontology and interoperability review.
 - Recorded the eight authors' confirmed institutional affiliations in the
