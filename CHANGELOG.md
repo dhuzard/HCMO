@@ -19,7 +19,7 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
   "approach", and the new competency question `social-interaction-partners`
   answers who interacted with whom and in which role. Recorded as proposed
   ADR-0006, pending co-author review; the LMT per-event mapping table
-  (`event-mapping.csv`) applies it to the 62 event names of the sample.
+  (`event-mapping.csv`) applies it to 56 of the 62 event names of the sample (manual annotations and `Nest4_` are not mapped).
 
 - Added a source-cited Live Mouse Tracker profile
   (`docs/hcm-systems/systems/live-mouse-tracker/`) documenting the SQLite

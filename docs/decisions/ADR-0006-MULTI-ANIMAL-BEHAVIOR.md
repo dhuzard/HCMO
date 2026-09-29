@@ -64,6 +64,6 @@ ordering of the animals, collapse into one observation. The per-event table is
 2. Should group housing measured only at cage level (no individual resolution)
    use `InteractingGroup`, `ExperimentalGroup`, or the enclosure as feature of
    interest? This ADR does not decide it.
-3. Confirm the six LMT rows still marked "to confirm" in `event-mapping.csv`:
-   the five manual annotations and `Nest4_`. All other rows are backed by the
-   authors' rules, `EVENT.DESCRIPTION`, or the lmt-analysis event-building code.
+3. Review the LMT event table `event-mapping.csv`. Every row is backed by the
+   authors' rules, `EVENT.DESCRIPTION`, or the lmt-analysis event-building
+   code; manual annotations and `Nest4_` are deliberately not mapped.

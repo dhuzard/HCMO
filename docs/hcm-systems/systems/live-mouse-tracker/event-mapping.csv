@@ -25,7 +25,6 @@ MACHINE LEARNING ASSOCIATION,18,1,,individual,IDANIMALB never filled [db]
 Move in contact,1339,2,21.1,directed,"IDANIMALA initiates, IDANIMALB receives [authors]"
 Move isolated,2768,1,,individual,IDANIMALB never filled [db]
 Nest3_,25,1,,individual,IDANIMALB never filled [db]
-Nest4_,2,0,,unassigned,no animal filled in any row [db]; to confirm
 Oral-genital Contact,509,2,1.2,directed,"head of A to hindquarters of B (BuildEventOralGenitalContact.py, lmt-analysis@c284e35); A initiates, B receives [authors]"
 Oral-oral Contact,522,2,100.0,symmetric,"head-to-head distance, same for A-B and B-A (BuildEventOralOralContact.py, lmt-analysis@c284e35); stored in both orders [db]"
 Periphery Zone,411,1,,individual,IDANIMALB never filled [db]
@@ -54,10 +53,5 @@ badOrientation,44,1,,individual,IDANIMALB never filled [db]
 badSegmentation,172,1,,individual,IDANIMALB never filled [db]
 coucou,9,2,0.0,exclude,probably a test label [authors]
 event,1,1,,individual,IDANIMALB never filled [db]
-manualContact,273,2,0.0,symmetric,"manual version of Contact; no builder code or description, stored once [db]; to confirm"
-manualOralGenital,92,2,0.0,directed,"manual version of Oral-genital Contact; A initiates, B receives [authors]; to confirm"
-manualOralOralContact,62,2,0.0,symmetric,"manual version of Oral-oral Contact; no builder code or description, stored once [db]; to confirm"
-manualSideSideOpposite,27,2,0.0,symmetric,"manual version of Side by side Contact, opposite way; no builder code or description, stored once [db]; to confirm"
-manualSideSideSame,22,2,0.0,symmetric,"manual version of Side by side Contact; no builder code or description, stored once [db]; to confirm"
 seq oral geni - oral oral,2,2,0.0,directed,"IDANIMALA initiates, IDANIMALB receives [authors]"
 seq oral oral - oral genital,7,2,0.0,directed,"IDANIMALA initiates, IDANIMALB receives [authors]"
