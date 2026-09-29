@@ -227,13 +227,14 @@
     hcm:producedBy <https://w3id.org/hcmo/id/catalog/agent/matikainen-ankney-et-al> .
 
 <https://w3id.org/hcmo/id/catalog/system/imouse> a hcm:System ;
-    rdfs:label "iMouse" ;
+    rdfs:label "DigiFrame" ;
     dcterms:source "https://imouse.info/" ;
     dcterms:subject "P2" ;
-    dcterms:type "Retrofit camera system" ;
+    dcterms:type "Retrofit video (up to four side-view cameras on standard home cages; DigiFrame Hardware Enabler)" ;
     hcm:hasCategory "Commercial HCM platforms" ;
-    hcm:hasDescription "Video monitoring on standard racks" ;
-    hcm:producedBy <https://w3id.org/hcmo/id/catalog/agent/unnamed> .
+    hcm:hasDescription "Behaviour, posture and grimace as AI-derived digital biomarkers (Brain Analyzer), 24/7" ;
+    hcm:hasManufacturer "iMouse GmbH" ;
+    hcm:producedBy <https://w3id.org/hcmo/id/catalog/agent/imouse-gmbh> .
 
 <https://w3id.org/hcmo/id/catalog/system/intellicage> a hcm:System ;
     rdfs:label "IntelliCage" ;
@@ -374,14 +375,6 @@
     hcm:hasManufacturer "Virag et al." ;
     hcm:producedBy <https://w3id.org/hcmo/id/catalog/agent/virag-et-al> .
 
-<https://w3id.org/hcmo/id/catalog/system/psibox> a hcm:System ;
-    rdfs:label "PsiBox" ;
-    dcterms:subject "P3" ;
-    dcterms:type "Operant (sensory discrimination)" ;
-    hcm:hasCategory "Open-source / DIY systems" ;
-    hcm:hasDescription "Tone/frequency discrimination, sequence learning" ;
-    hcm:producedBy <https://w3id.org/hcmo/id/catalog/agent/unnamed> .
-
 <https://w3id.org/hcmo/id/catalog/system/sable-promethion> a hcm:System ;
     rdfs:label "Promethion (\"Sable Promotion\" in text)" ;
     dcterms:subject "P2" ;
@@ -393,12 +386,13 @@
 
 <https://w3id.org/hcmo/id/catalog/system/soho-telemetry> a hcm:System ;
     rdfs:label "SoHo™ telemetry" ;
-    dcterms:source "Pedraza et al. 2025" ;
+    dcterms:source "Pedraza et al. 2025; https://www.harvardbioscience.com/products/SoHo-Implantable-Telemetry (sold through Harvard Bioscience)" ;
     dcterms:subject "P2" ;
-    dcterms:type "Telemetry, socially housed" ;
+    dcterms:type "Implantable telemetry, socially housed" ;
     hcm:hasCategory "Commercial HCM platforms" ;
-    hcm:hasDescription "Body temperature, activity in group housing" ;
-    hcm:producedBy <https://w3id.org/hcmo/id/catalog/agent/unnamed> .
+    hcm:hasDescription "EEG + EMG, blood pressure + ECG, core body temperature, locomotor activity (3-axis accelerometer); up to 16 animals per transceiver, up to 64 socially housed animals" ;
+    hcm:hasManufacturer "Data Sciences International (DSI)" ;
+    hcm:producedBy <https://w3id.org/hcmo/id/catalog/agent/data-sciences-international-dsi> .
 
 <https://w3id.org/hcmo/id/catalog/system/sonotrack> a hcm:System ;
     rdfs:label "Sonotrack" ;
@@ -448,9 +442,6 @@
 <https://w3id.org/hcmo/id/catalog/agent/columbus-instruments> a hcm:Supplier ;
     rdfs:label "Columbus Instruments" .
 
-<https://w3id.org/hcmo/id/catalog/agent/data-sciences-international-dsi> a hcm:Supplier ;
-    rdfs:label "Data Sciences International (DSI)" .
-
 <https://w3id.org/hcmo/id/catalog/agent/de-chaumont-et-al> a hcm:Supplier ;
     rdfs:label "de Chaumont et al." .
 
@@ -459,6 +450,9 @@
 
 <https://w3id.org/hcmo/id/catalog/agent/habedank-et-al> a hcm:Supplier ;
     rdfs:label "Habedank et al." .
+
+<https://w3id.org/hcmo/id/catalog/agent/imouse-gmbh> a hcm:Supplier ;
+    rdfs:label "iMouse GmbH" .
 
 <https://w3id.org/hcmo/id/catalog/agent/lapp-et-al> a hcm:Supplier ;
     rdfs:label "Lapp et al." .
@@ -496,6 +490,9 @@
 <https://w3id.org/hcmo/id/catalog/agent/vidva-et-al> a hcm:Supplier ;
     rdfs:label "Vidva et al." .
 
+<https://w3id.org/hcmo/id/catalog/agent/data-sciences-international-dsi> a hcm:Supplier ;
+    rdfs:label "Data Sciences International (DSI)" .
+
 <https://w3id.org/hcmo/id/catalog/agent/metris> a hcm:Supplier ;
     rdfs:label "Metris" .
 
@@ -507,7 +504,4 @@
 
 <https://w3id.org/hcmo/id/catalog/agent/virag-et-al> a hcm:Supplier ;
     rdfs:label "Virag et al." .
-
-<https://w3id.org/hcmo/id/catalog/agent/unnamed> a hcm:Supplier ;
-    rdfs:label "—" .
 

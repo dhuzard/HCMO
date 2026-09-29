@@ -37,8 +37,8 @@ tables with `python tooling/export_hcm_vocab.py`.
 | **Cage-lid retrofit modules** | Olden Labs | Video (retrofit on standard shoebox cages) | Behavior/activity; layers onto commercial racks | https://oldenlabs.com/ | P1 | `olden-labs` |
 | **RFID temperature / multi-sensor implants** | Unified Information Devices (UID) | RFID (LF, ISO 11784/85 FDX-B) + temp/accel/PPG | Individual ID, body temperature; newer chips add accelerometer, photoplethysmograph (HR, SpO₂, resp) | https://www.uidevices.com/laboratory-animal-temperature/ ; https://micetracking.com/ | P1 | `uid-rfid` |
 | **Promethion** ("Sable Promotion" in text) | Sable Systems | Metabolic (calorimetry) | VO₂/VCO₂/RER, activity, feeding | (named only) | P2 | `sable-promethion` |
-| **SoHo™ telemetry** | — | Telemetry, socially housed | Body temperature, activity in group housing | Pedraza et al. 2025 | P2 | `soho-telemetry` |
-| **iMouse** | — | Retrofit camera system | Video monitoring on standard racks | https://imouse.info/ | P2 | `imouse` |
+| **SoHo™ telemetry** | Data Sciences International (DSI) | Implantable telemetry, socially housed | EEG + EMG, blood pressure + ECG, core body temperature, locomotor activity (3-axis accelerometer); up to 16 animals per transceiver, up to 64 socially housed animals | Pedraza et al. 2025; https://www.harvardbioscience.com/products/SoHo-Implantable-Telemetry (sold through Harvard Bioscience) | P2 | `soho-telemetry` |
+| **DigiFrame** | iMouse GmbH | Retrofit video (up to four side-view cameras on standard home cages; DigiFrame Hardware Enabler) | Behaviour, posture and grimace as AI-derived digital biomarkers (Brain Analyzer), 24/7 | https://imouse.info/ | P2 | `imouse` |
 | **Pallidus** | Pallidus.io | Environmental (cage-top units → cloud) | Activity, humidity, temperature | Pallidus.io | P2 | `pallidus` |
 | **2D-Neuro** | 2D-Neuro | Wireless optogenetic implants (neuro toolchain) | Pattern-locked optogenetic stimulation in home cage | https://2dneuro.com/ | P3 | `2d-neuro` |
 | **IntelliCage** | TSE Systems | Operant / cognitive, group-housed | Learning, reversal, rule-switch, activity via RFID corners | (named only); originally developed by New Behavior | P2 | `intellicage` |
@@ -61,7 +61,6 @@ tables with `python tooling/export_hcm_vocab.py`.
 | **LIQ HD** (Lick Instance Quantifier Home-cage Device) | Petersen et al. | Lickometer (two-bottle) | Undisturbed two-bottle drinking, live lick counts | eNeuro 2023 | P2 | `liq-hd` |
 | **PASTA** (Platform for Acoustic STArtle) | Virag et al. | Load cell (repurposed kitchen scale) | Startle response, periodic breathing (DIY) | Sci Rep 2021, 11:2963 | P3 | `pasta` |
 | **AMBER** (Automated Maternal Behavior during Early life in Rodents) | Lapp et al. | Video pipeline | Maternal behavior classification | Sci Rep 2023 | P3 | `amber` |
-| **PsiBox** | — | Operant (sensory discrimination) | Tone/frequency discrimination, sequence learning | (named only) | P3 | `psibox` |
 
 ## System short names
 
@@ -79,6 +78,7 @@ names with `;`. They become `skos:altLabel` values in `vocabularies/systems.ttl`
 | `noldus-phenotyper` | PhenoTyper |
 | `sable-promethion` | Promethion |
 | `soho-telemetry` | SoHo |
+| `imouse` | iMouse; iMouse DigiFrame; DigiFrame Hardware Enabler |
 | `batsound-pettersson` | BatSound; Pettersson M500-USB |
 | `live-mouse-tracker` | LMT |
 | `miroslav` | MIROSLAV; EnviroSLAV |

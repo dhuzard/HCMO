@@ -4,6 +4,7 @@
 > <https://micecraft.org/lmt/>; **[paper]** is de Chaumont et al. 2019
 > (<https://doi.org/10.1038/s41551-019-0396-1>); **[db]** means the fact was read
 > directly from the public sample database (see §7), which was inspected on
+> 2026-09-29; **[authors]** marks information given by the HCMO authors on
 > 2026-09-29. Where a fact is not available it is written **"unknown — not found"**.
 
 ## 1. Overview
@@ -15,7 +16,8 @@ antennas under the arena keep their identities over time **[site] [paper]**.
 
 - **Authors:** de Chaumont et al. **[paper]**
 - **Type:** open-source (tracker and analysis scripts downloadable) **[site]**
-- **Licence:** unknown — not found on the home page.
+- **Licence:** GNU GPL v3 **[authors]**; the analysis repository declares
+  GPL-3.0 (<https://github.com/fdechaumont/lmt-analysis/blob/master/LICENSE>).
 
 ## 2. Monitored entities
 
@@ -38,7 +40,7 @@ No actuators.
 
 | Parameter | Raw/derived | Where stored | Notes |
 |---|---|---|---|
-| Mass-centre, front and back points (x, y, z) | Derived per frame from depth | `DETECTION.MASS_*`, `FRONT_*`, `BACK_*` **[db]** | Units not stated in the database; x/y range 96–416 and 58–362, z 0–128 in the sample **[db]** |
+| Mass-centre, front and back points (x, y, z) | Derived per frame from depth | `DETECTION.MASS_*`, `FRONT_*`, `BACK_*` **[db]** | Pixels **[authors]**; x/y range 96–416 and 58–362, z 0–128 in the sample **[db]** |
 | Rearing, looking up, looking down | Derived per frame | `DETECTION.REARING`, `LOOK_UP`, `LOOK_DOWN` (0/1) **[db]** | |
 | Behavioural events | Derived intervals | `EVENT` **[db]** | 62 distinct names in the sample, see §5.3 |
 | Identity matching | Derived | `EVENT` (`RFID MATCH`, `RFID MISMATCH`, `RFID ASSIGN ANONYMOUS TRACK`) **[db]** | |
@@ -79,10 +81,11 @@ none (2). The 62 names fall into these groups:
 
 - **Individual behaviour:** `Move isolated`, `Stop isolated`, `Rearing`,
   `Rear isolated`, `Rear at periphery`, `Rear in centerWindow`, `Look down`,
-  `WallJump`, `Stop`, `SAP`, …
+  `WallJump`, `Stop`, `SAP` (stretch attend posture **[authors]**), …
 - **Dyadic social behaviour:** `Contact`, `Oral-oral Contact`,
   `Oral-genital Contact`, `Side by side Contact`, `Approach`, `Social approach`,
-  `Follow`, `Escape`, `Social escape`, `Get away`, `Break contact`, …
+  `Follow`, `Escape`, `Social escape`, `Get away`, `Break contact`, `Train2`
+  (a train of two mice following each other **[authors]**), …
 - **Group configurations:** `Group2`, `Group3`, `Group4`, `Group 3 make`,
   `Group 3 break`, `Nest3_`, …
 - **Zones:** `Center Zone`, `Periphery Zone`, `Water Zone`, `Water Stop`.
@@ -91,8 +94,8 @@ none (2). The 62 names fall into these groups:
 - **Manual annotations:** `manualContact`, `manualOralGenital`,
   `manualOralOralContact`, `manualSideSideOpposite`, `manualSideSideSame`.
 - **Other:** `MACHINE LEARNING ASSOCIATION`, sequence events
-  (`seq oral oral - oral genital`), and a few labels whose meaning is not
-  documented in the database.
+  (`seq oral oral - oral genital`), and `coucou`, probably a test label
+  **[authors]**.
 
 ## 6. Software & interoperability
 
@@ -113,21 +116,31 @@ none (2). The 62 names fall into these groups:
   2026-09-29). Not committed to this repository because of its size.
 - Analysis tutorial and troubleshooting guides are linked from the home page **[site]**.
 
-## 8. HCMO mapping notes (proposal, not implemented)
+## 8. HCMO mapping
 
-| LMT | Candidate HCMO pattern |
+Multi-animal events follow the HCMO pattern adopted on 2026-09-29: the feature
+of interest of a behavior observation is either one `hcm-bio:Subject` or an
+`hcm-bio:InteractingGroup` whose members are stated with `hcm-bio:hasMember`;
+directed behaviors add `hcm-obs:hasInitiator` and `hcm-obs:hasRecipient`.
+
+| LMT | HCMO pattern |
 |---|---|
 | The database file | `hcm-tech:TimeSeries` with `hcm-tech:hasFileFormatConcept ff:live-mouse-tracker-sqlite`, `hcm-tech:hasFileFormat "application/vnd.sqlite3"`, `hcm-tech:hasDataAccessMethod dam:file-export` |
 | Depth camera, RFID antennas | `hcm-tech:Sensor` |
 | `ANIMAL` row | `hcm-bio:Subject`, with the RFID as identifier |
-| One-animal `EVENT` | `hcm-obs:BehaviorObservation` with `sosa:hasFeatureOfInterest` the subject and an interval from `FRAME.TIMESTAMP` |
+| `EVENT` with one animal | `hcm-obs:BehaviorObservation`; feature of interest = the subject |
+| `EVENT` with two to four animals | `hcm-obs:BehaviorObservation`; feature of interest = an `hcm-bio:InteractingGroup` whose members are `IDANIMALA`–`IDANIMALD` |
+| Directed `EVENT` | additionally `hcm-obs:hasInitiator` = `IDANIMALA`, `hcm-obs:hasRecipient` = `IDANIMALB` |
+| `EVENT.NAME` | `hcm-obs:hasBehaviorType` on the `hcm-obs:BehaviorResult` |
+| `STARTFRAME`, `ENDFRAME` | `sosa:phenomenonTime` interval, via `FRAME.TIMESTAMP` |
 | `DETECTION` rows | `hcm-obs:LocationResultTable` |
 
-**Open question:** most LMT events involve two to four animals. HCMO's
-observation pattern has one feature of interest per observation, so dyadic and
-group events need a modelling decision (a group feature of interest, or one
-observation per participant). This is the same experimental-unit question raised
-at the 2026-09-18 co-author meeting.
+**Still to confirm** against the lmt-analysis code: which events are directed,
+and that `IDANIMALA` is always the initiator. Likely directed: `Approach`,
+`Social approach`, `Approach contact`, `Approach rear`, `Follow`, `FollowZone`,
+`Escape`, `Social escape`, `Get away`, `Oral-genital Contact`, `Train2`. Likely
+symmetric (group only): `Contact`, `Oral-oral Contact`, `Side by side Contact`,
+`Side by side Contact, opposite way`, `Group2`, `Group3`, `Group4`.
 
 ## Sources
 

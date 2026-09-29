@@ -32,7 +32,8 @@ vendor:data-sciences-international a skos:Concept ;
     skos:altLabel "DSI"@en ;
     skos:inScheme <https://w3id.org/hcmo/id/vocab/vendor> ;
     skos:prefLabel "Data Sciences International (DSI)"@en ;
-    skos:related sys:dsi-telemetry ;
+    skos:related sys:dsi-telemetry,
+        sys:soho-telemetry ;
     skos:topConceptOf <https://w3id.org/hcmo/id/vocab/vendor> .
 
 vendor:dodotronic a skos:Concept ;
@@ -40,6 +41,13 @@ vendor:dodotronic a skos:Concept ;
     skos:inScheme <https://w3id.org/hcmo/id/vocab/vendor> ;
     skos:prefLabel "Dodotronic"@en ;
     skos:related sys:dodotronic ;
+    skos:topConceptOf <https://w3id.org/hcmo/id/vocab/vendor> .
+
+vendor:imouse a skos:Concept ;
+    dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/vendor> ;
+    skos:prefLabel "iMouse GmbH"@en ;
+    skos:related sys:imouse ;
     skos:topConceptOf <https://w3id.org/hcmo/id/vocab/vendor> .
 
 vendor:metris a skos:Concept ;
@@ -119,6 +127,7 @@ vendor:unified-information-devices a skos:Concept ;
         vendor:columbus-instruments,
         vendor:data-sciences-international,
         vendor:dodotronic,
+        vendor:imouse,
         vendor:metris,
         vendor:noldus,
         vendor:olden-labs,

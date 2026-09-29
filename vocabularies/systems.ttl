@@ -37,8 +37,7 @@ sys:open-source a skos:Collection ;
         sys:mopss,
         sys:mousevuer,
         sys:myvivarium,
-        sys:pasta,
-        sys:psibox ;
+        sys:pasta ;
     skos:prefLabel "Open-source and DIY HCM systems"@en .
 
 sys:2d-neuro a skos:Concept ;
@@ -134,10 +133,14 @@ sys:fed3 a skos:Concept ;
 
 sys:imouse a skos:Concept ;
     dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
+    skos:altLabel "DigiFrame Hardware Enabler"@en,
+        "iMouse"@en,
+        "iMouse DigiFrame"@en ;
     skos:inScheme <https://w3id.org/hcmo/id/vocab/system> ;
     skos:notation "imouse" ;
-    skos:prefLabel "iMouse"@en ;
-    skos:scopeNote "Modality: Retrofit camera system"@en ;
+    skos:prefLabel "DigiFrame"@en ;
+    skos:related vendor:imouse ;
+    skos:scopeNote "Modality: Retrofit video (up to four side-view cameras on standard home cages; DigiFrame Hardware Enabler)"@en ;
     skos:topConceptOf <https://w3id.org/hcmo/id/vocab/system> .
 
 sys:intellicage a skos:Concept ;
@@ -268,14 +271,6 @@ sys:pasta a skos:Concept ;
     skos:scopeNote "Modality: Load cell (repurposed kitchen scale)"@en ;
     skos:topConceptOf <https://w3id.org/hcmo/id/vocab/system> .
 
-sys:psibox a skos:Concept ;
-    dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
-    skos:inScheme <https://w3id.org/hcmo/id/vocab/system> ;
-    skos:notation "psibox" ;
-    skos:prefLabel "PsiBox"@en ;
-    skos:scopeNote "Modality: Operant (sensory discrimination)"@en ;
-    skos:topConceptOf <https://w3id.org/hcmo/id/vocab/system> .
-
 sys:sable-promethion a skos:Concept ;
     dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
     skos:altLabel "Promethion"@en ;
@@ -292,7 +287,8 @@ sys:soho-telemetry a skos:Concept ;
     skos:inScheme <https://w3id.org/hcmo/id/vocab/system> ;
     skos:notation "soho-telemetry" ;
     skos:prefLabel "SoHo™ telemetry"@en ;
-    skos:scopeNote "Modality: Telemetry, socially housed"@en ;
+    skos:related vendor:data-sciences-international ;
+    skos:scopeNote "Modality: Implantable telemetry, socially housed"@en ;
     skos:topConceptOf <https://w3id.org/hcmo/id/vocab/system> .
 
 sys:sonotrack a skos:Concept ;
@@ -352,7 +348,6 @@ sys:uid-rfid a skos:Concept ;
         sys:olden-labs,
         sys:pallidus,
         sys:pasta,
-        sys:psibox,
         sys:sable-promethion,
         sys:soho-telemetry,
         sys:sonotrack,

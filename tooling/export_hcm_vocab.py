@@ -228,6 +228,10 @@ def render_form(text: str) -> str:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--check", action="store_true", help="fail if generated outputs are stale")
+    parser.add_argument(
+        "--allow-drop", nargs="+", default=[], metavar="IRI",
+        help="concept IRIs that may disappear; only for IRIs never released",
+    )
     args = parser.parse_args()
 
     vendors, systems = build_catalog_graphs()
@@ -242,6 +246,7 @@ def main() -> int:
     dropped = sorted(
         (minted(VENDORS_OUT) | minted(SYSTEMS_OUT))
         - {str(s) for g in (vendors, systems) for s in g.subjects(RDF.type, SKOS.Concept)}
+        - set(args.allow_drop)
     )
     if dropped:
         print(f"[FAIL] previously minted concept IRIs would disappear (deprecate instead): {dropped}")
