@@ -27,6 +27,14 @@
     <rdf:first rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#Sensor"/>
     <rdf:rest rdf:nodeID="cb1670570fa18e53b731cf3cb6172cdc551e512e91ddaf4cdeb69020b6290a5baf7"/>
   </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#hasInitiator">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment>Relates a directed behavior observation to the subject that performs or initiates the behavior, such as the animal that approaches, follows, or escapes.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/hcmo/ontology/hcm/obs#BehaviorObservation"/>
+    <rdfs:label>has initiator</rdfs:label>
+    <rdfs:range rdf:resource="https://w3id.org/hcmo/ontology/hcm/bio#Subject"/>
+    <rdfs:subPropertyOf rdf:resource="https://w3id.org/hcmo/ontology/hcm/obs#involvesSubject"/>
+  </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#hasFileFormatConcept">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
     <rdfs:comment>Relates a software or time-series artifact to the SKOS concept that identifies its file format in the HCMO file-format vocabulary. It is the canonical form of the file-format statement; the has file format string remains for backward compatibility and should carry the concept's notation.</rdfs:comment>
@@ -98,6 +106,13 @@
     <rdf:type rdf:resource="https://schema.org/Person"/>
     <schema:name>Damien Huzard</schema:name>
   </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#involvesSubject">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment>Relates a behavior observation to a subject that takes part in the observed behavior with a stated role. Use its sub-properties has initiator and has recipient for directed behaviors; members of an interacting group without a distinct role are stated with has member on the group.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/hcmo/ontology/hcm/obs#BehaviorObservation"/>
+    <rdfs:label>involves subject</rdfs:label>
+    <rdfs:range rdf:resource="https://w3id.org/hcmo/ontology/hcm/bio#Subject"/>
+  </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#hasVersion">
     <dcterms:isReplacedBy rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#hasVersion"/>
     <dcterms:source rdf:resource="https://w3id.org/hcmo/ontology/hcm/0.0.1"/>
@@ -162,6 +177,10 @@
     <rdfs:label>is occupied</rdfs:label>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
     <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="cb1e99d14a69db8ac3ac178f0b9e5ef9a8554dd3955c156f5280c0e9d99435b5ba4">
+    <rdf:first rdf:resource="https://w3id.org/hcmo/ontology/hcm/bio#ExperimentalGroup"/>
+    <rdf:rest rdf:nodeID="cb2a1dffeecabf3e46cf78e072358c74357ecd170b8e2c474a90651623f082b2cac"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#hasBehaviorObservation">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -236,13 +255,6 @@
     <rdfs:label>Animal</rdfs:label>
     <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
   </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#hasMember">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:comment>Relates an experimental group to a subject that is a member of the group.</rdfs:comment>
-    <rdfs:domain rdf:resource="https://w3id.org/hcmo/ontology/hcm/bio#ExperimentalGroup"/>
-    <rdfs:label>has member</rdfs:label>
-    <rdfs:range rdf:resource="https://w3id.org/hcmo/ontology/hcm/bio#Subject"/>
-  </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#hasStoragePath">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
     <rdfs:comment>Records a path or locator for stored data, software, or time-series resources.</rdfs:comment>
@@ -301,11 +313,6 @@
     <rdf:first rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#Sensor"/>
     <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="cb218c99c91cf3e0b0a8925ac09fea216aa607246eb25cd992b4aa36ee74c89203c">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="http://www.w3.org/ns/sosa/hasFeatureOfInterest"/>
-    <owl:someValuesFrom rdf:resource="https://w3id.org/hcmo/ontology/hcm/bio#Subject"/>
-  </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#hasResult">
     <dcterms:source rdf:resource="https://w3id.org/hcmo/ontology/hcm/0.0.1"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -362,6 +369,17 @@
     <rdfs:domain rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#Sensor"/>
     <rdfs:label>installed in</rdfs:label>
     <rdfs:range rdf:resource="https://w3id.org/hcmo/ontology/hcm#MonitoredEnclosure"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="cb2ae9b2659d96cf1f4c1f5828ffd541392608313ce0a8923c950b48b932dd0a4e2">
+    <rdf:first rdf:resource="https://w3id.org/hcmo/ontology/hcm/bio#Subject"/>
+    <rdf:rest rdf:nodeID="cb2659d5299f1a0816caf22871ed761e40e3cebe0a13fdde5d83763c147e9e6d7fd"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#hasMember">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment>Relates an experimental or interacting group to a subject that is a member of the group.</rdfs:comment>
+    <rdfs:domain rdf:nodeID="cb15fe1b0469a38e7237cbcd521bdb3a3eae5837716e6477ebf1a69c64eeaf75639"/>
+    <rdfs:label>has member</rdfs:label>
+    <rdfs:range rdf:resource="https://w3id.org/hcmo/ontology/hcm/bio#Subject"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/tech#Sensor">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
@@ -858,10 +876,10 @@
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#BehaviorObservation">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:comment>A SOSA-style observation about the behavior of a subject in a home-cage monitoring context.</rdfs:comment>
+    <rdfs:comment>A SOSA-style observation about the behavior of a subject, or of an interacting group of subjects, in a home-cage monitoring context. A behavior involving several animals has the interacting group as its feature of interest; when the behavior is directed, the initiating and receiving subjects are stated with has initiator and has recipient.</rdfs:comment>
     <rdfs:label>Behavior Observation</rdfs:label>
-    <rdfs:subClassOf rdf:nodeID="cb218c99c91cf3e0b0a8925ac09fea216aa607246eb25cd992b4aa36ee74c89203c"/>
     <rdfs:subClassOf rdf:nodeID="cb223541e6c8837b0bc004de83d581e98eec444b1ca17686e81c542e48a9f548b5a"/>
+    <rdfs:subClassOf rdf:nodeID="cb234e8dec1e5650705e32439a2a6fdfe3bf81ff6d8d1330e70fcd43e8a1ef55ab6"/>
     <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/sosa/Observation"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/env#hasMeasurementSpec">
@@ -982,6 +1000,10 @@
     <rdfs:comment>Deprecated in HCMO 0.1.0. An observation time window for behavior capture.</rdfs:comment>
     <rdfs:label>Observation Window</rdfs:label>
     <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="cb2a1dffeecabf3e46cf78e072358c74357ecd170b8e2c474a90651623f082b2cac">
+    <rdf:first rdf:resource="https://w3id.org/hcmo/ontology/hcm/bio#InteractingGroup"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/env#hasDimUnit">
     <dcterms:isReplacedBy rdf:resource="https://w3id.org/hcmo/ontology/hcm#hasDimUnit"/>
@@ -1109,6 +1131,10 @@
     <rdfs:comment>A physical housing enclosure used as part of a home-cage monitoring system.</rdfs:comment>
     <rdfs:label>Enclosure</rdfs:label>
     <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="cb15fe1b0469a38e7237cbcd521bdb3a3eae5837716e6477ebf1a69c64eeaf75639">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="cb1e99d14a69db8ac3ac178f0b9e5ef9a8554dd3955c156f5280c0e9d99435b5ba4"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#hasSpecies">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
@@ -1328,6 +1354,11 @@
     <rdfs:label>has condition</rdfs:label>
     <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="cb234e8dec1e5650705e32439a2a6fdfe3bf81ff6d8d1330e70fcd43e8a1ef55ab6">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://www.w3.org/ns/sosa/hasFeatureOfInterest"/>
+    <owl:someValuesFrom rdf:nodeID="cb15c6563de50c0472c4a096eaaadcc5af5728d9639bcd7f7e29a856bc4e7b4e35e"/>
+  </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#CategoricalResult">
     <dcterms:isReplacedBy rdf:resource="https://w3id.org/hcmo/ontology/hcm/obs#CategoricalResult"/>
     <dcterms:source rdf:resource="https://w3id.org/hcmo/ontology/hcm/0.0.1"/>
@@ -1480,6 +1511,14 @@
     <rdfs:label>has weight observation</rdfs:label>
     <rdfs:range rdf:resource="https://w3id.org/hcmo/ontology/hcm/obs#WeightObservation"/>
     <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/obs#hasRecipient">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment>Relates a directed behavior observation to the subject toward which the behavior is directed, such as the animal that is approached, followed, or escaped from.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://w3id.org/hcmo/ontology/hcm/obs#BehaviorObservation"/>
+    <rdfs:label>has recipient</rdfs:label>
+    <rdfs:range rdf:resource="https://w3id.org/hcmo/ontology/hcm/bio#Subject"/>
+    <rdfs:subPropertyOf rdf:resource="https://w3id.org/hcmo/ontology/hcm/obs#involvesSubject"/>
   </rdf:Description>
   <rdf:Description rdf:nodeID="cb1115a255d433c6bff843e452cb7e991a3eff0105d837455c2a3b6ca85c557bf53">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
@@ -1943,6 +1982,12 @@
     <rdf:first rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#Hardware"/>
     <rdf:rest rdf:nodeID="cb25ed1587224cf963a7ab8517e40354b90a0979994730a4dc521a908c427068335"/>
   </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/bio#InteractingGroup">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment>A transient collection of two or more subjects that jointly take part in a behavior during an observed interval, such as two animals in contact or three animals huddling together. It is defined by the observed behavior, not by the study design, and is therefore distinct from an experimental group.</rdfs:comment>
+    <rdfs:label>Interacting Group</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  </rdf:Description>
   <rdf:Description rdf:nodeID="cb1927c465fe67d6061244df711e478e344fe04c3c7a8f4c8877d678c13a7c536b2">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
     <owl:allValuesFrom rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#Sensor"/>
@@ -1998,6 +2043,10 @@
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <owl:unionOf rdf:nodeID="cb2567a01497d83bc40c6ed3a4eb56fff0e173e0e683e8ab215575d26d53ae13662"/>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="cb2659d5299f1a0816caf22871ed761e40e3cebe0a13fdde5d83763c147e9e6d7fd">
+    <rdf:first rdf:resource="https://w3id.org/hcmo/ontology/hcm/bio#InteractingGroup"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
   <rdf:Description rdf:nodeID="cb1d8320485c1b67b5ddd603d1d11485ee5d341f0f0c18d88ef0215ac7e2c47d554">
     <rdf:first rdf:resource="https://w3id.org/hcmo/ontology/hcm/bio#ExperimentalGroup"/>
     <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
@@ -2019,6 +2068,10 @@
     <rdfs:comment>Deprecated in HCMO 0.1.0. Relates a behavior or physiology process to its circadian rhythm.</rdfs:comment>
     <rdfs:label>has circadian rhythm</rdfs:label>
     <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="cb15c6563de50c0472c4a096eaaadcc5af5728d9639bcd7f7e29a856bc4e7b4e35e">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:unionOf rdf:nodeID="cb2ae9b2659d96cf1f4c1f5828ffd541392608313ce0a8923c950b48b932dd0a4e2"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/dc/terms/created">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>

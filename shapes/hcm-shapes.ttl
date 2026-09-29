@@ -277,7 +277,34 @@ hcm-tech:CalibrationRecordShape a sh:NodeShape ;
 hcm-obs:BehaviorObservationShape a sh:NodeShape ;
   sh:targetClass hcm-obs:BehaviorObservation ;
   sh:property [
-    sh:path sosa:hasFeatureOfInterest ; sh:class hcm-bio:Subject ; sh:minCount 1 ; sh:maxCount 1
+    sh:path sosa:hasFeatureOfInterest ; sh:minCount 1 ; sh:maxCount 1 ;
+    sh:or ( [ sh:class hcm-bio:Subject ] [ sh:class hcm-bio:InteractingGroup ] )
+  ] ;
+  sh:property [
+    sh:path hcm-obs:involvesSubject ; sh:class hcm-bio:Subject
+  ] ;
+  sh:sparql [
+    sh:message "A subject with a role in a behavior observation must be its feature of interest or a member of its interacting group." ;
+    sh:select """
+      PREFIX sosa: <http://www.w3.org/ns/sosa/>
+      PREFIX hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#>
+      PREFIX hcm-obs: <https://w3id.org/hcmo/ontology/hcm/obs#>
+      SELECT $this ?value WHERE {
+        $this hcm-obs:hasInitiator|hcm-obs:hasRecipient|hcm-obs:involvesSubject ?value ;
+              sosa:hasFeatureOfInterest ?foi .
+        FILTER (?value != ?foi)
+        FILTER NOT EXISTS { ?foi hcm-bio:hasMember ?value }
+      }
+    """
+  ] ;
+  sh:sparql [
+    sh:message "The initiator and the recipient of a directed behavior must be different subjects." ;
+    sh:select """
+      PREFIX hcm-obs: <https://w3id.org/hcmo/ontology/hcm/obs#>
+      SELECT $this ?value WHERE {
+        $this hcm-obs:hasInitiator ?value ; hcm-obs:hasRecipient ?value .
+      }
+    """
   ] ;
   sh:property [
     sh:path sosa:madeBySensor ; sh:class hcm-tech:Sensor ; sh:minCount 1 ; sh:maxCount 1
@@ -287,6 +314,13 @@ hcm-obs:BehaviorObservationShape a sh:NodeShape ;
   ] ;
   sh:property [
     sh:path hcm-obs:occursIn ; sh:class hcm:MonitoredEnclosure ; sh:minCount 1 ; sh:maxCount 1
+  ] .
+
+hcm-bio:InteractingGroupShape a sh:NodeShape ;
+  sh:targetClass hcm-bio:InteractingGroup ;
+  sh:property [
+    sh:path hcm-bio:hasMember ; sh:class hcm-bio:Subject ; sh:minCount 2 ;
+    sh:message "An interacting group needs at least two member subjects."
   ] .
 
 hcm-obs:QuantityValueShape a sh:NodeShape ;

@@ -57,6 +57,14 @@ def merged_graph(manifest: dict) -> Graph:
     return g
 
 
+SH = Namespace("http://www.w3.org/ns/shacl#")
+SOCIAL_PROBE_MESSAGES = (
+    "An interacting group needs at least two member subjects.",
+    "A subject with a role in a behavior observation must be its feature of interest",
+    "The initiator and the recipient of a directed behavior must be different subjects.",
+)
+
+
 def is_negative_example(relative_path: str) -> bool:
     return any(
         token in Path(relative_path).name.lower() for token in ("edge", "invalid")
@@ -217,6 +225,28 @@ def step_shacl(manifest: dict, ontology_graph: Graph) -> tuple[bool, list[str]]:
                     "[OK]   ontology-aware target probe: conformant without "
                     "ontology, non-conformant with ontology + RDFS"
                 )
+
+    probe = "examples/abox-social-invalid.ttl"
+    _, report_g, _ = shacl_validate(
+        Graph().parse(ROOT / probe, format="turtle"),
+        shacl_graph=shapes_g,
+        ont_graph=ontology_graph,
+        inference="rdfs",
+        abort_on_first=False,
+        do_owl_imports=False,
+    )
+    messages = {str(m) for m in report_g.objects(None, SH.resultMessage)}
+    missing = [
+        expected for expected in SOCIAL_PROBE_MESSAGES
+        if not any(message.startswith(expected) for message in messages)
+    ]
+    if missing:
+        ok = False
+        notes.append(f"[FAIL] multi-animal probe {probe}: shapes did not fire: {missing}")
+    else:
+        notes.append(
+            f"[OK]   multi-animal probe {probe}: all {len(SOCIAL_PROBE_MESSAGES)} rules fired"
+        )
     return ok, notes
 
 
@@ -617,7 +647,6 @@ def step_queries(
     return ok, notes, rowcounts
 
 
-SH = Namespace("http://www.w3.org/ns/shacl#")
 VOCAB_PROBE_MESSAGES = (
     "hcm-tech:hasFileFormatConcept must point at a concept",
     "hcm-tech:hasDataAccessMethod must point at a concept",
