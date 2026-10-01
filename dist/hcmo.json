@@ -153,6 +153,48 @@
       }
     },
     {
+      "@id": "_:cb15c6563de50c0472c4a096eaaadcc5af5728d9639bcd7f7e29a856bc4e7b4e35e",
+      "@type": "owl:Class",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "hcm-bio:Subject"
+          },
+          {
+            "@id": "hcm-bio:InteractingGroup"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "_:cb15fe1b0469a38e7237cbcd521bdb3a3eae5837716e6477ebf1a69c64eeaf75639",
+      "@type": "owl:Class",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "hcm-bio:ExperimentalGroup"
+          },
+          {
+            "@id": "hcm-bio:InteractingGroup"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "_:cb1624619a8e51a39839b4fe1064b53f11874bf2ba202b0473d8d6bd8cfec4e19a1",
+      "@type": "owl:Class",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "hcm-tech:Software"
+          },
+          {
+            "@id": "hcm-tech:TimeSeries"
+          }
+        ]
+      }
+    },
+    {
       "@id": "_:cb16d6e8ffe5d223218a28922ba7a439def1b4ab44417fce6742af984053e4ac90b",
       "@type": "owl:Class",
       "owl:unionOf": {
@@ -246,6 +288,20 @@
       },
       "owl:onProperty": {
         "@id": "hcm-tech:monitoredBy"
+      }
+    },
+    {
+      "@id": "_:cb195684d3e6fd4512822b1a1aac8da6c6329f1152651607b1df38124e9beafda31",
+      "@type": "owl:Class",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "hcm-tech:Software"
+          },
+          {
+            "@id": "hcm-tech:TimeSeries"
+          }
+        ]
       }
     },
     {
@@ -372,16 +428,6 @@
       }
     },
     {
-      "@id": "_:cb218c99c91cf3e0b0a8925ac09fea216aa607246eb25cd992b4aa36ee74c89203c",
-      "@type": "owl:Restriction",
-      "owl:onProperty": {
-        "@id": "sosa:hasFeatureOfInterest"
-      },
-      "owl:someValuesFrom": {
-        "@id": "hcm-bio:Subject"
-      }
-    },
-    {
       "@id": "_:cb223541e6c8837b0bc004de83d581e98eec444b1ca17686e81c542e48a9f548b5a",
       "@type": "owl:Restriction",
       "owl:onProperty": {
@@ -416,6 +462,16 @@
             "@id": "hcm-obs:EnvironmentObservation"
           }
         ]
+      }
+    },
+    {
+      "@id": "_:cb234e8dec1e5650705e32439a2a6fdfe3bf81ff6d8d1330e70fcd43e8a1ef55ab6",
+      "@type": "owl:Restriction",
+      "owl:onProperty": {
+        "@id": "sosa:hasFeatureOfInterest"
+      },
+      "owl:someValuesFrom": {
+        "@id": "_:cb15c6563de50c0472c4a096eaaadcc5af5728d9639bcd7f7e29a856bc4e7b4e35e"
       }
     },
     {
@@ -631,6 +687,15 @@
       }
     },
     {
+      "@id": "hcm-bio:InteractingGroup",
+      "@type": "owl:Class",
+      "rdfs:comment": "A transient collection of two or more subjects that jointly take part in a behavior during an observed interval, such as two animals in contact or three animals huddling together. It is defined by the observed behavior, not by the study design, and is therefore distinct from an experimental group.",
+      "rdfs:label": "Interacting Group",
+      "rdfs:subClassOf": {
+        "@id": "http://purl.obolibrary.org/obo/BFO_0000040"
+      }
+    },
+    {
       "@id": "hcm-bio:StudyFactors",
       "@type": "owl:Class",
       "rdfs:comment": "An independent-variable specification that is part of a study design and identifies a variable the investigation is designed to vary systematically in order to determine its effect on subjects or observations.",
@@ -737,9 +802,9 @@
     {
       "@id": "hcm-bio:hasMember",
       "@type": "owl:ObjectProperty",
-      "rdfs:comment": "Relates an experimental group to a subject that is a member of the group.",
+      "rdfs:comment": "Relates an experimental or interacting group to a subject that is a member of the group.",
       "rdfs:domain": {
-        "@id": "hcm-bio:ExperimentalGroup"
+        "@id": "_:cb15fe1b0469a38e7237cbcd521bdb3a3eae5837716e6477ebf1a69c64eeaf75639"
       },
       "rdfs:label": "has member",
       "rdfs:range": {
@@ -1223,14 +1288,14 @@
     {
       "@id": "hcm-obs:BehaviorObservation",
       "@type": "owl:Class",
-      "rdfs:comment": "A SOSA-style observation about the behavior of a subject in a home-cage monitoring context.",
+      "rdfs:comment": "A SOSA-style observation about the behavior of a subject, or of an interacting group of subjects, in a home-cage monitoring context. A behavior involving several animals has the interacting group as its feature of interest; when the behavior is directed, the initiating and receiving subjects are stated with has initiator and has recipient.",
       "rdfs:label": "Behavior Observation",
       "rdfs:subClassOf": [
         {
-          "@id": "_:cb218c99c91cf3e0b0a8925ac09fea216aa607246eb25cd992b4aa36ee74c89203c"
+          "@id": "_:cb223541e6c8837b0bc004de83d581e98eec444b1ca17686e81c542e48a9f548b5a"
         },
         {
-          "@id": "_:cb223541e6c8837b0bc004de83d581e98eec444b1ca17686e81c542e48a9f548b5a"
+          "@id": "_:cb234e8dec1e5650705e32439a2a6fdfe3bf81ff6d8d1330e70fcd43e8a1ef55ab6"
         },
         {
           "@id": "sosa:Observation"
@@ -1444,6 +1509,21 @@
       }
     },
     {
+      "@id": "hcm-obs:hasInitiator",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": "Relates a directed behavior observation to the subject that performs or initiates the behavior, such as the animal that approaches, follows, or escapes.",
+      "rdfs:domain": {
+        "@id": "hcm-obs:BehaviorObservation"
+      },
+      "rdfs:label": "has initiator",
+      "rdfs:range": {
+        "@id": "hcm-bio:Subject"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "hcm-obs:involvesSubject"
+      }
+    },
+    {
       "@id": "hcm-obs:hasInterval",
       "@type": "owl:DatatypeProperty",
       "rdfs:comment": "Records a duration associated with an observation; use sosa:phenomenonTime for a temporal entity. The xsd:duration datatype is enforced by SHACL because it is outside the OWL 2 datatype map.",
@@ -1469,6 +1549,33 @@
       "rdfs:label": "has numeric value",
       "rdfs:range": {
         "@id": "xsd:decimal"
+      }
+    },
+    {
+      "@id": "hcm-obs:hasRecipient",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": "Relates a directed behavior observation to the subject toward which the behavior is directed, such as the animal that is approached, followed, or escaped from.",
+      "rdfs:domain": {
+        "@id": "hcm-obs:BehaviorObservation"
+      },
+      "rdfs:label": "has recipient",
+      "rdfs:range": {
+        "@id": "hcm-bio:Subject"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "hcm-obs:involvesSubject"
+      }
+    },
+    {
+      "@id": "hcm-obs:involvesSubject",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": "Relates a behavior observation to a subject that takes part in the observed behavior with a stated role. Use its sub-properties has initiator and has recipient for directed behaviors; members of an interacting group without a distinct role are stated with has member on the group.",
+      "rdfs:domain": {
+        "@id": "hcm-obs:BehaviorObservation"
+      },
+      "rdfs:label": "involves subject",
+      "rdfs:range": {
+        "@id": "hcm-bio:Subject"
       }
     },
     {
@@ -1637,6 +1744,21 @@
       }
     },
     {
+      "@id": "hcm-tech:hasDataAccessMethod",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": "Relates a software or time-series artifact to the SKOS concept that identifies how its data can be obtained, such as a database or an application programming interface, in the HCMO data-access-method vocabulary. It complements the file format, which describes the serialization of exported files.",
+      "rdfs:domain": {
+        "@id": "_:cb1624619a8e51a39839b4fe1064b53f11874bf2ba202b0473d8d6bd8cfec4e19a1"
+      },
+      "rdfs:label": "has data access method",
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      },
+      "rdfs:seeAlso": {
+        "@id": "https://w3id.org/hcmo/id/vocab/data-access-method"
+      }
+    },
+    {
       "@id": "hcm-tech:hasFileFormat",
       "@type": "owl:DatatypeProperty",
       "rdfs:comment": "Records the file format of a software or time-series artifact.",
@@ -1646,6 +1768,21 @@
       "rdfs:label": "has file format",
       "rdfs:range": {
         "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "hcm-tech:hasFileFormatConcept",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": "Relates a software or time-series artifact to the SKOS concept that identifies its file format in the HCMO file-format vocabulary. It is the canonical form of the file-format statement; the has file format string remains for backward compatibility and should carry the concept's notation.",
+      "rdfs:domain": {
+        "@id": "_:cb195684d3e6fd4512822b1a1aac8da6c6329f1152651607b1df38124e9beafda31"
+      },
+      "rdfs:label": "has file format concept",
+      "rdfs:range": {
+        "@id": "skos:Concept"
+      },
+      "rdfs:seeAlso": {
+        "@id": "https://w3id.org/hcmo/id/vocab/file-format"
       }
     },
     {

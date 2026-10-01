@@ -17,14 +17,14 @@
 
 hcm-obs:BehaviorObservation a owl:Class ;
     rdfs:label "Behavior Observation" ;
-    rdfs:comment "A SOSA-style observation about the behavior of a subject in a home-cage monitoring context." ;
+    rdfs:comment "A SOSA-style observation about the behavior of a subject, or of an interacting group of subjects, in a home-cage monitoring context. A behavior involving several animals has the interacting group as its feature of interest; when the behavior is directed, the initiating and receiving subjects are stated with has initiator and has recipient." ;
     rdfs:subClassOf sosa:Observation,
         [ a owl:Restriction ;
             owl:onProperty sosa:hasResult ;
             owl:someValuesFrom hcm-obs:BehaviorResult ],
         [ a owl:Restriction ;
             owl:onProperty sosa:hasFeatureOfInterest ;
-            owl:someValuesFrom hcm-bio:Subject ] .
+            owl:someValuesFrom [ a owl:Class ; owl:unionOf ( hcm-bio:Subject hcm-bio:InteractingGroup ) ] ] .
 
 hcm-obs:BehaviorResult a owl:Class ;
     rdfs:label "Behavior Result" ;
@@ -116,6 +116,26 @@ hcm-obs:hasNumericValue a owl:DatatypeProperty ;
     rdfs:range xsd:decimal ;
     dcterms:isReplacedBy qudt:numericValue ;
     owl:deprecated true .
+
+hcm-obs:involvesSubject a owl:ObjectProperty ;
+    rdfs:label "involves subject" ;
+    rdfs:comment "Relates a behavior observation to a subject that takes part in the observed behavior with a stated role. Use its sub-properties has initiator and has recipient for directed behaviors; members of an interacting group without a distinct role are stated with has member on the group." ;
+    rdfs:domain hcm-obs:BehaviorObservation ;
+    rdfs:range hcm-bio:Subject .
+
+hcm-obs:hasInitiator a owl:ObjectProperty ;
+    rdfs:label "has initiator" ;
+    rdfs:comment "Relates a directed behavior observation to the subject that performs or initiates the behavior, such as the animal that approaches, follows, or escapes." ;
+    rdfs:subPropertyOf hcm-obs:involvesSubject ;
+    rdfs:domain hcm-obs:BehaviorObservation ;
+    rdfs:range hcm-bio:Subject .
+
+hcm-obs:hasRecipient a owl:ObjectProperty ;
+    rdfs:label "has recipient" ;
+    rdfs:comment "Relates a directed behavior observation to the subject toward which the behavior is directed, such as the animal that is approached, followed, or escaped from." ;
+    rdfs:subPropertyOf hcm-obs:involvesSubject ;
+    rdfs:domain hcm-obs:BehaviorObservation ;
+    rdfs:range hcm-bio:Subject .
 
 hcm-obs:occursIn a owl:ObjectProperty ;
     rdfs:label "occurs in" ;

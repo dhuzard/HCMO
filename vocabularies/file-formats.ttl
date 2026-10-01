@@ -1,0 +1,214 @@
+# HCMO file-format vocabulary (SKOS).
+#
+# Hand-authored controlled vocabulary for the file formats produced by
+# home-cage monitoring systems. It is not part of the HCMO release manifest
+# (hcmo.yaml) and is not merged into dist/. Data link to a concept with
+# hcm-tech:hasFileFormatConcept; the legacy hcm-tech:hasFileFormat string
+# should carry the concept's skos:notation (or its skos:prefLabel when the
+# concept has no notation).
+#
+# skos:notation holds the media type when one exists. Generic formats are top
+# concepts; vendor-specific export formats are narrower concepts, related to
+# the system that produces them and grouped in one collection per provider.
+# Only exports documented with a source in this repository are listed.
+#
+# Validated by shapes/vocab-shapes.ttl (python tooling/validate.py).
+
+@prefix ff: <https://w3id.org/hcmo/id/vocab/file-format/> .
+@prefix sys: <https://w3id.org/hcmo/id/vocab/system/> .
+@prefix vendor: <https://w3id.org/hcmo/id/vocab/vendor/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/hcmo/id/vocab/file-format> a skos:ConceptScheme ;
+    dcterms:title "HCMO file-format vocabulary"@en ;
+    dcterms:description "File formats produced by home-cage monitoring systems, from generic container formats to vendor-specific export formats."@en ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:created "2026-09-29"^^xsd:date ;
+    dcterms:source <https://github.com/dhuzard/HCMO/issues/33> ;
+    skos:hasTopConcept ff:csv, ff:excel-workbook, ff:json, ff:hdf5, ff:sqlite, ff:xml, ff:video, ff:proprietary-binary .
+
+# ---------------------------------------------------------------------------
+# Generic formats
+# ---------------------------------------------------------------------------
+
+ff:csv a skos:Concept ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/file-format> ;
+    skos:topConceptOf <https://w3id.org/hcmo/id/vocab/file-format> ;
+    skos:prefLabel "Comma-separated values (CSV)"@en ;
+    skos:altLabel "CSV"@en ;
+    skos:notation "text/csv" ;
+    skos:definition "A plain-text tabular format in which each line is a record and fields are separated by commas."@en ;
+    dcterms:source <https://www.rfc-editor.org/rfc/rfc4180> .
+
+ff:excel-workbook a skos:Concept ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/file-format> ;
+    skos:topConceptOf <https://w3id.org/hcmo/id/vocab/file-format> ;
+    skos:prefLabel "Microsoft Excel workbook"@en ;
+    skos:altLabel "Excel"@en ;
+    skos:definition "A spreadsheet workbook in one of the file formats used by Microsoft Excel."@en ;
+    skos:scopeNote "Use a narrower concept when the workbook version (XLSX or XLS) is known."@en ;
+    skos:narrower ff:xlsx, ff:xls .
+
+ff:xlsx a skos:Concept ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/file-format> ;
+    skos:broader ff:excel-workbook ;
+    skos:prefLabel "Office Open XML spreadsheet (XLSX)"@en ;
+    skos:altLabel "XLSX"@en ;
+    skos:notation "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ;
+    skos:definition "A zipped XML spreadsheet workbook format standardised as ECMA-376 and used by Microsoft Excel 2007 and later."@en ;
+    dcterms:source <https://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet> .
+
+ff:xls a skos:Concept ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/file-format> ;
+    skos:broader ff:excel-workbook ;
+    skos:prefLabel "Microsoft Excel binary workbook (XLS)"@en ;
+    skos:altLabel "XLS"@en ;
+    skos:notation "application/vnd.ms-excel" ;
+    skos:definition "The binary spreadsheet workbook format used by Microsoft Excel 97 to 2003."@en ;
+    dcterms:source <https://www.iana.org/assignments/media-types/application/vnd.ms-excel> .
+
+ff:json a skos:Concept ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/file-format> ;
+    skos:topConceptOf <https://w3id.org/hcmo/id/vocab/file-format> ;
+    skos:prefLabel "JavaScript Object Notation (JSON)"@en ;
+    skos:altLabel "JSON"@en ;
+    skos:notation "application/json" ;
+    skos:definition "A plain-text format that serialises structured data as nested objects, arrays, and scalar values."@en ;
+    dcterms:source <https://www.rfc-editor.org/rfc/rfc8259> .
+
+ff:hdf5 a skos:Concept ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/file-format> ;
+    skos:topConceptOf <https://w3id.org/hcmo/id/vocab/file-format> ;
+    skos:prefLabel "Hierarchical Data Format version 5 (HDF5)"@en ;
+    skos:altLabel "HDF5"@en ;
+    skos:notation "application/x-hdf5" ;
+    skos:definition "A binary container format that stores large numerical arrays and their metadata in a hierarchy of groups and datasets."@en ;
+    skos:editorialNote "HDF5 has no IANA-registered media type; the notation is the commonly used unregistered type."@en ;
+    dcterms:source <https://www.hdfgroup.org/solutions/hdf5/> .
+
+ff:sqlite a skos:Concept ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/file-format> ;
+    skos:topConceptOf <https://w3id.org/hcmo/id/vocab/file-format> ;
+    skos:prefLabel "SQLite database file"@en ;
+    skos:altLabel "SQLite"@en ;
+    skos:notation "application/vnd.sqlite3" ;
+    skos:definition "A single-file relational database in the SQLite format, holding tables that can be queried with SQL."@en ;
+    dcterms:source <https://www.iana.org/assignments/media-types/application/vnd.sqlite3>, <https://www.sqlite.org/fileformat.html> .
+
+ff:xml a skos:Concept ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/file-format> ;
+    skos:topConceptOf <https://w3id.org/hcmo/id/vocab/file-format> ;
+    skos:prefLabel "Extensible Markup Language (XML)"@en ;
+    skos:altLabel "XML"@en ;
+    skos:notation "application/xml" ;
+    skos:definition "A plain-text markup format that serialises structured data as a tree of nested, tagged elements."@en ;
+    dcterms:source <https://www.rfc-editor.org/rfc/rfc7303> .
+
+ff:video a skos:Concept ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/file-format> ;
+    skos:topConceptOf <https://w3id.org/hcmo/id/vocab/file-format> ;
+    skos:prefLabel "Video file"@en ;
+    skos:altLabel "Video files"@en ;
+    skos:definition "A file containing a digitally encoded moving-image recording, in any container format."@en ;
+    skos:scopeNote "Use a narrower concept when the container format is known."@en ;
+    skos:narrower ff:mp4, ff:avi .
+
+ff:mp4 a skos:Concept ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/file-format> ;
+    skos:broader ff:video ;
+    skos:prefLabel "MPEG-4 Part 14 (MP4)"@en ;
+    skos:altLabel "MP4"@en ;
+    skos:notation "video/mp4" ;
+    skos:definition "A video container format defined by ISO/IEC 14496-14."@en ;
+    dcterms:source <https://www.rfc-editor.org/rfc/rfc4337> .
+
+ff:avi a skos:Concept ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/file-format> ;
+    skos:broader ff:video ;
+    skos:prefLabel "Audio Video Interleave (AVI)"@en ;
+    skos:altLabel "AVI"@en ;
+    skos:notation "video/x-msvideo" ;
+    skos:definition "A video container format introduced by Microsoft that interleaves audio and video streams."@en ;
+    skos:editorialNote "AVI has no IANA-registered media type; the notation is the commonly used unregistered type."@en .
+
+ff:proprietary-binary a skos:Concept ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/file-format> ;
+    skos:topConceptOf <https://w3id.org/hcmo/id/vocab/file-format> ;
+    skos:prefLabel "Proprietary binary format"@en ;
+    skos:altLabel "Proprietary"@en ;
+    skos:definition "A vendor-specific binary file format whose structure is not openly documented, so that it can be read only with the vendor's software or a reverse-engineered parser."@en ;
+    skos:scopeNote "Use a vendor-specific export concept instead when the format is known."@en .
+
+# ---------------------------------------------------------------------------
+# Vendor-specific export formats
+# ---------------------------------------------------------------------------
+
+ff:tecniplast-dvc-locomotion-index-csv a skos:Concept ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/file-format> ;
+    skos:broader ff:csv ;
+    skos:related sys:dvc-tecniplast ;
+    skos:prefLabel "DVC Analytics smoothed locomotion index export (CSV)"@en ;
+    skos:definition "A CSV export from Tecniplast DVC Analytics with one row per time bin, group-level summary columns, and one column per cage holding the smoothed activation (locomotion) index."@en ;
+    skos:example "Cohort7623_animal_loc__index_smoothed.csv (1-minute bins)"@en ;
+    dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/systems/DVC_Tecniplast/datasets/real/README.md>, <https://doi.org/10.1038/s41598-025-87530-6> .
+
+ff:tecniplast-dvc-events-csv a skos:Concept ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/file-format> ;
+    skos:broader ff:csv ;
+    skos:related sys:dvc-tecniplast ;
+    skos:prefLabel "DVC Analytics cage event log export (CSV)"@en ;
+    skos:definition "A CSV export from Tecniplast DVC Analytics with one row per cage-lifecycle event (registered, added, online, inserted, updated, removed), with the rack and position of placement events."@en ;
+    skos:example "Cohort7623_events.csv"@en ;
+    dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/systems/DVC_Tecniplast/datasets/real/README.md> .
+
+ff:tecniplast-dvc-bedding-status-index-csv a skos:Concept ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/file-format> ;
+    skos:broader ff:csv ;
+    skos:related sys:dvc-tecniplast ;
+    skos:prefLabel "DVC Analytics bedding status index export (CSV)"@en ;
+    skos:definition "A CSV export from Tecniplast DVC Analytics that carries the bedding status index, as consumed by the open-source UrinatoR application."@en ;
+    skos:editorialNote "Column layout not yet documented in this repository."@en ;
+    dcterms:source <https://github.com/Mortendall/UrinatoR>, <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/systems/DVC_Tecniplast/dvc-system-profile.md> .
+
+ff:live-mouse-tracker-sqlite a skos:Concept ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/file-format> ;
+    skos:broader ff:sqlite ;
+    skos:related sys:live-mouse-tracker ;
+    skos:prefLabel "Live Mouse Tracker experiment database (SQLite)"@en ;
+    skos:altLabel "LMT database"@en ;
+    skos:definition "A standalone SQLite database in which Live Mouse Tracker stores one experiment: the animals and their RFID tags (ANIMAL), timestamped video frames (FRAME), per-frame positions and postures of each animal (DETECTION), and behavioural event intervals involving one to four animals (EVENT)."@en ;
+    skos:example "20180110_validation_4_ind_Experiment_6644_e.sqlite (public sample, 4 mice, 13 minutes at 30 frames per second)"@en ;
+    dcterms:source <https://micecraft.org/lmt/>, <https://doi.org/10.1038/s41551-019-0396-1>, <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/systems/live-mouse-tracker/lmt-system-profile.md> .
+
+ff:live-mouse-tracker-video a skos:Concept ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/file-format> ;
+    skos:broader ff:mp4 ;
+    skos:related sys:live-mouse-tracker ;
+    skos:prefLabel "Live Mouse Tracker video segments (MP4)"@en ;
+    skos:altLabel "LMT video"@en ;
+    skos:definition "MP4 video recorded by Live Mouse Tracker in 10-minute segments, synchronised with the frame numbers and timestamps of the experiment database."@en ;
+    dcterms:source <https://micecraft.org/lmt/> .
+
+# ---------------------------------------------------------------------------
+# Collections
+# ---------------------------------------------------------------------------
+
+ff:provider-tecniplast a skos:Collection ;
+    skos:prefLabel "Tecniplast export formats"@en ;
+    dcterms:relation vendor:tecniplast ;
+    skos:member ff:tecniplast-dvc-locomotion-index-csv, ff:tecniplast-dvc-events-csv, ff:tecniplast-dvc-bedding-status-index-csv .
+
+ff:provider-live-mouse-tracker a skos:Collection ;
+    skos:prefLabel "Live Mouse Tracker export formats"@en ;
+    dcterms:relation sys:live-mouse-tracker ;
+    skos:member ff:live-mouse-tracker-sqlite, ff:live-mouse-tracker-video .
+
+# Options offered, in this order, by the contribution form
+# (docs/hcm-systems/contribute/). Regenerate the form with
+# python tooling/export_hcm_vocab.py after editing this list.
+ff:form-options a skos:OrderedCollection ;
+    skos:prefLabel "Contribution form file-format options"@en ;
+    skos:memberList ( ff:csv ff:excel-workbook ff:json ff:hdf5 ff:sqlite ff:xml ff:video ff:proprietary-binary ) .

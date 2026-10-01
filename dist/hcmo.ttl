@@ -691,8 +691,9 @@ hcm-bio:hasHousingAssignment a owl:ObjectProperty ;
 
 hcm-bio:hasMember a owl:ObjectProperty ;
     rdfs:label "has member" ;
-    rdfs:comment "Relates an experimental group to a subject that is a member of the group." ;
-    rdfs:domain hcm-bio:ExperimentalGroup ;
+    rdfs:comment "Relates an experimental or interacting group to a subject that is a member of the group." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( hcm-bio:ExperimentalGroup hcm-bio:InteractingGroup ) ] ;
     rdfs:range hcm-bio:Subject .
 
 hcm-bio:hasSocialRequirement a owl:DatatypeProperty ;
@@ -923,11 +924,25 @@ hcm-obs:hasHealthStatusTerm a owl:DatatypeProperty ;
     rdfs:domain hcm-obs:HealthStatusObservation ;
     rdfs:range xsd:string .
 
+hcm-obs:hasInitiator a owl:ObjectProperty ;
+    rdfs:label "has initiator" ;
+    rdfs:comment "Relates a directed behavior observation to the subject that performs or initiates the behavior, such as the animal that approaches, follows, or escapes." ;
+    rdfs:domain hcm-obs:BehaviorObservation ;
+    rdfs:range hcm-bio:Subject ;
+    rdfs:subPropertyOf hcm-obs:involvesSubject .
+
 hcm-obs:hasInterval a owl:DatatypeProperty ;
     rdfs:label "has interval" ;
     rdfs:comment "Records a duration associated with an observation; use sosa:phenomenonTime for a temporal entity. The xsd:duration datatype is enforced by SHACL because it is outside the OWL 2 datatype map." ;
     rdfs:domain sosa:Observation ;
     rdfs:range rdfs:Literal .
+
+hcm-obs:hasRecipient a owl:ObjectProperty ;
+    rdfs:label "has recipient" ;
+    rdfs:comment "Relates a directed behavior observation to the subject toward which the behavior is directed, such as the animal that is approached, followed, or escaped from." ;
+    rdfs:domain hcm-obs:BehaviorObservation ;
+    rdfs:range hcm-bio:Subject ;
+    rdfs:subPropertyOf hcm-obs:involvesSubject .
 
 hcm-obs:occursIn a owl:ObjectProperty ;
     rdfs:label "occurs in" ;
@@ -952,6 +967,22 @@ hcm-tech:hasCalibrationStatusValue a owl:DatatypeProperty ;
     rdfs:comment "Records the assessed calibration-status value within a time-bounded calibration record." ;
     rdfs:domain hcm-tech:CalibrationRecord ;
     rdfs:range xsd:boolean .
+
+hcm-tech:hasDataAccessMethod a owl:ObjectProperty ;
+    rdfs:label "has data access method" ;
+    rdfs:comment "Relates a software or time-series artifact to the SKOS concept that identifies how its data can be obtained, such as a database or an application programming interface, in the HCMO data-access-method vocabulary. It complements the file format, which describes the serialization of exported files." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( hcm-tech:Software hcm-tech:TimeSeries ) ] ;
+    rdfs:range skos:Concept ;
+    rdfs:seeAlso <https://w3id.org/hcmo/id/vocab/data-access-method> .
+
+hcm-tech:hasFileFormatConcept a owl:ObjectProperty ;
+    rdfs:label "has file format concept" ;
+    rdfs:comment "Relates a software or time-series artifact to the SKOS concept that identifies its file format in the HCMO file-format vocabulary. It is the canonical form of the file-format statement; the has file format string remains for backward compatibility and should carry the concept's notation." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( hcm-tech:Software hcm-tech:TimeSeries ) ] ;
+    rdfs:range skos:Concept ;
+    rdfs:seeAlso <https://w3id.org/hcmo/id/vocab/file-format> .
 
 hcm-tech:hasFirmware a owl:DatatypeProperty ;
     rdfs:label "has firmware" ;
@@ -1292,22 +1323,16 @@ hcm:hasWidth a owl:DatatypeProperty ;
     rdfs:range xsd:decimal ;
     owl:deprecated true .
 
+hcm-bio:InteractingGroup a owl:Class ;
+    rdfs:label "Interacting Group" ;
+    rdfs:comment "A transient collection of two or more subjects that jointly take part in a behavior during an observed interval, such as two animals in contact or three animals huddling together. It is defined by the observed behavior, not by the study design, and is therefore distinct from an experimental group." ;
+    rdfs:subClassOf BFO:0000040 .
+
 hcm-env:hasEnvironment a owl:ObjectProperty ;
     rdfs:label "has environment" ;
     rdfs:comment "Relates an enclosure to a structured environment profile." ;
     rdfs:domain hcm:Enclosure ;
     rdfs:range hcm-env:EnvironmentProfile .
-
-hcm-obs:BehaviorObservation a owl:Class ;
-    rdfs:label "Behavior Observation" ;
-    rdfs:comment "A SOSA-style observation about the behavior of a subject in a home-cage monitoring context." ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty sosa:hasFeatureOfInterest ;
-            owl:someValuesFrom hcm-bio:Subject ],
-        [ a owl:Restriction ;
-            owl:onProperty sosa:hasResult ;
-            owl:someValuesFrom hcm-obs:BehaviorResult ],
-        sosa:Observation .
 
 hcm-obs:BehaviorResult a owl:Class ;
     rdfs:label "Behavior Result" ;
@@ -1326,6 +1351,12 @@ hcm-obs:HealthStatusObservation a owl:Class ;
             owl:onProperty sosa:hasFeatureOfInterest ;
             owl:someValuesFrom hcm-bio:Subject ],
         sosa:Observation .
+
+hcm-obs:involvesSubject a owl:ObjectProperty ;
+    rdfs:label "involves subject" ;
+    rdfs:comment "Relates a behavior observation to a subject that takes part in the observed behavior with a stated role. Use its sub-properties has initiator and has recipient for directed behaviors; members of an interacting group without a distinct role are stated with has member on the group." ;
+    rdfs:domain hcm-obs:BehaviorObservation ;
+    rdfs:range hcm-bio:Subject .
 
 hcm-tech:CalibrationRecord a owl:Class ;
     rdfs:label "Calibration Record" ;
@@ -1365,6 +1396,18 @@ hcm-bio:ExperimentalGroup a owl:Class ;
     rdfs:comment "A group of biological subjects sharing an experimental condition, treatment, or study role." ;
     rdfs:subClassOf BFO:0000040 .
 
+hcm-obs:BehaviorObservation a owl:Class ;
+    rdfs:label "Behavior Observation" ;
+    rdfs:comment "A SOSA-style observation about the behavior of a subject, or of an interacting group of subjects, in a home-cage monitoring context. A behavior involving several animals has the interacting group as its feature of interest; when the behavior is directed, the initiating and receiving subjects are stated with has initiator and has recipient." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty sosa:hasResult ;
+            owl:someValuesFrom hcm-obs:BehaviorResult ],
+        [ a owl:Restriction ;
+            owl:onProperty sosa:hasFeatureOfInterest ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( hcm-bio:Subject hcm-bio:InteractingGroup ) ] ],
+        sosa:Observation .
+
 hcm-tech:Actuator a owl:Class ;
     rdfs:label "Actuator" ;
     rdfs:comment "A device that elicits or perturbs behavior, physiology, or the monitored environment." ;
@@ -1377,9 +1420,9 @@ hcm-obs:ObservationResult a owl:Class ;
     rdfs:subClassOf IAO:0000030,
         sosa:Result .
 
-hcm-tech:TimeSeries a owl:Class ;
-    rdfs:label "Time Series" ;
-    rdfs:comment "An ordered sequence of time-indexed measurements or outputs produced in a monitoring workflow." ;
+hcm-env:LightCycle a owl:Class ;
+    rdfs:label "Light Cycle" ;
+    rdfs:comment "A description of the timing and transitions of light and dark phases in an enclosure environment." ;
     rdfs:subClassOf IAO:0000030 .
 
 BFO:0000040 a owl:Class ;
@@ -1387,11 +1430,6 @@ BFO:0000040 a owl:Class ;
     dcterms:source <http://purl.obolibrary.org/obo/bfo/2020/bfo-core.owl> ;
     rdfs:subClassOf BFO:0000001 ;
     skos:definition "(Elucidation) A material entity is an independent continuant that at all times at which it exists has some portion of matter as continuant part"@en .
-
-hcm-env:LightCycle a owl:Class ;
-    rdfs:label "Light Cycle" ;
-    rdfs:comment "A description of the timing and transitions of light and dark phases in an enclosure environment." ;
-    rdfs:subClassOf IAO:0000030 .
 
 hcm-obs:EnvironmentObservation a owl:Class ;
     rdfs:label "Environment Observation" ;
@@ -1404,6 +1442,11 @@ hcm-obs:EnvironmentObservation a owl:Class ;
             owl:someValuesFrom hcm:MonitoredEnclosure ],
         sosa:Observation .
 
+hcm-tech:TimeSeries a owl:Class ;
+    rdfs:label "Time Series" ;
+    rdfs:comment "An ordered sequence of time-indexed measurements or outputs produced in a monitoring workflow." ;
+    rdfs:subClassOf IAO:0000030 .
+
 hcm-env:EnvironmentalProperty a owl:Class ;
     rdfs:label "Environmental Property" ;
     rdfs:comment "An environmental parameter that may be measured, specified, or controlled in a home-cage monitoring context." ;
@@ -1414,11 +1457,6 @@ hcm-tech:Hardware a owl:Class ;
     rdfs:label "Hardware" ;
     rdfs:comment "Physical computing hardware component of a home-cage monitoring system." ;
     rdfs:subClassOf BFO:0000040 .
-
-hcm-tech:Software a owl:Class ;
-    rdfs:label "Software" ;
-    rdfs:comment "Software component used to acquire, process, store, or analyse home-cage monitoring data." ;
-    rdfs:subClassOf IAO:0000030 .
 
 hcm:MonitoredEnclosure a owl:Class ;
     rdfs:label "Monitored Enclosure" ;
@@ -1440,6 +1478,11 @@ IAO:0000030 a owl:Class ;
     rdfs:subClassOf BFO:0000001 ;
     skos:altLabel "information entity"@en ;
     skos:definition "A generically dependent continuant that is about some thing."@en .
+
+hcm-tech:Software a owl:Class ;
+    rdfs:label "Software" ;
+    rdfs:comment "Software component used to acquire, process, store, or analyse home-cage monitoring data." ;
+    rdfs:subClassOf IAO:0000030 .
 
 hcm:EnclosureDimensions a owl:Class ;
     rdfs:label "Enclosure Dimensions" ;
@@ -1470,14 +1513,14 @@ hcm:Enclosure a owl:Class ;
     rdfs:comment "A physical housing enclosure used as part of a home-cage monitoring system." ;
     rdfs:subClassOf BFO:0000040 .
 
-hcm-bio:Subject a owl:Class ;
-    rdfs:label "Subject" ;
-    rdfs:comment "A biological individual, such as a laboratory animal, observed in a home-cage monitoring context." ;
-    rdfs:subClassOf BFO:0000040 .
-
 hcm-tech:Sensor a owl:Class ;
     rdfs:label "Sensor" ;
     rdfs:comment "A device that captures signals related to behavior, physiology, or enclosure environment." ;
     rdfs:subClassOf BFO:0000040,
         sosa:Sensor .
+
+hcm-bio:Subject a owl:Class ;
+    rdfs:label "Subject" ;
+    rdfs:comment "A biological individual, such as a laboratory animal, observed in a home-cage monitoring context." ;
+    rdfs:subClassOf BFO:0000040 .
 

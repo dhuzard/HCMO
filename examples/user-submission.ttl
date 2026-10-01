@@ -57,6 +57,8 @@ ex:data-product-example-hcm a hcm-tech:TimeSeries ;
   rdfs:label "Example CSV activity output" ;
   dcterms:license "CC BY 4.0" ;
   hcm-tech:hasFileFormat "text/csv" ;
+  hcm-tech:hasFileFormatConcept <https://w3id.org/hcmo/id/vocab/file-format/csv> ;
+  hcm-tech:hasDataAccessMethod <https://w3id.org/hcmo/id/vocab/data-access-method/file-export> ;
   hcm-tech:hasSamplingRateQuantity ex:camera-sampling-rate ;
   hcm-tech:hasStoragePath "https://example.org/hcm-system/day-01.csv" .
 

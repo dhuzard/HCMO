@@ -10,7 +10,7 @@ are auto-minted from human-friendly answers, and the page renders in light/dark.
 
 ## What it does
 - Live "required fields" progress + missing-field checklist.
-- **Review submission** → a Markdown summary and a JSON payload (`hcmo-contribution/0.2`).
+- **Review submission** → a Markdown summary and a JSON payload (`hcmo-contribution/0.3`).
 - **Turtle view** → a Fuseki-ready HCMO 0.3.0 ABox graph using current instance
   patterns: explicit `rdf:type` class assertions, instance-to-instance object
   links, and instance-to-literal data values.

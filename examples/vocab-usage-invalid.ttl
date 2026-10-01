@@ -1,0 +1,28 @@
+# NEGATIVE probe for shapes/vocab-shapes.ttl (validate.py step 8).
+# Merged with vocabularies/*.ttl, every usage shape must report here:
+#   - a file-format concept from the wrong scheme          (violation)
+#   - a data-access method that is not an access concept   (violation)
+#   - a file-format string matching no concept              (warning)
+#   - a file-format string naming a different concept       (warning)
+# Not listed in hcmo.yaml; never loaded into the competency-query graph.
+
+@prefix ex: <https://w3id.org/hcmo/id/example/vocab-probe/> .
+@prefix ff: <https://w3id.org/hcmo/id/vocab/file-format/> .
+@prefix dam: <https://w3id.org/hcmo/id/vocab/data-access-method/> .
+@prefix hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+ex:wrong-scheme a hcm-tech:TimeSeries ;
+  rdfs:label "time series pointing at an access method as its format" ;
+  hcm-tech:hasFileFormat "text/csv" ;
+  hcm-tech:hasFileFormatConcept ff:csv, dam:api ;
+  hcm-tech:hasDataAccessMethod ff:json .
+
+ex:free-text-format a hcm-tech:TimeSeries ;
+  rdfs:label "time series with a legacy free-text format" ;
+  hcm-tech:hasFileFormat "CSV-ish export" .
+
+ex:mismatch a hcm-tech:TimeSeries ;
+  rdfs:label "time series whose string and concept disagree" ;
+  hcm-tech:hasFileFormat "application/json" ;
+  hcm-tech:hasFileFormatConcept ff:tecniplast-dvc-events-csv .

@@ -19,7 +19,7 @@ ex:cage-12 a hcm:MonitoredEnclosure ;
   hcm:hasOperationalStatusRecord ex:cage-12-operational-status ;
   hcm-env:hasEnvironment ex:cage-12-environment ;
   hcm-env:hasThriveProfile ex:standard-thrive-profile ;
-  hcm-tech:monitoredBy ex:ir-sensor-1, ex:temperature-sensor-1 .
+  hcm-tech:monitoredBy ex:ir-sensor-1, ex:temperature-sensor-1, ex:depth-camera-1 .
 
 ex:cage-12-dimensions a hcm:EnclosureDimensions ;
   hcm:hasWidthQuantity [ a qudt:QuantityValue ; qudt:numericValue 30.0 ; qudt:hasUnit unit:CentiM ] ;
@@ -55,6 +55,20 @@ ex:mouse-1-cage-12-validity a time:Interval ;
   time:hasBeginning [ a time:Instant ; time:inXSDDateTime "2026-01-01T00:00:00Z"^^xsd:dateTime ] ;
   time:hasEnd [ a time:Instant ; time:inXSDDateTime "2026-01-02T00:00:00Z"^^xsd:dateTime ] .
 
+ex:mouse-2 a hcm-bio:Subject ;
+  rdfs:label "Mouse 2" ;
+  hcm-bio:hasSpecies "Mus musculus" ;
+  hcm-bio:hasStrain "C57BL/6J" ;
+  hcm-bio:hasHousingAssignment ex:mouse-2-cage-12-assignment .
+
+ex:mouse-2-cage-12-assignment a hcm-bio:HousingAssignment ;
+  hcm-bio:assignedToEnclosure ex:cage-12 ;
+  time:hasTime ex:mouse-2-cage-12-validity .
+
+ex:mouse-2-cage-12-validity a time:Interval ;
+  time:hasBeginning [ a time:Instant ; time:inXSDDateTime "2026-01-01T00:00:00Z"^^xsd:dateTime ] ;
+  time:hasEnd [ a time:Instant ; time:inXSDDateTime "2026-01-02T00:00:00Z"^^xsd:dateTime ] .
+
 ex:ir-sensor-1 a hcm-tech:Sensor ;
   rdfs:label "Left-wall infrared sensor" ;
   hcm-tech:hasSensorIdentifier "ir-1" ;
@@ -72,6 +86,41 @@ ex:temperature-sensor-1 a hcm-tech:Sensor ;
 
 ex:locomotor-activity a sosa:ObservableProperty ;
   rdfs:label "locomotor activity" .
+
+ex:depth-camera-1 a hcm-tech:Sensor ;
+  rdfs:label "Overhead depth camera" ;
+  hcm-tech:hasSensorIdentifier "depth-1" ;
+  hcm-tech:hasSensorType "depth camera" ;
+  hcm-tech:installedIn ex:cage-12 ;
+  hcm-tech:captures ex:social-behavior .
+
+ex:social-behavior a sosa:ObservableProperty ;
+  rdfs:label "social behavior" .
+
+# A directed behavior involving two animals: mouse 1 approaches mouse 2.
+# The feature of interest is the interacting pair; the roles say who did what.
+ex:dyad-mouse-1-mouse-2 a hcm-bio:InteractingGroup ;
+  rdfs:label "Mouse 1 and mouse 2" ;
+  hcm-bio:hasMember ex:mouse-1, ex:mouse-2 .
+
+ex:observation-2 a hcm-obs:BehaviorObservation ;
+  sosa:hasFeatureOfInterest ex:dyad-mouse-1-mouse-2 ;
+  hcm-obs:hasInitiator ex:mouse-1 ;
+  hcm-obs:hasRecipient ex:mouse-2 ;
+  sosa:madeBySensor ex:depth-camera-1 ;
+  sosa:observedProperty ex:social-behavior ;
+  sosa:hasResult ex:behavior-result-2 ;
+  sosa:phenomenonTime ex:observation-interval-2 ;
+  hcm-obs:occursIn ex:cage-12 .
+
+ex:observation-interval-2 a time:Interval ;
+  time:hasBeginning [ a time:Instant ;
+    time:inXSDDateTime "2026-01-01T10:00:00Z"^^xsd:dateTime ] ;
+  time:hasEnd [ a time:Instant ;
+    time:inXSDDateTime "2026-01-01T10:00:01.5Z"^^xsd:dateTime ] .
+
+ex:behavior-result-2 a hcm-obs:BehaviorResult ;
+  hcm-obs:hasBehaviorType "approach" .
 
 ex:observation-1 a hcm-obs:BehaviorObservation ;
   sosa:hasFeatureOfInterest ex:mouse-1 ;

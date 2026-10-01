@@ -1,0 +1,20 @@
+PREFIX hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#>
+PREFIX hcm-obs: <https://w3id.org/hcmo/ontology/hcm/obs#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+
+SELECT ?subject ?partner ?behavior ?role ?observation
+WHERE {
+  ?observation a hcm-obs:BehaviorObservation ;
+               sosa:hasFeatureOfInterest ?group ;
+               sosa:hasResult ?result .
+  ?group a hcm-bio:InteractingGroup ;
+         hcm-bio:hasMember ?subject, ?partner .
+  FILTER (?subject != ?partner)
+  ?result hcm-obs:hasBehaviorType ?behavior .
+  BIND (
+    IF(EXISTS { ?observation hcm-obs:hasInitiator ?subject }, "initiator",
+      IF(EXISTS { ?observation hcm-obs:hasRecipient ?subject }, "recipient", "participant"))
+    AS ?role
+  )
+}
+ORDER BY ?subject ?partner ?observation

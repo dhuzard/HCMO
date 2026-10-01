@@ -208,13 +208,13 @@
 
 <https://w3id.org/hcmo/id/catalog/system/dsi-telemetry> a hcm:System ;
     rdfs:label "Telemetry implants (PhysioTel / HD)" ;
-    dcterms:source "~1.5 GB/subject/7 days. Kramer et al. 2021" ;
+    dcterms:source "~1.5 GB/subject/7 days. Kramer et al. 2021. DSI is part of Harvard Bioscience." ;
     dcterms:subject "P1" ;
     dcterms:type "Implantable telemetry" ;
     hcm:hasCategory "Commercial HCM platforms" ;
     hcm:hasDescription "ECG, BP, EEG, EMG, glucose, temperature, activity; 600–1000 Hz" ;
-    hcm:hasManufacturer "Data Sciences International (DSI), Harvard Bioscience" ;
-    hcm:producedBy <https://w3id.org/hcmo/id/catalog/agent/data-sciences-international-dsi-harvard-bioscience> .
+    hcm:hasManufacturer "Data Sciences International (DSI)" ;
+    hcm:producedBy <https://w3id.org/hcmo/id/catalog/agent/data-sciences-international-dsi> .
 
 <https://w3id.org/hcmo/id/catalog/system/fed3> a hcm:System ;
     rdfs:label "FED3" ;
@@ -227,22 +227,24 @@
     hcm:producedBy <https://w3id.org/hcmo/id/catalog/agent/matikainen-ankney-et-al> .
 
 <https://w3id.org/hcmo/id/catalog/system/imouse> a hcm:System ;
-    rdfs:label "iMouse" ;
+    rdfs:label "DigiFrame" ;
     dcterms:source "https://imouse.info/" ;
     dcterms:subject "P2" ;
-    dcterms:type "Retrofit camera system" ;
+    dcterms:type "Retrofit video (up to four side-view cameras on standard home cages; DigiFrame Hardware Enabler)" ;
     hcm:hasCategory "Commercial HCM platforms" ;
-    hcm:hasDescription "Video monitoring on standard racks" ;
-    hcm:producedBy <https://w3id.org/hcmo/id/catalog/agent/unnamed> .
+    hcm:hasDescription "Behaviour, posture and grimace as AI-derived digital biomarkers (Brain Analyzer), 24/7" ;
+    hcm:hasManufacturer "iMouse GmbH" ;
+    hcm:producedBy <https://w3id.org/hcmo/id/catalog/agent/imouse-gmbh> .
 
 <https://w3id.org/hcmo/id/catalog/system/intellicage> a hcm:System ;
     rdfs:label "IntelliCage" ;
+    dcterms:source "(named only); originally developed by New Behavior" ;
     dcterms:subject "P2" ;
     dcterms:type "Operant / cognitive, group-housed" ;
     hcm:hasCategory "Commercial HCM platforms" ;
     hcm:hasDescription "Learning, reversal, rule-switch, activity via RFID corners" ;
-    hcm:hasManufacturer "(TSE / New Behavior)" ;
-    hcm:producedBy <https://w3id.org/hcmo/id/catalog/agent/tse-new-behavior> .
+    hcm:hasManufacturer "TSE Systems" ;
+    hcm:producedBy <https://w3id.org/hcmo/id/catalog/agent/tse-systems> .
 
 <https://w3id.org/hcmo/id/catalog/system/liq-hd> a hcm:System ;
     rdfs:label "LIQ HD (Lick Instance Quantifier Home-cage Device)" ;
@@ -256,7 +258,7 @@
 
 <https://w3id.org/hcmo/id/catalog/system/live-mouse-tracker> a hcm:System ;
     rdfs:label "Live Mouse Tracker (LMT)" ;
-    dcterms:source "https://micecraft.org/lmt/ ; de Chaumont et al. 2019; Huzard et al. 2022" ;
+    dcterms:source "https://micecraft.org/lmt/ ; de Chaumont et al. 2019; Huzard et al. 2022; sample SQLite experiment (141 MB) https://micecraft.org/lmt/download/20180110_validation_4_ind_Experiment_6644_e.sqlite" ;
     dcterms:subject "P1" ;
     dcterms:type "Video (IR depth) + RFID" ;
     hcm:hasCategory "Open-source / DIY systems" ;
@@ -269,7 +271,7 @@
     dcterms:source "https://www.metadatapp.net" ;
     dcterms:subject "P2" ;
     dcterms:type "Metadata management (not a sensor)" ;
-    hcm:hasCategory "Commercial HCM platforms" ;
+    hcm:hasCategory "Related data-management platforms (not HCM systems)" ;
     hcm:hasDescription "Unified metadata across project/mouse/data-publication" ;
     hcm:hasManufacturer "Metadatapp / Neuronautix" ;
     hcm:producedBy <https://w3id.org/hcmo/id/catalog/agent/metadatapp-neuronautix> .
@@ -373,14 +375,6 @@
     hcm:hasManufacturer "Virag et al." ;
     hcm:producedBy <https://w3id.org/hcmo/id/catalog/agent/virag-et-al> .
 
-<https://w3id.org/hcmo/id/catalog/system/psibox> a hcm:System ;
-    rdfs:label "PsiBox" ;
-    dcterms:subject "P3" ;
-    dcterms:type "Operant (sensory discrimination)" ;
-    hcm:hasCategory "Open-source / DIY systems" ;
-    hcm:hasDescription "Tone/frequency discrimination, sequence learning" ;
-    hcm:producedBy <https://w3id.org/hcmo/id/catalog/agent/unnamed> .
-
 <https://w3id.org/hcmo/id/catalog/system/sable-promethion> a hcm:System ;
     rdfs:label "Promethion (\"Sable Promotion\" in text)" ;
     dcterms:subject "P2" ;
@@ -392,13 +386,13 @@
 
 <https://w3id.org/hcmo/id/catalog/system/soho-telemetry> a hcm:System ;
     rdfs:label "SoHo™ telemetry" ;
-    dcterms:source "Pedraza et al. 2025" ;
+    dcterms:source "Pedraza et al. 2025; https://www.harvardbioscience.com/products/SoHo-Implantable-Telemetry (sold through Harvard Bioscience)" ;
     dcterms:subject "P2" ;
-    dcterms:type "Telemetry, socially housed" ;
+    dcterms:type "Implantable telemetry, socially housed" ;
     hcm:hasCategory "Commercial HCM platforms" ;
-    hcm:hasDescription "Body temperature, activity in group housing" ;
-    hcm:hasManufacturer "(see Pedraza et al. 2025)" ;
-    hcm:producedBy <https://w3id.org/hcmo/id/catalog/agent/see-pedraza-et-al-2025> .
+    hcm:hasDescription "EEG + EMG, blood pressure + ECG, core body temperature, locomotor activity (3-axis accelerometer); up to 16 animals per transceiver, up to 64 socially housed animals" ;
+    hcm:hasManufacturer "Data Sciences International (DSI)" ;
+    hcm:producedBy <https://w3id.org/hcmo/id/catalog/agent/data-sciences-international-dsi> .
 
 <https://w3id.org/hcmo/id/catalog/system/sonotrack> a hcm:System ;
     rdfs:label "Sonotrack" ;
@@ -436,8 +430,8 @@
     dcterms:type "RFID (LF, ISO 11784/85 FDX-B) + temp/accel/PPG" ;
     hcm:hasCategory "Commercial HCM platforms" ;
     hcm:hasDescription "Individual ID, body temperature; newer chips add accelerometer, photoplethysmograph (HR, SpO₂, resp)" ;
-    hcm:hasManufacturer "UID (Unified Information Devices) / micetracking.com" ;
-    hcm:producedBy <https://w3id.org/hcmo/id/catalog/agent/uid-unified-information-devices-micetracking-com> .
+    hcm:hasManufacturer "Unified Information Devices (UID)" ;
+    hcm:producedBy <https://w3id.org/hcmo/id/catalog/agent/unified-information-devices-uid> .
 
 <https://w3id.org/hcmo/id/catalog/agent/2d-neuro> a hcm:Supplier ;
     rdfs:label "2D-Neuro" .
@@ -448,9 +442,6 @@
 <https://w3id.org/hcmo/id/catalog/agent/columbus-instruments> a hcm:Supplier ;
     rdfs:label "Columbus Instruments" .
 
-<https://w3id.org/hcmo/id/catalog/agent/data-sciences-international-dsi-harvard-bioscience> a hcm:Supplier ;
-    rdfs:label "Data Sciences International (DSI), Harvard Bioscience" .
-
 <https://w3id.org/hcmo/id/catalog/agent/de-chaumont-et-al> a hcm:Supplier ;
     rdfs:label "de Chaumont et al." .
 
@@ -459,6 +450,9 @@
 
 <https://w3id.org/hcmo/id/catalog/agent/habedank-et-al> a hcm:Supplier ;
     rdfs:label "Habedank et al." .
+
+<https://w3id.org/hcmo/id/catalog/agent/imouse-gmbh> a hcm:Supplier ;
+    rdfs:label "iMouse GmbH" .
 
 <https://w3id.org/hcmo/id/catalog/agent/lapp-et-al> a hcm:Supplier ;
     rdfs:label "Lapp et al." .
@@ -487,23 +481,17 @@
 <https://w3id.org/hcmo/id/catalog/agent/salem-et-al> a hcm:Supplier ;
     rdfs:label "Salem et al." .
 
-<https://w3id.org/hcmo/id/catalog/agent/see-pedraza-et-al-2025> a hcm:Supplier ;
-    rdfs:label "(see Pedraza et al. 2025)" .
-
 <https://w3id.org/hcmo/id/catalog/agent/tecniplast-s-p-a> a hcm:Supplier ;
     rdfs:label "Tecniplast S.p.A." .
 
-<https://w3id.org/hcmo/id/catalog/agent/tse-new-behavior> a hcm:Supplier ;
-    rdfs:label "(TSE / New Behavior)" .
-
-<https://w3id.org/hcmo/id/catalog/agent/tse-systems> a hcm:Supplier ;
-    rdfs:label "TSE Systems" .
-
-<https://w3id.org/hcmo/id/catalog/agent/uid-unified-information-devices-micetracking-com> a hcm:Supplier ;
-    rdfs:label "UID (Unified Information Devices) / micetracking.com" .
+<https://w3id.org/hcmo/id/catalog/agent/unified-information-devices-uid> a hcm:Supplier ;
+    rdfs:label "Unified Information Devices (UID)" .
 
 <https://w3id.org/hcmo/id/catalog/agent/vidva-et-al> a hcm:Supplier ;
     rdfs:label "Vidva et al." .
+
+<https://w3id.org/hcmo/id/catalog/agent/data-sciences-international-dsi> a hcm:Supplier ;
+    rdfs:label "Data Sciences International (DSI)" .
 
 <https://w3id.org/hcmo/id/catalog/agent/metris> a hcm:Supplier ;
     rdfs:label "Metris" .
@@ -511,8 +499,8 @@
 <https://w3id.org/hcmo/id/catalog/agent/noldus> a hcm:Supplier ;
     rdfs:label "Noldus" .
 
-<https://w3id.org/hcmo/id/catalog/agent/unnamed> a hcm:Supplier ;
-    rdfs:label "—" .
+<https://w3id.org/hcmo/id/catalog/agent/tse-systems> a hcm:Supplier ;
+    rdfs:label "TSE Systems" .
 
 <https://w3id.org/hcmo/id/catalog/agent/virag-et-al> a hcm:Supplier ;
     rdfs:label "Virag et al." .

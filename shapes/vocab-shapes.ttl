@@ -1,0 +1,165 @@
+# SHACL shapes for the HCMO SKOS vocabularies in vocabularies/.
+#
+# Two groups:
+#   1. Vocabulary integrity, run against the union of vocabularies/*.ttl.
+#   2. Vocabulary usage, run against each example merged with the
+#      vocabularies: hcm-tech:hasFileFormatConcept and
+#      hcm-tech:hasDataAccessMethod must point at concepts of the right scheme
+#      (violation), and hcm-tech:hasFileFormat strings should match a
+#      file-format notation or label (warning).
+#
+# Run by python tooling/validate.py (step 8).
+
+@prefix hcmvs: <https://w3id.org/hcmo/shapes/vocab#> .
+@prefix hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+# ---------------------------------------------------------------------------
+# 1. Vocabulary integrity
+# ---------------------------------------------------------------------------
+
+hcmvs:ConceptSchemeShape a sh:NodeShape ;
+  sh:targetClass skos:ConceptScheme ;
+  sh:property [
+    sh:path <http://purl.org/dc/terms/title> ; sh:minCount 1 ; sh:uniqueLang true
+  ] ;
+  sh:property [
+    sh:path <http://purl.org/dc/terms/license> ; sh:minCount 1 ; sh:nodeKind sh:IRI
+  ] .
+
+hcmvs:ConceptShape a sh:NodeShape ;
+  sh:targetClass skos:Concept ;
+  sh:property [
+    sh:path skos:prefLabel ; sh:minCount 1 ; sh:uniqueLang true ; sh:languageIn ( "en" ) ;
+    sh:message "Each concept needs exactly one English skos:prefLabel."
+  ] ;
+  sh:property [
+    sh:path skos:inScheme ; sh:minCount 1 ; sh:class skos:ConceptScheme
+  ] ;
+  sh:property [
+    sh:path skos:notation ; sh:maxCount 1 ; sh:datatype xsd:string
+  ] ;
+  sh:sparql [
+    sh:message "Concepts of hand-authored schemes need a skos:definition." ;
+    sh:select """
+      PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+      SELECT $this WHERE {
+        $this skos:inScheme ?scheme .
+        FILTER (?scheme IN (<https://w3id.org/hcmo/id/vocab/file-format>,
+                            <https://w3id.org/hcmo/id/vocab/data-access-method>))
+        FILTER NOT EXISTS { $this skos:definition ?definition }
+      }
+    """
+  ] ;
+  sh:sparql [
+    sh:message "skos:broader must stay inside the concept's scheme." ;
+    sh:select """
+      PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+      SELECT $this ?value WHERE {
+        $this skos:broader ?value ; skos:inScheme ?scheme .
+        FILTER NOT EXISTS { ?value skos:inScheme ?scheme }
+      }
+    """
+  ] ;
+  sh:sparql [
+    sh:message "Another concept of the same scheme has the same prefLabel or notation." ;
+    sh:select """
+      PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+      SELECT $this ?value WHERE {
+        {
+          $this skos:inScheme ?scheme ; skos:prefLabel ?value .
+          ?other skos:inScheme ?scheme ; skos:prefLabel ?value .
+        } UNION {
+          $this skos:inScheme ?scheme ; skos:notation ?value .
+          ?other skos:inScheme ?scheme ; skos:notation ?value .
+        }
+        FILTER (?other != $this)
+      }
+    """
+  ] .
+
+hcmvs:DanglingReferenceShape a sh:NodeShape ;
+  sh:targetSubjectsOf skos:related, skos:member, skos:broader, skos:narrower,
+    <http://purl.org/dc/terms/relation> ;
+  sh:sparql [
+    sh:message "Reference to an HCMO vocabulary IRI that is not a defined concept." ;
+    sh:select """
+      PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+      PREFIX dcterms: <http://purl.org/dc/terms/>
+      SELECT $this ?value WHERE {
+        $this skos:related|skos:member|skos:broader|skos:narrower|dcterms:relation ?value .
+        FILTER (STRSTARTS(STR(?value), "https://w3id.org/hcmo/id/vocab/"))
+        FILTER NOT EXISTS { ?value a skos:Concept }
+      }
+    """
+  ] .
+
+# ---------------------------------------------------------------------------
+# 2. Vocabulary usage
+# ---------------------------------------------------------------------------
+
+hcmvs:FileFormatConceptUsageShape a sh:NodeShape ;
+  sh:targetSubjectsOf hcm-tech:hasFileFormatConcept ;
+  sh:sparql [
+    sh:message "hcm-tech:hasFileFormatConcept must point at a concept of the HCMO file-format vocabulary." ;
+    sh:select """
+      PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+      PREFIX hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#>
+      SELECT $this ?value WHERE {
+        $this hcm-tech:hasFileFormatConcept ?value .
+        FILTER NOT EXISTS { ?value skos:inScheme <https://w3id.org/hcmo/id/vocab/file-format> }
+      }
+    """
+  ] .
+
+hcmvs:DataAccessMethodUsageShape a sh:NodeShape ;
+  sh:targetSubjectsOf hcm-tech:hasDataAccessMethod ;
+  sh:sparql [
+    sh:message "hcm-tech:hasDataAccessMethod must point at a concept of the HCMO data-access-method vocabulary." ;
+    sh:select """
+      PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+      PREFIX hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#>
+      SELECT $this ?value WHERE {
+        $this hcm-tech:hasDataAccessMethod ?value .
+        FILTER NOT EXISTS { ?value skos:inScheme <https://w3id.org/hcmo/id/vocab/data-access-method> }
+      }
+    """
+  ] .
+
+hcmvs:FileFormatStringUsageShape a sh:NodeShape ;
+  sh:targetSubjectsOf hcm-tech:hasFileFormat ;
+  sh:sparql [
+    sh:severity sh:Warning ;
+    sh:message "hcm-tech:hasFileFormat does not match the notation or label of any file-format concept; prefer the concept's notation and add hcm-tech:hasFileFormatConcept." ;
+    sh:select """
+      PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+      PREFIX hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#>
+      SELECT $this ?value WHERE {
+        $this hcm-tech:hasFileFormat ?value .
+        FILTER NOT EXISTS {
+          ?concept skos:inScheme <https://w3id.org/hcmo/id/vocab/file-format> ;
+                   skos:notation|skos:prefLabel ?name .
+          FILTER (STR(?name) = STR(?value))
+        }
+      }
+    """
+  ] ;
+  sh:sparql [
+    sh:severity sh:Warning ;
+    sh:message "hcm-tech:hasFileFormat names a different format from hcm-tech:hasFileFormatConcept." ;
+    sh:select """
+      PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+      PREFIX hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#>
+      SELECT $this ?value WHERE {
+        $this hcm-tech:hasFileFormat ?value ; hcm-tech:hasFileFormatConcept ?concept .
+        ?named skos:inScheme <https://w3id.org/hcmo/id/vocab/file-format> ;
+               skos:notation|skos:prefLabel ?name .
+        FILTER (STR(?name) = STR(?value))
+        FILTER NOT EXISTS { $this hcm-tech:hasFileFormatConcept ?named }
+        FILTER NOT EXISTS { ?concept skos:broader+ ?named }
+      }
+    """
+  ] .
