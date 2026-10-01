@@ -197,6 +197,22 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
   repository. It is archived with its history at
   <https://github.com/dhuzard/hcmo-webapp>. No ontology term, shape, query or
   generated artifact depended on it; `dist/` is unchanged.
+- Removed the stale `docs/CHANGELOG.md` (device-agnostic VMG 0.2.x notes; the root
+  `CHANGELOG.md` is authoritative) and the template-placeholder `docs/AGENT.md`
+  (the root `AGENTS.md` is authoritative).
+- Removed the publisher PDF `docs/paper/sources/articles/HCM-technologies_SpringerBook.pdf`;
+  `docs/hcm-systems/CATALOG.md` now cites the chapter by DOI only.
+
+### Added
+
+- Added `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md` (Contributor Covenant 2.1),
+  `SECURITY.md`, issue templates (term request, bug report) and a pull request
+  template carrying the build/validate/CHANGELOG checklist.
+
+### Changed
+
+- Clarified in the real DVC dataset README that cage, rack and position
+  identifiers and the group label are mock/pseudonymised.
 
 ## [0.2.0] - 2026-07-17
 

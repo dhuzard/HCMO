@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Report a security issue or data exposure
+    url: https://github.com/dhuzard/HCMO/security/policy
+    about: Please do not open a public issue; follow SECURITY.md.
+  - name: Contribute a monitoring system
+    url: https://github.com/dhuzard/HCMO/tree/main/docs/hcm-systems/contribute
+    about: Use the contribution form, then open an issue with the exported Turtle.
