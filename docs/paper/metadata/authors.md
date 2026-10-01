@@ -11,7 +11,7 @@ Konstantin Todorov, and Damien Huzard are the three corresponding authors.
 |---|--------|------|-------|-------------|
 | 1 | **Cyril Gilbert** | **First / corresponding ✉** | 0009-0008-2489-8106 | LIRMM, Université de Montpellier, CNRS, Montpellier, France |
 | 2 | Gaoussou Sanou | contributing author | 0000-0003-2204-2466 | IMGT®, IGH, Université de Montpellier, CNRS, Montpellier, France |
-| 3 | Serge Sonfack Sounchio | contributing author | 0000-0002-6085-6818 | Production Engineering Laboratory/UFTMiP, France |
+| 3 | Serge Sonfack Sounchio | contributing author | 0000-0002-6085-6818 | Robert Bosch Sp. z o. o., Jutrzenki 105, Poland |
 | 4 | Antoine Toffano | contributing author | 0009-0008-0575-8490 | LIRMM, Université de Montpellier, CNRS, Montpellier, France |
 | 5 | Pierre Larmande | contributing author | 0000-0002-2923-9790 | DIADE, Université de Montpellier, IRD, CIRAD, Montpellier, France |
 | 6 | Benoit Girard | contributing author | 0000-0002-3914-6483 | *to be confirmed* |
