@@ -19,5 +19,9 @@ and time-series data.
 - Human review checklist:
   [`PHILIPPE-ROCCA-SERRA-HUMAN-REVIEW-CHECKLIST.md`](PHILIPPE-ROCCA-SERRA-HUMAN-REVIEW-CHECKLIST.md)
 
+Working notes and co-author meeting records (including the undecided BFO/SOSA
+double-hierarchy decision package) are kept outside the release repository, in
+the private `dhuzard/hcmo-internal-docs` repository.
+
 Load `dist/hcmo.ttl` or `dist/hcmo.owl`. The source of truth is
 `ontology/modules/*.ttl`; files under `dist/` are generated.

@@ -280,6 +280,93 @@ def step_isa_roundtrip(ontology_graph: Graph) -> tuple[bool, list[str]]:
     else:
         notes.append(f"[OK]   lossless HCMO RDF/extended ISA RO-Crate graph: {len(canonical)} triples")
 
+    result_matrix_path = fixture_root / "data" / "model-results.csv"
+    matrix_columns = [
+        "entity",
+        "term",
+        "entity_stato_iri",
+        "entity_stato_label",
+        "estimate",
+        "estimate_entity",
+        "estimate_stato_iri",
+        "estimate_stato_label",
+        "ci_lower",
+        "ci_upper",
+        "ci_entity",
+        "ci_stato_iri",
+        "ci_stato_label",
+        "p_value",
+        "p_value_entity",
+        "p_value_stato_iri",
+        "p_value_stato_label",
+        "model_formula",
+        "fixed_effects",
+        "random_effect",
+    ]
+    try:
+        with result_matrix_path.open(encoding="utf-8", newline="") as handle:
+            reader = csv.DictReader(handle)
+            matrix_rows = list(reader)
+        if reader.fieldnames != matrix_columns:
+            raise ValueError(f"unexpected columns: {reader.fieldnames}")
+        if len(matrix_rows) != 2:
+            raise ValueError(f"expected two result rows, found {len(matrix_rows)}")
+        rows_by_entity = {row["entity"]: row for row in matrix_rows}
+        model_row = rows_by_entity[f"{base}fitted-linear-mixed-model"]
+        contrast_row = rows_by_entity[f"{base}active-versus-vehicle-contrast"]
+        annotations = (
+            (
+                model_row,
+                "entity",
+                "entity_stato_iri",
+                "entity_stato_label",
+                "http://purl.obolibrary.org/obo/STATO_0000464",
+                "linear mixed model",
+            ),
+            (
+                contrast_row,
+                "estimate_entity",
+                "estimate_stato_iri",
+                "estimate_stato_label",
+                "http://purl.obolibrary.org/obo/STATO_0000384",
+                "contrast estimate",
+            ),
+            (
+                contrast_row,
+                "ci_entity",
+                "ci_stato_iri",
+                "ci_stato_label",
+                "http://purl.obolibrary.org/obo/STATO_0000231",
+                "95% confidence interval",
+            ),
+            (
+                contrast_row,
+                "p_value_entity",
+                "p_value_stato_iri",
+                "p_value_stato_label",
+                "http://purl.obolibrary.org/obo/STATO_0000700",
+                "p-value",
+            ),
+        )
+        for row, entity_field, iri_field, label_field, expected_iri, expected_label in annotations:
+            if row[iri_field] != expected_iri or row[label_field] != expected_label:
+                raise ValueError(
+                    f"{iri_field}/{label_field} does not match {expected_iri} ({expected_label})"
+                )
+            if (URIRef(row[entity_field]), RDF.type, URIRef(expected_iri)) not in canonical:
+                raise ValueError(
+                    f"{row[entity_field]} is not typed {expected_iri} in canonical RDF"
+                )
+        if contrast_row["entity_stato_iri"] or contrast_row["entity_stato_label"]:
+            raise ValueError("the untyped contrast row acquired an unsupported STATO class")
+        notes.append(
+            "[OK]   STATO-annotated result matrix: model, contrast estimate, "
+            "95% confidence interval, and p-value"
+        )
+    except Exception as exc:  # noqa: BLE001
+        ok = False
+        notes.append(f"[FAIL] STATO-annotated result matrix: {exc}")
+
     monitored_animals = URIRef("https://w3id.org/hcmo/ontology/hcm#hasMonitoredAnimals")
     if any(canonical.triples((None, monitored_animals, None))):
         ok = False

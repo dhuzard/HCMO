@@ -10,6 +10,7 @@ from __future__ import annotations
 import csv
 import json
 import os
+import subprocess
 import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -19,8 +20,15 @@ import statsmodels.formula.api as smf
 from rdflib import DCTERMS, RDF, RDFS, XSD, Graph, Literal, Namespace, URIRef
 
 if os.environ.get("PYTHONHASHSEED") != "0":
-    os.environ["PYTHONHASHSEED"] = "0"
-    os.execv(sys.executable, [sys.executable] + sys.argv)
+    deterministic_environment = os.environ.copy()
+    deterministic_environment["PYTHONHASHSEED"] = "0"
+    raise SystemExit(
+        subprocess.run(
+            [sys.executable, *sys.argv],
+            env=deterministic_environment,
+            check=False,
+        ).returncode
+    )
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "examples" / "isa-roundtrip"
@@ -62,6 +70,12 @@ WITHIN_ANIMAL_NOISE = (
     (-2, 1, 0, -1, 2, 0, 1),
 )
 MODEL_FORMULA = "activity_count ~ treatment * enrichment + day; random intercept: animal"
+STATO_RESULT_TERMS = {
+    "model": (STATO["0000464"], "linear mixed model"),
+    "estimate": (STATO["0000384"], "contrast estimate"),
+    "confidence_interval": (STATO["0000231"], "95% confidence interval"),
+    "p_value": (STATO["0000700"], "p-value"),
+}
 
 
 def lit_datetime(value: datetime) -> Literal:
@@ -448,22 +462,27 @@ def build_graph() -> tuple[Graph, list[dict[str, str | int]]]:
     g.add((null_hypothesis, SCHEMA.unitText, Literal("activity counts per dark phase")))
 
     for result_node, result_type, name, value in (
-        (model, STATO["0000464"], "Fitted linear mixed model", model_results["formula"]),
+        (
+            model,
+            STATO_RESULT_TERMS["model"][0],
+            "Fitted linear mixed model",
+            model_results["formula"],
+        ),
         (
             estimate,
-            STATO["0000384"],
+            STATO_RESULT_TERMS["estimate"][0],
             "Active-treatment contrast estimate at standard enrichment",
             model_results["estimate"],
         ),
         (
             confidence_interval,
-            STATO["0000231"],
+            STATO_RESULT_TERMS["confidence_interval"][0],
             "Active-treatment contrast 95% confidence interval at standard enrichment",
             f"[{model_results['ci_lower']}, {model_results['ci_upper']}]",
         ),
         (
             p_value,
-            STATO["0000700"],
+            STATO_RESULT_TERMS["p_value"][0],
             "Active-treatment contrast p-value at standard enrichment",
             model_results["p_value"],
         ),
@@ -591,10 +610,21 @@ def write_outputs(
             [
                 "entity",
                 "term",
+                "entity_stato_iri",
+                "entity_stato_label",
                 "estimate",
+                "estimate_entity",
+                "estimate_stato_iri",
+                "estimate_stato_label",
                 "ci_lower",
                 "ci_upper",
+                "ci_entity",
+                "ci_stato_iri",
+                "ci_stato_label",
                 "p_value",
+                "p_value_entity",
+                "p_value_stato_iri",
+                "p_value_stato_label",
                 "model_formula",
                 "fixed_effects",
                 "random_effect",
@@ -604,6 +634,17 @@ def write_outputs(
             [
                 "https://example.org/hcmo/isa-roundtrip/fitted-linear-mixed-model",
                 "fitted linear mixed model",
+                str(STATO_RESULT_TERMS["model"][0]),
+                STATO_RESULT_TERMS["model"][1],
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
                 "",
                 "",
                 "",
@@ -617,10 +658,21 @@ def write_outputs(
             [
                 "https://example.org/hcmo/isa-roundtrip/active-versus-vehicle-contrast",
                 "active treatment contrast at standard enrichment",
+                "",
+                "",
                 model_results["estimate"],
+                "https://example.org/hcmo/isa-roundtrip/treatment-contrast-estimate",
+                str(STATO_RESULT_TERMS["estimate"][0]),
+                STATO_RESULT_TERMS["estimate"][1],
                 model_results["ci_lower"],
                 model_results["ci_upper"],
+                "https://example.org/hcmo/isa-roundtrip/treatment-contrast-95ci",
+                str(STATO_RESULT_TERMS["confidence_interval"][0]),
+                STATO_RESULT_TERMS["confidence_interval"][1],
                 model_results["p_value"],
+                "https://example.org/hcmo/isa-roundtrip/treatment-contrast-p-value",
+                str(STATO_RESULT_TERMS["p_value"][0]),
+                STATO_RESULT_TERMS["p_value"][1],
                 "",
                 "",
                 "",
