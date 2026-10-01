@@ -1,10 +1,10 @@
 # Designing an Ontology for Home-Cage Monitoring: structuring, interoperability, and reuse of data
 
 > **English working translation** of the internship report by **Cyril Gilbert**
-> (16 June 2026), supervised by Damien Huzard. Source: `gilbert-2026-hcmo-report.fr.pdf`
+> (16 June 2026), supervised by Damien Huzard. Source: `hcmo-report.fr.pdf`
 > (in this folder). This is a faithful adaptation, not a literal line-by-line
 > translation; it is the primary domain/design source for the HCMO resource paper.
-> Figures referenced below are extracted under `sources/figures/`.
+> Figures referenced below are extracted under `figures/` (see `README.md`).
 
 ---
 

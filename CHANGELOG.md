@@ -231,6 +231,14 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 - None.
 
+- Moved working notes and co-author meeting records (the BFO/SOSA decision package,
+  PROV-BFO reading notes, co-author meeting and email records, the ISA/SHACL
+  brainstorm, agent prompts) out of `docs/` into the private
+  `dhuzard/hcmo-internal-docs` repository, and organised the Gilbert 2026
+  internship report, its English translation and figures under
+  `docs/paper/sources/gilbert-2026-internship-report/` with a README. No ontology
+  term, shape, query or generated artifact changed.
+
 ## [0.2.0] - 2026-07-17
 
 Updated the public contribution workflow to emit current HCMO instance data and

@@ -41,10 +41,14 @@ docs/paper/
   sections/               # earlier Markdown drafts retained as review history
   overleaf/               # authoritative PLMLatex/LNCS manuscript source
   evaluation/             # archived reasoner/interoperability/review evidence
-  sources/                # Gilbert 2026 report (PDF + EN translation) + figures
+  sources/                # gilbert-2026-internship-report/ (FR PDF + EN translation + figures; see its README)
   emails/                 # co-author comms (e.g. request-clean-v1.md)
   references.bib          # earlier Markdown-draft bibliography
 ```
+
+> Older entries in `TODO.md` and `ISWC-MIGRATION-PLAN.md` cite `docs/meetings/` and
+> `docs/BFO-SOSA-*.md` / `PROV-BFO-ALIGNMENT-PAPER-NOTES.md`. Those working notes now live in the
+> private `dhuzard/hcmo-internal-docs` repository under the same `docs/` paths.
 
 ## Workflow
 

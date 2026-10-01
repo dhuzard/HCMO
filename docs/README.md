@@ -16,20 +16,12 @@ and time-series data.
   [`A02-ISA-STATO-COMPATIBILITY.md`](A02-ISA-STATO-COMPATIBILITY.md)
 - Philippe Rocca-Serra meeting record:
   [`meetings/PHILIPPE-ROCCA-SERRA-HCMO-NOTES.md`](meetings/PHILIPPE-ROCCA-SERRA-HCMO-NOTES.md)
-- Undecided ISA configuration/SHACL profile brainstorm:
-  [`meetings/ISA-CONFIGURATION-SHACL-BRAINSTORM-2026-09-18.md`](meetings/ISA-CONFIGURATION-SHACL-BRAINSTORM-2026-09-18.md)
-- Undecided BFO/SOSA double hierarchy — co-author decision sheet:
-  [`BFO-SOSA-DECISIONS-TO-TAKE.md`](BFO-SOSA-DECISIONS-TO-TAKE.md), with the
-  technical workings in
-  [`BFO-SOSA-DOUBLE-HIERARCHY-PLAN.md`](BFO-SOSA-DOUBLE-HIERARCHY-PLAN.md)
-- Co-author email replies and decisions of 2026-09-24 (restructure, 2 x 2
-  wording and authorship settled; BFO/SOSA provisional):
-  [`meetings/CO-AUTHOR-EMAIL-REPLIES-2026-09-24.md`](meetings/CO-AUTHOR-EMAIL-REPLIES-2026-09-24.md)
-- Reading notes on Prudhomme et al. 2025 (PROV-O → BFO alignment) and a
-  reasoner test of the composed SOSA → PROV → BFO chain against HCMO:
-  [`PROV-BFO-ALIGNMENT-PAPER-NOTES.md`](PROV-BFO-ALIGNMENT-PAPER-NOTES.md)
 - Human review checklist:
   [`PHILIPPE-ROCCA-SERRA-HUMAN-REVIEW-CHECKLIST.md`](PHILIPPE-ROCCA-SERRA-HUMAN-REVIEW-CHECKLIST.md)
+
+Working notes and co-author meeting records (including the undecided BFO/SOSA
+double-hierarchy decision package) are kept outside the release repository, in
+the private `dhuzard/hcmo-internal-docs` repository.
 
 Load `dist/hcmo.ttl` or `dist/hcmo.owl`. The source of truth is
 `ontology/modules/*.ttl`; files under `dist/` are generated.
