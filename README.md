@@ -65,7 +65,6 @@ queries/                       # competency_questions.yaml + cq-*.rq
 tooling/                       # build.py, validate.py, docs.py, requirements.txt
 docs/                          # documentation (incl. MISSING-DEFINITIONS.md)
 .github/workflows/             # validate.yml (PR gate), release.yml (tag → assets)
-webapp/                        # optional Node.js authoring/blueprint app
 ```
 
 ## Quickstart
@@ -156,13 +155,12 @@ Quantity-bearing dimensions, sampling rates, environmental specifications, and
 observation results use the pinned QUDT 3.4.0 quantity-value pattern; extensions
 to additional quantity roles remain subject to semantic review.
 
-## Web authoring app (optional)
+## Contribution form
 
-A Node.js app under `webapp/` supports form-based authoring and a blueprint
-checklist. From `webapp/`: `npm install` then `npm run dev` (serves on
-`http://localhost:3000`); `npm test` runs the API/UI tests. The published
-contribution form under
-`docs/hcm-systems/contribute/` exports current-model Turtle and triple CSV.
+The published contribution form under `docs/hcm-systems/contribute/` exports
+current-model Turtle and triple CSV. The former Node.js authoring/blueprint app
+(`webapp/`) is no longer part of this repository; it is archived, with its
+history, at [`dhuzard/hcmo-webapp`](https://github.com/dhuzard/hcmo-webapp).
 
 ## Conceptual provenance
 

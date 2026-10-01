@@ -4,9 +4,10 @@ Real Tecniplast **Digital Ventilated Cage (DVC®)** export contributed for HCMO
 validation. Group `B6_M` (C57BL/6, males — per the group label), **24 cages**, one
 rack, **14 days** at 1-minute resolution, starting **2025-10-14 10:16 (UTC−04:00)**.
 
-> **Provenance & use:** contributed by the HCMO team for ontology validation. Cage
-> identifiers are the facility's internal codes; the files carry no personnel names
-> or animal-identifying information. DVC raw data/exports are normally proprietary to
+> **Provenance & use:** contributed by the HCMO team for ontology validation. The
+> measurements are real; the **cage, rack and position identifiers and the group
+> label are mock/pseudonymised**, and the files carry no personnel names or animal-identifying information. DVC
+> raw data/exports are normally proprietary to
 > the generating facility — treat these files as shared **for HCMO validation** and
 > check with the contributor before redistributing outside the project. The synthetic
 > look-alikes in [`../mock/`](../mock/) are freely redistributable.
