@@ -42,7 +42,11 @@ As in the manuscript (online co-author edits, synced 2026-09-24):
 - **Serge Sonfack Sounchio:** Methodology.
 - **Antoine Toffano:** Methodology.
 - **Pierre Larmande:** Methodology, Writing — review & editing.
-- **Benoit Girard:** Funding acquisition, Writing — review & editing.
+- **Benoit Girard:** Conceptualization (initial project framing), Funding
+  acquisition, Writing — review & editing. *(Conceptualization added
+  2026-09-29 with his agreement; the qualifier limits it to the early-stage
+  conceptual framing of the project, distinct from the later development and
+  conceptualization of HCMO.)*
 - **Philippe Rocca-Serra:** Conceptualization, Methodology, Validation, Writing
   — review & editing.
 - **Konstantin Todorov:** Conceptualization, Methodology, Supervision, Writing

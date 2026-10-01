@@ -19,6 +19,9 @@ and time-series data.
 - Human review checklist:
   [`PHILIPPE-ROCCA-SERRA-HUMAN-REVIEW-CHECKLIST.md`](PHILIPPE-ROCCA-SERRA-HUMAN-REVIEW-CHECKLIST.md)
 
+- Open items collected from the working notes, to be cleaned later:
+  [`BACKLOG.md`](BACKLOG.md)
+
 Working notes and co-author meeting records (including the undecided BFO/SOSA
 double-hierarchy decision package) are kept outside the release repository, in
 the private `dhuzard/hcmo-internal-docs` repository.

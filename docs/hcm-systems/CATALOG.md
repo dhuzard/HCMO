@@ -3,8 +3,8 @@
 Systems, platforms, and companies extracted from **Huzard et al. (2026),
 "Technologies for Home Cage Monitoring in Preclinical Research"** (in *Home Cage
 Monitoring in Rodents: A Global Effort*, eds. Gaburro & Mandillo, Springer,
-https://doi.org/10.1007/978-3-032-19781-8_7). Source PDF:
-[`../paper/sources/articles/HCM-technologies_SpringerBook.pdf`](../paper/sources/articles/HCM-technologies_SpringerBook.pdf).
+https://doi.org/10.1007/978-3-032-19781-8_7). The chapter PDF is publisher
+content and is not redistributed in this repository; use the DOI.
 
 Each is a candidate for a per-system folder. **Priority** is a rough suggestion for
 where to start feeding data: **P1** = commercial system with a chapter co-author

@@ -1,0 +1,40 @@
+name: Term request or change
+description: Propose a new class/property, or a change to an existing term's label, definition or alignment.
+labels: [ontology]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Every change is a semantic change. IRIs are never renamed; a term is deprecated and mapped instead.
+        See CONTRIBUTING.md in the repository root.
+  - type: input
+    id: term
+    attributes:
+      label: Term (IRI or proposed label)
+      description: For an existing term, give its IRI.
+    validations:
+      required: true
+  - type: dropdown
+    id: module
+    attributes:
+      label: Proposed module
+      options: [hcm-core, hcm-bio, hcm-env, hcm-obs, hcm-tech, not sure]
+    validations:
+      required: true
+  - type: textarea
+    id: need
+    attributes:
+      label: Need and competency question
+      description: What can't be expressed today? Ideally phrase it as a question the ontology should answer.
+    validations:
+      required: true
+  - type: textarea
+    id: definition
+    attributes:
+      label: Proposed definition and source
+      description: A non-circular definition with a citation or a reused external term (see external-vocabularies.yaml).
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Existing terms that could be reused, or shapes/examples that could carry the constraint instead.

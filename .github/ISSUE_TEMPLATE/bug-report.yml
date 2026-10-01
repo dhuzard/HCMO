@@ -1,0 +1,25 @@
+name: Bug report
+description: Wrong or inconsistent modelling, a failing validation, a broken example or documentation.
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What is wrong?
+      description: Include file paths, term IRIs, or the failing command output.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+  - type: input
+    id: version
+    attributes:
+      label: HCMO version or commit
+      description: A release tag, or the commit hash of main.
+  - type: textarea
+    id: repro
+    attributes:
+      label: How to reproduce
+      description: For tooling problems, the commands you ran (python tooling/build.py, python tooling/validate.py).

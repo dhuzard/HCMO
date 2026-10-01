@@ -93,6 +93,10 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
   section. The regenerated `catalog.ttl` therefore mints different
   `catalog/agent/` IRIs for the four affected vendors (see #32 for that graph's
   rework).
+- Added "Conceptualization (initial project framing)" to Benoit Girard's CRediT
+  roles in the manuscript and author-metadata record, with his agreement; the
+  qualifier separates the early-stage project framing from the later
+  development and conceptualization of HCMO.
 - Added Philippe Rocca-Serra as a middle author, with ORCID, Oxford affiliation,
   and CRediT roles reflecting his ontology and interoperability review.
 - Recorded the eight authors' confirmed institutional affiliations in the
@@ -293,6 +297,28 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 - None.
 
+### Removed
+
+- Removed the optional Node.js `webapp/` authoring/blueprint app from the release
+  repository. It is archived with its history at
+  <https://github.com/dhuzard/hcmo-webapp>. No ontology term, shape, query or
+  generated artifact depended on it; `dist/` is unchanged.
+- Removed the stale `docs/CHANGELOG.md` (device-agnostic VMG 0.2.x notes; the root
+  `CHANGELOG.md` is authoritative) and the template-placeholder `docs/AGENT.md`
+  (the root `AGENTS.md` is authoritative).
+- Removed the publisher PDF `docs/paper/sources/articles/HCM-technologies_SpringerBook.pdf`;
+  `docs/hcm-systems/CATALOG.md` now cites the chapter by DOI only.
+
+### Added
+
+- Added `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md` (Contributor Covenant 2.1),
+  `SECURITY.md`, issue templates (term request, bug report) and a pull request
+  template carrying the build/validate/CHANGELOG checklist.
+
+### Changed
+
+- Clarified in the real DVC dataset README that cage, rack and position
+  identifiers and the group label are mock/pseudonymised.
 - Moved working notes and co-author meeting records (the BFO/SOSA decision package,
   PROV-BFO reading notes, co-author meeting and email records, the ISA/SHACL
   brainstorm, agent prompts) out of `docs/` into the private
