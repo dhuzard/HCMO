@@ -81,11 +81,15 @@ selectively reuses canonical unversioned SemTS 1.2.0 terms \cite{semts}: a
 location result table is a `semts:TimeSeriesSegment` whose dimensions may be linked with
 `semts:segmentDimension` to `semts:DataDimension`. The earlier observation
 dimension restriction and knowledge-generation-specific `semts:generated`
-relation were removed after semantic review. A pinned example-level evidence slice now uses PROV-O, specific OBI
-and STATO types, and ISA/Bioschemas exchange terms in one acyclic workflow
+relation were removed after semantic review. OBI and STATO are not imported or
+formally aligned as HCMO classes. They are used, together with PROV-O and
+ISA/Bioschemas exchange terms, in the instance-level interoperability example
+available at
+[`examples/isa-hcmo-bridge.ttl`](https://github.com/dhuzard/HCMO/blob/v0.3.0/examples/isa-hcmo-bridge.ttl)
 \cite{isa,rocrate}. This is
 validated interoperability evidence, not an HCMO class mapping or a claim of
-formal ISA RO-Crate conformance. A second generated 2 × 2 fixture preserves
+formal ISA RO-Crate conformance. A second generated fixture, a 2 × 2 factorial
+design with repeated measures, preserves
 animal identity, time-bounded housing, Source/Sample roles, repeated
 observations, factor/group structure, and separate STATO results and file
 fragments across a graph-isomorphic HCMO RDF/extended ISA RO-Crate pair.

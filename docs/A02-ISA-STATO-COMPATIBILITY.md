@@ -169,7 +169,12 @@ assignments, incomplete allocation, an unchanged animal as an ISA result, and
 an observation assigned to the wrong enclosure. The mixed model is fitted from
 the generated activity CSV with pinned numerical dependencies; its model and
 active-versus-vehicle contrast at standard enrichment occupy different exact
-CSV fragments. A pinned `isatools` 0.14.3 test
+CSV fragments. The generated `data/model-results.csv` also carries the pinned
+STATO IRI and authoritative label for the model, estimate, 95% confidence
+interval, and p-value, plus links to their semantic entities. These columns are
+exchange annotations; `canonical.ttl` remains the RDF semantic sidecar and the
+validator checks that the CSV terms match the RDF types. A pinned `isatools`
+0.14.3 test
 executes the native animal Source →
 real tissue Sample overlap through ISA-JSON → ISA-Tab → ISA-JSON, preserving
 the two HCMO IRIs through explicit ISA comments. The loss contracts explicitly
@@ -182,7 +187,7 @@ semantic STATO/file-fragment links as outside that native projection.
 | Done | Pin the external versions and build the recording, transformation, statistical-result, factor-level, and group evidence slice. | `external-vocabularies.yaml`, `examples/isa-hcmo-bridge.ttl`, `shapes/isa-hcmo-evidence-shapes.ttl`, and `queries/cq-isa-*.rq` | Checksums pass; the positive graph conforms; an injected cycle fails; all three CQs match exact answers. |
 | Done | Create separate semantic and exchange registries with versions, strength, evidence, reviewer, status, direction, cardinality, and controlled loss. | `mappings/semantic/` and `mappings/exchange/` | Registries validate and remain outside canonical reasoning. |
 | Done | Resolve housing-assignment and non-file result representation in an extended ISA RO-Crate. | `examples/isa-roundtrip/`, dedicated shapes, queries, and validation tooling | Canonical RDF and crate are graph-isomorphic; exact invariants pass; controlled losses are explicit. |
-| Done | Execute the native ISA-JSON/ISA-Tab overlap without inventing an animal Sample. | `tooling/validate_isa_native_projection.py` and both loss manifests | Pinned ISA-JSON validates; JSON → Tab → JSON preserves a distinct animal Source, genuine tissue Sample, collection process, derivation, and explicit HCMO IRI comments. |
+| Done | Execute the native ISA-JSON/ISA-Tab overlap without inventing an animal Sample. | `tooling/validate_isa_native_projection.py`, `examples/isa-roundtrip/native-isa/`, and both loss manifests | Pinned ISA-API reproducibly generates valid JSON and Tab; JSON → Tab → JSON preserves a distinct animal Source, genuine tissue Sample, collection process, derivation, and explicit HCMO IRI comments. |
 | Deferred | Add a direct whole-animal HCM assay/data projection. | A future reviewed ISA configuration plus a fixture update | The default ISA configuration rejects the HCM measurement/technology labels; no unreviewed label or Sample proxy is introduced. |
 | Deferred | Decide whether a future competency question requires a new home-cage-specific process class. | `docs/ARCHITECTURE.md`; owning module only after promotion review | No new local process class is currently justified. |
 | External | Obtain an authoritative permanent ISA profile URI and confirmed base RO-Crate edition. | ISA profile and validator maintainers | Only then may HCMO consider a formal ISA conformance claim. |

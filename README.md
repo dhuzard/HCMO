@@ -91,7 +91,9 @@ python tooling/validate_isa_native_projection.py  # controlled-loss ISA-JSON/ISA
 - **`tooling/validate_isa_native_projection.py`** executes the native ISA
   overlap through ISA-JSON → ISA-Tab → ISA-JSON: one animal Source generates
   one real tissue Sample. It tests identity preservation without fabricating an
-  animal Sample proxy; all non-native HCMO/STATO losses remain explicit.
+  animal Sample proxy; all non-native HCMO/STATO losses remain explicit. The
+  reproducible ISA-API outputs and the Figure 3 modeling decisions are under
+  **`examples/isa-roundtrip/native-isa/`**; pass `--write` to regenerate them.
 
 ## Consuming the ontology
 
@@ -105,7 +107,10 @@ python tooling/validate_isa_native_projection.py  # controlled-loss ISA-JSON/ISA
   ingestion; `shapes/isa-hcmo-evidence-shapes.ttl` covers the pinned ISA/STATO
   bridge, while `shapes/isa-hcmo-roundtrip-shapes.ttl` covers the generated
   2 × 2 extended ISA RO-Crate. See `examples/` for conformant,
-  intentionally-invalid, and controlled-loss fixtures.
+  intentionally-invalid, and controlled-loss fixtures. The
+  **`examples/isa-roundtrip/README.md`** artifact map links the raw matrix,
+  STATO-annotated result matrix, RDF/RO-Crate serializations, native ISA files,
+  loss manifests, and exact-answer queries.
 - **External source contract:** read `external-vocabularies.yaml` for pinned
   versions, canonical term namespaces, used-term allowlists, and checksums.
 - **Everything is discoverable from `hcmo.yaml`** — resolve module, dist, shapes,
@@ -166,7 +171,10 @@ We gratefully acknowledge the Olog's authors and the TEATIME community: the
 Olog established an important conceptual foundation and domain vocabulary;
 HCMO independently formalises and substantially extends the domain using OWL,
 established external ontologies, SHACL constraints, competency questions, and
-reproducible validation. The versioned Olog source is available from its
+reproducible validation. The deposited Olog source is archived on Zenodo as
+version DOI [10.5281/zenodo.22646369](https://doi.org/10.5281/zenodo.22646369)
+with concept DOI [10.5281/zenodo.22646368](https://doi.org/10.5281/zenodo.22646368);
+the corresponding repository source is available from its
 [`v1.0.0` release](https://github.com/NeuroBAU/HCM-Definition/releases/tag/v1.0.0).
 
 ## Contributors
@@ -175,8 +183,8 @@ reproducible validation. The versioned Olog source is available from its
   France · [0009-0008-2489-8106](https://orcid.org/0009-0008-2489-8106) · [@cyrilbonus](https://github.com/cyrilbonus)
 - **Gaoussou Sanou** — IMGT®, IGH, Université de Montpellier, CNRS,
   Montpellier, France · [0000-0003-2204-2466](https://orcid.org/0000-0003-2204-2466) · [@gsanou](https://github.com/gsanou)
-- **Serge Sonfack Sounchio** — Production Engineering Laboratory/UFTMiP,
-  France · [0000-0002-6085-6818](https://orcid.org/0000-0002-6085-6818) · [@sonfack](https://github.com/sonfack)
+- **Serge Sonfack Sounchio** — Robert Bosch Sp. z o. o., Jutrzenki 105,
+  Poland · [0000-0002-6085-6818](https://orcid.org/0000-0002-6085-6818) · [@sonfack](https://github.com/sonfack)
 - **Antoine Toffano** — LIRMM, Université de Montpellier, CNRS, Montpellier,
   France · [0009-0008-0575-8490](https://orcid.org/0009-0008-0575-8490)
 - **Pierre Larmande** — DIADE, Université de Montpellier, IRD, CIRAD,

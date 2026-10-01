@@ -1,8 +1,9 @@
 # Authors & front matter (HITL Round 4)
 
-**Decision (confirmed 2026-08-31):** Cyril Gilbert is **first author**. The
-middle-author order is Gaoussou Sanou, Serge Sonfack Sounchio, Antoine Toffano,
-Pierre Larmande, and Philippe Rocca-Serra. Konstantin Todorov and Damien Huzard
+**Decision (confirmed 2026-08-31; Benoit Girard added 2026-09-24):** Cyril
+Gilbert is **first author**. The middle-author order is Gaoussou Sanou, Serge
+Sonfack Sounchio, Antoine Toffano, Pierre Larmande, Benoit Girard, and Philippe
+Rocca-Serra. Konstantin Todorov and Damien Huzard
 are **co-last**; Damien remains the final listed author. Cyril Gilbert,
 Konstantin Todorov, and Damien Huzard are the three corresponding authors.
 
@@ -10,12 +11,13 @@ Konstantin Todorov, and Damien Huzard are the three corresponding authors.
 |---|--------|------|-------|-------------|
 | 1 | **Cyril Gilbert** | **First / corresponding ✉** | 0009-0008-2489-8106 | LIRMM, Université de Montpellier, CNRS, Montpellier, France |
 | 2 | Gaoussou Sanou | contributing author | 0000-0003-2204-2466 | IMGT®, IGH, Université de Montpellier, CNRS, Montpellier, France |
-| 3 | Serge Sonfack Sounchio | contributing author | 0000-0002-6085-6818 | Production Engineering Laboratory/UFTMiP, France |
+| 3 | Serge Sonfack Sounchio | contributing author | 0000-0002-6085-6818 | Robert Bosch Sp. z o. o., Jutrzenki 105, Poland |
 | 4 | Antoine Toffano | contributing author | 0009-0008-0575-8490 | LIRMM, Université de Montpellier, CNRS, Montpellier, France |
 | 5 | Pierre Larmande | contributing author | 0000-0002-2923-9790 | DIADE, Université de Montpellier, IRD, CIRAD, Montpellier, France |
-| 6 | Philippe Rocca-Serra | contributing author | 0000-0001-9853-5668 | Oxford e-Research Centre, Department of Engineering Science, University of Oxford, Oxford OX1 3QG, United Kingdom |
-| 7 | **Konstantin Todorov** | **Co-last / corresponding ✉** | 0000-0002-9116-6692 | LIRMM, Université de Montpellier, CNRS, Montpellier, France |
-| 8 | **Damien Huzard** | **Co-last / corresponding ✉; final listed author** | 0000-0003-4820-7951 | Neuronautix, Montpellier, France |
+| 6 | Benoit Girard | contributing author | 0000-0002-3914-6483 | *to be confirmed* |
+| 7 | Philippe Rocca-Serra | contributing author | 0000-0001-9853-5668 | Oxford e-Research Centre, Department of Engineering Science, University of Oxford, Oxford OX1 3QG, United Kingdom |
+| 8 | **Konstantin Todorov** | **Co-last / corresponding ✉** | 0000-0002-9116-6692 | LIRMM, Université de Montpellier, CNRS, Montpellier, France |
+| 9 | **Damien Huzard** | **Co-last / corresponding ✉; final listed author** | 0000-0003-4820-7951 | Neuronautix, Montpellier, France |
 
 > ✉ = corresponding author. Single-anonymous track → authors are **named** in
 > the submission. Equal-contribution/co-last wording still needs to be adapted
@@ -30,22 +32,25 @@ Konstantin Todorov, and Damien Huzard are the three corresponding authors.
 
 ## CRediT author statement
 
-- **Cyril Gilbert:** Conceptualization, Investigation, Methodology, Software,
+As in the manuscript (online co-author edits, synced 2026-09-24):
+
+- **Cyril Gilbert:** Data curation, Methodology, Software, Formal analysis,
   Validation, Visualization, Writing — original draft, Writing — review &
   editing.
-- **Pierre Larmande:** Validation, Writing — review & editing.
+- **Gaoussou Sanou:** Conceptualization, Methodology, Software, Formal
+  analysis, Visualization, Writing — review & editing.
+- **Serge Sonfack Sounchio:** Methodology.
+- **Antoine Toffano:** Methodology.
+- **Pierre Larmande:** Methodology, Writing — review & editing.
+- **Benoit Girard:** Funding acquisition, Writing — review & editing.
 - **Philippe Rocca-Serra:** Conceptualization, Methodology, Validation, Writing
   — review & editing.
-- **Gaoussou Sanou:** Conceptualization, Methodology, Visualization, Writing —
-  review & editing.
-- **Serge Sonfack Sounchio:** Methodology, Validation, Writing — review &
-  editing.
-- **Antoine Toffano:** Validation, Writing — review & editing.
-- **Konstantin Todorov:** Conceptualization, Methodology, Supervision,
-  Validation, Writing — review & editing.
-- **Damien Huzard:** Conceptualization, Funding acquisition, Methodology,
-  Project administration, Software, Supervision, Validation, Writing — original
-  draft, Writing — review & editing.
+- **Konstantin Todorov:** Conceptualization, Methodology, Supervision, Writing
+  — review & editing.
+- **Damien Huzard:** Conceptualization, Data curation, Formal analysis, Funding
+  acquisition, Investigation, Methodology, Project administration, Resources,
+  Software, Supervision, Validation, Writing — original draft, Writing — review
+  & editing.
 
 ## Acknowledgements and non-author contributions
 
@@ -55,7 +60,7 @@ as sources of domain terminology, expertise, and feedback.
 - **Initial HCM profile of the TEATIME Olog:** Leonardo Restivo and Davor Virag.
 - **Preparation and preliminary scoping of the COST mobility-grant project and
   early categorisation of metadata elements used in auxiliary authoring tools:**
-  Benoit Girard and Leonardo Restivo.
+  Leonardo Restivo. (Benoit Girard, who also contributed, is now a co-author.)
 - **Early conceptual and software architecture developed for HCMO within
   Metadatapp:** Laurent Huzard.
 - **Domain expertise and feedback:** Benoit Petit-Demoulière, Vootele Voikar,
@@ -75,6 +80,10 @@ development of Metadatapp.
       (`cyril.gilbert8@gmail.com`), Konstantin Todorov
       (`konstantin.todorov@lirmm.fr`), and Damien Huzard
       (`damien.huzard@gmail.com`).
+- [ ] Benoit Girard (added 2026-09-24; ORCID 0000-0002-3914-6483 received):
+      collect affiliation; update
+      `main.tex` institute placeholder, `CITATION.cff`, README, and decide
+      whether he is added to the release creator metadata.
 - [ ] Add Philippe Rocca-Serra between Larmande and Todorov in the published
       Zenodo creator metadata. Preserve the existing Git tag and archived
       ontology graph; this is a metadata-only correction.
@@ -88,9 +97,10 @@ development of Metadatapp.
   1. The community-developed [COST TEATIME Olog](https://www.cost-teatime.org/about/hcm-definition/)
      established structured domain terminology and is the closest conceptual
      precursor to HCMO.
-  2. During the first half of 2025, Damien Huzard began translating the broader
-     domain need into a machine-actionable ontology through Metadatapp's
-     semantic-development work and related grant preparation.
+  2. From early March 2025, Damien Huzard developed an earlier
+     machine-actionable ontology, HCM-D, published on BioPortal (no longer
+     active), through Metadatapp's semantic-development work and related grant
+     preparation (date confirmed by Leonardo Restivo, 2026-09-24).
   3. A COST mobility grant (€750) awarded to Damien Huzard for *Mapping the
      Home-Cage Monitoring Ontology to Device Metadata* supported limited
      preliminary device-metadata mapping, project scoping, and publication of
@@ -100,7 +110,8 @@ development of Metadatapp.
      d'Innovation of the University of Montpellier and awarded to Metadatapp to
      support collaboration between Damien Huzard and Konstantin Todorov,
      supported the comprehensive redesign and formal evaluation from October
-     2025 to October 2026. As part of the Exogene-funded Master's project, Cyril
+     2025 to October 2026. As part of the Exogene-funded Master's project
+     (internship started January 2026), Cyril
      Gilbert redesigned and implemented the HCMO version presented in the
      article, with Pierre Larmande, Serge Sonfack Sounchio, Gaoussou Sanou, and
      Antoine Toffano contributing as recorded in the CRediT statement.
