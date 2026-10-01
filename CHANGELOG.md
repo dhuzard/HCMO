@@ -43,6 +43,27 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
   new *System short names* table.
   `shapes/vocab-shapes.ttl` and validation step 8 check vocabulary integrity,
   generated-output freshness, example usage, and a negative probe.
+- Recorded the BFO/SOSA double-hierarchy decision package and work plan for
+  the co-author vote. It documents the verified state — four genuinely
+  dual-parented classes, four SOSA-only observation classes with no BFO anchor,
+  and zero disjointness axioms in both the pinned SOSA 2017 artifact and the
+  merged HCMO graph — reviews the tabled option (a) proposal axiom by axiom
+  against the pinned source, and breaks down the work required under each
+  candidate option. Two of the four proposed axioms are sound
+  (`sosa:Observation` under process, `sosa:Actuator` under material entity) and
+  two are not (`sosa:Sensor` under material entity contradicts SOSA's
+  "device, agent (including humans), or software" definition; `sosa:Result`
+  under information entity contradicts SOSA's physical-specimen sampling
+  results). This is a planning document only; no module, term IRI, axiom, or
+  generated artifact changed.
+- Added a plain-language co-author decision sheet for the BFO/SOSA double
+  hierarchy, listing the nine choices that need a collective answer with
+  context, options, costs, blocking order, and a recommendation for each.
+
+- Recorded the deposited COST TEATIME Home Cage Monitoring Definition Olog
+  Zenodo DOI in provenance, README, system references, and paper bibliography
+  metadata. This is a documentation/provenance update only; no HCMO term IRI,
+  axiom, or release DOI changed.
 
 ### Changed
 
@@ -99,9 +120,11 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
   raw response and a deterministic summary, with documented HCMO exceptions.
 - Added current-candidate OOPS!/FOOPS! raw evidence and triage, plus a
   deterministic ZIP that can be imported directly into Overleaf.
-- Added an Overleaf-ready manuscript package and three dependency-free TikZ
-  figures for the release pipeline, five-module domain model, and ISA/STATO
-  round-trip fixture.
+- Added an Overleaf-ready manuscript package and four dependency-free TikZ
+  figures for the release pipeline, five-module domain model, ISA/STATO
+  round-trip fixture, and the boundary between the normative ontology and
+  instance-level interoperability evidence. The resource section now links
+  directly to the immutable instance-level OBI/STATO bridge example.
 - Added a dated post-PR #24--#26 semantic review recording current build,
   HermiT, SHACL, competency-question, external-vocabulary, RO-Crate, and native
   ISA projection evidence.
@@ -133,6 +156,20 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
   ISA-Tab → ISA-JSON. Stable HCMO IRIs survive as explicit ISA comments; the
   loss manifests now expose that factor values on unchanged animal Sources are
   outside this projection instead of fabricating Sample proxies.
+- Added reproducible, checked-in ISA-API outputs for that native projection and
+  documented the Figure 3 decisions for animals, specimens, processes, files,
+  housing assignments, factors, groups, and statistical results. The validator
+  now fails when the generated ISA-JSON or ISA-Tab files are stale.
+- Recorded the still-undecided ISA configuration versus HCMO--ISA SHACL design
+  discussion, including their distinct validation scopes, a layered option, a
+  whole-animal feasibility test, claim boundaries, and questions for co-author
+  review. No ontology or formal-conformance decision was made.
+- Annotated the generated mixed-model result matrix with the pinned STATO class
+  IRIs and labels for the linear mixed model, contrast estimate, 95% confidence
+  interval, and p-value, plus links to their semantic entities. Added exact
+  validation, a fixture artifact map, direct manuscript links, and explicit
+  Figure 3 pointers without changing HCMO ontology axioms. The fixture
+  generator's deterministic re-execution now also works reliably on Windows.
 - Hardened the 2 × 2 fixture after expert audit: housing intervals are
   half-open and must be well-formed, assignment records require one bearer,
   observation intervals must resolve to the correct enclosure, and historical
@@ -255,6 +292,14 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 ### Renamed
 
 - None.
+
+- Moved working notes and co-author meeting records (the BFO/SOSA decision package,
+  PROV-BFO reading notes, co-author meeting and email records, the ISA/SHACL
+  brainstorm, agent prompts) out of `docs/` into the private
+  `dhuzard/hcmo-internal-docs` repository, and organised the Gilbert 2026
+  internship report, its English translation and figures under
+  `docs/paper/sources/gilbert-2026-internship-report/` with a README. No ontology
+  term, shape, query or generated artifact changed.
 
 ## [0.2.0] - 2026-07-17
 

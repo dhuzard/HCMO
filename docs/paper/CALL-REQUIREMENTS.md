@@ -1,17 +1,38 @@
-# Resources Track — distilled requirements & compliance checklist
+# ESWC 2027 Resources Track — requirements & compliance checklist
 
-Sources: ISWC 2026 Call for Resources Track Papers; ESWC 2026 Call for Papers —
-Resources Track. Both tracks share the criteria below (wording paraphrased).
-**Re-verify against the live CfP before submitting** (dates, page limit, template).
+> **2026-09-24: target venue changed to the ISWC Resources Track.** The
+> provisional ISWC requirements (15 pages + references, mandatory Resource
+> Availability Statement counted in the limit, registry discoverability,
+> comparison with similar resources) and their consequences are in
+> [`ISWC-MIGRATION-PLAN.md`](ISWC-MIGRATION-PLAN.md) §3. The ESWC checklist
+> below is kept for history; sections B–D remain useful as a resource checklist.
+
+Target venue: **ESWC 2027 Resources Track**. The
+[official ESWC 2027 Resources Track page](https://2027.eswc-conferences.org/calls/papers-resource-track/)
+was checked on **2026-09-17** and still stated “Coming soon”; its submission
+rules, dates, page limit, and review model were therefore not yet available.
+Until that call is published, the requirements below use the
+[official ESWC 2026 Resources Track call](https://2026.eswc-conferences.org/calls/papers-resource-track/)
+as an explicitly provisional planning baseline. Re-verify every provisional
+item against the 2027 call before submission.
+
+Reference examples: the official
+[ESWC 2026 accepted main-track papers page](https://2026.eswc-conferences.org/program/accepted-papers/main-tracks/)
+lists the Resources Track papers separately and links to their available PDFs.
+Use these papers as structural and presentation examples, not as substitutes
+for the forthcoming ESWC 2027 submission rules.
 
 ## A. Submission mechanics
 
 - [ ] **Format / template:** Springer **LNCS** (LaTeX strongly preferred).
-- [ ] **Page limit:** ISWC ~12 pp incl. references *(confirm)* · ESWC 15 pp +
-      unlimited references *(per CfP)*. → write to **12 pp incl. refs** to be safe
-      for either, expand to 15 only if ESWC is locked.
-- [ ] **Anonymity:** **single-anonymous** — authors are **named** (do NOT
-      anonymise; the resource and its owners must be inspectable). Reviewers are
+- [ ] **Page limit:** **not yet announced for ESWC 2027** as of 2026-09-17.
+      Planning baseline only: the official ESWC 2026 Resources Track allowed
+      **15 pages plus unlimited reference pages**. The manuscript currently has
+      16 pre-bibliography pages and 3 reference pages (19 total), so it is one
+      content page over that provisional baseline. Do not apply the former ISWC
+      12-page fallback: ESWC 2027 is the selected venue.
+- [ ] **Anonymity:** not yet announced for ESWC 2027. Provisional ESWC 2026
+      baseline: **single-anonymous** — authors are named and reviewers are
       anonymous.
 - [ ] **Abstract pre-submission** (~1 week before the paper) — required.
 - [ ] **English**, original, not under concurrent review.

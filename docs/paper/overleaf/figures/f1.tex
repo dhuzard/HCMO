@@ -6,7 +6,7 @@
   box/.style={draw, rounded corners=1.5pt, align=center, minimum height=8mm, font=\scriptsize, inner xsep=5pt},
   flow/.style={-{Latex[length=2mm]}, thick}
 ]
-\node[box, fill=blue!8] (src) {Five source modules\\+ compatibility};
+\node[box, fill=blue!8] (src) {5 domain modules\\+ upper-level + compatibility};
 \node[box, fill=yellow!12, right=of src] (manifest) {Stable manifest\\\texttt{hcmo.yaml}};
 \node[box, fill=green!10, right=of manifest] (build) {Deterministic build\\\texttt{build.py}};
 \node[box, fill=green!10, right=of build] (dist) {TTL / OWL / JSON-LD\\profile inventory};
@@ -15,7 +15,7 @@
 \draw[flow] (src) -- (manifest);
 \draw[flow] (manifest) -- (build);
 \draw[flow] (build) -- (dist);
-\draw[flow] (dist) |- (validate);
+\draw[flow] (dist.south) -- ++(0,-2.2mm) -| (validate.north);
 \draw[flow] (validate) -- (release);
 \draw[flow] (manifest) |- (validate);
 \end{tikzpicture}

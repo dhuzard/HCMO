@@ -2,33 +2,39 @@
 \centering
 \resizebox{\textwidth}{!}{%
 \begin{tikzpicture}[
-  node distance=7mm and 9mm,
-  entity/.style={draw, rounded corners=1.5pt, align=center, minimum height=9mm, font=\scriptsize, inner xsep=5pt},
+  entity/.style={draw, rounded corners=1.5pt, align=center, minimum height=9mm, minimum width=34mm, font=\scriptsize, inner xsep=4pt},
   rel/.style={-{Latex[length=1.8mm]}, font=\tiny},
-  evidence/.style={draw, dashed, rounded corners=1.5pt, align=center, font=\scriptsize, inner sep=4pt}
+  lbl/.style={fill=white, inner sep=1pt, font=\tiny},
+  hlbl/.style={above, inner sep=1.5pt, font=\tiny},
+  evidence/.style={draw, dashed, rounded corners=1.5pt, align=center, minimum width=34mm, font=\scriptsize, inner sep=4pt}
 ]
-\node[entity, fill=yellow!14] (cage) {\texttt{hcm:MonitoredEnclosure}\\central physical hub};
-\node[entity, fill=red!8, left=18mm of cage] (assignment) {\texttt{hcm-bio:HousingAssignment}\\time-bounded record};
-\node[entity, fill=red!8, above=of assignment] (subject) {\texttt{hcm-bio:Subject}\\stable animal identity};
-\node[entity, fill=violet!9, right=12mm of cage] (sensor) {\texttt{hcm-tech:Sensor}\\\texttt{sosa:Sensor}};
-\node[entity, fill=blue!8, below=10mm of sensor] (observation) {HCMO observation\\\texttt{sosa:Observation}};
-\node[entity, fill=blue!8, right=8mm of observation] (result) {\texttt{hcm-obs:}\\\texttt{ObservationResult} / \texttt{sosa:Result}};
-\node[entity, fill=green!9, below=10mm of cage] (profile) {\texttt{hcm-env:}\\\texttt{EnvironmentProfile}};
-\node[entity, fill=green!9, right=8mm of profile] (spec) {\texttt{hcm-env:}\\\texttt{MeasurementSpecification}};
-\node[entity, fill=green!9, below=8mm of spec] (quantity) {\texttt{hcm-obs:QuantityValue}\\\texttt{qudt:QuantityValue}};
-\node[evidence, below=of assignment] (time) {\texttt{time:Interval}\\assignment validity};
+% Three rows on a fixed grid, so that no box or arrow crosses another:
+% top = identity and observations, middle = housing and devices,
+% bottom = time and environmental specifications.
+\node[entity, fill=red!8]    (subject)     at (0,3)  {\texttt{hcm-bio:Subject}\\stable animal identity};
+\node[entity, fill=blue!8]   (observation) at (11.2,3) {HCMO observation\\\texttt{sosa:Observation}};
+\node[entity, fill=blue!8]   (result)     at (16.8,3)  {\texttt{hcm-obs:ObservationResult}\\\texttt{sosa:Result}};
 
-\draw[rel] (subject) -- node[left]{\texttt{hasHousingAssignment}} (assignment);
-\draw[rel] (assignment) -- node[above]{\texttt{assignedToEnclosure}} (cage);
-\draw[rel] (assignment) -- node[left]{\texttt{time:hasTime}} (time);
-\draw[rel] (cage) -- node[above]{\texttt{monitoredBy}} (sensor);
-\draw[rel] (sensor) -- node[right]{\texttt{sosa:madeObservation}} (observation);
-\draw[rel] (observation) -- node[above]{\texttt{sosa:hasResult}} (result);
-\draw[rel, dashed] (quantity) to[bend right=12] node[right]{subclass} (result);
-\draw[rel] (observation) to[bend right=18] node[above]{\texttt{sosa:hasFeatureOfInterest}} (subject);
-\draw[rel] (cage) -- node[left]{\texttt{hasEnvironment}} (profile);
-\draw[rel] (profile) -- node[above]{\texttt{hasMeasurementSpec}} (spec);
-\draw[rel] (spec) -- node[above]{\texttt{hasSpecifiedValue}} (quantity);
+\node[entity, fill=red!8]    (assignment) at (0,1.5) {\texttt{hcm-bio:HousingAssignment}\\time-bounded record};
+\node[entity, fill=yellow!14] (cage)      at (5.6,1.5) {\texttt{hcm:MonitoredEnclosure}\\central physical hub};
+\node[entity, fill=violet!9] (sensor)     at (11.2,1.5) {\texttt{hcm-tech:Sensor}\\\texttt{sosa:Sensor}};
+
+\node[evidence]              (time)       at (0,0)  {\texttt{time:Interval}\\assignment validity};
+\node[entity, fill=green!9]  (profile)    at (5.6,0)  {\texttt{hcm-env:EnvironmentProfile}};
+\node[entity, fill=green!9]  (spec)       at (11.2,0) {\texttt{hcm-env:}\\\texttt{MeasurementSpecification}};
+\node[entity, fill=green!9]  (quantity)   at (16.8,0) {\texttt{hcm-obs:QuantityValue}\\\texttt{qudt:QuantityValue}};
+
+\draw[rel] (subject) -- node[lbl]{\texttt{hasHousingAssignment}} (assignment);
+\draw[rel] (assignment) -- node[lbl]{\texttt{time:hasTime}} (time);
+\draw[rel] (assignment) -- node[hlbl]{\texttt{assignedToEnclosure}} (cage);
+\draw[rel] (cage) -- node[hlbl]{\texttt{monitoredBy}} (sensor);
+\draw[rel] (sensor) -- node[lbl]{\texttt{sosa:madeObservation}} (observation);
+\draw[rel] (observation) -- node[hlbl]{\texttt{sosa:hasFeatureOfInterest}} (subject);
+\draw[rel] (observation) -- node[hlbl]{\texttt{sosa:hasResult}} (result);
+\draw[rel] (cage) -- node[lbl]{\texttt{hasEnvironment}} (profile);
+\draw[rel] (profile) -- node[hlbl]{\texttt{hasMeasurementSpec}} (spec);
+\draw[rel] (spec) -- node[hlbl]{\texttt{hasSpecifiedValue}} (quantity);
+\draw[rel, dashed] (quantity) -- node[lbl]{subclass} (result);
 \end{tikzpicture}
 }
 \caption{The five-module HCMO model preserves animal identity, temporal housing,

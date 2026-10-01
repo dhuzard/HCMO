@@ -494,3 +494,10 @@ The HCMO paper should explain that interoperability is achieved through:
 Use the
 [human review checklist](../PHILIPPE-ROCCA-SERRA-HUMAN-REVIEW-CHECKLIST.md)
 to record decisions and route approved work to exact repository artifacts.
+
+The later, still-undecided discussion of whether ISA is best justified through
+an ISA authoring configuration, a reusable HCMO--ISA SHACL profile, or layered
+validation is recorded separately in
+[`ISA-CONFIGURATION-SHACL-BRAINSTORM-2026-09-18.md`](ISA-CONFIGURATION-SHACL-BRAINSTORM-2026-09-18.md).
+That record is exploratory and must not be read as an accepted ontology or
+conformance decision.
