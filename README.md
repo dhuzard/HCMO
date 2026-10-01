@@ -185,8 +185,8 @@ the corresponding repository source is available from its
   France · [0009-0008-2489-8106](https://orcid.org/0009-0008-2489-8106) · [@cyrilbonus](https://github.com/cyrilbonus)
 - **Gaoussou Sanou** — IMGT®, IGH, Université de Montpellier, CNRS,
   Montpellier, France · [0000-0003-2204-2466](https://orcid.org/0000-0003-2204-2466) · [@gsanou](https://github.com/gsanou)
-- **Serge Sonfack Sounchio** — Production Engineering Laboratory/UFTMiP,
-  France · [0000-0002-6085-6818](https://orcid.org/0000-0002-6085-6818) · [@sonfack](https://github.com/sonfack)
+- **Serge Sonfack Sounchio** — Robert Bosch Sp. z o. o., Jutrzenki 105,
+  Poland · [0000-0002-6085-6818](https://orcid.org/0000-0002-6085-6818) · [@sonfack](https://github.com/sonfack)
 - **Antoine Toffano** — LIRMM, Université de Montpellier, CNRS, Montpellier,
   France · [0009-0008-0575-8490](https://orcid.org/0009-0008-0575-8490)
 - **Pierre Larmande** — DIADE, Université de Montpellier, IRD, CIRAD,
