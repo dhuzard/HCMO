@@ -17,8 +17,8 @@ Three versions of `docs/paper/overleaf/` existed:
 
 | Version | Source | What it had |
 | --- | --- | --- |
-| **Base** | `HCMO.zip` (online project, 2026-09-04) | Last common ancestor of the other two. |
-| **Online** | `HCMO (1).zip` (online project, exported 2026-09-24) | All co-author edits since 4 Sept: rewritten abstract, Olog/Bains related-work text, methodology moved into §3, representative CQ instead of the CQ table, resource statistics table, OOPS!/FOOPS!/AskWol citations and links, 7-module manifest wording, adoption caveat, authors with ORCIDs and full affiliations, updated CRediT (adds Philippe Rocca-Serra and Benoit Girard), updated acknowledgements, `todonotes` review comments, `\new{}` change-marking macro. |
+| **Base** | `HCMO.zip` (online project, 2026-09-04) *(archive since removed from the repository tree; kept in git history)* | Last common ancestor of the other two. |
+| **Online** | `HCMO (1).zip` (online project, exported 2026-09-24) *(archive since removed from the repository tree; kept in git history)* | All co-author edits since 4 Sept: rewritten abstract, Olog/Bains related-work text, methodology moved into §3, representative CQ instead of the CQ table, resource statistics table, OOPS!/FOOPS!/AskWol citations and links, 7-module manifest wording, adoption caveat, authors with ORCIDs and full affiliations, updated CRediT (adds Philippe Rocca-Serra and Benoit Girard), updated acknowledgements, `todonotes` review comments, `\new{}` change-marking macro. |
 | **Repo** | `HEAD` of this branch | Repo-only work never uploaded online: redesigned Figure 3, new Figure 4 (evidence layers), links to the fixture CSV/result files and `native-isa/`, OBI/STATO boundary sentence in §4, "authoritative PLMLatex" README. |
 
 **Neither was a superset.** Online is the more advanced *manuscript*; repo is
