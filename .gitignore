@@ -7,9 +7,7 @@ pnpm-debug.log*
 
 # Builds / caches (adjust if you use these)
 # NOTE: the repo-root dist/ holds GENERATED ontology release artifacts that are
-# intentionally tracked (downstream consumers + CI read them). Ignore nested
-# build dirs (e.g. webapp/dist) but not the ontology dist/.
-**/webapp/dist/
+# intentionally tracked (downstream consumers + CI read them).
 build/
 .cache/
 .next/

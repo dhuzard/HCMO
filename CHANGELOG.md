@@ -191,6 +191,13 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 - None.
 
+### Removed
+
+- Removed the optional Node.js `webapp/` authoring/blueprint app from the release
+  repository. It is archived with its history at
+  <https://github.com/dhuzard/hcmo-webapp>. No ontology term, shape, query or
+  generated artifact depended on it; `dist/` is unchanged.
+
 ## [0.2.0] - 2026-07-17
 
 Updated the public contribution workflow to emit current HCMO instance data and
