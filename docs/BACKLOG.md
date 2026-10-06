@@ -36,7 +36,9 @@ as equivalences. **Nothing is implemented and no module changed.**
   edition. *Tracked: P1 (Actuator correction), T20m.*
 - [ ] **Ask Serge Sonfack Sounchio and Antoine Toffano for their replies** on the
   BFO/SOSA thread (they had not replied by 2026-09-24).
-- [ ] **Write ADR-0005** (`docs/decisions/ADR-0005-BFO-SOSA-BRIDGE-POLICY.md`,
+- [ ] **Finish ADR-0005** (draft written 2026-10-06 as *proposed*; Pierre Larmande
+  and Cyril Gilbert agreed to the five points; still to fill: per-axiom verdicts
+  table, Philippe's answers, and point 5). Original scope: (`docs/decisions/ADR-0005-BFO-SOSA-BRIDGE-POLICY.md`,
   shaped like ADR-0002): per-axiom verdicts including the rejected ones, scope of
   de-duplication, default-versus-opt-in, and the vote (date, participants,
   outcome). Blocks every implementation step below.
