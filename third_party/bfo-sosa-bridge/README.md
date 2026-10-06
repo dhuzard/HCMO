@@ -14,10 +14,11 @@ bytes match the recorded SHA-256 on every platform. Checksums are pinned in
 
 ## Why a patched copy
 
-The published PROV-to-BFO mapping (tag and `main`) does not parse as Turtle: it
-uses the default prefix `:` (SWRL variables, line 319) and `xsd:` (line 323)
-without declaring them, and line 147 has a typo (`rdfs:comment:`). Reasoners and
-RDF toolkits reject it.
+The published PROV-to-BFO mapping (tag `v2025-01-19` and `main`) does not parse as
+Turtle: it uses the default prefix `:` (SWRL variables, line 319) and `xsd:`
+(line 323) without declaring them. Reasoners and RDF toolkits reject it. Line 147
+of the tagged file also has a typo (`rdfs:comment:`); upstream fixed it on `main`
+(their #41) but it remains in the tag pinned here.
 
 The only change in `prov-bfo-directmappings.prefix-fixed.ttl` is that these two
 lines are prepended, byte for byte:
@@ -32,8 +33,13 @@ fails if the patched file is anything other than those two lines followed by the
 original bytes. Results obtained with it must be described as "on the
 prefix-repaired alignment", never as raw-source success.
 
-**Upstream status:** report to the authors pending (see ADR-0005 decision 2). When
-a corrected tag exists, pin it in `external-vocabularies.yaml`, delete the
+**Upstream status:** reported as
+[BFO-Mappings/PROV-to-BFO#44](https://github.com/BFO-Mappings/PROV-to-BFO/issues/44),
+with the fix proposed in
+[#43](https://github.com/BFO-Mappings/PROV-to-BFO/pull/43) (the same two
+declarations and the same default namespace, the document base plus `#`; both open
+at the time of writing). When a corrected tag exists, pin it in
+`external-vocabularies.yaml`, delete the
 `.prefix-fixed.ttl` file and the repair check, and re-run the matrix.
 
 ## Notes

@@ -128,8 +128,10 @@ The default release (`hcmo.yaml`, `dist/`) is unchanged by the profile.
 The published PROV-to-BFO file does not parse (undeclared `:` and `xsd:`
 prefixes). HCMO vendors it verbatim plus a copy with exactly those two prefix
 declarations prepended; CI proves the difference is only those lines. Results are
-therefore "on the prefix-repaired alignment". The patch is dropped as soon as the
-authors publish a parseable tag. Details: `third_party/bfo-sosa-bridge/README.md`.
+therefore "on the prefix-repaired alignment". The problem is reported upstream
+([#44](https://github.com/BFO-Mappings/PROV-to-BFO/issues/44), fix proposed in
+[#43](https://github.com/BFO-Mappings/PROV-to-BFO/pull/43)); the patch is dropped
+as soon as the authors publish a parseable tag. Details: `third_party/bfo-sosa-bridge/README.md`.
 
 ## Quality gates
 

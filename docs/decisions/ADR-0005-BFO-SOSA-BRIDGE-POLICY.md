@@ -43,10 +43,11 @@ preferred in the co-author discussion, with (a) first.
    and `xsd:` without declaring them. HCMO vendors the verbatim file (SHA-256
    recorded) together with a patch that only prepends the two missing prefix
    declarations, and a CI check proves the patched file differs from the original
-   by exactly those lines. No axiom is changed and the upstream
-   `rdfs:comment:` typo is left as it is. An upstream issue/pull request asks the
-   authors to fix and re-tag; when a corrected immutable tag exists, HCMO pins it
-   and removes the patch. Until then results are stated as "on the prefix-repaired
+   by exactly those lines. No axiom is changed and the `rdfs:comment:` typo in the
+   pinned tag (already fixed on upstream `main`) is left as it is. The problem is
+   reported upstream as BFO-Mappings/PROV-to-BFO issue #44 with the fix proposed in
+   pull request #43 (same declarations, same default namespace); when a corrected
+   immutable tag exists, HCMO pins it and removes the patch. Until then results are stated as "on the prefix-repaired
    chain", never as raw-source success.
 3. **Opt-in.** The profile is not part of the default release manifest and the
    core modules take on no BFO commitment through it. `hcmo.yaml`, `dist/` and the

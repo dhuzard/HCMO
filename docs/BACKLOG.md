@@ -46,8 +46,11 @@ Open:
 - [ ] **Ask which exact artifact motivated the disjointness remark.** The pinned
   SOSA 2017 file has none; the 2023 Working Draft (2026-10-03) has none on the
   classes concerned, only among its four collection classes.
-- [ ] **Report the unparseable PROV-to-BFO file upstream** (BFO-Mappings/PROV-to-BFO);
-  when a parseable tag exists, pin it and drop the prefix-fixed copy.
+- [ ] **Follow up the upstream fix for the unparseable PROV-to-BFO file:** reported
+  as BFO-Mappings/PROV-to-BFO#44 with the fix in #43 (both open). When the pull
+  request is merged and a tag is published, pin that tag in
+  `external-vocabularies.yaml`, delete the prefix-fixed copy and its repair check in
+  `tooling/bridge_profile.py`, and re-run the matrix.
 - [ ] **Production-stack replay (acceptance requirement):** ask Cyril Gilbert to
   open the bundle from `python tooling/bridge_profile.py package` in Protégé
   (HermiT) and ROBOT, and report load errors, consistency, inferred placements and

@@ -184,6 +184,7 @@ vocabularies:
         vendored_path: third_party/bfo-sosa-bridge/prov-bfo-directmappings.original.ttl
     # The profile loads the original with exactly these two lines prepended
     # (checked byte for byte); remove when upstream publishes a parseable tag.
+    # Reported as BFO-Mappings/PROV-to-BFO#44; fix proposed in #43.
     repair:
       vendored_path: third_party/bfo-sosa-bridge/prov-bfo-directmappings.prefix-fixed.ttl
       sha256: 329d94d33fc61e3250913961a836f7cdc592995b5fdcdb072b44191237857dab
