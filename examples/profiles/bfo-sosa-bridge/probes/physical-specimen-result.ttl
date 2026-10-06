@@ -1,0 +1,12 @@
+@prefix ex: <https://example.org/hcmo/bridge-probe#> .
+@prefix BFO: <http://purl.obolibrary.org/obo/BFO_> .
+@prefix hcm-obs: <https://w3id.org/hcmo/ontology/hcm/obs#> .
+@prefix hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+
+# Positive probe: a physical specimen is the result of an observation. Consistent because the bridge places Result only under continuant.
+
+ex:specimen-1 a sosa:Sample, BFO:0000040 .
+ex:obs-1 a sosa:Observation ;
+    sosa:hasResult ex:specimen-1 .

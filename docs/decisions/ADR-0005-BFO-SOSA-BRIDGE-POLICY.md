@@ -106,13 +106,13 @@ preferred in the co-author discussion, with (a) first.
 ## Expected consequences
 
 Verified on the prefix-repaired chain with full pinned BFO and IAO (HermiT
-1.3.8.1099); not a general SOSA–BFO reading.
+1.3.8.1099; re-run by `tooling/bridge_profile.py`, 70 checks passing); not a general SOSA–BFO reading.
 
 | Class | Placement under the chain |
 | --- | --- |
 | `sosa:Sensor`, `sosa:Actuator`, `sosa:Sampler` | material entity |
 | `sosa:Observation`, `sosa:Actuation`, `sosa:Sampling` | process |
-| `sosa:Result`, `sosa:ObservableProperty`, `sosa:FeatureOfInterest`, `sosa:Platform`, `sosa:Sample` | continuant (only) |
+| `sosa:Result`, `sosa:ObservableProperty`, `sosa:FeatureOfInterest`, `sosa:Platform` | continuant (only) |
 | `sosa:Procedure` | generically dependent continuant |
 | Four HCMO observation classes and `GasConcentrationObservation` | process |
 
@@ -139,7 +139,7 @@ the composed SOSA → PROV-O → BFO chain.
 | Axiom | Verdict |
 | --- | --- |
 | `sosa:ObservableProperty` under specifically dependent continuant | **Not added** (decision 8). Chain continuant only. |
-| `sosa:Procedure`, `FeatureOfInterest`, `Platform`, `Sample` | No direct HCMO axiom; chain placement only. |
+| `sosa:Procedure`, `FeatureOfInterest`, `Platform` | No direct HCMO axiom; chain placement only. `sosa:Sample` is not placed by the pinned alignment (see remaining risks). |
 | `sosa:hasFeatureOfInterest` filler must be a continuant | **Guard required** (decision 7). |
 
 ### C. De-duplication
@@ -173,6 +173,10 @@ No `hcm-compat` deprecation entry and no `### Renamed` changelog section follow.
   triples (version IRI, definitions, scope notes); no BFO IRI the alignment uses
   is missing. The material-entity and continuant-part definitions differ in prose
   and need author review. The profile is tested against both BFO files.
+- The W3C SOSA-to-PROV-O alignment is pinned at the immutable commit that matches the
+  pinned SOSA 2017 file. The file served live at `https://www.w3.org/ns/sosa/prov/` adds one
+  statement (`sosa:Sample ⊑ prov:Entity`), so the audit's continuant placement of `sosa:Sample`
+  does not hold for the pinned file; the profile does not place `sosa:Sample`.
 - The optional RO/CCO mappings are not part of the chain and are untested.
 - The taxonomy comparison is finite; it is not a proof of conservative extension.
 - Whether the carrier pattern suits real software toolchains (DeepLabCut, LMT) is

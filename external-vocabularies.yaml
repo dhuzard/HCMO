@@ -42,6 +42,11 @@ vocabularies:
       - role: ontology
         url: https://raw.githubusercontent.com/BFO-ontology/BFO-2020/dd89f4a193038b66ef0e891d546c05a5b477f40f/21838-2/owl/bfo-core.owl
         sha256: b65c817a7a25501499d287981aea972f2ce33146dcfb855915a459f6a051718d
+      # Release the PROV-to-BFO alignment was built against. Used only by the
+      # optional bridge profile to test against both BFO files (ADR-0005).
+      - role: alignment-target-comparison
+        url: https://raw.githubusercontent.com/BFO-ontology/BFO-2020/044490fc5100ffed6df7d4d15cbc167698b6fdee/src/owl/bfo-core.ttl
+        sha256: 6944e2c96a0d8709dc15ae5364792019e208061eda3f32311af4f3b8d8443a3b
     used_terms:
       - http://purl.obolibrary.org/obo/BFO_0000001
       - http://purl.obolibrary.org/obo/BFO_0000002
@@ -53,6 +58,9 @@ vocabularies:
       - http://purl.obolibrary.org/obo/BFO_0000027
       - http://purl.obolibrary.org/obo/BFO_0000031
       - http://purl.obolibrary.org/obo/BFO_0000040
+      # Optional bridge profile only: documented software-sensor carrier pattern.
+      - http://purl.obolibrary.org/obo/BFO_0000059
+      - http://purl.obolibrary.org/obo/BFO_0000196
 
   iao:
     status: active-anchor
@@ -145,6 +153,45 @@ vocabularies:
       - http://www.w3.org/ns/prov#used
       - http://www.w3.org/ns/prov#wasDerivedFrom
       - http://www.w3.org/ns/prov#wasGeneratedBy
+
+  # Optional BFO/SOSA bridge profile (ADR-0005, proposed). Not part of the default
+  # release; the files are vendored under third_party/bfo-sosa-bridge/.
+  sosa-prov-alignment:
+    status: optional-profile-pinned
+    authoritative_version: "W3C SSN 2017 section 6.5 (non-normative) as committed in w3c/sdw"
+    version_iri: http://www.w3.org/ns/sosa/prov
+    canonical_term_namespaces:
+      - http://www.w3.org/ns/sosa/prov
+    artifacts:
+      - role: alignment
+        url: https://raw.githubusercontent.com/w3c/sdw/6dc6059362b82955707937401d8d3db340429293/ssn/rdf/sosa-prov-mapping.ttl
+        sha256: 83bbf59e6a08422302c366d2cb63b9968ad7aeded440d412019a057f511b42fb
+        vendored_path: third_party/bfo-sosa-bridge/sosa-prov-mapping.ttl
+    used_terms:
+      - http://www.w3.org/ns/sosa/prov
+
+  prov-bfo-alignment:
+    status: optional-profile-pinned
+    authoritative_version: "v2025-01-19 (Prudhomme et al. 2025, Sci Data 12:282; CC0)"
+    version_iri: https://raw.githubusercontent.com/BFO-Mappings/PROV-to-BFO/refs/tags/v2025-01-19/prov-bfo-directmappings.ttl
+    canonical_term_namespaces:
+      - https://raw.githubusercontent.com/BFO-Mappings/PROV-to-BFO/
+    artifacts:
+      # Verbatim upstream file. It does not parse (undeclared ':' and 'xsd:').
+      - role: alignment-original
+        url: https://raw.githubusercontent.com/BFO-Mappings/PROV-to-BFO/067e8863ca83d2e42f61f48624fe9741d48d10a8/prov-bfo-directmappings.ttl
+        sha256: e8a91f34c74db5118f242c48fec43e3e240be4974c62af67aac92ba55cc1c8f4
+        vendored_path: third_party/bfo-sosa-bridge/prov-bfo-directmappings.original.ttl
+    # The profile loads the original with exactly these two lines prepended
+    # (checked byte for byte); remove when upstream publishes a parseable tag.
+    repair:
+      vendored_path: third_party/bfo-sosa-bridge/prov-bfo-directmappings.prefix-fixed.ttl
+      sha256: 329d94d33fc61e3250913961a836f7cdc592995b5fdcdb072b44191237857dab
+      prepended_lines:
+        - "@prefix : <https://raw.githubusercontent.com/BFO-Mappings/PROV-to-BFO/main/prov-bfo-directmappings.ttl#> ."
+        - "@prefix xsd: <http://www.w3.org/2001/XMLSchema#> ."
+    used_terms:
+      - https://raw.githubusercontent.com/BFO-Mappings/PROV-to-BFO/refs/tags/v2025-01-19/prov-bfo-directmappings.ttl
 
   qudt-340:
     status: active-selective-reuse
