@@ -49,10 +49,16 @@ Open:
   SOSA 2017 file has none; the 2023 Working Draft (2026-10-03) has none on the
   classes concerned, only among its four collection classes.
 - [ ] **Follow up the upstream fix for the unparseable PROV-to-BFO file:** reported
-  as BFO-Mappings/PROV-to-BFO#44 with the fix in #43 (both open). When the pull
-  request is merged and a tag is published, pin that tag in
-  `external-vocabularies.yaml`, delete the prefix-fixed copy and its repair check in
-  `tooling/bridge_profile.py`, and re-run the matrix.
+  as BFO-Mappings/PROV-to-BFO#44 with the prefix fix in #43 (both open as of
+  2026-10-09; ROBOT evidence added to #44 the same day). The typo fix (#41) is
+  already on upstream `main` but not in any tag. Exit condition: a tag that
+  contains **both** the #41 typo fix and the #43 prefix declarations, and whose
+  file parses unmodified. Then pin that tag in `external-vocabularies.yaml`,
+  delete the repaired copy, the `repair` block (`prepended_lines`,
+  `replaced_once`) and `check_vendor`'s repair checks in
+  `tooling/bridge_profile.py`, update `third_party/bfo-sosa-bridge/README.md`,
+  and re-run the matrix. A tag with only one of the two fixes does not satisfy
+  this item.
 - [x] **Production-stack replay (acceptance requirement):** done by Cyril
   Gilbert on 2026-10-09. Protégé 5.6.9 / HermiT 1.4.3.456: both presentations
   consistent, no unsatisfiable class, expected inferences and probe results.
