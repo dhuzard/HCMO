@@ -9,7 +9,7 @@ bytes match the recorded SHA-256 on every platform. Checksums are pinned in
 | File | Source | SHA-256 | Licence |
 | --- | --- | --- | --- |
 | `prov-bfo-directmappings.original.ttl` | [BFO-Mappings/PROV-to-BFO](https://github.com/BFO-Mappings/PROV-to-BFO) tag `v2025-01-19` (commit `067e8863…`), `prov-bfo-directmappings.ttl`, verbatim | `e8a91f34…c8f4` | CC0 (declared in the file) |
-| `prov-bfo-directmappings.prefix-fixed.ttl` | the file above with two lines prepended (see below) | `329d94d3…7dab` | CC0 |
+| `prov-bfo-directmappings.prefix-fixed.ttl` | the file above with two lines prepended and one token corrected (see below) | `edacf1c2…e282` | CC0 |
 | `sosa-prov-mapping.ttl` | [w3c/sdw](https://github.com/w3c/sdw) commit `6dc60593…` (the commit pinned for SOSA 2017), `ssn/rdf/sosa-prov-mapping.ttl`, verbatim; the W3C one-way SOSA to PROV-O alignment referenced from SSN 2017 section 6.5 (non-normative) | `83bbf59e…42fb` | W3C Software and Document licence |
 
 ## Why a patched copy
@@ -17,21 +17,26 @@ bytes match the recorded SHA-256 on every platform. Checksums are pinned in
 The published PROV-to-BFO mapping (tag `v2025-01-19` and `main`) does not parse as
 Turtle: it uses the default prefix `:` (SWRL variables, line 319) and `xsd:`
 (line 323) without declaring them. Reasoners and RDF toolkits reject it. Line 147
-of the tagged file also has a typo (`rdfs:comment:`); upstream fixed it on `main`
-(their #41) but it remains in the tag pinned here.
+of the tagged file also has a typo (`rdfs:comment:`, which is a distinct IRI, not
+`rdfs:comment`); upstream fixed it on `main` (their #41) but it remains in the
+tag pinned here. ROBOT 1.9.10 rejects the file on that token (replay by Cyril
+Gilbert, 2026-10-09), so the patched copy corrects it too.
 
-The only change in `prov-bfo-directmappings.prefix-fixed.ttl` is that these two
-lines are prepended, byte for byte:
+`prov-bfo-directmappings.prefix-fixed.ttl` differs from the original by exactly
+two edits. First, these two lines are prepended, byte for byte:
 
 ```turtle
 @prefix : <https://raw.githubusercontent.com/BFO-Mappings/PROV-to-BFO/main/prov-bfo-directmappings.ttl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 ```
 
-No axiom is changed and the `rdfs:comment:` typo is deliberately left alone. CI
-fails if the patched file is anything other than those two lines followed by the
-original bytes. Results obtained with it must be described as "on the
-prefix-repaired alignment", never as raw-source success.
+Second, the single occurrence of `rdfs:comment:` (line 147 of the original) is
+replaced by `rdfs:comment`. No logical axiom is changed: the edit turns one
+annotation on a misspelled predicate into an ordinary `rdfs:comment`. CI fails
+if the patched file is anything other than those two lines followed by the
+original bytes with that one token corrected, or if the misspelled predicate
+still appears in the parsed graph. Results obtained with it must be described as
+"on the repaired alignment", never as raw-source success.
 
 **Upstream status:** reported as
 [BFO-Mappings/PROV-to-BFO#44](https://github.com/BFO-Mappings/PROV-to-BFO/issues/44),
@@ -40,7 +45,9 @@ with the fix proposed in
 declarations and the same default namespace, the document base plus `#`; both open
 at the time of writing). When a corrected tag exists, pin it in
 `external-vocabularies.yaml`, delete the
-`.prefix-fixed.ttl` file and the repair check, and re-run the matrix.
+`.prefix-fixed.ttl` file and the repair check, and re-run the matrix. Replay
+status: Protégé 5.6.9 / HermiT 1.4.3.456 and ROBOT 1.9.10 accept the repaired
+bundle (Cyril Gilbert, 2026-10-09).
 
 ## Notes
 

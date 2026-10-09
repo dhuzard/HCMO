@@ -14,7 +14,9 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
   a BFO placement without equivalences: observations become processes, sensors and
   actuators material entities, results only continuants. Includes vendored,
   checksummed copies of the alignments (the upstream PROV-to-BFO file does not
-  parse; a copy with exactly two prefix lines prepended is checked byte for byte),
+  parse and misspells one annotation predicate; a copy with exactly two prefix
+  lines prepended and that one `rdfs:comment:` token corrected is checked byte
+  for byte, because ROBOT 1.9.10 rejects the typo),
   profile-only SHACL shapes (software typed as a sensor, a process as a feature of
   interest), seven probe fixtures, SSSOM review rows, pins in
   `external-vocabularies.yaml`, `tooling/bridge_profile.py` and an optional

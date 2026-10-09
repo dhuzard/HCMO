@@ -27,7 +27,7 @@ The profile adds **no axiom of its own** and no direct HCMO link: it only
 declares the import closure
 ([`ontology/profiles/bfo-sosa-bridge.ttl`](../ontology/profiles/bfo-sosa-bridge.ttl)).
 
-## Inferred placements (verified on the prefix-repaired chain, HermiT)
+## Inferred placements (verified on the repaired chain, HermiT)
 
 | SOSA / HCMO class | BFO placement |
 | --- | --- |
@@ -126,9 +126,11 @@ The default release (`hcmo.yaml`, `dist/`) is unchanged by the profile.
 ## Unparseable upstream alignment
 
 The published PROV-to-BFO file does not parse (undeclared `:` and `xsd:`
-prefixes). HCMO vendors it verbatim plus a copy with exactly those two prefix
-declarations prepended; CI proves the difference is only those lines. Results are
-therefore "on the prefix-repaired alignment". The problem is reported upstream
+prefixes) and misspells one annotation predicate (`rdfs:comment:`), which ROBOT
+1.9.10 rejects. HCMO vendors it verbatim plus a copy with exactly those two
+prefix declarations prepended and that one token corrected; CI proves the
+difference is only those edits. Results are therefore "on the repaired
+alignment". The prefix problem is reported upstream
 ([#44](https://github.com/BFO-Mappings/PROV-to-BFO/issues/44), fix proposed in
 [#43](https://github.com/BFO-Mappings/PROV-to-BFO/pull/43)); the patch is dropped
 as soon as the authors publish a parseable tag. Details: `third_party/bfo-sosa-bridge/README.md`.
@@ -152,8 +154,9 @@ extension.
 
 ## Limits
 
-- Tested with HermiT through Owlready2 only. Replay in Protégé and ROBOT is an
-  acceptance requirement (ADR-0005).
+- Tested with HermiT through Owlready2 in CI. Replayed by Cyril Gilbert in
+  Protégé 5.6.9 / HermiT 1.4.3.456 and ROBOT 1.9.10 on 2026-10-09: consistent,
+  no unsatisfiable class, expected inferences and probe results.
 - The pinned BFO differs from the release the alignment targets by annotation-only
   triples; the check runs against both.
 - The authors' optional RO and CCO mappings and the W3C bfo-prov mapping are not

@@ -58,6 +58,13 @@ PREFIX_LINES = (
     b"prov-bfo-directmappings.ttl#> .\n"
     b"@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n"
 )
+# The pinned tag also misspells one annotation predicate (`rdfs:comment:`, a
+# distinct IRI). ROBOT 1.9.10 rejects the file on it (replay by Cyril Gilbert,
+# 2026-10-09), so the repair corrects that one token as well. Upstream fixed it
+# on main (their #41).
+TYPO_OLD = b"rdfs:comment: "
+TYPO_NEW = b"rdfs:comment "
+TYPO_IRI = URIRef("http://www.w3.org/2000/01/rdf-schema#comment:")
 
 
 class Report:
@@ -127,14 +134,24 @@ def check_vendor(report: Report) -> dict[str, Path]:
         sha256(original) == artifact("prov-bfo-alignment", "alignment-original")["sha256"],
         "PROV-to-BFO original is byte-identical to the pinned upstream file",
     )
-    expected = PREFIX_LINES + original.read_bytes()
+    original_bytes = original.read_bytes()
+    report.check(
+        original_bytes.count(TYPO_OLD) == 1,
+        "upstream original still contains the single `rdfs:comment:` typo (repair still needed)",
+    )
+    expected = PREFIX_LINES + original_bytes.replace(TYPO_OLD, TYPO_NEW, 1)
     report.check(
         fixed.read_bytes() == expected and sha256(fixed) == repair["sha256"],
-        "prefix-fixed copy is exactly the two documented prefix lines + the original bytes",
+        "repaired copy is exactly the two documented prefix lines + the original bytes "
+        "with the one `rdfs:comment:` token corrected",
     )
     report.check(
         [line for line in PREFIX_LINES.decode().splitlines()] == repair["prepended_lines"],
         "documented prepended lines match external-vocabularies.yaml",
+    )
+    report.check(
+        repair["replaced_once"] == {"from": TYPO_OLD.decode().strip(), "to": TYPO_NEW.decode().strip()},
+        "documented token replacement matches external-vocabularies.yaml",
     )
     report.check(
         sha256(sosa_prov) == artifact("sosa-prov-alignment", "alignment")["sha256"],
@@ -145,7 +162,11 @@ def check_vendor(report: Report) -> dict[str, Path]:
         report.check(False, "upstream original unexpectedly parses: the repair may be obsolete")
     except Exception:  # noqa: BLE001
         report.check(True, "upstream original still fails to parse (repair still needed)")
-    Graph().parse(fixed, format="turtle")
+    fixed_graph = Graph().parse(fixed, format="turtle")
+    report.check(
+        (None, TYPO_IRI, None) not in fixed_graph,
+        "repaired copy no longer uses the misspelled `rdfs:comment:` predicate",
+    )
     return {"fixed": fixed, "sosa_prov": sosa_prov}
 
 
@@ -461,7 +482,7 @@ def run_package(args: argparse.Namespace) -> int:
     (out / "README.md").write_text(
         "# HCMO BFO/SOSA bridge: reasoner bundle\n\n"
         "Self-contained Turtle files (no owl:imports): HCMO + pinned BFO 2020, IAO, SOSA 2017, PROV-O + the W3C\n"
-        "SOSA-to-PROV-O alignment + the PROV-to-BFO alignment (prefix-repaired, see third_party/bfo-sosa-bridge/README.md).\n\n"
+        "SOSA-to-PROV-O alignment + the PROV-to-BFO alignment (prefix- and typo-repaired, see third_party/bfo-sosa-bridge/README.md).\n\n"
         "- `baseline-*.ttl`: everything except the two alignments.\n"
         "- `chain-*.ttl`: baseline + both alignments. `default` = end-user upper presentation, `developer` = with the\n"
         "  developer BFO/IAO profile.\n"

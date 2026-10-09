@@ -41,8 +41,10 @@ Open:
 
 - [ ] **Co-author validation of ADR-0005:** Pierre Larmande and Cyril Gilbert
   agreed to the five points; **Philippe's answers are still missing**, and
-  Serge Sonfack Sounchio and Antoine Toffano have not replied. The carrier pattern
-  and the feature-of-interest restriction need explicit co-author validation.
+  Serge Sonfack Sounchio and Antoine Toffano have not replied. Cyril Gilbert
+  validated the carrier pattern on 2026-10-09 (sensor = deployed physical system,
+  separate from the software and its execution); the feature-of-interest
+  restriction still needs explicit co-author validation.
 - [ ] **Ask which exact artifact motivated the disjointness remark.** The pinned
   SOSA 2017 file has none; the 2023 Working Draft (2026-10-03) has none on the
   classes concerned, only among its four collection classes.
@@ -51,11 +53,13 @@ Open:
   request is merged and a tag is published, pin that tag in
   `external-vocabularies.yaml`, delete the prefix-fixed copy and its repair check in
   `tooling/bridge_profile.py`, and re-run the matrix.
-- [ ] **Production-stack replay (acceptance requirement):** ask Cyril Gilbert to
-  open the bundle from `python tooling/bridge_profile.py package` in Protégé
-  (HermiT) and ROBOT, and report load errors, consistency, inferred placements and
-  probe outcomes. Decide whether the optional RO/CCO mappings and the SWRL
-  location rules are part of the contract.
+- [x] **Production-stack replay (acceptance requirement):** done by Cyril
+  Gilbert on 2026-10-09. Protégé 5.6.9 / HermiT 1.4.3.456: both presentations
+  consistent, no unsatisfiable class, expected inferences and probe results.
+  ROBOT 1.9.10 rejected the vendored PROV-to-BFO file on the `rdfs:comment:`
+  typo; the repair now corrects that token and the checksum is re-pinned.
+- [ ] Decide whether the optional RO/CCO mappings and the SWRL location rules
+  are part of the contract.
 - [ ] **Review the BFO definition differences** between the pinned BFO and the
   alignment target (material entity, continuant part; annotation-only).
 - [ ] **Split external-reuse reporting by reuse kind** (annotation properties for

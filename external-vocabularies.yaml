@@ -182,15 +182,20 @@ vocabularies:
         url: https://raw.githubusercontent.com/BFO-Mappings/PROV-to-BFO/067e8863ca83d2e42f61f48624fe9741d48d10a8/prov-bfo-directmappings.ttl
         sha256: e8a91f34c74db5118f242c48fec43e3e240be4974c62af67aac92ba55cc1c8f4
         vendored_path: third_party/bfo-sosa-bridge/prov-bfo-directmappings.original.ttl
-    # The profile loads the original with exactly these two lines prepended
-    # (checked byte for byte); remove when upstream publishes a parseable tag.
-    # Reported as BFO-Mappings/PROV-to-BFO#44; fix proposed in #43.
+    # The profile loads the original with exactly these two lines prepended and
+    # one misspelled annotation predicate corrected (checked byte for byte);
+    # remove when upstream publishes a parseable tag. Prefixes reported as
+    # BFO-Mappings/PROV-to-BFO#44, fix proposed in #43; the typo is fixed on
+    # upstream main (#41) but ROBOT 1.9.10 rejects the pinned tag without it.
     repair:
       vendored_path: third_party/bfo-sosa-bridge/prov-bfo-directmappings.prefix-fixed.ttl
-      sha256: 329d94d33fc61e3250913961a836f7cdc592995b5fdcdb072b44191237857dab
+      sha256: edacf1c24e2b8f6bf5f8baf50f3983941d9bbfddac86d85f938944b5e2f6e282
       prepended_lines:
         - "@prefix : <https://raw.githubusercontent.com/BFO-Mappings/PROV-to-BFO/main/prov-bfo-directmappings.ttl#> ."
         - "@prefix xsd: <http://www.w3.org/2001/XMLSchema#> ."
+      replaced_once:
+        from: "rdfs:comment:"
+        to: "rdfs:comment"
     used_terms:
       - https://raw.githubusercontent.com/BFO-Mappings/PROV-to-BFO/refs/tags/v2025-01-19/prov-bfo-directmappings.ttl
 

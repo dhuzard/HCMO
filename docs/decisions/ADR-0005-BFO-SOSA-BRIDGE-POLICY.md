@@ -41,14 +41,17 @@ preferred in the co-author discussion, with (a) first.
 2. **Unparseable upstream file: vendored, minimally patched copy.** The tagged
    PROV-to-BFO file (and `main`) does not parse: it uses the default prefix `:`
    and `xsd:` without declaring them. HCMO vendors the verbatim file (SHA-256
-   recorded) together with a patch that only prepends the two missing prefix
-   declarations, and a CI check proves the patched file differs from the original
-   by exactly those lines. No axiom is changed and the `rdfs:comment:` typo in the
-   pinned tag (already fixed on upstream `main`) is left as it is. The problem is
-   reported upstream as BFO-Mappings/PROV-to-BFO issue #44 with the fix proposed in
-   pull request #43 (same declarations, same default namespace); when a corrected
-   immutable tag exists, HCMO pins it and removes the patch. Until then results are stated as "on the prefix-repaired
-   chain", never as raw-source success.
+   recorded) together with a patch that prepends the two missing prefix
+   declarations and corrects one misspelled annotation predicate
+   (`rdfs:comment:`, a distinct IRI, to `rdfs:comment`; already fixed on upstream
+   `main`), and a CI check proves the patched file differs from the original by
+   exactly those edits. No logical axiom is changed. The typo was first left as
+   it is, but ROBOT 1.9.10 rejects the file on it (Cyril Gilbert's replay,
+   2026-10-09), so the repair now covers it. The prefix problem is reported
+   upstream as BFO-Mappings/PROV-to-BFO issue #44 with the fix proposed in pull
+   request #43 (same declarations, same default namespace); when a corrected
+   immutable tag exists, HCMO pins it and removes the patch. Until then results
+   are stated as "on the repaired chain", never as raw-source success.
 3. **Opt-in.** The profile is not part of the default release manifest and the
    core modules take on no BFO commitment through it. `hcmo.yaml`, `dist/` and the
    merged graph are unchanged; CI checks that. This may be reconsidered once the
@@ -102,12 +105,18 @@ preferred in the co-author discussion, with (a) first.
    - default artifacts (`dist/`) are unchanged by the profile.
 
    All are run under the default presentation and the developer profile.
-   Production-stack replay (Protégé / ROBOT) is an acceptance requirement.
+   Production-stack replay (Protégé / ROBOT) is an acceptance requirement; it
+   passed on 2026-10-09 (Cyril Gilbert: Protégé 5.6.9 / HermiT 1.4.3.456, both
+   presentations consistent, no unsatisfiable class, expected inferences and probe
+   results; ROBOT 1.9.10 accepts the bundle once the `rdfs:comment:` typo is
+   corrected, see decision 2).
 
 ## Expected consequences
 
-Verified on the prefix-repaired chain with full pinned BFO and IAO (HermiT
-1.3.8.1099; re-run by `tooling/bridge_profile.py`, 70 checks passing); not a general SOSA–BFO reading.
+Verified on the repaired chain with full pinned BFO and IAO (HermiT
+1.3.8.1099; re-run by `tooling/bridge_profile.py`), and replayed in Protégé
+5.6.9 / HermiT 1.4.3.456 and ROBOT 1.9.10 (Cyril Gilbert, 2026-10-09); not a
+general SOSA–BFO reading.
 
 | Class | Placement under the chain |
 | --- | --- |
@@ -167,8 +176,10 @@ No `hcm-compat` deprecation entry and no `### Renamed` changelog section follow.
 
 ## Remaining risks
 
-- The chain results hold on the prefix-repaired alignment, with one reasoner
-  (HermiT). Production-stack replay (Protégé / ROBOT) is pending.
+- The chain results hold on the repaired alignment (two prefix lines and one
+  annotation-predicate typo), not on the raw upstream file. Production-stack
+  replay passed (Protégé 5.6.9 / HermiT 1.4.3.456 and ROBOT 1.9.10, Cyril
+  Gilbert, 2026-10-09).
 - The pinned BFO (commit `dd89f4a…`, 1014 triples) differs from the alignment's
   target (`release-2024-01-29`, 1015 triples) by 19 and 20 annotation-only
   triples (version IRI, definitions, scope notes); no BFO IRI the alignment uses
@@ -181,7 +192,9 @@ No `hcm-compat` deprecation entry and no `### Renamed` changelog section follow.
 - The optional RO/CCO mappings are not part of the chain and are untested.
 - The taxonomy comparison is finite; it is not a proof of conservative extension.
 - Whether the carrier pattern suits real software toolchains (DeepLabCut, LMT) is
-  a co-author judgement.
+  a co-author judgement. Cyril Gilbert accepts it (2026-10-09) on the condition
+  stated in decision 4: the sensor is the deployed physical system, kept separate
+  from the software and from its execution.
 
 ## Vote record
 
@@ -190,6 +203,7 @@ No `hcm-compat` deprecation entry and no `### Renamed` changelog section follow.
 | Konstantin, Cyril, Pierre, Gaoussou | Option (a) preferred; (d) as fallback (Pierre and Gaoussou) | before 2026-09-24 |
 | Pierre Larmande | Agrees with all five points | by 2026-10-06 |
 | Cyril Gilbert | Agrees with the approach; asks that reasoning consequences, notably for software sensors and process-like features of interest, be checked jointly during implementation and recorded in this ADR | by 2026-10-06 |
+| Cyril Gilbert | Production-stack replay: both presentations consistent in Protégé 5.6.9 / HermiT 1.4.3.456, no unsatisfiable class, expected inferences and probe results; ROBOT 1.9.10 needs the `rdfs:comment:` typo corrected in the vendored file, then all tests pass. Carrier pattern acceptable provided the sensor is the deployed physical system, separate from the software and its execution | 2026-10-09 |
 | Damien Huzard (editor) | Decisions 2, 4, 6 above (vendored patch plus upstream issue, carrier pattern as optional documented pattern, 2017 retained) | 2026-10-06 |
 | Philippe | Not yet received as of 2026-10-06 (five points put to them 2026-09-24) | open |
 | Serge Sonfack Sounchio, Antoine Toffano | Not yet received | open |
@@ -202,9 +216,10 @@ optional alignment. This does not reopen ADR-0002.
 
 ## Consequences
 
-- Status moves to accepted when the open replies are in, the carrier pattern and
-  feature-of-interest restriction are validated by co-authors, and a production
-  stack replay passes.
+- Status moves to accepted when the open replies are in and the carrier pattern
+  and feature-of-interest restriction are validated by co-authors. The
+  production-stack replay passed on 2026-10-09; the carrier pattern has one
+  co-author validation (Cyril Gilbert).
 - Implementation (profile, vendored alignments, SSSOM rows, gates, documentation)
   is on branch `feat/bfo-sosa-bridge-profile`; remaining items stay in
   `docs/BACKLOG.md` section 1.
