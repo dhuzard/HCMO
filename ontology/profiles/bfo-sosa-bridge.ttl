@@ -1,0 +1,27 @@
+# Optional BFO/SOSA bridge profile for HCMO (ADR-0005, status: proposed).
+#
+# This profile adds NO axiom of its own. It only declares the import closure of
+# the two published alignments that place SOSA terms under BFO through PROV-O:
+#   SOSA --(W3C, SSN 2017 section 6.5)--> PROV-O --(Prudhomme et al. 2025)--> BFO
+# so that HCMO itself makes no statement about W3C-owned terms. The consequences
+# are listed, with their sources and rationale, in
+# mappings/semantic/hcmo-external.sssom.tsv and docs/BFO-SOSA-BRIDGE-PROFILE.md.
+#
+# It is intentionally excluded from hcmo.yaml and the default release. Load it
+# alongside dist/hcmo.owl, the pinned BFO and IAO, and (optionally) the developer
+# upper profile. The import IRIs point at the published alignments; HCMO vendors
+# checksummed copies under third_party/bfo-sosa-bridge/. `python
+# tooling/bridge_profile.py check` assembles the closure from those copies and
+# tests it; `... package` writes self-contained bundles for review in Protege.
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://w3id.org/hcmo/ontology/profile/bfo-sosa-bridge> a owl:Ontology ;
+    rdfs:label "HCMO optional BFO/SOSA bridge profile" ;
+    rdfs:comment "An optional import profile that places SOSA terms under BFO by composing two published one-way alignments (W3C SOSA to PROV-O, and PROV-O to BFO by Prudhomme et al. 2025). It declares no HCMO axiom about SOSA, PROV-O or BFO terms." ;
+    owl:imports <http://www.w3.org/ns/sosa/prov>,
+        <https://raw.githubusercontent.com/BFO-Mappings/PROV-to-BFO/refs/tags/v2025-01-19/prov-bfo-directmappings.ttl> ;
+    dcterms:source <https://github.com/BFO-Mappings/PROV-to-BFO/releases/tag/v2025-01-19>,
+        <https://www.w3.org/TR/2017/REC-vocab-ssn-20171019/#PROV_Alignment> ;
+    owl:versionInfo "0.1.0-proposed" .

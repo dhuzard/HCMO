@@ -7,6 +7,21 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Added
 
+- Optional BFO/SOSA bridge profile (proposed, ADR-0005; not part of the default
+  release, `hcmo.yaml` and `dist/` unchanged). `ontology/profiles/bfo-sosa-bridge.ttl`
+  declares no axiom of its own and imports two published one-way alignments (W3C
+  SOSA to PROV-O; Prudhomme et al. 2025 PROV-O to BFO) so that SOSA terms receive
+  a BFO placement without equivalences: observations become processes, sensors and
+  actuators material entities, results only continuants. Includes vendored,
+  checksummed copies of the alignments (the upstream PROV-to-BFO file does not
+  parse and misspells one annotation predicate; a copy with exactly two prefix
+  lines prepended and that one `rdfs:comment:` token corrected is checked byte
+  for byte, because ROBOT 1.9.10 rejects the typo),
+  profile-only SHACL shapes (software typed as a sensor, a process as a feature of
+  interest), seven probe fixtures, SSSOM review rows, pins in
+  `external-vocabularies.yaml`, `tooling/bridge_profile.py` and an optional
+  `bridge-profile` workflow. Documented optional carrier pattern for software
+  sensors. See `docs/BFO-SOSA-BRIDGE-PROFILE.md`.
 - Recorded the BFO/SOSA double-hierarchy decision package and work plan for
   the co-author vote. It documents the verified state — four genuinely
   dual-parented classes, four SOSA-only observation classes with no BFO anchor,

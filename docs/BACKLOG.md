@@ -20,60 +20,64 @@ Abbreviations: **T…/P…** are rows in [`paper/TODO.md`](paper/TODO.md);
 ## 1. BFO / SOSA double hierarchy (decision provisional)
 
 Source: BFO/SOSA decision sheet and work plan, PROV-BFO reading notes, the
-2026-09-18 meeting and the 2026-09-24 co-author replies. Position reached: option
-**(a)** preferred by all four respondents with **(d)** as fallback; implemented
-as one-way links through the published SOSA→PROV-O and PROV-O→BFO alignments, not
-as equivalences. **Nothing is implemented and no module changed.**
+2026-09-18 meeting, the 2026-09-24 co-author replies and the 2026-10-06 audit
+([`decisions/ADR-0005-evidence-audit.md`](decisions/ADR-0005-evidence-audit.md)).
+Position reached: option **(a)** preferred by all four respondents with **(d)** as
+fallback; implemented as one-way links through the published SOSA→PROV-O and
+PROV-O→BFO alignments, not as equivalences. **ADR-0005 is drafted as *proposed*;
+the opt-in profile is built on branch `feat/bfo-sosa-bridge-profile`
+([`BFO-SOSA-BRIDGE-PROFILE.md`](BFO-SOSA-BRIDGE-PROFILE.md)); no ontology module
+and no `dist/` artifact changed.**
 
-- [ ] **Get Philippe's answers to the five points** put to him on 2026-09-24:
-  (1) accept the software-sensor pattern (a software sensor is the *running*
-  software, with the code a separate information entity); (2) reuse the published
-  alignments rather than author new SOSA→BFO axioms; (3) keep the alignment
-  profile opt-in, outside the default release; (4) duplicate terms are decided by
-  meaning, not name (corrected the same day: keep `hcm-tech:Actuator`,
-  `hcm-tech:Sensor`, `hcm-obs:ObservationResult`, `hcm-env:EnvironmentalProperty`;
-  retire none); (5) was the disjointness remark about SOSA 2017 or the 2023
-  edition. *Tracked: P1 (Actuator correction), T20m.*
-- [ ] **Ask Serge Sonfack Sounchio and Antoine Toffano for their replies** on the
-  BFO/SOSA thread (they had not replied by 2026-09-24).
-- [ ] **Write ADR-0005** (`docs/decisions/ADR-0005-BFO-SOSA-BRIDGE-POLICY.md`,
-  shaped like ADR-0002): per-axiom verdicts including the rejected ones, scope of
-  de-duplication, default-versus-opt-in, and the vote (date, participants,
-  outcome). Blocks every implementation step below.
-- [ ] **Build the opt-in alignment profile** in its own ontology IRI, importing the
-  published alignments; add a direct HCMO link only where the chain cannot give
-  it. Record each mapping with source and rationale as SSSOM
-  (`semapv:ManualMappingCuration`) in `mappings/semantic/`, and add the sources to
-  `external-vocabularies.yaml`. Pin the exact SOSA 2017 artifact and matching W3C
-  alignment.
-- [ ] **Add CI gates for the profile:** satisfiability over the full pinned BFO and
-  IAO closure; consistency of `examples/` plus negative probes (software sensor,
-  physical-sample result); conservativity (no new subsumption inside the HCMO,
-  SOSA or BFO hierarchies); review of any new cross-derived disjointness. Test under
-  the developer profile too, because the default presentation hides
-  material-entity/information-entity clashes. Diff the pinned BFO against the
-  release the PROV-BFO alignment targets (2024-01-29) instead of assuming they match.
-- [ ] **Guard the feature-of-interest constraint:** the chain makes every
-  `sosa:hasFeatureOfInterest` filler a participating continuant, so data that sets a
-  behavioural bout (a process) as the feature of interest would become inconsistent.
-  Add a SHACL check or a modelling note before any profile ships.
-- [ ] **Document the four narrower-than-SOSA classes** as specialisations and what
-  each adds; document the software-sensor choice as a commitment introduced by the
-  BFO alignment, not by SOSA.
+Done on 2026-10-06 (author decisions): vendored patched copy of the unparseable
+PROV-to-BFO file; carrier pattern for software sensors as an optional documented
+pattern with a profile SHACL check; SOSA 2017 retained; Actuator, Sensor,
+ObservationResult and EnvironmentalProperty all kept; no direct ObservableProperty
+axiom; feature-of-interest guard (note, profile SHACL warning, probe); BFO drift
+tested against both BFO files; `tooling/bridge_profile.py` gates; SSSOM review rows;
+pins in `external-vocabularies.yaml`; `UPPER-LEVEL-VIEW.md` correction.
+
+Open:
+
+- [ ] **Co-author validation of ADR-0005:** Pierre Larmande and Cyril Gilbert
+  agreed to the five points; **Philippe's answers are still missing**, and
+  Serge Sonfack Sounchio and Antoine Toffano have not replied. Cyril Gilbert
+  validated the carrier pattern on 2026-10-09 (sensor = deployed physical system,
+  separate from the software and its execution); the feature-of-interest
+  restriction still needs explicit co-author validation.
+- [ ] **Ask which exact artifact motivated the disjointness remark.** The pinned
+  SOSA 2017 file has none; the 2023 Working Draft (2026-10-03) has none on the
+  classes concerned, only among its four collection classes.
+- [ ] **Follow up the upstream fix for the unparseable PROV-to-BFO file:** reported
+  as BFO-Mappings/PROV-to-BFO#44 with the prefix fix in #43 (both open as of
+  2026-10-09; ROBOT evidence added to #44 the same day). The typo fix (#41) is
+  already on upstream `main` but not in any tag. Exit condition: a tag that
+  contains **both** the #41 typo fix and the #43 prefix declarations, and whose
+  file parses unmodified. Then pin that tag in `external-vocabularies.yaml`,
+  delete the repaired copy, the `repair` block (`prepended_lines`,
+  `replaced_once`) and `check_vendor`'s repair checks in
+  `tooling/bridge_profile.py`, update `third_party/bfo-sosa-bridge/README.md`,
+  and re-run the matrix. A tag with only one of the two fixes does not satisfy
+  this item.
+- [x] **Production-stack replay (acceptance requirement):** done by Cyril
+  Gilbert on 2026-10-09. Protégé 5.6.9 / HermiT 1.4.3.456: both presentations
+  consistent, no unsatisfiable class, expected inferences and probe results.
+  ROBOT 1.9.10 rejected the vendored PROV-to-BFO file on the `rdfs:comment:`
+  typo; the repair now corrects that token and the checksum is re-pinned.
+- [ ] Decide whether the optional RO/CCO mappings and the SWRL location rules
+  are part of the contract.
+- [ ] **Review the BFO definition differences** between the pinned BFO and the
+  alignment target (material entity, continuant part; annotation-only).
 - [ ] **Split external-reuse reporting by reuse kind** (annotation properties for
   ontology metadata versus classes and properties used in HCM semantics) in
-  `docs/ALIGNMENTS.md` and the paper (Decision 1 of the sheet; "adopt regardless of
-  the vote"). *Related: T20l.*
-- [ ] **Smaller open decisions:** whether `sosa:ObservableProperty ⊑ BFO:0000020`
-  is added (a sixth anchor in a presentation designed around five); restate the
-  PROV-O rationale as "already resolved by a published alignment" rather than
-  "orthogonal view" (the `BFO:0000015` / `prov:Activity` double parent becomes
-  redundant); if the disjointness remark was about SOSA 2023, that reopens
-  ADR-0002 as a separate decision.
-- [ ] **After the decision:** update `UPPER-LEVEL-VIEW.md`, `ALIGNMENTS.md`, WIDOCO
-  pages, shapes/examples/competency questions, the manuscript's SOSA section, then
-  changelog and release. The plan estimates about 6 to 7.5 days of work for the
-  narrowed bridge (documentation only about 2.5 to 3 days).
+  `docs/ALIGNMENTS.md` and the paper ("adopt regardless of the vote"). *Related: T20l.*
+- [ ] **After acceptance:** add default-versus-optional qualifiers to
+  `ALIGNMENTS.md`, update the WIDOCO pages, the manuscript's SOSA section and the
+  historical notes that still describe provenance as an "orthogonal view", then
+  changelog and release. If the profile later becomes default or SOSA 2023 is
+  adopted, write a new ADR.
+- [ ] **Revisit `sosa:ObservableProperty ⊑ BFO:0000020`** only at an edition
+  migration (decision 8 of ADR-0005).
 
 ## 2. Manuscript and evidence (from the 2026-09-18 meeting and 2026-09-24 replies)
 

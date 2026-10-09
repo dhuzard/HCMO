@@ -1,0 +1,10 @@
+@prefix ex: <https://example.org/hcmo/bridge-probe#> .
+@prefix BFO: <http://purl.obolibrary.org/obo/BFO_> .
+@prefix hcm-obs: <https://w3id.org/hcmo/ontology/hcm/obs#> .
+@prefix hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+
+# Negative probe: one individual typed both as software and as a sensor. Inconsistent under the bridge (information versus material entity).
+
+ex:tracker a hcm-tech:Software, sosa:Sensor .
