@@ -95,7 +95,8 @@ preferred in the co-author discussion, with (a) first.
    2023 draft deprecates. Revisit at an edition migration.
 9. **Validation gates** (adopted from the PROV-BFO paper's own checks):
    - the vendored alignment is byte-identical to the recorded original plus the
-     two prefix lines, and all pinned inputs match their SHA-256;
+     two prefix lines and the one `rdfs:comment:` correction (decision 2), and
+     all pinned inputs match their SHA-256;
    - no class becomes unsatisfiable, over the full pinned BFO and IAO closure;
    - `examples/` stays consistent, plus probes (software sensor, carrier pattern,
      physical-sample result, observation result, process as feature of interest);
