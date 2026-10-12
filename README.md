@@ -209,7 +209,10 @@ If you use HCMO, please cite it via [`CITATION.cff`](CITATION.cff)
 (GitHub's "Cite this repository") or the concept DOI
 [10.5281/zenodo.18925284](https://doi.org/10.5281/zenodo.18925284), which always
 resolves to the latest version. Each release also has its own version DOI on
-Zenodo (0.3.0: [10.5281/zenodo.22208202](https://doi.org/10.5281/zenodo.22208202)).
+Zenodo (0.4.1: [10.5281/zenodo.23315766](https://doi.org/10.5281/zenodo.23315766); 0.3.0:
+[10.5281/zenodo.22208202](https://doi.org/10.5281/zenodo.22208202)). Version 0.4.0
+(10.5281/zenodo.23315451) was published from the wrong commit and is superseded
+by 0.4.1; do not cite it.
 
 ## License
 

@@ -5,6 +5,13 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ## [Unreleased]
 
+### Changed
+
+- Recorded the Zenodo version DOI of 0.4.1, `10.5281/zenodo.23315766`, in
+  `CITATION.cff`, the README, the manuscript availability statement and
+  bibliography, and the paper's resource-metadata sheet. The README warns not to
+  cite the superseded 0.4.0 deposit (`10.5281/zenodo.23315451`).
+
 ## [0.4.1] - 2026-10-12
 
 ### Added

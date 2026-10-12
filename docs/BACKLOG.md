@@ -132,12 +132,14 @@ Open:
     authors in paper order; ADR-0006 accepted; CHANGELOG cut (2026-10-12).
   - [x] ~~`v0.4.0`~~ published 2026-10-12 from the pre-release commit `ac37bef`
     (artifacts say 0.3.0); superseded by 0.4.1, see `paper/RELEASE-GATE.md`.
-  - [ ] Merge the release PR, tag `v0.4.1` on the merge commit, verify the tag
-    and one asset, publish the GitHub release.
-  - [ ] Point the v0.4.0 GitHub release notes and Zenodo description to 0.4.1.
-  - [ ] Record the Zenodo 0.4.1 version DOI (CITATION.cff, README, paper,
+  - [x] Merge the release PR, tag `v0.4.1` on the merge commit, verify the tag
+    and one asset, publish the GitHub release (2026-10-12).
+  - [x] v0.4.0 GitHub release marked superseded (2026-10-12).
+  - [ ] Add the superseded note to the v0.4.0 Zenodo description (needs the
+    Zenodo account).
+  - [x] Record the Zenodo 0.4.1 version DOI `10.5281/zenodo.23315766` (CITATION.cff, README, paper,
     resource-metadata sheet).
-  - [ ] Check PURL content negotiation and the redeployed WIDOCO site.
+  - [x] Check PURL content negotiation and the redeployed WIDOCO site.
   - [ ] Re-run OOPS!/FOOPS! on 0.4.1 and update the paper's scan table.
   - [ ] If the upstream PROV-to-BFO tag (#41 + #43) exists, swap the pin (item
     above); otherwise ship the repaired copy as is.
