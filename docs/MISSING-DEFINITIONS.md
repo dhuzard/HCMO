@@ -1,6 +1,6 @@
 # Definition and modeling-quality status
 
-Generated-profile audit for HCMO 0.3.0. Regenerate the profile with
+Generated-profile audit for HCMO 0.4.1 (re-checked 2026-10-12). Regenerate the profile with
 `python tooling/build.py` before updating this report.
 
 ## Active-term metadata

@@ -1,6 +1,6 @@
 # Ontology architecture
 
-HCMO 0.3.0 is authored as a checksummed end-user upper-level presentation, five
+HCMO 0.4.1 is authored as a checksummed end-user upper-level presentation, five
 domain modules, and one migration-only compatibility module. The release
 manifest `hcmo.yaml` is the authoritative module list; `dist/` is generated
 from that manifest.
@@ -41,6 +41,12 @@ intermediate hierarchy and refines `hcm-bio:ExperimentalGroup` from the default
 Material entity category to BFO object aggregate. The default and developer
 views make no equivalence assertions between BFO, IAO, SOSA, PROV-O, SIO, SULO,
 or ONTOP.
+
+A second optional, non-manifest profile,
+`ontology/profiles/bfo-sosa-bridge.ttl` (ADR-0005), imports the published
+W3C SOSA-to-PROV-O and PROV-O-to-BFO alignments so that SOSA terms receive a
+BFO placement; HCMO adds no axiom of its own. See
+[BFO-SOSA-BRIDGE-PROFILE.md](BFO-SOSA-BRIDGE-PROFILE.md).
 
 See [UPPER-LEVEL-VIEW.md](UPPER-LEVEL-VIEW.md) for the user-facing tree,
 placement examples, and instructions for loading the optional profile.

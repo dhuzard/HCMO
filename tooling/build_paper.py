@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import re
+import subprocess
 import zipfile
 from pathlib import Path
 
@@ -29,6 +30,20 @@ def input_sections(main_tex: Path) -> list[Path]:
     return [OUT / (name if name.endswith(".tex") else f"{name}.tex") for name in names]
 
 
+def package_members() -> list[Path]:
+    """Return the Overleaf files git would track: committed or new, never ignored.
+
+    Local LaTeX outputs (main.pdf, .latex-build/) are git-ignored, so they never
+    enter the package even when a local compile left them in the folder.
+    """
+    listed = subprocess.run(
+        ["git", "ls-files", "-z", "--cached", "--others", "--exclude-standard", "--", OUT.as_posix()],
+        cwd=ROOT, check=True, capture_output=True,
+    ).stdout.decode("utf-8")
+    paths = {ROOT / name for name in listed.split("\0") if name}
+    return [path for path in paths if path.is_file()]
+
+
 def main() -> int:
     main_tex = OUT / "main.tex"
     if not main_tex.is_file():
@@ -46,8 +61,7 @@ def main() -> int:
             + (", ".join(p.relative_to(ROOT).as_posix() for p in orphans) or "none")
         )
     with zipfile.ZipFile(ARCHIVE, "w", compression=zipfile.ZIP_STORED) as archive:
-        members = (item for item in OUT.rglob("*") if item.is_file())
-        for path in sorted(members, key=lambda item: item.relative_to(OUT).as_posix()):
+        for path in sorted(package_members(), key=lambda item: item.relative_to(OUT).as_posix()):
             info = zipfile.ZipInfo(path.relative_to(OUT).as_posix())
             info.date_time = (1980, 1, 1, 0, 0, 0)
             info.create_system = 3

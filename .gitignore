@@ -21,3 +21,7 @@ __pycache__/
 # WIDOCO documentation: generated HTML site + cached tool jar (published via CI)
 docs/widoco/
 tooling/.widoco/
+
+# Local LaTeX builds of the manuscript (never packaged or committed)
+docs/paper/overleaf/**/.latex-build/
+docs/paper/overleaf/main.pdf

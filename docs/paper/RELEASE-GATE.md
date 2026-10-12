@@ -1,6 +1,48 @@
 # Paper-matching release gate
 
-## Current state
+## 0.4.1 (in progress)
+
+The paper describes **HCMO 0.4.1** (decided 2026-10-12). It adds, over 0.3.0,
+the multi-animal behaviour model (ADR-0006, accepted), file-format and
+data-access SKOS links, the optional BFO/SOSA bridge profile (ADR-0005,
+accepted; not in the default release) and the generated external-reuse report.
+`mod:status` stays `"draft"`.
+
+**Why not 0.4.0.** The `v0.4.0` tag, GitHub release and Zenodo version
+(DOI `10.5281/zenodo.23315451`) were published on 2026-10-12 from commit
+`ac37bef`, before the release PR (#42) was merged; their artifacts identify
+themselves as 0.3.0. Tags and DOIs are immutable here, so the correction is
+the patch release 0.4.1. The v0.4.0 GitHub release notes and the Zenodo
+record's description point to 0.4.1.
+
+Release procedure (same gates as 0.3.0):
+
+1. Release PR (#42): version metadata, ontology header (version IRI, prior
+   version 0.3.0, issued/modified dates, nine authors in paper order,
+   publisher), `CITATION.cff`, CHANGELOG, documentation and manuscript. ✔
+2. `hcmo.yaml`, root `owl:versionIRI`/`owl:versionInfo`, competency-question
+   index, contribution form and `CITATION.cff` identify `0.4.1` (checked by
+   `tooling/validate.py`). ✔
+3. `python tooling/build.py` run twice with byte-identical artifacts. ✔
+4. `tooling/validate.py`, HermiT (`tooling/reason.py`), the external-vocabulary
+   network check, the interoperability validation and the bridge-profile check. ✔
+5. **Merge the release PR first.** Then create the tag on the merge commit and
+   check it before publishing: `git rev-parse v0.4.1` must equal the merge
+   commit, and `git show v0.4.1:hcmo.yaml` must say `version: 0.4.1`. Publish
+   the GitHub release (the `release` workflow attaches `hcmo.ttl`, `hcmo.owl`,
+   `hcmo.json`, `profile.json`, `hcmo.yaml`; `release-evidence` archives
+   AskWol). Download one asset and confirm `owl:versionInfo "0.4.1"`.
+6. Zenodo mints the 0.4.1 version DOI; record it in `CITATION.cff`, the README,
+   `docs/paper/metadata/resource-metadata.md`, the manuscript availability
+   statement and `references.bib` (`hcmo` entry).
+7. Confirm that `https://w3id.org/hcmo/ontology/hcm` and `…/hcm/0.4.1` return
+   the 1,464-triple graph by content negotiation, and that the WIDOCO site shows
+   0.4.1 (redeployed from `main` by the `docs` workflow).
+8. Re-run OOPS! on the 0.4.1 RDF/XML and FOOPS! on the PURL; archive raw output
+   and triage under `evaluation/`, then update the manuscript's scan table
+   (still reporting the 0.3.0 scans until then).
+
+## 0.3.0 record (published 2026-08-31)
 
 - The immutable `v0.3.0` tag points to commit
   `3083d2307d5cbac97bcaee189b75fdf909d0de5f`.
@@ -21,14 +63,14 @@
   creator order were verified on 31 August 2026. The creator-order correction
   was metadata-only and did not change the tag or ontology IRIs.
 
-## Publication decision
+### 0.3.0 publication decision
 
 Version `0.3.0` is published and citable. The archived tag and Zenodo record are
 immutable: subsequent metadata or maturity changes belong in a new patch
 release. In particular, changing `mod:status` from `draft` to another maturity
 term would change ontology bytes and must not be retroactively applied to 0.3.0.
 
-## Release procedure
+### 0.3.0 release procedure
 
 1. Review and merge the accepted ontology, release-metadata, and paper changes. ✔
 2. Confirm that `hcmo.yaml`, the root ontology

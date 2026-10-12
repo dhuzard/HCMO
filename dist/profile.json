@@ -313,7 +313,7 @@
     "classes": 61,
     "datatype_properties": 75,
     "object_properties": 73,
-    "triples": 1454
+    "triples": 1464
   },
   "datatype_properties": [
     {
@@ -1061,6 +1061,6 @@
     }
   ],
   "ontology_iri": "https://w3id.org/hcmo/ontology/hcm",
-  "version": "0.3.0",
-  "version_iri": "https://w3id.org/hcmo/ontology/hcm/0.3.0"
+  "version": "0.4.1",
+  "version_iri": "https://w3id.org/hcmo/ontology/hcm/0.4.1"
 }

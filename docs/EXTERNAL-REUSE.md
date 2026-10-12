@@ -2,7 +2,7 @@
 
 # External reuse by kind
 
-Source: `dist/hcmo.ttl` (1454 triples). Regenerate with `python tooling/build.py` (or `python tooling/reuse_report.py`); `tooling/validate.py` fails when this file is stale.
+Source: `dist/hcmo.ttl` (1464 triples). Regenerate with `python tooling/build.py` (or `python tooling/reuse_report.py`); `tooling/validate.py` fails when this file is stale.
 
 Rules: a term is **semantic** reuse when it is the target of a logical statement (subclass or subproperty parent, domain or range, restriction property or filler, class-expression member); **metadata** reuse when it is only an annotation predicate or the type of a metadata record; a **replacement target** when it is named only as the replacement of a deprecated HCMO term. Values such as ORCID iDs, licence and repository URLs are not counted. Example data (ABox) are not included.
 

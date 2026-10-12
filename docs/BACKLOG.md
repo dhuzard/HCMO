@@ -120,20 +120,27 @@ Open:
   count of 2026-09-24 (25 semantic, 6 metadata vocabularies), which counted
   `schema:Person`/`name`/`logo` and QUDT `numericValue`/`hasUnit` as semantic.
   `ALIGNMENTS.md` and paper Table 1 updated. *Related: T20l.*
-- [ ] **Next release checklist** (after the open PRs are merged):
+- [ ] **Release 0.4.1 checklist** (PR #42, branch `release/0.4.0`; procedure in
+  `paper/RELEASE-GATE.md`):
   - [x] Default-versus-optional qualifiers in `ALIGNMENTS.md` (2026-10-12).
-  - [x] Manuscript: bridge profile sentence in §4, future-work line in §7,
-    Table 1 reuse counts, `prudhomme2025` citation (2026-10-12).
-  - [ ] Historical notes that still call provenance an "orthogonal" or
-    "cross-cutting" view (`PHILIPPE-ROCCA-SERRA-FEEDBACK.md`,
-    `PHILIPPE-ROCCA-SERRA-HUMAN-REVIEW-CHECKLIST.md` B09): add a dated
-    default-versus-optional note, keep the original text.
-  - [ ] Bump `owl:versionInfo` / `owl:versionIRI`, `hcmo.yaml` version, and
-    `CITATION.cff`; rebuild `dist/`.
-  - [ ] Regenerate the WIDOCO pages and check every w3id and documentation link.
-  - [ ] Move `CHANGELOG.md` `[Unreleased]` to the new version; tag and release.
-  - [ ] If the upstream PROV-to-BFO tag (#41 + #43) exists by then, swap the pin
-    (item above); otherwise ship the repaired copy as is.
+  - [x] Manuscript moved to 0.4.1: Table 1, availability statement, tag links,
+    evaluation counts, bridge-profile sentence, `prudhomme2025` (2026-10-12).
+  - [x] Dated default-versus-optional notes in `PHILIPPE-ROCCA-SERRA-FEEDBACK.md`
+    and the B09 entry of the human-review checklist (2026-10-12).
+  - [x] Version 0.4.1 in the ontology header, `hcmo.yaml`, `CITATION.cff`,
+    competency-question index, contribution form and documentation; nine
+    authors in paper order; ADR-0006 accepted; CHANGELOG cut (2026-10-12).
+  - [x] ~~`v0.4.0`~~ published 2026-10-12 from the pre-release commit `ac37bef`
+    (artifacts say 0.3.0); superseded by 0.4.1, see `paper/RELEASE-GATE.md`.
+  - [ ] Merge the release PR, tag `v0.4.1` on the merge commit, verify the tag
+    and one asset, publish the GitHub release.
+  - [ ] Point the v0.4.0 GitHub release notes and Zenodo description to 0.4.1.
+  - [ ] Record the Zenodo 0.4.1 version DOI (CITATION.cff, README, paper,
+    resource-metadata sheet).
+  - [ ] Check PURL content negotiation and the redeployed WIDOCO site.
+  - [ ] Re-run OOPS!/FOOPS! on 0.4.1 and update the paper's scan table.
+  - [ ] If the upstream PROV-to-BFO tag (#41 + #43) exists, swap the pin (item
+    above); otherwise ship the repaired copy as is.
   - If the profile later becomes default or SOSA 2023 is adopted, write a new ADR.
 - [ ] **Revisit `sosa:ObservableProperty ⊑ BFO:0000020`** only at an edition
   migration (decision 8 of ADR-0005).
@@ -200,10 +207,13 @@ Decisions deferred to the co-authors:
 
 ## 4. Multi-animal model, LMT and SKOS vocabularies (PR #38)
 
-- [ ] **Co-author review of the multi-animal model and ADR-0006** (interacting
-  groups and roles; status "proposed"). A tracking row (T20t) existed on the
-  feature branch but was left out of #38 so as not to touch the paper TODO; add it
-  to `paper/TODO.md` or track it here.
+- [x] **ADR-0006 accepted (2026-10-12, editor) for release 0.4.1** (interacting
+  groups and roles, loosened `BehaviorObservation` axiom).
+- [ ] **ADR-0006 open point 2:** should group housing measured only at cage level
+  use `InteractingGroup`, `ExperimentalGroup`, or the enclosure as feature of
+  interest?
+- [ ] **ADR-0006 open point 3:** co-author review of the LMT event table
+  `event-mapping.csv`.
 - [ ] **`catalog.ttl` emits deprecated `hcm:System` / `hcm:Supplier`:** adopt a
   `schema:Product` + SKOS vendor catalogue pattern. *Tracked: #32.*
 
