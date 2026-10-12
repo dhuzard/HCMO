@@ -149,8 +149,9 @@ Open:
 
 ## 2. Manuscript and evidence (from the 2026-09-18 meeting and 2026-09-24 replies)
 
-- [ ] **OBI/STATO class examples and the TBox / ABox / CBox distinction** in the
-  paper. *Tracked: #36; T20n.*
+- [x] **OBI/STATO class examples and the TBox / ABox / CBox distinction** in the
+  paper (2026-10-12, §5: the three levels defined; the six OBI/STATO types of the
+  evidence slice named). *Tracked: #36; T20n.*
 - [ ] **2 × 2 fixture: explain what is tested and carry the data through to STATO.**
   Philippe planned a PR for the chain `data/dark-phase-activity.csv → ISA-Tab →
   STATO`; this touches the controlled losses declared in
@@ -161,8 +162,9 @@ Open:
   `examples/isa-roundtrip/competency_questions.yaml`. *Tracked: T20f, T20g, T20q, T20r.*
 - [ ] **HCMO–ISA JSON-LD context and ISA→JSON-LD build**; decide whether to deposit
   the result on Zenodo. *Tracked: #34.*
-- [ ] **Hasse diagram of the experimental design**, to be evaluated as a figure.
-  *Tracked: #35.*
+- [ ] **Hasse diagram of the experimental design**: drafted and evaluated
+  (2026-10-12, `paper/supplementary/hasse-2x2-design.pdf`); recommendation:
+  supplementary, not a manuscript figure. **Co-author decision.** *Tracked: #35.*
 - [ ] **Discussion: heterogeneity and the experimental unit.** Some systems measure
   only at group (cage) level, others resolve the individual subject; HCMO cannot yet
   define the experimental unit unambiguously, which also drives how either case
@@ -175,7 +177,20 @@ Open:
   systems); close #31 and #33 when it merges, if they are fully covered. *Tracked:
   #31, #33.*
 - [ ] **Benoit Girard's affiliation** is still a placeholder ("to be confirmed") in
-  `paper/overleaf/main.tex` and `paper/metadata/authors.md`.
+  `paper/overleaf/main.tex` and `paper/metadata/authors.md`. His public ORCID
+  record (checked 2026-10-12) lists no employment; ask him. ORCID spells his
+  name **Benoît**; the paper, `CITATION.cff` and the ontology write "Benoit".
+- [ ] **Page budget:** with the 0.4.1 updates the text before the references runs
+  16 lines onto page 16 (5 lines before them). The 15-page limit includes the
+  back matter. Needs the co-author cutting pass. *Tracked: T20k, T20s.*
+- [x] **OOPS!/FOOPS!/AskWol re-run on 0.4.1** (2026-10-12):
+  `paper/evaluation/RELEASE-0.4.1-SCANS-2026-10-12.md`; paper scan table updated.
+- [ ] **Register HCMO for findability:** the `hcm` prefix on prefix.cc and an entry
+  in LOV and/or BioPortal or OLS (and FAIRsharing). FOOPS! on the PURL scores
+  0.875 because of these three tests; file mode scores 1.0.
+- [ ] **AskWol namespace 404s:** its probe reports HTTP 404 for the HCMO
+  namespaces since v0.3.1, but they resolve in every check we ran. Confirm with a
+  manual AskWol run or the maintainers.
 - [ ] **Check the section restructure against the settled layout** (D1: seven-section
   resource-paper layout). *Tracked: T20b (in progress), T20i, T20k, T20s.*
 - [ ] **Check the venue:** the meeting notes and some TODO rows still say ESWC 2027

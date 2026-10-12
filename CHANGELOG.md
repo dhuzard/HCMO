@@ -7,6 +7,12 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Changed
 
+- Paper (still describing 0.4.1): OOPS!, FOOPS! and AskWol re-run on the 0.4.1
+  release with archived raw outputs and triage
+  (`docs/paper/evaluation/RELEASE-0.4.1-SCANS-2026-10-12.md`); the scan table
+  reports them. §5 now defines the TBox, ABox and CBox levels and names the
+  OBI/STATO types of the evidence slice (#36). A Hasse diagram of the 2 × 2
+  design is added as supplementary material (#35).
 - Recorded the Zenodo version DOI of 0.4.1, `10.5281/zenodo.23315766`, in
   `CITATION.cff`, the README, the manuscript availability statement and
   bibliography, and the paper's resource-metadata sheet. The README warns not to
