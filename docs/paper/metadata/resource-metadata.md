@@ -1,18 +1,18 @@
 # Resource metadata block (place immediately after the abstract)
 
 The CfP requires these fields right after the abstract. This block identifies
-the immutable paper-matching `v0.4.0` release.
+the immutable paper-matching `v0.4.1` release.
 
 ```
 Resource type: Ontology (with SHACL shapes, SPARQL competency queries,
                JSON-LD context, and example datasets)
 License:       CC BY 4.0
-DOI:           10.5281/zenodo.<0.4.0 version DOI, minted at release>
+DOI:           10.5281/zenodo.<0.4.1 version DOI, minted at release>
 URL:           https://w3id.org/hcmo/ontology/hcm
 ```
 
 The stable concept DOI is `10.5281/zenodo.18925284`; the manuscript cites the
-version DOI above so that reviewers retrieve the exact 0.4.0 deposit. Until
+version DOI above so that reviewers retrieve the exact 0.4.1 deposit. Until
 Zenodo mints it, use the concept DOI (0.3.0 version DOI: `10.5281/zenodo.22208202`).
 
 Supplementary links (provide for reviewers):

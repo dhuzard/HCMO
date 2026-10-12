@@ -5,7 +5,7 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ## [Unreleased]
 
-## [0.4.0] - 2026-10-12
+## [0.4.1] - 2026-10-12
 
 ### Added
 
@@ -117,11 +117,15 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Changed
 
-- Release 0.4.0: `owl:versionIRI` `…/hcm/0.4.0`, `owl:versionInfo "0.4.0"`,
-  `owl:priorVersion` `…/hcm/0.3.0`; `dcterms:issued` and `dcterms:modified`
+- Release 0.4.1: `owl:versionIRI` `…/hcm/0.4.1`, `owl:versionInfo "0.4.1"`,
+  `owl:priorVersion` `…/hcm/0.3.0` (the last correctly labelled artifact; see
+  0.4.0 below); `dcterms:issued` and `dcterms:modified`
   set to the release date. `hcmo.yaml`, the competency-question index,
   `CITATION.cff`, the contribution form and the version-bearing documentation
   follow. `mod:status` stays `"draft"`.
+- `dcterms:publisher` is now Damien Huzard's ORCID IRI (the repository and its
+  releases are published from his GitHub account), replacing the free-text
+  "Huzard group" left over from the Chowlk-generated header.
 - Ontology creators and `bibo:authorList` now match the paper and
   `CITATION.cff`: nine authors in the paper order (Gilbert, Sanou, Sonfack
   Sounchio, Toffano, Larmande, Girard, Rocca-Serra, Todorov, Huzard). Philippe
@@ -129,7 +133,7 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
   `CITATION.cff` gains Benoit Girard.
 - ADR-0006 (multi-animal behaviour) accepted by the editor on 2026-10-12; its
   open points on cage-level groups and the LMT event table stay in the backlog.
-- `CITATION.cff` cites the concept DOI until Zenodo mints the 0.4.0 version DOI;
+- `CITATION.cff` cites the concept DOI until Zenodo mints the 0.4.1 version DOI;
   the 0.3.0 version DOI is kept as an identifier. The README DOI badge now uses
   the concept DOI.
 - Changelog history: the 0.3.0 and 0.3.1 changes, which had stayed under
@@ -209,6 +213,17 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 - Removed the publisher PDF `docs/paper/sources/articles/HCM-technologies_SpringerBook.pdf`;
   `docs/hcm-systems/CATALOG.md` now cites the chapter by DOI only.
+
+## [0.4.0] - 2026-10-12 (superseded by 0.4.1)
+
+### Fixed
+
+- The `v0.4.0` tag, GitHub release and Zenodo version
+  (DOI 10.5281/zenodo.23315451) were published from commit `ac37bef`, before the
+  release changes were merged. Their artifacts contain the 0.4.1 content
+  without the release metadata: the ontology identifies itself as
+  `…/hcm/0.3.0`, version `0.3.0`, and `hcmo.yaml` says `0.3.0`. Published tags
+  and DOIs are not rewritten; use 0.4.1, which carries the correct metadata.
 
 ## [0.3.1] - 2026-09-10
 

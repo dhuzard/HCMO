@@ -1061,6 +1061,6 @@
     }
   ],
   "ontology_iri": "https://w3id.org/hcmo/ontology/hcm",
-  "version": "0.4.0",
-  "version_iri": "https://w3id.org/hcmo/ontology/hcm/0.4.0"
+  "version": "0.4.1",
+  "version_iri": "https://w3id.org/hcmo/ontology/hcm/0.4.1"
 }

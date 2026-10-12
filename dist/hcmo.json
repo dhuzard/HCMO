@@ -3431,7 +3431,9 @@
         "@type": "xsd:date",
         "@value": "2026-10-12"
       },
-      "dcterms:publisher": "Huzard group",
+      "dcterms:publisher": {
+        "@id": "https://orcid.org/0000-0003-4820-7951"
+      },
       "dcterms:source": {
         "@id": "https://github.com/dhuzard/HCMO"
       },
@@ -3443,9 +3445,9 @@
         "@id": "https://w3id.org/hcmo/ontology/hcm/0.3.0"
       },
       "owl:versionIRI": {
-        "@id": "https://w3id.org/hcmo/ontology/hcm/0.4.0"
+        "@id": "https://w3id.org/hcmo/ontology/hcm/0.4.1"
       },
-      "owl:versionInfo": "0.4.0",
+      "owl:versionInfo": "0.4.1",
       "schema:logo": {
         "@id": "https://raw.githubusercontent.com/dhuzard/HCMO/main/HCMO-logo3.png"
       },

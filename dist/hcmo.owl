@@ -147,7 +147,7 @@
     <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-10-12</dcterms:issued>
     <dcterms:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-10-12</dcterms:modified>
-    <dcterms:publisher>Huzard group</dcterms:publisher>
+    <dcterms:publisher rdf:resource="https://orcid.org/0000-0003-4820-7951"/>
     <dcterms:source rdf:resource="https://github.com/dhuzard/HCMO"/>
     <bibo:authorList rdf:nodeID="cb17dad0330fd96500acb7c71dea21e2dacc9806c9be6f463480da722879fa5cf52"/>
     <bibo:doi>10.5281/zenodo.18925284</bibo:doi>
@@ -155,8 +155,8 @@
     <vann:preferredNamespaceUri>https://w3id.org/hcmo/ontology/hcm#</vann:preferredNamespaceUri>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
     <owl:priorVersion rdf:resource="https://w3id.org/hcmo/ontology/hcm/0.3.0"/>
-    <owl:versionIRI rdf:resource="https://w3id.org/hcmo/ontology/hcm/0.4.0"/>
-    <owl:versionInfo>0.4.0</owl:versionInfo>
+    <owl:versionIRI rdf:resource="https://w3id.org/hcmo/ontology/hcm/0.4.1"/>
+    <owl:versionInfo>0.4.1</owl:versionInfo>
     <schema:logo rdf:resource="https://raw.githubusercontent.com/dhuzard/HCMO/main/HCMO-logo3.png"/>
     <mod:createdWith rdf:resource="https://chowlk.linkeddata.es/"/>
     <mod:status>draft</mod:status>

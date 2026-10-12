@@ -23,7 +23,7 @@ JSON-LD context.
 | **Ontology IRI**          | `https://w3id.org/hcmo/ontology/hcm`                                                      |
 | **Base namespace**        | `https://w3id.org/hcmo/ontology/hcm#`                                                     |
 | **Module sub-namespaces** | `…/hcm/bio#`, `…/hcm/env#`, `…/hcm/obs#`, `…/hcm/tech#`                             |
-| **Version**               | `0.4.0` (versionIRI `…/hcm/0.4.0`)                                                     |
+| **Version**               | `0.4.1` (versionIRI `…/hcm/0.4.1`)                                                     |
 | **Prefix**                | `hcm`                                                                                     |
 | **License**               | CC BY 4.0                                                                                   |
 | **Logo**                  | [`HCMO-logo3.png`](HCMO-logo3.png)                                                        |
@@ -142,7 +142,7 @@ definitions (see `docs/MISSING-DEFINITIONS.md`) render with empty descriptions.
 
 ## Status & known issues
 
-HCMO `0.4.0` is the current published, citable modular release of the early
+HCMO `0.4.1` is the current published, citable modular release of the early
 Chowlk-derived term set. Its ontology metadata retains `mod:status "draft"` as
 the model-maturity label; this does not negate publication of the immutable
 versioned release. Active classes and properties have labels, textual definitions, explicit

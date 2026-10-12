@@ -1,6 +1,6 @@
 # ADR-0006: Behaviour observations involving several animals
 
-- Status: accepted (2026-10-12, by Damien Huzard as editor, for release 0.4.0);
+- Status: accepted (2026-10-12, by Damien Huzard as editor, for release 0.4.1);
   implemented in PR #38
 - Date: 2026-09-29
 
@@ -61,7 +61,7 @@ ordering of the animals, collapse into one observation. The per-event table is
 ## Open points for the co-authors
 
 1. ~~Accept option 1, including the loosened `BehaviorObservation` axiom.~~
-   Accepted 2026-10-12 (editor) and released in 0.4.0.
+   Accepted 2026-10-12 (editor) and released in 0.4.1.
 
 Still open, not blocking (tracked in `docs/BACKLOG.md` section 4):
 

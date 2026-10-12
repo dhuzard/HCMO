@@ -83,15 +83,15 @@ schema:logo a owl:AnnotationProperty .
     dcterms:issued "2026-10-12"^^xsd:date ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     dcterms:modified "2026-10-12"^^xsd:date ;
-    dcterms:publisher "Huzard group" ;
+    dcterms:publisher <https://orcid.org/0000-0003-4820-7951> ;
     dcterms:source <https://github.com/dhuzard/HCMO> ;
     bibo:authorList ( <https://orcid.org/0009-0008-2489-8106> <https://orcid.org/0000-0003-2204-2466> <https://orcid.org/0000-0002-6085-6818> <https://orcid.org/0009-0008-0575-8490> <https://orcid.org/0000-0002-2923-9790> <https://orcid.org/0000-0002-3914-6483> <https://orcid.org/0000-0001-9853-5668> <https://orcid.org/0000-0002-9116-6692> <https://orcid.org/0000-0003-4820-7951> ) ;
     bibo:doi "10.5281/zenodo.18925284" ;
     vann:preferredNamespacePrefix "hcm" ;
     vann:preferredNamespaceUri "https://w3id.org/hcmo/ontology/hcm#" ;
     owl:priorVersion <https://w3id.org/hcmo/ontology/hcm/0.3.0> ;
-    owl:versionIRI <https://w3id.org/hcmo/ontology/hcm/0.4.0> ;
-    owl:versionInfo "0.4.0" ;
+    owl:versionIRI <https://w3id.org/hcmo/ontology/hcm/0.4.1> ;
+    owl:versionInfo "0.4.1" ;
     schema:logo <https://raw.githubusercontent.com/dhuzard/HCMO/main/HCMO-logo3.png> ;
     mod:createdWith <https://chowlk.linkeddata.es/> ;
     mod:status "draft" .
@@ -1281,9 +1281,6 @@ BFO:0000015 a owl:Class ;
 <https://orcid.org/0000-0003-2204-2466> a schema:Person ;
     schema:name "Gaoussou Sanou" .
 
-<https://orcid.org/0000-0003-4820-7951> a schema:Person ;
-    schema:name "Damien Huzard" .
-
 <https://orcid.org/0009-0008-0575-8490> a schema:Person ;
     schema:name "Antoine Toffano" .
 
@@ -1376,6 +1373,9 @@ hcm-tech:monitoredBy a owl:ObjectProperty ;
     rdfs:comment "Relates a monitored enclosure to a sensor that monitors it, independently of whether the sensor is physically installed in that enclosure." ;
     rdfs:domain hcm:MonitoredEnclosure ;
     rdfs:range hcm-tech:Sensor .
+
+<https://orcid.org/0000-0003-4820-7951> a schema:Person ;
+    schema:name "Damien Huzard" .
 
 hcm-bio:HousingAssignment a owl:Class ;
     rdfs:label "Housing Assignment" ;

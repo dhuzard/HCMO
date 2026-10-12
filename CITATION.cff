@@ -45,9 +45,9 @@ authors:
     orcid: "https://orcid.org/0000-0003-4820-7951"
     email: "damien.huzard@gmail.com"
     affiliation: "Neuronautix, Montpellier, France"
-version: 0.4.0
+version: 0.4.1
 date-released: 2026-10-12
-# The 0.4.0 version DOI is minted by Zenodo when the GitHub release is
+# The 0.4.1 version DOI is minted by Zenodo when the GitHub release is
 # published; until then `doi` is the concept DOI (resolves to the latest version).
 doi: 10.5281/zenodo.18925284
 identifiers:

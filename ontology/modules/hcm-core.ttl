@@ -1,4 +1,4 @@
-# HCMO 0.4.0 — core — the MonitoredEnclosure hub + reused-vocabulary scaffolding + ontology header
+# HCMO 0.4.1 — core — the MonitoredEnclosure hub + reused-vocabulary scaffolding + ontology header
 # Promoted after expert review; see docs/paper/MODULE-MAP.md. Namespace policy: …/hcm#.
 #
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
@@ -88,11 +88,11 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
     dcterms:issued "2026-10-12"^^xsd:date ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     dcterms:modified "2026-10-12"^^xsd:date ;
-    dcterms:publisher "Huzard group" ;
+    dcterms:publisher <https://orcid.org/0000-0003-4820-7951> ;
     dcterms:source <https://github.com/dhuzard/HCMO> ;
     owl:priorVersion <https://w3id.org/hcmo/ontology/hcm/0.3.0> ;
-    owl:versionIRI <https://w3id.org/hcmo/ontology/hcm/0.4.0> ;
-    owl:versionInfo "0.4.0" ;
+    owl:versionIRI <https://w3id.org/hcmo/ontology/hcm/0.4.1> ;
+    owl:versionInfo "0.4.1" ;
     schema:logo <https://raw.githubusercontent.com/dhuzard/HCMO/main/HCMO-logo3.png> ;
     mod:createdWith <https://chowlk.linkeddata.es/> ;
     mod:status "draft" ;
