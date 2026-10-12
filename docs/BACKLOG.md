@@ -196,17 +196,29 @@ Open:
 - [ ] **Register HCMO for findability:** the `hcm` prefix on prefix.cc and an entry
   in LOV and/or BioPortal or OLS (and FAIRsharing). FOOPS! on the PURL scores
   0.875 because of these three tests; file mode scores 1.0.
+- [ ] **w3id: dereference the SKOS vocabularies and auxiliary ontology IRIs.**
+  `https://w3id.org/hcmo/id/vocab/*`, `…/ontology/profile/bfo-sosa-bridge` and
+  `…/ontology/external/upper-presentation` fall through to the GitHub repository
+  page (checked 2026-10-12). Publish `vocabularies/*.ttl` (for example on GitHub
+  Pages through the docs workflow) and add rules to `ids/hcmo/.htaccess` in
+  perma-id/w3id.org (PR from an up-to-date fork; `dhuzard/w3id.org` dates from
+  2026-07-17). Version IRIs need no change: the existing rules match any version.
+- [ ] **One source for `https://w3id.org/hcmo/id/vocab/*`.** The Metadatapp endpoint
+  holds its own `vendor` scheme (25 concepts, 11 shared with
+  `vocabularies/vendors.ttl`; three vendors under different slugs, such as
+  `tecniplast-s-p-a` versus `tecniplast`) and two schemes not in this repository
+  (`modality`, `sensor-technology`). Decide the authority (proposed: this
+  repository), merge the extra concepts here, and map the divergent slugs.
 - [ ] **AskWol namespace 404s:** its probe reports HTTP 404 for the HCMO
   namespaces since v0.3.1, but they resolve in every check we ran. Confirm with a
   manual AskWol run or the maintainers.
 - [ ] **Check the section restructure against the settled layout** (D1: seven-section
   resource-paper layout). *Tracked: T20b (in progress), T20i, T20k, T20s.*
-- [ ] **Check the venue:** the meeting notes and some TODO rows still say ESWC 2027
-  while the paper now targets ISWC. On 2026-10-12 neither 2027 call was published
-  (ESWC 2027 Resources Track page: "Coming soon"). Previous cycles: ESWC
-  Resources Track, 15 pages plus references, full paper early December (2026
-  edition: 4 Dec 2025); ISWC Resources Track, 15 pages plus references, full
-  paper early May (2026 edition: 7 May 2026). *Tracked: T20a.*
+- [x] **Venue decided (2026-10-12): ESWC 2027 Resources Track.** The 2027 call
+  was not published yet; expect abstract late November and full paper early
+  December 2026 (2026 edition: 27 Nov and 4 Dec 2025). Resource-links block
+  added after the abstract. Re-check `paper/CALL-REQUIREMENTS.md` when the call
+  opens. *Tracked: T20a.*
 
 ## 3. ISA exchange profile (brainstorm of 2026-09-18, nothing decided)
 

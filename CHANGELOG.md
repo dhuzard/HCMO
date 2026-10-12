@@ -13,6 +13,10 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
   reports them. §5 now defines the TBox, ABox and CBox levels and names the
   OBI/STATO types of the evidence slice (#36). A Hasse diagram of the 2 × 2
   design is added as supplementary material (#35).
+- Paper: target venue set to the ESWC 2027 Resources Track; the ESWC
+  resource-links block (resource type, licence, DOI, URL) now follows the
+  abstract, and the planning documents (README, outline, call checklist, TODO
+  T20a) record the decision.
 - Paper: the Hasse diagram of the 2 × 2 design becomes Supplementary Fig. S1,
   cited in §5 (#35); §4 mentions the public Metadatapp SPARQL endpoint (separate
   service, not part of the release). Benoît Girard's name now carries the

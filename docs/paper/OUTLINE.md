@@ -2,9 +2,9 @@
 
 Working title: **HCMO: An Ontology for Home-Cage Monitoring of Laboratory Animals**
 
-Target: **ISWC Resources Track** (changed from ESWC 2027 on 2026-09-24; see
-`ISWC-MIGRATION-PLAN.md` for the paragraph-level migration map and the
-15-page budget). Previously: ESWC 2027 Resources Track, Springer LNCS. The official 2027 call
+Target: **ESWC 2027 Resources Track**, Springer LNCS (decided 2026-10-12; the
+seven-section structure adopted for ISWC on 2026-09-24 is kept, see
+`ISWC-MIGRATION-PLAN.md`). 15-page budget. The official 2027 call
 had not published its page limit on 2026-09-17. Until it does, use the ESWC
 2026 allowance of **15 content pages plus unlimited references** only as a
 provisional planning baseline; see `CALL-REQUIREMENTS.md`.

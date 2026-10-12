@@ -1,5 +1,9 @@
 # ISWC Resources Track — manuscript sync, comment resolution, and migration plan
 
+> **2026-10-12: the venue is ESWC 2027 Resources Track.** The restructure below
+> is kept; the ESWC resource-links block is now after the abstract. See
+> `CALL-REQUIREMENTS.md`.
+
 Date: 2026-09-24 · Owner: Damien · Status: **sync, comment pass, and first
 migration pass done (§8); co-author review of the migrated draft pending.**
 
