@@ -88,3 +88,4 @@ IAO:0000030 a owl:Class ;
 # The default end-user model places groups beneath Material entity. This
 # developer-only axiom restores the more specific BFO classification.
 hcm-bio:ExperimentalGroup rdfs:subClassOf BFO:0000027 .
+hcm-bio:InteractingGroup rdfs:subClassOf BFO:0000027 .

@@ -639,14 +639,26 @@
           <div class="field">
             <span class="lbl">File / data formats <span class="tier tier--rec">Rec</span></span>
             <div class="chips" data-multi="formats">
-              <label class="chip"><input type="checkbox" name="formats" value="CSV" /> CSV</label>
-              <label class="chip"><input type="checkbox" name="formats" value="Excel" /> Excel</label>
-              <label class="chip"><input type="checkbox" name="formats" value="JSON" /> JSON</label>
-              <label class="chip"><input type="checkbox" name="formats" value="HDF5" /> HDF5</label>
-              <label class="chip"><input type="checkbox" name="formats" value="XML" /> XML</label>
-              <label class="chip"><input type="checkbox" name="formats" value="Video files" /> Video files</label>
-              <label class="chip"><input type="checkbox" name="formats" value="Proprietary / binary" /> Proprietary</label>
-              <label class="chip"><input type="checkbox" name="formats" value="Database / API" /> Database / API</label>
+              <!-- BEGIN generated formats options: tooling/export_hcm_vocab.py -->
+              <label class="chip" title="text/csv"><input type="checkbox" name="formats" value="text/csv" data-concept="https://w3id.org/hcmo/id/vocab/file-format/csv" /> CSV</label>
+              <label class="chip" title="Microsoft Excel workbook"><input type="checkbox" name="formats" value="Microsoft Excel workbook" data-concept="https://w3id.org/hcmo/id/vocab/file-format/excel-workbook" /> Excel</label>
+              <label class="chip" title="application/json"><input type="checkbox" name="formats" value="application/json" data-concept="https://w3id.org/hcmo/id/vocab/file-format/json" /> JSON</label>
+              <label class="chip" title="application/x-hdf5"><input type="checkbox" name="formats" value="application/x-hdf5" data-concept="https://w3id.org/hcmo/id/vocab/file-format/hdf5" /> HDF5</label>
+              <label class="chip" title="application/vnd.sqlite3"><input type="checkbox" name="formats" value="application/vnd.sqlite3" data-concept="https://w3id.org/hcmo/id/vocab/file-format/sqlite" /> SQLite</label>
+              <label class="chip" title="application/xml"><input type="checkbox" name="formats" value="application/xml" data-concept="https://w3id.org/hcmo/id/vocab/file-format/xml" /> XML</label>
+              <label class="chip" title="Video file"><input type="checkbox" name="formats" value="Video file" data-concept="https://w3id.org/hcmo/id/vocab/file-format/video" /> Video files</label>
+              <label class="chip" title="Proprietary binary format"><input type="checkbox" name="formats" value="Proprietary binary format" data-concept="https://w3id.org/hcmo/id/vocab/file-format/proprietary-binary" /> Proprietary</label>
+              <!-- END generated formats options -->
+            </div>
+          </div>
+          <div class="field">
+            <span class="lbl">Data access methods <span class="tier tier--opt">Opt</span> <span class="sub">how the data can be obtained, besides file formats</span></span>
+            <div class="chips" data-multi="accessMethods">
+              <!-- BEGIN generated accessMethods options: tooling/export_hcm_vocab.py -->
+              <label class="chip" title="File export"><input type="checkbox" name="accessMethods" value="File export" data-concept="https://w3id.org/hcmo/id/vocab/data-access-method/file-export" /> File export</label>
+              <label class="chip" title="Database"><input type="checkbox" name="accessMethods" value="Database" data-concept="https://w3id.org/hcmo/id/vocab/data-access-method/database" /> Database</label>
+              <label class="chip" title="Application programming interface (API)"><input type="checkbox" name="accessMethods" value="Application programming interface (API)" data-concept="https://w3id.org/hcmo/id/vocab/data-access-method/api" /> API</label>
+              <!-- END generated accessMethods options -->
             </div>
           </div>
           <div class="grid g2" style="margin-top:1rem">
@@ -870,6 +882,7 @@
   function val(name) { var el = form.elements[name]; return el ? (el.value || "").trim() : ""; }
   function checked(name) { var el = form.elements[name]; return !!(el && el.checked); }
   function multi(name) { return $$('input[name="' + name + '"]:checked').map(function (i) { return i.value; }); }
+  function multiConcepts(name) { return $$('input[name="' + name + '"]:checked').map(function (i) { return i.getAttribute("data-concept"); }).filter(Boolean); }
   function slug(s) {
     return (s || "").toLowerCase().replace(/[®™]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 48) || "unnamed";
   }
@@ -931,14 +944,16 @@
       sensors: sensors, actuators: actuators,
       recording: { duration: val("duration"), mode: val("recMode"), extendable: val("extendable") },
       dataOutput: {
-        formats: multi("formats"), sampling: val("sampling"), volume: val("volume"),
+        formats: multi("formats"), formatConcepts: multiConcepts("formats"),
+        accessMethods: multiConcepts("accessMethods"), accessMethodLabels: multi("accessMethods"),
+        sampling: val("sampling"), volume: val("volume"),
         schema: val("schema"), datasetLinks: val("dataLinks").split(/\n+/).map(function (s) { return s.trim(); }).filter(Boolean),
         fileName: val("fileName"), version: val("dataVersion"),
         license: val("license"), willEmailSample: checked("willEmailData")
       },
       extra: { gaps: val("gaps"), notes: val("notes") },
       identifiers: { baseIri: baseIri, systemId: systemId, hardwareId: "hw-" + slug(val("hwName") || "unit"), softwareId: "sw-" + slug(val("swName") || "app"), supplierId: "supplier-" + slug(val("vendor") || "na") },
-      _meta: { schema: "hcmo-contribution/0.2", ontologyVersion: "0.3.0", source: "hcmo-contribute-form" }
+      _meta: { schema: "hcmo-contribution/0.3", ontologyVersion: "0.3.0", source: "hcmo-contribute-form" }
     };
     return data;
   }
@@ -998,7 +1013,7 @@
     var hasEnvironment = d.measurements.parameters.length || d.conditions.environment || d.measurements.circadian;
     var hasCondition = hasAnyValue(d.conditions);
     var hasObservationProfile = d.measurements.results.length || hasCondition || d.recording.duration || d.recording.mode || d.measurements.behaviors;
-    var hasTimeSeries = d.dataOutput.fileName || d.dataOutput.version || d.dataOutput.sampling || d.dataOutput.volume || d.dataOutput.schema || d.dataOutput.license || d.dataOutput.formats.length || d.dataOutput.datasetLinks.length;
+    var hasTimeSeries = d.dataOutput.fileName || d.dataOutput.version || d.dataOutput.sampling || d.dataOutput.volume || d.dataOutput.schema || d.dataOutput.license || d.dataOutput.formats.length || d.dataOutput.accessMethods.length || d.dataOutput.datasetLinks.length;
     var lines = [
       "@prefix hcm: <https://w3id.org/hcmo/ontology/hcm#> .",
       "@prefix hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#> .",
@@ -1140,6 +1155,8 @@
       addLiteral(lines, timeSeries, "rdfs:label", d.dataOutput.fileName || ((d.system.name || "system") + " time series"));
       addLiteral(lines, timeSeries, "dcterms:title", d.dataOutput.fileName);
       d.dataOutput.formats.forEach(function (f) { addLiteral(lines, timeSeries, "hcm-tech:hasFileFormat", f); });
+      d.dataOutput.formatConcepts.forEach(function (c) { addTriple(lines, timeSeries, "hcm-tech:hasFileFormatConcept", "<" + c + ">"); });
+      d.dataOutput.accessMethods.forEach(function (c) { addTriple(lines, timeSeries, "hcm-tech:hasDataAccessMethod", "<" + c + ">"); });
       addLiteral(lines, timeSeries, "hcm-tech:hasSamplingRate", d.dataOutput.sampling);
       addLiteral(lines, timeSeries, "hcm-tech:hasVersion", d.dataOutput.version);
       addLiteral(lines, timeSeries, "dcterms:extent", d.dataOutput.volume);
@@ -1222,7 +1239,7 @@
     m += "\n## Recording window\n";
     m += line("Duration", d.recording.duration) + line("Mode", d.recording.mode) + line("Extendable", d.recording.extendable);
     m += "\n## Data output\n";
-    m += line("File name", d.dataOutput.fileName) + line("Version", d.dataOutput.version) + line("Formats", d.dataOutput.formats.join(", ")) + line("Sampling", d.dataOutput.sampling) + line("Volume", d.dataOutput.volume);
+    m += line("File name", d.dataOutput.fileName) + line("Version", d.dataOutput.version) + line("Formats", d.dataOutput.formats.join(", ")) + line("Access methods", d.dataOutput.accessMethodLabels.join(", ")) +line("Sampling", d.dataOutput.sampling) + line("Volume", d.dataOutput.volume);
     if (d.dataOutput.schema) m += "- **Example schema:**\n  ```\n  " + d.dataOutput.schema.replace(/\n/g, "\n  ") + "\n  ```\n";
     if (d.dataOutput.datasetLinks.length) m += line("Dataset links", d.dataOutput.datasetLinks.join(" , "));
     m += line("License", d.dataOutput.license) + line("Will email a sample dataset", d.dataOutput.willEmailSample ? "yes" : "no");

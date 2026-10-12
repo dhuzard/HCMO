@@ -10,6 +10,7 @@
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -53,6 +54,20 @@ hcm-tech:hasFileFormat a owl:DatatypeProperty ;
     rdfs:comment "Records the file format of a software or time-series artifact." ;
     rdfs:domain [ a owl:Class ; owl:unionOf ( hcm-tech:Software hcm-tech:TimeSeries ) ] ;
     rdfs:range xsd:string .
+
+hcm-tech:hasFileFormatConcept a owl:ObjectProperty ;
+    rdfs:label "has file format concept" ;
+    rdfs:comment "Relates a software or time-series artifact to the SKOS concept that identifies its file format in the HCMO file-format vocabulary. It is the canonical form of the file-format statement; the has file format string remains for backward compatibility and should carry the concept's notation." ;
+    rdfs:domain [ a owl:Class ; owl:unionOf ( hcm-tech:Software hcm-tech:TimeSeries ) ] ;
+    rdfs:range skos:Concept ;
+    rdfs:seeAlso <https://w3id.org/hcmo/id/vocab/file-format> .
+
+hcm-tech:hasDataAccessMethod a owl:ObjectProperty ;
+    rdfs:label "has data access method" ;
+    rdfs:comment "Relates a software or time-series artifact to the SKOS concept that identifies how its data can be obtained, such as a database or an application programming interface, in the HCMO data-access-method vocabulary. It complements the file format, which describes the serialization of exported files." ;
+    rdfs:domain [ a owl:Class ; owl:unionOf ( hcm-tech:Software hcm-tech:TimeSeries ) ] ;
+    rdfs:range skos:Concept ;
+    rdfs:seeAlso <https://w3id.org/hcmo/id/vocab/data-access-method> .
 
 hcm-tech:hasFirmware a owl:DatatypeProperty ;
     rdfs:label "has firmware" ;

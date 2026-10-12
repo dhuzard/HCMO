@@ -1,0 +1,57 @@
+lmt_event,rows_in_sample,max_animals,mirrored_pct,hcmo_pattern,basis
+Approach,8836,2,0.0,directed,DESCRIPTION 'Mouse A Speed > Mouse B Speed & Mouse A getting to B' [db]
+Approach contact,332,2,0.0,directed,"IDANIMALA initiates, IDANIMALB receives [authors]"
+Approach rear,304,2,0.0,directed,"IDANIMALA initiates, IDANIMALB receives [authors]"
+Behind,3377,2,0.3,directed,DESCRIPTION 'Animal A is behind animal B' [db]
+Break contact,435,2,0.0,directed,DESCRIPTION 'A and B are in contact. Aspeed > BSpeed and gets to no contact' [db]
+Center Zone,417,1,,individual,IDANIMALB never filled [db]
+Contact,1228,2,100.0,symmetric,DESCRIPTION 'Animals are touching each other' [db]; stored in both orders [db]
+Detection,34,1,,individual,IDANIMALB never filled [db]
+Escape,8756,2,0.0,directed,DESCRIPTION 'Mouse A Speed > Mouse B Speed & Mouse A getting away from B' [db]
+Follow,623,2,32.7,directed,"DESCRIPTION 'Mouse A and B are not stopped. Mouse A is behind, in contact' [db]"
+FollowZone,5,2,0.0,directed,"IDANIMALA initiates, IDANIMALB receives [authors]"
+FollowZone Isolated,495,2,3.6,directed,"IDANIMALA initiates, IDANIMALB receives [authors]"
+Get away,11032,2,0.0,directed,"IDANIMALA initiates, IDANIMALB receives [authors]"
+Group 3 break,95,1,,individual,IDANIMALB never filled [db]
+Group 3 make,86,1,,individual,IDANIMALB never filled [db]
+Group 4 break,10,1,,individual,IDANIMALB never filled [db]
+Group 4 make,7,1,,individual,IDANIMALB never filled [db]
+Group2,1086,2,100.0,symmetric,Group events are symmetric [authors]
+Group3,516,3,100.0,symmetric,Group events are symmetric [authors]
+Group4,11,4,0.0,symmetric,Group events are symmetric [authors]
+Head detected,143,1,,individual,IDANIMALB never filled [db]
+Look down,3991,1,,individual,IDANIMALB never filled [db]
+MACHINE LEARNING ASSOCIATION,18,1,,individual,IDANIMALB never filled [db]
+Move in contact,1339,2,21.1,directed,"IDANIMALA initiates, IDANIMALB receives [authors]"
+Move isolated,2768,1,,individual,IDANIMALB never filled [db]
+Nest3_,25,1,,individual,IDANIMALB never filled [db]
+Oral-genital Contact,509,2,1.2,directed,"head of A to hindquarters of B (BuildEventOralGenitalContact.py, lmt-analysis@c284e35); A initiates, B receives [authors]"
+Oral-oral Contact,522,2,100.0,symmetric,"head-to-head distance, same for A-B and B-A (BuildEventOralOralContact.py, lmt-analysis@c284e35); stored in both orders [db]"
+Periphery Zone,411,1,,individual,IDANIMALB never filled [db]
+RFID ASSIGN ANONYMOUS TRACK,10,1,,individual,IDANIMALB never filled [db]
+RFID MATCH,3477,1,,individual,IDANIMALB never filled [db]
+RFID MISMATCH,41,1,,individual,IDANIMALB never filled [db]
+Rear at periphery,528,1,,individual,IDANIMALB never filled [db]
+Rear in centerWindow,52,1,,individual,IDANIMALB never filled [db]
+Rear in contact,190,1,,individual,IDANIMALB never filled [db]
+Rear isolated,577,1,,individual,IDANIMALB never filled [db]
+Rearing,1590,1,,individual,IDANIMALB never filled [db]
+SAP,399,1,,individual,IDANIMALB never filled [db]
+Side by side Contact,292,2,100.0,symmetric,"isSideBySide(A, B) (BuildEventSideBySide.py, lmt-analysis@c284e35); stored in both orders [db]"
+"Side by side Contact, opposite way",366,2,100.0,symmetric,"isSideBySide(A, B) (BuildEventSideBySideOpposite.py, lmt-analysis@c284e35); stored in both orders [db]"
+Social approach,2581,2,0.0,directed,"IDANIMALA initiates, IDANIMALB receives [authors]"
+Social escape,3143,2,0.0,directed,"IDANIMALA initiates, IDANIMALB receives [authors]"
+Stop,2772,1,,individual,IDANIMALB never filled [db]
+Stop in contact,1147,2,13.4,directed,"IDANIMALA initiates, IDANIMALB receives [authors]"
+Stop isolated,2547,1,,individual,IDANIMALB never filled [db]
+Train2,2,2,0.0,directed,"IDANIMALA initiates, IDANIMALB receives [authors]"
+WallJump,11,1,,individual,IDANIMALB never filled [db]
+Water Stop,9,1,,individual,IDANIMALB never filled [db]
+Water Zone,81,1,,individual,IDANIMALB never filled [db]
+badIdentity,37,1,,individual,IDANIMALB never filled [db]
+badOrientation,44,1,,individual,IDANIMALB never filled [db]
+badSegmentation,172,1,,individual,IDANIMALB never filled [db]
+coucou,9,2,0.0,exclude,probably a test label [authors]
+event,1,1,,individual,IDANIMALB never filled [db]
+seq oral geni - oral oral,2,2,0.0,directed,"IDANIMALA initiates, IDANIMALB receives [authors]"
+seq oral oral - oral genital,7,2,0.0,directed,"IDANIMALA initiates, IDANIMALB receives [authors]"

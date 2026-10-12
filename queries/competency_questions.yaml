@@ -12,7 +12,7 @@ questions:
       - enclosure: https://example.org/hcmo/isa-crate/cage-12
         subjects: https://example.org/hcmo/isa-crate/animal-1
       - enclosure: https://example.org/hcmo/minimal/cage-12
-        subjects: https://example.org/hcmo/minimal/mouse-1
+        subjects: https://example.org/hcmo/minimal/mouse-1, https://example.org/hcmo/minimal/mouse-2
       - enclosure: https://w3id.org/hcmo/id/example-submission/enclosure-example-hcm
         subjects: https://w3id.org/hcmo/id/example-submission/subject-example-hcm
 
@@ -86,6 +86,8 @@ questions:
         enclosure: https://example.org/hcmo/isa-crate/cage-12
       - subject: https://example.org/hcmo/minimal/mouse-1
         enclosure: https://example.org/hcmo/minimal/cage-12
+      - subject: https://example.org/hcmo/minimal/mouse-2
+        enclosure: https://example.org/hcmo/minimal/cage-12
       - subject: https://w3id.org/hcmo/id/example-submission/subject-example-hcm
         enclosure: https://w3id.org/hcmo/id/example-submission/enclosure-example-hcm
 
@@ -102,6 +104,9 @@ questions:
       - enclosure: https://example.org/hcmo/minimal/cage-12
         sensor: https://example.org/hcmo/minimal/temperature-sensor-1
         property: https://example.org/hcmo/minimal/ambient-temperature
+      - enclosure: https://example.org/hcmo/minimal/cage-12
+        sensor: https://example.org/hcmo/minimal/depth-camera-1
+        property: https://example.org/hcmo/minimal/social-behavior
       - enclosure: https://w3id.org/hcmo/id/example-submission/enclosure-example-hcm
         sensor: https://w3id.org/hcmo/id/example-submission/sensor-ir-camera
         property: null
@@ -115,3 +120,18 @@ questions:
         duration: "24.0"
         unit: http://www.w3.org/2006/time#unitHour
         condition: https://example.org/hcmo/minimal/limited-human-interaction
+
+  - id: social-interaction-partners
+    question: Which subjects took part in a behavior together with another subject, which behavior was it, and what was each subject's role?
+    file: queries/cq-social-interaction-partners.rq
+    expected_answers:
+      - subject: https://example.org/hcmo/minimal/mouse-1
+        partner: https://example.org/hcmo/minimal/mouse-2
+        behavior: approach
+        role: initiator
+        observation: https://example.org/hcmo/minimal/observation-2
+      - subject: https://example.org/hcmo/minimal/mouse-2
+        partner: https://example.org/hcmo/minimal/mouse-1
+        behavior: approach
+        role: recipient
+        observation: https://example.org/hcmo/minimal/observation-2

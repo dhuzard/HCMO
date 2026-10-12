@@ -7,6 +7,42 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Added
 
+- Multi-animal behavior: added `hcm-bio:InteractingGroup` (a transient group of
+  two or more subjects defined by an observed behavior, distinct from
+  `hcm-bio:ExperimentalGroup`), `hcm-obs:involvesSubject` and its
+  sub-properties `hcm-obs:hasInitiator` and `hcm-obs:hasRecipient`. One
+  multi-animal event is one `hcm-obs:BehaviorObservation` whose feature of
+  interest is the interacting group. SHACL requires at least two group members,
+  role holders who belong to the group, and distinct initiator and recipient; a
+  negative probe (`examples/abox-social-invalid.ttl`) checks each rule. The
+  minimal example gains a second mouse, a depth camera and a directed
+  "approach", and the new competency question `social-interaction-partners`
+  answers who interacted with whom and in which role. Recorded as proposed
+  ADR-0006, pending co-author review; the LMT per-event mapping table
+  (`event-mapping.csv`) applies it to 56 of the 62 event names of the sample (manual annotations and `Nest4_` are not mapped).
+
+- Added a source-cited Live Mouse Tracker profile
+  (`docs/hcm-systems/systems/live-mouse-tracker/`) documenting the SQLite
+  schema, event types and a candidate HCMO mapping, read from the public sample
+  experiment (not committed; URL and SHA-256 recorded).
+- Added two object properties to `hcm-tech`, both with domain software or time
+  series and range `skos:Concept`: `hcm-tech:hasFileFormatConcept` (the
+  canonical file-format statement) and `hcm-tech:hasDataAccessMethod` (file
+  export, database, or API). `hcm-tech:hasFileFormat` is unchanged and kept for
+  backward compatibility; it should now carry the concept's notation. JSON-LD
+  context terms and IRI-only SHACL constraints added. No existing IRI or axiom
+  changed; `owl:versionIRI` stays 0.3.0 until the next release (#33, #31).
+- Added SKOS vocabularies in `vocabularies/`, outside the release manifest:
+  hand-authored file formats (generic formats with media-type notations,
+  including SQLite, plus the three sourced Tecniplast DVC Analytics exports and
+  the Live Mouse Tracker SQLite database and MP4 video segments as narrower
+  concepts in per-provider
+  collections) and data-access methods; vendor and HCM-system schemes
+  generated from `CATALOG.md` by the new `tooling/export_hcm_vocab.py`, with
+  system short names (for example LMT, CLAMS, MoPSS) as `skos:altLabel` from a
+  new *System short names* table.
+  `shapes/vocab-shapes.ttl` and validation step 8 check vocabulary integrity,
+  generated-output freshness, example usage, and a negative probe.
 - Recorded the BFO/SOSA double-hierarchy decision package and work plan for
   the co-author vote. It documents the verified state — four genuinely
   dual-parented classes, four SOSA-only observation classes with no BFO anchor,
@@ -31,6 +67,32 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Changed
 
+- `hcm-obs:BehaviorObservation`: the feature-of-interest restriction is
+  loosened from `hcm-bio:Subject` to `hcm-bio:Subject` or
+  `hcm-bio:InteractingGroup`, and `hcm-bio:hasMember` now also applies to
+  interacting groups. Existing data remain valid. The reviewed answers of the
+  `animals-by-enclosure`, `needs-provisioning` and `sensors-behaviors`
+  competency questions now include the second mouse and the depth camera of the
+  extended minimal example.
+- Catalogue: SoHo telemetry is attributed to DSI (sold through Harvard
+  Bioscience); the iMouse row is now the DigiFrame system by iMouse GmbH (short
+  names iMouse, DigiFrame Hardware Enabler); PsiBox, obsolete, is removed. Its
+  system concept had never been released; its `catalog.ttl` node
+  (`…/id/catalog/system/psibox`, a deprecated `hcm:System` instance on `main`)
+  is no longer generated.
+- Live Mouse Tracker profile: GPL-3.0 licence, pixel coordinates, meanings of
+  `SAP`, `Train2` and `coucou`, and the adopted multi-animal mapping.
+- Contribution form (`hcmo-contribution/0.3`): file-format and new
+  data-access-method chips are generated from the SKOS vocabularies; the form
+  now emits the media type (for example `text/csv` instead of `CSV`) in
+  `hcm-tech:hasFileFormat`, plus the concept IRIs. "Database / API" moved from
+  the formats field to the new access-method field.
+- Normalised the Vendor column of `docs/hcm-systems/CATALOG.md` to one
+  organisation per cell (DSI, UID, IntelliCage/TSE Systems, SoHo), with notes
+  moved to *Data / links*, and moved Metadatapp to a new "not HCM systems"
+  section. The regenerated `catalog.ttl` therefore mints different
+  `catalog/agent/` IRIs for the four affected vendors (see #32 for that graph's
+  rework).
 - Added "Conceptualization (initial project framing)" to Benoit Girard's CRediT
   roles in the manuscript and author-metadata record, with his agreement; the
   qualifier separates the early-stage project framing from the later

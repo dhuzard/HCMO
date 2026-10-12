@@ -15,6 +15,11 @@ hcm-bio:ExperimentalGroup a owl:Class ;
     rdfs:comment "A group of biological subjects sharing an experimental condition, treatment, or study role." ;
     rdfs:subClassOf BFO:0000040 .
 
+hcm-bio:InteractingGroup a owl:Class ;
+    rdfs:label "Interacting Group" ;
+    rdfs:comment "A transient collection of two or more subjects that jointly take part in a behavior during an observed interval, such as two animals in contact or three animals huddling together. It is defined by the observed behavior, not by the study design, and is therefore distinct from an experimental group." ;
+    rdfs:subClassOf BFO:0000040 .
+
 hcm-bio:HousingAssignment a owl:Class ;
     rdfs:label "Housing Assignment" ;
     rdfs:comment "An information-content record documenting the actual housing of a subject or group in an enclosure during a stated validity interval. It is distinct from a planned assignment and from the allocation execution that establishes the housing." ;
@@ -70,8 +75,8 @@ hcm-bio:hasHousingAssignment a owl:ObjectProperty ;
 
 hcm-bio:hasMember a owl:ObjectProperty ;
     rdfs:label "has member" ;
-    rdfs:comment "Relates an experimental group to a subject that is a member of the group." ;
-    rdfs:domain hcm-bio:ExperimentalGroup ;
+    rdfs:comment "Relates an experimental or interacting group to a subject that is a member of the group." ;
+    rdfs:domain [ a owl:Class ; owl:unionOf ( hcm-bio:ExperimentalGroup hcm-bio:InteractingGroup ) ] ;
     rdfs:range hcm-bio:Subject .
 
 hcm-bio:hasSpecies a owl:DatatypeProperty ;

@@ -1,0 +1,50 @@
+# HCMO data-access-method vocabulary (SKOS).
+#
+# Hand-authored controlled vocabulary for how the data of a home-cage
+# monitoring system can be obtained. It is not part of the HCMO release
+# manifest (hcmo.yaml) and is not merged into dist/. Data link to a concept
+# with hcm-tech:hasDataAccessMethod; the file format of exported files is
+# described separately with hcm-tech:hasFileFormatConcept.
+#
+# Validated by shapes/vocab-shapes.ttl (python tooling/validate.py).
+
+@prefix dam: <https://w3id.org/hcmo/id/vocab/data-access-method/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/hcmo/id/vocab/data-access-method> a skos:ConceptScheme ;
+    dcterms:title "HCMO data-access-method vocabulary"@en ;
+    dcterms:description "Ways in which the data produced by a home-cage monitoring system can be obtained."@en ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:created "2026-09-29"^^xsd:date ;
+    dcterms:source <https://github.com/dhuzard/HCMO/issues/33> ;
+    skos:hasTopConcept dam:file-export, dam:database, dam:api .
+
+dam:file-export a skos:Concept ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/data-access-method> ;
+    skos:topConceptOf <https://w3id.org/hcmo/id/vocab/data-access-method> ;
+    skos:prefLabel "File export"@en ;
+    skos:definition "Data are obtained as files exported or downloaded from the system or its software."@en ;
+    skos:scopeNote "Describe the exported files with a file-format concept."@en .
+
+dam:database a skos:Concept ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/data-access-method> ;
+    skos:topConceptOf <https://w3id.org/hcmo/id/vocab/data-access-method> ;
+    skos:prefLabel "Database"@en ;
+    skos:definition "Data are obtained by querying or connecting to a database in which the system stores them."@en .
+
+dam:api a skos:Concept ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/data-access-method> ;
+    skos:topConceptOf <https://w3id.org/hcmo/id/vocab/data-access-method> ;
+    skos:prefLabel "Application programming interface (API)"@en ;
+    skos:altLabel "API"@en ;
+    skos:definition "Data are obtained programmatically through an interface that the system or its vendor exposes, such as a web API."@en .
+
+# Options offered, in this order, by the contribution form
+# (docs/hcm-systems/contribute/). Regenerate the form with
+# python tooling/export_hcm_vocab.py after editing this list.
+dam:form-options a skos:OrderedCollection ;
+    skos:prefLabel "Contribution form data-access-method options"@en ;
+    skos:memberList ( dam:file-export dam:database dam:api ) .

@@ -19,6 +19,10 @@ Steps (any failure -> non-zero exit):
   7. Run every indexed competency query against the canonical ontology plus all
      positive examples. The canonicalized result rows must equal the reviewed
      answers in queries/competency_questions.yaml.
+  8. Check that the generated SKOS vocabularies and form options are current,
+     validate vocabularies/*.ttl with shapes/vocab-shapes.ttl, validate each
+     example's vocabulary usage, and require every usage shape to fire on the
+     negative probe examples/vocab-usage-invalid.ttl.
 
 Usage: python tooling/validate.py
 """
@@ -28,6 +32,7 @@ import glob
 import csv
 import json
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -50,6 +55,14 @@ def merged_graph(manifest: dict) -> Graph:
     for rel in manifest["modules"]:
         g.parse(ROOT / rel, format="turtle")
     return g
+
+
+SH = Namespace("http://www.w3.org/ns/shacl#")
+SOCIAL_PROBE_MESSAGES = (
+    "An interacting group needs at least two member subjects.",
+    "A subject with a role in a behavior observation must be its feature of interest",
+    "The initiator and the recipient of a directed behavior must be different subjects.",
+)
 
 
 def is_negative_example(relative_path: str) -> bool:
@@ -140,7 +153,7 @@ def evaluation_graph(manifest: dict, ontology_graph: Graph) -> Graph:
 def step_parse_all(manifest: dict) -> tuple[bool, list[str]]:
     ok = True
     notes = []
-    patterns = ["ontology/**/*.ttl", "shapes/**/*.ttl", "examples/**/*.ttl"]
+    patterns = ["ontology/**/*.ttl", "shapes/**/*.ttl", "examples/**/*.ttl", "vocabularies/**/*.ttl"]
     files = {Path(p) for pat in patterns for p in glob.glob(str(ROOT / pat), recursive=True)}
     files.update(
         {
@@ -212,6 +225,28 @@ def step_shacl(manifest: dict, ontology_graph: Graph) -> tuple[bool, list[str]]:
                     "[OK]   ontology-aware target probe: conformant without "
                     "ontology, non-conformant with ontology + RDFS"
                 )
+
+    probe = "examples/abox-social-invalid.ttl"
+    _, report_g, _ = shacl_validate(
+        Graph().parse(ROOT / probe, format="turtle"),
+        shacl_graph=shapes_g,
+        ont_graph=ontology_graph,
+        inference="rdfs",
+        abort_on_first=False,
+        do_owl_imports=False,
+    )
+    messages = {str(m) for m in report_g.objects(None, SH.resultMessage)}
+    missing = [
+        expected for expected in SOCIAL_PROBE_MESSAGES
+        if not any(message.startswith(expected) for message in messages)
+    ]
+    if missing:
+        ok = False
+        notes.append(f"[FAIL] multi-animal probe {probe}: shapes did not fire: {missing}")
+    else:
+        notes.append(
+            f"[OK]   multi-animal probe {probe}: all {len(SOCIAL_PROBE_MESSAGES)} rules fired"
+        )
     return ok, notes
 
 
@@ -699,6 +734,95 @@ def step_queries(
     return ok, notes, rowcounts
 
 
+VOCAB_PROBE_MESSAGES = (
+    "hcm-tech:hasFileFormatConcept must point at a concept",
+    "hcm-tech:hasDataAccessMethod must point at a concept",
+    "hcm-tech:hasFileFormat does not match",
+    "hcm-tech:hasFileFormat names a different format",
+)
+
+
+def shacl_results(data_g: Graph, shapes_g: Graph) -> list[tuple[URIRef, str, str]]:
+    """Return (severity, message, focus node) for each SHACL result."""
+    _, report_g, _ = shacl_validate(
+        data_g,
+        shacl_graph=shapes_g,
+        inference="none",
+        abort_on_first=False,
+        do_owl_imports=False,
+    )
+    return sorted(
+        (
+            report_g.value(result, SH.resultSeverity),
+            str(report_g.value(result, SH.resultMessage)),
+            str(report_g.value(result, SH.focusNode)),
+        )
+        for result in report_g.subjects(RDF.type, SH.ValidationResult)
+    )
+
+
+def step_vocabularies(manifest: dict) -> tuple[bool, list[str]]:
+    ok = True
+    notes = []
+    check = subprocess.run(
+        [sys.executable, str(ROOT / "tooling" / "export_hcm_vocab.py"), "--check"],
+        capture_output=True,
+        text=True,
+    )
+    if check.returncode:
+        ok = False
+        notes.extend((check.stdout + check.stderr).strip().splitlines())
+    else:
+        notes.append("[OK]   generated vendor/system vocabularies and form options are current")
+
+    vocab_g = Graph()
+    for path in sorted((ROOT / "vocabularies").glob("*.ttl")):
+        vocab_g.parse(path, format="turtle")
+    shapes_g = Graph().parse(ROOT / "shapes" / "vocab-shapes.ttl", format="turtle")
+    skos = Namespace("http://www.w3.org/2004/02/skos/core#")
+
+    results = shacl_results(vocab_g, shapes_g)
+    if results:
+        ok = False
+        for severity, message, focus in results[:10]:
+            notes.append(f"[FAIL] vocabulary {focus}: {message}")
+    else:
+        notes.append(
+            f"[OK]   vocabulary integrity: {len(set(vocab_g.subjects(RDF.type, skos.Concept)))} "
+            f"concepts in {len(set(vocab_g.subjects(RDF.type, skos.ConceptScheme)))} schemes"
+        )
+
+    for rel in manifest.get("examples", []):
+        data_g = Graph().parse(ROOT / rel, format="turtle") + vocab_g
+        results = shacl_results(data_g, shapes_g)
+        violations = [r for r in results if r[0] == SH.Violation]
+        for severity, message, focus in results:
+            if severity != SH.Violation:
+                notes.append(f"[WARN] vocabulary usage {rel} {focus}: {message}")
+        if violations:
+            ok = False
+            for _, message, focus in violations:
+                notes.append(f"[FAIL] vocabulary usage {rel} {focus}: {message}")
+        else:
+            notes.append(f"[OK]   vocabulary usage {rel}: no violations")
+
+    probe = "examples/vocab-usage-invalid.ttl"
+    results = shacl_results(Graph().parse(ROOT / probe, format="turtle") + vocab_g, shapes_g)
+    missing = [
+        expected for expected in VOCAB_PROBE_MESSAGES
+        if not any(message.startswith(expected) for _, message, _ in results)
+    ]
+    if missing:
+        ok = False
+        notes.append(f"[FAIL] negative probe {probe}: shapes did not fire: {missing}")
+    else:
+        notes.append(
+            f"[OK]   negative probe {probe}: all {len(VOCAB_PROBE_MESSAGES)} usage shapes fired "
+            f"({len(results)} result(s))"
+        )
+    return ok, notes
+
+
 def main() -> int:
     manifest = load_manifest()
     ontology_graph = merged_graph(manifest)
@@ -741,6 +865,11 @@ def main() -> int:
     print("\n== 7. Competency queries vs ontology and positive examples ==")
     query_graph = evaluation_graph(manifest, ontology_graph)
     ok, notes, rowcounts = step_queries(manifest, query_graph)
+    print("\n".join(notes))
+    all_ok &= ok
+
+    print("\n== 8. SKOS vocabularies ==")
+    ok, notes = step_vocabularies(manifest)
     print("\n".join(notes))
     all_ok &= ok
 
