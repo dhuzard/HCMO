@@ -58,8 +58,23 @@ Open:
   "Philippe's original comment" to the co-authors. Gmail holds no written version
   of the remark (searched 2026-10-12); Philippe's 2026-09-15 email raises the
   underlying point (no explicit alignment between OBO resources and PROV-O/SOSA).
-  Still to check: Damien's copies of Philippe's emails, then, as the last place,
-  Philippe's comments in the PLM LaTeX manuscript.
+  *Philippe's emails checked (2026-10-12): none mentions disjointness.* The
+  2026-07-15 review asks for top-level anchoring; the 2026-07-22 email proposes
+  the five-heading presentation (Entity; Material Entity; Information Entity;
+  Quality/Property; Process Entity/PROV-O Event); the 2026-09-15 email asks what
+  bringing PROV-O or SOSA into an OBO stack means "when there is no explicit
+  alignment between these distinct artefacts". His proposed SOSA-under-BFO
+  axioms were already recorded on 2026-09-17 (paper TODO T20l/T20m, `19afee5`),
+  after he wrote on 2026-09-16 that he would formalise his points that night, so
+  they most likely come from his PLM manuscript comments. The disjointness
+  sentence first appears in the call notes committed straight after the call
+  (`e6744e9`, 2026-09-18 17:08), unquoted: an oral remark or a paraphrase, not a
+  written source. Its BFO half holds; its SOSA half matches no SOSA artifact.
+  Read as "placing SOSA under disjoint BFO branches would let BFO's disjointness
+  constrain SOSA", it is covered by the ADR-0005 gates (every relevant
+  disjointness axiom listed, no unsatisfiable class, examples consistent).
+  Last step: search Philippe's PLM manuscript comments for "disjoint"; if nothing
+  is there, close this item with the reading above.
 - [ ] **Follow up the upstream fix for the unparseable PROV-to-BFO file:** reported
   as BFO-Mappings/PROV-to-BFO#44 with the prefix fix in #43 (both open as of
   2026-10-09; ROBOT evidence added to #44 the same day). The typo fix (#41) is
