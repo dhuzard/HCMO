@@ -162,9 +162,9 @@ Open:
   `examples/isa-roundtrip/competency_questions.yaml`. *Tracked: T20f, T20g, T20q, T20r.*
 - [ ] **HCMO–ISA JSON-LD context and ISA→JSON-LD build**; decide whether to deposit
   the result on Zenodo. *Tracked: #34.*
-- [ ] **Hasse diagram of the experimental design**: drafted and evaluated
-  (2026-10-12, `paper/supplementary/hasse-2x2-design.pdf`); recommendation:
-  supplementary, not a manuscript figure. **Co-author decision.** *Tracked: #35.*
+- [x] **Hasse diagram of the experimental design** (2026-10-12): Supplementary
+  Fig. S1 (`paper/supplementary/hasse-2x2-design.pdf`), cited in §5; not a
+  manuscript figure. *Tracked: #35.*
 - [ ] **Discussion: heterogeneity and the experimental unit.** Some systems measure
   only at group (cage) level, others resolve the individual subject; HCMO cannot yet
   define the experimental unit unambiguously, which also drives how either case
@@ -172,14 +172,22 @@ Open:
   consider a GitHub issue.*
 - [ ] **Validate the SPARQL queries**; ask Gaoussou Sanou for a PR (to be
   confirmed). *Not tracked.*
+- [ ] **Load HCMO 0.4.1 into the Metadatapp public SPARQL endpoint**
+  (`https://api.metadatapp.net/api/v1/public/sparql`, docs at
+  `https://api.metadatapp.net/docs`). On 2026-10-12 it still served 0.3.0. The
+  manuscript (§4) now mentions the endpoint, with a todo to update it before
+  submission.
 - [ ] **SKOS collection of file formats by system and provider.** Delivered in
   #38 (`vocabularies/file-formats.ttl`, `data-access-methods.ttl`, vendors and
   systems); close #31 and #33 when it merges, if they are fully covered. *Tracked:
   #31, #33.*
 - [ ] **Benoit Girard's affiliation** is still a placeholder ("to be confirmed") in
   `paper/overleaf/main.tex` and `paper/metadata/authors.md`. His public ORCID
-  record (checked 2026-10-12) lists no employment; ask him. ORCID spells his
-  name **Benoît**; the paper, `CITATION.cff` and the ontology write "Benoit".
+  record (checked 2026-10-12) lists no employment; Damien is asking him.
+  Spelling **Benoît** confirmed and applied to the paper, `authors.md`,
+  `PROVENANCE.md` and `CITATION.cff`. Still "Benoit" in the 0.4.1 ontology
+  (`schema:name`, fixed in 0.5.0, epic #45) and possibly in the Zenodo 0.4.1
+  record's creator list (editable on Zenodo).
 - [ ] **Page budget:** with the 0.4.1 updates the text before the references runs
   16 lines onto page 16 (5 lines before them). The 15-page limit includes the
   back matter. Needs the co-author cutting pass. *Tracked: T20k, T20s.*
@@ -194,7 +202,11 @@ Open:
 - [ ] **Check the section restructure against the settled layout** (D1: seven-section
   resource-paper layout). *Tracked: T20b (in progress), T20i, T20k, T20s.*
 - [ ] **Check the venue:** the meeting notes and some TODO rows still say ESWC 2027
-  while the paper now targets ISWC. *Tracked: T20a.*
+  while the paper now targets ISWC. On 2026-10-12 neither 2027 call was published
+  (ESWC 2027 Resources Track page: "Coming soon"). Previous cycles: ESWC
+  Resources Track, 15 pages plus references, full paper early December (2026
+  edition: 4 Dec 2025); ISWC Resources Track, 15 pages plus references, full
+  paper early May (2026 edition: 7 May 2026). *Tracked: T20a.*
 
 ## 3. ISA exchange profile (brainstorm of 2026-09-18, nothing decided)
 

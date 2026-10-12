@@ -18,7 +18,7 @@ HCMO developed through four stages:
    Home-Cage Monitoring Ontology to Device Metadata* supported limited
    preliminary device-metadata mapping, project scoping, and publication of an
    early GitHub version in September 2025, with contributions from Leonardo
-   Restivo and Benoit Girard. Benoit Girard is a co-author of the HCMO article
+   Restivo and Benoît Girard. Benoît Girard is a co-author of the HCMO article
    (decided 2026-09-24) and is credited there in the CRediT statement rather
    than in the acknowledgements. His Conceptualization role is qualified as
    *initial project framing* (agreed 2026-09-29): it covers the early-stage
@@ -38,7 +38,7 @@ HCMO developed through four stages:
 - **Initial HCM profile of the TEATIME Olog:** Leonardo Restivo and Davor Virag.
 - **Preparation and preliminary scoping of the COST mobility-grant project and
   early categorisation of metadata elements used in auxiliary authoring tools:**
-  Leonardo Restivo (non-author), with Benoit Girard (now a co-author).
+  Leonardo Restivo (non-author), with Benoît Girard (now a co-author).
 - **Early conceptual and software architecture developed for HCMO within
   Metadatapp:** Laurent Huzard.
 - **Domain expertise and feedback:** Benoit Petit-Demoulière, Vootele Voikar,
@@ -62,7 +62,7 @@ development of Metadatapp.
 
 ## Auxiliary field-tier inventory
 
-The preliminary project work by Benoit Girard and Leonardo Restivo included an
+The preliminary project work by Benoît Girard and Leonardo Restivo included an
 early categorisation of metadata elements used in auxiliary authoring tools.
 Damien Huzard subsequently introduced a Mandatory/Recommended/Optional inventory
 into the repository and revised it. The current inventory differs substantially
@@ -91,6 +91,6 @@ contribution reported in the HCMO article.
   Optional. Numerous fields were removed, added, split, or assigned a different
   tier.
 - No commit message or tracked field-level source attributes either repository
-  inventory to Benoit Girard or Leonardo Restivo. Their preliminary contribution
+  inventory to Benoît Girard or Leonardo Restivo. Their preliminary contribution
   is recorded in the project-provenance statement, while Git history establishes
   only when and by whom the repository artifacts were committed and revised.
