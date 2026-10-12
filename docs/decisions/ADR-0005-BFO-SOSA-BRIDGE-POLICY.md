@@ -212,11 +212,15 @@ No `hcm-compat` deprecation entry and no `### Renamed` changelog section follow.
 | Antoine Toffano | No reply received | closed 2026-10-12 |
 | Damien Huzard (editor) | Accepts ADR-0005: every answer received is positive and no objection was raised | 2026-10-12 |
 
-Open question for co-authors: which exact artifact motivated the earlier
-disjointness remark? The pinned 2017 artifact has no disjointness; the 2023
-Working Draft has none on the classes concerned (only among the four collection
-classes), so the remark may concern an older draft, the BFO closure or an
-optional alignment. This does not reopen ADR-0002.
+Closed question (2026-10-12): which artifact motivated the earlier
+disjointness remark ("the SOSA parents are disjoint as well")? None. The
+sentence appears only in the editor's notes of the 2026-09-18 call; no written
+source from Philippe Rocca-Serra contains it, and the editor considers it a
+likely misunderstanding on his side. It matches no SOSA artifact: the pinned
+2017 file has no disjointness, and the 2023 Working Draft has none on the
+classes concerned (only among the four collection classes). The real constraint,
+BFO's own disjointness applied to SOSA classes placed under BFO, is covered by
+the validation gates of decision 9. This does not reopen ADR-0002.
 
 ## Consequences
 

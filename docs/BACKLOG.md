@@ -46,7 +46,10 @@ Open:
   pattern and feature-of-interest restriction included). No objection was
   received; Philippe and Antoine Toffano did not reply and Serge cannot reply.
   Accepted by the editor on 2026-10-12.
-- [ ] **Ask which exact artifact motivated the disjointness remark.** The pinned
+- [x] **Disjointness remark (closed 2026-10-12): likely a note-taking misunderstanding.**
+  No written source from Philippe; the editor considers the sentence a probable
+  misunderstanding of the 2026-09-18 call. Nothing depends on it (ADR-0005 rests on
+  the tested artifacts). Investigation record: The pinned
   SOSA 2017 file has none; the 2023 Working Draft (2026-10-03) has none on the
   classes concerned, only among its four collection classes.
   *Source found (2026-10-12):* the 2026-09-18 co-author call (Cyril Gilbert,
@@ -73,8 +76,8 @@ Open:
   Read as "placing SOSA under disjoint BFO branches would let BFO's disjointness
   constrain SOSA", it is covered by the ADR-0005 gates (every relevant
   disjointness axiom listed, no unsatisfiable class, examples consistent).
-  Last step: search Philippe's PLM manuscript comments for "disjoint"; if nothing
-  is there, close this item with the reading above.
+  The PLM manuscript comments were not searched; not needed once the editor
+  identified the sentence as his own probable misreading.
 - [ ] **Follow up the upstream fix for the unparseable PROV-to-BFO file:** reported
   as BFO-Mappings/PROV-to-BFO#44 with the prefix fix in #43 (both open as of
   2026-10-09; ROBOT evidence added to #44 the same day). The typo fix (#41) is
