@@ -168,6 +168,11 @@
       "label": "Housing Assignment"
     },
     {
+      "comment": "A transient collection of two or more subjects that jointly take part in a behavior during an observed interval, such as two animals in contact or three animals huddling together. It is defined by the observed behavior, not by the study design, and is therefore distinct from an experimental group.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm/bio#InteractingGroup",
+      "label": "Interacting Group"
+    },
+    {
       "comment": "An independent-variable specification that is part of a study design and identifies a variable the investigation is designed to vary systematically in order to determine its effect on subjects or observations.",
       "iri": "https://w3id.org/hcmo/ontology/hcm/bio#StudyFactors",
       "label": "Study Factor"
@@ -213,7 +218,7 @@
       "label": "Thrive Profile"
     },
     {
-      "comment": "A SOSA-style observation about the behavior of a subject in a home-cage monitoring context.",
+      "comment": "A SOSA-style observation about the behavior of a subject, or of an interacting group of subjects, in a home-cage monitoring context. A behavior involving several animals has the interacting group as its feature of interest; when the behavior is directed, the initiating and receiving subjects are stated with has initiator and has recipient.",
       "iri": "https://w3id.org/hcmo/ontology/hcm/obs#BehaviorObservation",
       "label": "Behavior Observation"
     },
@@ -305,10 +310,10 @@
   ],
   "counts": {
     "annotation_properties": 0,
-    "classes": 60,
+    "classes": 61,
     "datatype_properties": 75,
-    "object_properties": 68,
-    "triples": 1397
+    "object_properties": 73,
+    "triples": 1454
   },
   "datatype_properties": [
     {
@@ -885,7 +890,7 @@
       "label": "has housing assignment"
     },
     {
-      "comment": "Relates an experimental group to a subject that is a member of the group.",
+      "comment": "Relates an experimental or interacting group to a subject that is a member of the group.",
       "iri": "https://w3id.org/hcmo/ontology/hcm/bio#hasMember",
       "label": "has member"
     },
@@ -975,6 +980,21 @@
       "label": "has condition"
     },
     {
+      "comment": "Relates a directed behavior observation to the subject that performs or initiates the behavior, such as the animal that approaches, follows, or escapes.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm/obs#hasInitiator",
+      "label": "has initiator"
+    },
+    {
+      "comment": "Relates a directed behavior observation to the subject toward which the behavior is directed, such as the animal that is approached, followed, or escaped from.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm/obs#hasRecipient",
+      "label": "has recipient"
+    },
+    {
+      "comment": "Relates a behavior observation to a subject that takes part in the observed behavior with a stated role. Use its sub-properties has initiator and has recipient for directed behaviors; members of an interacting group without a distinct role are stated with has member on the group.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm/obs#involvesSubject",
+      "label": "involves subject"
+    },
+    {
       "comment": "Relates an observation to the enclosure in which it occurs.",
       "iri": "https://w3id.org/hcmo/ontology/hcm/obs#occursIn",
       "label": "occurs in"
@@ -1003,6 +1023,16 @@
       "comment": "Relates a sensor to an evidence-backed, time-bounded calibration record.",
       "iri": "https://w3id.org/hcmo/ontology/hcm/tech#hasCalibrationRecord",
       "label": "has calibration record"
+    },
+    {
+      "comment": "Relates a software or time-series artifact to the SKOS concept that identifies how its data can be obtained, such as a database or an application programming interface, in the HCMO data-access-method vocabulary. It complements the file format, which describes the serialization of exported files.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm/tech#hasDataAccessMethod",
+      "label": "has data access method"
+    },
+    {
+      "comment": "Relates a software or time-series artifact to the SKOS concept that identifies its file format in the HCMO file-format vocabulary. It is the canonical form of the file-format statement; the has file format string remains for backward compatibility and should carry the concept's notation.",
+      "iri": "https://w3id.org/hcmo/ontology/hcm/tech#hasFileFormatConcept",
+      "label": "has file format concept"
     },
     {
       "comment": "Relates a sensor or time series to a QUDT quantity value expressing its sampling rate.",

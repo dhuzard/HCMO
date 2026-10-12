@@ -2,7 +2,7 @@
 
 # External reuse by kind
 
-Source: `dist/hcmo.ttl` (1397 triples). Regenerate with `python tooling/build.py` (or `python tooling/reuse_report.py`); `tooling/validate.py` fails when this file is stale.
+Source: `dist/hcmo.ttl` (1454 triples). Regenerate with `python tooling/build.py` (or `python tooling/reuse_report.py`); `tooling/validate.py` fails when this file is stale.
 
 Rules: a term is **semantic** reuse when it is the target of a logical statement (subclass or subproperty parent, domain or range, restriction property or filler, class-expression member); **metadata** reuse when it is only an annotation predicate or the type of a metadata record; a **replacement target** when it is named only as the replacement of a deprecated HCMO term. Values such as ORCID iDs, licence and repository URLs are not counted. Example data (ABox) are not included.
 
@@ -10,7 +10,7 @@ Rules: a term is **semantic** reuse when it is the target of a logical statement
 
 | Kind | Terms | Vocabularies | Breakdown |
 | --- | ---: | ---: | --- |
-| Semantic (HCM meaning) | 20 | 7 | SOSA 9, BFO 4, SemTS 3, IAO 1, PROV-O 1, QUDT 1, schema.org 1 |
+| Semantic (HCM meaning) | 21 | 8 | SOSA 9, BFO 4, SemTS 3, IAO 1, PROV-O 1, QUDT 1, SKOS 1, schema.org 1 |
 | Ontology metadata | 23 | 7 | DCTERMS 10, schema.org 3, BIBO 2, DC elements 2, MOD 2, SKOS 2, VANN 2 |
 | Replacement target only | 2 | 1 | QUDT 2 |
 
@@ -25,6 +25,7 @@ Rules: a term is **semantic** reuse when it is the target of a logical statement
 | IAO | `http://purl.obolibrary.org/obo/IAO_0000030` | axiom subject; subclass parent |
 | PROV-O | `http://www.w3.org/ns/prov#Activity` | subclass parent |
 | QUDT | `http://qudt.org/schema/qudt/QuantityValue` | range; subclass parent |
+| SKOS | `http://www.w3.org/2004/02/skos/core#Concept` | range |
 | SOSA | `http://www.w3.org/ns/sosa/Actuator` | subclass parent |
 | SOSA | `http://www.w3.org/ns/sosa/ObservableProperty` | range; subclass parent |
 | SOSA | `http://www.w3.org/ns/sosa/Observation` | domain; subclass parent |

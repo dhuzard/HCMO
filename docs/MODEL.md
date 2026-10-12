@@ -34,11 +34,25 @@ HCMO specializes SOSA rather than duplicating it:
 4. `sosa:hasResult` links the result; and
 5. `hcm-obs:occursIn` identifies the monitored enclosure.
 
+Behaviors involving several animals (for example, one mouse approaching another,
+or three mice huddling) are one observation whose feature of interest is an
+`hcm-bio:InteractingGroup`: a transient group, defined by the observed behavior,
+whose members are stated with `hcm-bio:hasMember`. It is distinct from an
+`hcm-bio:ExperimentalGroup`, which the study design defines. For directed
+behaviors, `hcm-obs:hasInitiator` and `hcm-obs:hasRecipient` name the subject
+that acts and the subject acted upon; both must be members of the group.
+Symmetric behaviors, such as contact, state the group only.
+
 For interval measurements, the observation enclosure must agree with the
 subject's authoritative housing assignment throughout the phenomenon interval.
 
 Time-series files use `hcm-tech:TimeSeries`; format and storage metadata use
-`hcm-tech:hasFileFormat` and `hcm-tech:hasStoragePath`.
+`hcm-tech:hasFileFormat` and `hcm-tech:hasStoragePath`. The canonical format
+statement is `hcm-tech:hasFileFormatConcept`, which points at a concept of the
+SKOS file-format vocabulary in `vocabularies/`; the `hasFileFormat` string is
+kept for backward compatibility and should carry that concept's notation (its
+media type). `hcm-tech:hasDataAccessMethod` records, from a second SKOS
+vocabulary, whether the data are obtained by file export, database, or API.
 
 ## Constraint strategy
 

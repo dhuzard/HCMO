@@ -18,36 +18,41 @@ Fuseki loading: regenerate [`catalog.ttl`](catalog.ttl) from this table with
 rows become RDF instances with `rdf:type`, object-property links, and literal
 values.
 
+**Vendor column:** one organisation per cell (separate several with `;`), or `—`
+when unknown. Put notes such as parent companies or former developers in the
+*Data / links* column. The vendor and system SKOS schemes in
+[`../../vocabularies/`](../../vocabularies/) are generated from the two HCM system
+tables with `python tooling/export_hcm_vocab.py`.
+
 ## Commercial HCM platforms
 
 | System | Vendor | Modality | Key measured parameters | Data / links | Prio | slug |
 |---|---|---|---|---|---|---|
 | **DVC® (Digital Ventilated Cage)** ✅ [worked example](systems/DVC_Tecniplast/) | Tecniplast S.p.A. | EMF (capacitive electrode array under cage) | Activity, rest/wake bouts, social/aggression proxy, urination/wetness, polyuria; rack-level room conditions | ~4 MB/cage/day @ 4 Hz; monitors 10,000+ cages. Iannello 2019; Voikar & Gaburro 2020; Brachs et al. 2025 | P1 | `systems/DVC_Tecniplast` |
-| **Telemetry implants (PhysioTel / HD)** | Data Sciences International (DSI), Harvard Bioscience | Implantable telemetry | ECG, BP, EEG, EMG, glucose, temperature, activity; 600–1000 Hz | ~1.5 GB/subject/7 days. Kramer et al. 2021 | P1 | `dsi-telemetry` |
+| **Telemetry implants (PhysioTel / HD)** | Data Sciences International (DSI) | Implantable telemetry | ECG, BP, EEG, EMG, glucose, temperature, activity; 600–1000 Hz | ~1.5 GB/subject/7 days. Kramer et al. 2021. DSI is part of Harvard Bioscience. | P1 | `dsi-telemetry` |
 | **Oxymax / CLAMS** (Comprehensive Lab Animal Monitoring System) | Columbus Instruments | Indirect calorimetry + IR beam-break + plethysmography | VO₂, VCO₂, RER, energy expenditure, activity, feeding, (respiratory freq.) | Czekajewski et al. 1982 (activity patent); Škop et al. 2020/2023 | P1 | `columbus-clams` |
 | **PhenoMaster / AnimalGate** | TSE Systems | Metabolic (calorimetry) + feeding/drinking + body-weight gate | VO₂/VCO₂/RER, food/water intake, body weight, activity | Gallage et al. 2024 | P1 | `tse-phenomaster` |
 | **LABORAS** | Metris | Load cells / vibration (Laboratory Animal Behaviour Observation Registration & Analysis System) | Locomotion, rearing, grooming, **scratching**, feeding/drinking | Sommer 2005 (integration w/ Dataquest); Huzard et al. 2024 | P1 | `metris-laboras` |
 | **PhenoTyper (2)** | Noldus | Video (integrated arena) + EthoVision | Locomotion, social, behavior classification; environmental control | Grieco et al. 2021 | P1 | `noldus-phenotyper` |
 | **Cage-lid retrofit modules** | Olden Labs | Video (retrofit on standard shoebox cages) | Behavior/activity; layers onto commercial racks | https://oldenlabs.com/ | P1 | `olden-labs` |
-| **RFID temperature / multi-sensor implants** | UID (Unified Information Devices) / micetracking.com | RFID (LF, ISO 11784/85 FDX-B) + temp/accel/PPG | Individual ID, body temperature; newer chips add accelerometer, photoplethysmograph (HR, SpO₂, resp) | https://www.uidevices.com/laboratory-animal-temperature/ ; https://micetracking.com/ | P1 | `uid-rfid` |
+| **RFID temperature / multi-sensor implants** | Unified Information Devices (UID) | RFID (LF, ISO 11784/85 FDX-B) + temp/accel/PPG | Individual ID, body temperature; newer chips add accelerometer, photoplethysmograph (HR, SpO₂, resp) | https://www.uidevices.com/laboratory-animal-temperature/ ; https://micetracking.com/ | P1 | `uid-rfid` |
 | **Promethion** ("Sable Promotion" in text) | Sable Systems | Metabolic (calorimetry) | VO₂/VCO₂/RER, activity, feeding | (named only) | P2 | `sable-promethion` |
-| **SoHo™ telemetry** | (see Pedraza et al. 2025) | Telemetry, socially housed | Body temperature, activity in group housing | Pedraza et al. 2025 | P2 | `soho-telemetry` |
-| **iMouse** | — | Retrofit camera system | Video monitoring on standard racks | https://imouse.info/ | P2 | `imouse` |
+| **SoHo™ telemetry** | Data Sciences International (DSI) | Implantable telemetry, socially housed | EEG + EMG, blood pressure + ECG, core body temperature, locomotor activity (3-axis accelerometer); up to 16 animals per transceiver, up to 64 socially housed animals | Pedraza et al. 2025; https://www.harvardbioscience.com/products/SoHo-Implantable-Telemetry (sold through Harvard Bioscience) | P2 | `soho-telemetry` |
+| **DigiFrame** | iMouse GmbH | Retrofit video (up to four side-view cameras on standard home cages; DigiFrame Hardware Enabler) | Behaviour, posture and grimace as AI-derived digital biomarkers (Brain Analyzer), 24/7 | https://imouse.info/ | P2 | `imouse` |
 | **Pallidus** | Pallidus.io | Environmental (cage-top units → cloud) | Activity, humidity, temperature | Pallidus.io | P2 | `pallidus` |
 | **2D-Neuro** | 2D-Neuro | Wireless optogenetic implants (neuro toolchain) | Pattern-locked optogenetic stimulation in home cage | https://2dneuro.com/ | P3 | `2d-neuro` |
-| **IntelliCage** | (TSE / New Behavior) | Operant / cognitive, group-housed | Learning, reversal, rule-switch, activity via RFID corners | (named only) | P2 | `intellicage` |
+| **IntelliCage** | TSE Systems | Operant / cognitive, group-housed | Learning, reversal, rule-switch, activity via RFID corners | (named only); originally developed by New Behavior | P2 | `intellicage` |
 | **UltraVox XT** | Noldus | Acoustic (USV) | Ultrasonic vocalization detection/analysis | (named only) | P3 | `noldus-ultravox` |
 | **Avisoft** | Avisoft Bioacoustics | Acoustic (USV) | USV recording + analysis | (named only) | P3 | `avisoft` |
 | **Sonotrack** | Metris | Acoustic (USV) | USV multi-channel recording | (named only) | P3 | `sonotrack` |
 | **Dodotronic** | Dodotronic | Acoustic (USV mics) | Ultrasonic microphones | (named only) | P3 | `dodotronic` |
 | **BatSound / Pettersson M500-USB** | Pettersson | Acoustic (USV, low-cost) | USV via "bat microphone" + Audacity | https://batsound.com/product-category/usbmicrophones/ | P3 | `batsound-pettersson` |
-| **Metadatapp** | Metadatapp / Neuronautix | Metadata management (not a sensor) | Unified metadata across project/mouse/data-publication | https://www.metadatapp.net | P2 | `metadatapp` |
 
 ## Open-source / DIY systems
 
 | System | Authors | Modality | Key measured parameters | Data / links | Prio | slug |
 |---|---|---|---|---|---|---|
-| **Live Mouse Tracker (LMT)** | de Chaumont et al. | Video (IR depth) + RFID | Group social behavior, individual ID, trajectories | https://micecraft.org/lmt/ ; de Chaumont et al. 2019; Huzard et al. 2022 | P1 | `live-mouse-tracker` |
+| **Live Mouse Tracker (LMT)** ✅ [worked example](systems/live-mouse-tracker/) | de Chaumont et al. | Video (IR depth) + RFID | Group social behavior, individual ID, trajectories | https://micecraft.org/lmt/ ; de Chaumont et al. 2019; Huzard et al. 2022; sample SQLite experiment (141 MB) https://micecraft.org/lmt/download/20180110_validation_4_ind_Experiment_6644_e.sqlite | P1 | `live-mouse-tracker` |
 | **MIROSLAV + EnviroSLAV** | Virag et al. | PIR activity + environment | Activity per cage; illumination/temp/humidity | Virag et al. 2024 (bioRxiv), 2025 (Behav Res Methods) | P1 | `miroslav` |
 | **FED3** | Matikainen-Ankney et al. | Operant (nose-poke) + food intake | Pellet retrieval, operant events; SD-card logging | eLife 2021, 10.7554/eLife.66173 | P1 | `fed3` |
 | **MouseVUER** | Salem et al. | Video (open-source home-cage) | Home-cage video monitoring | Sci Rep 2024, 14:2662 | P2 | `mousevuer` |
@@ -56,7 +61,40 @@ values.
 | **LIQ HD** (Lick Instance Quantifier Home-cage Device) | Petersen et al. | Lickometer (two-bottle) | Undisturbed two-bottle drinking, live lick counts | eNeuro 2023 | P2 | `liq-hd` |
 | **PASTA** (Platform for Acoustic STArtle) | Virag et al. | Load cell (repurposed kitchen scale) | Startle response, periodic breathing (DIY) | Sci Rep 2021, 11:2963 | P3 | `pasta` |
 | **AMBER** (Automated Maternal Behavior during Early life in Rodents) | Lapp et al. | Video pipeline | Maternal behavior classification | Sci Rep 2023 | P3 | `amber` |
-| **PsiBox** | — | Operant (sensory discrimination) | Tone/frequency discrimination, sequence learning | (named only) | P3 | `psibox` |
+
+## System short names
+
+Short names and expansions under which the systems above are commonly cited.
+Keyed by `slug` (last path segment, lower-cased with hyphens); separate several
+names with `;`. They become `skos:altLabel` values in `vocabularies/systems.ttl`.
+
+| slug | Short names |
+|---|---|
+| `dvc-tecniplast` | DVC; Digital Ventilated Cage |
+| `dsi-telemetry` | PhysioTel |
+| `columbus-clams` | CLAMS; Oxymax; Comprehensive Lab Animal Monitoring System |
+| `tse-phenomaster` | PhenoMaster; AnimalGate |
+| `metris-laboras` | Laboratory Animal Behaviour Observation Registration & Analysis System |
+| `noldus-phenotyper` | PhenoTyper |
+| `sable-promethion` | Promethion |
+| `soho-telemetry` | SoHo |
+| `imouse` | iMouse; iMouse DigiFrame; DigiFrame Hardware Enabler |
+| `batsound-pettersson` | BatSound; Pettersson M500-USB |
+| `live-mouse-tracker` | LMT |
+| `miroslav` | MIROSLAV; EnviroSLAV |
+| `mopss` | MoPSS; Mouse Position Surveillance System |
+| `liq-hd` | LIQ HD; Lick Instance Quantifier Home-cage Device |
+| `pasta` | PASTA; Platform for Acoustic STArtle |
+| `amber` | AMBER; Automated Maternal Behavior during Early life in Rodents |
+
+## Related data-management platforms (not HCM systems)
+
+These tools manage HCM metadata or data but do not build or sell HCM systems;
+they are excluded from the vendor and system vocabularies.
+
+| System | Vendor | Modality | Key measured parameters | Data / links | Prio | slug |
+|---|---|---|---|---|---|---|
+| **Metadatapp** | Metadatapp / Neuronautix | Metadata management (not a sensor) | Unified metadata across project/mouse/data-publication | https://www.metadatapp.net | P2 | `metadatapp` |
 
 ## AI / computer-vision toolchains (software layers, not cage hardware)
 
