@@ -40,9 +40,7 @@ pins in `external-vocabularies.yaml`; `UPPER-LEVEL-VIEW.md` correction.
 Open:
 
 - [x] **Co-author validation of ADR-0005 (accepted 2026-10-12):** Pierre Larmande and Cyril Gilbert
-  agreed to the five points; **Philippe's answers are still missing**, and
-  Serge Sonfack Sounchio and Antoine Toffano have not replied. Cyril Gilbert
-  validated the carrier pattern on 2026-10-09 (sensor = deployed physical system,
+  agreed to the five points. Cyril Gilbert validated the carrier pattern on 2026-10-09 (sensor = deployed physical system,
   separate from the software and its execution). Pierre Larmande, replying to
   the replay update on 2026-10-12, considers all decisions validated (carrier
   pattern and feature-of-interest restriction included). No objection was
