@@ -11,6 +11,8 @@ only references them through `hcm-tech:hasFileFormatConcept` and
 | `data-access-methods.ttl` | `https://w3id.org/hcmo/id/vocab/data-access-method` | Hand-authored |
 | `vendors.ttl` | `https://w3id.org/hcmo/id/vocab/vendor` | Generated from `docs/hcm-systems/CATALOG.md` |
 | `systems.ttl` | `https://w3id.org/hcmo/id/vocab/system` | Generated from `docs/hcm-systems/CATALOG.md` |
+| `modality.ttl` | `https://w3id.org/hcmo/id/vocab/modality` | Hand-authored (from the Modality column of `CATALOG.md`) |
+| `sensor-technology.ttl` | `https://w3id.org/hcmo/id/vocab/sensor-technology` | Hand-authored (from competency question `ms-01`) |
 
 ## Using the file-format vocabulary
 
