@@ -43,8 +43,10 @@ Open:
   agreed to the five points; **Philippe's answers are still missing**, and
   Serge Sonfack Sounchio and Antoine Toffano have not replied. Cyril Gilbert
   validated the carrier pattern on 2026-10-09 (sensor = deployed physical system,
-  separate from the software and its execution); the feature-of-interest
-  restriction still needs explicit co-author validation.
+  separate from the software and its execution). Pierre Larmande, replying to
+  the replay update on 2026-10-12, considers all decisions validated (carrier
+  pattern and feature-of-interest restriction included). Status moves to
+  accepted once Philippe, Serge and Antoine have replied.
 - [ ] **Ask which exact artifact motivated the disjointness remark.** The pinned
   SOSA 2017 file has none; the 2023 Working Draft (2026-10-03) has none on the
   classes concerned, only among its four collection classes.

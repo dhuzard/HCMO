@@ -1,6 +1,6 @@
 # ADR-0005: BFO/SOSA bridge policy
 
-- Status: proposed (author decisions taken 2026-10-06; co-author validation pending, see "Vote record")
+- Status: proposed (author decisions taken 2026-10-06; validated by Pierre Larmande and Cyril Gilbert; replies from Philippe, Serge Sonfack Sounchio and Antoine Toffano pending, see "Vote record")
 - Date: 2026-10-06
 - Scope: an optional alignment profile; the default release, the normative
   modules and the SOSA edition policy of ADR-0002 are unchanged
@@ -204,6 +204,7 @@ No `hcm-compat` deprecation entry and no `### Renamed` changelog section follow.
 | Pierre Larmande | Agrees with all five points | by 2026-10-06 |
 | Cyril Gilbert | Agrees with the approach; asks that reasoning consequences, notably for software sensors and process-like features of interest, be checked jointly during implementation and recorded in this ADR | by 2026-10-06 |
 | Cyril Gilbert | Production-stack replay: both presentations consistent in Protégé 5.6.9 / HermiT 1.4.3.456, no unsatisfiable class, expected inferences and probe results; ROBOT 1.9.10 needs the `rdfs:comment:` typo corrected in the vendored file, then all tests pass. Carrier pattern acceptable provided the sensor is the deployed physical system, separate from the software and its execution | 2026-10-09 |
+| Pierre Larmande | Reply to the update reporting the replay and the typo fix: "It seems that all the decisions are validated." Recorded as validation of the full decision package, including the carrier pattern and the feature-of-interest restriction | 2026-10-12 |
 | Damien Huzard (editor) | Decisions 2, 4, 6 above (vendored patch plus upstream issue, carrier pattern as optional documented pattern, 2017 retained) | 2026-10-06 |
 | Philippe | Not yet received as of 2026-10-06 (five points put to them 2026-09-24) | open |
 | Serge Sonfack Sounchio, Antoine Toffano | Not yet received | open |
@@ -218,8 +219,9 @@ optional alignment. This does not reopen ADR-0002.
 
 - Status moves to accepted when the open replies are in and the carrier pattern
   and feature-of-interest restriction are validated by co-authors. The
-  production-stack replay passed on 2026-10-09; the carrier pattern has one
-  co-author validation (Cyril Gilbert).
+  production-stack replay passed on 2026-10-09; the carrier pattern is
+  validated by Cyril Gilbert (2026-10-09) and Pierre Larmande (2026-10-12),
+  and the feature-of-interest restriction by Pierre Larmande (2026-10-12).
 - Implementation (profile, vendored alignments, SSSOM rows, gates, documentation)
   is on branch `feat/bfo-sosa-bridge-profile`; remaining items stay in
   `docs/BACKLOG.md` section 1.
