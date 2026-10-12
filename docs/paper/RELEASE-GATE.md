@@ -1,6 +1,11 @@
 # Paper-matching release gate
 
-## 0.4.1 (in progress)
+## 0.4.1 (published 2026-10-12; the paper's version)
+
+**Freeze (2026-10-12):** the manuscript describes 0.4.1. Until submission, no
+change to `ontology/modules/`, `hcmo.yaml` or `dist/` lands on `main` unless it is
+released as a patch (0.4.2) and the paper is updated to match. Ontology work
+waits for 0.5.0 (GitHub epic issue).
 
 The paper describes **HCMO 0.4.1** (decided 2026-10-12). It adds, over 0.3.0,
 the multi-animal behaviour model (ADR-0006, accepted), file-format and
