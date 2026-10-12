@@ -24,6 +24,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Tags are needed to read the vocabularies and profiles of the latest release.
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
@@ -45,6 +48,12 @@ jobs:
         run: |
           mkdir -p docs/widoco/contribute
           cp docs/hcm-systems/contribute/index.html docs/widoco/contribute/index.html
+      # w3id redirects RDF requests to these copies: Pages serves them with RDF
+      # media types, unlike GitHub release downloads (application/octet-stream).
+      - name: Add release RDF files, vocabularies and profiles to the site
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python tooling/publish_rdf.py --out docs/widoco
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:

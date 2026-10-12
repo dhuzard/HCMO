@@ -7,6 +7,14 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Changed
 
+- GitHub Pages now also serves the exact release files of every published
+  version (`dist/<version>/` and `dist/latest/`: `hcmo.ttl`, `hcmo.owl`,
+  `hcmo.jsonld`), the SKOS vocabularies (`vocab/<scheme>.ttl`), the BFO/SOSA
+  bridge profile and the upper-level presentation module, with RDF media types
+  (`tooling/publish_rdf.py`, run by the docs workflow; the release workflow
+  rebuilds the site once assets are attached). GitHub release downloads are
+  served as `application/octet-stream`, which RDF crawlers such as LOV do not
+  parse. A w3id rule update pointing to these files follows.
 - Paper (still describing 0.4.1): OOPS!, FOOPS! and AskWol re-run on the 0.4.1
   release with archived raw outputs and triage
   (`docs/paper/evaluation/RELEASE-0.4.1-SCANS-2026-10-12.md`); the scan table

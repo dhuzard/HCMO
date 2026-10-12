@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
   release:
@@ -31,3 +32,9 @@ jobs:
             dist/hcmo.json
             dist/profile.json
             hcmo.yaml
+      # The documentation site serves the release files that w3id redirects to;
+      # rebuild it from main once this release's assets are attached.
+      - name: Refresh the documentation site
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run docs.yml --ref main
