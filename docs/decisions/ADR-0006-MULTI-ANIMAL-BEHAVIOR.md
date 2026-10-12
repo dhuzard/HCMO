@@ -1,7 +1,7 @@
 # ADR-0006: Behaviour observations involving several animals
 
-- Status: proposed — implemented on branch `feat/skos-file-formats`, pending
-  co-author review
+- Status: accepted (2026-10-12, by Damien Huzard as editor, for release 0.4.0);
+  implemented in PR #38
 - Date: 2026-09-29
 
 ## Context
@@ -60,7 +60,11 @@ ordering of the animals, collapse into one observation. The per-event table is
 
 ## Open points for the co-authors
 
-1. Accept option 1, including the loosened `BehaviorObservation` axiom.
+1. ~~Accept option 1, including the loosened `BehaviorObservation` axiom.~~
+   Accepted 2026-10-12 (editor) and released in 0.4.0.
+
+Still open, not blocking (tracked in `docs/BACKLOG.md` section 4):
+
 2. Should group housing measured only at cage level (no individual resolution)
    use `InteractingGroup`, `ExperimentalGroup`, or the enclosure as feature of
    interest? This ADR does not decide it.

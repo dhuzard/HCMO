@@ -71,6 +71,11 @@ process is `prov:Activity`. PROV-O has no general `prov:Event` class;
 invalidation, start, and end events. The BFO process hierarchy remains the
 semantic upper-process backbone; PROV-O remains a cross-cutting provenance view.
 
+> **Note (2026-10-12, release 0.4.0):** this holds for the default release. With
+> the optional BFO/SOSA bridge profile (ADR-0005) loaded, PROV-O is no longer a
+> separate view: the published PROV-O to BFO alignment makes `prov:Activity`
+> equivalent to BFO process. See `docs/ALIGNMENTS.md`. Text above kept as recorded.
+
 ### OBI acquisition meanings
 
 The word *acquisition* must be qualified in HCMO documentation and examples.

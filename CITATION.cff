@@ -28,6 +28,9 @@ authors:
     given-names: "Pierre"
     orcid: "https://orcid.org/0000-0002-2923-9790"
     affiliation: "DIADE, Université de Montpellier, IRD, CIRAD, Montpellier, France"
+  - family-names: "Girard"
+    given-names: "Benoit"
+    orcid: "https://orcid.org/0000-0002-3914-6483"
   - family-names: "Rocca-Serra"
     given-names: "Philippe"
     orcid: "https://orcid.org/0000-0001-9853-5668"
@@ -42,13 +45,18 @@ authors:
     orcid: "https://orcid.org/0000-0003-4820-7951"
     email: "damien.huzard@gmail.com"
     affiliation: "Neuronautix, Montpellier, France"
-version: 0.3.0
-date-released: 2026-08-31
-doi: 10.5281/zenodo.22208202
+version: 0.4.0
+date-released: 2026-10-12
+# The 0.4.0 version DOI is minted by Zenodo when the GitHub release is
+# published; until then `doi` is the concept DOI (resolves to the latest version).
+doi: 10.5281/zenodo.18925284
 identifiers:
   - type: doi
     value: 10.5281/zenodo.18925284
     description: Zenodo concept DOI for all HCMO versions
+  - type: doi
+    value: 10.5281/zenodo.22208202
+    description: Zenodo version DOI of HCMO 0.3.0
 url: "https://github.com/dhuzard/HCMO"
 repository-code: "https://github.com/dhuzard/HCMO"
 license: CC-BY-4.0

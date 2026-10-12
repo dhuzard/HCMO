@@ -2,7 +2,7 @@
 
 [![Validate](https://github.com/dhuzard/HCMO/actions/workflows/validate.yml/badge.svg)](https://github.com/dhuzard/HCMO/actions/workflows/validate.yml)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-blue.svg)](LICENSE)
-[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.22208202-blue.svg)](https://doi.org/10.5281/zenodo.22208202)
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.18925284-blue.svg)](https://doi.org/10.5281/zenodo.18925284)
 
 <p align="center">
   <img src="HCMO-logo3.png" alt="HCMO logo" width="720">
@@ -23,7 +23,7 @@ JSON-LD context.
 | **Ontology IRI**          | `https://w3id.org/hcmo/ontology/hcm`                                                      |
 | **Base namespace**        | `https://w3id.org/hcmo/ontology/hcm#`                                                     |
 | **Module sub-namespaces** | `…/hcm/bio#`, `…/hcm/env#`, `…/hcm/obs#`, `…/hcm/tech#`                             |
-| **Version**               | `0.3.0` (versionIRI `…/hcm/0.3.0`)                                                     |
+| **Version**               | `0.4.0` (versionIRI `…/hcm/0.4.0`)                                                     |
 | **Prefix**                | `hcm`                                                                                     |
 | **License**               | CC BY 4.0                                                                                   |
 | **Logo**                  | [`HCMO-logo3.png`](HCMO-logo3.png)                                                        |
@@ -142,7 +142,7 @@ definitions (see `docs/MISSING-DEFINITIONS.md`) render with empty descriptions.
 
 ## Status & known issues
 
-HCMO `0.3.0` is the current published, citable modular release of the early
+HCMO `0.4.0` is the current published, citable modular release of the early
 Chowlk-derived term set. Its ontology metadata retains `mod:status "draft"` as
 the model-maturity label; this does not negate publication of the immutable
 versioned release. Active classes and properties have labels, textual definitions, explicit
@@ -205,10 +205,11 @@ auxiliary field-tier inventory are documented in
 
 ## Citation
 
-If you use HCMO 0.3.0, please cite it via [`CITATION.cff`](CITATION.cff)
-(GitHub's "Cite this repository") or the version DOI
-[10.5281/zenodo.22208202](https://doi.org/10.5281/zenodo.22208202). The stable
-concept DOI is [10.5281/zenodo.18925284](https://doi.org/10.5281/zenodo.18925284).
+If you use HCMO, please cite it via [`CITATION.cff`](CITATION.cff)
+(GitHub's "Cite this repository") or the concept DOI
+[10.5281/zenodo.18925284](https://doi.org/10.5281/zenodo.18925284), which always
+resolves to the latest version. Each release also has its own version DOI on
+Zenodo (0.3.0: [10.5281/zenodo.22208202](https://doi.org/10.5281/zenodo.22208202)).
 
 ## License
 

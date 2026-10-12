@@ -1,6 +1,38 @@
 # Paper-matching release gate
 
-## Current state
+## 0.4.0 (in progress)
+
+The paper describes **HCMO 0.4.0** (decided 2026-10-12). 0.4.0 adds the
+multi-animal behaviour model (ADR-0006, accepted), file-format and data-access
+SKOS links, the optional BFO/SOSA bridge profile (ADR-0005, accepted; not in
+the default release) and the generated external-reuse report. `mod:status`
+stays `"draft"`.
+
+Release procedure (same gates as 0.3.0):
+
+1. Release branch `release/0.4.0`: version metadata, ontology header (version
+   IRI, prior version, issued/modified dates, nine authors in paper order),
+   `CITATION.cff`, CHANGELOG cut, documentation and manuscript updated. ✔
+2. `hcmo.yaml`, root `owl:versionIRI`/`owl:versionInfo`, competency-question
+   index, contribution form and `CITATION.cff` identify `0.4.0` (checked by
+   `tooling/validate.py`). ✔
+3. `python tooling/build.py` run twice with byte-identical artifacts. ✔
+4. `tooling/validate.py`, HermiT (`tooling/reason.py`), the external-vocabulary
+   network check, the interoperability validation and the bridge-profile check. ✔
+5. Merge the release PR; tag `v0.4.0` and publish the GitHub release (the
+   `release` workflow attaches `hcmo.ttl`, `hcmo.owl`, `hcmo.json`,
+   `profile.json`, `hcmo.yaml`; `release-evidence` archives AskWol).
+6. Zenodo mints the 0.4.0 version DOI; record it in `CITATION.cff`, the README,
+   `docs/paper/metadata/resource-metadata.md`, the manuscript availability
+   statement and `references.bib` (`hcmo` entry).
+7. Confirm that `https://w3id.org/hcmo/ontology/hcm` and `…/hcm/0.4.0` return
+   the 1,464-triple graph by content negotiation, and that the WIDOCO site shows
+   0.4.0 (redeployed from `main` by the `docs` workflow).
+8. Re-run OOPS! on the 0.4.0 RDF/XML and FOOPS! on the PURL; archive raw output
+   and triage under `evaluation/`, then update the manuscript's scan table
+   (still reporting the 0.3.0 scans until then).
+
+## 0.3.0 record (published 2026-08-31)
 
 - The immutable `v0.3.0` tag points to commit
   `3083d2307d5cbac97bcaee189b75fdf909d0de5f`.
@@ -21,14 +53,14 @@
   creator order were verified on 31 August 2026. The creator-order correction
   was metadata-only and did not change the tag or ontology IRIs.
 
-## Publication decision
+### 0.3.0 publication decision
 
 Version `0.3.0` is published and citable. The archived tag and Zenodo record are
 immutable: subsequent metadata or maturity changes belong in a new patch
 release. In particular, changing `mod:status` from `draft` to another maturity
 term would change ontology bytes and must not be retroactively applied to 0.3.0.
 
-## Release procedure
+### 0.3.0 release procedure
 
 1. Review and merge the accepted ontology, release-metadata, and paper changes. ✔
 2. Confirm that `hcmo.yaml`, the root ontology

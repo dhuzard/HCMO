@@ -70,7 +70,9 @@ schema:logo a owl:AnnotationProperty .
     dc:title "Home-Cage Monitoring Ontology" ;
     dcterms:bibliographicCitation "The Home-Cage Monitoring Ontology (HCMO). Zenodo. https://doi.org/10.5281/zenodo.18925284" ;
     dcterms:created "2026-03-09"^^xsd:date ;
-    dcterms:creator <https://orcid.org/0000-0002-2923-9790>,
+    dcterms:creator <https://orcid.org/0000-0001-9853-5668>,
+        <https://orcid.org/0000-0002-2923-9790>,
+        <https://orcid.org/0000-0002-3914-6483>,
         <https://orcid.org/0000-0002-6085-6818>,
         <https://orcid.org/0000-0002-9116-6692>,
         <https://orcid.org/0000-0003-2204-2466>,
@@ -78,18 +80,18 @@ schema:logo a owl:AnnotationProperty .
         <https://orcid.org/0009-0008-0575-8490>,
         <https://orcid.org/0009-0008-2489-8106> ;
     dcterms:identifier "https://doi.org/10.5281/zenodo.18925284" ;
-    dcterms:issued "2026-03-09"^^xsd:date ;
+    dcterms:issued "2026-10-12"^^xsd:date ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
-    dcterms:modified "2026-08-15"^^xsd:date ;
+    dcterms:modified "2026-10-12"^^xsd:date ;
     dcterms:publisher "Huzard group" ;
     dcterms:source <https://github.com/dhuzard/HCMO> ;
-    bibo:authorList ( <https://orcid.org/0000-0003-4820-7951> <https://orcid.org/0000-0002-9116-6692> <https://orcid.org/0009-0008-2489-8106> <https://orcid.org/0000-0002-2923-9790> <https://orcid.org/0000-0003-2204-2466> <https://orcid.org/0000-0002-6085-6818> <https://orcid.org/0009-0008-0575-8490> ) ;
+    bibo:authorList ( <https://orcid.org/0009-0008-2489-8106> <https://orcid.org/0000-0003-2204-2466> <https://orcid.org/0000-0002-6085-6818> <https://orcid.org/0009-0008-0575-8490> <https://orcid.org/0000-0002-2923-9790> <https://orcid.org/0000-0002-3914-6483> <https://orcid.org/0000-0001-9853-5668> <https://orcid.org/0000-0002-9116-6692> <https://orcid.org/0000-0003-4820-7951> ) ;
     bibo:doi "10.5281/zenodo.18925284" ;
     vann:preferredNamespacePrefix "hcm" ;
     vann:preferredNamespaceUri "https://w3id.org/hcmo/ontology/hcm#" ;
-    owl:priorVersion <https://w3id.org/hcmo/ontology/hcm/0.2.0> ;
-    owl:versionIRI <https://w3id.org/hcmo/ontology/hcm/0.3.0> ;
-    owl:versionInfo "0.3.0" ;
+    owl:priorVersion <https://w3id.org/hcmo/ontology/hcm/0.3.0> ;
+    owl:versionIRI <https://w3id.org/hcmo/ontology/hcm/0.4.0> ;
+    owl:versionInfo "0.4.0" ;
     schema:logo <https://raw.githubusercontent.com/dhuzard/HCMO/main/HCMO-logo3.png> ;
     mod:createdWith <https://chowlk.linkeddata.es/> ;
     mod:status "draft" .
@@ -1261,8 +1263,14 @@ BFO:0000015 a owl:Class ;
     rdfs:subClassOf BFO:0000001 ;
     skos:definition "(Elucidation) p is a process means p is an occurrent that has some temporal proper part and for some time t, p has some material entity as participant"@en .
 
+<https://orcid.org/0000-0001-9853-5668> a schema:Person ;
+    schema:name "Philippe Rocca-Serra" .
+
 <https://orcid.org/0000-0002-2923-9790> a schema:Person ;
     schema:name "Pierre Larmande" .
+
+<https://orcid.org/0000-0002-3914-6483> a schema:Person ;
+    schema:name "Benoit Girard" .
 
 <https://orcid.org/0000-0002-6085-6818> a schema:Person ;
     schema:name "Serge Sonfack Sounchio" .

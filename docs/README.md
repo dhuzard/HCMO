@@ -7,7 +7,7 @@ and time-series data.
 
 - Ontology IRI: `https://w3id.org/hcmo/ontology/hcm`
 - Base namespace: `https://w3id.org/hcmo/ontology/hcm#`
-- Version IRI: `https://w3id.org/hcmo/ontology/hcm/0.3.0`
+- Version IRI: `https://w3id.org/hcmo/ontology/hcm/0.4.0`
 - Standards: BFO/IAO upper anchors, SOSA/SSN observations and devices, and
   OWL-Time temporal entities
 - Validation: `python tooling/build.py` followed by `python tooling/validate.py`
@@ -19,12 +19,17 @@ and time-series data.
 - Human review checklist:
   [`PHILIPPE-ROCCA-SERRA-HUMAN-REVIEW-CHECKLIST.md`](PHILIPPE-ROCCA-SERRA-HUMAN-REVIEW-CHECKLIST.md)
 
+- Optional BFO/SOSA bridge profile (ADR-0005):
+  [`BFO-SOSA-BRIDGE-PROFILE.md`](BFO-SOSA-BRIDGE-PROFILE.md)
+- Decision records: [`decisions/`](decisions/) (ADR-0001 to ADR-0006)
+- External reuse by kind (generated):
+  [`EXTERNAL-REUSE.md`](EXTERNAL-REUSE.md)
 - Open items collected from the working notes, to be cleaned later:
   [`BACKLOG.md`](BACKLOG.md)
 
-Working notes and co-author meeting records (including the undecided BFO/SOSA
-double-hierarchy decision package) are kept outside the release repository, in
-the private `dhuzard/hcmo-internal-docs` repository.
+Working notes and co-author meeting records (including the BFO/SOSA
+double-hierarchy decision package that led to ADR-0005) are kept outside the
+release repository, in the private `dhuzard/hcmo-internal-docs` repository.
 
 Load `dist/hcmo.ttl` or `dist/hcmo.owl`. The source of truth is
 `ontology/modules/*.ttl`; files under `dist/` are generated.
