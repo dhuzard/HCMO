@@ -9,6 +9,7 @@ Outputs (paths come from hcmo.yaml):
   dist/hcmo.owl   merged graph, RDF/XML
   dist/hcmo.json  merged graph, JSON-LD
   dist/profile.json  flat term inventory {namespace, version, classes, ...}
+  docs/EXTERNAL-REUSE.md  external terms by reuse kind (tooling/reuse_report.py)
 
 The build is idempotent and reproducible: blank nodes are canonicalized with
 rdflib.compare.to_canonical_graph so the same modules always serialize identically.
@@ -31,6 +32,8 @@ import yaml
 import rdflib
 from rdflib import RDF, RDFS, OWL, URIRef, Literal, Graph, Namespace
 from rdflib.compare import to_canonical_graph
+
+import reuse_report
 
 ROOT = Path(__file__).resolve().parent.parent
 MANIFEST = ROOT / "hcmo.yaml"
@@ -190,11 +193,17 @@ def main() -> int:
     profile["_generated"] = "tooling/build.py — DO NOT EDIT; regenerate from ontology/modules/"
     write_text(ROOT / dist["profile"], json.dumps(profile, indent=2, sort_keys=True) + "\n")
 
+    reuse_errors = reuse_report.write_report()
+    if reuse_errors:
+        print("\n".join(reuse_errors), file=sys.stderr)
+        return 1
+
     print("Build complete:")
     print(f"  {dist['merged_ttl']}  ({len(canon)} triples)")
     print(f"  {dist['merged_owl']}")
     print(f"  {dist['jsonld']}")
     print(f"  {dist['profile']}")
+    print(f"  {reuse_report.REPORT.relative_to(ROOT).as_posix()}")
     c = profile["counts"]
     print(
         f"  terms: {c['classes']} classes, {c['object_properties']} object props, "

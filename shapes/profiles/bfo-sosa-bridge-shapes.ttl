@@ -1,0 +1,47 @@
+# SHACL checks for the optional BFO/SOSA bridge profile (ADR-0005).
+#
+# Not part of the default release shapes (hcmo.yaml `shapes:`). Validate data
+# against these only when the bridge profile is in use; run them together with
+# the HCMO modules in the data graph so that rdfs:subClassOf closure applies.
+@prefix BFO: <http://purl.obolibrary.org/obo/BFO_> .
+@prefix bridge: <https://w3id.org/hcmo/ontology/profile/bfo-sosa-bridge/shapes#> .
+@prefix hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+
+bridge:SoftwareIsNotASensorShape a sh:NodeShape ;
+    rdfs:label "Software is not a sensor" ;
+    rdfs:comment "Under the bridge, every sosa:Sensor is a BFO material entity and hcm-tech:Software is an information content entity, which BFO makes disjoint. Model the deployed, running installation as the sensor (a material carrier) and link it to the code: the sensor bears a quality (BFO:0000196, BFO:0000019) that concretizes (BFO:0000059) the code. See docs/BFO-SOSA-BRIDGE-PROFILE.md." ;
+    sh:targetClass hcm-tech:Software ;
+    sh:not [ sh:class sosa:Sensor ] ;
+    sh:severity sh:Violation ;
+    sh:message "An individual typed as hcm-tech:Software is also typed as a sensor. Type the deployed running installation as the sensor and link it to the code through a quality that concretizes the code." .
+
+bridge:SensorDoesNotConcretizeCodeDirectlyShape a sh:NodeShape ;
+    rdfs:label "A sensor does not concretize code directly" ;
+    rdfs:comment "BFO:0000059 (concretizes) has a process or specifically dependent continuant as domain; a material sensor that concretizes code directly is inconsistent with the pinned BFO. Use the bearer-of / quality / concretizes pattern." ;
+    sh:targetClass sosa:Sensor ;
+    sh:property [
+        sh:path BFO:0000059 ;
+        sh:maxCount 0 ;
+        sh:message "A sensor (a material carrier) must not concretize code directly; it bears a quality that concretizes the code."
+    ] ;
+    sh:severity sh:Violation .
+
+bridge:FeatureOfInterestIsContinuantShape a sh:NodeShape ;
+    rdfs:label "Feature of interest is not a process" ;
+    rdfs:comment "Under the bridge sosa:hasFeatureOfInterest is a kind of prov:used, so its filler must be a participating continuant. Use the subject, group or enclosure as the feature of interest and record the bout, interaction or session as the observed phenomenon or result (ADR-0006)." ;
+    sh:targetObjectsOf sosa:hasFeatureOfInterest ;
+    sh:not [
+        sh:or (
+            [ sh:class BFO:0000015 ]
+            [ sh:class prov:Activity ]
+            [ sh:class sosa:Observation ]
+            [ sh:class sosa:Actuation ]
+            [ sh:class sosa:Sampling ]
+        )
+    ] ;
+    sh:severity sh:Warning ;
+    sh:message "The feature of interest is typed as a process or activity. Under the bridge it must be a continuant (subject, group or enclosure); record the bout or interaction as the observed phenomenon or result." .

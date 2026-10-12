@@ -7,6 +7,21 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Added
 
+- Optional BFO/SOSA bridge profile (ADR-0005, accepted 2026-10-12; not part of the default
+  release, `hcmo.yaml` and `dist/` unchanged). `ontology/profiles/bfo-sosa-bridge.ttl`
+  declares no axiom of its own and imports two published one-way alignments (W3C
+  SOSA to PROV-O; Prudhomme et al. 2025 PROV-O to BFO) so that SOSA terms receive
+  a BFO placement without equivalences: observations become processes, sensors and
+  actuators material entities, results only continuants. Includes vendored,
+  checksummed copies of the alignments (the upstream PROV-to-BFO file does not
+  parse and misspells one annotation predicate; a copy with exactly two prefix
+  lines prepended and that one `rdfs:comment:` token corrected is checked byte
+  for byte, because ROBOT 1.9.10 rejects the typo),
+  profile-only SHACL shapes (software typed as a sensor, a process as a feature of
+  interest), seven probe fixtures, SSSOM review rows, pins in
+  `external-vocabularies.yaml`, `tooling/bridge_profile.py` and an optional
+  `bridge-profile` workflow. Documented optional carrier pattern for software
+  sensors. See `docs/BFO-SOSA-BRIDGE-PROFILE.md`.
 - Multi-animal behavior: added `hcm-bio:InteractingGroup` (a transient group of
   two or more subjects defined by an observed behavior, distinct from
   `hcm-bio:ExperimentalGroup`), `hcm-obs:involvesSubject` and its
@@ -64,9 +79,26 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
   Zenodo DOI in provenance, README, system references, and paper bibliography
   metadata. This is a documentation/provenance update only; no HCMO term IRI,
   axiom, or release DOI changed.
+- External reuse is now counted by kind, reproducibly: `tooling/reuse_report.py`
+  classifies every external term in `dist/hcmo.ttl` as semantic (used in a
+  logical axiom), metadata (annotation predicate or metadata record type) or
+  replacement target, and writes the generated `docs/EXTERNAL-REUSE.md`.
+  `tooling/build.py` regenerates it; `tooling/validate.py` fails when it is
+  stale or when a term from an unlisted vocabulary is used.
 
 ### Changed
 
+- Paper Table 1 reuse counts corrected from the generated report: 20 semantic
+  terms (SOSA 9, BFO 4, SemTS 3, IAO 1, PROV-O 1, QUDT 1, schema.org 1), not 25,
+  and 7 metadata vocabularies, not 6. The hand count of 2026-09-24 had counted
+  `schema:Person`, `schema:name`, `schema:logo` and QUDT `numericValue`/`hasUnit`
+  (only replacement targets of deprecated terms) as semantic. The manuscript
+  also mentions the optional BFO/SOSA bridge profile (§4, §7) and cites
+  Prudhomme et al. 2025.
+- `docs/ALIGNMENTS.md` no longer calls PROV-O a "separate provenance view"
+  without qualification: it distinguishes the default release (no PROV-O, SOSA
+  or BFO links asserted by HCMO) from the optional bridge profile (ADR-0005),
+  and points to the generated reuse report. No term, axiom or `dist/` change.
 - `hcm-obs:BehaviorObservation`: the feature-of-interest restriction is
   loosened from `hcm-bio:Subject` to `hcm-bio:Subject` or
   `hcm-bio:InteractingGroup`, and `hcm-bio:hasMember` now also applies to

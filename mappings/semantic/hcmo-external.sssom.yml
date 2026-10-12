@@ -14,3 +14,8 @@ prefix_map:
   rdfs: http://www.w3.org/2000/01/rdf-schema#
   skos: http://www.w3.org/2004/02/skos/core#
   semapv: https://w3id.org/semapv/vocab/
+  sosa: http://www.w3.org/ns/sosa/
+  BFO: http://purl.obolibrary.org/obo/BFO_
+  IAO: http://purl.obolibrary.org/obo/IAO_
+  SOSA-REC: https://www.w3.org/TR/2017/REC-vocab-ssn-
+  BFO-2020: https://github.com/BFO-ontology/BFO-2020/commit/

@@ -1,0 +1,31 @@
+# Probe manifest for tooling/bridge_profile.py (ADR-0005).
+#
+# Each probe is an ABox fragment added to the assembled chain graph (HCMO +
+# pinned BFO/IAO/SOSA/PROV-O + the two alignments). `owl` is the expected
+# HermiT outcome, `shacl` the expected outcome of
+# shapes/profiles/bfo-sosa-bridge-shapes.ttl on the probe plus the HCMO modules.
+# These are disposable fixtures, not examples of good HCMO data, except the
+# carrier pattern, which is the documented optional pattern for software sensors.
+probes:
+  - {id: software-sensor, file: probes/software-sensor.ttl, owl: inconsistent, shacl: violates}
+  - {id: separate-running-sensor, file: probes/separate-running-sensor.ttl, owl: consistent, shacl: conforms}
+  - {id: carrier-pattern, file: probes/carrier-pattern.ttl, owl: consistent, shacl: conforms}
+  - {id: direct-concretizes, file: probes/direct-concretizes.ttl, owl: inconsistent, shacl: violates}
+  - {id: physical-specimen-result, file: probes/physical-specimen-result.ttl, owl: consistent, shacl: conforms}
+  - {id: observation-result, file: probes/observation-result.ttl, owl: consistent, shacl: conforms}
+  - {id: process-foi, file: probes/process-foi.ttl, owl: inconsistent, shacl: violates}
+
+# Most-specific BFO ancestors that must be inferred under the bridge.
+placements:
+  "http://www.w3.org/ns/sosa/Sensor": ["http://purl.obolibrary.org/obo/BFO_0000040"]
+  "http://www.w3.org/ns/sosa/Actuator": ["http://purl.obolibrary.org/obo/BFO_0000040"]
+  "http://www.w3.org/ns/sosa/Observation": ["http://purl.obolibrary.org/obo/BFO_0000015"]
+  "http://www.w3.org/ns/sosa/Result": ["http://purl.obolibrary.org/obo/BFO_0000002"]
+  "http://www.w3.org/ns/sosa/ObservableProperty": ["http://purl.obolibrary.org/obo/BFO_0000002"]
+  "http://www.w3.org/ns/sosa/FeatureOfInterest": ["http://purl.obolibrary.org/obo/BFO_0000002"]
+  "http://www.w3.org/ns/sosa/Procedure": ["http://purl.obolibrary.org/obo/BFO_0000031"]
+  "https://w3id.org/hcmo/ontology/hcm/obs#BehaviorObservation": ["http://purl.obolibrary.org/obo/BFO_0000015"]
+  "https://w3id.org/hcmo/ontology/hcm/obs#WeightObservation": ["http://purl.obolibrary.org/obo/BFO_0000015"]
+  "https://w3id.org/hcmo/ontology/hcm/obs#HealthStatusObservation": ["http://purl.obolibrary.org/obo/BFO_0000015"]
+  "https://w3id.org/hcmo/ontology/hcm/obs#EnvironmentObservation": ["http://purl.obolibrary.org/obo/BFO_0000015"]
+  "https://w3id.org/hcmo/ontology/hcm/obs#GasConcentrationObservation": ["http://purl.obolibrary.org/obo/BFO_0000015"]

@@ -30,9 +30,12 @@ The main HCMO placement is:
 - Information entity: dimensions, assignments, study factors, environmental
   profiles, specifications, results, software, and time series.
 - Quality / property: environmental properties.
-- Process / event: the anchor is available for navigation, but HCMO currently
-  defines no local process class. Evidence events use their authoritative
-  external types.
+- Process / event: `hcm:OperationalAssessment` and
+  `hcm-tech:CalibrationActivity` are placed here. The four observation classes
+  (behavior, weight, health status, environment) are SOSA observations with no
+  BFO anchor in the default release. Evidence events use their authoritative
+  external types. An optional, not yet released, alignment profile would place
+  SOSA observations under process (see ADR-0005).
 
 The direct links to Entity are deliberate presentation shortcuts. They are
 entailed by the authoritative BFO/IAO hierarchy and make the default release
