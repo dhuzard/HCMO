@@ -5,7 +5,16 @@ paper describing HCMO for **ISWC** or **ESWC**. The resource being presented is
 the **Home-Cage Monitoring Ontology (HCMO)**. (Branding, HITL R3: use **HCMO
 only** — do not use the "MAPP" name in the paper.)
 
-## Target venue — **ISWC, Resources Track** (changed 2026-09-24; see `ISWC-MIGRATION-PLAN.md`). Previously ESWC 2027 (HITL Round 1)
+## Target venue — **ESWC 2027, Resources Track** (decided 2026-10-12; ISWC was the target from 2026-09-24 to 2026-10-12, see `ISWC-MIGRATION-PLAN.md`)
+
+**Decided 2026-10-12: ESWC 2027 Resources Track.** The call was not published on
+2026-10-12 (page: "Coming soon"). Planning baseline from the ESWC 2026 call:
+abstract about one week before the full paper (2026 edition: 27 Nov and
+4 Dec 2025, so expect late November / early December 2026); 15 pages plus
+unlimited references; single-anonymous review; resource links (Resource type,
+License, DOI, URL) right after the abstract; persistent URI, licence,
+registration in community repositories and a maintenance plan. Re-check
+everything against the 2027 call when it opens.
 
 Publishes in **Springer LNCS**, **single-anonymous** review (reviewers anonymous,
 **authors visible** — resource ownership must be checkable), **abstract
@@ -14,7 +23,7 @@ abstract. **Page budget: 15 pp + unlimited references.**
 
 > ESWC 2026 deadlines have passed; target the **2027** cycle (deadlines expected
 > ~Dec 2026). Re-confirm dates, page limit, and template against the live CfP when
-> it opens. (ISWC Resources Track is the equivalent fallback if needed.)
+> it opens. (ISWC Resources Track, deadline around May, is the fallback.)
 
 ## Tracking checklist (Cyril)
 

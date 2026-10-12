@@ -1,6 +1,9 @@
 # ESWC 2027 Resources Track — requirements & compliance checklist
 
-> **2026-09-24: target venue changed to the ISWC Resources Track.** The
+> **2026-10-12: target venue is ESWC 2027 Resources Track again (final).** This
+> checklist applies. Re-verify it against the 2027 call when published.
+>
+> *Previous note:* **2026-09-24: target venue changed to the ISWC Resources Track.** The
 > provisional ISWC requirements (15 pages + references, mandatory Resource
 > Availability Statement counted in the limit, registry discoverability,
 > comparison with similar resources) and their consequences are in
