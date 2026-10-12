@@ -5,7 +5,8 @@ Steps (any failure -> non-zero exit):
   1. Parse every TTL under ontology/, shapes/, and examples/, plus all generated
      RDF distribution serializations declared in hcmo.yaml.
   2. Validate release-bearing metadata surfaces and the pinned external-
-     vocabulary contract without network access.
+     vocabulary contract without network access, and check that the generated
+     external-reuse report (docs/EXTERNAL-REUSE.md) matches the merged graph.
   3. Run pySHACL of shapes/ against each isolated example with the canonical
      ontology supplied as an ontology graph and RDFS inference enabled.
      Examples whose name contains "edge" or "invalid" are NEGATIVE tests
@@ -36,6 +37,7 @@ from rdflib import RDF, Graph, Literal, Namespace, URIRef, XSD
 from rdflib.compare import isomorphic
 from pyshacl import validate as shacl_validate
 from external_vocab import validate_contract
+from reuse_report import check_report
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -715,6 +717,10 @@ def main() -> int:
     all_ok &= ok
 
     ok, notes = validate_contract(verify_network=False)
+    print("\n".join(notes))
+    all_ok &= ok
+
+    ok, notes = check_report()
     print("\n".join(notes))
     all_ok &= ok
 

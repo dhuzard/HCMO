@@ -43,9 +43,26 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
   Zenodo DOI in provenance, README, system references, and paper bibliography
   metadata. This is a documentation/provenance update only; no HCMO term IRI,
   axiom, or release DOI changed.
+- External reuse is now counted by kind, reproducibly: `tooling/reuse_report.py`
+  classifies every external term in `dist/hcmo.ttl` as semantic (used in a
+  logical axiom), metadata (annotation predicate or metadata record type) or
+  replacement target, and writes the generated `docs/EXTERNAL-REUSE.md`.
+  `tooling/build.py` regenerates it; `tooling/validate.py` fails when it is
+  stale or when a term from an unlisted vocabulary is used.
 
 ### Changed
 
+- Paper Table 1 reuse counts corrected from the generated report: 20 semantic
+  terms (SOSA 9, BFO 4, SemTS 3, IAO 1, PROV-O 1, QUDT 1, schema.org 1), not 25,
+  and 7 metadata vocabularies, not 6. The hand count of 2026-09-24 had counted
+  `schema:Person`, `schema:name`, `schema:logo` and QUDT `numericValue`/`hasUnit`
+  (only replacement targets of deprecated terms) as semantic. The manuscript
+  also mentions the optional BFO/SOSA bridge profile (§4, §7) and cites
+  Prudhomme et al. 2025.
+- `docs/ALIGNMENTS.md` no longer calls PROV-O a "separate provenance view"
+  without qualification: it distinguishes the default release (no PROV-O, SOSA
+  or BFO links asserted by HCMO) from the optional bridge profile (ADR-0005),
+  and points to the generated reuse report. No term, axiom or `dist/` change.
 - Added "Conceptualization (initial project framing)" to Benoit Girard's CRediT
   roles in the manuscript and author-metadata record, with his agreement; the
   qualifier separates the early-stage project framing from the later
