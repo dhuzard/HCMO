@@ -17,15 +17,15 @@ Abbreviations: **T…/P…** are rows in [`paper/TODO.md`](paper/TODO.md);
 
 ---
 
-## 1. BFO / SOSA double hierarchy (decision provisional)
+## 1. BFO / SOSA double hierarchy (ADR-0005 accepted 2026-10-12)
 
 Source: BFO/SOSA decision sheet and work plan, PROV-BFO reading notes, the
 2026-09-18 meeting, the 2026-09-24 co-author replies and the 2026-10-06 audit
 ([`decisions/ADR-0005-evidence-audit.md`](decisions/ADR-0005-evidence-audit.md)).
 Position reached: option **(a)** preferred by all four respondents with **(d)** as
 fallback; implemented as one-way links through the published SOSA→PROV-O and
-PROV-O→BFO alignments, not as equivalences. **ADR-0005 is drafted as *proposed*;
-the opt-in profile is built on branch `feat/bfo-sosa-bridge-profile`
+PROV-O→BFO alignments, not as equivalences. **ADR-0005 is accepted (2026-10-12);
+the opt-in profile is built on branch `feat/bfo-sosa-bridge`
 ([`BFO-SOSA-BRIDGE-PROFILE.md`](BFO-SOSA-BRIDGE-PROFILE.md)); no ontology module
 and no `dist/` artifact changed.**
 
@@ -39,14 +39,15 @@ pins in `external-vocabularies.yaml`; `UPPER-LEVEL-VIEW.md` correction.
 
 Open:
 
-- [ ] **Co-author validation of ADR-0005:** Pierre Larmande and Cyril Gilbert
+- [x] **Co-author validation of ADR-0005 (accepted 2026-10-12):** Pierre Larmande and Cyril Gilbert
   agreed to the five points; **Philippe's answers are still missing**, and
   Serge Sonfack Sounchio and Antoine Toffano have not replied. Cyril Gilbert
   validated the carrier pattern on 2026-10-09 (sensor = deployed physical system,
   separate from the software and its execution). Pierre Larmande, replying to
   the replay update on 2026-10-12, considers all decisions validated (carrier
-  pattern and feature-of-interest restriction included). Status moves to
-  accepted once Philippe, Serge and Antoine have replied.
+  pattern and feature-of-interest restriction included). No objection was
+  received; Philippe and Antoine Toffano did not reply and Serge cannot reply.
+  Accepted by the editor on 2026-10-12.
 - [ ] **Ask which exact artifact motivated the disjointness remark.** The pinned
   SOSA 2017 file has none; the 2023 Working Draft (2026-10-03) has none on the
   classes concerned, only among its four collection classes.

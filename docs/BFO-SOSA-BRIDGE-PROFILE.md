@@ -1,6 +1,6 @@
 # Optional BFO/SOSA bridge profile
 
-Status: **proposed**, opt-in, not part of the default release. Decision record:
+Status: **accepted** (ADR-0005, 2026-10-12), opt-in, not part of the default release. Decision record:
 [ADR-0005](decisions/ADR-0005-BFO-SOSA-BRIDGE-POLICY.md); evidence:
 [ADR-0005-evidence-audit.md](decisions/ADR-0005-evidence-audit.md).
 

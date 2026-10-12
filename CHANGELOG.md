@@ -7,7 +7,7 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Added
 
-- Optional BFO/SOSA bridge profile (proposed, ADR-0005; not part of the default
+- Optional BFO/SOSA bridge profile (ADR-0005, accepted 2026-10-12; not part of the default
   release, `hcmo.yaml` and `dist/` unchanged). `ontology/profiles/bfo-sosa-bridge.ttl`
   declares no axiom of its own and imports two published one-way alignments (W3C
   SOSA to PROV-O; Prudhomme et al. 2025 PROV-O to BFO) so that SOSA terms receive

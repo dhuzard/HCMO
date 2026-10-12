@@ -154,7 +154,7 @@ vocabularies:
       - http://www.w3.org/ns/prov#wasDerivedFrom
       - http://www.w3.org/ns/prov#wasGeneratedBy
 
-  # Optional BFO/SOSA bridge profile (ADR-0005, proposed). Not part of the default
+  # Optional BFO/SOSA bridge profile (ADR-0005, accepted). Not part of the default
   # release; the files are vendored under third_party/bfo-sosa-bridge/.
   sosa-prov-alignment:
     status: optional-profile-pinned

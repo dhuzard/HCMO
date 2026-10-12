@@ -1,4 +1,4 @@
-# Optional BFO/SOSA bridge profile for HCMO (ADR-0005, status: proposed).
+# Optional BFO/SOSA bridge profile for HCMO (ADR-0005, status: accepted).
 #
 # This profile adds NO axiom of its own. It only declares the import closure of
 # the two published alignments that place SOSA terms under BFO through PROV-O:
@@ -24,4 +24,4 @@
         <https://raw.githubusercontent.com/BFO-Mappings/PROV-to-BFO/refs/tags/v2025-01-19/prov-bfo-directmappings.ttl> ;
     dcterms:source <https://github.com/BFO-Mappings/PROV-to-BFO/releases/tag/v2025-01-19>,
         <https://www.w3.org/TR/2017/REC-vocab-ssn-20171019/#PROV_Alignment> ;
-    owl:versionInfo "0.1.0-proposed" .
+    owl:versionInfo "0.1.0" .
