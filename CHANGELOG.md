@@ -5,6 +5,14 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ## [Unreleased]
 
+### Added
+
+- SKOS vocabularies `vocabularies/modality.ttl` (17 monitoring modalities) and
+  `vocabularies/sensor-technology.ttl` (8 sensor transduction principles), contributed
+  from the Metadatapp registry, which already minted these IRIs under
+  `https://w3id.org/hcmo/id/vocab/`. Same conventions as the other vocabularies; outside
+  the release manifest. The modality definitions are new and open to review.
+
 ### Changed
 
 - GitHub Pages now also serves the exact release files of every published
