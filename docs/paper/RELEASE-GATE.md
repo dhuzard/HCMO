@@ -31,13 +31,17 @@ Release procedure (same gates as 0.3.0):
    commit, and `git show v0.4.1:hcmo.yaml` must say `version: 0.4.1`. Publish
    the GitHub release (the `release` workflow attaches `hcmo.ttl`, `hcmo.owl`,
    `hcmo.json`, `profile.json`, `hcmo.yaml`; `release-evidence` archives
-   AskWol). Download one asset and confirm `owl:versionInfo "0.4.1"`.
-6. Zenodo mints the 0.4.1 version DOI; record it in `CITATION.cff`, the README,
+   AskWol). Download one asset and confirm `owl:versionInfo "0.4.1"`. ✔
+   (2026-10-12: tag on merge commit `9503ae4`; assets say 0.4.1.)
+6. Zenodo mints the 0.4.1 version DOI (`10.5281/zenodo.23315766`, nine creators in paper
+   order); record it in `CITATION.cff`, the README,
    `docs/paper/metadata/resource-metadata.md`, the manuscript availability
-   statement and `references.bib` (`hcmo` entry).
+   statement and `references.bib` (`hcmo` entry). ✔
 7. Confirm that `https://w3id.org/hcmo/ontology/hcm` and `…/hcm/0.4.1` return
    the 1,464-triple graph by content negotiation, and that the WIDOCO site shows
-   0.4.1 (redeployed from `main` by the `docs` workflow).
+   0.4.1 (redeployed from `main` by the `docs` workflow). ✔ (2026-10-12:
+   both PURLs serve the 0.4.1 `hcmo.ttl`; WIDOCO shows 0.4.1, publisher
+   Damien Huzard.)
 8. Re-run OOPS! on the 0.4.1 RDF/XML and FOOPS! on the PURL; archive raw output
    and triage under `evaluation/`, then update the manuscript's scan table
    (still reporting the 0.3.0 scans until then).

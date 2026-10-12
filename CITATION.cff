@@ -47,9 +47,7 @@ authors:
     affiliation: "Neuronautix, Montpellier, France"
 version: 0.4.1
 date-released: 2026-10-12
-# The 0.4.1 version DOI is minted by Zenodo when the GitHub release is
-# published; until then `doi` is the concept DOI (resolves to the latest version).
-doi: 10.5281/zenodo.18925284
+doi: 10.5281/zenodo.23315766
 identifiers:
   - type: doi
     value: 10.5281/zenodo.18925284
