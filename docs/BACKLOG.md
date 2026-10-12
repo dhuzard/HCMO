@@ -49,6 +49,17 @@ Open:
 - [ ] **Ask which exact artifact motivated the disjointness remark.** The pinned
   SOSA 2017 file has none; the 2023 Working Draft (2026-10-03) has none on the
   classes concerned, only among its four collection classes.
+  *Source found (2026-10-12):* the 2026-09-18 co-author call (Cyril Gilbert,
+  Philippe Rocca-Serra, Damien Huzard), recorded in
+  `docs/meetings/CO-AUTHOR-MEETING-2026-09-18.md` §2 (removed from the tree in
+  `0b1ccdb`; read it with `git show 0b1ccdb~1:docs/meetings/CO-AUTHOR-MEETING-2026-09-18.md`):
+  "both hierarchies assert disjointness: BFO's top-level branches are disjoint,
+  and the SOSA parents are disjoint as well". The meeting's action was to send
+  "Philippe's original comment" to the co-authors. Gmail holds no written version
+  of the remark (searched 2026-10-12); Philippe's 2026-09-15 email raises the
+  underlying point (no explicit alignment between OBO resources and PROV-O/SOSA).
+  Still to check: Damien's copies of Philippe's emails, then, as the last place,
+  Philippe's comments in the PLM LaTeX manuscript.
 - [ ] **Follow up the upstream fix for the unparseable PROV-to-BFO file:** reported
   as BFO-Mappings/PROV-to-BFO#44 with the prefix fix in #43 (both open as of
   2026-10-09; ROBOT evidence added to #44 the same day). The typo fix (#41) is
@@ -65,18 +76,47 @@ Open:
   consistent, no unsatisfiable class, expected inferences and probe results.
   ROBOT 1.9.10 rejected the vendored PROV-to-BFO file on the `rdfs:comment:`
   typo; the repair now corrects that token and the checksum is re-pinned.
-- [ ] Decide whether the optional RO/CCO mappings and the SWRL location rules
-  are part of the contract.
-- [ ] **Review the BFO definition differences** between the pinned BFO and the
-  alignment target (material entity, continuant part; annotation-only).
-- [ ] **Split external-reuse reporting by reuse kind** (annotation properties for
-  ontology metadata versus classes and properties used in HCM semantics) in
-  `docs/ALIGNMENTS.md` and the paper ("adopt regardless of the vote"). *Related: T20l.*
-- [ ] **After acceptance:** add default-versus-optional qualifiers to
-  `ALIGNMENTS.md`, update the WIDOCO pages, the manuscript's SOSA section and the
-  historical notes that still describe provenance as an "orthogonal view", then
-  changelog and release. If the profile later becomes default or SOSA 2023 is
-  adopted, write a new ADR.
+- [x] **RO/CCO mappings and SWRL location rules (closed 2026-10-12):** RO/CCO
+  out of scope. SWRL rules come with the published alignment and have no effect
+  on current HCMO data. Revisit if HCMO adopts `prov:atLocation`. (The eight
+  rules sit inside the imported PROV-to-BFO file and fire only on
+  `prov:atLocation`, `prov:hadRole` and `prov:entity`, which no HCMO module,
+  shape or example uses.)
+- [x] **BFO definition differences reviewed (closed 2026-10-12): keep our pin.**
+  The pinned BFO (commit `dd89f4a…`, 2026-03) is newer than the alignment's
+  target (`release-2024-01-29`) and corrects it: the material entity
+  elucidation restores "that at all times at which it exists" (the target's
+  sentence is garbled); the continuant part definition uses "part of" instead
+  of the circular "continuant part of"; 16 scope notes give the real
+  temporal-extensions URL instead of a `<Link>` placeholder (the target has one
+  more such placeholder note, on BFO_0000055, absent from our pin); the version IRI
+  ends in `.owl` instead of `.ttl`. No logical axiom differs (checked by
+  `tooling/bridge_profile.py`, which fails on any non-annotation difference).
+  HCMO copies none of these definitions, so nothing changes in HCMO.
+- [x] **Split external-reuse reporting by reuse kind (done 2026-10-12).**
+  `tooling/reuse_report.py` classifies every external term in `dist/hcmo.ttl`
+  (semantic, metadata, replacement target) and writes the generated
+  `docs/EXTERNAL-REUSE.md`; `build.py` regenerates it and `validate.py` fails
+  when it is stale. Result: 20 semantic terms from 7 vocabularies, 23 metadata
+  terms from 7 vocabularies, 2 QUDT replacement targets. This corrects the hand
+  count of 2026-09-24 (25 semantic, 6 metadata vocabularies), which counted
+  `schema:Person`/`name`/`logo` and QUDT `numericValue`/`hasUnit` as semantic.
+  `ALIGNMENTS.md` and paper Table 1 updated. *Related: T20l.*
+- [ ] **Next release checklist** (after the open PRs are merged):
+  - [x] Default-versus-optional qualifiers in `ALIGNMENTS.md` (2026-10-12).
+  - [x] Manuscript: bridge profile sentence in §4, future-work line in §7,
+    Table 1 reuse counts, `prudhomme2025` citation (2026-10-12).
+  - [ ] Historical notes that still call provenance an "orthogonal" or
+    "cross-cutting" view (`PHILIPPE-ROCCA-SERRA-FEEDBACK.md`,
+    `PHILIPPE-ROCCA-SERRA-HUMAN-REVIEW-CHECKLIST.md` B09): add a dated
+    default-versus-optional note, keep the original text.
+  - [ ] Bump `owl:versionInfo` / `owl:versionIRI`, `hcmo.yaml` version, and
+    `CITATION.cff`; rebuild `dist/`.
+  - [ ] Regenerate the WIDOCO pages and check every w3id and documentation link.
+  - [ ] Move `CHANGELOG.md` `[Unreleased]` to the new version; tag and release.
+  - [ ] If the upstream PROV-to-BFO tag (#41 + #43) exists by then, swap the pin
+    (item above); otherwise ship the repaired copy as is.
+  - If the profile later becomes default or SOSA 2023 is adopted, write a new ADR.
 - [ ] **Revisit `sosa:ObservableProperty ⊑ BFO:0000020`** only at an edition
   migration (decision 8 of ADR-0005).
 
