@@ -15,6 +15,8 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Changed
 
+- Paper: §3 and Fig. 1 count twelve competency questions, as §6 does; funding
+  statement and acknowledgements updated. README contributor list completed.
 - GitHub Pages now also serves the exact release files of every published
   version (`dist/<version>/` and `dist/latest/`: `hcmo.ttl`, `hcmo.owl`,
   `hcmo.jsonld`), the SKOS vocabularies (`vocab/<scheme>.ttl`), the BFO/SOSA
