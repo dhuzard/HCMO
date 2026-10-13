@@ -47,3 +47,9 @@ examples:
   - examples/isa-hcmo-bridge.ttl
   - examples/abox-edge-cases.ttl
   - examples/abox-inferred-invalid.ttl
+# Expected sh:ValidationResult count of each negative fixture. The validator
+# asserts the count, not only non-conformance, so that a fixture cannot pass
+# because validation itself failed.
+expected_violations:
+  examples/abox-edge-cases.ttl: 18
+  examples/abox-inferred-invalid.ttl: 5

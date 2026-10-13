@@ -35,6 +35,7 @@ EXPECTED_MANIFEST_KEYS = {
     "shapes",
     "queries",
     "examples",
+    "expected_violations",
 }
 EXPECTED_DIST_KEYS = {
     "merged_ttl",

@@ -41,6 +41,7 @@ import yaml
 from rdflib import RDF, Graph, Literal, Namespace, URIRef, XSD
 from rdflib.compare import isomorphic
 from pyshacl import validate as shacl_validate
+from pyshacl.errors import ValidationFailure
 from external_vocab import validate_contract
 from reuse_report import check_report
 
@@ -176,6 +177,54 @@ def step_parse_all(manifest: dict) -> tuple[bool, list[str]]:
     return ok, notes
 
 
+def _run_shacl(
+    data_g: Graph, shapes_g: Graph, ontology_graph: Graph | None, inference: str
+) -> tuple[bool, Graph | None, str | None]:
+    """Run pySHACL and report a validation failure separately from non-conformance.
+
+    A malformed constraint (for example one that breaks the SHACL-SPARQL
+    pre-binding restrictions) makes the engine report a failure instead of
+    results. A test that only reads ``conforms`` cannot tell that apart from a
+    fixture that fails for the intended reasons.
+    """
+    try:
+        conforms, results, _ = shacl_validate(
+            data_g,
+            shacl_graph=shapes_g,
+            ont_graph=ontology_graph,
+            inference=inference,
+            abort_on_first=False,
+            do_owl_imports=False,
+        )
+    except ValidationFailure as exc:
+        return False, None, str(exc)
+    if not isinstance(results, Graph):
+        return False, None, str(results)
+    if (None, RDF.type, SH.ValidationFailure) in results:
+        message = next(
+            (str(m) for m in results.objects(None, SH.resultMessage)),
+            "the shapes graph reported sh:ValidationFailure",
+        )
+        return False, results, message
+    return conforms, results, None
+
+
+def _violation_count(results: Graph | None) -> int:
+    if results is None:
+        return 0
+    return len(set(results.subjects(RDF.type, SH.ValidationResult)))
+
+
+def _expected_violations(manifest: dict, rel: str) -> int | None:
+    """Expected sh:ValidationResult count of a negative fixture, if declared.
+
+    Declared under the top-level ``expected_violations`` key so that
+    ``examples`` stays a plain list of paths for its other consumers.
+    """
+    value = (manifest.get("expected_violations") or {}).get(rel)
+    return int(value) if value is not None else None
+
+
 def step_shacl(manifest: dict, ontology_graph: Graph) -> tuple[bool, list[str]]:
     ok = True
     notes = []
@@ -193,35 +242,45 @@ def step_shacl(manifest: dict, ontology_graph: Graph) -> tuple[bool, list[str]]:
         data_g = Graph().parse(path, format="turtle")
         inference_probe = Path(rel).name == "abox-inferred-invalid.ttl"
         if inference_probe:
-            baseline_conforms, _, _ = shacl_validate(
-                data_g,
-                shacl_graph=shapes_g,
-                inference="none",
-                abort_on_first=False,
-                do_owl_imports=False,
+            baseline_conforms, _, baseline_failure = _run_shacl(
+                data_g, shapes_g, None, "none"
             )
+            if baseline_failure is not None:
+                ok = False
+                notes.append(
+                    f"[FAIL] SHACL {rel}: validation did not complete: {baseline_failure}"
+                )
+                continue
             if not baseline_conforms:
                 ok = False
                 notes.append(
                     f"[FAIL] SHACL {rel}: fixture is not inference-dependent"
                 )
                 continue
-        conforms, _, _ = shacl_validate(
-            data_g,
-            shacl_graph=shapes_g,
-            ont_graph=ontology_graph,
-            inference="rdfs",
-            abort_on_first=False,
-            do_owl_imports=False,
+        conforms, results, failure = _run_shacl(
+            data_g, shapes_g, ontology_graph, "rdfs"
         )
+        if failure is not None:
+            ok = False
+            notes.append(f"[FAIL] SHACL {rel}: validation did not complete: {failure}")
+            continue
+        found = _violation_count(results)
+        expected = _expected_violations(manifest, rel)
         expect = "non-conformant" if negative else "conformant"
         actual = "conformant" if conforms else "non-conformant"
         passed = (conforms is not negative)  # positive->conform, negative->not
+        if passed and negative and found == 0:
+            passed = False
+            actual = "non-conformant with no sh:ValidationResult"
+        if passed and negative and expected is not None and found != expected:
+            passed = False
+            actual = f"{found} violations (hcmo.yaml declares {expected})"
         if not passed:
             ok = False
             notes.append(f"[FAIL] SHACL {rel}: expected {expect}, got {actual}")
         else:
-            notes.append(f"[OK]   SHACL {rel}: {actual} (expected {expect})")
+            detail = f", {found} violations" if negative else ""
+            notes.append(f"[OK]   SHACL {rel}: {actual}{detail} (expected {expect})")
             if inference_probe:
                 notes.append(
                     "[OK]   ontology-aware target probe: conformant without "
@@ -229,14 +288,13 @@ def step_shacl(manifest: dict, ontology_graph: Graph) -> tuple[bool, list[str]]:
                 )
 
     probe = "examples/abox-social-invalid.ttl"
-    _, report_g, _ = shacl_validate(
-        Graph().parse(ROOT / probe, format="turtle"),
-        shacl_graph=shapes_g,
-        ont_graph=ontology_graph,
-        inference="rdfs",
-        abort_on_first=False,
-        do_owl_imports=False,
+    _, report_g, failure = _run_shacl(
+        Graph().parse(ROOT / probe, format="turtle"), shapes_g, ontology_graph, "rdfs"
     )
+    if failure is not None:
+        ok = False
+        notes.append(f"[FAIL] multi-animal probe {probe}: validation did not complete: {failure}")
+        return ok, notes
     messages = {str(m) for m in report_g.objects(None, SH.resultMessage)}
     missing = [
         expected for expected in SOCIAL_PROBE_MESSAGES
