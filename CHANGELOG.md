@@ -51,8 +51,8 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
   the fixture's intended violations was evaluated. The shape is rewritten in
   SHACL Core (`sh:maxCount 0` on each deprecated property). The SHACL step of
   `tooling/validate.py` now reports a validation failure as such and checks
-  each negative fixture against the violation count declared in `hcmo.yaml`
-  (`expected_violations`: 18 for `abox-edge-cases`, 5 for
+  each negative fixture against the validator's reviewed violation count
+  (18 for `abox-edge-cases`, 5 for
   `abox-inferred-invalid`).
 
 ## [0.4.1] - 2026-10-12

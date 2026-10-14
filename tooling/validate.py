@@ -215,14 +215,10 @@ def _violation_count(results: Graph | None) -> int:
     return len(set(results.subjects(RDF.type, SH.ValidationResult)))
 
 
-def _expected_violations(manifest: dict, rel: str) -> int | None:
-    """Expected sh:ValidationResult count of a negative fixture, if declared.
-
-    Declared under the top-level ``expected_violations`` key so that
-    ``examples`` stays a plain list of paths for its other consumers.
-    """
-    value = (manifest.get("expected_violations") or {}).get(rel)
-    return int(value) if value is not None else None
+EXPECTED_NEGATIVE_VIOLATIONS = {
+    "examples/abox-edge-cases.ttl": 18,
+    "examples/abox-inferred-invalid.ttl": 5,
+}
 
 
 def step_shacl(manifest: dict, ontology_graph: Graph) -> tuple[bool, list[str]]:
@@ -265,7 +261,7 @@ def step_shacl(manifest: dict, ontology_graph: Graph) -> tuple[bool, list[str]]:
             notes.append(f"[FAIL] SHACL {rel}: validation did not complete: {failure}")
             continue
         found = _violation_count(results)
-        expected = _expected_violations(manifest, rel)
+        expected = EXPECTED_NEGATIVE_VIOLATIONS.get(rel)
         expect = "non-conformant" if negative else "conformant"
         actual = "conformant" if conforms else "non-conformant"
         passed = (conforms is not negative)  # positive->conform, negative->not
@@ -274,7 +270,7 @@ def step_shacl(manifest: dict, ontology_graph: Graph) -> tuple[bool, list[str]]:
             actual = "non-conformant with no sh:ValidationResult"
         if passed and negative and expected is not None and found != expected:
             passed = False
-            actual = f"{found} violations (hcmo.yaml declares {expected})"
+            actual = f"{found} violations (validator expects {expected})"
         if not passed:
             ok = False
             notes.append(f"[FAIL] SHACL {rel}: expected {expect}, got {actual}")
