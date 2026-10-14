@@ -92,7 +92,7 @@ column and append to the **Change log** whenever something moves.
 |----|------|--------|
 | T21 | Complete **CALL-REQUIREMENTS.md** checklist — all ✔. **Open:** the official ESWC 2027 Resources Track page was checked on 2026-09-17 but still said “Coming soon”; recheck and replace the provisional 2026 baseline when the call is published. | ☐ |
 | T22 | Internal review pass (co-authors) + proofread, page-count check. **Current evidence:** clean local LNCS compilation on 2026-09-17 produced 19 pages total (16 before the bibliography + 3 references), one content page over the provisional ESWC 2026 baseline. The untracked `HCMO.zip` also compiled to 19 pages with the same toolchain but contains source drift in four files; reconcile it with `docs/paper/overleaf/` before treating any reported 20-page PDF as authoritative. | ☐ |
-| T23 | Confirm affiliations + ORCIDs of all 8 authors and corresponding emails — see `metadata/authors.md` | ☑ | All ORCIDs, author order, affiliations, and three corresponding emails are confirmed. Philippe Rocca-Serra must still be added to the published Zenodo creator metadata. |
+| T23 | Confirm affiliations + ORCIDs of all 9 authors and corresponding emails — see `metadata/authors.md` | ☑ | All ORCIDs, author order, affiliations, and three corresponding emails are confirmed. Philippe Rocca-Serra must still be added to the published Zenodo creator metadata. |
 | T23b | **Confirm the license with all co-authors** | ☑ | CC BY 4.0 confirmed 2026-08-31. |
 | T24 | Submit **abstract** by pre-submission deadline | ☐ |
 | T25 | Submit **full paper** (+ supplementary material link) | ☐ |
