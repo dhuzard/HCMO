@@ -46,6 +46,18 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
   bibliography, and the paper's resource-metadata sheet. The README warns not to
   cite the superseded 0.4.0 deposit (`10.5281/zenodo.23315451`).
 
+### Fixed
+
+- `hcm:RejectedTimelessStateShape` placed a `VALUES` clause inside its
+  `sh:select`, which the SHACL pre-binding rules exclude: validation of
+  `examples/abox-edge-cases.ttl` stopped with a validation failure and none of
+  the fixture's intended violations was evaluated. The shape is rewritten in
+  SHACL Core (`sh:maxCount 0` on each deprecated property). The SHACL step of
+  `tooling/validate.py` now reports a validation failure as such and checks
+  each negative fixture against the validator's reviewed violation count
+  (18 for `abox-edge-cases`, 5 for
+  `abox-inferred-invalid`).
+
 ## [0.4.1] - 2026-10-12
 
 ### Added

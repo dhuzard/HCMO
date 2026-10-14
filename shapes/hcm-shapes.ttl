@@ -334,17 +334,12 @@ hcm-obs:QuantityValueShape a sh:NodeShape ;
 
 hcm:RejectedTimelessStateShape a sh:NodeShape ;
   sh:targetSubjectsOf hcm:isOccupied, hcm:isOperational, hcm-tech:isCalibrated ;
-  sh:sparql [
-    sh:message "Timeless occupancy, operational, and calibration booleans are deprecated in the standard HCMO profile." ;
-    sh:select """
-      PREFIX hcm: <https://w3id.org/hcmo/ontology/hcm#>
-      PREFIX hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#>
-      SELECT $this WHERE {
-        VALUES ?property { hcm:isOccupied hcm:isOperational hcm-tech:isCalibrated }
-        $this ?property ?value .
-      }
-    """
-  ] .
+  sh:property [ sh:path hcm:isOccupied ; sh:maxCount 0 ;
+    sh:message "Timeless occupancy booleans are deprecated in the standard HCMO profile." ] ;
+  sh:property [ sh:path hcm:isOperational ; sh:maxCount 0 ;
+    sh:message "Timeless operational booleans are deprecated in the standard HCMO profile." ] ;
+  sh:property [ sh:path hcm-tech:isCalibrated ; sh:maxCount 0 ;
+    sh:message "Timeless calibration booleans are deprecated in the standard HCMO profile." ] .
 
 hcm-obs:ObservationIntervalShape a sh:NodeShape ;
   sh:targetSubjectsOf hcm-obs:hasInterval ;
