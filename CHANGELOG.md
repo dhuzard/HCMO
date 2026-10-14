@@ -15,6 +15,8 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Changed
 
+- Paper §6 now distinguishes the corrected, post-release SHACL validation
+  results from the archived 0.4.1 validation files.
 - Paper: §3 and Fig. 1 count twelve competency questions, as §6 does; funding
   statement and acknowledgements updated. Benoît Girard's supplied affiliation
   recorded in the manuscript, citation metadata, and README contributor list.
