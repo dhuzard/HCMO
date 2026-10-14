@@ -189,6 +189,7 @@ the corresponding repository source is available from its
   France · [0009-0008-0575-8490](https://orcid.org/0009-0008-0575-8490)
 - **Pierre Larmande** — DIADE, Université de Montpellier, IRD, CIRAD,
   Montpellier, France · [0000-0002-2923-9790](https://orcid.org/0000-0002-2923-9790) · [@pierrelarmande](https://github.com/pierrelarmande)
+- **Benoît Girard** — Department of Basic Neurosciences, University of Geneva, Switzerland · [0000-0002-3914-6483](https://orcid.org/0000-0002-3914-6483) · [@BenoitJT-GIRARD](https://github.com/BenoitJT-GIRARD)
 - **Philippe Rocca-Serra** — Oxford e-Research Centre, Department of Engineering
   Science, University of Oxford, Oxford OX1 3QG, United Kingdom ·
   [0000-0001-9853-5668](https://orcid.org/0000-0001-9853-5668)

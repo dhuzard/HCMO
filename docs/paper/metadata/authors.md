@@ -14,7 +14,7 @@ Konstantin Todorov, and Damien Huzard are the three corresponding authors.
 | 3 | Serge Sonfack Sounchio | contributing author | 0000-0002-6085-6818 | Robert Bosch Sp. z o. o., Jutrzenki 105, Poland |
 | 4 | Antoine Toffano | contributing author | 0009-0008-0575-8490 | LIRMM, Université de Montpellier, CNRS, Montpellier, France |
 | 5 | Pierre Larmande | contributing author | 0000-0002-2923-9790 | DIADE, Université de Montpellier, IRD, CIRAD, Montpellier, France |
-| 6 | Benoît Girard | contributing author | 0000-0002-3914-6483 | *to be confirmed* |
+| 6 | Benoît Girard | contributing author | 0000-0002-3914-6483 | Department of Basic Neurosciences, University of Geneva, Switzerland |
 | 7 | Philippe Rocca-Serra | contributing author | 0000-0001-9853-5668 | Oxford e-Research Centre, Department of Engineering Science, University of Oxford, Oxford OX1 3QG, United Kingdom |
 | 8 | **Konstantin Todorov** | **Co-last / corresponding ✉** | 0000-0002-9116-6692 | LIRMM, Université de Montpellier, CNRS, Montpellier, France |
 | 9 | **Damien Huzard** | **Co-last / corresponding ✉; final listed author** | 0000-0003-4820-7951 | Neuronautix, Montpellier, France |
@@ -78,16 +78,17 @@ development of Metadatapp.
 ## To provide before submission (T-author)
 - [x] ORCIDs for Gilbert, Sanou, Sonfack Sounchio, Toffano. *(provided 2026-06-29)*
 - [x] Author order and three corresponding authors. *(updated 2026-09-04)*
-- [x] Exact submission affiliations for all 8 authors confirmed and recorded in
-      `CITATION.cff` and the repository README. *(confirmed 2026-09-04)*
+- [x] Exact submission affiliations for all 9 authors confirmed and recorded in
+      `CITATION.cff` and the repository README. *(Eight confirmed 2026-09-04;
+      Benoît Girard confirmed 2026-10-14.)*
 - [x] Corresponding emails confirmed 2026-08-31: Cyril Gilbert
       (`cyril.gilbert8@gmail.com`), Konstantin Todorov
       (`konstantin.todorov@lirmm.fr`), and Damien Huzard
       (`damien.huzard@gmail.com`).
-- [ ] Benoît Girard (added 2026-09-24; ORCID 0000-0002-3914-6483 received):
-      collect affiliation; update
-      `main.tex` institute placeholder, `CITATION.cff`, README, and decide
-      whether he is added to the release creator metadata.
+- [x] Benoît Girard (added 2026-09-24; ORCID 0000-0002-3914-6483 received):
+      affiliation supplied 2026-10-14 and recorded in `main.tex`, `CITATION.cff`,
+      and README.
+- [ ] Decide whether Benoît Girard is added to the release creator metadata.
 - [ ] Add Philippe Rocca-Serra between Larmande and Todorov in the published
       Zenodo creator metadata. Preserve the existing Git tag and archived
       ontology graph; this is a metadata-only correction.

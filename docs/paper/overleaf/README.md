@@ -12,9 +12,8 @@ uv run --python 3.13 tooling/build_paper.py
 ```
 
 Edit the manuscript in PLMLatex, then export and synchronize its `.tex`, `.bib`,
-figure, and README sources into this directory. Before submission, replace the
-affiliation placeholder in `main.tex` and verify the live venue template and
-metadata-block requirements.
+figure, and README sources into this directory. Before submission, verify the
+live venue template and metadata-block requirements.
 
 The build also creates `docs/paper/hcmo-overleaf-upload.zip` with deterministic
 case-sensitive POSIX-name ordering, timestamps, permissions, LF-normalized text,
