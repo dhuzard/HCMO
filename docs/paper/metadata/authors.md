@@ -1,8 +1,9 @@
 # Authors & front matter (HITL Round 4)
 
-**Decision (confirmed 2026-08-31; Benoît Girard added 2026-09-24):** Cyril
+**Decision (confirmed 2026-08-31; Benoît Girard added 2026-09-24; Antoine
+Toffano removed 2026-10-26, issue #54):** Cyril
 Gilbert is **first author**. The middle-author order is Gaoussou Sanou, Serge
-Sonfack Sounchio, Antoine Toffano, Pierre Larmande, Benoît Girard, and Philippe
+Sonfack Sounchio, Pierre Larmande, Benoît Girard, and Philippe
 Rocca-Serra. Konstantin Todorov and Damien Huzard
 are **co-last**; Damien remains the final listed author. Cyril Gilbert,
 Konstantin Todorov, and Damien Huzard are the three corresponding authors.
@@ -12,12 +13,11 @@ Konstantin Todorov, and Damien Huzard are the three corresponding authors.
 | 1 | **Cyril Gilbert** | **First / corresponding ✉** | 0009-0008-2489-8106 | LIRMM, Université de Montpellier, CNRS, Montpellier, France |
 | 2 | Gaoussou Sanou | contributing author | 0000-0003-2204-2466 | IMGT®, IGH, Université de Montpellier, CNRS, Montpellier, France |
 | 3 | Serge Sonfack Sounchio | contributing author | 0000-0002-6085-6818 | Robert Bosch Sp. z o. o., Jutrzenki 105, Poland |
-| 4 | Antoine Toffano | contributing author | 0009-0008-0575-8490 | LIRMM, Université de Montpellier, CNRS, Montpellier, France |
-| 5 | Pierre Larmande | contributing author | 0000-0002-2923-9790 | DIADE, Université de Montpellier, IRD, CIRAD, Montpellier, France |
-| 6 | Benoît Girard | contributing author | 0000-0002-3914-6483 | Department of Basic Neurosciences, University of Geneva, Switzerland |
-| 7 | Philippe Rocca-Serra | contributing author | 0000-0001-9853-5668 | Oxford e-Research Centre, Department of Engineering Science, University of Oxford, Oxford OX1 3QG, United Kingdom |
-| 8 | **Konstantin Todorov** | **Co-last / corresponding ✉** | 0000-0002-9116-6692 | LIRMM, Université de Montpellier, CNRS, Montpellier, France |
-| 9 | **Damien Huzard** | **Co-last / corresponding ✉; final listed author** | 0000-0003-4820-7951 | Neuronautix, Montpellier, France |
+| 4 | Pierre Larmande | contributing author | 0000-0002-2923-9790 | DIADE, Université de Montpellier, IRD, CIRAD, Montpellier, France |
+| 5 | Benoît Girard | contributing author | 0000-0002-3914-6483 | Department of Basic Neurosciences, University of Geneva, Switzerland |
+| 6 | Philippe Rocca-Serra | contributing author | 0000-0001-9853-5668 | Oxford e-Research Centre, Department of Engineering Science, University of Oxford, Oxford OX1 3QG, United Kingdom |
+| 7 | **Konstantin Todorov** | **Co-last / corresponding ✉** | 0000-0002-9116-6692 | LIRMM, Université de Montpellier, CNRS, Montpellier, France |
+| 8 | **Damien Huzard** | **Co-last / corresponding ✉; final listed author** | 0000-0003-4820-7951 | Neuronautix, Montpellier, France |
 
 > ✉ = corresponding author. Single-anonymous track → authors are **named** in
 > the submission. Equal-contribution/co-last wording still needs to be adapted
@@ -40,7 +40,6 @@ As in the manuscript (online co-author edits, synced 2026-09-24):
 - **Gaoussou Sanou:** Conceptualization, Methodology, Software, Formal
   analysis, Visualization, Writing — review & editing.
 - **Serge Sonfack Sounchio:** Methodology.
-- **Antoine Toffano:** Methodology.
 - **Pierre Larmande:** Methodology, Writing — review & editing.
 - **Benoît Girard:** Conceptualization (initial project framing), Funding
   acquisition, Writing — review & editing. *(Conceptualization added
@@ -118,8 +117,8 @@ development of Metadatapp.
      2025 to October 2026. As part of the Exogene-funded Master's project
      (internship started January 2026), Cyril
      Gilbert redesigned and implemented the HCMO version presented in the
-     article, with Pierre Larmande, Serge Sonfack Sounchio, Gaoussou Sanou, and
-     Antoine Toffano contributing as recorded in the CRediT statement.
+     article, with Pierre Larmande, Serge Sonfack Sounchio, and Gaoussou Sanou
+     contributing as recorded in the CRediT statement.
 - Metadatapp, formerly Damien Huzard's entrepreneurial venture, is now an
   open-source software program.
 - Damien Huzard provides consultancy services in preclinical research and
