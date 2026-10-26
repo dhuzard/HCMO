@@ -66,6 +66,8 @@ as sources of domain terminology, expertise, and feedback.
   Leonardo Restivo. (Benoît Girard, who also contributed, is now a co-author.)
 - **Early conceptual and software architecture developed for HCMO within
   Metadatapp:** Laurent Huzard.
+- **Participation in project discussions (January–March 2026), before leaving
+  the project:** Antoine Toffano.
 - **Domain expertise and feedback:** Benoit Petit-Demoulière, Vootele Voikar,
   Leonardo Restivo, Davor Virag, and Marion Rivalan.
 

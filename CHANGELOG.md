@@ -16,7 +16,9 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 ### Changed
 
 - Paper: Antoine Toffano removed from the author list and the CRediT statement
-  (#54). The citation metadata, README, and ontology header still list him.
+  (#54) and thanked among the non-author contributions for project discussions
+  in January–March 2026. The citation metadata, README, and ontology header
+  still list him.
 - Paper: a GAIDeT declaration of the tasks delegated to generative AI and of the
   tools used now follows the CRediT statement, as the ESWC 2027 AI policy asks
   (#53). The §3 AI paragraph keeps the review safeguards and points to it.
