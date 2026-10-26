@@ -28,6 +28,9 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
   introduction's interoperability paragraph, the claim-strength, modelling,
   reused-standards, use-case, evaluation, and limitations paragraphs, and
   remove the conclusion paragraph.
+- Paper: back matter and nine accepted body cuts bring the manuscript within the
+  15-page limit (references start on page 16 in faithful pdfLaTeX and XeLaTeX
+  builds).
 - Paper §6 now distinguishes the corrected, post-release SHACL validation
   results from the archived 0.4.1 validation files.
 - Paper: §3 and Fig. 1 count twelve competency questions, as §6 does; funding
