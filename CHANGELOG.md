@@ -22,6 +22,10 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 - Paper: a GAIDeT declaration of the tasks delegated to generative AI and of the
   tools used now follows the CRediT statement, as the ESWC 2027 AI policy asks
   (#53). The §3 AI paragraph keeps the review safeguards and points to it.
+- Paper: author edits from a full read-through shorten the abstract, the
+  introduction's interoperability paragraph, the claim-strength, modelling,
+  reused-standards, use-case, evaluation, and limitations paragraphs, and
+  remove the conclusion paragraph.
 - Paper §6 now distinguishes the corrected, post-release SHACL validation
   results from the archived 0.4.1 validation files.
 - Paper: §3 and Fig. 1 count twelve competency questions, as §6 does; funding
