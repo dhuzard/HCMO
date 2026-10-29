@@ -65,6 +65,26 @@ submission.
 python -m pyshacl -s shapes\hcm-shapes.ttl -i rdfs -a -f human examples\user-submission.ttl
 ```
 
+## Competency questions against a hosted endpoint
+
+`tooling/validate.py` runs the twelve `queries/cq-*.rq` on an in-memory graph.
+To run the same questions against a SPARQL endpoint (a local or hosted Fuseki,
+the Metadatapp public endpoint) and compare the rows with the reviewed
+`expected_answers`, use:
+
+```powershell
+python tooling/run_cqs.py --endpoint http://localhost:3030/hcmo/sparql
+python tooling/run_cqs.py --endpoint https://<host>/hcmo/sparql --user admin --password ...
+python tooling/run_cqs.py --endpoint https://<host>/hcmo/sparql --no-compare   # rows only
+```
+
+The expected rows hold only when the dataset contains exactly the files of the
+validator's evaluation graph (`python tooling/run_cqs.py --print-files`:
+`dist/hcmo.ttl` plus the positive examples) and queries see their union, so
+either load them into the default graph or enable `tdb2:unionDefaultGraph`.
+A dataset that also holds the catalog, submissions, or other releases returns
+extra rows; `--no-compare` shows them without failing.
+
 ## Minimal SPARQL checks
 
 List submitted systems and their suppliers:

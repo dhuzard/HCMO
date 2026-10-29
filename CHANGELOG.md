@@ -7,6 +7,13 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Added
 
+- `tooling/run_cqs.py`: runs the competency questions of
+  `queries/competency_questions.yaml` against a SPARQL 1.1 Protocol endpoint
+  (Fuseki, the Metadatapp public endpoint) and compares the rows with the
+  reviewed expected answers, with the validator's canonical row form.
+  `--print-files` lists the files the dataset must hold; documented in
+  `docs/hcm-systems/FUSEKI-LOADING.md`.
+
 - SKOS vocabularies `vocabularies/modality.ttl` (17 monitoring modalities) and
   `vocabularies/sensor-technology.ttl` (8 sensor transduction principles), contributed
   from the Metadatapp registry, which already minted these IRIs under
