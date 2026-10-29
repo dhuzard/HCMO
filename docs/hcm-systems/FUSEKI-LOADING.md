@@ -3,6 +3,17 @@
 Use this workflow to build a Fuseki dataset from the ontology plus HCM systems
 ABox data.
 
+## Recommended: `deploy/fuseki/`
+
+The maintained, reproducible way to get these graphs into Fuseki is
+[`deploy/fuseki/`](../../deploy/fuseki/README.md): a Docker image (Apache Jena
+Fuseki 5.6.0) that loads the graphs below into TDB2 at build time and serves
+three read-only datasets (`/hcmo`, `/hcmo-<version>`, `/hcm-systems`; the last
+one holds the catalogue and submissions). Run it locally with
+`docker compose -f deploy/fuseki/docker-compose.yml up --build`. The manual
+`tdb2.tdbloader` workflow below remains the alternative, for example to load
+into an existing Fuseki.
+
 ## Generate RDF artifacts
 
 From the repository root:
@@ -32,6 +43,14 @@ submissions can be updated independently:
 | `https://w3id.org/hcmo/graph/catalog` | `docs/hcm-systems/catalog.ttl` | Sparse HCM system/product/software/component catalog. |
 | `https://w3id.org/hcmo/graph/examples/dvc-tecniplast` | `examples/dvc-tecniplast.ttl` | Source-backed DVC system profile ABox. |
 | `https://w3id.org/hcmo/graph/submissions` | curated submission `.ttl` files | Complete user-submitted system ABox records. |
+| `https://w3id.org/hcmo/graph/examples/hcmo-abox-minimal` | `examples/abox-minimal.ttl` | Positive example, part of the competency-question evaluation graph. |
+| `https://w3id.org/hcmo/graph/examples/hcmo-user-submission` | `examples/user-submission.ttl` | Positive example, part of the evaluation graph. |
+| `https://w3id.org/hcmo/graph/examples/hcmo-isa-hcmo-bridge` | `examples/isa-hcmo-bridge.ttl` | Positive example, part of the evaluation graph. |
+| `https://w3id.org/hcmo/graph/vocab/<name>` | `vocabularies/<file>.ttl` | The six SKOS vocabularies: `file-format` (`file-formats.ttl`), `data-access-method` (`data-access-methods.ttl`), `vendor` (`vendors.ttl`), `system` (`systems.ttl`), `modality`, `sensor-technology`. |
+
+`deploy/fuseki/` loads the `/hcmo` dataset from the ontology, the three `examples/hcmo-*`
+graphs and the vocabularies; `/hcm-systems` from the ontology, catalog,
+`dvc-tecniplast`, submissions and vocabularies.
 
 ## Example load commands
 
@@ -78,7 +97,7 @@ python tooling/run_cqs.py --endpoint https://<host>/hcmo/sparql --user admin --p
 python tooling/run_cqs.py --endpoint https://<host>/hcmo/sparql --no-compare   # rows only
 ```
 
-The expected rows hold only when the dataset contains exactly the files of the
+The expected rows hold only when the dataset's default graph is the union of the files of the
 validator's evaluation graph (`python tooling/run_cqs.py --print-files`:
 `dist/hcmo.ttl` plus the positive examples) and queries see their union, so
 either load them into the default graph or enable `tdb2:unionDefaultGraph`.

@@ -1,0 +1,98 @@
+name: SPARQL deploy
+
+# Deploy the public read-only SPARQL endpoint to Clever Cloud (Docker app).
+# Runs on every published release, or manually. The image is smoke-tested
+# first; the deploy job is gated by the 'production' environment and is a no-op
+# (with a notice) until the repository variable CLEVER_SPARQL_APP_ID is set.
+# The app's own env vars (CC_DOCKERFILE, CC_DOCKER_EXPOSED_HTTP_PORT,
+# CC_HEALTH_CHECK_PATH, JAVA_OPTIONS) are configured on Clever Cloud.
+
+on:
+  release:
+    types: [ published ]
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: 'Git ref (tag, branch or SHA) to deploy (default: the selected ref)'
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+# Never run two deployments at once, and never cancel one half way.
+concurrency:
+  group: sparql-deploy
+  cancel-in-progress: false
+
+jobs:
+  image:
+    uses: ./.github/workflows/sparql-image.yml
+    with:
+      ref: ${{ inputs.ref || github.ref }}
+
+  config:
+    runs-on: ubuntu-latest
+    outputs:
+      configured: ${{ steps.check.outputs.configured }}
+    steps:
+      - name: Check the Clever Cloud configuration
+        id: check
+        env:
+          APP_ID: ${{ vars.CLEVER_SPARQL_APP_ID }}
+        run: |
+          if [ -z "$APP_ID" ]; then
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Deployment skipped: set the repository variable CLEVER_SPARQL_APP_ID (Clever Cloud app id, app_...) and the secrets CLEVER_TOKEN and CLEVER_SECRET to enable it."
+          else
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          fi
+
+  deploy:
+    needs: [ image, config ]
+    if: needs.config.outputs.configured == 'true'
+    runs-on: ubuntu-latest
+    environment: production
+    timeout-minutes: 45
+    env:
+      SPARQL_URL: ${{ vars.CLEVER_SPARQL_URL }}
+    steps:
+      # The Clever Cloud action requires an unshallow working copy.
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref || github.ref }}
+          fetch-depth: 0
+      - uses: 47ng/actions-clever-cloud@v2.1.0
+        with:
+          appID: ${{ vars.CLEVER_SPARQL_APP_ID }}
+          force: true
+          timeout: 1200 # wait at maximum 20 minutes (Docker build + dataset load)
+        env:
+          CLEVER_TOKEN: ${{ secrets.CLEVER_TOKEN }}
+          CLEVER_SECRET: ${{ secrets.CLEVER_SECRET }}
+      - name: Post-deploy check skipped
+        if: env.SPARQL_URL == ''
+        run: echo "::notice::Post-deploy check skipped. Set the repository variable CLEVER_SPARQL_URL (public base URL, e.g. https://sparql.example.org) to enable it."
+      - uses: actions/setup-python@v5
+        if: env.SPARQL_URL != ''
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        if: env.SPARQL_URL != ''
+        run: pip install -r tooling/requirements.txt
+      - name: Wait for the public endpoint (max 5 min)
+        if: env.SPARQL_URL != ''
+        run: |
+          base="${SPARQL_URL%/}"
+          for i in $(seq 1 60); do
+            if curl -fsS --max-time 5 "$base"'/$/ping' > /dev/null 2>&1; then
+              echo "$base is up after about $((i * 5)) s"
+              exit 0
+            fi
+            sleep 5
+          done
+          echo "::error::$base did not answer /\$/ping within 5 minutes"
+          exit 1
+      - name: Competency questions on the public /hcmo endpoint
+        if: env.SPARQL_URL != ''
+        run: python tooling/run_cqs.py --endpoint "${SPARQL_URL%/}/hcmo/sparql"

@@ -116,6 +116,26 @@ python tooling/validate_isa_native_projection.py  # controlled-loss ISA-JSON/ISA
 - **Everything is discoverable from `hcmo.yaml`** — resolve module, dist, shapes,
   queries, and example paths from there rather than hard-coding them.
 
+## SPARQL endpoint
+
+A public, read-only SPARQL endpoint for the reference graph is packaged in
+[`deploy/fuseki/`](deploy/fuseki/README.md) (Apache Jena Fuseki, data loaded at
+image build time). Planned public URL, once the w3id rule is merged and the
+deployment exists: `https://w3id.org/hcmo/sparql`. It is not live yet; until then
+the Metadatapp public endpoint (`https://api.metadatapp.net/api/v1/public/sparql`)
+serves HCMO and the image runs locally with
+`docker compose -f deploy/fuseki/docker-compose.yml up --build`.
+
+- `/hcmo`: the reference evaluation graph of the twelve competency questions
+  (ontology, three positive examples, six SKOS vocabularies, union default graph).
+- `/hcmo-0.4.1`: the same data under a version-qualified, citable name (the release the image was built from).
+- `/hcm-systems`: exploration dataset with the HCM systems catalogue.
+- Web UI: `http://<host>/#/dataset/hcmo/query`.
+
+```bash
+python tooling/run_cqs.py --endpoint https://<host>/hcmo/sparql
+```
+
 ## Documentation
 
 📖 **Published docs:** [https://dhuzard.github.io/HCMO/index-en.html](https://dhuzard.github.io/HCMO/index-en.html)
