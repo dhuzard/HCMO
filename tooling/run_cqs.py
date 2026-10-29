@@ -14,6 +14,7 @@ Usage:
     python tooling/run_cqs.py --endpoint URL --only animals-by-enclosure
     python tooling/run_cqs.py --endpoint URL --user admin --password ...
     python tooling/run_cqs.py --endpoint URL --no-compare   # just print rows
+    python tooling/run_cqs.py --endpoint URL --graph <iri> --graph <iri>   # dataset
     python tooling/run_cqs.py --print-files   # files the dataset must contain
 
 Exit status is 0 when every selected question matches its expected answers
@@ -63,18 +64,22 @@ def sparql_select(
     auth: tuple[str, str] | None,
     timeout: float,
     method: str,
+    default_graphs: list[str],
 ) -> dict:
+    """SPARQL 1.1 Protocol query; default_graphs become default-graph-uri parameters."""
     headers = {"Accept": "application/sparql-results+json"}
     if auth:
         token = base64.b64encode(f"{auth[0]}:{auth[1]}".encode()).decode()
         headers["Authorization"] = f"Basic {token}"
+    dataset = [("default-graph-uri", graph) for graph in default_graphs]
     if method == "GET":
-        url = f"{endpoint}?{urllib.parse.urlencode({'query': query})}"
+        url = f"{endpoint}?{urllib.parse.urlencode([('query', query), *dataset])}"
         request = urllib.request.Request(url, headers=headers)
     else:
         headers["Content-Type"] = "application/sparql-query"
+        url = f"{endpoint}?{urllib.parse.urlencode(dataset)}" if dataset else endpoint
         request = urllib.request.Request(
-            endpoint, data=query.encode("utf-8"), headers=headers, method="POST"
+            url, data=query.encode("utf-8"), headers=headers, method="POST"
         )
     with urllib.request.urlopen(request, timeout=timeout) as response:
         return json.load(response)
@@ -112,6 +117,12 @@ def main() -> int:
     parser.add_argument("--password", help="HTTP basic auth password (optional)")
     parser.add_argument("--only", action="append", help="Question id to run (repeatable)")
     parser.add_argument("--no-compare", action="store_true", help="Print rows, skip the comparison")
+    parser.add_argument(
+        "--graph", action="append", default=[], metavar="IRI",
+        help="Graph IRI sent as default-graph-uri (repeatable); the query then sees "
+             "the union of these graphs only, e.g. the ontology graph plus the three "
+             "reviewed example graphs on a store that holds more",
+    )
     parser.add_argument("--method", choices=["GET", "POST"], default="GET")
     parser.add_argument("--timeout", type=float, default=60.0, help="Seconds per query")
     args = parser.parse_args()
@@ -136,7 +147,9 @@ def main() -> int:
         qid = question["id"]
         query = (ROOT / question["file"]).read_text(encoding="utf-8")
         try:
-            results = sparql_select(args.endpoint, query, auth, args.timeout, args.method)
+            results = sparql_select(
+                args.endpoint, query, auth, args.timeout, args.method, args.graph
+            )
         except urllib.error.HTTPError as exc:
             body = exc.read().decode("utf-8", "replace")[:500]
             print(f"[FAIL] {qid}: HTTP {exc.code} {exc.reason}\n       {body.strip()}")

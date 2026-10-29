@@ -83,7 +83,19 @@ validator's evaluation graph (`python tooling/run_cqs.py --print-files`:
 `dist/hcmo.ttl` plus the positive examples) and queries see their union, so
 either load them into the default graph or enable `tdb2:unionDefaultGraph`.
 A dataset that also holds the catalog, submissions, or other releases returns
-extra rows; `--no-compare` shows them without failing.
+extra rows; `--no-compare` shows them without failing, and `--graph <iri>`
+(repeatable, sent as `default-graph-uri`) restricts the query to the named
+graphs. On the Metadatapp public endpoint, which loads the ontology as
+`https://w3id.org/hcmo/graph/ontology` and the three positive examples as
+named-only graphs `https://w3id.org/hcmo/graph/examples/hcmo-<name>`:
+
+```powershell
+python tooling/run_cqs.py --endpoint https://api.metadatapp.net/api/v1/public/sparql `
+  --graph https://w3id.org/hcmo/graph/ontology `
+  --graph https://w3id.org/hcmo/graph/examples/hcmo-abox-minimal `
+  --graph https://w3id.org/hcmo/graph/examples/hcmo-user-submission `
+  --graph https://w3id.org/hcmo/graph/examples/hcmo-isa-hcmo-bridge
+```
 
 ## Minimal SPARQL checks
 
