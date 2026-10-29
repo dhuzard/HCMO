@@ -21,8 +21,9 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
   and `/hcm-systems` (catalogue exploration). Workflows
   `.github/workflows/sparql-image.yml` (build and run `tooling/run_cqs.py` against
   the container) and `.github/workflows/sparql-deploy.yml` (Clever Cloud on release
-  or manually). Deployment awaits the Clever Cloud app and the
-  `https://w3id.org/hcmo/sparql` rule.
+  or manually). Deployed on 2026-10-29 at `https://sparql.hcmo.metadatapp.net/`
+  (Clever Cloud, 12/12 competency questions on `/hcmo`); the permanent address
+  `https://w3id.org/hcmo/sparql` awaits the merge of perma-id/w3id.org#7018.
 
 - SKOS vocabularies `vocabularies/modality.ttl` (17 monitoring modalities) and
   `vocabularies/sensor-technology.ttl` (8 sensor transduction principles), contributed

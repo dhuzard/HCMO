@@ -172,14 +172,17 @@ Open:
   consider a GitHub issue.*
 - [ ] **Validate the SPARQL queries**; ask Gaoussou Sanou for a PR (to be
   confirmed). *Not tracked.*
-- [ ] **Public SPARQL endpoint for HCMO** (updated 2026-10-29). Packaged as a
-  dedicated, immutable Fuseki image in `deploy/fuseki/` (datasets `/hcmo`,
-  `/hcmo-0.4.1`, `/hcm-systems`; workflows `sparql-image.yml` and
-  `sparql-deploy.yml`). Waiting on: [ ] creation of the Clever Cloud app by a
-  maintainer (`deploy/fuseki/README.md`), [ ] the GitHub secrets and variables, [ ]
-  a custom domain (proposal: `sparql.hcmo.metadatapp.net`), [ ] the w3id rule
-  `https://w3id.org/hcmo/sparql` (see the w3id item below). The manuscript (§4)
-  still mentions only the Metadatapp endpoint: update it once the URL is live.
+- [ ] **Public SPARQL endpoint for HCMO** (updated 2026-10-29). Live at
+  `https://sparql.hcmo.metadatapp.net/` (dedicated, immutable Fuseki image from
+  `deploy/fuseki/`; datasets `/hcmo`, `/hcmo-0.4.1`, `/hcm-systems`; workflows
+  `sparql-image.yml` and `sparql-deploy.yml`). Done: [x] Clever Cloud app
+  PROD hcmo-sparql (Metadatapp organisation), [x] GitHub secrets, variables and
+  `production` environment, [x] custom domain and certificate, [x] first deployment
+  (12/12 competency questions on the public `/hcmo`). Open: [ ] merge of the w3id
+  rule `https://w3id.org/hcmo/sparql`
+  ([perma-id/w3id.org#7018](https://github.com/perma-id/w3id.org/pull/7018)),
+  [ ] the manuscript (§4) still mentions only the Metadatapp endpoint: update it
+  to the w3id address.
 - [ ] **Load HCMO 0.4.1 into the Metadatapp public SPARQL endpoint**
   (`https://api.metadatapp.net/api/v1/public/sparql`, docs at
   `https://api.metadatapp.net/docs`). On 2026-10-12 it still served 0.3.0.
@@ -205,15 +208,13 @@ Open:
 - [ ] **Register HCMO for findability:** the `hcm` prefix on prefix.cc and an entry
   in LOV and/or BioPortal or OLS (and FAIRsharing). FOOPS! on the PURL scores
   0.875 because of these three tests; file mode scores 1.0.
-- [ ] **w3id: dereference the SKOS vocabularies and auxiliary ontology IRIs.**
-  `https://w3id.org/hcmo/id/vocab/*`, `…/ontology/profile/bfo-sosa-bridge` and
-  `…/ontology/external/upper-presentation` fall through to the GitHub repository
-  page (checked 2026-10-12). Publish `vocabularies/*.ttl` (for example on GitHub
-  Pages through the docs workflow) and add rules to `ids/hcmo/.htaccess` in
-  perma-id/w3id.org (PR from an up-to-date fork; `dhuzard/w3id.org` dates from
-  2026-07-17). Version IRIs need no change: the existing rules match any version.
-  Add the SPARQL rule to the same pull request (2026-10-29): `https://w3id.org/hcmo/sparql`
-  to the endpoint domain of `deploy/fuseki/` (domain still to be decided).
+- [x] **w3id: dereference the SKOS vocabularies and auxiliary ontology IRIs.**
+  The rules for `https://w3id.org/hcmo/id/vocab/*`,
+  `…/ontology/profile/bfo-sosa-bridge` and `…/ontology/external/upper-presentation`
+  were merged upstream in perma-id/w3id.org#6873 (2026-10-12), with RDF served
+  from GitHub Pages. The SPARQL rule followed separately (perma-id/w3id.org#7018,
+  see the endpoint item above). The fork `dhuzard/w3id.org` was synced with
+  upstream on 2026-10-29.
 - [ ] **One source for `https://w3id.org/hcmo/id/vocab/*`.** The Metadatapp endpoint
   holds its own `vendor` scheme (25 concepts, 11 shared with
   `vocabularies/vendors.ttl`; three vendors under different slugs, such as

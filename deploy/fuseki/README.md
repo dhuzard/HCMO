@@ -80,10 +80,12 @@ The twelve questions are expected to return 12/12.
 
 ## URLs
 
-`<host>` is the deployment host: `localhost:3030` locally. The public hostname
-is not decided: `sparql.hcmo.metadatapp.net` is a **proposal**, and
-`https://w3id.org/hcmo/sparql` is planned to redirect to it once the w3id rule
-is merged (see below).
+`<host>` is the deployment host: `sparql.hcmo.metadatapp.net` in production
+(HTTPS), `localhost:3030` locally. `https://w3id.org/hcmo/sparql` redirects to
+the production endpoint once the w3id rule is merged
+([perma-id/w3id.org#7018](https://github.com/perma-id/w3id.org/pull/7018)): a
+GET keeps its query string (302), a POST is repeated with its body (307), and a
+browser without a query lands on the query page of `/hcmo`.
 
 | What | URL |
 |---|---|
@@ -97,6 +99,11 @@ is merged (see below).
 | Server and statistics | `http://<host>/$/server`, `http://<host>/$/stats` |
 
 ## Clever Cloud: first-time setup
+
+Done on 2026-10-29: the application **PROD hcmo-sparql**
+(`app_d4c7adac-9dbc-4c4c-98f1-d9d048b0f37b`, organisation Metadatapp, region
+`par`, flavor XS) serves `sparql.hcmo.metadatapp.net`. The steps below are kept
+to recreate it.
 
 A maintainer creates the application once, from the repository root, with the
 `clever` CLI, in the existing organisation. The commands adapt the Metadatapp
@@ -124,12 +131,15 @@ bucket …* with it, and this image does not need it.
 
 Then:
 
-1. Decide the custom domain (proposal: `sparql.hcmo.metadatapp.net`) and add it
-   with `clever domain add --alias prod-hcmo-sparql <domain>`, plus the DNS
-   record Clever Cloud shows.
+1. Add the custom domain with
+   `clever domain add --alias prod-hcmo-sparql sparql.hcmo.metadatapp.net`, and
+   the DNS record Clever Cloud shows (`clever domain diag`): a CNAME
+   `sparql.hcmo` to `domain.par.clever-cloud.com.` in the `metadatapp.net` zone
+   (Cloudflare), **DNS only**, so Clever Cloud can issue the Let's Encrypt
+   certificate. The certificate arrived a few minutes after the record.
 2. Add a w3id rule `https://w3id.org/hcmo/sparql` to that domain in
-   `ids/hcmo/.htaccess` of perma-id/w3id.org. The repository already has a
-   pending w3id change (see `docs/BACKLOG.md`); combine them in one pull request.
+   `ids/hcmo/.htaccess` of perma-id/w3id.org (opened as
+   [perma-id/w3id.org#7018](https://github.com/perma-id/w3id.org/pull/7018)).
 3. Check the deployment (below).
 
 ### GitHub configuration
@@ -139,10 +149,14 @@ The workflow `.github/workflows/sparql-deploy.yml` deploys with
 
 | Kind | Name | Value |
 |---|---|---|
-| Secret | `CLEVER_TOKEN` | Clever Cloud API token |
-| Secret | `CLEVER_SECRET` | Clever Cloud API secret |
-| Variable | `CLEVER_SPARQL_APP_ID` | the application id (`app_…`, from `.clever.json` or the console) |
-| Variable | `CLEVER_SPARQL_URL` | public base URL, used for the post-deploy check |
+| Secret (environment `production`) | `CLEVER_TOKEN` | Clever Cloud API token |
+| Secret (environment `production`) | `CLEVER_SECRET` | Clever Cloud API secret |
+| Variable | `CLEVER_SPARQL_APP_ID` | the application id (`app_…`, from `.clever.json` or the console); today `app_d4c7adac-9dbc-4c4c-98f1-d9d048b0f37b` |
+| Variable | `CLEVER_SPARQL_URL` | public base URL, used for the post-deploy check; today `https://sparql.hcmo.metadatapp.net` |
+
+The token and secret in place come from a maintainer's `clever login` and
+expire on 2027-10-30. Renew them (or replace them with a dedicated API token)
+before then, or deployments fail at the Clever Cloud step.
 
 `.github/workflows/sparql-image.yml` builds the image on every change to its
 inputs and runs `tooling/run_cqs.py` against the container (12/12 expected on
