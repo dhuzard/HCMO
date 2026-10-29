@@ -7,6 +7,23 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Added
 
+- `tooling/run_cqs.py`: runs the competency questions of
+  `queries/competency_questions.yaml` against a SPARQL 1.1 Protocol endpoint
+  (Fuseki, the Metadatapp public endpoint) and compares the rows with the
+  reviewed expected answers, with the validator's canonical row form.
+  `--print-files` lists the files the dataset must hold; documented in
+  `docs/hcm-systems/FUSEKI-LOADING.md`.
+
+- `deploy/fuseki/`: Docker packaging of a public, read-only SPARQL reference
+  endpoint (Apache Jena Fuseki 5.6.0, TDB2 loaded at build time, so a restart never
+  empties the store). Three datasets: `/hcmo` (the competency-question evaluation
+  graph, union default graph), `/hcmo-<version>` (the same data under a citable name, today `/hcmo-0.4.1`)
+  and `/hcm-systems` (catalogue exploration). Workflows
+  `.github/workflows/sparql-image.yml` (build and run `tooling/run_cqs.py` against
+  the container) and `.github/workflows/sparql-deploy.yml` (Clever Cloud on release
+  or manually). Deployment awaits the Clever Cloud app and the
+  `https://w3id.org/hcmo/sparql` rule.
+
 - SKOS vocabularies `vocabularies/modality.ttl` (17 monitoring modalities) and
   `vocabularies/sensor-technology.ttl` (8 sensor transduction principles), contributed
   from the Metadatapp registry, which already minted these IRIs under
@@ -49,6 +66,12 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
   cite the superseded 0.4.0 deposit (`10.5281/zenodo.23315451`).
 
 ### Fixed
+
+- `queries/cq-isa-recording-provenance.rq` used `bioschemas:LabProcess` without
+  declaring the `bioschemas` prefix. rdflib resolved it from the data graph, so
+  `tooling/validate.py` passed, while a SPARQL endpoint (Fuseki) rejected the
+  query with "Unresolved prefixed name". The prefix is declared, and the
+  validator now fails on any prefix a query uses without declaring it.
 
 - `hcm:RejectedTimelessStateShape` placed a `VALUES` clause inside its
   `sh:select`, which the SHACL pre-binding rules exclude: validation of

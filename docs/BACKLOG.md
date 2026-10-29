@@ -172,11 +172,20 @@ Open:
   consider a GitHub issue.*
 - [ ] **Validate the SPARQL queries**; ask Gaoussou Sanou for a PR (to be
   confirmed). *Not tracked.*
+- [ ] **Public SPARQL endpoint for HCMO** (updated 2026-10-29). Packaged as a
+  dedicated, immutable Fuseki image in `deploy/fuseki/` (datasets `/hcmo`,
+  `/hcmo-0.4.1`, `/hcm-systems`; workflows `sparql-image.yml` and
+  `sparql-deploy.yml`). Waiting on: [ ] creation of the Clever Cloud app by a
+  maintainer (`deploy/fuseki/README.md`), [ ] the GitHub secrets and variables, [ ]
+  a custom domain (proposal: `sparql.hcmo.metadatapp.net`), [ ] the w3id rule
+  `https://w3id.org/hcmo/sparql` (see the w3id item below). The manuscript (§4)
+  still mentions only the Metadatapp endpoint: update it once the URL is live.
 - [ ] **Load HCMO 0.4.1 into the Metadatapp public SPARQL endpoint**
   (`https://api.metadatapp.net/api/v1/public/sparql`, docs at
-  `https://api.metadatapp.net/docs`). On 2026-10-12 it still served 0.3.0. The
-  manuscript (§4) now mentions the endpoint, with a todo to update it before
-  submission.
+  `https://api.metadatapp.net/docs`). On 2026-10-12 it still served 0.3.0.
+  Metadatapp PR #533 (Neuronautix/metadatapp, 2026-10-29) adds the three reviewed
+  examples as named-only graphs to its store. No longer the route to a public HCMO
+  endpoint (see the item above), kept as a second, independent source.
 - [ ] **SKOS collection of file formats by system and provider.** Delivered in
   #38 (`vocabularies/file-formats.ttl`, `data-access-methods.ttl`, vendors and
   systems); close #31 and #33 when it merges, if they are fully covered. *Tracked:
@@ -203,6 +212,8 @@ Open:
   Pages through the docs workflow) and add rules to `ids/hcmo/.htaccess` in
   perma-id/w3id.org (PR from an up-to-date fork; `dhuzard/w3id.org` dates from
   2026-07-17). Version IRIs need no change: the existing rules match any version.
+  Add the SPARQL rule to the same pull request (2026-10-29): `https://w3id.org/hcmo/sparql`
+  to the endpoint domain of `deploy/fuseki/` (domain still to be decided).
 - [ ] **One source for `https://w3id.org/hcmo/id/vocab/*`.** The Metadatapp endpoint
   holds its own `vendor` scheme (25 concepts, 11 shared with
   `vocabularies/vendors.ttl`; three vendors under different slugs, such as

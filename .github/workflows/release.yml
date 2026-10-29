@@ -38,3 +38,9 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh workflow run docs.yml --ref main
+      # A release published with GITHUB_TOKEN does not fire `release: published`
+      # in other workflows, so the SPARQL endpoint deployment is dispatched here.
+      - name: Deploy the SPARQL endpoint
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run sparql-deploy.yml --ref "$GITHUB_REF_NAME" -f ref="$GITHUB_REF_NAME"

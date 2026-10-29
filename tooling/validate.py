@@ -713,6 +713,23 @@ def canonical_result_rows(result) -> list[dict[str, str | None]]:
     return sorted(rows, key=lambda row: json.dumps(row, sort_keys=True))
 
 
+def undeclared_prefixes(query: str) -> set[str]:
+    """Prefix names a query uses in prefixed names without a PREFIX declaration.
+
+    rdflib's `Graph.query` silently resolves prefixes bound in the data graph,
+    so a missing declaration passes here and fails on Fuseki with
+    "Unresolved prefixed name". IRIs, string literals and comments are
+    stripped before looking for `prefix:local` tokens.
+    """
+    declared = set(re.findall(r"(?im)^\s*PREFIX\s+([A-Za-z][\w-]*)?:", query))
+    body = re.sub(r"(?im)^\s*PREFIX\s+[^\n]*$", "", query)
+    body = re.sub(r"<[^>]*>", "", body)
+    body = re.sub(r'"(?:[^"\\]|\\.)*"', "", body)
+    body = re.sub(r"#[^\n]*", "", body)
+    used = set(re.findall(r"(?<![\w?$:<])([A-Za-z][\w-]*):(?=[A-Za-z_])", body))
+    return used - declared
+
+
 def step_queries(
     manifest: dict, graph: Graph
 ) -> tuple[bool, list[str], dict[str, int | None]]:
@@ -764,6 +781,16 @@ def step_queries(
             )
             continue
         path = ROOT / rel
+        undeclared = undeclared_prefixes(path.read_text(encoding="utf-8"))
+        if undeclared:
+            ok = False
+            rowcounts[rel] = None
+            notes.append(
+                f"[FAIL] query {question_id} ({rel}): prefixes used but not "
+                f"declared: {sorted(undeclared)} (rdflib resolves them from the "
+                "data graph; a SPARQL endpoint rejects the query)"
+            )
+            continue
         try:
             res = graph.query(path.read_text(encoding="utf-8"))
             actual = canonical_result_rows(res)

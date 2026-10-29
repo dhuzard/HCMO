@@ -1,0 +1,23 @@
+# Local run of the HCMO SPARQL endpoint (same image as CI and Clever Cloud).
+#   docker compose -f deploy/fuseki/docker-compose.yml up --build
+# then http://localhost:3030/ (UI) and http://localhost:3030/hcmo/sparql.
+# No volume: the TDB2 data is baked into the image at build time.
+services:
+  fuseki:
+    build:
+      context: ../..                        # repository root (see /.dockerignore)
+      dockerfile: deploy/fuseki/Dockerfile
+    image: hcmo-sparql
+    ports:
+      - "3030:3030"
+    environment:
+      JAVA_OPTIONS: "-Xmx512m"
+      FUSEKI_PORT: "3030"                   # keep in sync with the port mapping
+    healthcheck:
+      # $$ escapes compose interpolation: the container sees /$/ping.
+      test: ["CMD", "curl", "-fsS", "http://localhost:3030/$$/ping"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
