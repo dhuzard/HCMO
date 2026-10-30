@@ -82,8 +82,9 @@ The twelve questions are expected to return 12/12.
 
 `<host>` is the deployment host: `sparql.hcmo.metadatapp.net` in production
 (HTTPS), `localhost:3030` locally. `https://w3id.org/hcmo/sparql` redirects to
-the production endpoint once the w3id rule is merged
-([perma-id/w3id.org#7018](https://github.com/perma-id/w3id.org/pull/7018)): a
+the production endpoint
+([perma-id/w3id.org#7018](https://github.com/perma-id/w3id.org/pull/7018),
+merged 2026-10-29): a
 GET keeps its query string (302), a POST is repeated with its body (307), and a
 browser without a query lands on the query page of `/hcmo`.
 
@@ -102,8 +103,17 @@ browser without a query lands on the query page of `/hcmo`.
 
 Done on 2026-10-29: the application **PROD hcmo-sparql**
 (`app_d4c7adac-9dbc-4c4c-98f1-d9d048b0f37b`, organisation Metadatapp, region
-`par`, flavor XS) serves `sparql.hcmo.metadatapp.net`. The steps below are kept
-to recreate it.
+`par`, flavor S, `JAVA_OPTIONS=-Xmx1g`) serves `sparql.hcmo.metadatapp.net`.
+The steps below are kept to recreate it.
+
+It started on XS (1 GB, `-Xmx512m`). There, the container stopped about every
+90 minutes without a Java error (`Failed with reason 'Failed executing run'`
+in the logs), and Clever Cloud redeployed it each time (cause
+*Monitoring/Unreachable* in `clever activity`, and a "deployed successfully"
+e-mail). S did not stop the restarts: on 2026-10-30 the JVM (heap about 1 GB,
+so `-Xmx1g` applies) started at 06:04Z, after a *Monitoring/Unreachable*
+redeploy, and again at 13:28Z (`startDateTime` in `/$/server`). The cause is
+not yet known; check `clever logs` around those times.
 
 A maintainer creates the application once, from the repository root, with the
 `clever` CLI, in the existing organisation. The commands adapt the Metadatapp
@@ -111,11 +121,11 @@ ones, minus the FS Bucket and the admin password:
 
 ```bash
 clever create --type docker "PROD hcmo-sparql" --alias prod-hcmo-sparql --region par --org <org-id>
-clever scale --alias prod-hcmo-sparql --flavor XS     # S for -Xmx1g
+clever scale --alias prod-hcmo-sparql --flavor S      # XS (1 GB) is too small
 clever env set --alias prod-hcmo-sparql CC_DOCKERFILE deploy/fuseki/Dockerfile
 clever env set --alias prod-hcmo-sparql CC_DOCKER_EXPOSED_HTTP_PORT 3030
 clever env set --alias prod-hcmo-sparql CC_HEALTH_CHECK_PATH '/$/ping'
-clever env set --alias prod-hcmo-sparql JAVA_OPTIONS -- -Xmx512m   # "--": the value starts with a dash
+clever env set --alias prod-hcmo-sparql JAVA_OPTIONS -- -Xmx1g   # "--": the value starts with a dash
 clever deploy --alias prod-hcmo-sparql
 ```
 
@@ -124,7 +134,7 @@ clever deploy --alias prod-hcmo-sparql
 | `CC_DOCKERFILE` | `deploy/fuseki/Dockerfile` |
 | `CC_DOCKER_EXPOSED_HTTP_PORT` | `3030` |
 | `CC_HEALTH_CHECK_PATH` | `/$/ping` |
-| `JAVA_OPTIONS` | `-Xmx512m` on XS (1 GB), `-Xmx1g` on S (2 GB) |
+| `JAVA_OPTIONS` | `-Xmx1g` on S (2 GB) |
 
 Do not set `CC_FS_BUCKET`: Metadatapp saw deployments stop at *Mounting
 bucket …* with it, and this image does not need it.
@@ -138,8 +148,9 @@ Then:
    (Cloudflare), **DNS only**, so Clever Cloud can issue the Let's Encrypt
    certificate. The certificate arrived a few minutes after the record.
 2. Add a w3id rule `https://w3id.org/hcmo/sparql` to that domain in
-   `ids/hcmo/.htaccess` of perma-id/w3id.org (opened as
-   [perma-id/w3id.org#7018](https://github.com/perma-id/w3id.org/pull/7018)).
+   `ids/hcmo/.htaccess` of perma-id/w3id.org (done in
+   [perma-id/w3id.org#7018](https://github.com/perma-id/w3id.org/pull/7018),
+   merged 2026-10-29).
 3. Check the deployment (below).
 
 ### GitHub configuration
@@ -186,6 +197,9 @@ with `clever deploy --alias prod-hcmo-sparql`.
 
 - **Is it up?** `curl -i https://<host>/$/ping` must return `200`. A restart
   loop usually means the health check fails or the JVM is out of memory.
+- **Unexpected "deployed successfully" e-mails:** `clever activity --alias
+  prod-hcmo-sparql` shows why each deployment ran. *Monitoring/Unreachable*
+  means the container died and Clever Cloud restarted it; see **Memory**.
 - **Logs:** `clever logs --alias prod-hcmo-sparql` (add `--since 1h`).
 - **Memory:** `OutOfMemoryError` or a killed container: raise the flavor to S
   and set `JAVA_OPTIONS` to `-Xmx1g`. Keep the heap well under the instance

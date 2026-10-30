@@ -22,8 +22,11 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
   `.github/workflows/sparql-image.yml` (build and run `tooling/run_cqs.py` against
   the container) and `.github/workflows/sparql-deploy.yml` (Clever Cloud on release
   or manually). Deployed on 2026-10-29 at `https://sparql.hcmo.metadatapp.net/`
-  (Clever Cloud, 12/12 competency questions on `/hcmo`); the permanent address
-  `https://w3id.org/hcmo/sparql` awaits the merge of perma-id/w3id.org#7018.
+  (Clever Cloud, 12/12 competency questions on `/hcmo`), with the permanent
+  address `https://w3id.org/hcmo/sparql` (perma-id/w3id.org#7018, merged
+  2026-10-29). The application runs on flavor S (2 GB, `-Xmx1g`): on XS (1 GB,
+  `-Xmx512m`) the container was killed about every 90 minutes and Clever Cloud
+  redeployed it.
 
 - SKOS vocabularies `vocabularies/modality.ttl` (17 monitoring modalities) and
   `vocabularies/sensor-technology.ttl` (8 sensor transduction principles), contributed

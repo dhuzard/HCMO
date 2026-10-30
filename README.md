@@ -121,7 +121,7 @@ python tooling/validate_isa_native_projection.py  # controlled-loss ISA-JSON/ISA
 A public, read-only SPARQL endpoint serves the reference graph at
 **<https://sparql.hcmo.metadatapp.net/>** (Apache Jena Fuseki, data loaded at image
 build time, packaged in [`deploy/fuseki/`](deploy/fuseki/README.md)). Its permanent
-address, `https://w3id.org/hcmo/sparql`, works once the w3id rule is merged
+address is <https://w3id.org/hcmo/sparql>
 ([perma-id/w3id.org#7018](https://github.com/perma-id/w3id.org/pull/7018)). The
 same image runs locally with
 `docker compose -f deploy/fuseki/docker-compose.yml up --build`.

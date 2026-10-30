@@ -30,7 +30,7 @@ the relevant doc and logged in `TODO.md`.
 |---|--------|-------|--------|
 | Q6 | HCMO vs MAPP branding | 🟢 | **Drop MAPP** — use HCMO only in the paper (repo reconcile = T7b). |
 | Q12 | Reused vocabularies in V1 | 🟢 | Implemented references include BFO, IAO, SOSA 2017, Schema.org, and the reviewed SemTS 1.2.0 segment pattern; OWL-Time is validated interoperability evidence. HCMO uses `sosa:ObservableProperty` and does not mix in the developing-edition `sosa:Property`. |
-| Q13 | SPARQL endpoint | 🟢 | The endpoint is live at `https://sparql.hcmo.metadatapp.net/` (2026-10-29, `deploy/fuseki/`); the `w3id.org/hcmo/sparql` rule awaits merge (T6b). Not a blocker for downloadable distributions. |
+| Q13 | SPARQL endpoint | 🟢 | The endpoint is live at `https://sparql.hcmo.metadatapp.net/` (2026-10-29, `deploy/fuseki/`); `https://w3id.org/hcmo/sparql` redirects to it (perma-id/w3id.org#7018, merged 2026-10-29; T6b). Not a blocker for downloadable distributions. |
 | Q14 | Governance/maintenance | 🟢 | Maintained by contributors through public GitHub issues/PRs; TEATIME = feedback channel. |
 
 ## Round 4 — authorship, novelty, availability ✅ RESOLVED (2026-06-29)

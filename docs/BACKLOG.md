@@ -180,9 +180,15 @@ Open:
   `production` environment, [x] custom domain and certificate, [x] first deployment
   (12/12 competency questions on the public `/hcmo`, recorded in
   `docs/paper/evaluation/SPARQL-ENDPOINT-CQS-2026-10-29.md`), [x] the manuscript
-  (§4) cites `https://w3id.org/hcmo/sparql` (branch `paper/gaidet-authorship`).
-  Open: [ ] merge of the w3id rule
-  ([perma-id/w3id.org#7018](https://github.com/perma-id/w3id.org/pull/7018)).
+  (§4) cites `https://w3id.org/hcmo/sparql` (branch `paper/gaidet-authorship`),
+  [x] merge of the w3id rule
+  ([perma-id/w3id.org#7018](https://github.com/perma-id/w3id.org/pull/7018),
+  2026-10-29; GET 302, POST 307 and the browser landing page checked),
+  [x] flavor raised from XS to S (`-Xmx1g`) after the container was killed
+  about every 90 minutes on XS.
+  Open: [ ] find why the container still restarts on S (restarts at 06:04Z and
+  13:28Z on 2026-10-30, see "Clever Cloud: first-time setup" in
+  `deploy/fuseki/README.md`).
 - [ ] **Load HCMO 0.4.1 into the Metadatapp public SPARQL endpoint**
   (`https://api.metadatapp.net/api/v1/public/sparql`, docs at
   `https://api.metadatapp.net/docs`). On 2026-10-12 it still served 0.3.0.
