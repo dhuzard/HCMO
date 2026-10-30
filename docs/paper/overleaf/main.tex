@@ -39,7 +39,6 @@ Cyril Gilbert\inst{1}\orcidID{0009-0008-2489-8106}
 \thanks{First and corresponding author.} \and
 Gaoussou Sanou\inst{2}\orcidID{0000-0003-2204-2466} \and
 Serge Sonfack Sounchio\inst{3}\orcidID{0000-0002-6085-6818} \and
-Antoine Toffano\inst{1}\orcidID{0009-0008-0575-8490} \and
 Pierre Larmande\inst{4}\orcidID{0000-0002-2923-9790} \and
 Benoît Girard\inst{7}\orcidID{0000-0002-3914-6483} \and
 Philippe Rocca-Serra\inst{5}\orcidID{0000-0001-9853-5668} \and
@@ -79,7 +78,8 @@ Neuronautix, Montpellier, France\\
 \noindent{\small \textbf{Resource type:} Ontology (with SHACL shapes, SPARQL competency queries, JSON-LD context, and example datasets)\\
 \textbf{License:} CC BY 4.0\\
 \textbf{DOI:} \url{https://doi.org/10.5281/zenodo.23315766}\\
-\textbf{URL:} \url{https://w3id.org/hcmo/ontology/hcm}}
+\textbf{URL:} \url{https://w3id.org/hcmo/ontology/hcm}\\
+\textbf{SPARQL endpoint:} \url{https://w3id.org/hcmo/sparql}}
 
 \input{sections/01-introduction.tex}
 \input{sections/02-related-work.tex}
@@ -116,16 +116,12 @@ Konstantin Todorov. As part of an Exogene-funded Master's project, Cyril
 Gilbert redesigned and implemented the HCMO version presented in this article.
 
 \textbf{Provenance.}
-\new{HCMO builds on the community-developed HCM Definition Olog \cite{teatimeHCMDefinition}
-(Sect.~2). From
-March 2025, Damien Huzard developed an earlier machine-actionable ontology,
-HCM-D, published on BioPortal and no longer maintained, within Metadatapp's
-semantic-development work. The COST mobility-grant phase supported preliminary
-device-metadata mapping, project scoping, and an early GitHub version in
-September 2025. From October 2025 to October 2026, the present author team
-comprehensively redesigned and formally evaluated HCMO, producing the resource
-reported here; Cyril Gilbert's Master's internship within this phase started
-in January 2026.}
+\new{HCMO builds on the community HCM Definition Olog \cite{teatimeHCMDefinition}
+(Sect.~2) and on HCM-D, an earlier ontology Damien Huzard developed from March
+2025 within Metadatapp (BioPortal, no longer maintained). After the COST
+mobility-grant phase (early GitHub version, September 2025), the present author
+team redesigned and evaluated HCMO from October 2025 to October 2026; Cyril
+Gilbert's Master's internship started in January 2026.}
 
 \textbf{Non-author contributions.}
 \new{The authors acknowledge COST Action TEATIME (CA20135), particularly Working
@@ -135,13 +131,10 @@ introducing the Olog approach and facilitating its community-based
 development, and for preliminary scoping of the COST mobility-grant project;
 Leonardo Restivo and Davor Virag for the semantic-components model of Bains et
 al.\ \cite{bains2025}; Laurent Huzard for the early conceptual and
-software architecture developed for HCMO within Metadatapp; and Benoit
+software architecture developed for HCMO within Metadatapp; Antoine Toffano
+for his participation in project discussions from January to March 2026; and Benoit
 Petit-Demoulière, Vootele Voikar, Leonardo Restivo, Davor Virag, and Marion
-Rivalan for domain expertise and feedback.} Damien Huzard also thanks the
-INITIUM incubator team, particularly Rémi Przybylski, Noelline Meslin, and
-Kate Rivière, as well as Frédéric Deverre, Loïc Clementz, and Geoffrey
-Galibert for their contributions to the technical and business development of
-Metadatapp.
+Rivalan for domain expertise and feedback.}
 
 \textbf{CRediT author statement.}
 \textbf{Cyril Gilbert:} Data curation, Methodology, Software, Formal analysis,
@@ -150,7 +143,6 @@ editing.
 \textbf{Gaoussou Sanou:} Conceptualization, Methodology, Software, Formal
 analysis, Visualization, Writing -- review \& editing.
 \textbf{Serge Sonfack Sounchio:} Methodology.
-\textbf{Antoine Toffano:} Methodology.
 \textbf{Pierre Larmande:} Methodology, Writing -- review \& editing.
 \textbf{Benoît Girard:} Conceptualization (initial project framing), Funding
 acquisition, Writing -- review \& editing.
@@ -162,6 +154,21 @@ Writing -- review \& editing.
 Funding acquisition, Investigation, Methodology, Project administration,
 Resources, Software, Supervision, Validation, Writing -- original draft,
 Writing -- review \& editing.
+
+\textbf{Disclosure of delegation to generative AI.}
+\new{The authors declare the use of generative AI in the research and writing
+process. According to the GAIDeT taxonomy \cite{gaidet2026}, the following
+tasks were delegated to GAI tools under full human supervision: literature
+search and systematization; evaluation of the novelty of the research and
+identification of gaps; code generation; process automation; validation; data
+curation and organization; visualization; reproducibility testing; text
+generation; proofreading and editing; summarizing text; translation;
+reformatting; quality assessment; identification of limitations;
+recommendations. Tools: Anthropic Claude Code (Claude Opus~4.8--5.5,
+Sonnet~5.5, Fable~5.1), OpenAI Codex (GPT-5 to GPT-6.1), and GitHub Copilot
+Autofix. Responsibility for the final manuscript lies entirely with the
+authors; GAI tools are not authors and bear no responsibility for the outcomes.
+Declaration submitted by: collective responsibility.}
 
 \textbf{Competing interests.}
 Damien Huzard initiated Metadatapp as an entrepreneurial project and currently

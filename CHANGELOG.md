@@ -33,6 +33,22 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Changed
 
+- Paper: Antoine Toffano removed from the author list and the CRediT statement
+  (#54) and thanked among the non-author contributions for project discussions
+  in January–March 2026. He is also removed from the ontology header
+  (`dcterms:creator`, `bibo:authorList`, `schema:Person` record),
+  `CITATION.cff`, and the README contributor list; `dist/` regenerated
+  (1464 -> 1459 triples). The archived 0.4.1 release keeps its metadata.
+- Paper: a GAIDeT declaration of the tasks delegated to generative AI and of the
+  tools used now follows the CRediT statement, as the ESWC 2027 AI policy asks
+  (#53). The §3 AI paragraph keeps the review safeguards and points to it.
+- Paper: author edits from a full read-through shorten the abstract, the
+  introduction's interoperability paragraph, the claim-strength, modelling,
+  reused-standards, use-case, evaluation, and limitations paragraphs, and
+  remove the conclusion paragraph.
+- Paper: back matter and nine accepted body cuts bring the manuscript within the
+  15-page limit (references start on page 16 in faithful pdfLaTeX and XeLaTeX
+  builds).
 - Paper §6 now distinguishes the corrected, post-release SHACL validation
   results from the archived 0.4.1 validation files.
 - Paper: §3 and Fig. 1 count twelve competency questions, as §6 does; funding

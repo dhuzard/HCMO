@@ -35,13 +35,18 @@ def package_members() -> list[Path]:
 
     Local LaTeX outputs (main.pdf, .latex-build/) are git-ignored, so they never
     enter the package even when a local compile left them in the folder.
+    Shared review threads (<file>.review/ folders) are committed for co-authors
+    but are not manuscript sources, so they stay out of the upload too.
     """
     listed = subprocess.run(
         ["git", "ls-files", "-z", "--cached", "--others", "--exclude-standard", "--", OUT.as_posix()],
         cwd=ROOT, check=True, capture_output=True,
     ).stdout.decode("utf-8")
     paths = {ROOT / name for name in listed.split("\0") if name}
-    return [path for path in paths if path.is_file()]
+    return [
+        path for path in paths
+        if path.is_file() and not any(part.endswith(".review") for part in path.relative_to(OUT).parts[:-1])
+    ]
 
 
 def main() -> int:
