@@ -186,6 +186,9 @@ Open:
   2026-10-29; GET 302, POST 307 and the browser landing page checked),
   [x] flavor raised from XS to S (`-Xmx1g`) after the container was killed
   about every 90 minutes on XS.
+  Open: [ ] find why the container still restarts on S (restarts at 06:04Z and
+  13:28Z on 2026-10-30, see "Clever Cloud: first-time setup" in
+  `deploy/fuseki/README.md`).
 - [ ] **Load HCMO 0.4.1 into the Metadatapp public SPARQL endpoint**
   (`https://api.metadatapp.net/api/v1/public/sparql`, docs at
   `https://api.metadatapp.net/docs`). On 2026-10-12 it still served 0.3.0.

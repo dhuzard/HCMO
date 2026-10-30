@@ -110,7 +110,10 @@ It started on XS (1 GB, `-Xmx512m`). There, the container stopped about every
 90 minutes without a Java error (`Failed with reason 'Failed executing run'`
 in the logs), and Clever Cloud redeployed it each time (cause
 *Monitoring/Unreachable* in `clever activity`, and a "deployed successfully"
-e-mail). On S it has run without a restart since 2026-10-29.
+e-mail). S did not stop the restarts: on 2026-10-30 the JVM (heap about 1 GB,
+so `-Xmx1g` applies) started at 06:04Z, after a *Monitoring/Unreachable*
+redeploy, and again at 13:28Z (`startDateTime` in `/$/server`). The cause is
+not yet known; check `clever logs` around those times.
 
 A maintainer creates the application once, from the repository root, with the
 `clever` CLI, in the existing organisation. The commands adapt the Metadatapp
