@@ -71,6 +71,14 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Fixed
 
+- The public SPARQL endpoint (`deploy/fuseki/`) was killed and redeployed by
+  Clever Cloud every 4 to 6 hours on flavor S (every 90 minutes on XS). Each
+  HTTP request allocates a 5 MiB direct (off-heap) buffer that only a garbage
+  collection releases, and the JVM allowed as much direct memory as heap, so the
+  process outgrew the instance. `JAVA_OPTIONS` now sets
+  `-XX:MaxDirectMemorySize=128m` (image default, compose file and the production
+  application since 2026-11-02); the competency questions still answer 12/12.
+
 - `queries/cq-isa-recording-provenance.rq` used `bioschemas:LabProcess` without
   declaring the `bioschemas` prefix. rdflib resolved it from the data graph, so
   `tooling/validate.py` passed, while a SPARQL endpoint (Fuseki) rejected the

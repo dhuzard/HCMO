@@ -11,7 +11,7 @@ services:
     ports:
       - "3030:3030"
     environment:
-      JAVA_OPTIONS: "-Xmx512m"
+      JAVA_OPTIONS: "-Xmx512m -XX:MaxDirectMemorySize=128m"
       FUSEKI_PORT: "3030"                   # keep in sync with the port mapping
     healthcheck:
       # $$ escapes compose interpolation: the container sees /$/ping.

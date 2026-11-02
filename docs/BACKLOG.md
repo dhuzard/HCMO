@@ -185,10 +185,10 @@ Open:
   ([perma-id/w3id.org#7018](https://github.com/perma-id/w3id.org/pull/7018),
   2026-10-29; GET 302, POST 307 and the browser landing page checked),
   [x] flavor raised from XS to S (`-Xmx1g`) after the container was killed
-  about every 90 minutes on XS.
-  Open: [ ] find why the container still restarts on S (restarts at 06:04Z and
-  13:28Z on 2026-10-30, see "Clever Cloud: first-time setup" in
-  `deploy/fuseki/README.md`).
+  about every 90 minutes on XS, [x] restarts on S (every 4 to 6 hours) traced
+  to unbounded direct (off-heap) memory, 5 MiB per request, and stopped with
+  `-XX:MaxDirectMemorySize=128m` on 2026-11-02 (see **Memory** under
+  Troubleshooting in `deploy/fuseki/README.md`).
 - [ ] **Load HCMO 0.4.1 into the Metadatapp public SPARQL endpoint**
   (`https://api.metadatapp.net/api/v1/public/sparql`, docs at
   `https://api.metadatapp.net/docs`). On 2026-10-12 it still served 0.3.0.

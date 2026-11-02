@@ -3,14 +3,15 @@
 # on the read-only datasets baked into the image.
 #
 # Honoured environment:
-#   JAVA_OPTIONS  JVM options (default -Xmx512m), passed as the launcher's JVM_ARGS
+#   JAVA_OPTIONS  JVM options (default -Xmx512m -XX:MaxDirectMemorySize=128m),
+#                 passed as the launcher's JVM_ARGS
 #   FUSEKI_PORT   HTTP port (default 3030)
 # Fixed by the image: FUSEKI_HOME=/opt/fuseki, FUSEKI_BASE=/fuseki.
 set -eu
 
 FUSEKI_HOME=${FUSEKI_HOME:-/opt/fuseki}
 FUSEKI_BASE=${FUSEKI_BASE:-/fuseki}
-JAVA_OPTIONS=${JAVA_OPTIONS:--Xmx512m}
+JAVA_OPTIONS=${JAVA_OPTIONS:--Xmx512m -XX:MaxDirectMemorySize=128m}
 FUSEKI_PORT=${FUSEKI_PORT:-3030}
 
 case "$FUSEKI_PORT" in
