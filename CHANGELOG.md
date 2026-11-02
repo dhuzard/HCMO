@@ -22,8 +22,11 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
   `.github/workflows/sparql-image.yml` (build and run `tooling/run_cqs.py` against
   the container) and `.github/workflows/sparql-deploy.yml` (Clever Cloud on release
   or manually). Deployed on 2026-10-29 at `https://sparql.hcmo.metadatapp.net/`
-  (Clever Cloud, 12/12 competency questions on `/hcmo`); the permanent address
-  `https://w3id.org/hcmo/sparql` awaits the merge of perma-id/w3id.org#7018.
+  (Clever Cloud, 12/12 competency questions on `/hcmo`), with the permanent
+  address `https://w3id.org/hcmo/sparql` (perma-id/w3id.org#7018, merged
+  2026-10-29). The application runs on flavor S (2 GB, `-Xmx1g`): on XS (1 GB,
+  `-Xmx512m`) the container was killed about every 90 minutes and Clever Cloud
+  redeployed it.
 
 - SKOS vocabularies `vocabularies/modality.ttl` (17 monitoring modalities) and
   `vocabularies/sensor-technology.ttl` (8 sensor transduction principles), contributed
@@ -67,6 +70,14 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
   cite the superseded 0.4.0 deposit (`10.5281/zenodo.23315451`).
 
 ### Fixed
+
+- The public SPARQL endpoint (`deploy/fuseki/`) was killed and redeployed by
+  Clever Cloud every 4 to 6 hours on flavor S (every 90 minutes on XS). Each
+  HTTP request allocates a 5 MiB direct (off-heap) buffer that only a garbage
+  collection releases, and the JVM allowed as much direct memory as heap, so the
+  process outgrew the instance. `JAVA_OPTIONS` now sets
+  `-XX:MaxDirectMemorySize=128m` (image default, compose file and the production
+  application since 2026-11-02); the competency questions still answer 12/12.
 
 - `queries/cq-isa-recording-provenance.rq` used `bioschemas:LabProcess` without
   declaring the `bioschemas` prefix. rdflib resolved it from the data graph, so

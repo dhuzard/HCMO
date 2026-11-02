@@ -55,8 +55,10 @@ but it runs anywhere Docker does.
   `/$/` path answers 403.
 - The query timeout is 30 s. Fuseki itself does not rate-limit; add that in
   front (Cloudflare or Clever Cloud) if abuse appears.
-- Environment variables: `JAVA_OPTIONS` (default `-Xmx512m`) and `FUSEKI_PORT`
-  (default `3030`). No secret is baked into the image.
+- Environment variables: `JAVA_OPTIONS` (default
+  `-Xmx512m -XX:MaxDirectMemorySize=128m`) and `FUSEKI_PORT` (default `3030`).
+  Keep `-XX:MaxDirectMemorySize` when overriding `JAVA_OPTIONS` (see **Memory**
+  under Troubleshooting). No secret is baked into the image.
 
 ## Run locally
 
@@ -82,8 +84,9 @@ The twelve questions are expected to return 12/12.
 
 `<host>` is the deployment host: `sparql.hcmo.metadatapp.net` in production
 (HTTPS), `localhost:3030` locally. `https://w3id.org/hcmo/sparql` redirects to
-the production endpoint once the w3id rule is merged
-([perma-id/w3id.org#7018](https://github.com/perma-id/w3id.org/pull/7018)): a
+the production endpoint
+([perma-id/w3id.org#7018](https://github.com/perma-id/w3id.org/pull/7018),
+merged 2026-10-29): a
 GET keeps its query string (302), a POST is repeated with its body (307), and a
 browser without a query lands on the query page of `/hcmo`.
 
@@ -102,8 +105,16 @@ browser without a query lands on the query page of `/hcmo`.
 
 Done on 2026-10-29: the application **PROD hcmo-sparql**
 (`app_d4c7adac-9dbc-4c4c-98f1-d9d048b0f37b`, organisation Metadatapp, region
-`par`, flavor XS) serves `sparql.hcmo.metadatapp.net`. The steps below are kept
-to recreate it.
+`par`, flavor S, `JAVA_OPTIONS=-Xmx1g -XX:MaxDirectMemorySize=128m`) serves
+`sparql.hcmo.metadatapp.net`. The steps below are kept to recreate it.
+
+Until 2026-11-02 it ran without `-XX:MaxDirectMemorySize`. The container then
+stopped without a Java error (`Failed with reason 'Failed executing run'` in
+the logs) about every 90 minutes on XS (1 GB, `-Xmx512m`) and every 4 to 6
+hours on S (2 GB, `-Xmx1g`), and Clever Cloud redeployed it each time (cause
+*Monitoring/Unreachable* in `clever activity`, and a "deployed successfully"
+e-mail; 20 of them from 2026-10-29 to 2026-11-02). The cause was direct
+(off-heap) memory, not the heap: see **Memory** under Troubleshooting.
 
 A maintainer creates the application once, from the repository root, with the
 `clever` CLI, in the existing organisation. The commands adapt the Metadatapp
@@ -111,11 +122,11 @@ ones, minus the FS Bucket and the admin password:
 
 ```bash
 clever create --type docker "PROD hcmo-sparql" --alias prod-hcmo-sparql --region par --org <org-id>
-clever scale --alias prod-hcmo-sparql --flavor XS     # S for -Xmx1g
+clever scale --alias prod-hcmo-sparql --flavor S      # XS (1 GB) is too small
 clever env set --alias prod-hcmo-sparql CC_DOCKERFILE deploy/fuseki/Dockerfile
 clever env set --alias prod-hcmo-sparql CC_DOCKER_EXPOSED_HTTP_PORT 3030
 clever env set --alias prod-hcmo-sparql CC_HEALTH_CHECK_PATH '/$/ping'
-clever env set --alias prod-hcmo-sparql JAVA_OPTIONS -- -Xmx512m   # "--": the value starts with a dash
+clever env set --alias prod-hcmo-sparql JAVA_OPTIONS -- "-Xmx1g -XX:MaxDirectMemorySize=128m"   # "--": the value starts with a dash
 clever deploy --alias prod-hcmo-sparql
 ```
 
@@ -124,7 +135,7 @@ clever deploy --alias prod-hcmo-sparql
 | `CC_DOCKERFILE` | `deploy/fuseki/Dockerfile` |
 | `CC_DOCKER_EXPOSED_HTTP_PORT` | `3030` |
 | `CC_HEALTH_CHECK_PATH` | `/$/ping` |
-| `JAVA_OPTIONS` | `-Xmx512m` on XS (1 GB), `-Xmx1g` on S (2 GB) |
+| `JAVA_OPTIONS` | `-Xmx1g -XX:MaxDirectMemorySize=128m` on S (2 GB) |
 
 Do not set `CC_FS_BUCKET`: Metadatapp saw deployments stop at *Mounting
 bucket …* with it, and this image does not need it.
@@ -138,8 +149,9 @@ Then:
    (Cloudflare), **DNS only**, so Clever Cloud can issue the Let's Encrypt
    certificate. The certificate arrived a few minutes after the record.
 2. Add a w3id rule `https://w3id.org/hcmo/sparql` to that domain in
-   `ids/hcmo/.htaccess` of perma-id/w3id.org (opened as
-   [perma-id/w3id.org#7018](https://github.com/perma-id/w3id.org/pull/7018)).
+   `ids/hcmo/.htaccess` of perma-id/w3id.org (done in
+   [perma-id/w3id.org#7018](https://github.com/perma-id/w3id.org/pull/7018),
+   merged 2026-10-29).
 3. Check the deployment (below).
 
 ### GitHub configuration
@@ -186,10 +198,21 @@ with `clever deploy --alias prod-hcmo-sparql`.
 
 - **Is it up?** `curl -i https://<host>/$/ping` must return `200`. A restart
   loop usually means the health check fails or the JVM is out of memory.
+- **Unexpected "deployed successfully" e-mails:** `clever activity --alias
+  prod-hcmo-sparql` shows why each deployment ran. *Monitoring/Unreachable*
+  means the container died and Clever Cloud restarted it; see **Memory**.
 - **Logs:** `clever logs --alias prod-hcmo-sparql` (add `--since 1h`).
-- **Memory:** `OutOfMemoryError` or a killed container: raise the flavor to S
-  and set `JAVA_OPTIONS` to `-Xmx1g`. Keep the heap well under the instance
-  memory, TDB2 maps its files outside the heap.
+- **Memory:** every HTTP request, `/$/ping` included, allocates a 5 MiB direct
+  (off-heap) buffer that only a garbage collection releases. The heap stays
+  nearly empty, so collections are rare, and without a cap the JVM may hold as
+  much direct memory as `-Xmx` allows for the heap: heap plus direct memory
+  then outgrow the instance and the container is killed without a Java error.
+  `-XX:MaxDirectMemorySize=128m` makes the JVM collect when the cap is reached
+  (`cause="System.gc()"` in `/$/metrics`). Watch
+  `jvm_buffer_memory_used_bytes{id="direct"}` in `/$/metrics`: it must stay
+  under the cap. Keep heap plus direct memory well under the instance memory;
+  TDB2 also maps its files outside the heap. The live heap is about 40 MB, so
+  `-Xmx1g` on S leaves a wide margin.
 - **Queries fail with a timeout:** the 30 s limit applies; narrow the query with
   a `GRAPH` clause or `LIMIT`.
 - **Wrong answers for the competency questions:** run

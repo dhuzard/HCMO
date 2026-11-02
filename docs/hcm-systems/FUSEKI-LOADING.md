@@ -14,6 +14,20 @@ one holds the catalogue and submissions). Run it locally with
 `tdb2.tdbloader` workflow below remains the alternative, for example to load
 into an existing Fuseki.
 
+The same image serves the public endpoint at `https://sparql.hcmo.metadatapp.net/`
+(the Clever Cloud application PROD hcmo-sparql), with the data of the release it
+was built from:
+
+| Dataset | SPARQL endpoint |
+|---|---|
+| `/hcmo` (reference graph) | `https://w3id.org/hcmo/sparql`, which redirects to `https://sparql.hcmo.metadatapp.net/hcmo/sparql` |
+| `/hcmo-0.4.1` (same data, release-qualified name) | `https://sparql.hcmo.metadatapp.net/hcmo-0.4.1/sparql` |
+| `/hcm-systems` (catalogue and submissions) | `https://sparql.hcmo.metadatapp.net/hcm-systems/sparql` |
+
+Each dataset uses the union of its named graphs as the default graph. The
+health check is `https://sparql.hcmo.metadatapp.net/$/ping`. Opening a dataset's
+`/sparql` URL without a query returns 404, so do not use it as a health check.
+
 ## Generate RDF artifacts
 
 From the repository root:
@@ -92,6 +106,7 @@ the Metadatapp public endpoint) and compare the rows with the reviewed
 `expected_answers`, use:
 
 ```powershell
+python tooling/run_cqs.py --endpoint https://w3id.org/hcmo/sparql   # public endpoint, 12/12
 python tooling/run_cqs.py --endpoint http://localhost:3030/hcmo/sparql
 python tooling/run_cqs.py --endpoint https://<host>/hcmo/sparql --user admin --password ...
 python tooling/run_cqs.py --endpoint https://<host>/hcmo/sparql --no-compare   # rows only
@@ -104,7 +119,7 @@ either load them into the default graph or enable `tdb2:unionDefaultGraph`.
 A dataset that also holds the catalog, submissions, or other releases returns
 extra rows; `--no-compare` shows them without failing, and `--graph <iri>`
 (repeatable, sent as `default-graph-uri`) restricts the query to the named
-graphs. On the Metadatapp public endpoint, which loads the ontology as
+graphs. On the Metadatapp store, which loads the ontology as
 `https://w3id.org/hcmo/graph/ontology` and the three positive examples as
 named-only graphs `https://w3id.org/hcmo/graph/examples/hcmo-<name>`:
 
@@ -118,22 +133,31 @@ python tooling/run_cqs.py --endpoint https://api.metadatapp.net/api/v1/public/sp
 
 ## Minimal SPARQL checks
 
-List submitted systems and their suppliers:
+Count the triples in each named graph (any dataset):
+
+```sparql
+SELECT ?graph (COUNT(*) AS ?triples) WHERE {
+  GRAPH ?graph { ?s ?p ?o }
+}
+GROUP BY ?graph
+ORDER BY ?graph
+```
+
+List the enclosures in the submissions graph (`/hcm-systems`):
 
 ```sparql
 PREFIX hcm: <https://w3id.org/hcmo/ontology/hcm#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-SELECT ?system ?label ?supplierLabel WHERE {
+SELECT ?enclosure ?label WHERE {
   GRAPH <https://w3id.org/hcmo/graph/submissions> {
-    ?system a hcm:System ;
-      rdfs:label ?label ;
-      hcm:producedBy/rdfs:label ?supplierLabel .
+    ?enclosure a hcm:MonitoredEnclosure ;
+      rdfs:label ?label .
   }
 }
 ```
 
-List catalog records by category:
+List catalog records by category (`/hcm-systems`):
 
 ```sparql
 PREFIX hcm: <https://w3id.org/hcmo/ontology/hcm#>

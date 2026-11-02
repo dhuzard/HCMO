@@ -2,7 +2,8 @@
 
 Run of `tooling/run_cqs.py` against the public, read-only Fuseki endpoint
 `https://sparql.hcmo.metadatapp.net/` (permanent address
-`https://w3id.org/hcmo/sparql`, pending perma-id/w3id.org#7018), as evidence
+`https://w3id.org/hcmo/sparql`, perma-id/w3id.org#7018, merged later the same
+day), as evidence
 for the paper (§4, §6).
 
 - Run at: 2026-10-29T10:49Z (UTC), from a local checkout of `main` at 4abefb1.

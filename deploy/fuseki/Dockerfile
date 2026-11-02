@@ -89,9 +89,12 @@ RUN set -eux; \
 
 # FUSEKI_HOME: Fuseki distribution (read-only). FUSEKI_BASE: run area, must be
 # writable by the server user (Fuseki creates logs/, backups/, ... at start).
+# MaxDirectMemorySize: every HTTP request allocates a 5 MiB direct buffer that
+# only a GC releases; without a cap the JVM may hold as much direct memory as
+# heap, and the container outgrows its instance (see README, Troubleshooting).
 ENV FUSEKI_HOME=/opt/fuseki \
     FUSEKI_BASE=/fuseki \
-    JAVA_OPTIONS=-Xmx512m \
+    JAVA_OPTIONS="-Xmx512m -XX:MaxDirectMemorySize=128m" \
     FUSEKI_PORT=3030
 
 # Fuseki: launcher, server jar (UI included), logging config, licences.
