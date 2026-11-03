@@ -1,0 +1,77 @@
+{
+  "format": "human-review/thread@1",
+  "id": "t_20261026T141555Z_f0ed66",
+  "file": "main.tex",
+  "kind": "suggestion",
+  "anchor": {
+    "prefix": "vice, not\r\npart of the release. ",
+    "quote": "The distributions can be loaded into any\r\nstandards-compliant triple store.",
+    "suffix": " The resource is licensed CC BY "
+  },
+  "replacement": "",
+  "status": "applied",
+  "ask_agent": false,
+  "author": {
+    "name": "Claude Code",
+    "type": "agent",
+    "model": "claude-opus-5-5",
+    "color": "#3ca05a"
+  },
+  "created_at": "2026-10-26T14:15:55.120Z",
+  "updated_at": "2026-10-26T15:05:54.787Z",
+  "messages": [
+    {
+      "id": "m_8c0508b1",
+      "author": {
+        "name": "Claude Code",
+        "type": "agent",
+        "model": "claude-opus-5-5",
+        "color": "#3ca05a"
+      },
+      "body": "Page limit (~1 line): implied by publishing standard Turtle, RDF/XML, and JSON-LD.",
+      "at": "2026-10-26T14:15:55.120Z"
+    },
+    {
+      "id": "m_1eb125c7",
+      "author": {
+        "name": "Claude Code",
+        "type": "agent",
+        "model": "claude-opus-5-5",
+        "color": "#3ca05a"
+      },
+      "body": "Applied to the LaTeX source.",
+      "at": "2026-10-26T15:05:54.787Z"
+    }
+  ],
+  "history": [
+    {
+      "status": "open",
+      "by": {
+        "name": "Claude Code",
+        "type": "agent",
+        "model": "claude-opus-5-5",
+        "color": "#3ca05a"
+      },
+      "at": "2026-10-26T14:15:55.120Z"
+    },
+    {
+      "status": "accepted",
+      "by": {
+        "name": "damien huzard",
+        "type": "human",
+        "color": "#4682e6"
+      },
+      "at": "2026-10-26T15:03:29.991Z"
+    },
+    {
+      "status": "applied",
+      "by": {
+        "name": "Claude Code",
+        "type": "agent",
+        "model": "claude-opus-5-5",
+        "color": "#3ca05a"
+      },
+      "at": "2026-10-26T15:05:54.786Z"
+    }
+  ]
+}

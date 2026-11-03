@@ -1,0 +1,77 @@
+{
+  "format": "human-review/thread@1",
+  "id": "t_20261026T141558Z_4df262",
+  "file": "main.tex",
+  "kind": "suggestion",
+  "anchor": {
+    "prefix": "RediT statement.\r\nStakeholders. ",
+    "quote": "Researchers comparing data across studies,\r\nfacility managers and welfare committees auditing husbandry, data\r\nengineers ingesting device exports, HCM manufacturers, and, later, AI\r\nconsumers of the knowledge graph share one need: to interpret a\r\nmeasurement together with the context of its production.",
+    "suffix": "\r\nRequirements. Analysis of the "
+  },
+  "replacement": "",
+  "status": "applied",
+  "ask_agent": false,
+  "author": {
+    "name": "Claude Code",
+    "type": "agent",
+    "model": "claude-opus-5-5",
+    "color": "#3ca05a"
+  },
+  "created_at": "2026-10-26T14:15:58.383Z",
+  "updated_at": "2026-10-26T15:06:05.791Z",
+  "messages": [
+    {
+      "id": "m_3d85c681",
+      "author": {
+        "name": "Claude Code",
+        "type": "agent",
+        "model": "claude-opus-5-5",
+        "color": "#3ca05a"
+      },
+      "body": "Page limit (~3 lines), optional: 'Potential impact' in Sect. 6 covers who benefits. Resource-track reviewers do look for users, so keep this if you prefer and accept the others.",
+      "at": "2026-10-26T14:15:58.383Z"
+    },
+    {
+      "id": "m_8e0e8625",
+      "author": {
+        "name": "Claude Code",
+        "type": "agent",
+        "model": "claude-opus-5-5",
+        "color": "#3ca05a"
+      },
+      "body": "Applied to the LaTeX source.",
+      "at": "2026-10-26T15:06:05.791Z"
+    }
+  ],
+  "history": [
+    {
+      "status": "open",
+      "by": {
+        "name": "Claude Code",
+        "type": "agent",
+        "model": "claude-opus-5-5",
+        "color": "#3ca05a"
+      },
+      "at": "2026-10-26T14:15:58.383Z"
+    },
+    {
+      "status": "accepted",
+      "by": {
+        "name": "damien huzard",
+        "type": "human",
+        "color": "#4682e6"
+      },
+      "at": "2026-10-26T15:00:44.556Z"
+    },
+    {
+      "status": "applied",
+      "by": {
+        "name": "Claude Code",
+        "type": "agent",
+        "model": "claude-opus-5-5",
+        "color": "#3ca05a"
+      },
+      "at": "2026-10-26T15:06:05.790Z"
+    }
+  ]
+}

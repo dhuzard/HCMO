@@ -1,1 +1,2 @@
 third_party/bfo-sosa-bridge/** -text
+**/*.review/*.json merge=human-review-thread

@@ -25,3 +25,11 @@ tooling/.widoco/
 # Local LaTeX builds of the manuscript (never packaged or committed)
 docs/paper/overleaf/**/.latex-build/
 docs/paper/overleaf/main.pdf
+docs/paper/overleaf/**/*.aux
+docs/paper/overleaf/**/*.log
+docs/paper/overleaf/**/*.out
+docs/paper/overleaf/**/*.upa
+docs/paper/overleaf/**/*.upb
+docs/paper/overleaf/**/*.bbl
+docs/paper/overleaf/**/*.blg
+docs/paper/overleaf/**/*.synctex.gz

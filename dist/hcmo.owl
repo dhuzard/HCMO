@@ -129,38 +129,6 @@
     <owl:allValuesFrom rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#EnvironmentProfile"/>
     <owl:onProperty rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#hasEnvironment"/>
   </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm">
-    <dc:description>Ontology for home-cage monitoring of laboratory animals</dc:description>
-    <dc:title>Home-Cage Monitoring Ontology</dc:title>
-    <dcterms:bibliographicCitation>The Home-Cage Monitoring Ontology (HCMO). Zenodo. https://doi.org/10.5281/zenodo.18925284</dcterms:bibliographicCitation>
-    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-03-09</dcterms:created>
-    <dcterms:creator rdf:resource="https://orcid.org/0000-0001-9853-5668"/>
-    <dcterms:creator rdf:resource="https://orcid.org/0000-0002-2923-9790"/>
-    <dcterms:creator rdf:resource="https://orcid.org/0000-0002-3914-6483"/>
-    <dcterms:creator rdf:resource="https://orcid.org/0000-0002-6085-6818"/>
-    <dcterms:creator rdf:resource="https://orcid.org/0000-0002-9116-6692"/>
-    <dcterms:creator rdf:resource="https://orcid.org/0000-0003-2204-2466"/>
-    <dcterms:creator rdf:resource="https://orcid.org/0000-0003-4820-7951"/>
-    <dcterms:creator rdf:resource="https://orcid.org/0009-0008-0575-8490"/>
-    <dcterms:creator rdf:resource="https://orcid.org/0009-0008-2489-8106"/>
-    <dcterms:identifier>https://doi.org/10.5281/zenodo.18925284</dcterms:identifier>
-    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-10-12</dcterms:issued>
-    <dcterms:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
-    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-10-12</dcterms:modified>
-    <dcterms:publisher rdf:resource="https://orcid.org/0000-0003-4820-7951"/>
-    <dcterms:source rdf:resource="https://github.com/dhuzard/HCMO"/>
-    <bibo:authorList rdf:nodeID="cb17dad0330fd96500acb7c71dea21e2dacc9806c9be6f463480da722879fa5cf52"/>
-    <bibo:doi>10.5281/zenodo.18925284</bibo:doi>
-    <vann:preferredNamespacePrefix>hcm</vann:preferredNamespacePrefix>
-    <vann:preferredNamespaceUri>https://w3id.org/hcmo/ontology/hcm#</vann:preferredNamespaceUri>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
-    <owl:priorVersion rdf:resource="https://w3id.org/hcmo/ontology/hcm/0.3.0"/>
-    <owl:versionIRI rdf:resource="https://w3id.org/hcmo/ontology/hcm/0.4.1"/>
-    <owl:versionInfo>0.4.1</owl:versionInfo>
-    <schema:logo rdf:resource="https://raw.githubusercontent.com/dhuzard/HCMO/main/HCMO-logo3.png"/>
-    <mod:createdWith rdf:resource="https://chowlk.linkeddata.es/"/>
-    <mod:status>draft</mod:status>
-  </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#collectsInfoOn">
     <dcterms:source rdf:resource="https://w3id.org/hcmo/ontology/hcm/0.0.1"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -537,6 +505,37 @@
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <owl:unionOf rdf:nodeID="cb21870ee82ce783ebdca34267fd335871de6f21e0af22ac245a5514db72e04ba56"/>
   </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm">
+    <dc:description>Ontology for home-cage monitoring of laboratory animals</dc:description>
+    <dc:title>Home-Cage Monitoring Ontology</dc:title>
+    <dcterms:bibliographicCitation>The Home-Cage Monitoring Ontology (HCMO). Zenodo. https://doi.org/10.5281/zenodo.18925284</dcterms:bibliographicCitation>
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-03-09</dcterms:created>
+    <dcterms:creator rdf:resource="https://orcid.org/0000-0001-9853-5668"/>
+    <dcterms:creator rdf:resource="https://orcid.org/0000-0002-2923-9790"/>
+    <dcterms:creator rdf:resource="https://orcid.org/0000-0002-3914-6483"/>
+    <dcterms:creator rdf:resource="https://orcid.org/0000-0002-6085-6818"/>
+    <dcterms:creator rdf:resource="https://orcid.org/0000-0002-9116-6692"/>
+    <dcterms:creator rdf:resource="https://orcid.org/0000-0003-2204-2466"/>
+    <dcterms:creator rdf:resource="https://orcid.org/0000-0003-4820-7951"/>
+    <dcterms:creator rdf:resource="https://orcid.org/0009-0008-2489-8106"/>
+    <dcterms:identifier>https://doi.org/10.5281/zenodo.18925284</dcterms:identifier>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-10-12</dcterms:issued>
+    <dcterms:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-10-12</dcterms:modified>
+    <dcterms:publisher rdf:resource="https://orcid.org/0000-0003-4820-7951"/>
+    <dcterms:source rdf:resource="https://github.com/dhuzard/HCMO"/>
+    <bibo:authorList rdf:nodeID="cb161e6cfcc8da77e2e01d8fa448d0754582de4c5e4b319740b99964333f98b7001"/>
+    <bibo:doi>10.5281/zenodo.18925284</bibo:doi>
+    <vann:preferredNamespacePrefix>hcm</vann:preferredNamespacePrefix>
+    <vann:preferredNamespaceUri>https://w3id.org/hcmo/ontology/hcm#</vann:preferredNamespaceUri>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <owl:priorVersion rdf:resource="https://w3id.org/hcmo/ontology/hcm/0.3.0"/>
+    <owl:versionIRI rdf:resource="https://w3id.org/hcmo/ontology/hcm/0.4.1"/>
+    <owl:versionInfo>0.4.1</owl:versionInfo>
+    <schema:logo rdf:resource="https://raw.githubusercontent.com/dhuzard/HCMO/main/HCMO-logo3.png"/>
+    <mod:createdWith rdf:resource="https://chowlk.linkeddata.es/"/>
+    <mod:status>draft</mod:status>
+  </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#Structural&amp;LocationTable">
     <dcterms:isReplacedBy rdf:resource="https://w3id.org/hcmo/ontology/hcm/obs#LocationResultTable"/>
     <dcterms:source rdf:resource="https://w3id.org/hcmo/ontology/hcm/0.0.1"/>
@@ -800,10 +799,6 @@
     <rdfs:label>has thrive profile</rdfs:label>
     <rdfs:range rdf:resource="https://w3id.org/hcmo/ontology/hcm/env#ThriveProfile"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="cb11d57d9936b81a20cfa529682d2b53e854261f98877281f86934bf51c937e7892">
-    <rdf:first rdf:resource="https://orcid.org/0009-0008-0575-8490"/>
-    <rdf:rest rdf:nodeID="cb1eb7ceebad55af0e2b2e9079404aba5b5610234f50e17ef8d9962c80739fdac9a"/>
-  </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/env#hasGasType">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
     <rdfs:comment>Deprecated gas-name string. Identify a gas-specific EnvironmentalProperty resource with specifiesProperty.</rdfs:comment>
@@ -879,6 +874,10 @@
     <rdfs:subClassOf rdf:nodeID="cb223541e6c8837b0bc004de83d581e98eec444b1ca17686e81c542e48a9f548b5a"/>
     <rdfs:subClassOf rdf:nodeID="cb234e8dec1e5650705e32439a2a6fdfe3bf81ff6d8d1330e70fcd43e8a1ef55ab6"/>
     <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/sosa/Observation"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="cb15aafef57669effba0f71378f44c99c8e91fe20638e98b9699faa65ff52ed8855">
+    <rdf:first rdf:resource="https://orcid.org/0000-0002-6085-6818"/>
+    <rdf:rest rdf:nodeID="cb1b923231c831f8aa40d85333b0f396e6f5a25f778ac92e2fb216e8360b9dbe7fd"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm/env#hasMeasurementSpec">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -1352,10 +1351,6 @@
     <rdfs:label>has condition</rdfs:label>
     <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="cb1eb7ceebad55af0e2b2e9079404aba5b5610234f50e17ef8d9962c80739fdac9a">
-    <rdf:first rdf:resource="https://orcid.org/0000-0002-2923-9790"/>
-    <rdf:rest rdf:nodeID="cb1826577f1dc4efe8cbb5a16a31a3e057e7ce52af8f40c71e72e5a49eb8e9fe45f"/>
-  </rdf:Description>
   <rdf:Description rdf:nodeID="cb234e8dec1e5650705e32439a2a6fdfe3bf81ff6d8d1330e70fcd43e8a1ef55ab6">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
     <owl:onProperty rdf:resource="http://www.w3.org/ns/sosa/hasFeatureOfInterest"/>
@@ -1474,6 +1469,10 @@
     <rdfs:label>has dawn duration</rdfs:label>
     <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="cb161e6cfcc8da77e2e01d8fa448d0754582de4c5e4b319740b99964333f98b7001">
+    <rdf:first rdf:resource="https://orcid.org/0009-0008-2489-8106"/>
+    <rdf:rest rdf:nodeID="cb163745b019590e55770e5e69b42d0bc56727517eb7644818496d4fa6d00df3f62"/>
+  </rdf:Description>
   <rdf:Description rdf:about="https://orcid.org/0000-0001-9853-5668">
     <rdf:type rdf:resource="https://schema.org/Person"/>
     <schema:name>Philippe Rocca-Serra</schema:name>
@@ -1561,10 +1560,6 @@
     <rdfs:label>Operational Assessment</rdfs:label>
     <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
     <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Activity"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="cb16fd122aa8d6f13eb515f50bb25364eb0c472e7aae45ff663d815a4a9d1c418e0">
-    <rdf:first rdf:resource="https://orcid.org/0000-0002-6085-6818"/>
-    <rdf:rest rdf:nodeID="cb11d57d9936b81a20cfa529682d2b53e854261f98877281f86934bf51c937e7892"/>
   </rdf:Description>
   <rdf:Description rdf:nodeID="cb1cb06e96e9caf6ed3eb5396f63ba5beca267e783a500e2618cb5a7d826093bc01">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
@@ -1682,6 +1677,10 @@
     <rdfs:comment>Physical computing hardware component of a home-cage monitoring system.</rdfs:comment>
     <rdfs:label>Hardware</rdfs:label>
     <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="cb163745b019590e55770e5e69b42d0bc56727517eb7644818496d4fa6d00df3f62">
+    <rdf:first rdf:resource="https://orcid.org/0000-0003-2204-2466"/>
+    <rdf:rest rdf:nodeID="cb15aafef57669effba0f71378f44c99c8e91fe20638e98b9699faa65ff52ed8855"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/dc/elements/1.1/creator">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
@@ -2057,10 +2056,6 @@
     <rdf:first rdf:resource="https://w3id.org/hcmo/ontology/hcm/bio#ExperimentalGroup"/>
     <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="cb17dad0330fd96500acb7c71dea21e2dacc9806c9be6f463480da722879fa5cf52">
-    <rdf:first rdf:resource="https://orcid.org/0009-0008-2489-8106"/>
-    <rdf:rest rdf:nodeID="cb1b6703796174b5603e463f0beb364ed82d0a2826271939e0e93d12a0a261ddda4"/>
-  </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#hasFacilityType">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
     <rdfs:comment>Records the type of facility or housing area associated with an enclosure.</rdfs:comment>
@@ -2071,6 +2066,10 @@
   <rdf:Description rdf:nodeID="cb18cc87fdfe458ad73f3da0d8d2edf0ba28e5ea0bb328f53906c710bb92ec7b7a9">
     <rdf:first rdf:resource="https://w3id.org/hcmo/ontology/hcm/tech#Software"/>
     <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="cb1b923231c831f8aa40d85333b0f396e6f5a25f778ac92e2fb216e8360b9dbe7fd">
+    <rdf:first rdf:resource="https://orcid.org/0000-0002-2923-9790"/>
+    <rdf:rest rdf:nodeID="cb1826577f1dc4efe8cbb5a16a31a3e057e7ce52af8f40c71e72e5a49eb8e9fe45f"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/hcmo/ontology/hcm#hasCircadianRhythm">
     <dcterms:source rdf:resource="https://w3id.org/hcmo/ontology/hcm/0.0.1"/>
@@ -2154,10 +2153,6 @@
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <owl:unionOf rdf:nodeID="cb17b40ca4bf4a70083607a478c5b67ab711bfa31c8e0df74cfb74621c79c99e20b"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="cb1b6703796174b5603e463f0beb364ed82d0a2826271939e0e93d12a0a261ddda4">
-    <rdf:first rdf:resource="https://orcid.org/0000-0003-2204-2466"/>
-    <rdf:rest rdf:nodeID="cb16fd122aa8d6f13eb515f50bb25364eb0c472e7aae45ff663d815a4a9d1c418e0"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://purl.org/vocab/vann/preferredNamespaceUri">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
   </rdf:Description>
@@ -2195,10 +2190,6 @@
   </rdf:Description>
   <rdf:Description rdf:about="https://schema.org/logo">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://orcid.org/0009-0008-0575-8490">
-    <rdf:type rdf:resource="https://schema.org/Person"/>
-    <schema:name>Antoine Toffano</schema:name>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/mod#createdWith">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>

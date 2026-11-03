@@ -1,0 +1,77 @@
+{
+  "format": "human-review/thread@1",
+  "id": "t_20261026T141557Z_4361d7",
+  "file": "main.tex",
+  "kind": "suggestion",
+  "anchor": {
+    "prefix": "env#, hcm/obs#, and\r\nhcm/tech#. ",
+    "quote": "Published IRIs are not renamed when terminology\r\nchanges; obsolete IRIs are retained in a compatibility module with\r\ndeprecation and replacement metadata where a defensible replacement\r\nexists.",
+    "suffix": " Table 3 summarises the release."
+  },
+  "replacement": "",
+  "status": "applied",
+  "ask_agent": false,
+  "author": {
+    "name": "Claude Code",
+    "type": "agent",
+    "model": "claude-opus-5-5",
+    "color": "#3ca05a"
+  },
+  "created_at": "2026-10-26T14:15:57.046Z",
+  "updated_at": "2026-10-26T15:06:00.508Z",
+  "messages": [
+    {
+      "id": "m_fe96da20",
+      "author": {
+        "name": "Claude Code",
+        "type": "agent",
+        "model": "claude-opus-5-5",
+        "color": "#3ca05a"
+      },
+      "body": "Page limit (~2 lines): 'Availability and sustainability' already says terms are deprecated rather than deleted or re-minted, and 'Modular organisation' describes the compatibility module.",
+      "at": "2026-10-26T14:15:57.046Z"
+    },
+    {
+      "id": "m_2f5ccecb",
+      "author": {
+        "name": "Claude Code",
+        "type": "agent",
+        "model": "claude-opus-5-5",
+        "color": "#3ca05a"
+      },
+      "body": "Applied to the LaTeX source.",
+      "at": "2026-10-26T15:06:00.508Z"
+    }
+  ],
+  "history": [
+    {
+      "status": "open",
+      "by": {
+        "name": "Claude Code",
+        "type": "agent",
+        "model": "claude-opus-5-5",
+        "color": "#3ca05a"
+      },
+      "at": "2026-10-26T14:15:57.046Z"
+    },
+    {
+      "status": "accepted",
+      "by": {
+        "name": "damien huzard",
+        "type": "human",
+        "color": "#4682e6"
+      },
+      "at": "2026-10-26T15:01:26.643Z"
+    },
+    {
+      "status": "applied",
+      "by": {
+        "name": "Claude Code",
+        "type": "agent",
+        "model": "claude-opus-5-5",
+        "color": "#3ca05a"
+      },
+      "at": "2026-10-26T15:06:00.507Z"
+    }
+  ]
+}

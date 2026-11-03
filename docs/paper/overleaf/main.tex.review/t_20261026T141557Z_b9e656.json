@@ -1,0 +1,77 @@
+{
+  "format": "human-review/thread@1",
+  "id": "t_20261026T141557Z_b9e656",
+  "file": "main.tex",
+  "kind": "suggestion",
+  "anchor": {
+    "prefix": "ontinuous in-cage acquisition.\r\n",
+    "quote": "HCMO addresses this formalisation gap through an explicit semantic model\r\nof the HCM acquisition chain—linking animal subjects, housing and\r\nenvironmental context, devices and sensors, observations, derived\r\nmeasurements, behaviours, and results—with formally defined entities and\r\nrelations intended for annotation, validation, integration, and\r\ncomputational reuse across heterogeneous HCM platforms; it is complementary to OBI and MEDO and\r\ncan bridge to them where appropriate.",
+    "suffix": "\r\nMethodology\r\nDevelopment proce"
+  },
+  "replacement": "HCMO fills this gap with an explicit semantic model of the HCM acquisition chain, from animal subjects, housing, and environment to devices, observations, and results, for annotation, validation, and integration across HCM platforms; it complements OBI and MEDO and can bridge to them.",
+  "status": "applied",
+  "ask_agent": false,
+  "author": {
+    "name": "Claude Code",
+    "type": "agent",
+    "model": "claude-opus-5-5",
+    "color": "#3ca05a"
+  },
+  "created_at": "2026-10-26T14:15:57.689Z",
+  "updated_at": "2026-10-26T15:06:03.208Z",
+  "messages": [
+    {
+      "id": "m_532b57b6",
+      "author": {
+        "name": "Claude Code",
+        "type": "agent",
+        "model": "claude-opus-5-5",
+        "color": "#3ca05a"
+      },
+      "body": "Page limit (~2 lines): same claim, fewer words.",
+      "at": "2026-10-26T14:15:57.689Z"
+    },
+    {
+      "id": "m_6563bfc0",
+      "author": {
+        "name": "Claude Code",
+        "type": "agent",
+        "model": "claude-opus-5-5",
+        "color": "#3ca05a"
+      },
+      "body": "Applied to the LaTeX source.",
+      "at": "2026-10-26T15:06:03.208Z"
+    }
+  ],
+  "history": [
+    {
+      "status": "open",
+      "by": {
+        "name": "Claude Code",
+        "type": "agent",
+        "model": "claude-opus-5-5",
+        "color": "#3ca05a"
+      },
+      "at": "2026-10-26T14:15:57.689Z"
+    },
+    {
+      "status": "accepted",
+      "by": {
+        "name": "damien huzard",
+        "type": "human",
+        "color": "#4682e6"
+      },
+      "at": "2026-10-26T15:03:45.821Z"
+    },
+    {
+      "status": "applied",
+      "by": {
+        "name": "Claude Code",
+        "type": "agent",
+        "model": "claude-opus-5-5",
+        "color": "#3ca05a"
+      },
+      "at": "2026-10-26T15:06:03.207Z"
+    }
+  ]
+}
