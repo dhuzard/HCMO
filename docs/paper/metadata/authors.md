@@ -32,7 +32,9 @@ Konstantin Todorov, and Damien Huzard are the three corresponding authors.
 
 ## CRediT author statement
 
-As in the manuscript (online co-author edits, synced 2026-09-24):
+Detailed statement linked from the manuscript, which gives the same roles in
+abbreviated form (online co-author edits, synced 2026-09-24; abbreviated in the
+manuscript 2026-11-03):
 
 - **Cyril Gilbert:** Data curation, Methodology, Software, Formal analysis,
   Validation, Visualization, Writing — original draft, Writing — review &
