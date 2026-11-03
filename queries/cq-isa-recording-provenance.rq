@@ -1,3 +1,4 @@
+PREFIX bioschemas: <https://bioschemas.org/>
 PREFIX bioschemas-prop: <https://bioschemas.org/properties/>
 PREFIX ex: <https://example.org/hcmo/isa-crate/>
 PREFIX hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#>

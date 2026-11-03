@@ -1,0 +1,107 @@
+name: SPARQL image
+
+# Build the Fuseki image (deploy/fuseki/Dockerfile) and smoke-test it: the
+# container must come up, answer /$/ping and return the reviewed answers to
+# the 12 competency questions on /hcmo and /hcmo-<version>.
+# Also reusable: sparql-deploy.yml calls this workflow before deploying.
+
+on:
+  # push covers pull requests from this repository too; pull_request is not
+  # listed so that a PR does not run the build twice.
+  push:
+    paths:
+      - 'deploy/fuseki/**'
+      - '.dockerignore'
+      - 'dist/**'
+      - 'examples/**'
+      - 'vocabularies/**'
+      - 'queries/**'
+      - 'docs/hcm-systems/catalog.ttl'
+      - 'hcmo.yaml'
+      - 'tooling/run_cqs.py'
+      - 'tooling/requirements.txt'
+      - '.github/workflows/sparql-image.yml'
+  workflow_dispatch:
+  workflow_call:
+    inputs:
+      ref:
+        description: 'Git ref to build and test (default: the triggering ref)'
+        type: string
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      ENDPOINT: http://localhost:3030
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref || github.ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: pip install -r tooling/requirements.txt
+      - name: Read the ontology version
+        id: version
+        run: |
+          # Same parsing as deploy/fuseki/load.sh: strips quotes and comments.
+          version="$(sed -n 's/^version:[[:space:]]*["'"'"']\{0,1\}\([^"'"'"'#[:space:]]*\).*/\1/p' hcmo.yaml | head -1)"
+          if [ -z "$version" ]; then
+            echo "::error::Could not read 'version:' from hcmo.yaml"
+            exit 1
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "Ontology version: $version"
+      - uses: docker/setup-buildx-action@v3
+      - name: Build the image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: deploy/fuseki/Dockerfile
+          tags: hcmo-sparql
+          load: true
+          push: false
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+      - name: Start the container
+        run: docker run -d --name hcmo-sparql -p 3030:3030 hcmo-sparql
+      - name: Wait for the server (max 60 s)
+        run: |
+          for i in $(seq 1 30); do
+            if curl -fsS --max-time 3 "$ENDPOINT"'/$/ping' > /dev/null 2>&1; then
+              echo "Fuseki is ready after about $((i * 2)) s"
+              exit 0
+            fi
+            sleep 2
+          done
+          echo "::error::Fuseki did not answer /\$/ping within 60 s"
+          docker ps -a
+          docker logs hcmo-sparql
+          exit 1
+      - name: Competency questions on /hcmo (latest release)
+        run: python tooling/run_cqs.py --endpoint "$ENDPOINT/hcmo/sparql"
+      - name: Competency questions on /hcmo-<version>
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: python tooling/run_cqs.py --endpoint "$ENDPOINT/hcmo-$VERSION/sparql"
+      - name: HCM systems catalogue answers ASK
+        run: |
+          answer="$(curl -fsS --max-time 30 \
+            -H 'Accept: application/sparql-results+json' \
+            --data-urlencode 'query=ASK { ?s ?p ?o }' \
+            "$ENDPOINT/hcm-systems/sparql")"
+          echo "$answer"
+          echo "$answer" | python -c "import json,sys; sys.exit(0 if json.load(sys.stdin).get('boolean') is True else 1)"
+      - name: Container logs (on failure)
+        if: failure()
+        run: docker logs hcmo-sparql || true
+      - name: Stop the container
+        if: always()
+        run: docker rm -f hcmo-sparql || true
