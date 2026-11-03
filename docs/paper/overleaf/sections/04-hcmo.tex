@@ -1,12 +1,12 @@
 \section{The HCMO resource}
-\textbf{Identity and size.} HCMO uses the persistent ontology IRI \nolinkurl{https://w3id.org/hcmo/ontology/hcm} and the stable term namespace \nolinkurl{https://w3id.org/hcmo/ontology/hcm#}. Domain-specific terms use four sub-namespaces beneath the same base: \nolinkurl{hcm/bio#}, \nolinkurl{hcm/env#}, \nolinkurl{hcm/obs#}, and \nolinkurl{hcm/tech#}. Published IRIs are not renamed when terminology changes; obsolete IRIs are retained in a compatibility module with deprecation and replacement metadata where a defensible replacement exists. Table~\ref{tab:resource-stats} summarises the release.
+\textbf{Identity and modules.} \new{Terms use the namespace} \nolinkurl{https://w3id.org/hcmo/ontology/hcm#}\new{; each domain module of Sect.~1 has a sub-namespace beneath it} (\nolinkurl{hcm/bio#}, \nolinkurl{hcm/env#}, \nolinkurl{hcm/obs#}, \nolinkurl{hcm/tech#}). \nolinkurl{hcm:MonitoredEnclosure} \new{is the central class of the core; \emph{bio} also covers transient interacting groups for multi-animal behaviours, and \emph{obs} owns SOSA-style observations with categorical, quantitative, behavioural, and tabular results. Two further modules complete the manifest: an upper-level module supplying the BFO/IAO anchors, and a migration-only module keeping deprecated HCMO~0.0.1 IRIs. Table~\ref{tab:resource-stats} summarises the release and Fig.~\ref{fig:domain-model} its principal entities and relations.}
 
 \begin{table}[t]
 \centering
 \scriptsize
 \caption{Summary of the HCMO 0.4.1 release. \new{``Release'' counts all HCMO-namespace terms in the generated distribution, including deprecated compatibility terms; ``active'' excludes them. Reused external terms are counted separately\new{ by a repository script: semantic terms appear in logical axioms; metadata vocabularies only annotate}.}}
 \label{tab:resource-stats}
-\begin{tabular}{@{}lrr@{}}
+\begin{tabularx}{\linewidth}{@{}Xrr@{}}
 \toprule
 Resource measure & Release & \new{Active} \\
 \midrule
@@ -14,16 +14,13 @@ RDF triples in the canonical distribution & 1,464 & \\
 HCMO classes & 61 & \new{34} \\
 HCMO object properties & 73 & \new{37} \\
 HCMO datatype properties & 75 & \new{37} \\
-\new{External classes/properties reused for HCM semantics} & \new{21} & \\
-\quad\new{SOSA 9, BFO 4, SemTS 3, IAO 1, PROV-O 1, QUDT 1, SKOS 1, schema.org 1} & & \\
+\new{External classes/properties reused for HCM semantics (SOSA 9, BFO 4, SemTS 3, IAO 1, PROV-O 1, QUDT 1, SKOS 1, schema.org 1)} & \new{21} & \\
 \new{External vocabularies reused for ontology metadata} & \new{7} & \\
-\new{Source modules} & \new{5 domain + upper-level + compatibility} & \\
+\new{Source modules (5 domain, upper-level, compatibility)} & \new{7} & \\
 Executable competency questions & 12 & \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
-
-\textbf{Modular organisation.} HCMO 0.4.1 is authored as five active domain modules. The minimal core centres on \nolinkurl{hcm:Enclosure}, \nolinkurl{hcm:MonitoredEnclosure}, enclosure dimensions, enrichment, and stable housing relations. The \emph{bio} module represents subjects, experimental groups, \new{transient interacting groups for multi-animal behaviours,} housing assignments, and study factors. The \emph{env} module represents environmental profiles, light cycles, gas profiles, measurement specifications, and environmental properties. The \emph{obs} module owns SOSA-style observations and their categorical, quantitative, behavioral, and tabular results. The \emph{tech} module represents sensors, actuators, hardware, software, and time-series resources. Two further modules complete the manifest: an upper-level presentation module supplying the BFO/IAO anchors, and a migration-only module that preserves deprecated HCMO 0.0.1 IRIs but is not a source of terms for new data. Figure~\ref{fig:domain-model} gives a compact view of the principal entities and relations.
 
 \input{figures/f2.tex}
 
@@ -35,4 +32,4 @@ Executable competency questions & 12 & \\
 
 \input{figures/f1.tex}
 
-\textbf{Availability and sustainability.} The ontology and its terms dereference from the w3id IRI via HTTP 303 content negotiation to WIDOCO documentation \cite{widoco2017}. Sources and distributions are openly available from the public GitHub repository and the Zenodo deposit of release \nolinkurl{v0.4.1} (links in the Resource Availability Statement). \new{A public SPARQL endpoint operated by Metadatapp\fnurl{https://api.metadatapp.net/docs} serves HCMO together with HCM system-registry data and offers HCMO's competency questions as saved queries; it is a separate service, not part of the release.}\todo[color=orange!40]{DH: the endpoint still loads HCMO 0.3.0; load 0.4.1 before submission.} The distributions can be loaded into any standards-compliant triple store. The resource is licensed CC BY 4.0, carries provenance on the root ontology header (creators with ORCIDs, version IRI), and provides a canonical citation (\nolinkurl{CITATION.cff}); a FAIR self-assessment is available in the repository. HCMO is maintained through public issues and pull requests; versioning follows SemVer mirrored by \nolinkurl{owl:versionIRI}, and terms are deprecated rather than deleted or re-minted to protect external references. \new{HCMO is registered in BioPortal\fnurl{https://bioportal.bioontology.org/ontologies/HCMO}.}\todo[color=orange!40]{DH: update the BioPortal entry with the final release before submission.}
+\textbf{Availability and sustainability.} The ontology and its terms dereference from the w3id IRI via HTTP 303 content negotiation to WIDOCO documentation\new{\fnurl{https://dhuzard.github.io/HCMO/index-en.html}} \cite{widoco2017}. Sources and distributions are openly available from the public GitHub repository\new{ at tag \nolinkurl{v0.4.1}\fnurl{https://github.com/dhuzard/HCMO/tree/v0.4.1}} and the Zenodo deposit of that release \new{(DOI after the abstract)}. \new{A public SPARQL endpoint operated by Metadatapp\fnurl{https://w3id.org/hcmo/sparql} serves HCMO together with HCM system-registry data and offers HCMO's competency questions as saved queries; it is a separate service, not part of the release.} The distributions can be loaded into any standards-compliant triple store. The resource is licensed CC BY 4.0, carries provenance on the root ontology header (creators with ORCIDs, version IRI), and provides a canonical citation (\nolinkurl{CITATION.cff}); a FAIR self-assessment is available in the repository. HCMO is maintained through public issues and pull requests; versioning follows SemVer mirrored by \nolinkurl{owl:versionIRI}, and terms are deprecated rather than deleted or re-minted to protect external references. \new{HCMO is registered in BioPortal\fnurl{https://bioportal.bioontology.org/ontologies/HCMO}.}\todo[color=orange!40]{DH: update the BioPortal entry with the final release before submission.}
