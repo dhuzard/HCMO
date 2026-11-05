@@ -16,6 +16,10 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
   `tooling/validate_isa_authoring_example.py` (ISA-Tab and ISA-JSON validation
   with that configuration, structural comparison of the committed ISA-JSON with
   a fresh conversion), run in the `interoperability` CI job.
+  The configuration is the whole-animal HCM assay projection that
+  `docs/A02-ISA-STATO-COMPATIBILITY.md` lists as deferred; it is not yet
+  reviewed against the loss contracts in `examples/isa-roundtrip/loss/`, and
+  the example's README records that and the other open items.
 
 - `tooling/run_cqs.py`: runs the competency questions of
   `queries/competency_questions.yaml` against a SPARQL 1.1 Protocol endpoint

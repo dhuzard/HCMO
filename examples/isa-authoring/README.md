@@ -53,6 +53,30 @@ assays, data files, characteristic accessions) with the committed file.
 
 ## Known limitations and open items
 
+- **Policy review pending.** `docs/A02-ISA-STATO-COMPATIBILITY.md` lists a
+  direct whole-animal HCM assay projection as *Deferred* until a reviewed ISA
+  configuration exists, and both loss contracts under
+  `../isa-roundtrip/loss/` prohibit minting a Sample proxy for an unchanged
+  animal. This example introduces that configuration (`config/`) but has not
+  been reviewed against those contracts: the home-cage monitoring assay
+  consumes `animal-N-sample-1`, the output of the `sample collection`
+  protocol, which the companion transcriptomics assay also consumes. A
+  home-cage recording observes the whole animal, not a collected specimen.
+  Accepting this example as the reviewed configuration means updating the
+  loss contracts, the A02 roadmap row, `docs/ISA-RO-CRATE-MAPPING.md` and
+  `../isa-roundtrip/native-isa/README.md`; otherwise the monitoring branch
+  must be remodelled (for example a distinct, explicitly documented
+  whole-animal Sample carrying the Source's `Comment[HCMO IRI]`).
+- **Issue #61 is not closed by this example yet.** It asks for an experiment
+  represented *using HCMO*; no HCMO term, IRI or ontology source reference
+  appears in the ISA files. Use *refs #61* rather than *closes #61* until the
+  HCMO identity columns below exist.
+- **JSON-LD.** PR #62 intended the ISA-JSON to be testable with
+  `ontology/context.jsonld`. That context maps HCMO properties, not ISA-JSON
+  keys. The pinned ISA-API can emit ISA-JSON-LD (`Investigation.to_dict(ld=True)`
+  after `isatab.load`), but it references its bundled OBO context by local
+  file path and the output contains no HCMO IRI, so there is nothing for the
+  HCMO context to resolve until HCMO IRIs are carried in the instance.
 - Every row carries `Factor Value[monitoring day] = 1`; the repeated-measure
   design named in the study description is not yet represented (the generated
   fixture in `../isa-roundtrip/data/dark-phase-activity.csv` has 7 days per
