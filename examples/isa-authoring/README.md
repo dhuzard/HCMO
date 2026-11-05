@@ -78,20 +78,20 @@ validator checks that every IRI exists in `canonical.ttl` with the type above
 
 ## Known limitations and open items
 
-- **Policy review pending.** `docs/A02-ISA-STATO-COMPATIBILITY.md` lists a
-  direct whole-animal HCM assay projection as *Deferred* until a reviewed ISA
-  configuration exists, and both loss contracts under
-  `../isa-roundtrip/loss/` prohibit minting a Sample proxy for an unchanged
-  animal. This example introduces that configuration (`config/`) but has not
-  been reviewed against those contracts: the home-cage monitoring assay
-  consumes `animal-N-sample-1`, the output of the `sample collection`
-  protocol, which the companion transcriptomics assay also consumes. A
-  home-cage recording observes the whole animal, not a collected specimen.
-  Accepting this example as the reviewed configuration means updating the
-  loss contracts, the A02 roadmap row, `docs/ISA-RO-CRATE-MAPPING.md` and
-  `../isa-roundtrip/native-isa/README.md`; otherwise the monitoring branch
-  must be remodelled (for example a distinct, explicitly documented
-  whole-animal Sample carrying the Source's `Comment[HCMO IRI]`).
+- **Whole-animal Sample convention: adopted, pending ISA confirmation.** The
+  home-cage monitoring assay consumes `animal-N-sample-1`, the Sample each
+  animal yields through the `sample collection` protocol; the transcriptomics
+  assay consumes the same Samples. This is the usual ISA way to give an assay
+  on a whole animal the Sample input that ISA requires. HCMO adopts it for HCM
+  assays in ISA, with the details (protocol naming, and whether monitoring and
+  transcriptomics share one Sample per animal) left to the ISA maintainers'
+  review of PR #62. Until that review is settled, the following still describe
+  the earlier position, under which this projection was deferred and a Sample
+  for an unchanged animal was prohibited: the loss contracts under
+  `../isa-roundtrip/loss/`, the A02 roadmap row in
+  `docs/A02-ISA-STATO-COMPATIBILITY.md`, `docs/ISA-RO-CRATE-MAPPING.md`,
+  `../isa-roundtrip/native-isa/README.md`, and the paper's use-case section
+  and Figure 3 caption. They are updated in a follow-up.
 - **HCMO term source.** The identity comments above link the example to HCMO
   data, but no ISA ontology annotation uses an HCMO class: the measurement,
   technology and protocol types the configuration keys on have no HCMO class
