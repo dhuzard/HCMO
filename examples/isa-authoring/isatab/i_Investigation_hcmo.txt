@@ -1,0 +1,102 @@
+ONTOLOGY SOURCE REFERENCE													
+Term Source Name	EFO	STATO	PATO	NCBITax	CHEBI	OBI							
+Term Source File													
+Term Source Version													
+Term Source Description	Experimental Factor Ontology.	STATO is the statistical methods ontology.	"An ontology of phenotypic qualities (properties, attributes or characteristics)."	An ontology representation of the NCBI organismal taxonomy	CHEBI	An ontology for representing biomedical investigations.							
+INVESTIGATION													
+Investigation Identifier	HCMO_ISA_EXAMPLE												
+Investigation Title	HCMO ISA authoring example												
+Investigation Description	Hand-authored ISA-Tab example of a 2x2 (drug x cage environment) home-cage monitoring study with a companion transcriptomics assay, validated against the HCMO ISA configuration in config/.												
+Investigation Submission Date													
+Investigation Public Release Date													
+Comment[Funding Programme]													
+Comment[Grant Agreement]													
+Comment[Virtual Research Organization]													
+INVESTIGATION PUBLICATIONS													
+Investigation PubMed ID													
+Investigation Publication DOI													
+Investigation Publication Author List													
+Investigation Publication Title													
+Investigation Publication Status													
+Investigation Publication Status Term Accession Number													
+Investigation Publication Status Term Source REF													
+INVESTIGATION CONTACTS													
+Investigation Person Last Name													
+Investigation Person First Name													
+Investigation Person Mid Initials													
+Investigation Person Email													
+Investigation Person Phone													
+Investigation Person Fax													
+Investigation Person Address													
+Investigation Person Affiliation													
+Investigation Person Roles													
+Investigation Person Roles Term Accession Number													
+Investigation Person Roles Term Source REF													
+STUDY													
+Study Identifier	HCMO_1												
+Study Title	HCMO ISA TEST												
+Study Description	A test ISA representation of 2x2 repeated measure design using cage monitoring device												
+Study Submission Date													
+Study Public Release Date													
+Study File Name	s_hcmo_study.txt												
+Comment[Funding Programme]													
+Comment[Grant Agreement]													
+STUDY DESIGN DESCRIPTORS													
+Study Design Type	factorial design	repeated measure design											
+Study Design Type Term Accession Number	OBI:0500014	OBI:0500002											
+Study Design Type Term Source REF	STATO	STATO											
+STUDY PUBLICATIONS													
+Study PubMed ID													
+Study Publication DOI													
+Study Publication Author List													
+Study Publication Title													
+Study Publication Status													
+Study Publication Status Term Accession Number													
+Study Publication Status Term Source REF													
+STUDY FACTORS													
+Study Factor Name	drug	environment	monitoring day										
+Study Factor Type	compound	environment	timepoint										
+Study Factor Type Term Accession Number	CHEBI:24431		EFO:0000724										
+Study Factor Type Term Source REF	CHEBI		EFO										
+Comment[HCMO IRI]	https://example.org/hcmo/isa-roundtrip/factor-treatment	https://example.org/hcmo/isa-roundtrip/factor-enrichment											
+STUDY ASSAYS													
+Study Assay File Name	a_hcmo_monitoring.txt	a_hcmo_rnaseq.txt											
+Study Assay Measurement Type	phenotyping	transcription profiling											
+Study Assay Measurement Type Term Accession Number		OBI:0000424											
+Study Assay Measurement Type Term Source REF		OBI											
+Study Assay Technology Type	home cage monitoring	nucleotide sequencing											
+Study Assay Technology Type Term Accession Number		OBI:0000626											
+Study Assay Technology Type Term Source REF		OBI											
+Study Assay Technology Platform		Illumina NovaSeq 6000											
+Comment[target_repository]		ena											
+STUDY PROTOCOLS													
+Study Protocol Name	growth protocol	sample collection	nucleic acid extraction	library construction	nucleic acid sequencing	data acquisition							
+Study Protocol Type	growth protocol	sample collection	nucleic acid extraction	library construction	nucleic acid sequencing	data acquisition							
+Study Protocol Type Term Accession Number	EFO:0003789	OBI:0000659	OBI:0666667	OBI:0000711	EFO:0004170								
+Study Protocol Type Term Source REF	EFO	OBI	OBI	OBI	EFO								
+Study Protocol Description	growth protocol description	sample collection description	nucleic acid extraction procedure documentation	library preparation procedure documentation	nucleic acid sequencing procedure documentation	data acquisition							
+Study Protocol URI													
+Study Protocol Version													
+Study Protocol Parameters Name	cage #			library_layout;library_strategy;library_source;library_selection;mid	platform;instrument_model;flowcell_id								
+Study Protocol Parameters Name Term Accession Number				;;;;	;;								
+Study Protocol Parameters Name Term Source REF				;;;;	;;								
+Study Protocol Components Name													
+Study Protocol Components Type													
+Study Protocol Components Type Term Accession Number													
+Study Protocol Components Type Term Source REF													
+Comment[HCMO IRI]						https://example.org/hcmo/isa-roundtrip/protocol-recording							
+Comment[Best Practice Conformance]													
+STUDY CONTACTS													
+Study Person Last Name	Huzard	Gilbert	Larmande	Sounchio	Girard	Sanou	Todorov						
+Study Person First Name	Damien	Cyril	Pierre	Serge	Benoit	Gaoussou	Konstantin						
+Study Person Mid Initials													
+Study Person Email													
+Study Person Phone													
+Study Person Fax													
+Study Person Address													
+Study Person Affiliation													
+Study Person Roles	principal investigator	co-investigator	co-investigator	co-investigator	co-investigator	co-investigator	co-investigator						
+Study Person Roles Term Accession Number	EFO:0009736	EFO:0009735	EFO:0009735	EFO:0009735	EFO:0009735	EFO:0009735	EFO:0009735						
+Study Person Roles Term Source REF	EFO	EFO	EFO	EFO	EFO	EFO	EFO						
+Comment[ORCID]													
+Comment[Research Organization Registry ID]													

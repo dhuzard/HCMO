@@ -57,3 +57,4 @@ jobs:
         run: |
           python tooling/validate_interoperability.py
           python tooling/validate_isa_native_projection.py
+          python tooling/validate_isa_authoring_example.py

@@ -4,14 +4,14 @@
   "protocols": [
     {
       "inputs": "#sample",
-      "protocol": "home cage monitoring",
+      "protocol": "data acquisition",
       "outputs": "#data"
     }
   ],
   "protocolSequence": [
-    "home cage monitoring"
+    "data acquisition"
   ],
   "description": [
-    "(Sample)->(home cage monitoring)->(DataFiles)"
+    "(Sample)->(data acquisition)->(DataFiles)"
   ]
 }
