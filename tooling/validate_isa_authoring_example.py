@@ -6,6 +6,10 @@ example, converts the ISA-Tab to ISA-JSON with that configuration, and compares
 the structure of the conversion with the committed ``isajson/isa.json``.  The
 ISA-API mints UUID identifiers on every conversion, so the comparison is
 structural, not byte-for-byte.  ``--write`` regenerates the committed file.
+
+Every ``Comment[HCMO IRI]`` must name an individual of the canonical round-trip
+graph (``examples/isa-roundtrip/canonical.ttl``) with the expected type, so the
+example asserts identity only where the canonical HCMO data has the same thing.
 """
 from __future__ import annotations
 
@@ -25,6 +29,14 @@ INVESTIGATION = ISATAB_DIR / "i_Investigation_hcmo.txt"
 ISAJSON = EXAMPLE / "isajson" / "isa.json"
 XML_CONFIG = EXAMPLE / "config" / "xml"
 JSON_CONFIG = EXAMPLE / "config" / "json" / "default"
+CANONICAL = ROOT / "examples" / "isa-roundtrip" / "canonical.ttl"
+HCMO_IRI = "HCMO IRI"
+# ISA-JSON object kind -> rdf:type its HCMO IRI must have in the canonical graph.
+EXPECTED_TYPES = {
+    "source": "https://w3id.org/hcmo/ontology/hcm/bio#Subject",
+    "factor": "https://w3id.org/hcmo/ontology/hcm/bio#StudyFactors",
+    "protocol": "https://bioschemas.org/LabProtocol",
+}
 # Warning codes that mean the instance disagrees with the configuration.
 STRUCTURAL_WARNING_CODES = {4004}
 
@@ -42,6 +54,40 @@ def annotation(value: object) -> tuple:
     if isinstance(value, dict):
         return (value.get("annotationValue", ""), value.get("termSource", ""), value.get("termAccession", ""))
     return (str(value), "", "")
+
+
+def hcmo_iris(study: dict) -> list[tuple[str, str, str]]:
+    """(kind, ISA name, HCMO IRI) for every non-empty ``Comment[HCMO IRI]``."""
+    found = []
+    for kind, items, key in (
+        ("source", study["materials"]["sources"], "name"),
+        ("factor", study["factors"], "factorName"),
+        ("protocol", study["protocols"], "name"),
+    ):
+        for item in items:
+            for comment in item.get("comments", []):
+                if comment["name"] == HCMO_IRI and comment["value"]:
+                    found.append((kind, item[key], comment["value"]))
+    return sorted(found)
+
+
+def check_hcmo_identity(study: dict) -> list[str]:
+    import rdflib  # noqa: E402  (core tooling dependency)
+
+    graph = rdflib.Graph().parse(CANONICAL)
+    problems = []
+    iris = hcmo_iris(study)
+    for kind, name, iri in iris:
+        node = rdflib.URIRef(iri)
+        if (node, rdflib.RDF.type, rdflib.URIRef(EXPECTED_TYPES[kind])) not in graph:
+            problems.append(f"{kind} '{name}': {iri} is not a <{EXPECTED_TYPES[kind]}> in {CANONICAL.relative_to(ROOT)}")
+        elif kind == "source" and str(graph.value(node, rdflib.URIRef("http://schema.org/name"))) != name:
+            problems.append(f"source '{name}': {iri} has a different schema:name in the canonical graph")
+    with_iri = {name for kind, name, _ in iris if kind == "source"}
+    missing = sorted(s["name"] for s in study["materials"]["sources"] if s["name"] not in with_iri)
+    if missing:
+        problems.append(f"sources without Comment[{HCMO_IRI}]: {missing}")
+    return problems
 
 
 def signature(document: dict) -> dict:
@@ -75,6 +121,8 @@ def signature(document: dict) -> dict:
         "samples": samples,
         "protocols": sorted((p["name"], annotation(p["protocolType"])) for p in study["protocols"]),
         "factors": sorted((f["factorName"], annotation(f["factorType"])) for f in study["factors"]),
+        "hcmo_iris": hcmo_iris(study),
+        "people": [p["lastName"] for p in study.get("people", [])],
         "study_processes": len(study["processSequence"]),
         "assays": sorted(
             (
@@ -133,6 +181,7 @@ def main() -> int:
                 if fresh_sig[key] != committed_sig.get(key):
                     problems.append(f"isajson/isa.json is stale: '{key}' differs from a fresh conversion (run with --write)")
         study = committed["studies"][0]
+        problems += check_hcmo_identity(study)
         for protocol in study["protocols"]:
             if not annotation(protocol["protocolType"])[0]:
                 problems.append(f"protocol '{protocol['name']}' has no protocol type (empty Protocol REF in a table?)")

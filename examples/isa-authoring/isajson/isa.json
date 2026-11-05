@@ -95,7 +95,7 @@
           "phone": "",
           "roles": [
             {
-              "@id": "#ontology_annotation/e858b8c1-e12b-41ab-8a59-8f9dda28185e",
+              "@id": "#ontology_annotation/6faa3c57-d465-40d1-b8d5-b19c0cf7cc9f",
               "annotationValue": "principal investigator",
               "termSource": "EFO",
               "termAccession": "EFO:0009736",
@@ -124,7 +124,7 @@
           "phone": "",
           "roles": [
             {
-              "@id": "#ontology_annotation/7e5f8e31-559c-40f3-8f1e-e18c816c2cc0",
+              "@id": "#ontology_annotation/f96a28e4-8a5b-4fd8-aa7f-62b447ea6b64",
               "annotationValue": "co-investigator",
               "termSource": "EFO",
               "termAccession": "EFO:0009735",
@@ -153,7 +153,7 @@
           "phone": "",
           "roles": [
             {
-              "@id": "#ontology_annotation/3f662c47-e778-4eb1-ae7e-042961344112",
+              "@id": "#ontology_annotation/9fc8083e-1618-43d8-b766-75d383a50239",
               "annotationValue": "co-investigator",
               "termSource": "EFO",
               "termAccession": "EFO:0009735",
@@ -182,7 +182,7 @@
           "phone": "",
           "roles": [
             {
-              "@id": "#ontology_annotation/4b8c7e60-0fa1-4051-9cc8-710aae0b524a",
+              "@id": "#ontology_annotation/0345e582-35f7-4814-adf2-8f80c7f6a46c",
               "annotationValue": "co-investigator",
               "termSource": "EFO",
               "termAccession": "EFO:0009735",
@@ -211,7 +211,7 @@
           "phone": "",
           "roles": [
             {
-              "@id": "#ontology_annotation/a5360aa0-1256-401d-b9ad-496a04984409",
+              "@id": "#ontology_annotation/065f6fb6-79c0-4edb-a4c7-0cbdb6334820",
               "annotationValue": "co-investigator",
               "termSource": "EFO",
               "termAccession": "EFO:0009735",
@@ -240,36 +240,7 @@
           "phone": "",
           "roles": [
             {
-              "@id": "#ontology_annotation/31c1ed67-205d-4b3b-ac1e-e36fc8ee0ff9",
-              "annotationValue": "co-investigator",
-              "termSource": "EFO",
-              "termAccession": "EFO:0009735",
-              "comments": []
-            }
-          ]
-        },
-        {
-          "address": "",
-          "affiliation": "",
-          "comments": [
-            {
-              "name": "ORCID",
-              "value": ""
-            },
-            {
-              "name": "Research Organization Registry ID",
-              "value": ""
-            }
-          ],
-          "email": "",
-          "fax": "",
-          "firstName": "Antoine",
-          "lastName": "Toffano",
-          "midInitials": "",
-          "phone": "",
-          "roles": [
-            {
-              "@id": "#ontology_annotation/e97b301c-671d-40fd-b156-c32ac0d3bf93",
+              "@id": "#ontology_annotation/ad485697-9903-4251-8884-08a372ab776c",
               "annotationValue": "co-investigator",
               "termSource": "EFO",
               "termAccession": "EFO:0009735",
@@ -298,7 +269,7 @@
           "phone": "",
           "roles": [
             {
-              "@id": "#ontology_annotation/ed1c7509-cb87-4659-8d07-2d05eb2610b5",
+              "@id": "#ontology_annotation/f5a56212-363d-4e62-9b73-bac15a2f74f3",
               "annotationValue": "co-investigator",
               "termSource": "EFO",
               "termAccession": "EFO:0009735",
@@ -319,14 +290,14 @@
       ],
       "studyDesignDescriptors": [
         {
-          "@id": "#ontology_annotation/ae8ba527-7a38-4eee-b08b-0812fc967a5c",
+          "@id": "#ontology_annotation/cafc4a44-f724-4bc9-b616-c763da113e60",
           "annotationValue": "factorial design",
           "termSource": "STATO",
           "termAccession": "OBI:0500014",
           "comments": []
         },
         {
-          "@id": "#ontology_annotation/90b089b0-de39-4642-859a-f9b3f1087282",
+          "@id": "#ontology_annotation/00ebfe70-80c9-48b3-a532-798883b16122",
           "annotationValue": "repeated measure design",
           "termSource": "STATO",
           "termAccession": "OBI:0500002",
@@ -335,12 +306,16 @@
       ],
       "protocols": [
         {
-          "@id": "#protocol/57d65e6e-280a-422d-b0c0-405237c80900",
+          "@id": "#protocol/82177109-d426-4be6-88e0-766bfcc38467",
           "name": "growth protocol",
           "description": "growth protocol description",
           "uri": "",
           "version": "",
           "comments": [
+            {
+              "name": "HCMO IRI",
+              "value": ""
+            },
             {
               "name": "Best Practice Conformance",
               "value": ""
@@ -348,9 +323,9 @@
           ],
           "parameters": [
             {
-              "@id": "#protocol_parameter/eba50cf6-9a44-4dce-9b4c-74e3287eec56",
+              "@id": "#protocol_parameter/5279cd0f-0e6f-4e3e-87a8-45ac072a9f1e",
               "parameterName": {
-                "@id": "#ontology_annotation/7ea249a2-a818-45c7-b6e5-a782de148fba",
+                "@id": "#ontology_annotation/915bcc94-da21-4b92-8ebc-33a2a43555d1",
                 "annotationValue": "cage #",
                 "termSource": "",
                 "termAccession": "",
@@ -359,7 +334,7 @@
             }
           ],
           "protocolType": {
-            "@id": "#ontology_annotation/f12001fb-2eec-4097-b0f3-602a8a3157e7",
+            "@id": "#ontology_annotation/6d5a7fd7-cefb-4de2-bf46-0098e683b426",
             "annotationValue": "growth protocol",
             "termSource": "EFO",
             "termAccession": "EFO:0003789",
@@ -368,12 +343,16 @@
           "components": []
         },
         {
-          "@id": "#protocol/19ce264a-9c40-4295-a980-023255d4c254",
+          "@id": "#protocol/9c44d6bb-da88-4afe-bc63-296734370140",
           "name": "sample collection",
           "description": "sample collection description",
           "uri": "",
           "version": "",
           "comments": [
+            {
+              "name": "HCMO IRI",
+              "value": ""
+            },
             {
               "name": "Best Practice Conformance",
               "value": ""
@@ -381,9 +360,9 @@
           ],
           "parameters": [
             {
-              "@id": "#protocol_parameter/9e7135eb-f44d-4113-990b-91371f31dde2",
+              "@id": "#protocol_parameter/c0bf12cd-e596-4787-a0cf-389787618d57",
               "parameterName": {
-                "@id": "#ontology_annotation/9fa57efb-fecb-4d87-b88b-c393d3517d78",
+                "@id": "#ontology_annotation/ba4887ad-50f6-4be6-83bc-f324af96e78f",
                 "annotationValue": "",
                 "termSource": "",
                 "termAccession": "",
@@ -392,7 +371,7 @@
             }
           ],
           "protocolType": {
-            "@id": "#ontology_annotation/1d3d1490-6bb5-4e59-9d04-75756e4841e3",
+            "@id": "#ontology_annotation/51c27425-69b2-4011-81ca-8af8c1d77f89",
             "annotationValue": "sample collection",
             "termSource": "OBI",
             "termAccession": "OBI:0000659",
@@ -401,12 +380,16 @@
           "components": []
         },
         {
-          "@id": "#protocol/19fc5d91-0ba8-4e5e-baae-966272244ae7",
+          "@id": "#protocol/d7007b83-b340-462d-81a0-023f61daa1e8",
           "name": "nucleic acid extraction",
           "description": "nucleic acid extraction procedure documentation",
           "uri": "",
           "version": "",
           "comments": [
+            {
+              "name": "HCMO IRI",
+              "value": ""
+            },
             {
               "name": "Best Practice Conformance",
               "value": ""
@@ -414,9 +397,9 @@
           ],
           "parameters": [
             {
-              "@id": "#protocol_parameter/d1505a38-dd11-43d9-ae42-45b44ec7ec0c",
+              "@id": "#protocol_parameter/ea738669-d5ad-46cd-b0ee-86768522f6e4",
               "parameterName": {
-                "@id": "#ontology_annotation/172226a7-e735-4dbf-96ed-c1d035e938e4",
+                "@id": "#ontology_annotation/a67b5f47-609c-4847-b0b2-e90bb77dccfa",
                 "annotationValue": "",
                 "termSource": "",
                 "termAccession": "",
@@ -425,7 +408,7 @@
             }
           ],
           "protocolType": {
-            "@id": "#ontology_annotation/4f0eb78a-1016-4896-bf57-6c4abe043dc2",
+            "@id": "#ontology_annotation/1da27dba-e8bc-4cfa-89b9-fdf1371b1206",
             "annotationValue": "nucleic acid extraction",
             "termSource": "OBI",
             "termAccession": "OBI:0666667",
@@ -434,12 +417,16 @@
           "components": []
         },
         {
-          "@id": "#protocol/fc3e12e4-40fe-4b6c-89ac-814e16cdf025",
+          "@id": "#protocol/6d5aa6ce-2792-4b50-b82d-2cc6b3aafcfc",
           "name": "library construction",
           "description": "library preparation procedure documentation",
           "uri": "",
           "version": "",
           "comments": [
+            {
+              "name": "HCMO IRI",
+              "value": ""
+            },
             {
               "name": "Best Practice Conformance",
               "value": ""
@@ -447,9 +434,9 @@
           ],
           "parameters": [
             {
-              "@id": "#protocol_parameter/c8d6589c-d01e-4fa9-8169-1854620b3374",
+              "@id": "#protocol_parameter/3b8ea2bc-998f-46a4-9922-f4b59254c343",
               "parameterName": {
-                "@id": "#ontology_annotation/a66284a2-5667-4481-8fd8-c35809e3a9cf",
+                "@id": "#ontology_annotation/f7ac74eb-c449-49d9-9b9c-9d6cfd8f32fc",
                 "annotationValue": "library_layout",
                 "termSource": "",
                 "termAccession": "",
@@ -457,9 +444,9 @@
               }
             },
             {
-              "@id": "#protocol_parameter/2a64c30d-427c-4b24-962f-4ffbcb1a9e6a",
+              "@id": "#protocol_parameter/b1900246-bbbf-4d73-a3ff-349a3c82937e",
               "parameterName": {
-                "@id": "#ontology_annotation/c599aeae-517c-427c-b8b2-69958125c502",
+                "@id": "#ontology_annotation/108f294d-8df8-478f-af51-0eb5eaee3bed",
                 "annotationValue": "library_strategy",
                 "termSource": "",
                 "termAccession": "",
@@ -467,9 +454,9 @@
               }
             },
             {
-              "@id": "#protocol_parameter/7893f13b-83eb-433c-8b0b-cd821b856c69",
+              "@id": "#protocol_parameter/93f861ee-816d-45eb-87fc-4288eacd129b",
               "parameterName": {
-                "@id": "#ontology_annotation/e11eca78-c3e4-47cd-960c-8489fff5c6e1",
+                "@id": "#ontology_annotation/04fd2495-d11c-451a-9e06-cbf6a6a0aba4",
                 "annotationValue": "library_source",
                 "termSource": "",
                 "termAccession": "",
@@ -477,9 +464,9 @@
               }
             },
             {
-              "@id": "#protocol_parameter/f28966ed-b3ab-4e47-a359-d737dde71c3e",
+              "@id": "#protocol_parameter/fc4eee98-976d-4b0e-a784-c2eee48e39dc",
               "parameterName": {
-                "@id": "#ontology_annotation/89141561-c2bb-43ac-bd91-424cc44c9eec",
+                "@id": "#ontology_annotation/8a9b29ad-72f9-44da-930e-65f4f6f6b8c8",
                 "annotationValue": "library_selection",
                 "termSource": "",
                 "termAccession": "",
@@ -487,9 +474,9 @@
               }
             },
             {
-              "@id": "#protocol_parameter/0071a7f6-d527-4fd3-b755-edaa0aa05ce2",
+              "@id": "#protocol_parameter/2bb49e4d-28e5-4fa9-97ac-28ee66a53dd0",
               "parameterName": {
-                "@id": "#ontology_annotation/2b282e16-648d-4b18-a37d-0a4565f12e62",
+                "@id": "#ontology_annotation/7adc2156-f1b2-4cdd-a532-8d7a9a90decf",
                 "annotationValue": "mid",
                 "termSource": "",
                 "termAccession": "",
@@ -498,7 +485,7 @@
             }
           ],
           "protocolType": {
-            "@id": "#ontology_annotation/a80b53a1-81d7-45d2-851d-e9f306ae2dd0",
+            "@id": "#ontology_annotation/85c61e79-1f1d-4f90-b5ac-a189edb71898",
             "annotationValue": "library construction",
             "termSource": "OBI",
             "termAccession": "OBI:0000711",
@@ -507,12 +494,16 @@
           "components": []
         },
         {
-          "@id": "#protocol/c82773c0-9f31-4ee8-bc34-f7bc4bf094d4",
+          "@id": "#protocol/9fdbb4bc-5e14-4c6b-a2b6-8d32970bdba9",
           "name": "nucleic acid sequencing",
           "description": "nucleic acid sequencing procedure documentation",
           "uri": "",
           "version": "",
           "comments": [
+            {
+              "name": "HCMO IRI",
+              "value": ""
+            },
             {
               "name": "Best Practice Conformance",
               "value": ""
@@ -520,9 +511,9 @@
           ],
           "parameters": [
             {
-              "@id": "#protocol_parameter/518dc6a9-f69c-4a26-aac5-0967f2b05c47",
+              "@id": "#protocol_parameter/bb9f1ee8-43c0-4704-937a-e9a7ebe4aaea",
               "parameterName": {
-                "@id": "#ontology_annotation/c7683635-20c5-4193-a076-762cd99dd9eb",
+                "@id": "#ontology_annotation/faa11f3e-b6ec-4bc6-aae9-86254b01d381",
                 "annotationValue": "platform",
                 "termSource": "",
                 "termAccession": "",
@@ -530,9 +521,9 @@
               }
             },
             {
-              "@id": "#protocol_parameter/ea859ca9-cd4a-46fb-90df-50b801ebb632",
+              "@id": "#protocol_parameter/05d1ff79-c3dc-47d0-9fb3-714490a4373c",
               "parameterName": {
-                "@id": "#ontology_annotation/2da40fc4-b288-45eb-acae-10f196ca2559",
+                "@id": "#ontology_annotation/326e1e06-8b9b-4a71-aad4-43567ab0a1cd",
                 "annotationValue": "instrument_model",
                 "termSource": "",
                 "termAccession": "",
@@ -540,9 +531,9 @@
               }
             },
             {
-              "@id": "#protocol_parameter/ce192d37-5488-472a-9762-008070245464",
+              "@id": "#protocol_parameter/c50b2139-f923-4aaf-a028-c344ee5ead39",
               "parameterName": {
-                "@id": "#ontology_annotation/11aae79f-1142-46f7-aedb-232a8fcb8812",
+                "@id": "#ontology_annotation/1c27fd45-3ef2-4e12-a8b0-574a8783c91d",
                 "annotationValue": "flowcell_id",
                 "termSource": "",
                 "termAccession": "",
@@ -551,7 +542,7 @@
             }
           ],
           "protocolType": {
-            "@id": "#ontology_annotation/c5fdee29-9080-4bb7-86cd-200a7750444f",
+            "@id": "#ontology_annotation/993a99c2-598c-40b0-a8db-9400d21d62a0",
             "annotationValue": "nucleic acid sequencing",
             "termSource": "EFO",
             "termAccession": "EFO:0004170",
@@ -560,12 +551,16 @@
           "components": []
         },
         {
-          "@id": "#protocol/5a32c1bc-2acf-495a-87bf-05e6c723ac45",
+          "@id": "#protocol/456496ee-c913-48e4-b299-ba3f9ee74a29",
           "name": "data acquisition",
           "description": "data acquisition",
           "uri": "",
           "version": "",
           "comments": [
+            {
+              "name": "HCMO IRI",
+              "value": "https://example.org/hcmo/isa-roundtrip/protocol-recording"
+            },
             {
               "name": "Best Practice Conformance",
               "value": ""
@@ -573,9 +568,9 @@
           ],
           "parameters": [
             {
-              "@id": "#protocol_parameter/7911efd7-16a0-4068-9436-71c48b99f567",
+              "@id": "#protocol_parameter/a884ec61-ffc5-464e-968f-3480f40a7d6b",
               "parameterName": {
-                "@id": "#ontology_annotation/5e9c3d24-27fa-45c3-8b6e-084c7344b9e1",
+                "@id": "#ontology_annotation/4bb11956-d930-4422-95a3-dab1ed448cb9",
                 "annotationValue": "",
                 "termSource": "",
                 "termAccession": "",
@@ -584,7 +579,7 @@
             }
           ],
           "protocolType": {
-            "@id": "#ontology_annotation/08ca87da-6121-4615-ad30-891cff2f0624",
+            "@id": "#ontology_annotation/dd987622-4fee-4a64-bd41-28ed93c3de4b",
             "annotationValue": "data acquisition",
             "termSource": "",
             "termAccession": "",
@@ -596,15 +591,15 @@
       "materials": {
         "sources": [
           {
-            "@id": "#source/eda15138-2479-4c49-8c0c-ab0595227559",
+            "@id": "#source/56ff5771-ccb6-4366-ad2f-ca8d1223bcef",
             "name": "animal-1",
             "characteristics": [
               {
                 "category": {
-                  "@id": "#characteristic_category/7506db51-6722-447d-832a-3ee6b522d6e0"
+                  "@id": "#characteristic_category/178b9de6-1139-492d-99e8-7d5b5ade2768"
                 },
                 "value": {
-                  "@id": "#ontology_annotation/85353f29-ccf6-447e-ad34-43dc21abb714",
+                  "@id": "#ontology_annotation/035b3e7e-8254-4d03-b54c-8f2cef0ddfdb",
                   "annotationValue": "Mus musculus",
                   "termSource": "NCBITax",
                   "termAccession": "NCBITaxon:10090",
@@ -614,10 +609,10 @@
               },
               {
                 "category": {
-                  "@id": "#characteristic_category/827298fa-3d38-4ef4-a540-2a7b0c715575"
+                  "@id": "#characteristic_category/ea8067ab-4f46-4d9e-a2fc-a17c6ab5ae4b"
                 },
                 "value": {
-                  "@id": "#ontology_annotation/a91dd68f-aed6-4660-be16-4e701ac0ef14",
+                  "@id": "#ontology_annotation/04943a7a-7675-4161-aec6-537df08ab2e1",
                   "annotationValue": "male",
                   "termSource": "PATO",
                   "termAccession": "PATO:0000384",
@@ -626,18 +621,23 @@
                 "comments": []
               }
             ],
-            "comments": []
+            "comments": [
+              {
+                "name": "HCMO IRI",
+                "value": "https://example.org/hcmo/isa-roundtrip/animal-1"
+              }
+            ]
           },
           {
-            "@id": "#source/77cf3862-cad5-41c0-8336-15a0412203ac",
+            "@id": "#source/45509f1a-e78f-4081-8285-a18bbf15a1ab",
             "name": "animal-2",
             "characteristics": [
               {
                 "category": {
-                  "@id": "#characteristic_category/7506db51-6722-447d-832a-3ee6b522d6e0"
+                  "@id": "#characteristic_category/178b9de6-1139-492d-99e8-7d5b5ade2768"
                 },
                 "value": {
-                  "@id": "#ontology_annotation/59f621c5-28c9-4321-ba09-f6f33f369530",
+                  "@id": "#ontology_annotation/6426fca8-5d84-48d5-81d3-46dd16ba78d9",
                   "annotationValue": "Mus musculus",
                   "termSource": "NCBITax",
                   "termAccession": "NCBITaxon:10090",
@@ -647,10 +647,10 @@
               },
               {
                 "category": {
-                  "@id": "#characteristic_category/827298fa-3d38-4ef4-a540-2a7b0c715575"
+                  "@id": "#characteristic_category/ea8067ab-4f46-4d9e-a2fc-a17c6ab5ae4b"
                 },
                 "value": {
-                  "@id": "#ontology_annotation/63395dbf-844e-40ea-acf9-3107812da63e",
+                  "@id": "#ontology_annotation/e2008065-17a4-4fa9-b6cf-c58493c6e16a",
                   "annotationValue": "female",
                   "termSource": "PATO",
                   "termAccession": "PATO:0000383",
@@ -659,18 +659,23 @@
                 "comments": []
               }
             ],
-            "comments": []
+            "comments": [
+              {
+                "name": "HCMO IRI",
+                "value": "https://example.org/hcmo/isa-roundtrip/animal-2"
+              }
+            ]
           },
           {
-            "@id": "#source/29591db0-2eb7-4b73-9632-665fa4b65c79",
+            "@id": "#source/759a493c-5aa7-49d4-ae2d-a81da85c1ac4",
             "name": "animal-3",
             "characteristics": [
               {
                 "category": {
-                  "@id": "#characteristic_category/7506db51-6722-447d-832a-3ee6b522d6e0"
+                  "@id": "#characteristic_category/178b9de6-1139-492d-99e8-7d5b5ade2768"
                 },
                 "value": {
-                  "@id": "#ontology_annotation/6357331f-9e53-4573-b208-f4e521a509f2",
+                  "@id": "#ontology_annotation/25e1a457-e099-4d10-bb28-5d2d71d1ce63",
                   "annotationValue": "Mus musculus",
                   "termSource": "NCBITax",
                   "termAccession": "NCBITaxon:10090",
@@ -680,10 +685,10 @@
               },
               {
                 "category": {
-                  "@id": "#characteristic_category/827298fa-3d38-4ef4-a540-2a7b0c715575"
+                  "@id": "#characteristic_category/ea8067ab-4f46-4d9e-a2fc-a17c6ab5ae4b"
                 },
                 "value": {
-                  "@id": "#ontology_annotation/60ea9938-faf1-4fd0-ad25-330107c7a392",
+                  "@id": "#ontology_annotation/8c3e8944-5851-451c-a5f3-0bbdcce55bf0",
                   "annotationValue": "male",
                   "termSource": "PATO",
                   "termAccession": "PATO:0000384",
@@ -692,18 +697,23 @@
                 "comments": []
               }
             ],
-            "comments": []
+            "comments": [
+              {
+                "name": "HCMO IRI",
+                "value": "https://example.org/hcmo/isa-roundtrip/animal-3"
+              }
+            ]
           },
           {
-            "@id": "#source/761ba752-dbc2-4314-a98e-7a012453fe04",
+            "@id": "#source/53a6899d-34e1-4b41-bb73-cf6b9302fe46",
             "name": "animal-4",
             "characteristics": [
               {
                 "category": {
-                  "@id": "#characteristic_category/7506db51-6722-447d-832a-3ee6b522d6e0"
+                  "@id": "#characteristic_category/178b9de6-1139-492d-99e8-7d5b5ade2768"
                 },
                 "value": {
-                  "@id": "#ontology_annotation/cc881221-ae06-4b75-8b65-64647b542f05",
+                  "@id": "#ontology_annotation/e06bbaf1-ef4d-45af-b9cd-0cd07243efe9",
                   "annotationValue": "Mus musculus",
                   "termSource": "NCBITax",
                   "termAccession": "NCBITaxon:10090",
@@ -713,10 +723,10 @@
               },
               {
                 "category": {
-                  "@id": "#characteristic_category/827298fa-3d38-4ef4-a540-2a7b0c715575"
+                  "@id": "#characteristic_category/ea8067ab-4f46-4d9e-a2fc-a17c6ab5ae4b"
                 },
                 "value": {
-                  "@id": "#ontology_annotation/c2061369-4487-45ca-8f82-28e424706f5c",
+                  "@id": "#ontology_annotation/e12e9bc2-0151-487b-87bc-aaaa3632df19",
                   "annotationValue": "female",
                   "termSource": "PATO",
                   "termAccession": "PATO:0000383",
@@ -725,18 +735,23 @@
                 "comments": []
               }
             ],
-            "comments": []
+            "comments": [
+              {
+                "name": "HCMO IRI",
+                "value": "https://example.org/hcmo/isa-roundtrip/animal-4"
+              }
+            ]
           },
           {
-            "@id": "#source/7fed6287-5622-4abb-baba-64a133fbab2d",
+            "@id": "#source/56465469-8f44-4cdd-b969-cbf22f5d1d3b",
             "name": "animal-5",
             "characteristics": [
               {
                 "category": {
-                  "@id": "#characteristic_category/7506db51-6722-447d-832a-3ee6b522d6e0"
+                  "@id": "#characteristic_category/178b9de6-1139-492d-99e8-7d5b5ade2768"
                 },
                 "value": {
-                  "@id": "#ontology_annotation/a22cb3bd-416d-49fd-ab1e-54579998c76b",
+                  "@id": "#ontology_annotation/dc61ed7e-5c36-4638-82f5-8220c8fddb32",
                   "annotationValue": "Mus musculus",
                   "termSource": "NCBITax",
                   "termAccession": "NCBITaxon:10090",
@@ -746,10 +761,10 @@
               },
               {
                 "category": {
-                  "@id": "#characteristic_category/827298fa-3d38-4ef4-a540-2a7b0c715575"
+                  "@id": "#characteristic_category/ea8067ab-4f46-4d9e-a2fc-a17c6ab5ae4b"
                 },
                 "value": {
-                  "@id": "#ontology_annotation/97888ca0-9a39-4006-a9a4-94a696b48b0e",
+                  "@id": "#ontology_annotation/d9c87163-fc09-4ebc-8130-b7b2e0c10aba",
                   "annotationValue": "male",
                   "termSource": "PATO",
                   "termAccession": "PATO:0000384",
@@ -758,18 +773,23 @@
                 "comments": []
               }
             ],
-            "comments": []
+            "comments": [
+              {
+                "name": "HCMO IRI",
+                "value": "https://example.org/hcmo/isa-roundtrip/animal-5"
+              }
+            ]
           },
           {
-            "@id": "#source/ffa6c345-f4be-416c-b188-78eea64cdf6b",
+            "@id": "#source/304c2d19-ab1c-4e85-9a26-80071989735f",
             "name": "animal-6",
             "characteristics": [
               {
                 "category": {
-                  "@id": "#characteristic_category/7506db51-6722-447d-832a-3ee6b522d6e0"
+                  "@id": "#characteristic_category/178b9de6-1139-492d-99e8-7d5b5ade2768"
                 },
                 "value": {
-                  "@id": "#ontology_annotation/01814800-7fe1-4440-b815-a8b04bcf2ae2",
+                  "@id": "#ontology_annotation/5781f743-e51b-4fc1-a92d-9fa646b1ab89",
                   "annotationValue": "Mus musculus",
                   "termSource": "NCBITax",
                   "termAccession": "NCBITaxon:10090",
@@ -779,10 +799,10 @@
               },
               {
                 "category": {
-                  "@id": "#characteristic_category/827298fa-3d38-4ef4-a540-2a7b0c715575"
+                  "@id": "#characteristic_category/ea8067ab-4f46-4d9e-a2fc-a17c6ab5ae4b"
                 },
                 "value": {
-                  "@id": "#ontology_annotation/e9e6ed82-120f-451c-8cda-0b4e32f2826a",
+                  "@id": "#ontology_annotation/93517a9c-e039-495e-bece-e02ac3a4e53d",
                   "annotationValue": "female",
                   "termSource": "PATO",
                   "termAccession": "PATO:0000383",
@@ -791,18 +811,23 @@
                 "comments": []
               }
             ],
-            "comments": []
+            "comments": [
+              {
+                "name": "HCMO IRI",
+                "value": "https://example.org/hcmo/isa-roundtrip/animal-6"
+              }
+            ]
           },
           {
-            "@id": "#source/03427fd1-607d-45ac-acb9-93ede84506c6",
+            "@id": "#source/9e28d19f-3475-47ee-a74c-eb03caa90539",
             "name": "animal-7",
             "characteristics": [
               {
                 "category": {
-                  "@id": "#characteristic_category/7506db51-6722-447d-832a-3ee6b522d6e0"
+                  "@id": "#characteristic_category/178b9de6-1139-492d-99e8-7d5b5ade2768"
                 },
                 "value": {
-                  "@id": "#ontology_annotation/57b136a5-ffc4-45d0-8954-c7fbac096b48",
+                  "@id": "#ontology_annotation/74846363-10c8-4dc9-a1f2-aaf28eb512e6",
                   "annotationValue": "Mus musculus",
                   "termSource": "NCBITax",
                   "termAccession": "NCBITaxon:10090",
@@ -812,10 +837,10 @@
               },
               {
                 "category": {
-                  "@id": "#characteristic_category/827298fa-3d38-4ef4-a540-2a7b0c715575"
+                  "@id": "#characteristic_category/ea8067ab-4f46-4d9e-a2fc-a17c6ab5ae4b"
                 },
                 "value": {
-                  "@id": "#ontology_annotation/57324f0e-030d-4ddf-a02e-1600e4d1d856",
+                  "@id": "#ontology_annotation/d132be44-772e-4800-80e9-e42d8bd2c919",
                   "annotationValue": "male",
                   "termSource": "PATO",
                   "termAccession": "PATO:0000384",
@@ -824,18 +849,23 @@
                 "comments": []
               }
             ],
-            "comments": []
+            "comments": [
+              {
+                "name": "HCMO IRI",
+                "value": "https://example.org/hcmo/isa-roundtrip/animal-7"
+              }
+            ]
           },
           {
-            "@id": "#source/e1a829ca-8840-4b6c-8987-c3cd410f3e7b",
+            "@id": "#source/2d3e9c08-8890-40b2-ab60-2f8f085cd91f",
             "name": "animal-8",
             "characteristics": [
               {
                 "category": {
-                  "@id": "#characteristic_category/7506db51-6722-447d-832a-3ee6b522d6e0"
+                  "@id": "#characteristic_category/178b9de6-1139-492d-99e8-7d5b5ade2768"
                 },
                 "value": {
-                  "@id": "#ontology_annotation/34a37fea-1026-4786-a17d-c584990a0d83",
+                  "@id": "#ontology_annotation/a2009b69-10f0-403b-90c7-f02cac37f8b8",
                   "annotationValue": "Mus musculus",
                   "termSource": "NCBITax",
                   "termAccession": "NCBITaxon:10090",
@@ -845,10 +875,10 @@
               },
               {
                 "category": {
-                  "@id": "#characteristic_category/827298fa-3d38-4ef4-a540-2a7b0c715575"
+                  "@id": "#characteristic_category/ea8067ab-4f46-4d9e-a2fc-a17c6ab5ae4b"
                 },
                 "value": {
-                  "@id": "#ontology_annotation/5f2274f0-5282-4ed3-a9d6-67f6785a2c2a",
+                  "@id": "#ontology_annotation/748711cc-d30c-42a6-8735-975febce0986",
                   "annotationValue": "female",
                   "termSource": "PATO",
                   "termAccession": "PATO:0000383",
@@ -857,40 +887,45 @@
                 "comments": []
               }
             ],
-            "comments": []
+            "comments": [
+              {
+                "name": "HCMO IRI",
+                "value": "https://example.org/hcmo/isa-roundtrip/animal-8"
+              }
+            ]
           }
         ],
         "samples": [
           {
-            "@id": "#sample/673e22d9-cdc7-41d7-a2a2-8d07ffc3c58c",
+            "@id": "#sample/ca14d4ef-ca93-4fae-b548-25877c500259",
             "name": "animal-1-sample-1",
             "characteristics": [],
             "factorValues": [
               {
                 "category": {
-                  "@id": "#study_factor/5451df68-f2b5-4482-b9f6-d264bcbda055"
+                  "@id": "#study_factor/060120ee-ce45-4015-be3e-a1585b957855"
                 },
                 "value": "vehicle"
               },
               {
                 "category": {
-                  "@id": "#study_factor/d04aa32a-ae62-4a0f-a987-b15b5ec72381"
+                  "@id": "#study_factor/feacf6a0-5a35-4784-b0c8-f1f6dc83a9cc"
                 },
                 "value": "standard"
               },
               {
                 "category": {
-                  "@id": "#study_factor/1bcae659-d1e1-48b7-b411-bec7dc6b907e"
+                  "@id": "#study_factor/bd3c56f7-a33c-44f6-8151-358619690c33"
                 },
                 "value": 1,
                 "unit": {
-                  "@id": "#ontology_annotation/c7d9e9cb-d233-43d1-84ff-d8923d3af6cc"
+                  "@id": "#ontology_annotation/1374d6fd-ae18-49ec-bd5b-80d16ed8e00e"
                 }
               }
             ],
             "derivesFrom": [
               {
-                "@id": "#source/eda15138-2479-4c49-8c0c-ab0595227559"
+                "@id": "#source/56ff5771-ccb6-4366-ad2f-ca8d1223bcef"
               }
             ],
             "comments": [
@@ -901,35 +936,35 @@
             ]
           },
           {
-            "@id": "#sample/0214bc52-eda9-4f5a-9c88-a1708d9e7c56",
+            "@id": "#sample/e7fc7726-9534-4d9d-a0ef-1ae40d629723",
             "name": "animal-2-sample-1",
             "characteristics": [],
             "factorValues": [
               {
                 "category": {
-                  "@id": "#study_factor/5451df68-f2b5-4482-b9f6-d264bcbda055"
+                  "@id": "#study_factor/060120ee-ce45-4015-be3e-a1585b957855"
                 },
                 "value": "vehicle"
               },
               {
                 "category": {
-                  "@id": "#study_factor/d04aa32a-ae62-4a0f-a987-b15b5ec72381"
+                  "@id": "#study_factor/feacf6a0-5a35-4784-b0c8-f1f6dc83a9cc"
                 },
                 "value": "standard"
               },
               {
                 "category": {
-                  "@id": "#study_factor/1bcae659-d1e1-48b7-b411-bec7dc6b907e"
+                  "@id": "#study_factor/bd3c56f7-a33c-44f6-8151-358619690c33"
                 },
                 "value": 1,
                 "unit": {
-                  "@id": "#ontology_annotation/c7d9e9cb-d233-43d1-84ff-d8923d3af6cc"
+                  "@id": "#ontology_annotation/1374d6fd-ae18-49ec-bd5b-80d16ed8e00e"
                 }
               }
             ],
             "derivesFrom": [
               {
-                "@id": "#source/77cf3862-cad5-41c0-8336-15a0412203ac"
+                "@id": "#source/45509f1a-e78f-4081-8285-a18bbf15a1ab"
               }
             ],
             "comments": [
@@ -940,35 +975,35 @@
             ]
           },
           {
-            "@id": "#sample/653d5812-be85-4986-a058-0825ccc6e4ac",
+            "@id": "#sample/58c8f8b2-4acd-4b95-8f7e-982e3b54d21d",
             "name": "animal-3-sample-1",
             "characteristics": [],
             "factorValues": [
               {
                 "category": {
-                  "@id": "#study_factor/5451df68-f2b5-4482-b9f6-d264bcbda055"
+                  "@id": "#study_factor/060120ee-ce45-4015-be3e-a1585b957855"
                 },
                 "value": "vehicle"
               },
               {
                 "category": {
-                  "@id": "#study_factor/d04aa32a-ae62-4a0f-a987-b15b5ec72381"
+                  "@id": "#study_factor/feacf6a0-5a35-4784-b0c8-f1f6dc83a9cc"
                 },
                 "value": "enriched"
               },
               {
                 "category": {
-                  "@id": "#study_factor/1bcae659-d1e1-48b7-b411-bec7dc6b907e"
+                  "@id": "#study_factor/bd3c56f7-a33c-44f6-8151-358619690c33"
                 },
                 "value": 1,
                 "unit": {
-                  "@id": "#ontology_annotation/c7d9e9cb-d233-43d1-84ff-d8923d3af6cc"
+                  "@id": "#ontology_annotation/1374d6fd-ae18-49ec-bd5b-80d16ed8e00e"
                 }
               }
             ],
             "derivesFrom": [
               {
-                "@id": "#source/29591db0-2eb7-4b73-9632-665fa4b65c79"
+                "@id": "#source/759a493c-5aa7-49d4-ae2d-a81da85c1ac4"
               }
             ],
             "comments": [
@@ -979,35 +1014,35 @@
             ]
           },
           {
-            "@id": "#sample/3efc2771-33cc-4b12-ac7b-46b1b433a2cd",
+            "@id": "#sample/1c2dcc05-3b0c-4317-9141-1e8dce6f66bf",
             "name": "animal-4-sample-1",
             "characteristics": [],
             "factorValues": [
               {
                 "category": {
-                  "@id": "#study_factor/5451df68-f2b5-4482-b9f6-d264bcbda055"
+                  "@id": "#study_factor/060120ee-ce45-4015-be3e-a1585b957855"
                 },
                 "value": "vehicle"
               },
               {
                 "category": {
-                  "@id": "#study_factor/d04aa32a-ae62-4a0f-a987-b15b5ec72381"
+                  "@id": "#study_factor/feacf6a0-5a35-4784-b0c8-f1f6dc83a9cc"
                 },
                 "value": "enriched"
               },
               {
                 "category": {
-                  "@id": "#study_factor/1bcae659-d1e1-48b7-b411-bec7dc6b907e"
+                  "@id": "#study_factor/bd3c56f7-a33c-44f6-8151-358619690c33"
                 },
                 "value": 1,
                 "unit": {
-                  "@id": "#ontology_annotation/c7d9e9cb-d233-43d1-84ff-d8923d3af6cc"
+                  "@id": "#ontology_annotation/1374d6fd-ae18-49ec-bd5b-80d16ed8e00e"
                 }
               }
             ],
             "derivesFrom": [
               {
-                "@id": "#source/761ba752-dbc2-4314-a98e-7a012453fe04"
+                "@id": "#source/53a6899d-34e1-4b41-bb73-cf6b9302fe46"
               }
             ],
             "comments": [
@@ -1018,35 +1053,35 @@
             ]
           },
           {
-            "@id": "#sample/fde358b7-7a7c-4d8f-bbc4-404846664a70",
+            "@id": "#sample/7be150f8-a66e-43b8-ad88-9658e7683578",
             "name": "animal-5-sample-1",
             "characteristics": [],
             "factorValues": [
               {
                 "category": {
-                  "@id": "#study_factor/d04aa32a-ae62-4a0f-a987-b15b5ec72381"
+                  "@id": "#study_factor/060120ee-ce45-4015-be3e-a1585b957855"
+                },
+                "value": "active"
+              },
+              {
+                "category": {
+                  "@id": "#study_factor/feacf6a0-5a35-4784-b0c8-f1f6dc83a9cc"
                 },
                 "value": "standard"
               },
               {
                 "category": {
-                  "@id": "#study_factor/1bcae659-d1e1-48b7-b411-bec7dc6b907e"
+                  "@id": "#study_factor/bd3c56f7-a33c-44f6-8151-358619690c33"
                 },
                 "value": 1,
                 "unit": {
-                  "@id": "#ontology_annotation/c7d9e9cb-d233-43d1-84ff-d8923d3af6cc"
+                  "@id": "#ontology_annotation/1374d6fd-ae18-49ec-bd5b-80d16ed8e00e"
                 }
-              },
-              {
-                "category": {
-                  "@id": "#study_factor/5451df68-f2b5-4482-b9f6-d264bcbda055"
-                },
-                "value": "active"
               }
             ],
             "derivesFrom": [
               {
-                "@id": "#source/7fed6287-5622-4abb-baba-64a133fbab2d"
+                "@id": "#source/56465469-8f44-4cdd-b969-cbf22f5d1d3b"
               }
             ],
             "comments": [
@@ -1057,35 +1092,35 @@
             ]
           },
           {
-            "@id": "#sample/2ec5aecd-95e1-4ea9-b11b-983f6a861586",
+            "@id": "#sample/90a7105e-6662-4fe2-858a-ed6c0f65b421",
             "name": "animal-6-sample-1",
             "characteristics": [],
             "factorValues": [
               {
                 "category": {
-                  "@id": "#study_factor/d04aa32a-ae62-4a0f-a987-b15b5ec72381"
+                  "@id": "#study_factor/060120ee-ce45-4015-be3e-a1585b957855"
+                },
+                "value": "active"
+              },
+              {
+                "category": {
+                  "@id": "#study_factor/feacf6a0-5a35-4784-b0c8-f1f6dc83a9cc"
                 },
                 "value": "standard"
               },
               {
                 "category": {
-                  "@id": "#study_factor/1bcae659-d1e1-48b7-b411-bec7dc6b907e"
+                  "@id": "#study_factor/bd3c56f7-a33c-44f6-8151-358619690c33"
                 },
                 "value": 1,
                 "unit": {
-                  "@id": "#ontology_annotation/c7d9e9cb-d233-43d1-84ff-d8923d3af6cc"
+                  "@id": "#ontology_annotation/1374d6fd-ae18-49ec-bd5b-80d16ed8e00e"
                 }
-              },
-              {
-                "category": {
-                  "@id": "#study_factor/5451df68-f2b5-4482-b9f6-d264bcbda055"
-                },
-                "value": "active"
               }
             ],
             "derivesFrom": [
               {
-                "@id": "#source/ffa6c345-f4be-416c-b188-78eea64cdf6b"
+                "@id": "#source/304c2d19-ab1c-4e85-9a26-80071989735f"
               }
             ],
             "comments": [
@@ -1096,35 +1131,35 @@
             ]
           },
           {
-            "@id": "#sample/5828e83a-79e6-43e0-9c67-ad58f59c0bda",
+            "@id": "#sample/b6bcd3d4-5ccf-4f41-8bcc-6adff861f7a1",
             "name": "animal-7-sample-1",
             "characteristics": [],
             "factorValues": [
               {
                 "category": {
-                  "@id": "#study_factor/d04aa32a-ae62-4a0f-a987-b15b5ec72381"
+                  "@id": "#study_factor/060120ee-ce45-4015-be3e-a1585b957855"
+                },
+                "value": "active"
+              },
+              {
+                "category": {
+                  "@id": "#study_factor/feacf6a0-5a35-4784-b0c8-f1f6dc83a9cc"
                 },
                 "value": "enriched"
               },
               {
                 "category": {
-                  "@id": "#study_factor/1bcae659-d1e1-48b7-b411-bec7dc6b907e"
+                  "@id": "#study_factor/bd3c56f7-a33c-44f6-8151-358619690c33"
                 },
                 "value": 1,
                 "unit": {
-                  "@id": "#ontology_annotation/c7d9e9cb-d233-43d1-84ff-d8923d3af6cc"
+                  "@id": "#ontology_annotation/1374d6fd-ae18-49ec-bd5b-80d16ed8e00e"
                 }
-              },
-              {
-                "category": {
-                  "@id": "#study_factor/5451df68-f2b5-4482-b9f6-d264bcbda055"
-                },
-                "value": "active"
               }
             ],
             "derivesFrom": [
               {
-                "@id": "#source/03427fd1-607d-45ac-acb9-93ede84506c6"
+                "@id": "#source/9e28d19f-3475-47ee-a74c-eb03caa90539"
               }
             ],
             "comments": [
@@ -1135,35 +1170,35 @@
             ]
           },
           {
-            "@id": "#sample/65c7319d-4b49-471a-ae4b-d89289c55442",
+            "@id": "#sample/f1b25919-5a88-4c12-bb22-27f2ed018307",
             "name": "animal-8-sample-1",
             "characteristics": [],
             "factorValues": [
               {
                 "category": {
-                  "@id": "#study_factor/d04aa32a-ae62-4a0f-a987-b15b5ec72381"
+                  "@id": "#study_factor/060120ee-ce45-4015-be3e-a1585b957855"
+                },
+                "value": "active"
+              },
+              {
+                "category": {
+                  "@id": "#study_factor/feacf6a0-5a35-4784-b0c8-f1f6dc83a9cc"
                 },
                 "value": "enriched"
               },
               {
                 "category": {
-                  "@id": "#study_factor/1bcae659-d1e1-48b7-b411-bec7dc6b907e"
+                  "@id": "#study_factor/bd3c56f7-a33c-44f6-8151-358619690c33"
                 },
                 "value": 1,
                 "unit": {
-                  "@id": "#ontology_annotation/c7d9e9cb-d233-43d1-84ff-d8923d3af6cc"
+                  "@id": "#ontology_annotation/1374d6fd-ae18-49ec-bd5b-80d16ed8e00e"
                 }
-              },
-              {
-                "category": {
-                  "@id": "#study_factor/5451df68-f2b5-4482-b9f6-d264bcbda055"
-                },
-                "value": "active"
               }
             ],
             "derivesFrom": [
               {
-                "@id": "#source/e1a829ca-8840-4b6c-8987-c3cd410f3e7b"
+                "@id": "#source/2d3e9c08-8890-40b2-ab60-2f8f085cd91f"
               }
             ],
             "comments": [
@@ -1178,425 +1213,440 @@
       },
       "processSequence": [
         {
-          "@id": "#process/381e9505-008a-4f83-b284-4601d0feb4fc",
+          "@id": "#process/6f416c07-ce54-4be8-8642-0f9f7d70f023",
           "name": "process-0-growth protocol",
           "performer": "",
           "date": "",
           "executesProtocol": {
-            "@id": "#protocol/57d65e6e-280a-422d-b0c0-405237c80900"
+            "@id": "#protocol/82177109-d426-4be6-88e0-766bfcc38467"
           },
           "parameterValues": [
             {
               "category": {
-                "@id": "#protocol_parameter/eba50cf6-9a44-4dce-9b4c-74e3287eec56"
+                "@id": "#protocol_parameter/5279cd0f-0e6f-4e3e-87a8-45ac072a9f1e"
               },
               "value": "A"
             }
           ],
           "inputs": [
             {
-              "@id": "#source/eda15138-2479-4c49-8c0c-ab0595227559"
+              "@id": "#source/56ff5771-ccb6-4366-ad2f-ca8d1223bcef"
             }
           ],
           "outputs": [],
           "comments": [],
           "nextProcess": {
-            "@id": "#process/3e07b759-49dc-45e6-9800-8a07136ea3cc"
+            "@id": "#process/a39a2177-537e-431e-aa62-efc8e2b8ff99"
           }
         },
         {
-          "@id": "#process/3d559c20-6c29-446e-929e-857fc311a83f",
+          "@id": "#process/ee319ae1-9348-453c-a609-a456636c5a06",
           "name": "process-1-growth protocol",
           "performer": "",
           "date": "",
           "executesProtocol": {
-            "@id": "#protocol/57d65e6e-280a-422d-b0c0-405237c80900"
+            "@id": "#protocol/82177109-d426-4be6-88e0-766bfcc38467"
           },
           "parameterValues": [
             {
               "category": {
-                "@id": "#protocol_parameter/eba50cf6-9a44-4dce-9b4c-74e3287eec56"
+                "@id": "#protocol_parameter/5279cd0f-0e6f-4e3e-87a8-45ac072a9f1e"
               },
               "value": "A"
             }
           ],
           "inputs": [
             {
-              "@id": "#source/77cf3862-cad5-41c0-8336-15a0412203ac"
+              "@id": "#source/45509f1a-e78f-4081-8285-a18bbf15a1ab"
             }
           ],
           "outputs": [],
           "comments": [],
           "nextProcess": {
-            "@id": "#process/36879b68-2d92-4460-bc7d-e9b3abfa56fe"
+            "@id": "#process/c0696d77-89fd-4a27-9b4e-b4268d94b34e"
           }
         },
         {
-          "@id": "#process/b9350533-8f6a-4b05-80c6-96851bf33f2e",
+          "@id": "#process/cb6009f5-ae98-4047-88b7-1ba0f2251495",
           "name": "process-2-growth protocol",
           "performer": "",
           "date": "",
           "executesProtocol": {
-            "@id": "#protocol/57d65e6e-280a-422d-b0c0-405237c80900"
+            "@id": "#protocol/82177109-d426-4be6-88e0-766bfcc38467"
           },
           "parameterValues": [
             {
               "category": {
-                "@id": "#protocol_parameter/eba50cf6-9a44-4dce-9b4c-74e3287eec56"
+                "@id": "#protocol_parameter/5279cd0f-0e6f-4e3e-87a8-45ac072a9f1e"
               },
               "value": "B"
             }
           ],
           "inputs": [
             {
-              "@id": "#source/29591db0-2eb7-4b73-9632-665fa4b65c79"
+              "@id": "#source/759a493c-5aa7-49d4-ae2d-a81da85c1ac4"
             }
           ],
           "outputs": [],
           "comments": [],
           "nextProcess": {
-            "@id": "#process/15e0a50a-c11d-4076-9c00-444415bbc7ec"
+            "@id": "#process/b59fc5fe-ad1e-45fb-a9e8-98bfaa8ac1b3"
           }
         },
         {
-          "@id": "#process/037235a2-722e-4618-814b-3d824d86fe58",
+          "@id": "#process/5ea6872e-25e0-4482-aff7-3ce107b4f1c2",
           "name": "process-3-growth protocol",
           "performer": "",
           "date": "",
           "executesProtocol": {
-            "@id": "#protocol/57d65e6e-280a-422d-b0c0-405237c80900"
+            "@id": "#protocol/82177109-d426-4be6-88e0-766bfcc38467"
           },
           "parameterValues": [
             {
               "category": {
-                "@id": "#protocol_parameter/eba50cf6-9a44-4dce-9b4c-74e3287eec56"
+                "@id": "#protocol_parameter/5279cd0f-0e6f-4e3e-87a8-45ac072a9f1e"
               },
               "value": "B"
             }
           ],
           "inputs": [
             {
-              "@id": "#source/761ba752-dbc2-4314-a98e-7a012453fe04"
+              "@id": "#source/53a6899d-34e1-4b41-bb73-cf6b9302fe46"
             }
           ],
           "outputs": [],
           "comments": [],
           "nextProcess": {
-            "@id": "#process/795e8c36-8432-468f-a614-f72e772eb5fd"
+            "@id": "#process/4edf32ce-ef13-4c3b-8820-1a058cf33d97"
           }
         },
         {
-          "@id": "#process/264dd13a-0f68-4263-826d-96262feaa522",
+          "@id": "#process/70c11151-fafa-4090-a0d8-b095ef84655b",
           "name": "process-4-growth protocol",
           "performer": "",
           "date": "",
           "executesProtocol": {
-            "@id": "#protocol/57d65e6e-280a-422d-b0c0-405237c80900"
+            "@id": "#protocol/82177109-d426-4be6-88e0-766bfcc38467"
           },
           "parameterValues": [
             {
               "category": {
-                "@id": "#protocol_parameter/eba50cf6-9a44-4dce-9b4c-74e3287eec56"
+                "@id": "#protocol_parameter/5279cd0f-0e6f-4e3e-87a8-45ac072a9f1e"
               },
               "value": "C"
             }
           ],
           "inputs": [
             {
-              "@id": "#source/7fed6287-5622-4abb-baba-64a133fbab2d"
+              "@id": "#source/56465469-8f44-4cdd-b969-cbf22f5d1d3b"
             }
           ],
           "outputs": [],
           "comments": [],
           "nextProcess": {
-            "@id": "#process/77c193d1-a545-439a-a34f-83c91e4d81ea"
+            "@id": "#process/698527f6-a097-4dd8-b5b1-8fd3af0d1d2d"
           }
         },
         {
-          "@id": "#process/ff45ed9e-5d26-40d8-ba52-7fe3836dbdaa",
+          "@id": "#process/49ce823e-c283-420d-844d-1e452476261f",
           "name": "process-5-growth protocol",
           "performer": "",
           "date": "",
           "executesProtocol": {
-            "@id": "#protocol/57d65e6e-280a-422d-b0c0-405237c80900"
+            "@id": "#protocol/82177109-d426-4be6-88e0-766bfcc38467"
           },
           "parameterValues": [
             {
               "category": {
-                "@id": "#protocol_parameter/eba50cf6-9a44-4dce-9b4c-74e3287eec56"
+                "@id": "#protocol_parameter/5279cd0f-0e6f-4e3e-87a8-45ac072a9f1e"
               },
               "value": "C"
             }
           ],
           "inputs": [
             {
-              "@id": "#source/ffa6c345-f4be-416c-b188-78eea64cdf6b"
+              "@id": "#source/304c2d19-ab1c-4e85-9a26-80071989735f"
             }
           ],
           "outputs": [],
           "comments": [],
           "nextProcess": {
-            "@id": "#process/b525b5d8-bd4c-44b5-9441-5f6cf071027f"
+            "@id": "#process/136bc7df-f54d-42a7-b56d-eb15d33c846a"
           }
         },
         {
-          "@id": "#process/98b7e6cd-d188-423a-853f-0c511479f147",
+          "@id": "#process/7fd45f60-7bdf-486c-9e3f-43e3b79fbef8",
           "name": "process-6-growth protocol",
           "performer": "",
           "date": "",
           "executesProtocol": {
-            "@id": "#protocol/57d65e6e-280a-422d-b0c0-405237c80900"
+            "@id": "#protocol/82177109-d426-4be6-88e0-766bfcc38467"
           },
           "parameterValues": [
             {
               "category": {
-                "@id": "#protocol_parameter/eba50cf6-9a44-4dce-9b4c-74e3287eec56"
+                "@id": "#protocol_parameter/5279cd0f-0e6f-4e3e-87a8-45ac072a9f1e"
               },
               "value": "D"
             }
           ],
           "inputs": [
             {
-              "@id": "#source/03427fd1-607d-45ac-acb9-93ede84506c6"
+              "@id": "#source/9e28d19f-3475-47ee-a74c-eb03caa90539"
             }
           ],
           "outputs": [],
           "comments": [],
           "nextProcess": {
-            "@id": "#process/80041e44-f710-4ec8-aeb5-9bfa42709b56"
+            "@id": "#process/af58816e-0d9d-450b-a138-79fbc263204f"
           }
         },
         {
-          "@id": "#process/c64b2c1c-a93a-40ac-878e-f91d7f8b733d",
+          "@id": "#process/321cb016-2f2b-4772-a01b-a1ee1d1fd0de",
           "name": "process-7-growth protocol",
           "performer": "",
           "date": "",
           "executesProtocol": {
-            "@id": "#protocol/57d65e6e-280a-422d-b0c0-405237c80900"
+            "@id": "#protocol/82177109-d426-4be6-88e0-766bfcc38467"
           },
           "parameterValues": [
             {
               "category": {
-                "@id": "#protocol_parameter/eba50cf6-9a44-4dce-9b4c-74e3287eec56"
+                "@id": "#protocol_parameter/5279cd0f-0e6f-4e3e-87a8-45ac072a9f1e"
               },
               "value": "D"
             }
           ],
           "inputs": [
             {
-              "@id": "#source/e1a829ca-8840-4b6c-8987-c3cd410f3e7b"
+              "@id": "#source/2d3e9c08-8890-40b2-ab60-2f8f085cd91f"
             }
           ],
           "outputs": [],
           "comments": [],
           "nextProcess": {
-            "@id": "#process/48fecb28-b5fd-402c-af9f-9141ae7d1715"
+            "@id": "#process/e705201a-6be3-427d-90b1-22a34e8eb99a"
           }
         },
         {
-          "@id": "#process/3e07b759-49dc-45e6-9800-8a07136ea3cc",
+          "@id": "#process/a39a2177-537e-431e-aa62-efc8e2b8ff99",
           "name": "process-0-sample collection",
           "performer": "",
           "date": "",
           "executesProtocol": {
-            "@id": "#protocol/19ce264a-9c40-4295-a980-023255d4c254"
+            "@id": "#protocol/9c44d6bb-da88-4afe-bc63-296734370140"
           },
           "parameterValues": [],
           "inputs": [],
           "outputs": [
             {
-              "@id": "#sample/673e22d9-cdc7-41d7-a2a2-8d07ffc3c58c"
+              "@id": "#sample/ca14d4ef-ca93-4fae-b548-25877c500259"
             }
           ],
           "comments": [],
           "previousProcess": {
-            "@id": "#process/381e9505-008a-4f83-b284-4601d0feb4fc"
+            "@id": "#process/6f416c07-ce54-4be8-8642-0f9f7d70f023"
           }
         },
         {
-          "@id": "#process/36879b68-2d92-4460-bc7d-e9b3abfa56fe",
+          "@id": "#process/c0696d77-89fd-4a27-9b4e-b4268d94b34e",
           "name": "process-1-sample collection",
           "performer": "",
           "date": "",
           "executesProtocol": {
-            "@id": "#protocol/19ce264a-9c40-4295-a980-023255d4c254"
+            "@id": "#protocol/9c44d6bb-da88-4afe-bc63-296734370140"
           },
           "parameterValues": [],
           "inputs": [],
           "outputs": [
             {
-              "@id": "#sample/0214bc52-eda9-4f5a-9c88-a1708d9e7c56"
+              "@id": "#sample/e7fc7726-9534-4d9d-a0ef-1ae40d629723"
             }
           ],
           "comments": [],
           "previousProcess": {
-            "@id": "#process/3d559c20-6c29-446e-929e-857fc311a83f"
+            "@id": "#process/ee319ae1-9348-453c-a609-a456636c5a06"
           }
         },
         {
-          "@id": "#process/15e0a50a-c11d-4076-9c00-444415bbc7ec",
+          "@id": "#process/b59fc5fe-ad1e-45fb-a9e8-98bfaa8ac1b3",
           "name": "process-2-sample collection",
           "performer": "",
           "date": "",
           "executesProtocol": {
-            "@id": "#protocol/19ce264a-9c40-4295-a980-023255d4c254"
+            "@id": "#protocol/9c44d6bb-da88-4afe-bc63-296734370140"
           },
           "parameterValues": [],
           "inputs": [],
           "outputs": [
             {
-              "@id": "#sample/653d5812-be85-4986-a058-0825ccc6e4ac"
+              "@id": "#sample/58c8f8b2-4acd-4b95-8f7e-982e3b54d21d"
             }
           ],
           "comments": [],
           "previousProcess": {
-            "@id": "#process/b9350533-8f6a-4b05-80c6-96851bf33f2e"
+            "@id": "#process/cb6009f5-ae98-4047-88b7-1ba0f2251495"
           }
         },
         {
-          "@id": "#process/795e8c36-8432-468f-a614-f72e772eb5fd",
+          "@id": "#process/4edf32ce-ef13-4c3b-8820-1a058cf33d97",
           "name": "process-3-sample collection",
           "performer": "",
           "date": "",
           "executesProtocol": {
-            "@id": "#protocol/19ce264a-9c40-4295-a980-023255d4c254"
+            "@id": "#protocol/9c44d6bb-da88-4afe-bc63-296734370140"
           },
           "parameterValues": [],
           "inputs": [],
           "outputs": [
             {
-              "@id": "#sample/3efc2771-33cc-4b12-ac7b-46b1b433a2cd"
+              "@id": "#sample/1c2dcc05-3b0c-4317-9141-1e8dce6f66bf"
             }
           ],
           "comments": [],
           "previousProcess": {
-            "@id": "#process/037235a2-722e-4618-814b-3d824d86fe58"
+            "@id": "#process/5ea6872e-25e0-4482-aff7-3ce107b4f1c2"
           }
         },
         {
-          "@id": "#process/77c193d1-a545-439a-a34f-83c91e4d81ea",
+          "@id": "#process/698527f6-a097-4dd8-b5b1-8fd3af0d1d2d",
           "name": "process-4-sample collection",
           "performer": "",
           "date": "",
           "executesProtocol": {
-            "@id": "#protocol/19ce264a-9c40-4295-a980-023255d4c254"
+            "@id": "#protocol/9c44d6bb-da88-4afe-bc63-296734370140"
           },
           "parameterValues": [],
           "inputs": [],
           "outputs": [
             {
-              "@id": "#sample/fde358b7-7a7c-4d8f-bbc4-404846664a70"
+              "@id": "#sample/7be150f8-a66e-43b8-ad88-9658e7683578"
             }
           ],
           "comments": [],
           "previousProcess": {
-            "@id": "#process/264dd13a-0f68-4263-826d-96262feaa522"
+            "@id": "#process/70c11151-fafa-4090-a0d8-b095ef84655b"
           }
         },
         {
-          "@id": "#process/b525b5d8-bd4c-44b5-9441-5f6cf071027f",
+          "@id": "#process/136bc7df-f54d-42a7-b56d-eb15d33c846a",
           "name": "process-5-sample collection",
           "performer": "",
           "date": "",
           "executesProtocol": {
-            "@id": "#protocol/19ce264a-9c40-4295-a980-023255d4c254"
+            "@id": "#protocol/9c44d6bb-da88-4afe-bc63-296734370140"
           },
           "parameterValues": [],
           "inputs": [],
           "outputs": [
             {
-              "@id": "#sample/2ec5aecd-95e1-4ea9-b11b-983f6a861586"
+              "@id": "#sample/90a7105e-6662-4fe2-858a-ed6c0f65b421"
             }
           ],
           "comments": [],
           "previousProcess": {
-            "@id": "#process/ff45ed9e-5d26-40d8-ba52-7fe3836dbdaa"
+            "@id": "#process/49ce823e-c283-420d-844d-1e452476261f"
           }
         },
         {
-          "@id": "#process/80041e44-f710-4ec8-aeb5-9bfa42709b56",
+          "@id": "#process/af58816e-0d9d-450b-a138-79fbc263204f",
           "name": "process-6-sample collection",
           "performer": "",
           "date": "",
           "executesProtocol": {
-            "@id": "#protocol/19ce264a-9c40-4295-a980-023255d4c254"
+            "@id": "#protocol/9c44d6bb-da88-4afe-bc63-296734370140"
           },
           "parameterValues": [],
           "inputs": [],
           "outputs": [
             {
-              "@id": "#sample/5828e83a-79e6-43e0-9c67-ad58f59c0bda"
+              "@id": "#sample/b6bcd3d4-5ccf-4f41-8bcc-6adff861f7a1"
             }
           ],
           "comments": [],
           "previousProcess": {
-            "@id": "#process/98b7e6cd-d188-423a-853f-0c511479f147"
+            "@id": "#process/7fd45f60-7bdf-486c-9e3f-43e3b79fbef8"
           }
         },
         {
-          "@id": "#process/48fecb28-b5fd-402c-af9f-9141ae7d1715",
+          "@id": "#process/e705201a-6be3-427d-90b1-22a34e8eb99a",
           "name": "process-7-sample collection",
           "performer": "",
           "date": "",
           "executesProtocol": {
-            "@id": "#protocol/19ce264a-9c40-4295-a980-023255d4c254"
+            "@id": "#protocol/9c44d6bb-da88-4afe-bc63-296734370140"
           },
           "parameterValues": [],
           "inputs": [],
           "outputs": [
             {
-              "@id": "#sample/65c7319d-4b49-471a-ae4b-d89289c55442"
+              "@id": "#sample/f1b25919-5a88-4c12-bb22-27f2ed018307"
             }
           ],
           "comments": [],
           "previousProcess": {
-            "@id": "#process/c64b2c1c-a93a-40ac-878e-f91d7f8b733d"
+            "@id": "#process/321cb016-2f2b-4772-a01b-a1ee1d1fd0de"
           }
         }
       ],
       "factors": [
         {
-          "@id": "#study_factor/5451df68-f2b5-4482-b9f6-d264bcbda055",
+          "@id": "#study_factor/060120ee-ce45-4015-be3e-a1585b957855",
           "factorName": "drug",
           "factorType": {
-            "@id": "#ontology_annotation/b61d3a1d-bde5-4ed4-9c07-63aabf8b9aa2",
+            "@id": "#ontology_annotation/5f57fbc4-5360-491a-8f3a-bed320ea486a",
             "annotationValue": "compound",
             "termSource": "CHEBI",
             "termAccession": "CHEBI:24431",
             "comments": []
           },
-          "comments": []
+          "comments": [
+            {
+              "name": "HCMO IRI",
+              "value": "https://example.org/hcmo/isa-roundtrip/factor-treatment"
+            }
+          ]
         },
         {
-          "@id": "#study_factor/d04aa32a-ae62-4a0f-a987-b15b5ec72381",
+          "@id": "#study_factor/feacf6a0-5a35-4784-b0c8-f1f6dc83a9cc",
           "factorName": "environment",
           "factorType": {
-            "@id": "#ontology_annotation/b10c6aa5-c42f-498d-b944-ae13b5269313",
+            "@id": "#ontology_annotation/685492b6-7acb-40e6-9d75-d5dd4fe7064c",
             "annotationValue": "environment",
             "termSource": "",
             "termAccession": "",
             "comments": []
           },
-          "comments": []
+          "comments": [
+            {
+              "name": "HCMO IRI",
+              "value": "https://example.org/hcmo/isa-roundtrip/factor-enrichment"
+            }
+          ]
         },
         {
-          "@id": "#study_factor/1bcae659-d1e1-48b7-b411-bec7dc6b907e",
+          "@id": "#study_factor/bd3c56f7-a33c-44f6-8151-358619690c33",
           "factorName": "monitoring day",
           "factorType": {
-            "@id": "#ontology_annotation/bc7fe0f3-dd5a-4198-af45-f3ddb1552e4a",
+            "@id": "#ontology_annotation/dffa3db0-d731-47d8-bd4b-93cb8a563dd0",
             "annotationValue": "timepoint",
             "termSource": "EFO",
             "termAccession": "EFO:0000724",
             "comments": []
           },
-          "comments": []
+          "comments": [
+            {
+              "name": "HCMO IRI",
+              "value": ""
+            }
+          ]
         }
       ],
       "characteristicCategories": [
         {
-          "@id": "#characteristic_category/7506db51-6722-447d-832a-3ee6b522d6e0",
+          "@id": "#characteristic_category/178b9de6-1139-492d-99e8-7d5b5ade2768",
           "characteristicType": {
-            "@id": "#ontology_annotation/7506db51-6722-447d-832a-3ee6b522d6e0",
+            "@id": "#ontology_annotation/178b9de6-1139-492d-99e8-7d5b5ade2768",
             "annotationValue": "organism",
             "termSource": "",
             "termAccession": "",
@@ -1604,9 +1654,9 @@
           }
         },
         {
-          "@id": "#characteristic_category/827298fa-3d38-4ef4-a540-2a7b0c715575",
+          "@id": "#characteristic_category/ea8067ab-4f46-4d9e-a2fc-a17c6ab5ae4b",
           "characteristicType": {
-            "@id": "#ontology_annotation/827298fa-3d38-4ef4-a540-2a7b0c715575",
+            "@id": "#ontology_annotation/ea8067ab-4f46-4d9e-a2fc-a17c6ab5ae4b",
             "annotationValue": "sex",
             "termSource": "",
             "termAccession": "",
@@ -1616,7 +1666,7 @@
       ],
       "unitCategories": [
         {
-          "@id": "#ontology_annotation/c7d9e9cb-d233-43d1-84ff-d8923d3af6cc",
+          "@id": "#ontology_annotation/1374d6fd-ae18-49ec-bd5b-80d16ed8e00e",
           "annotationValue": "day",
           "termSource": "",
           "termAccession": "",
@@ -1626,14 +1676,14 @@
       "assays": [
         {
           "measurementType": {
-            "@id": "#ontology_annotation/51f53108-2cb9-4d29-a24e-29172203c40c",
+            "@id": "#ontology_annotation/7c658d30-512f-44f4-b985-f18c3eebf9d4",
             "annotationValue": "phenotyping",
             "termSource": "",
             "termAccession": "",
             "comments": []
           },
           "technologyType": {
-            "@id": "#ontology_annotation/b61367b5-029a-4fc6-89c4-97b3693c287d",
+            "@id": "#ontology_annotation/4842372f-7c5b-47f0-a948-882f5a5e5f85",
             "annotationValue": "home cage monitoring",
             "termSource": "",
             "termAccession": "",
@@ -1644,7 +1694,7 @@
           "characteristicCategories": [],
           "unitCategories": [
             {
-              "@id": "#ontology_annotation/777c7743-a319-4aa4-96a0-c26a2a32db59",
+              "@id": "#ontology_annotation/012e7320-5e0b-476f-a701-a3fbbd03a7ac",
               "annotationValue": "day",
               "termSource": "",
               "termAccession": "",
@@ -1660,35 +1710,35 @@
           "materials": {
             "samples": [
               {
-                "@id": "#sample/673e22d9-cdc7-41d7-a2a2-8d07ffc3c58c"
+                "@id": "#sample/ca14d4ef-ca93-4fae-b548-25877c500259"
               },
               {
-                "@id": "#sample/0214bc52-eda9-4f5a-9c88-a1708d9e7c56"
+                "@id": "#sample/e7fc7726-9534-4d9d-a0ef-1ae40d629723"
               },
               {
-                "@id": "#sample/653d5812-be85-4986-a058-0825ccc6e4ac"
+                "@id": "#sample/58c8f8b2-4acd-4b95-8f7e-982e3b54d21d"
               },
               {
-                "@id": "#sample/3efc2771-33cc-4b12-ac7b-46b1b433a2cd"
+                "@id": "#sample/1c2dcc05-3b0c-4317-9141-1e8dce6f66bf"
               },
               {
-                "@id": "#sample/fde358b7-7a7c-4d8f-bbc4-404846664a70"
+                "@id": "#sample/7be150f8-a66e-43b8-ad88-9658e7683578"
               },
               {
-                "@id": "#sample/2ec5aecd-95e1-4ea9-b11b-983f6a861586"
+                "@id": "#sample/90a7105e-6662-4fe2-858a-ed6c0f65b421"
               },
               {
-                "@id": "#sample/5828e83a-79e6-43e0-9c67-ad58f59c0bda"
+                "@id": "#sample/b6bcd3d4-5ccf-4f41-8bcc-6adff861f7a1"
               },
               {
-                "@id": "#sample/65c7319d-4b49-471a-ae4b-d89289c55442"
+                "@id": "#sample/f1b25919-5a88-4c12-bb22-27f2ed018307"
               }
             ],
             "otherMaterials": []
           },
           "dataFiles": [
             {
-              "@id": "#data_file/cd447133-0c80-45ea-a6a4-709e7dd2f088",
+              "@id": "#data_file/2b3c6a85-6b87-4edc-90bd-4d6df69d9a5a",
               "name": "activity_count-animal-1.txt",
               "type": "Raw Data File",
               "comments": [
@@ -1703,7 +1753,7 @@
               ]
             },
             {
-              "@id": "#data_file/afdd05a6-58a9-4fc0-8b16-c85090085e4c",
+              "@id": "#data_file/1dff4b10-8b31-4001-93d9-461a021b1d52",
               "name": "activity_count-animal-2.txt",
               "type": "Raw Data File",
               "comments": [
@@ -1718,7 +1768,7 @@
               ]
             },
             {
-              "@id": "#data_file/3e0622c8-be7d-4151-bc6d-cd44bfee20fe",
+              "@id": "#data_file/0f329093-796d-458b-95cc-f6a3baa60099",
               "name": "activity_count-animal-3.txt",
               "type": "Raw Data File",
               "comments": [
@@ -1733,7 +1783,7 @@
               ]
             },
             {
-              "@id": "#data_file/a8fe89e1-9d69-428a-8e31-828ddbfb5875",
+              "@id": "#data_file/bbf19c60-dad6-4cf4-b3cf-0388e794f365",
               "name": "activity_count-animal-4.txt",
               "type": "Raw Data File",
               "comments": [
@@ -1748,7 +1798,7 @@
               ]
             },
             {
-              "@id": "#data_file/cc83debb-c732-4e52-9dc7-02f337fd08b6",
+              "@id": "#data_file/2b9336dc-219e-40a1-8cb9-f9ae432cf9c9",
               "name": "activity_count-animal-5.txt",
               "type": "Raw Data File",
               "comments": [
@@ -1763,7 +1813,7 @@
               ]
             },
             {
-              "@id": "#data_file/9f48ea3e-7b4d-4a71-b3c2-d13918a3fbbe",
+              "@id": "#data_file/5c866fa8-7c56-4c6f-97df-8c8db9cb71c8",
               "name": "activity_count-animal-6.txt",
               "type": "Raw Data File",
               "comments": [
@@ -1778,7 +1828,7 @@
               ]
             },
             {
-              "@id": "#data_file/ea843d63-ece9-480b-91b5-62ecb37e5302",
+              "@id": "#data_file/e812bacf-dd41-4a39-b6c1-cc680dc12f8a",
               "name": "activity_count-animal-7.txt",
               "type": "Raw Data File",
               "comments": [
@@ -1793,7 +1843,7 @@
               ]
             },
             {
-              "@id": "#data_file/6906fa3d-b2b2-4215-adea-59c4f8e787d1",
+              "@id": "#data_file/42376b06-bbc8-4d20-b3c8-3551e53cff44",
               "name": "activity_count-animal-8.txt",
               "type": "Raw Data File",
               "comments": [
@@ -1810,169 +1860,169 @@
           ],
           "processSequence": [
             {
-              "@id": "#process/d04160cb-c955-4e98-849f-ef0dc371c5eb",
+              "@id": "#process/bca2425f-788d-4340-bc5d-5edaf0ebb960",
               "name": "assay1",
               "performer": "",
               "date": "",
               "executesProtocol": {
-                "@id": "#protocol/5a32c1bc-2acf-495a-87bf-05e6c723ac45"
+                "@id": "#protocol/456496ee-c913-48e4-b299-ba3f9ee74a29"
               },
               "parameterValues": [],
               "inputs": [
                 {
-                  "@id": "#sample/673e22d9-cdc7-41d7-a2a2-8d07ffc3c58c"
+                  "@id": "#sample/ca14d4ef-ca93-4fae-b548-25877c500259"
                 }
               ],
               "outputs": [
                 {
-                  "@id": "#data_file/cd447133-0c80-45ea-a6a4-709e7dd2f088"
+                  "@id": "#data_file/2b3c6a85-6b87-4edc-90bd-4d6df69d9a5a"
                 }
               ],
               "comments": []
             },
             {
-              "@id": "#process/8f5934dc-d419-4364-bfd8-8c4fef50f10f",
+              "@id": "#process/394cf8e4-c954-4c5f-b00c-e32d0738eb38",
               "name": "assay2",
               "performer": "",
               "date": "",
               "executesProtocol": {
-                "@id": "#protocol/5a32c1bc-2acf-495a-87bf-05e6c723ac45"
+                "@id": "#protocol/456496ee-c913-48e4-b299-ba3f9ee74a29"
               },
               "parameterValues": [],
               "inputs": [
                 {
-                  "@id": "#sample/0214bc52-eda9-4f5a-9c88-a1708d9e7c56"
+                  "@id": "#sample/e7fc7726-9534-4d9d-a0ef-1ae40d629723"
                 }
               ],
               "outputs": [
                 {
-                  "@id": "#data_file/afdd05a6-58a9-4fc0-8b16-c85090085e4c"
+                  "@id": "#data_file/1dff4b10-8b31-4001-93d9-461a021b1d52"
                 }
               ],
               "comments": []
             },
             {
-              "@id": "#process/af082959-8fa7-48ae-97b9-9ceebe36f549",
+              "@id": "#process/fce5798e-c36f-4157-9e26-914b5e794e6e",
               "name": "assay3",
               "performer": "",
               "date": "",
               "executesProtocol": {
-                "@id": "#protocol/5a32c1bc-2acf-495a-87bf-05e6c723ac45"
+                "@id": "#protocol/456496ee-c913-48e4-b299-ba3f9ee74a29"
               },
               "parameterValues": [],
               "inputs": [
                 {
-                  "@id": "#sample/653d5812-be85-4986-a058-0825ccc6e4ac"
+                  "@id": "#sample/58c8f8b2-4acd-4b95-8f7e-982e3b54d21d"
                 }
               ],
               "outputs": [
                 {
-                  "@id": "#data_file/3e0622c8-be7d-4151-bc6d-cd44bfee20fe"
+                  "@id": "#data_file/0f329093-796d-458b-95cc-f6a3baa60099"
                 }
               ],
               "comments": []
             },
             {
-              "@id": "#process/3e950398-31ee-4f08-a582-ad5f93e45f8d",
+              "@id": "#process/961a73b0-50f4-4da3-876e-fad2b576b66a",
               "name": "assay4",
               "performer": "",
               "date": "",
               "executesProtocol": {
-                "@id": "#protocol/5a32c1bc-2acf-495a-87bf-05e6c723ac45"
+                "@id": "#protocol/456496ee-c913-48e4-b299-ba3f9ee74a29"
               },
               "parameterValues": [],
               "inputs": [
                 {
-                  "@id": "#sample/3efc2771-33cc-4b12-ac7b-46b1b433a2cd"
+                  "@id": "#sample/1c2dcc05-3b0c-4317-9141-1e8dce6f66bf"
                 }
               ],
               "outputs": [
                 {
-                  "@id": "#data_file/a8fe89e1-9d69-428a-8e31-828ddbfb5875"
+                  "@id": "#data_file/bbf19c60-dad6-4cf4-b3cf-0388e794f365"
                 }
               ],
               "comments": []
             },
             {
-              "@id": "#process/267eae16-fa15-49f4-a828-24e632d40ba4",
+              "@id": "#process/6152dd46-fd01-4a8c-b932-490dfb77ddac",
               "name": "assay5",
               "performer": "",
               "date": "",
               "executesProtocol": {
-                "@id": "#protocol/5a32c1bc-2acf-495a-87bf-05e6c723ac45"
+                "@id": "#protocol/456496ee-c913-48e4-b299-ba3f9ee74a29"
               },
               "parameterValues": [],
               "inputs": [
                 {
-                  "@id": "#sample/fde358b7-7a7c-4d8f-bbc4-404846664a70"
+                  "@id": "#sample/7be150f8-a66e-43b8-ad88-9658e7683578"
                 }
               ],
               "outputs": [
                 {
-                  "@id": "#data_file/cc83debb-c732-4e52-9dc7-02f337fd08b6"
+                  "@id": "#data_file/2b9336dc-219e-40a1-8cb9-f9ae432cf9c9"
                 }
               ],
               "comments": []
             },
             {
-              "@id": "#process/10623b70-6610-46d6-96f6-dcadb2278e59",
+              "@id": "#process/96b24d04-7033-4d55-aecc-8e6b09640380",
               "name": "assay6",
               "performer": "",
               "date": "",
               "executesProtocol": {
-                "@id": "#protocol/5a32c1bc-2acf-495a-87bf-05e6c723ac45"
+                "@id": "#protocol/456496ee-c913-48e4-b299-ba3f9ee74a29"
               },
               "parameterValues": [],
               "inputs": [
                 {
-                  "@id": "#sample/2ec5aecd-95e1-4ea9-b11b-983f6a861586"
+                  "@id": "#sample/90a7105e-6662-4fe2-858a-ed6c0f65b421"
                 }
               ],
               "outputs": [
                 {
-                  "@id": "#data_file/9f48ea3e-7b4d-4a71-b3c2-d13918a3fbbe"
+                  "@id": "#data_file/5c866fa8-7c56-4c6f-97df-8c8db9cb71c8"
                 }
               ],
               "comments": []
             },
             {
-              "@id": "#process/7efb6f2f-b51e-4743-a9ce-fb5202abc339",
+              "@id": "#process/785c4e41-2a5f-4fba-8790-8cbe00c97e28",
               "name": "assay7",
               "performer": "",
               "date": "",
               "executesProtocol": {
-                "@id": "#protocol/5a32c1bc-2acf-495a-87bf-05e6c723ac45"
+                "@id": "#protocol/456496ee-c913-48e4-b299-ba3f9ee74a29"
               },
               "parameterValues": [],
               "inputs": [
                 {
-                  "@id": "#sample/5828e83a-79e6-43e0-9c67-ad58f59c0bda"
+                  "@id": "#sample/b6bcd3d4-5ccf-4f41-8bcc-6adff861f7a1"
                 }
               ],
               "outputs": [
                 {
-                  "@id": "#data_file/ea843d63-ece9-480b-91b5-62ecb37e5302"
+                  "@id": "#data_file/e812bacf-dd41-4a39-b6c1-cc680dc12f8a"
                 }
               ],
               "comments": []
             },
             {
-              "@id": "#process/b748a51b-0573-43b8-a992-7a4ac4d3239d",
+              "@id": "#process/add0b9da-db40-4134-9e2a-ea30675aa222",
               "name": "assay8",
               "performer": "",
               "date": "",
               "executesProtocol": {
-                "@id": "#protocol/5a32c1bc-2acf-495a-87bf-05e6c723ac45"
+                "@id": "#protocol/456496ee-c913-48e4-b299-ba3f9ee74a29"
               },
               "parameterValues": [],
               "inputs": [
                 {
-                  "@id": "#sample/65c7319d-4b49-471a-ae4b-d89289c55442"
+                  "@id": "#sample/f1b25919-5a88-4c12-bb22-27f2ed018307"
                 }
               ],
               "outputs": [
                 {
-                  "@id": "#data_file/6906fa3d-b2b2-4215-adea-59c4f8e787d1"
+                  "@id": "#data_file/42376b06-bbc8-4d20-b3c8-3551e53cff44"
                 }
               ],
               "comments": []
@@ -1981,14 +2031,14 @@
         },
         {
           "measurementType": {
-            "@id": "#ontology_annotation/b1932ea9-34c1-4e65-97a6-01577a523952",
+            "@id": "#ontology_annotation/c0a1fe81-dea2-4f99-80c7-bf7cdfae9f8f",
             "annotationValue": "transcription profiling",
             "termSource": "OBI",
             "termAccession": "OBI:0000424",
             "comments": []
           },
           "technologyType": {
-            "@id": "#ontology_annotation/bb6c9cd0-1c93-49a2-837c-88e9941f6f9f",
+            "@id": "#ontology_annotation/1b66f818-217e-4679-a147-5b8220391582",
             "annotationValue": "nucleotide sequencing",
             "termSource": "OBI",
             "termAccession": "OBI:0000626",
@@ -1999,7 +2049,7 @@
           "characteristicCategories": [],
           "unitCategories": [
             {
-              "@id": "#ontology_annotation/f48a5ce2-1be9-45ef-99cc-c3d6b20c43f1",
+              "@id": "#ontology_annotation/d783a1af-477a-4a11-85e1-1117fb6f742f",
               "annotationValue": "day",
               "termSource": "",
               "termAccession": "",
@@ -2015,82 +2065,82 @@
           "materials": {
             "samples": [
               {
-                "@id": "#sample/673e22d9-cdc7-41d7-a2a2-8d07ffc3c58c"
+                "@id": "#sample/ca14d4ef-ca93-4fae-b548-25877c500259"
               },
               {
-                "@id": "#sample/0214bc52-eda9-4f5a-9c88-a1708d9e7c56"
+                "@id": "#sample/e7fc7726-9534-4d9d-a0ef-1ae40d629723"
               },
               {
-                "@id": "#sample/653d5812-be85-4986-a058-0825ccc6e4ac"
+                "@id": "#sample/58c8f8b2-4acd-4b95-8f7e-982e3b54d21d"
               },
               {
-                "@id": "#sample/3efc2771-33cc-4b12-ac7b-46b1b433a2cd"
+                "@id": "#sample/1c2dcc05-3b0c-4317-9141-1e8dce6f66bf"
               },
               {
-                "@id": "#sample/fde358b7-7a7c-4d8f-bbc4-404846664a70"
+                "@id": "#sample/7be150f8-a66e-43b8-ad88-9658e7683578"
               },
               {
-                "@id": "#sample/2ec5aecd-95e1-4ea9-b11b-983f6a861586"
+                "@id": "#sample/90a7105e-6662-4fe2-858a-ed6c0f65b421"
               },
               {
-                "@id": "#sample/5828e83a-79e6-43e0-9c67-ad58f59c0bda"
+                "@id": "#sample/b6bcd3d4-5ccf-4f41-8bcc-6adff861f7a1"
               },
               {
-                "@id": "#sample/65c7319d-4b49-471a-ae4b-d89289c55442"
+                "@id": "#sample/f1b25919-5a88-4c12-bb22-27f2ed018307"
               }
             ],
             "otherMaterials": [
               {
-                "@id": "#material/c0b5f4a0-8ffe-4917-b531-ae888baf024d",
+                "@id": "#material/2662fdcb-fbb4-4a51-8f54-b4c6a73a4353",
                 "name": "extract-1",
                 "type": "Extract Name",
                 "characteristics": [],
                 "comments": []
               },
               {
-                "@id": "#material/b88ce1d2-b46c-4534-a76e-0663eb25d5ed",
+                "@id": "#material/75c8a5c2-6f6a-43cf-a2d9-296610323956",
                 "name": "extract-2",
                 "type": "Extract Name",
                 "characteristics": [],
                 "comments": []
               },
               {
-                "@id": "#material/0bdd1a26-77d8-42c4-9eeb-41c9d835cd68",
+                "@id": "#material/05346d98-ba8b-4deb-be2d-46661d2d885d",
                 "name": "extract-3",
                 "type": "Extract Name",
                 "characteristics": [],
                 "comments": []
               },
               {
-                "@id": "#material/2d51829e-9748-42af-8efd-6b21a9bd9834",
+                "@id": "#material/c9124a9f-b39d-41c3-b7b3-103a0f5a1745",
                 "name": "extract-4",
                 "type": "Extract Name",
                 "characteristics": [],
                 "comments": []
               },
               {
-                "@id": "#material/19899bd4-54b8-457f-963b-84ace49041c1",
+                "@id": "#material/f6488c5b-e0f2-4c05-bc6d-50194e0fec8e",
                 "name": "extract-5",
                 "type": "Extract Name",
                 "characteristics": [],
                 "comments": []
               },
               {
-                "@id": "#material/27e1f6e2-e457-42a1-9258-cd42c58d50cf",
+                "@id": "#material/f1bb40ec-eeca-4fc4-8ab7-92af1e0e8b1f",
                 "name": "extract-6",
                 "type": "Extract Name",
                 "characteristics": [],
                 "comments": []
               },
               {
-                "@id": "#material/85dc64d7-58bd-437f-b9f0-ed15d64e01b8",
+                "@id": "#material/9967652a-5c1e-41f4-8fe4-063e6ea89f5d",
                 "name": "extract-7",
                 "type": "Extract Name",
                 "characteristics": [],
                 "comments": []
               },
               {
-                "@id": "#material/ebeeebff-2f7d-448b-8cae-60be4c1ba2ec",
+                "@id": "#material/63a94284-d591-4177-8270-6017fcc06819",
                 "name": "extract-8",
                 "type": "Extract Name",
                 "characteristics": [],
@@ -2100,7 +2150,7 @@
           },
           "dataFiles": [
             {
-              "@id": "#data_file/c5903662-a39e-45fa-9049-c64a136117f1",
+              "@id": "#data_file/f5b9b317-2f93-4217-8951-f139092547b1",
               "name": "file1.fq",
               "type": "Raw Data File",
               "comments": [
@@ -2111,7 +2161,7 @@
               ]
             },
             {
-              "@id": "#data_file/2661ad20-e704-4861-acc9-3d2fbff0f535",
+              "@id": "#data_file/c3fe262d-57fa-49c8-807f-6834c667aa7f",
               "name": "file2.fq",
               "type": "Raw Data File",
               "comments": [
@@ -2122,7 +2172,7 @@
               ]
             },
             {
-              "@id": "#data_file/fdfb0345-196d-4ca4-ba20-f7c126567910",
+              "@id": "#data_file/6bb96ced-3a78-42f2-8ac0-073a3b727262",
               "name": "file3.fq",
               "type": "Raw Data File",
               "comments": [
@@ -2133,7 +2183,7 @@
               ]
             },
             {
-              "@id": "#data_file/ee285e9c-7325-4322-a009-6fece643b23e",
+              "@id": "#data_file/3f803bbc-66b2-461d-9559-ee85d119c245",
               "name": "file4.fq",
               "type": "Raw Data File",
               "comments": [
@@ -2144,7 +2194,7 @@
               ]
             },
             {
-              "@id": "#data_file/9cac8c1a-3110-47c0-b54f-7c6d7e6ae307",
+              "@id": "#data_file/c56c8cb8-cc34-4d37-970c-8ae950ef0d4b",
               "name": "file5.fq",
               "type": "Raw Data File",
               "comments": [
@@ -2155,7 +2205,7 @@
               ]
             },
             {
-              "@id": "#data_file/f3813d06-d722-4f97-90b4-a3673d45b0f1",
+              "@id": "#data_file/c2a6ff63-837d-4809-b7a1-dd0aa32cdd88",
               "name": "file6.fq",
               "type": "Raw Data File",
               "comments": [
@@ -2166,7 +2216,7 @@
               ]
             },
             {
-              "@id": "#data_file/359a4afc-c63f-4f1c-bc5e-4c8efd8d34f1",
+              "@id": "#data_file/c84eb352-29a2-4112-87c1-bfb850639eec",
               "name": "file7.fq",
               "type": "Raw Data File",
               "comments": [
@@ -2177,7 +2227,7 @@
               ]
             },
             {
-              "@id": "#data_file/e99b381c-9128-4bc0-9005-4851822da2fe",
+              "@id": "#data_file/668798f1-7580-4f9f-baf1-13a4d5873aae",
               "name": "file8.fq",
               "type": "Raw Data File",
               "comments": [
@@ -2190,653 +2240,653 @@
           ],
           "processSequence": [
             {
-              "@id": "#process/fe2f4300-8999-4f43-b5f8-2f310996039a",
+              "@id": "#process/3b1296cb-2867-46ed-b066-2451aac9e7f2",
               "name": "process-0-nucleic acid extraction",
               "performer": "",
               "date": "",
               "executesProtocol": {
-                "@id": "#protocol/19fc5d91-0ba8-4e5e-baae-966272244ae7"
+                "@id": "#protocol/d7007b83-b340-462d-81a0-023f61daa1e8"
               },
               "parameterValues": [],
               "inputs": [
                 {
-                  "@id": "#sample/673e22d9-cdc7-41d7-a2a2-8d07ffc3c58c"
+                  "@id": "#sample/ca14d4ef-ca93-4fae-b548-25877c500259"
                 }
               ],
               "outputs": [
                 {
-                  "@id": "#material/c0b5f4a0-8ffe-4917-b531-ae888baf024d"
+                  "@id": "#material/2662fdcb-fbb4-4a51-8f54-b4c6a73a4353"
                 }
               ],
               "comments": [],
               "nextProcess": {
-                "@id": "#process/59f1c938-8abe-495b-b8fb-abb6837d5ac7"
+                "@id": "#process/46c168f4-dbf6-465e-aafd-4f5beb020b4f"
               }
             },
             {
-              "@id": "#process/03e2d232-fd56-46cf-b89c-165f5b5ac8b4",
+              "@id": "#process/36fec34a-bd77-44ab-b5a6-a3670bca28bb",
               "name": "process-1-nucleic acid extraction",
               "performer": "",
               "date": "",
               "executesProtocol": {
-                "@id": "#protocol/19fc5d91-0ba8-4e5e-baae-966272244ae7"
+                "@id": "#protocol/d7007b83-b340-462d-81a0-023f61daa1e8"
               },
               "parameterValues": [],
               "inputs": [
                 {
-                  "@id": "#sample/0214bc52-eda9-4f5a-9c88-a1708d9e7c56"
+                  "@id": "#sample/e7fc7726-9534-4d9d-a0ef-1ae40d629723"
                 }
               ],
               "outputs": [
                 {
-                  "@id": "#material/b88ce1d2-b46c-4534-a76e-0663eb25d5ed"
+                  "@id": "#material/75c8a5c2-6f6a-43cf-a2d9-296610323956"
                 }
               ],
               "comments": [],
               "nextProcess": {
-                "@id": "#process/0e0d8ac1-686d-4198-bc32-23571bde5f21"
+                "@id": "#process/390bef68-7a9f-46fd-b695-40a89438aaf5"
               }
             },
             {
-              "@id": "#process/ba4fbdc8-bf4c-4813-b979-d05c244185d3",
+              "@id": "#process/cadb5e65-5d39-4bf4-8c6d-308b3870b749",
               "name": "process-2-nucleic acid extraction",
               "performer": "",
               "date": "",
               "executesProtocol": {
-                "@id": "#protocol/19fc5d91-0ba8-4e5e-baae-966272244ae7"
+                "@id": "#protocol/d7007b83-b340-462d-81a0-023f61daa1e8"
               },
               "parameterValues": [],
               "inputs": [
                 {
-                  "@id": "#sample/653d5812-be85-4986-a058-0825ccc6e4ac"
+                  "@id": "#sample/58c8f8b2-4acd-4b95-8f7e-982e3b54d21d"
                 }
               ],
               "outputs": [
                 {
-                  "@id": "#material/0bdd1a26-77d8-42c4-9eeb-41c9d835cd68"
+                  "@id": "#material/05346d98-ba8b-4deb-be2d-46661d2d885d"
                 }
               ],
               "comments": [],
               "nextProcess": {
-                "@id": "#process/1bbae22d-f082-4b8b-8820-333e5d4d8984"
+                "@id": "#process/f80902e7-f39b-4346-8d89-173f4ddbc05a"
               }
             },
             {
-              "@id": "#process/4ac369cf-015f-4232-bdab-34cef8b5c3a0",
+              "@id": "#process/84054c5e-59aa-4cb7-8a02-5f50004ac006",
               "name": "process-3-nucleic acid extraction",
               "performer": "",
               "date": "",
               "executesProtocol": {
-                "@id": "#protocol/19fc5d91-0ba8-4e5e-baae-966272244ae7"
+                "@id": "#protocol/d7007b83-b340-462d-81a0-023f61daa1e8"
               },
               "parameterValues": [],
               "inputs": [
                 {
-                  "@id": "#sample/3efc2771-33cc-4b12-ac7b-46b1b433a2cd"
+                  "@id": "#sample/1c2dcc05-3b0c-4317-9141-1e8dce6f66bf"
                 }
               ],
               "outputs": [
                 {
-                  "@id": "#material/2d51829e-9748-42af-8efd-6b21a9bd9834"
+                  "@id": "#material/c9124a9f-b39d-41c3-b7b3-103a0f5a1745"
                 }
               ],
               "comments": [],
               "nextProcess": {
-                "@id": "#process/5513435d-2f9c-42ef-9f6d-0aaba5797bd3"
+                "@id": "#process/3a052670-1875-4c2c-8bec-7665cd6a65d0"
               }
             },
             {
-              "@id": "#process/18f089b5-0c23-49c3-afec-57354c6dedca",
+              "@id": "#process/8ae76c0b-5a48-4d62-ac6a-405d83689dfd",
               "name": "process-4-nucleic acid extraction",
               "performer": "",
               "date": "",
               "executesProtocol": {
-                "@id": "#protocol/19fc5d91-0ba8-4e5e-baae-966272244ae7"
+                "@id": "#protocol/d7007b83-b340-462d-81a0-023f61daa1e8"
               },
               "parameterValues": [],
               "inputs": [
                 {
-                  "@id": "#sample/fde358b7-7a7c-4d8f-bbc4-404846664a70"
+                  "@id": "#sample/7be150f8-a66e-43b8-ad88-9658e7683578"
                 }
               ],
               "outputs": [
                 {
-                  "@id": "#material/19899bd4-54b8-457f-963b-84ace49041c1"
+                  "@id": "#material/f6488c5b-e0f2-4c05-bc6d-50194e0fec8e"
                 }
               ],
               "comments": [],
               "nextProcess": {
-                "@id": "#process/2f25ec09-8619-49df-a0be-679531069a9c"
+                "@id": "#process/53a3c32c-cc79-4392-bac6-68674f11fb51"
               }
             },
             {
-              "@id": "#process/f5220c77-efc1-401d-b0c3-40fecf8e91da",
+              "@id": "#process/486e6cf7-78e2-4566-954f-c39c945788f8",
               "name": "process-5-nucleic acid extraction",
               "performer": "",
               "date": "",
               "executesProtocol": {
-                "@id": "#protocol/19fc5d91-0ba8-4e5e-baae-966272244ae7"
+                "@id": "#protocol/d7007b83-b340-462d-81a0-023f61daa1e8"
               },
               "parameterValues": [],
               "inputs": [
                 {
-                  "@id": "#sample/2ec5aecd-95e1-4ea9-b11b-983f6a861586"
+                  "@id": "#sample/90a7105e-6662-4fe2-858a-ed6c0f65b421"
                 }
               ],
               "outputs": [
                 {
-                  "@id": "#material/27e1f6e2-e457-42a1-9258-cd42c58d50cf"
+                  "@id": "#material/f1bb40ec-eeca-4fc4-8ab7-92af1e0e8b1f"
                 }
               ],
               "comments": [],
               "nextProcess": {
-                "@id": "#process/ce0b454a-973b-4c22-bad1-d32fb18ce28b"
+                "@id": "#process/112b44fa-a597-40dd-9b43-621cc390e94b"
               }
             },
             {
-              "@id": "#process/abd14f22-2e40-487a-9e67-39c328f0672f",
+              "@id": "#process/b04cadae-6553-434b-b446-c7d1696aa7d9",
               "name": "process-6-nucleic acid extraction",
               "performer": "",
               "date": "",
               "executesProtocol": {
-                "@id": "#protocol/19fc5d91-0ba8-4e5e-baae-966272244ae7"
+                "@id": "#protocol/d7007b83-b340-462d-81a0-023f61daa1e8"
               },
               "parameterValues": [],
               "inputs": [
                 {
-                  "@id": "#sample/5828e83a-79e6-43e0-9c67-ad58f59c0bda"
+                  "@id": "#sample/b6bcd3d4-5ccf-4f41-8bcc-6adff861f7a1"
                 }
               ],
               "outputs": [
                 {
-                  "@id": "#material/85dc64d7-58bd-437f-b9f0-ed15d64e01b8"
+                  "@id": "#material/9967652a-5c1e-41f4-8fe4-063e6ea89f5d"
                 }
               ],
               "comments": [],
               "nextProcess": {
-                "@id": "#process/1f93f1ec-3ad1-4c6a-93ea-94a9c6945342"
+                "@id": "#process/ab5500d9-418a-4d4e-a0e6-69f204d1a847"
               }
             },
             {
-              "@id": "#process/d6c1aa6f-adff-4370-8950-4c96b839cae3",
+              "@id": "#process/59442033-52bf-4cb2-9de3-e21777d765f8",
               "name": "process-7-nucleic acid extraction",
               "performer": "",
               "date": "",
               "executesProtocol": {
-                "@id": "#protocol/19fc5d91-0ba8-4e5e-baae-966272244ae7"
+                "@id": "#protocol/d7007b83-b340-462d-81a0-023f61daa1e8"
               },
               "parameterValues": [],
               "inputs": [
                 {
-                  "@id": "#sample/65c7319d-4b49-471a-ae4b-d89289c55442"
+                  "@id": "#sample/f1b25919-5a88-4c12-bb22-27f2ed018307"
                 }
               ],
               "outputs": [
                 {
-                  "@id": "#material/ebeeebff-2f7d-448b-8cae-60be4c1ba2ec"
+                  "@id": "#material/63a94284-d591-4177-8270-6017fcc06819"
                 }
               ],
               "comments": [],
               "nextProcess": {
-                "@id": "#process/477197bb-9343-4dc6-bb72-319a9f62810d"
+                "@id": "#process/eb7c0918-f6a0-4737-bef1-f9c41b958a97"
               }
             },
             {
-              "@id": "#process/59f1c938-8abe-495b-b8fb-abb6837d5ac7",
+              "@id": "#process/46c168f4-dbf6-465e-aafd-4f5beb020b4f",
               "name": "process-0-library construction",
               "performer": "",
               "date": "",
               "executesProtocol": {
-                "@id": "#protocol/fc3e12e4-40fe-4b6c-89ac-814e16cdf025"
+                "@id": "#protocol/6d5aa6ce-2792-4b50-b82d-2cc6b3aafcfc"
               },
               "parameterValues": [
                 {
                   "category": {
-                    "@id": "#protocol_parameter/c8d6589c-d01e-4fa9-8169-1854620b3374"
+                    "@id": "#protocol_parameter/3b8ea2bc-998f-46a4-9922-f4b59254c343"
                   },
                   "value": "SINGLE"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/2a64c30d-427c-4b24-962f-4ffbcb1a9e6a"
+                    "@id": "#protocol_parameter/b1900246-bbbf-4d73-a3ff-349a3c82937e"
                   },
                   "value": "AMPLICON"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/7893f13b-83eb-433c-8b0b-cd821b856c69"
+                    "@id": "#protocol_parameter/93f861ee-816d-45eb-87fc-4288eacd129b"
                   },
                   "value": "cDNA"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/f28966ed-b3ab-4e47-a359-d737dde71c3e"
+                    "@id": "#protocol_parameter/fc4eee98-976d-4b0e-a784-c2eee48e39dc"
                   },
                   "value": "RT_PCR"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/0071a7f6-d527-4fd3-b755-edaa0aa05ce2"
+                    "@id": "#protocol_parameter/2bb49e4d-28e5-4fa9-97ac-28ee66a53dd0"
                   },
                   "value": "mid1"
                 }
               ],
               "inputs": [
                 {
-                  "@id": "#material/c0b5f4a0-8ffe-4917-b531-ae888baf024d"
+                  "@id": "#material/2662fdcb-fbb4-4a51-8f54-b4c6a73a4353"
                 }
               ],
               "outputs": [],
               "comments": [],
               "previousProcess": {
-                "@id": "#process/fe2f4300-8999-4f43-b5f8-2f310996039a"
+                "@id": "#process/3b1296cb-2867-46ed-b066-2451aac9e7f2"
               },
               "nextProcess": {
-                "@id": "#process/7aaae07c-ed72-431d-b14f-821053e8bfbf"
+                "@id": "#process/27911a20-9b58-48f9-8f17-5ecd826306eb"
               }
             },
             {
-              "@id": "#process/0e0d8ac1-686d-4198-bc32-23571bde5f21",
+              "@id": "#process/390bef68-7a9f-46fd-b695-40a89438aaf5",
               "name": "process-1-library construction",
               "performer": "",
               "date": "",
               "executesProtocol": {
-                "@id": "#protocol/fc3e12e4-40fe-4b6c-89ac-814e16cdf025"
+                "@id": "#protocol/6d5aa6ce-2792-4b50-b82d-2cc6b3aafcfc"
               },
               "parameterValues": [
                 {
                   "category": {
-                    "@id": "#protocol_parameter/c8d6589c-d01e-4fa9-8169-1854620b3374"
+                    "@id": "#protocol_parameter/3b8ea2bc-998f-46a4-9922-f4b59254c343"
                   },
                   "value": "SINGLE"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/2a64c30d-427c-4b24-962f-4ffbcb1a9e6a"
+                    "@id": "#protocol_parameter/b1900246-bbbf-4d73-a3ff-349a3c82937e"
                   },
                   "value": "AMPLICON"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/7893f13b-83eb-433c-8b0b-cd821b856c69"
+                    "@id": "#protocol_parameter/93f861ee-816d-45eb-87fc-4288eacd129b"
                   },
                   "value": "cDNA"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/f28966ed-b3ab-4e47-a359-d737dde71c3e"
+                    "@id": "#protocol_parameter/fc4eee98-976d-4b0e-a784-c2eee48e39dc"
                   },
                   "value": "RT_PCR"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/0071a7f6-d527-4fd3-b755-edaa0aa05ce2"
+                    "@id": "#protocol_parameter/2bb49e4d-28e5-4fa9-97ac-28ee66a53dd0"
                   },
                   "value": "mid2"
                 }
               ],
               "inputs": [
                 {
-                  "@id": "#material/b88ce1d2-b46c-4534-a76e-0663eb25d5ed"
+                  "@id": "#material/75c8a5c2-6f6a-43cf-a2d9-296610323956"
                 }
               ],
               "outputs": [],
               "comments": [],
               "previousProcess": {
-                "@id": "#process/03e2d232-fd56-46cf-b89c-165f5b5ac8b4"
+                "@id": "#process/36fec34a-bd77-44ab-b5a6-a3670bca28bb"
               },
               "nextProcess": {
-                "@id": "#process/22df63ff-3e12-42e4-ade2-0f15446e9132"
+                "@id": "#process/72dd26fe-a53e-47ad-a3bc-4c0eb797ed4f"
               }
             },
             {
-              "@id": "#process/1bbae22d-f082-4b8b-8820-333e5d4d8984",
+              "@id": "#process/f80902e7-f39b-4346-8d89-173f4ddbc05a",
               "name": "process-2-library construction",
               "performer": "",
               "date": "",
               "executesProtocol": {
-                "@id": "#protocol/fc3e12e4-40fe-4b6c-89ac-814e16cdf025"
+                "@id": "#protocol/6d5aa6ce-2792-4b50-b82d-2cc6b3aafcfc"
               },
               "parameterValues": [
                 {
                   "category": {
-                    "@id": "#protocol_parameter/c8d6589c-d01e-4fa9-8169-1854620b3374"
+                    "@id": "#protocol_parameter/3b8ea2bc-998f-46a4-9922-f4b59254c343"
                   },
                   "value": "SINGLE"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/2a64c30d-427c-4b24-962f-4ffbcb1a9e6a"
+                    "@id": "#protocol_parameter/b1900246-bbbf-4d73-a3ff-349a3c82937e"
                   },
                   "value": "AMPLICON"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/7893f13b-83eb-433c-8b0b-cd821b856c69"
+                    "@id": "#protocol_parameter/93f861ee-816d-45eb-87fc-4288eacd129b"
                   },
                   "value": "cDNA"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/f28966ed-b3ab-4e47-a359-d737dde71c3e"
+                    "@id": "#protocol_parameter/fc4eee98-976d-4b0e-a784-c2eee48e39dc"
                   },
                   "value": "RT_PCR"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/0071a7f6-d527-4fd3-b755-edaa0aa05ce2"
+                    "@id": "#protocol_parameter/2bb49e4d-28e5-4fa9-97ac-28ee66a53dd0"
                   },
                   "value": "mid3"
                 }
               ],
               "inputs": [
                 {
-                  "@id": "#material/0bdd1a26-77d8-42c4-9eeb-41c9d835cd68"
+                  "@id": "#material/05346d98-ba8b-4deb-be2d-46661d2d885d"
                 }
               ],
               "outputs": [],
               "comments": [],
               "previousProcess": {
-                "@id": "#process/ba4fbdc8-bf4c-4813-b979-d05c244185d3"
+                "@id": "#process/cadb5e65-5d39-4bf4-8c6d-308b3870b749"
               },
               "nextProcess": {
-                "@id": "#process/75278875-a597-406d-85b0-b17d8f83ebdb"
+                "@id": "#process/8b77d671-90f6-4800-b0d3-72e42df39b03"
               }
             },
             {
-              "@id": "#process/5513435d-2f9c-42ef-9f6d-0aaba5797bd3",
+              "@id": "#process/3a052670-1875-4c2c-8bec-7665cd6a65d0",
               "name": "process-3-library construction",
               "performer": "",
               "date": "",
               "executesProtocol": {
-                "@id": "#protocol/fc3e12e4-40fe-4b6c-89ac-814e16cdf025"
+                "@id": "#protocol/6d5aa6ce-2792-4b50-b82d-2cc6b3aafcfc"
               },
               "parameterValues": [
                 {
                   "category": {
-                    "@id": "#protocol_parameter/c8d6589c-d01e-4fa9-8169-1854620b3374"
+                    "@id": "#protocol_parameter/3b8ea2bc-998f-46a4-9922-f4b59254c343"
                   },
                   "value": "SINGLE"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/2a64c30d-427c-4b24-962f-4ffbcb1a9e6a"
+                    "@id": "#protocol_parameter/b1900246-bbbf-4d73-a3ff-349a3c82937e"
                   },
                   "value": "AMPLICON"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/7893f13b-83eb-433c-8b0b-cd821b856c69"
+                    "@id": "#protocol_parameter/93f861ee-816d-45eb-87fc-4288eacd129b"
                   },
                   "value": "cDNA"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/f28966ed-b3ab-4e47-a359-d737dde71c3e"
+                    "@id": "#protocol_parameter/fc4eee98-976d-4b0e-a784-c2eee48e39dc"
                   },
                   "value": "RT_PCR"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/0071a7f6-d527-4fd3-b755-edaa0aa05ce2"
+                    "@id": "#protocol_parameter/2bb49e4d-28e5-4fa9-97ac-28ee66a53dd0"
                   },
                   "value": "mid4"
                 }
               ],
               "inputs": [
                 {
-                  "@id": "#material/2d51829e-9748-42af-8efd-6b21a9bd9834"
+                  "@id": "#material/c9124a9f-b39d-41c3-b7b3-103a0f5a1745"
                 }
               ],
               "outputs": [],
               "comments": [],
               "previousProcess": {
-                "@id": "#process/4ac369cf-015f-4232-bdab-34cef8b5c3a0"
+                "@id": "#process/84054c5e-59aa-4cb7-8a02-5f50004ac006"
               },
               "nextProcess": {
-                "@id": "#process/9c2968c1-165e-4a3c-9a51-1062379b3321"
+                "@id": "#process/3a19585a-a120-4814-8fe5-0d3a0e4a077e"
               }
             },
             {
-              "@id": "#process/2f25ec09-8619-49df-a0be-679531069a9c",
+              "@id": "#process/53a3c32c-cc79-4392-bac6-68674f11fb51",
               "name": "process-4-library construction",
               "performer": "",
               "date": "",
               "executesProtocol": {
-                "@id": "#protocol/fc3e12e4-40fe-4b6c-89ac-814e16cdf025"
+                "@id": "#protocol/6d5aa6ce-2792-4b50-b82d-2cc6b3aafcfc"
               },
               "parameterValues": [
                 {
                   "category": {
-                    "@id": "#protocol_parameter/c8d6589c-d01e-4fa9-8169-1854620b3374"
+                    "@id": "#protocol_parameter/3b8ea2bc-998f-46a4-9922-f4b59254c343"
                   },
                   "value": "SINGLE"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/2a64c30d-427c-4b24-962f-4ffbcb1a9e6a"
+                    "@id": "#protocol_parameter/b1900246-bbbf-4d73-a3ff-349a3c82937e"
                   },
                   "value": "AMPLICON"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/7893f13b-83eb-433c-8b0b-cd821b856c69"
+                    "@id": "#protocol_parameter/93f861ee-816d-45eb-87fc-4288eacd129b"
                   },
                   "value": "cDNA"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/f28966ed-b3ab-4e47-a359-d737dde71c3e"
+                    "@id": "#protocol_parameter/fc4eee98-976d-4b0e-a784-c2eee48e39dc"
                   },
                   "value": "RT_PCR"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/0071a7f6-d527-4fd3-b755-edaa0aa05ce2"
+                    "@id": "#protocol_parameter/2bb49e4d-28e5-4fa9-97ac-28ee66a53dd0"
                   },
                   "value": "mid5"
                 }
               ],
               "inputs": [
                 {
-                  "@id": "#material/19899bd4-54b8-457f-963b-84ace49041c1"
+                  "@id": "#material/f6488c5b-e0f2-4c05-bc6d-50194e0fec8e"
                 }
               ],
               "outputs": [],
               "comments": [],
               "previousProcess": {
-                "@id": "#process/18f089b5-0c23-49c3-afec-57354c6dedca"
+                "@id": "#process/8ae76c0b-5a48-4d62-ac6a-405d83689dfd"
               },
               "nextProcess": {
-                "@id": "#process/ab1375fc-8dac-4f80-ad8d-12375c0175ce"
+                "@id": "#process/1e97f75f-30ab-4e4c-9be4-a974c2a3e195"
               }
             },
             {
-              "@id": "#process/ce0b454a-973b-4c22-bad1-d32fb18ce28b",
+              "@id": "#process/112b44fa-a597-40dd-9b43-621cc390e94b",
               "name": "process-5-library construction",
               "performer": "",
               "date": "",
               "executesProtocol": {
-                "@id": "#protocol/fc3e12e4-40fe-4b6c-89ac-814e16cdf025"
+                "@id": "#protocol/6d5aa6ce-2792-4b50-b82d-2cc6b3aafcfc"
               },
               "parameterValues": [
                 {
                   "category": {
-                    "@id": "#protocol_parameter/c8d6589c-d01e-4fa9-8169-1854620b3374"
+                    "@id": "#protocol_parameter/3b8ea2bc-998f-46a4-9922-f4b59254c343"
                   },
                   "value": "SINGLE"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/2a64c30d-427c-4b24-962f-4ffbcb1a9e6a"
+                    "@id": "#protocol_parameter/b1900246-bbbf-4d73-a3ff-349a3c82937e"
                   },
                   "value": "AMPLICON"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/7893f13b-83eb-433c-8b0b-cd821b856c69"
+                    "@id": "#protocol_parameter/93f861ee-816d-45eb-87fc-4288eacd129b"
                   },
                   "value": "cDNA"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/f28966ed-b3ab-4e47-a359-d737dde71c3e"
+                    "@id": "#protocol_parameter/fc4eee98-976d-4b0e-a784-c2eee48e39dc"
                   },
                   "value": "RT_PCR"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/0071a7f6-d527-4fd3-b755-edaa0aa05ce2"
+                    "@id": "#protocol_parameter/2bb49e4d-28e5-4fa9-97ac-28ee66a53dd0"
                   },
                   "value": "mid6"
                 }
               ],
               "inputs": [
                 {
-                  "@id": "#material/27e1f6e2-e457-42a1-9258-cd42c58d50cf"
+                  "@id": "#material/f1bb40ec-eeca-4fc4-8ab7-92af1e0e8b1f"
                 }
               ],
               "outputs": [],
               "comments": [],
               "previousProcess": {
-                "@id": "#process/f5220c77-efc1-401d-b0c3-40fecf8e91da"
+                "@id": "#process/486e6cf7-78e2-4566-954f-c39c945788f8"
               },
               "nextProcess": {
-                "@id": "#process/e0834f98-5171-4300-bea5-b363d01cec76"
+                "@id": "#process/ede8ee47-d2fe-443a-ab1d-a637d986bdc4"
               }
             },
             {
-              "@id": "#process/1f93f1ec-3ad1-4c6a-93ea-94a9c6945342",
+              "@id": "#process/ab5500d9-418a-4d4e-a0e6-69f204d1a847",
               "name": "process-6-library construction",
               "performer": "",
               "date": "",
               "executesProtocol": {
-                "@id": "#protocol/fc3e12e4-40fe-4b6c-89ac-814e16cdf025"
+                "@id": "#protocol/6d5aa6ce-2792-4b50-b82d-2cc6b3aafcfc"
               },
               "parameterValues": [
                 {
                   "category": {
-                    "@id": "#protocol_parameter/c8d6589c-d01e-4fa9-8169-1854620b3374"
+                    "@id": "#protocol_parameter/3b8ea2bc-998f-46a4-9922-f4b59254c343"
                   },
                   "value": "SINGLE"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/2a64c30d-427c-4b24-962f-4ffbcb1a9e6a"
+                    "@id": "#protocol_parameter/b1900246-bbbf-4d73-a3ff-349a3c82937e"
                   },
                   "value": "AMPLICON"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/7893f13b-83eb-433c-8b0b-cd821b856c69"
+                    "@id": "#protocol_parameter/93f861ee-816d-45eb-87fc-4288eacd129b"
                   },
                   "value": "cDNA"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/f28966ed-b3ab-4e47-a359-d737dde71c3e"
+                    "@id": "#protocol_parameter/fc4eee98-976d-4b0e-a784-c2eee48e39dc"
                   },
                   "value": "RT_PCR"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/0071a7f6-d527-4fd3-b755-edaa0aa05ce2"
+                    "@id": "#protocol_parameter/2bb49e4d-28e5-4fa9-97ac-28ee66a53dd0"
                   },
                   "value": "mid7"
                 }
               ],
               "inputs": [
                 {
-                  "@id": "#material/85dc64d7-58bd-437f-b9f0-ed15d64e01b8"
+                  "@id": "#material/9967652a-5c1e-41f4-8fe4-063e6ea89f5d"
                 }
               ],
               "outputs": [],
               "comments": [],
               "previousProcess": {
-                "@id": "#process/abd14f22-2e40-487a-9e67-39c328f0672f"
+                "@id": "#process/b04cadae-6553-434b-b446-c7d1696aa7d9"
               },
               "nextProcess": {
-                "@id": "#process/c2e8b585-1249-47ca-affa-81cf3b89c426"
+                "@id": "#process/176bdbfd-cc08-4726-a896-dfa6ffa181d6"
               }
             },
             {
-              "@id": "#process/477197bb-9343-4dc6-bb72-319a9f62810d",
+              "@id": "#process/eb7c0918-f6a0-4737-bef1-f9c41b958a97",
               "name": "process-7-library construction",
               "performer": "",
               "date": "",
               "executesProtocol": {
-                "@id": "#protocol/fc3e12e4-40fe-4b6c-89ac-814e16cdf025"
+                "@id": "#protocol/6d5aa6ce-2792-4b50-b82d-2cc6b3aafcfc"
               },
               "parameterValues": [
                 {
                   "category": {
-                    "@id": "#protocol_parameter/c8d6589c-d01e-4fa9-8169-1854620b3374"
+                    "@id": "#protocol_parameter/3b8ea2bc-998f-46a4-9922-f4b59254c343"
                   },
                   "value": "SINGLE"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/2a64c30d-427c-4b24-962f-4ffbcb1a9e6a"
+                    "@id": "#protocol_parameter/b1900246-bbbf-4d73-a3ff-349a3c82937e"
                   },
                   "value": "AMPLICON"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/7893f13b-83eb-433c-8b0b-cd821b856c69"
+                    "@id": "#protocol_parameter/93f861ee-816d-45eb-87fc-4288eacd129b"
                   },
                   "value": "cDNA"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/f28966ed-b3ab-4e47-a359-d737dde71c3e"
+                    "@id": "#protocol_parameter/fc4eee98-976d-4b0e-a784-c2eee48e39dc"
                   },
                   "value": "RT_PCR"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/0071a7f6-d527-4fd3-b755-edaa0aa05ce2"
+                    "@id": "#protocol_parameter/2bb49e4d-28e5-4fa9-97ac-28ee66a53dd0"
                   },
                   "value": "mid8"
                 }
               ],
               "inputs": [
                 {
-                  "@id": "#material/ebeeebff-2f7d-448b-8cae-60be4c1ba2ec"
+                  "@id": "#material/63a94284-d591-4177-8270-6017fcc06819"
                 }
               ],
               "outputs": [],
               "comments": [],
               "previousProcess": {
-                "@id": "#process/d6c1aa6f-adff-4370-8950-4c96b839cae3"
+                "@id": "#process/59442033-52bf-4cb2-9de3-e21777d765f8"
               },
               "nextProcess": {
-                "@id": "#process/30906282-63a7-45a1-baf8-66353f2d5330"
+                "@id": "#process/d35fa5de-2ff4-4d5b-96c8-68e318c16baf"
               }
             },
             {
-              "@id": "#process/7aaae07c-ed72-431d-b14f-821053e8bfbf",
+              "@id": "#process/27911a20-9b58-48f9-8f17-5ecd826306eb",
               "name": "assay1",
               "performer": "",
               "date": "",
               "executesProtocol": {
-                "@id": "#protocol/c82773c0-9f31-4ee8-bc34-f7bc4bf094d4"
+                "@id": "#protocol/9fdbb4bc-5e14-4c6b-a2b6-8d32970bdba9"
               },
               "parameterValues": [
                 {
                   "category": {
-                    "@id": "#protocol_parameter/518dc6a9-f69c-4a26-aac5-0967f2b05c47"
+                    "@id": "#protocol_parameter/bb9f1ee8-43c0-4704-937a-e9a7ebe4aaea"
                   },
                   "value": "ILLUMINA"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/ea859ca9-cd4a-46fb-90df-50b801ebb632"
+                    "@id": "#protocol_parameter/05d1ff79-c3dc-47d0-9fb3-714490a4373c"
                   },
                   "value": "Illumina NovaSeq 6000"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/ce192d37-5488-472a-9762-008070245464"
+                    "@id": "#protocol_parameter/c50b2139-f923-4aaf-a028-c344ee5ead39"
                   },
                   "value": "F12341234"
                 }
@@ -2844,38 +2894,38 @@
               "inputs": [],
               "outputs": [
                 {
-                  "@id": "#data_file/c5903662-a39e-45fa-9049-c64a136117f1"
+                  "@id": "#data_file/f5b9b317-2f93-4217-8951-f139092547b1"
                 }
               ],
               "comments": [],
               "previousProcess": {
-                "@id": "#process/59f1c938-8abe-495b-b8fb-abb6837d5ac7"
+                "@id": "#process/46c168f4-dbf6-465e-aafd-4f5beb020b4f"
               }
             },
             {
-              "@id": "#process/22df63ff-3e12-42e4-ade2-0f15446e9132",
+              "@id": "#process/72dd26fe-a53e-47ad-a3bc-4c0eb797ed4f",
               "name": "assay2",
               "performer": "",
               "date": "",
               "executesProtocol": {
-                "@id": "#protocol/c82773c0-9f31-4ee8-bc34-f7bc4bf094d4"
+                "@id": "#protocol/9fdbb4bc-5e14-4c6b-a2b6-8d32970bdba9"
               },
               "parameterValues": [
                 {
                   "category": {
-                    "@id": "#protocol_parameter/518dc6a9-f69c-4a26-aac5-0967f2b05c47"
+                    "@id": "#protocol_parameter/bb9f1ee8-43c0-4704-937a-e9a7ebe4aaea"
                   },
                   "value": "ILLUMINA"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/ea859ca9-cd4a-46fb-90df-50b801ebb632"
+                    "@id": "#protocol_parameter/05d1ff79-c3dc-47d0-9fb3-714490a4373c"
                   },
                   "value": "Illumina NovaSeq 6000"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/ce192d37-5488-472a-9762-008070245464"
+                    "@id": "#protocol_parameter/c50b2139-f923-4aaf-a028-c344ee5ead39"
                   },
                   "value": "F12341234"
                 }
@@ -2883,38 +2933,38 @@
               "inputs": [],
               "outputs": [
                 {
-                  "@id": "#data_file/2661ad20-e704-4861-acc9-3d2fbff0f535"
+                  "@id": "#data_file/c3fe262d-57fa-49c8-807f-6834c667aa7f"
                 }
               ],
               "comments": [],
               "previousProcess": {
-                "@id": "#process/0e0d8ac1-686d-4198-bc32-23571bde5f21"
+                "@id": "#process/390bef68-7a9f-46fd-b695-40a89438aaf5"
               }
             },
             {
-              "@id": "#process/75278875-a597-406d-85b0-b17d8f83ebdb",
+              "@id": "#process/8b77d671-90f6-4800-b0d3-72e42df39b03",
               "name": "assay3",
               "performer": "",
               "date": "",
               "executesProtocol": {
-                "@id": "#protocol/c82773c0-9f31-4ee8-bc34-f7bc4bf094d4"
+                "@id": "#protocol/9fdbb4bc-5e14-4c6b-a2b6-8d32970bdba9"
               },
               "parameterValues": [
                 {
                   "category": {
-                    "@id": "#protocol_parameter/518dc6a9-f69c-4a26-aac5-0967f2b05c47"
+                    "@id": "#protocol_parameter/bb9f1ee8-43c0-4704-937a-e9a7ebe4aaea"
                   },
                   "value": "ILLUMINA"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/ea859ca9-cd4a-46fb-90df-50b801ebb632"
+                    "@id": "#protocol_parameter/05d1ff79-c3dc-47d0-9fb3-714490a4373c"
                   },
                   "value": "Illumina NovaSeq 6000"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/ce192d37-5488-472a-9762-008070245464"
+                    "@id": "#protocol_parameter/c50b2139-f923-4aaf-a028-c344ee5ead39"
                   },
                   "value": "F12341234"
                 }
@@ -2922,38 +2972,38 @@
               "inputs": [],
               "outputs": [
                 {
-                  "@id": "#data_file/fdfb0345-196d-4ca4-ba20-f7c126567910"
+                  "@id": "#data_file/6bb96ced-3a78-42f2-8ac0-073a3b727262"
                 }
               ],
               "comments": [],
               "previousProcess": {
-                "@id": "#process/1bbae22d-f082-4b8b-8820-333e5d4d8984"
+                "@id": "#process/f80902e7-f39b-4346-8d89-173f4ddbc05a"
               }
             },
             {
-              "@id": "#process/9c2968c1-165e-4a3c-9a51-1062379b3321",
+              "@id": "#process/3a19585a-a120-4814-8fe5-0d3a0e4a077e",
               "name": "assay4",
               "performer": "",
               "date": "",
               "executesProtocol": {
-                "@id": "#protocol/c82773c0-9f31-4ee8-bc34-f7bc4bf094d4"
+                "@id": "#protocol/9fdbb4bc-5e14-4c6b-a2b6-8d32970bdba9"
               },
               "parameterValues": [
                 {
                   "category": {
-                    "@id": "#protocol_parameter/518dc6a9-f69c-4a26-aac5-0967f2b05c47"
+                    "@id": "#protocol_parameter/bb9f1ee8-43c0-4704-937a-e9a7ebe4aaea"
                   },
                   "value": "ILLUMINA"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/ea859ca9-cd4a-46fb-90df-50b801ebb632"
+                    "@id": "#protocol_parameter/05d1ff79-c3dc-47d0-9fb3-714490a4373c"
                   },
                   "value": "Illumina NovaSeq 6000"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/ce192d37-5488-472a-9762-008070245464"
+                    "@id": "#protocol_parameter/c50b2139-f923-4aaf-a028-c344ee5ead39"
                   },
                   "value": "F12341234"
                 }
@@ -2961,38 +3011,38 @@
               "inputs": [],
               "outputs": [
                 {
-                  "@id": "#data_file/ee285e9c-7325-4322-a009-6fece643b23e"
+                  "@id": "#data_file/3f803bbc-66b2-461d-9559-ee85d119c245"
                 }
               ],
               "comments": [],
               "previousProcess": {
-                "@id": "#process/5513435d-2f9c-42ef-9f6d-0aaba5797bd3"
+                "@id": "#process/3a052670-1875-4c2c-8bec-7665cd6a65d0"
               }
             },
             {
-              "@id": "#process/ab1375fc-8dac-4f80-ad8d-12375c0175ce",
+              "@id": "#process/1e97f75f-30ab-4e4c-9be4-a974c2a3e195",
               "name": "assay5",
               "performer": "",
               "date": "",
               "executesProtocol": {
-                "@id": "#protocol/c82773c0-9f31-4ee8-bc34-f7bc4bf094d4"
+                "@id": "#protocol/9fdbb4bc-5e14-4c6b-a2b6-8d32970bdba9"
               },
               "parameterValues": [
                 {
                   "category": {
-                    "@id": "#protocol_parameter/518dc6a9-f69c-4a26-aac5-0967f2b05c47"
+                    "@id": "#protocol_parameter/bb9f1ee8-43c0-4704-937a-e9a7ebe4aaea"
                   },
                   "value": "ILLUMINA"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/ea859ca9-cd4a-46fb-90df-50b801ebb632"
+                    "@id": "#protocol_parameter/05d1ff79-c3dc-47d0-9fb3-714490a4373c"
                   },
                   "value": "Illumina NovaSeq 6000"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/ce192d37-5488-472a-9762-008070245464"
+                    "@id": "#protocol_parameter/c50b2139-f923-4aaf-a028-c344ee5ead39"
                   },
                   "value": "F12341234"
                 }
@@ -3000,38 +3050,38 @@
               "inputs": [],
               "outputs": [
                 {
-                  "@id": "#data_file/9cac8c1a-3110-47c0-b54f-7c6d7e6ae307"
+                  "@id": "#data_file/c56c8cb8-cc34-4d37-970c-8ae950ef0d4b"
                 }
               ],
               "comments": [],
               "previousProcess": {
-                "@id": "#process/2f25ec09-8619-49df-a0be-679531069a9c"
+                "@id": "#process/53a3c32c-cc79-4392-bac6-68674f11fb51"
               }
             },
             {
-              "@id": "#process/e0834f98-5171-4300-bea5-b363d01cec76",
+              "@id": "#process/ede8ee47-d2fe-443a-ab1d-a637d986bdc4",
               "name": "assay6",
               "performer": "",
               "date": "",
               "executesProtocol": {
-                "@id": "#protocol/c82773c0-9f31-4ee8-bc34-f7bc4bf094d4"
+                "@id": "#protocol/9fdbb4bc-5e14-4c6b-a2b6-8d32970bdba9"
               },
               "parameterValues": [
                 {
                   "category": {
-                    "@id": "#protocol_parameter/518dc6a9-f69c-4a26-aac5-0967f2b05c47"
+                    "@id": "#protocol_parameter/bb9f1ee8-43c0-4704-937a-e9a7ebe4aaea"
                   },
                   "value": "ILLUMINA"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/ea859ca9-cd4a-46fb-90df-50b801ebb632"
+                    "@id": "#protocol_parameter/05d1ff79-c3dc-47d0-9fb3-714490a4373c"
                   },
                   "value": "Illumina NovaSeq 6000"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/ce192d37-5488-472a-9762-008070245464"
+                    "@id": "#protocol_parameter/c50b2139-f923-4aaf-a028-c344ee5ead39"
                   },
                   "value": "F12341234"
                 }
@@ -3039,38 +3089,38 @@
               "inputs": [],
               "outputs": [
                 {
-                  "@id": "#data_file/f3813d06-d722-4f97-90b4-a3673d45b0f1"
+                  "@id": "#data_file/c2a6ff63-837d-4809-b7a1-dd0aa32cdd88"
                 }
               ],
               "comments": [],
               "previousProcess": {
-                "@id": "#process/ce0b454a-973b-4c22-bad1-d32fb18ce28b"
+                "@id": "#process/112b44fa-a597-40dd-9b43-621cc390e94b"
               }
             },
             {
-              "@id": "#process/c2e8b585-1249-47ca-affa-81cf3b89c426",
+              "@id": "#process/176bdbfd-cc08-4726-a896-dfa6ffa181d6",
               "name": "assay7",
               "performer": "",
               "date": "",
               "executesProtocol": {
-                "@id": "#protocol/c82773c0-9f31-4ee8-bc34-f7bc4bf094d4"
+                "@id": "#protocol/9fdbb4bc-5e14-4c6b-a2b6-8d32970bdba9"
               },
               "parameterValues": [
                 {
                   "category": {
-                    "@id": "#protocol_parameter/518dc6a9-f69c-4a26-aac5-0967f2b05c47"
+                    "@id": "#protocol_parameter/bb9f1ee8-43c0-4704-937a-e9a7ebe4aaea"
                   },
                   "value": "ILLUMINA"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/ea859ca9-cd4a-46fb-90df-50b801ebb632"
+                    "@id": "#protocol_parameter/05d1ff79-c3dc-47d0-9fb3-714490a4373c"
                   },
                   "value": "Illumina NovaSeq 6000"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/ce192d37-5488-472a-9762-008070245464"
+                    "@id": "#protocol_parameter/c50b2139-f923-4aaf-a028-c344ee5ead39"
                   },
                   "value": "F12341234"
                 }
@@ -3078,38 +3128,38 @@
               "inputs": [],
               "outputs": [
                 {
-                  "@id": "#data_file/359a4afc-c63f-4f1c-bc5e-4c8efd8d34f1"
+                  "@id": "#data_file/c84eb352-29a2-4112-87c1-bfb850639eec"
                 }
               ],
               "comments": [],
               "previousProcess": {
-                "@id": "#process/1f93f1ec-3ad1-4c6a-93ea-94a9c6945342"
+                "@id": "#process/ab5500d9-418a-4d4e-a0e6-69f204d1a847"
               }
             },
             {
-              "@id": "#process/30906282-63a7-45a1-baf8-66353f2d5330",
+              "@id": "#process/d35fa5de-2ff4-4d5b-96c8-68e318c16baf",
               "name": "assay8",
               "performer": "",
               "date": "",
               "executesProtocol": {
-                "@id": "#protocol/c82773c0-9f31-4ee8-bc34-f7bc4bf094d4"
+                "@id": "#protocol/9fdbb4bc-5e14-4c6b-a2b6-8d32970bdba9"
               },
               "parameterValues": [
                 {
                   "category": {
-                    "@id": "#protocol_parameter/518dc6a9-f69c-4a26-aac5-0967f2b05c47"
+                    "@id": "#protocol_parameter/bb9f1ee8-43c0-4704-937a-e9a7ebe4aaea"
                   },
                   "value": "ILLUMINA"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/ea859ca9-cd4a-46fb-90df-50b801ebb632"
+                    "@id": "#protocol_parameter/05d1ff79-c3dc-47d0-9fb3-714490a4373c"
                   },
                   "value": "Illumina NovaSeq 6000"
                 },
                 {
                   "category": {
-                    "@id": "#protocol_parameter/ce192d37-5488-472a-9762-008070245464"
+                    "@id": "#protocol_parameter/c50b2139-f923-4aaf-a028-c344ee5ead39"
                   },
                   "value": "F12341234"
                 }
@@ -3117,12 +3167,12 @@
               "inputs": [],
               "outputs": [
                 {
-                  "@id": "#data_file/e99b381c-9128-4bc0-9005-4851822da2fe"
+                  "@id": "#data_file/668798f1-7580-4f9f-baf1-13a4d5873aae"
                 }
               ],
               "comments": [],
               "previousProcess": {
-                "@id": "#process/477197bb-9343-4dc6-bb72-319a9f62810d"
+                "@id": "#process/eb7c0918-f6a0-4737-bef1-f9c41b958a97"
               }
             }
           ]

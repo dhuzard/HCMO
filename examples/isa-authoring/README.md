@@ -49,7 +49,32 @@ python tooling/validate_isa_authoring_example.py --write  # regenerate isajson/i
 The ISA-API mints UUID-based `@id` values on every conversion, so
 `isajson/isa.json` is not byte-reproducible. The validator therefore compares
 the structure of a fresh conversion (sources, samples, protocols, factors,
-assays, data files, characteristic accessions) with the committed file.
+assays, data files, characteristic accessions, HCMO IRIs, contacts) with the
+committed file.
+
+## HCMO identity
+
+The example links to HCMO the same way the native projection
+(`../isa-roundtrip/native-isa/isatab/s_hcmo.txt`) does: a `Comment[HCMO IRI]`
+names the individual of the canonical HCMO graph
+(`../isa-roundtrip/canonical.ttl`) that an ISA object stands for. A comment is
+added only where the identity holds one-to-one:
+
+| ISA object | HCMO IRI (`https://example.org/hcmo/isa-roundtrip/…`) | Canonical type |
+| --- | --- | --- |
+| Source `animal-1` … `animal-8` (`s_hcmo_study.txt`) | `animal-1` … `animal-8` | `hcm-bio:Subject` |
+| Study factor `drug` | `factor-treatment` | `hcm-bio:StudyFactors` |
+| Study factor `environment` | `factor-enrichment` | `hcm-bio:StudyFactors` |
+| Protocol `data acquisition` | `protocol-recording` | `bioschemas:LabProtocol` |
+
+The day-1 activity values in `a_hcmo_monitoring.txt` equal the canonical
+`result-N-day-1` values. No IRI is given where the example differs from the
+canonical data: the `animal-N-sample-1` Samples (the canonical graph collects
+one tissue specimen, from animal-8 only), cages `A`–`D` (the canonical animals
+are housed in cages 1–9), `growth protocol`, `sample collection`, the
+`monitoring day` factor, and the synthetic transcriptomics branch. The
+validator checks that every IRI exists in `canonical.ttl` with the type above
+(and, for animals, the same name) and that every Source carries one.
 
 ## Known limitations and open items
 
@@ -67,16 +92,17 @@ assays, data files, characteristic accessions) with the committed file.
   `../isa-roundtrip/native-isa/README.md`; otherwise the monitoring branch
   must be remodelled (for example a distinct, explicitly documented
   whole-animal Sample carrying the Source's `Comment[HCMO IRI]`).
-- **Issue #61 is not closed by this example yet.** It asks for an experiment
-  represented *using HCMO*; no HCMO term, IRI or ontology source reference
-  appears in the ISA files. Use *refs #61* rather than *closes #61* until the
-  HCMO identity columns below exist.
+- **HCMO term source.** The identity comments above link the example to HCMO
+  data, but no ISA ontology annotation uses an HCMO class: the measurement,
+  technology and protocol types the configuration keys on have no HCMO class
+  equivalent, so no HCMO `Term Source` is declared (an unused source would only
+  add a validator warning).
 - **JSON-LD.** PR #62 intended the ISA-JSON to be testable with
   `ontology/context.jsonld`. That context maps HCMO properties, not ISA-JSON
   keys. The pinned ISA-API can emit ISA-JSON-LD (`Investigation.to_dict(ld=True)`
   after `isatab.load`), but it references its bundled OBO context by local
-  file path and the output contains no HCMO IRI, so there is nothing for the
-  HCMO context to resolve until HCMO IRIs are carried in the instance.
+  file path, and the HCMO IRIs it now carries are plain `Comment` values, so
+  `ontology/context.jsonld` still has nothing to resolve.
 - Every row carries `Factor Value[monitoring day] = 1`; the repeated-measure
   design named in the study description is not yet represented (the generated
   fixture in `../isa-roundtrip/data/dark-phase-activity.csv` has 7 days per
@@ -95,6 +121,3 @@ assays, data files, characteristic accessions) with the committed file.
   (`data acquisition` vs `home cage monitoring`) is still undecided.
 - The transcription-profiling assay is synthetic (placeholder file names,
   flowcell and library metadata).
-- No HCMO IRIs are carried yet. Adding `Comment[HCMO IRI]` columns, as in
-  `../isa-roundtrip/native-isa/isatab/s_hcmo.txt`, would allow cross-checking
-  against `../isa-roundtrip/canonical.ttl`.

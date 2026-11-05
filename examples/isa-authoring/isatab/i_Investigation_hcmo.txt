@@ -58,6 +58,7 @@ Study Factor Name	drug	environment	monitoring day
 Study Factor Type	compound	environment	timepoint										
 Study Factor Type Term Accession Number	CHEBI:24431		EFO:0000724										
 Study Factor Type Term Source REF	CHEBI		EFO										
+Comment[HCMO IRI]	https://example.org/hcmo/isa-roundtrip/factor-treatment	https://example.org/hcmo/isa-roundtrip/factor-enrichment											
 STUDY ASSAYS													
 Study Assay File Name	a_hcmo_monitoring.txt	a_hcmo_rnaseq.txt											
 Study Assay Measurement Type	phenotyping	transcription profiling											
@@ -83,18 +84,19 @@ Study Protocol Components Name
 Study Protocol Components Type													
 Study Protocol Components Type Term Accession Number													
 Study Protocol Components Type Term Source REF													
+Comment[HCMO IRI]						https://example.org/hcmo/isa-roundtrip/protocol-recording							
 Comment[Best Practice Conformance]													
 STUDY CONTACTS													
-Study Person Last Name	Huzard	Gilbert	Larmande	Sounchio	Girard	Sanou	Toffano	Todorov					
-Study Person First Name	Damien	Cyril	Pierre	Serge	Benoit	Gaoussou	Antoine	Konstantin					
+Study Person Last Name	Huzard	Gilbert	Larmande	Sounchio	Girard	Sanou	Todorov						
+Study Person First Name	Damien	Cyril	Pierre	Serge	Benoit	Gaoussou	Konstantin						
 Study Person Mid Initials													
 Study Person Email													
 Study Person Phone													
 Study Person Fax													
 Study Person Address													
 Study Person Affiliation													
-Study Person Roles	principal investigator	co-investigator	co-investigator	co-investigator	co-investigator	co-investigator	co-investigator	co-investigator					
-Study Person Roles Term Accession Number	EFO:0009736	EFO:0009735	EFO:0009735	EFO:0009735	EFO:0009735	EFO:0009735	EFO:0009735	EFO:0009735					
-Study Person Roles Term Source REF	EFO	EFO	EFO	EFO	EFO	EFO	EFO	EFO					
+Study Person Roles	principal investigator	co-investigator	co-investigator	co-investigator	co-investigator	co-investigator	co-investigator						
+Study Person Roles Term Accession Number	EFO:0009736	EFO:0009735	EFO:0009735	EFO:0009735	EFO:0009735	EFO:0009735	EFO:0009735						
+Study Person Roles Term Source REF	EFO	EFO	EFO	EFO	EFO	EFO	EFO						
 Comment[ORCID]													
 Comment[Research Organization Registry ID]													
