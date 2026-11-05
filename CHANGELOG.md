@@ -7,6 +7,16 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Added
 
+- `examples/isa-authoring/`: hand-authored ISA-Tab and ISA-JSON example of the
+  2 × 2 home-cage monitoring study with a companion (synthetic) transcriptomics
+  assay (#61, PR #62), plus the ISA configuration (`config/xml`,
+  `config/json/default`) that makes a `phenotyping` / `home cage monitoring`
+  assay valid for the ISA-API validators, a walk-through notebook, and a README
+  listing configuration provenance and open items. Gated by
+  `tooling/validate_isa_authoring_example.py` (ISA-Tab and ISA-JSON validation
+  with that configuration, structural comparison of the committed ISA-JSON with
+  a fresh conversion), run in the `interoperability` CI job.
+
 - `tooling/run_cqs.py`: runs the competency questions of
   `queries/competency_questions.yaml` against a SPARQL 1.1 Protocol endpoint
   (Fuseki, the Metadatapp public endpoint) and compares the rows with the

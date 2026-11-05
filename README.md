@@ -94,6 +94,10 @@ python tooling/validate_isa_native_projection.py  # controlled-loss ISA-JSON/ISA
   animal Sample proxy; all non-native HCMO/STATO losses remain explicit. The
   reproducible ISA-API outputs and the Figure 3 modeling decisions are under
   **`examples/isa-roundtrip/native-isa/`**; pass `--write` to regenerate them.
+- **`tooling/validate_isa_authoring_example.py`** validates the hand-authored
+  ISA-Tab/ISA-JSON example and the HCMO ISA configuration under
+  **`examples/isa-authoring/`** with the ISA-API validators, and checks that the
+  committed ISA-JSON matches a fresh conversion; pass `--write` to regenerate it.
 
 ## Consuming the ontology
 

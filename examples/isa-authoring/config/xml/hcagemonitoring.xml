@@ -12,6 +12,7 @@
             <generated-value-template>[INSTITUTION].Group-[GROUP_NO].Subject-[SUBJECT_NO].[SAMPLE_EXTRACT]
             </generated-value-template>
         </field>
+        <protocol-field protocol-type="data acquisition"/>
         <field header="Assay Name" data-type="String" is-file-field="false" is-multiple-value="false" is-required="true"
                is-hidden="false" is-forced-ontology="false">
             <description><![CDATA[User-defined name for an assay.]]></description>
