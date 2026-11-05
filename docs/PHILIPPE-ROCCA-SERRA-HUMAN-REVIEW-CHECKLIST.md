@@ -746,6 +746,11 @@ B03/B04 decisions and validation with an end-to-end provenance example. No
 mapping, ontology axiom, shape, example, or query is implemented by this
 decision.
 
+> **Note (2026-10-12, release 0.4.1):** this holds for the default release. With
+> the optional BFO/SOSA bridge profile (ADR-0005) loaded, PROV-O is no longer a
+> separate view: the published PROV-O to BFO alignment makes `prov:Activity`
+> equivalent to BFO process. See `docs/ALIGNMENTS.md`. Text above kept as recorded.
+
 Use PROV-O as a cross-cutting account of what happened, not as HCMO's upper
 domain process ontology:
 

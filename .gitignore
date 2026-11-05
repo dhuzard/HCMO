@@ -7,9 +7,7 @@ pnpm-debug.log*
 
 # Builds / caches (adjust if you use these)
 # NOTE: the repo-root dist/ holds GENERATED ontology release artifacts that are
-# intentionally tracked (downstream consumers + CI read them). Ignore nested
-# build dirs (e.g. webapp/dist) but not the ontology dist/.
-**/webapp/dist/
+# intentionally tracked (downstream consumers + CI read them).
 build/
 .cache/
 .next/
@@ -23,3 +21,15 @@ __pycache__/
 # WIDOCO documentation: generated HTML site + cached tool jar (published via CI)
 docs/widoco/
 tooling/.widoco/
+
+# Local LaTeX builds of the manuscript (never packaged or committed)
+docs/paper/overleaf/**/.latex-build/
+docs/paper/overleaf/main.pdf
+docs/paper/overleaf/**/*.aux
+docs/paper/overleaf/**/*.log
+docs/paper/overleaf/**/*.out
+docs/paper/overleaf/**/*.upa
+docs/paper/overleaf/**/*.upb
+docs/paper/overleaf/**/*.bbl
+docs/paper/overleaf/**/*.blg
+docs/paper/overleaf/**/*.synctex.gz

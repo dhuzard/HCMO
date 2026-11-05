@@ -3,6 +3,8 @@
 
 from __future__ import annotations
 
+import re
+import subprocess
 import zipfile
 from pathlib import Path
 
@@ -21,19 +23,50 @@ def archive_payload(path: Path) -> bytes:
     return text.encode("utf-8")
 
 
+def input_sections(main_tex: Path) -> list[Path]:
+    """Return the section files that main.tex actually inputs, in order."""
+    text = main_tex.read_text(encoding="utf-8")
+    names = re.findall(r"^\s*\\input\{(sections/[^}]+)\}", text, flags=re.MULTILINE)
+    return [OUT / (name if name.endswith(".tex") else f"{name}.tex") for name in names]
+
+
+def package_members() -> list[Path]:
+    """Return the Overleaf files git would track: committed or new, never ignored.
+
+    Local LaTeX outputs (main.pdf, .latex-build/) are git-ignored, so they never
+    enter the package even when a local compile left them in the folder.
+    Shared review threads (<file>.review/ folders) are committed for co-authors
+    but are not manuscript sources, so they stay out of the upload too.
+    """
+    listed = subprocess.run(
+        ["git", "ls-files", "-z", "--cached", "--others", "--exclude-standard", "--", OUT.as_posix()],
+        cwd=ROOT, check=True, capture_output=True,
+    ).stdout.decode("utf-8")
+    paths = {ROOT / name for name in listed.split("\0") if name}
+    return [
+        path for path in paths
+        if path.is_file() and not any(part.endswith(".review") for part in path.relative_to(OUT).parts[:-1])
+    ]
+
+
 def main() -> int:
-    section_paths = sorted((OUT / "sections").glob("[0-9][0-9]-*.tex"))
-    required = [OUT / "main.tex", OUT / "references.bib", *section_paths]
+    main_tex = OUT / "main.tex"
+    if not main_tex.is_file():
+        raise RuntimeError(f"Authoritative Overleaf source is incomplete: missing {main_tex}")
+    section_paths = input_sections(main_tex)
+    on_disk = set(sorted((OUT / "sections").glob("*.tex")))
+    required = [OUT / "references.bib", *section_paths]
     missing = [path for path in required if not path.is_file()]
-    if missing or len(section_paths) != 9:
-        names = ", ".join(path.relative_to(ROOT).as_posix() for path in missing)
+    orphans = sorted(on_disk - set(section_paths))
+    if missing or orphans or not section_paths:
         raise RuntimeError(
-            "Authoritative Overleaf source is incomplete: expected main.tex, "
-            f"references.bib, and 9 sections; missing: {names or 'none'}"
+            "Authoritative Overleaf source is inconsistent with main.tex; missing: "
+            + (", ".join(p.relative_to(ROOT).as_posix() for p in missing) or "none")
+            + "; section files not input by main.tex: "
+            + (", ".join(p.relative_to(ROOT).as_posix() for p in orphans) or "none")
         )
     with zipfile.ZipFile(ARCHIVE, "w", compression=zipfile.ZIP_STORED) as archive:
-        members = (item for item in OUT.rglob("*") if item.is_file())
-        for path in sorted(members, key=lambda item: item.relative_to(OUT).as_posix()):
+        for path in sorted(package_members(), key=lambda item: item.relative_to(OUT).as_posix()):
             info = zipfile.ZipInfo(path.relative_to(OUT).as_posix())
             info.date_time = (1980, 1, 1, 0, 0, 0)
             info.create_system = 3

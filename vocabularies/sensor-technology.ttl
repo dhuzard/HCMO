@@ -1,0 +1,96 @@
+# HCMO sensor-technology vocabulary (SKOS).
+#
+# Hand-authored controlled vocabulary for the transduction principles of the
+# sensors used in home-cage monitoring systems (the eight principles named in the
+# note of competency question ms-01-sensor-technologies; the per-system technology
+# strings of its expected answers are altLabels). Contributed from the Metadatapp
+# registry. Not part of the release manifest (hcmo.yaml).
+#
+# Validated by shapes/vocab-shapes.ttl (python tooling/validate.py).
+
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix st: <https://w3id.org/hcmo/id/vocab/sensor-technology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+st:capacitance a skos:Concept ;
+    dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
+    skos:altLabel "capacitance (12-electrode array)"@en,
+        "capacitive sensing"@en ;
+    skos:definition "Detects animals by the change they cause in the electrical capacitance of an electrode array."@en ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/sensor-technology> ;
+    skos:prefLabel "capacitance"@en ;
+    skos:topConceptOf <https://w3id.org/hcmo/id/vocab/sensor-technology> .
+
+st:capacitive-touch a skos:Concept ;
+    dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
+    skos:altLabel "capacitive touch screen"@en ;
+    skos:definition "Detects touches on a screen or surface from the change in capacitance."@en ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/sensor-technology> ;
+    skos:prefLabel "capacitive touch"@en ;
+    skos:topConceptOf <https://w3id.org/hcmo/id/vocab/sensor-technology> .
+
+st:gas-analysis a skos:Concept ;
+    dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
+    skos:altLabel "paramagnetic O2 and infrared CO2 analysis"@en ;
+    skos:definition "Measures oxygen by paramagnetic sensing and carbon dioxide by infrared absorption, for indirect calorimetry."@en ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/sensor-technology> ;
+    skos:prefLabel "paramagnetic/infrared gas analysis"@en ;
+    skos:topConceptOf <https://w3id.org/hcmo/id/vocab/sensor-technology> .
+
+st:infrared-beam-break a skos:Concept ;
+    dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
+    skos:altLabel "infrared beam-break"@en,
+        "infrared light curtain"@en,
+        "infrared light-beam interruption"@en,
+        "infrared photointerrupter"@en ;
+    skos:definition "Detects presence or movement when an animal interrupts one or more infrared light beams."@en ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/sensor-technology> ;
+    skos:prefLabel "infrared beam-break and light curtain"@en ;
+    skos:topConceptOf <https://w3id.org/hcmo/id/vocab/sensor-technology> .
+
+st:infrared-video a skos:Concept ;
+    dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
+    skos:definition "Video recording under infrared illumination, usable in the dark phase."@en ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/sensor-technology> ;
+    skos:prefLabel "infrared video"@en ;
+    skos:topConceptOf <https://w3id.org/hcmo/id/vocab/sensor-technology> .
+
+st:load-cell a skos:Concept ;
+    dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
+    skos:altLabel "load cells"@en ;
+    skos:definition "Converts force or weight into an electrical signal."@en ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/sensor-technology> ;
+    skos:prefLabel "load cell"@en ;
+    skos:topConceptOf <https://w3id.org/hcmo/id/vocab/sensor-technology> .
+
+st:low-frequency-rfid a skos:Concept ;
+    dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
+    skos:altLabel "low-frequency RFID reader"@en ;
+    skos:definition "Identifies animals carrying a low-frequency RFID transponder when they pass an antenna."@en ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/sensor-technology> ;
+    skos:prefLabel "low-frequency RFID"@en ;
+    skos:topConceptOf <https://w3id.org/hcmo/id/vocab/sensor-technology> .
+
+st:time-of-flight-depth-imaging a skos:Concept ;
+    dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
+    skos:altLabel "time-of-flight infrared depth imaging"@en ;
+    skos:definition "Measures distance per pixel from the travel time of emitted infrared light, producing depth images."@en ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/sensor-technology> ;
+    skos:prefLabel "time-of-flight depth imaging"@en ;
+    skos:topConceptOf <https://w3id.org/hcmo/id/vocab/sensor-technology> .
+
+<https://w3id.org/hcmo/id/vocab/sensor-technology> a skos:ConceptScheme ;
+    dcterms:created "2026-10-12"^^xsd:date ;
+    dcterms:description "Transduction principles of the sensors used in home-cage monitoring systems."@en ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:title "HCMO sensor technology vocabulary"@en ;
+    skos:hasTopConcept st:capacitance,
+        st:capacitive-touch,
+        st:gas-analysis,
+        st:infrared-beam-break,
+        st:infrared-video,
+        st:load-cell,
+        st:low-frequency-rfid,
+        st:time-of-flight-depth-imaging .
+

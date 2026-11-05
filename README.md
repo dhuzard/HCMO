@@ -2,7 +2,7 @@
 
 [![Validate](https://github.com/dhuzard/HCMO/actions/workflows/validate.yml/badge.svg)](https://github.com/dhuzard/HCMO/actions/workflows/validate.yml)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-blue.svg)](LICENSE)
-[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.22208202-blue.svg)](https://doi.org/10.5281/zenodo.22208202)
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.18925284-blue.svg)](https://doi.org/10.5281/zenodo.18925284)
 
 <p align="center">
   <img src="HCMO-logo3.png" alt="HCMO logo" width="720">
@@ -23,7 +23,7 @@ JSON-LD context.
 | **Ontology IRI**          | `https://w3id.org/hcmo/ontology/hcm`                                                      |
 | **Base namespace**        | `https://w3id.org/hcmo/ontology/hcm#`                                                     |
 | **Module sub-namespaces** | `…/hcm/bio#`, `…/hcm/env#`, `…/hcm/obs#`, `…/hcm/tech#`                             |
-| **Version**               | `0.3.0` (versionIRI `…/hcm/0.3.0`)                                                     |
+| **Version**               | `0.4.1` (versionIRI `…/hcm/0.4.1`)                                                     |
 | **Prefix**                | `hcm`                                                                                     |
 | **License**               | CC BY 4.0                                                                                   |
 | **Logo**                  | [`HCMO-logo3.png`](HCMO-logo3.png)                                                        |
@@ -65,7 +65,6 @@ queries/                       # competency_questions.yaml + cq-*.rq
 tooling/                       # build.py, validate.py, docs.py, requirements.txt
 docs/                          # documentation (incl. MISSING-DEFINITIONS.md)
 .github/workflows/             # validate.yml (PR gate), release.yml (tag → assets)
-webapp/                        # optional Node.js authoring/blueprint app
 ```
 
 ## Quickstart
@@ -92,7 +91,9 @@ python tooling/validate_isa_native_projection.py  # controlled-loss ISA-JSON/ISA
 - **`tooling/validate_isa_native_projection.py`** executes the native ISA
   overlap through ISA-JSON → ISA-Tab → ISA-JSON: one animal Source generates
   one real tissue Sample. It tests identity preservation without fabricating an
-  animal Sample proxy; all non-native HCMO/STATO losses remain explicit.
+  animal Sample proxy; all non-native HCMO/STATO losses remain explicit. The
+  reproducible ISA-API outputs and the Figure 3 modeling decisions are under
+  **`examples/isa-roundtrip/native-isa/`**; pass `--write` to regenerate them.
 
 ## Consuming the ontology
 
@@ -106,11 +107,36 @@ python tooling/validate_isa_native_projection.py  # controlled-loss ISA-JSON/ISA
   ingestion; `shapes/isa-hcmo-evidence-shapes.ttl` covers the pinned ISA/STATO
   bridge, while `shapes/isa-hcmo-roundtrip-shapes.ttl` covers the generated
   2 × 2 extended ISA RO-Crate. See `examples/` for conformant,
-  intentionally-invalid, and controlled-loss fixtures.
+  intentionally-invalid, and controlled-loss fixtures. The
+  **`examples/isa-roundtrip/README.md`** artifact map links the raw matrix,
+  STATO-annotated result matrix, RDF/RO-Crate serializations, native ISA files,
+  loss manifests, and exact-answer queries.
 - **External source contract:** read `external-vocabularies.yaml` for pinned
   versions, canonical term namespaces, used-term allowlists, and checksums.
 - **Everything is discoverable from `hcmo.yaml`** — resolve module, dist, shapes,
   queries, and example paths from there rather than hard-coding them.
+
+## SPARQL endpoint
+
+A public, read-only SPARQL endpoint serves the reference graph at
+**<https://sparql.hcmo.metadatapp.net/>** (Apache Jena Fuseki, data loaded at image
+build time, packaged in [`deploy/fuseki/`](deploy/fuseki/README.md)). Its permanent
+address is <https://w3id.org/hcmo/sparql>
+([perma-id/w3id.org#7018](https://github.com/perma-id/w3id.org/pull/7018)). The
+same image runs locally with
+`docker compose -f deploy/fuseki/docker-compose.yml up --build`.
+
+- `/hcmo`: the reference evaluation graph of the twelve competency questions
+  (ontology, three positive examples, six SKOS vocabularies, union default graph).
+- `/hcmo-0.4.1`: the same data under a version-qualified, citable name (the release the image was built from).
+- `/hcm-systems`: exploration dataset with the HCM systems catalogue.
+- Web UI: <https://sparql.hcmo.metadatapp.net/#/dataset/hcmo/query>.
+- SPARQL endpoint: `https://sparql.hcmo.metadatapp.net/hcmo/sparql` (query service
+  only, no update).
+
+```bash
+python tooling/run_cqs.py --endpoint https://sparql.hcmo.metadatapp.net/hcmo/sparql
+```
 
 ## Documentation
 
@@ -138,7 +164,7 @@ definitions (see `docs/MISSING-DEFINITIONS.md`) render with empty descriptions.
 
 ## Status & known issues
 
-HCMO `0.3.0` is the current published, citable modular release of the early
+HCMO `0.4.1` is the current published, citable modular release of the early
 Chowlk-derived term set. Its ontology metadata retains `mod:status "draft"` as
 the model-maturity label; this does not negate publication of the immutable
 versioned release. Active classes and properties have labels, textual definitions, explicit
@@ -151,13 +177,12 @@ Quantity-bearing dimensions, sampling rates, environmental specifications, and
 observation results use the pinned QUDT 3.4.0 quantity-value pattern; extensions
 to additional quantity roles remain subject to semantic review.
 
-## Web authoring app (optional)
+## Contribution form
 
-A Node.js app under `webapp/` supports form-based authoring and a blueprint
-checklist. From `webapp/`: `npm install` then `npm run dev` (serves on
-`http://localhost:3000`); `npm test` runs the API/UI tests. The published
-contribution form under
-`docs/hcm-systems/contribute/` exports current-model Turtle and triple CSV.
+The published contribution form under `docs/hcm-systems/contribute/` exports
+current-model Turtle and triple CSV. The former Node.js authoring/blueprint app
+(`webapp/`) is no longer part of this repository; it is archived, with its
+history, at [`dhuzard/hcmo-webapp`](https://github.com/dhuzard/hcmo-webapp).
 
 ## Conceptual provenance
 
@@ -168,7 +193,10 @@ We gratefully acknowledge the Olog's authors and the TEATIME community: the
 Olog established an important conceptual foundation and domain vocabulary;
 HCMO independently formalises and substantially extends the domain using OWL,
 established external ontologies, SHACL constraints, competency questions, and
-reproducible validation. The versioned Olog source is available from its
+reproducible validation. The deposited Olog source is archived on Zenodo as
+version DOI [10.5281/zenodo.22646369](https://doi.org/10.5281/zenodo.22646369)
+with concept DOI [10.5281/zenodo.22646368](https://doi.org/10.5281/zenodo.22646368);
+the corresponding repository source is available from its
 [`v1.0.0` release](https://github.com/NeuroBAU/HCM-Definition/releases/tag/v1.0.0).
 
 ## Contributors
@@ -177,12 +205,11 @@ reproducible validation. The versioned Olog source is available from its
   France · [0009-0008-2489-8106](https://orcid.org/0009-0008-2489-8106) · [@cyrilbonus](https://github.com/cyrilbonus)
 - **Gaoussou Sanou** — IMGT®, IGH, Université de Montpellier, CNRS,
   Montpellier, France · [0000-0003-2204-2466](https://orcid.org/0000-0003-2204-2466) · [@gsanou](https://github.com/gsanou)
-- **Serge Sonfack Sounchio** — Production Engineering Laboratory/UFTMiP,
-  France · [0000-0002-6085-6818](https://orcid.org/0000-0002-6085-6818) · [@sonfack](https://github.com/sonfack)
-- **Antoine Toffano** — LIRMM, Université de Montpellier, CNRS, Montpellier,
-  France · [0009-0008-0575-8490](https://orcid.org/0009-0008-0575-8490)
+- **Serge Sonfack Sounchio** — Robert Bosch Sp. z o. o., Jutrzenki 105,
+  Poland · [0000-0002-6085-6818](https://orcid.org/0000-0002-6085-6818) · [@sonfack](https://github.com/sonfack)
 - **Pierre Larmande** — DIADE, Université de Montpellier, IRD, CIRAD,
   Montpellier, France · [0000-0002-2923-9790](https://orcid.org/0000-0002-2923-9790) · [@pierrelarmande](https://github.com/pierrelarmande)
+- **Benoît Girard** — Department of Basic Neurosciences, University of Geneva, Switzerland · [0000-0002-3914-6483](https://orcid.org/0000-0002-3914-6483) · [@BenoitJT-GIRARD](https://github.com/BenoitJT-GIRARD)
 - **Philippe Rocca-Serra** — Oxford e-Research Centre, Department of Engineering
   Science, University of Oxford, Oxford OX1 3QG, United Kingdom ·
   [0000-0001-9853-5668](https://orcid.org/0000-0001-9853-5668)
@@ -199,10 +226,14 @@ auxiliary field-tier inventory are documented in
 
 ## Citation
 
-If you use HCMO 0.3.0, please cite it via [`CITATION.cff`](CITATION.cff)
-(GitHub's "Cite this repository") or the version DOI
-[10.5281/zenodo.22208202](https://doi.org/10.5281/zenodo.22208202). The stable
-concept DOI is [10.5281/zenodo.18925284](https://doi.org/10.5281/zenodo.18925284).
+If you use HCMO, please cite it via [`CITATION.cff`](CITATION.cff)
+(GitHub's "Cite this repository") or the concept DOI
+[10.5281/zenodo.18925284](https://doi.org/10.5281/zenodo.18925284), which always
+resolves to the latest version. Each release also has its own version DOI on
+Zenodo (0.4.1: [10.5281/zenodo.23315766](https://doi.org/10.5281/zenodo.23315766); 0.3.0:
+[10.5281/zenodo.22208202](https://doi.org/10.5281/zenodo.22208202)). Version 0.4.0
+(10.5281/zenodo.23315451) was published from the wrong commit and is superseded
+by 0.4.1; do not cite it.
 
 ## License
 

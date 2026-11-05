@@ -5,122 +5,488 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ## [Unreleased]
 
+### Added
+
+- `tooling/run_cqs.py`: runs the competency questions of
+  `queries/competency_questions.yaml` against a SPARQL 1.1 Protocol endpoint
+  (Fuseki, the Metadatapp public endpoint) and compares the rows with the
+  reviewed expected answers, with the validator's canonical row form.
+  `--print-files` lists the files the dataset must hold; documented in
+  `docs/hcm-systems/FUSEKI-LOADING.md`.
+
+- `deploy/fuseki/`: Docker packaging of a public, read-only SPARQL reference
+  endpoint (Apache Jena Fuseki 5.6.0, TDB2 loaded at build time, so a restart never
+  empties the store). Three datasets: `/hcmo` (the competency-question evaluation
+  graph, union default graph), `/hcmo-<version>` (the same data under a citable name, today `/hcmo-0.4.1`)
+  and `/hcm-systems` (catalogue exploration). Workflows
+  `.github/workflows/sparql-image.yml` (build and run `tooling/run_cqs.py` against
+  the container) and `.github/workflows/sparql-deploy.yml` (Clever Cloud on release
+  or manually). Deployed on 2026-10-29 at `https://sparql.hcmo.metadatapp.net/`
+  (Clever Cloud, 12/12 competency questions on `/hcmo`), with the permanent
+  address `https://w3id.org/hcmo/sparql` (perma-id/w3id.org#7018, merged
+  2026-10-29). The application runs on flavor S (2 GB, `-Xmx1g`): on XS (1 GB,
+  `-Xmx512m`) the container was killed about every 90 minutes and Clever Cloud
+  redeployed it.
+
+- SKOS vocabularies `vocabularies/modality.ttl` (17 monitoring modalities) and
+  `vocabularies/sensor-technology.ttl` (8 sensor transduction principles), contributed
+  from the Metadatapp registry, which already minted these IRIs under
+  `https://w3id.org/hcmo/id/vocab/`. Same conventions as the other vocabularies; outside
+  the release manifest. The modality definitions are new and open to review.
+
 ### Changed
 
-- Added Philippe Rocca-Serra as a middle author, with ORCID, Oxford affiliation,
-  and CRediT roles reflecting his ontology and interoperability review.
-- Recorded the eight authors' confirmed institutional affiliations in the
-  citation metadata, public contributor list, and paper author-metadata record.
-- Adopted the supplied PLMLatex export as the authoritative paper source,
-  preserved its manuscript-wide edits, and changed the deterministic paper
-  builder to package rather than overwrite the online-edited LaTeX tree.
-- Consolidated the manuscript acknowledgement into one structured
-  acknowledgements and non-author-contributions section covering TEATIME,
-  mobility-grant scoping, auxiliary field categorisation, early Metadatapp
-  architecture, domain feedback, and incubator/business-development support.
-- Added the author-approved CRediT contribution statement to the manuscript and
-  its author-metadata record.
-- Expanded the paper's development-provenance acknowledgement to distinguish
-  the COST TEATIME Olog precursor, pre-COST formalisation, the September 2025
-  COST mobility-grant work, and the October 2025--October 2026 Exogene-funded
-  redesign and evaluation, with stage-specific attribution and collaborators.
+- Paper: Antoine Toffano removed from the author list and the CRediT statement
+  (#54) and thanked among the non-author contributions for project discussions
+  in January–March 2026. He is also removed from the ontology header
+  (`dcterms:creator`, `bibo:authorList`, `schema:Person` record),
+  `CITATION.cff`, and the README contributor list; `dist/` regenerated
+  (1464 -> 1459 triples). The archived 0.4.1 release keeps its metadata.
+- Paper: a GAIDeT declaration of the tasks delegated to generative AI and of the
+  tools used now follows the CRediT statement, as the ESWC 2027 AI policy asks
+  (#53). The §3 AI paragraph keeps the review safeguards and points to it.
+- Paper: author edits from a full read-through shorten the abstract, the
+  introduction's interoperability paragraph, the claim-strength, modelling,
+  reused-standards, use-case, evaluation, and limitations paragraphs, and
+  remove the conclusion paragraph.
+- Paper: back matter and nine accepted body cuts bring the manuscript within the
+  15-page limit (references start on page 16 in faithful pdfLaTeX and XeLaTeX
+  builds).
+- Paper §6 now distinguishes the corrected, post-release SHACL validation
+  results from the archived 0.4.1 validation files.
+- Paper: §3 and Fig. 1 count twelve competency questions, as §6 does; funding
+  statement and acknowledgements updated. Benoît Girard's supplied affiliation
+  recorded in the manuscript, citation metadata, and README contributor list.
+- GitHub Pages now also serves the exact release files of every published
+  version (`dist/<version>/` and `dist/latest/`: `hcmo.ttl`, `hcmo.owl`,
+  `hcmo.jsonld`), the SKOS vocabularies (`vocab/<scheme>.ttl`), the BFO/SOSA
+  bridge profile and the upper-level presentation module, with RDF media types
+  (`tooling/publish_rdf.py`, run by the docs workflow; the release workflow
+  rebuilds the site once assets are attached). GitHub release downloads are
+  served as `application/octet-stream`, which RDF crawlers such as LOV do not
+  parse. A w3id rule update pointing to these files follows.
+- Paper (still describing 0.4.1): OOPS!, FOOPS! and AskWol re-run on the 0.4.1
+  release with archived raw outputs and triage
+  (`docs/paper/evaluation/RELEASE-0.4.1-SCANS-2026-10-12.md`); the scan table
+  reports them. §5 now defines the TBox, ABox and CBox levels and names the
+  OBI/STATO types of the evidence slice (#36). A Hasse diagram of the 2 × 2
+  design is added as supplementary material (#35).
+- Paper: target venue set to the ESWC 2027 Resources Track; the ESWC
+  resource-links block (resource type, licence, DOI, URL) now follows the
+  abstract, and the planning documents (README, outline, call checklist, TODO
+  T20a) record the decision.
+- Paper: the Hasse diagram of the 2 × 2 design becomes Supplementary Fig. S1,
+  cited in §5 (#35); §4 mentions the public Metadatapp SPARQL endpoint (separate
+  service, not part of the release). Benoît Girard's name now carries the
+  circumflex in the paper, `CITATION.cff` and the provenance notes; the 0.4.1
+  ontology keeps "Benoit" until 0.5.0.
+- Recorded the Zenodo version DOI of 0.4.1, `10.5281/zenodo.23315766`, in
+  `CITATION.cff`, the README, the manuscript availability statement and
+  bibliography, and the paper's resource-metadata sheet. The README warns not to
+  cite the superseded 0.4.0 deposit (`10.5281/zenodo.23315451`).
+
+### Fixed
+
+- The public SPARQL endpoint (`deploy/fuseki/`) was killed and redeployed by
+  Clever Cloud every 4 to 6 hours on flavor S (every 90 minutes on XS). Each
+  HTTP request allocates a 5 MiB direct (off-heap) buffer that only a garbage
+  collection releases, and the JVM allowed as much direct memory as heap, so the
+  process outgrew the instance. `JAVA_OPTIONS` now sets
+  `-XX:MaxDirectMemorySize=128m` (image default, compose file and the production
+  application since 2026-11-02); the competency questions still answer 12/12.
+
+- `queries/cq-isa-recording-provenance.rq` used `bioschemas:LabProcess` without
+  declaring the `bioschemas` prefix. rdflib resolved it from the data graph, so
+  `tooling/validate.py` passed, while a SPARQL endpoint (Fuseki) rejected the
+  query with "Unresolved prefixed name". The prefix is declared, and the
+  validator now fails on any prefix a query uses without declaring it.
+
+- `hcm:RejectedTimelessStateShape` placed a `VALUES` clause inside its
+  `sh:select`, which the SHACL pre-binding rules exclude: validation of
+  `examples/abox-edge-cases.ttl` stopped with a validation failure and none of
+  the fixture's intended violations was evaluated. The shape is rewritten in
+  SHACL Core (`sh:maxCount 0` on each deprecated property). The SHACL step of
+  `tooling/validate.py` now reports a validation failure as such and checks
+  each negative fixture against the validator's reviewed violation count
+  (18 for `abox-edge-cases`, 5 for
+  `abox-inferred-invalid`).
+
+## [0.4.1] - 2026-10-12
+
+### Added
+
+- Optional BFO/SOSA bridge profile (ADR-0005, accepted 2026-10-12; not part of the default
+  release, `hcmo.yaml` and `dist/` unchanged). `ontology/profiles/bfo-sosa-bridge.ttl`
+  declares no axiom of its own and imports two published one-way alignments (W3C
+  SOSA to PROV-O; Prudhomme et al. 2025 PROV-O to BFO) so that SOSA terms receive
+  a BFO placement without equivalences: observations become processes, sensors and
+  actuators material entities, results only continuants. Includes vendored,
+  checksummed copies of the alignments (the upstream PROV-to-BFO file does not
+  parse and misspells one annotation predicate; a copy with exactly two prefix
+  lines prepended and that one `rdfs:comment:` token corrected is checked byte
+  for byte, because ROBOT 1.9.10 rejects the typo),
+  profile-only SHACL shapes (software typed as a sensor, a process as a feature of
+  interest), seven probe fixtures, SSSOM review rows, pins in
+  `external-vocabularies.yaml`, `tooling/bridge_profile.py` and an optional
+  `bridge-profile` workflow. Documented optional carrier pattern for software
+  sensors. See `docs/BFO-SOSA-BRIDGE-PROFILE.md`.
+
+- Multi-animal behavior: added `hcm-bio:InteractingGroup` (a transient group of
+  two or more subjects defined by an observed behavior, distinct from
+  `hcm-bio:ExperimentalGroup`), `hcm-obs:involvesSubject` and its
+  sub-properties `hcm-obs:hasInitiator` and `hcm-obs:hasRecipient`. One
+  multi-animal event is one `hcm-obs:BehaviorObservation` whose feature of
+  interest is the interacting group. SHACL requires at least two group members,
+  role holders who belong to the group, and distinct initiator and recipient; a
+  negative probe (`examples/abox-social-invalid.ttl`) checks each rule. The
+  minimal example gains a second mouse, a depth camera and a directed
+  "approach", and the new competency question `social-interaction-partners`
+  answers who interacted with whom and in which role. Recorded as proposed
+  ADR-0006, pending co-author review; the LMT per-event mapping table
+  (`event-mapping.csv`) applies it to 56 of the 62 event names of the sample (manual annotations and `Nest4_` are not mapped).
+
+- Added a source-cited Live Mouse Tracker profile
+  (`docs/hcm-systems/systems/live-mouse-tracker/`) documenting the SQLite
+  schema, event types and a candidate HCMO mapping, read from the public sample
+  experiment (not committed; URL and SHA-256 recorded).
+
+- Added two object properties to `hcm-tech`, both with domain software or time
+  series and range `skos:Concept`: `hcm-tech:hasFileFormatConcept` (the
+  canonical file-format statement) and `hcm-tech:hasDataAccessMethod` (file
+  export, database, or API). `hcm-tech:hasFileFormat` is unchanged and kept for
+  backward compatibility; it should now carry the concept's notation. JSON-LD
+  context terms and IRI-only SHACL constraints added. No existing IRI or axiom
+  changed; `owl:versionIRI` stays 0.3.0 until the next release (#33, #31).
+
+- Added SKOS vocabularies in `vocabularies/`, outside the release manifest:
+  hand-authored file formats (generic formats with media-type notations,
+  including SQLite, plus the three sourced Tecniplast DVC Analytics exports and
+  the Live Mouse Tracker SQLite database and MP4 video segments as narrower
+  concepts in per-provider
+  collections) and data-access methods; vendor and HCM-system schemes
+  generated from `CATALOG.md` by the new `tooling/export_hcm_vocab.py`, with
+  system short names (for example LMT, CLAMS, MoPSS) as `skos:altLabel` from a
+  new *System short names* table.
+  `shapes/vocab-shapes.ttl` and validation step 8 check vocabulary integrity,
+  generated-output freshness, example usage, and a negative probe.
+
+- Recorded the BFO/SOSA double-hierarchy decision package and work plan for
+  the co-author vote. It documents the verified state — four genuinely
+  dual-parented classes, four SOSA-only observation classes with no BFO anchor,
+  and zero disjointness axioms in both the pinned SOSA 2017 artifact and the
+  merged HCMO graph — reviews the tabled option (a) proposal axiom by axiom
+  against the pinned source, and breaks down the work required under each
+  candidate option. Two of the four proposed axioms are sound
+  (`sosa:Observation` under process, `sosa:Actuator` under material entity) and
+  two are not (`sosa:Sensor` under material entity contradicts SOSA's
+  "device, agent (including humans), or software" definition; `sosa:Result`
+  under information entity contradicts SOSA's physical-specimen sampling
+  results). This is a planning document only; no module, term IRI, axiom, or
+  generated artifact changed.
+
+- Added a plain-language co-author decision sheet for the BFO/SOSA double
+  hierarchy, listing the nine choices that need a collective answer with
+  context, options, costs, blocking order, and a recommendation for each.
+
+- Recorded the deposited COST TEATIME Home Cage Monitoring Definition Olog
+  Zenodo DOI in provenance, README, system references, and paper bibliography
+  metadata. This is a documentation/provenance update only; no HCMO term IRI,
+  axiom, or release DOI changed.
+
+- External reuse is now counted by kind, reproducibly: `tooling/reuse_report.py`
+  classifies every external term in `dist/hcmo.ttl` as semantic (used in a
+  logical axiom), metadata (annotation predicate or metadata record type) or
+  replacement target, and writes the generated `docs/EXTERNAL-REUSE.md`.
+  `tooling/build.py` regenerates it; `tooling/validate.py` fails when it is
+  stale or when a term from an unlisted vocabulary is used.
+
+- Added reproducible, checked-in ISA-API outputs for that native projection and
+  documented the Figure 3 decisions for animals, specimens, processes, files,
+  housing assignments, factors, groups, and statistical results. The validator
+  now fails when the generated ISA-JSON or ISA-Tab files are stale.
+
+- Recorded the still-undecided ISA configuration versus HCMO--ISA SHACL design
+  discussion, including their distinct validation scopes, a layered option, a
+  whole-animal feasibility test, claim boundaries, and questions for co-author
+  review. No ontology or formal-conformance decision was made.
+
+- Annotated the generated mixed-model result matrix with the pinned STATO class
+  IRIs and labels for the linear mixed model, contrast estimate, 95% confidence
+  interval, and p-value, plus links to their semantic entities. Added exact
+  validation, a fixture artifact map, direct manuscript links, and explicit
+  Figure 3 pointers without changing HCMO ontology axioms. The fixture
+  generator's deterministic re-execution now also works reliably on Windows.
+
+- Added `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md` (Contributor Covenant 2.1),
+  `SECURITY.md`, issue templates (term request, bug report) and a pull request
+  template carrying the build/validate/CHANGELOG checklist.
+
+### Changed
+
+- Release 0.4.1: `owl:versionIRI` `…/hcm/0.4.1`, `owl:versionInfo "0.4.1"`,
+  `owl:priorVersion` `…/hcm/0.3.0` (the last correctly labelled artifact; see
+  0.4.0 below); `dcterms:issued` and `dcterms:modified`
+  set to the release date. `hcmo.yaml`, the competency-question index,
+  `CITATION.cff`, the contribution form and the version-bearing documentation
+  follow. `mod:status` stays `"draft"`.
+- `dcterms:publisher` is now Damien Huzard's ORCID IRI (the repository and its
+  releases are published from his GitHub account), replacing the free-text
+  "Huzard group" left over from the Chowlk-generated header.
+- Ontology creators and `bibo:authorList` now match the paper and
+  `CITATION.cff`: nine authors in the paper order (Gilbert, Sanou, Sonfack
+  Sounchio, Toffano, Larmande, Girard, Rocca-Serra, Todorov, Huzard). Philippe
+  Rocca-Serra and Benoit Girard are added as `schema:Person` records;
+  `CITATION.cff` gains Benoit Girard.
+- ADR-0006 (multi-animal behaviour) accepted by the editor on 2026-10-12; its
+  open points on cage-level groups and the LMT event table stay in the backlog.
+- `CITATION.cff` cites the concept DOI until Zenodo mints the 0.4.1 version DOI;
+  the 0.3.0 version DOI is kept as an identifier. The README DOI badge now uses
+  the concept DOI.
+- Changelog history: the 0.3.0 and 0.3.1 changes, which had stayed under
+  `[Unreleased]`, are now under their own version headings (no entry text
+  changed).
+
+- Paper Table 1 reuse counts corrected from the generated report: 20 semantic
+  terms (SOSA 9, BFO 4, SemTS 3, IAO 1, PROV-O 1, QUDT 1, schema.org 1), not 25,
+  and 7 metadata vocabularies, not 6. The hand count of 2026-09-24 had counted
+  `schema:Person`, `schema:name`, `schema:logo` and QUDT `numericValue`/`hasUnit`
+  (only replacement targets of deprecated terms) as semantic. The manuscript
+  also mentions the optional BFO/SOSA bridge profile (§4, §7) and cites
+  Prudhomme et al. 2025.
+
+- `docs/ALIGNMENTS.md` no longer calls PROV-O a "separate provenance view"
+  without qualification: it distinguishes the default release (no PROV-O, SOSA
+  or BFO links asserted by HCMO) from the optional bridge profile (ADR-0005),
+  and points to the generated reuse report. No term, axiom or `dist/` change.
+
+- `hcm-obs:BehaviorObservation`: the feature-of-interest restriction is
+  loosened from `hcm-bio:Subject` to `hcm-bio:Subject` or
+  `hcm-bio:InteractingGroup`, and `hcm-bio:hasMember` now also applies to
+  interacting groups. Existing data remain valid. The reviewed answers of the
+  `animals-by-enclosure`, `needs-provisioning` and `sensors-behaviors`
+  competency questions now include the second mouse and the depth camera of the
+  extended minimal example.
+
+- Catalogue: SoHo telemetry is attributed to DSI (sold through Harvard
+  Bioscience); the iMouse row is now the DigiFrame system by iMouse GmbH (short
+  names iMouse, DigiFrame Hardware Enabler); PsiBox, obsolete, is removed. Its
+  system concept had never been released; its `catalog.ttl` node
+  (`…/id/catalog/system/psibox`, a deprecated `hcm:System` instance on `main`)
+  is no longer generated.
+
+- Live Mouse Tracker profile: GPL-3.0 licence, pixel coordinates, meanings of
+  `SAP`, `Train2` and `coucou`, and the adopted multi-animal mapping.
+
+- Contribution form (`hcmo-contribution/0.3`): file-format and new
+  data-access-method chips are generated from the SKOS vocabularies; the form
+  now emits the media type (for example `text/csv` instead of `CSV`) in
+  `hcm-tech:hasFileFormat`, plus the concept IRIs. "Database / API" moved from
+  the formats field to the new access-method field.
+
+- Normalised the Vendor column of `docs/hcm-systems/CATALOG.md` to one
+  organisation per cell (DSI, UID, IntelliCage/TSE Systems, SoHo), with notes
+  moved to *Data / links*, and moved Metadatapp to a new "not HCM systems"
+  section. The regenerated `catalog.ttl` therefore mints different
+  `catalog/agent/` IRIs for the four affected vendors (see #32 for that graph's
+  rework).
+
+- Added "Conceptualization (initial project framing)" to Benoit Girard's CRediT
+  roles in the manuscript and author-metadata record, with his agreement; the
+  qualifier separates the early-stage project framing from the later
+  development and conceptualization of HCMO.
+
+- Clarified in the real DVC dataset README that cage, rack and position
+  identifiers and the group label are mock/pseudonymised.
+
+- Moved working notes and co-author meeting records (the BFO/SOSA decision package,
+  PROV-BFO reading notes, co-author meeting and email records, the ISA/SHACL
+  brainstorm, agent prompts) out of `docs/` into the private
+  `dhuzard/hcmo-internal-docs` repository, and organised the Gilbert 2026
+  internship report, its English translation and figures under
+  `docs/paper/sources/gilbert-2026-internship-report/` with a README. No ontology
+  term, shape, query or generated artifact changed.
+
+### Removed
+
+- Removed the optional Node.js `webapp/` authoring/blueprint app from the release
+  repository. It is archived with its history at
+  <https://github.com/dhuzard/hcmo-webapp>. No ontology term, shape, query or
+  generated artifact depended on it; `dist/` is unchanged.
+
+- Removed the stale `docs/CHANGELOG.md` (device-agnostic VMG 0.2.x notes; the root
+  `CHANGELOG.md` is authoritative) and the template-placeholder `docs/AGENT.md`
+  (the root `AGENTS.md` is authoritative).
+
+- Removed the publisher PDF `docs/paper/sources/articles/HCM-technologies_SpringerBook.pdf`;
+  `docs/hcm-systems/CATALOG.md` now cites the chapter by DOI only.
+
+## [0.4.0] - 2026-10-12 (superseded by 0.4.1)
+
+### Fixed
+
+- The `v0.4.0` tag, GitHub release and Zenodo version
+  (DOI 10.5281/zenodo.23315451) were published from commit `ac37bef`, before the
+  release changes were merged. Their artifacts contain the 0.4.1 content
+  without the release metadata: the ontology identifies itself as
+  `…/hcm/0.3.0`, version `0.3.0`, and `hcmo.yaml` says `0.3.0`. Published tags
+  and DOIs are not rewritten; use 0.4.1, which carries the correct metadata.
+
+## [0.3.1] - 2026-09-10
 
 ### Added
 
 - Added a development-provenance record documenting HCMO's four stages and the
   repository evidence and attribution limits for the auxiliary
   Mandatory/Recommended/Optional field inventory.
+
 - Added a non-blocking AskWol beta release-evidence workflow that archives the
   raw response and a deterministic summary, with documented HCMO exceptions.
+
+### Changed
+
+- Added Philippe Rocca-Serra as a middle author, with ORCID, Oxford affiliation,
+  and CRediT roles reflecting his ontology and interoperability review.
+
+- Recorded the eight authors' confirmed institutional affiliations in the
+  citation metadata, public contributor list, and paper author-metadata record.
+
+- Adopted the supplied PLMLatex export as the authoritative paper source,
+  preserved its manuscript-wide edits, and changed the deterministic paper
+  builder to package rather than overwrite the online-edited LaTeX tree.
+
+- Consolidated the manuscript acknowledgement into one structured
+  acknowledgements and non-author-contributions section covering TEATIME,
+  mobility-grant scoping, auxiliary field categorisation, early Metadatapp
+  architecture, domain feedback, and incubator/business-development support.
+
+- Added the author-approved CRediT contribution statement to the manuscript and
+  its author-metadata record.
+
+- Expanded the paper's development-provenance acknowledgement to distinguish
+  the COST TEATIME Olog precursor, pre-COST formalisation, the September 2025
+  COST mobility-grant work, and the October 2025--October 2026 Exogene-funded
+  redesign and evaluation, with stage-specific attribution and collaborators.
+
+- Aligned current citation and manuscript metadata with the published v0.3.0
+  release and version DOI, confirmed CC BY 4.0 and author order, and documented
+  funding, conflict-of-interest, PURL, and public-documentation status. No
+  ontology IRI or term axiom changed.
+
+## [0.3.0] - 2026-08-31
+
+### Added
+
 - Added current-candidate OOPS!/FOOPS! raw evidence and triage, plus a
   deterministic ZIP that can be imported directly into Overleaf.
-- Added an Overleaf-ready manuscript package and three dependency-free TikZ
-  figures for the release pipeline, five-module domain model, and ISA/STATO
-  round-trip fixture.
+
+- Added an Overleaf-ready manuscript package and four dependency-free TikZ
+  figures for the release pipeline, five-module domain model, ISA/STATO
+  round-trip fixture, and the boundary between the normative ontology and
+  instance-level interoperability evidence. The resource section now links
+  directly to the immutable instance-level OBI/STATO bridge example.
+
 - Added a dated post-PR #24--#26 semantic review recording current build,
   HermiT, SHACL, competency-question, external-vocabulary, RO-Crate, and native
   ISA projection evidence.
+
 - Added accepted environmental/temporal and QUDT 3.4.0 decision records,
   migration guidance, and a checksummed external-vocabulary contract for the
   QUDT schema and unit vocabulary.
+
 - Added explicit environmental specification relations, QUDT quantity roles
   for dimensions and sampling rates, and evidence-backed operational and
   calibration activities/records with validity intervals.
+
 - Added conforming environmental, status, and calibration examples plus three
   exact-answer competency questions for specification versus observation,
   housing membership at a stated time, and status provenance at a stated time.
+
 - Added ADR-0002 and a migration guide establishing SOSA 2017 as the normative
   sensing edition and documenting safe repair of earlier SemTS/SOSA references.
+
 - Added executable external-contract checks that reject versioned SemTS entity
   IRIs, developing-edition `sosa:Property`, and the rejected SemTS relations.
+
 - Added the accepted ISA/STATO round-trip policy, separate review-only SSSOM
   and exchange-transformation registries, and controlled-loss contracts for
   ISA-JSON and ISA-Tab.
+
 - Added a generated, graph-isomorphic HCMO RDF/extended ISA RO-Crate fixture
   with a 2 × 2 design, eight animals, 56 repeated observations, re-housing,
   Source/Sample identity evidence, a fitted model, estimate, confidence
   interval, p-value, and exact result-file fragment.
+
 - Added dedicated semantic-invariant shapes, five exact-answer round-trip
   competency questions, overlap and identity negative probes, pinned RO-Crate
   1.2/ISA validator evidence, and a separate CI interoperability gate.
+
 - Added a pinned `isatools` 0.14.3 executable projection test covering the
   native animal Source → genuine tissue Sample overlap through ISA-JSON →
   ISA-Tab → ISA-JSON. Stable HCMO IRIs survive as explicit ISA comments; the
   loss manifests now expose that factor values on unchanged animal Sources are
   outside this projection instead of fabricating Sample proxies.
+
 - Hardened the 2 × 2 fixture after expert audit: housing intervals are
   half-open and must be well-formed, assignment records require one bearer,
   observation intervals must resolve to the correct enclosure, and historical
   graphs omit the timeless monitored-animal shortcut. Added negative probes
   for orphan/reversed assignments, incomplete allocation, wrong-cage
   observations, and unchanged animals exposed as ISA results.
+
 - Replaced illustrative hard-coded statistics with a reproducible pinned
   mixed-model fit over the generated activity CSV. The model formula, contrast,
   null hypothesis, estimate, confidence interval, p-value, units, meaning links,
   and separate exact model/contrast file fragments are now asserted and checked
   by exact-answer competency questions.
+
 - Added `external-vocabularies.yaml` with authoritative versions, canonical
   namespaces, used-term allowlists, and SHA-256 checksums for ten external
   semantic/exchange sources; added offline contract validation plus optional
   network checksum verification.
+
 - Added a five-anchor BFO 2020 / IAO 2026-03-30 end-user presentation plus an
   optional source-faithful developer profile. The default hierarchy hides
   continuant/dependent-continuant intermediates while retaining canonical IRIs,
   source definitions, and developer compatibility without full imports.
+
 - Added a pinned, acyclic ISA/STATO evidence slice linking a recording protocol,
   OBI assay, raw file, OBI data transformation, derived file, STATO sample mean,
   study factor, factor level, experimental group, subject, sensor, and enclosure.
+
 - Added dedicated ISA evidence shapes, including an injected cycle-rejection
   probe, and three provenance/factor/statistical-result competency questions.
+
 - Added a checksummed HermiT evaluation report and scoped human Protégé review
   for the canonical HCMO 0.2.0 OWL artifact; updated the resource-paper claims
   to match implemented modules, alignments, SHACL validation, and
   competency-query results.
+
 - Added the signed A06 class audit for all 29 active local classes and 12
   directly used external class anchors, with reproducible metadata,
   generated-profile, restriction, coverage, and decision checks.
+
 - Expanded the signed C01 property audit across all 81 active local
   properties, directly used external property groups, and all 49 deprecated
   compatibility properties, with reproducible metadata, migration, domain,
   range, inverse, parent, and shortcut-entailment checks.
+
 - Added an intentionally invalid example whose SHACL targets are selected only
   after ontology domain/range inference.
 
 ### Changed
 
-- Aligned current citation and manuscript metadata with the published v0.3.0
-  release and version DOI, confirmed CC BY 4.0 and author order, and documented
-  funding, conflict-of-interest, PURL, and public-documentation status. No
-  ontology IRI or term axiom changed.
 - Aligned release-bearing query, contribution-form, citation, and paper metadata
   with the 0.3.0 candidate; candidate citations now use the stable Zenodo
   concept DOI until the version-specific 0.3.0 record is published.
+
 - Qualified the paper's observation-context requirement to match the subtype-
   specific SHACL profile, made the Overleaf ZIP newline-, compression-, and
   platform-order-independent, and added paper-export freshness to CI.
+
 - Advanced the release-candidate metadata from `0.2.0` to `0.3.0`, including
   the manifest, ontology version IRI, prior-version link, citation metadata, and
   current documentation. No term IRI changed.
+
 - Distinguished the tagged `v0.2.0` artifact from the HCMO `0.3.0` release
   candidate so that later semantic work is not attributed to an older release.
 
@@ -131,60 +497,78 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 - Separated environmental profile composition, property specification, and
   SOSA observation relations. `ThriveProfile` is now an environment-profile
   specialization without implying compliance or outcome.
+
 - Replaced free-text value/unit pairs with the pinned QUDT
   `QuantityValue`/`numericValue`/`hasUnit` pattern in all positive examples and
   in the lossless ISA round-trip fixture.
+
 - Made time-bounded HousingAssignment records authoritative for current
   membership and occupancy; operational and calibration state now require a
   time interval and generating PROV activity.
+
 - Deprecated role-conflating environmental predicates, timeless state
   booleans, subject-observation shortcuts, ambiguous treatment text, and local
   numeric/unit properties without deleting their published IRIs.
+
 - Replaced the developing-edition `sosa:Property` references with SOSA 2017
   `sosa:ObservableProperty` and pinned the immutable 2017 W3C ontology artifact.
+
 - Corrected SemTS reuse to canonical unversioned 1.2.0 entity IRIs. Location
   result tables now specialize `semts:TimeSeriesSegment` and use
   `semts:segmentDimension`; the observation-level dimension restriction and
   knowledge-generation-specific `semts:generated` axiom were removed.
+
 - Clarified `HousingAssignment` as an actual time-bounded information record,
   `StudyFactors` as an independent-variable specification belonging to a study
   design, and `hasMonitoredAnimals` as an optional time-evaluated derived
   shortcut rather than authoritative housing history.
+
 - Made housing validity intervals required in the standard SHACL profile and
   prohibited overlaps by default; relaxed the derived monitored-animal shortcut
   cardinality.
+
 - Corrected the ISA exchange namespace to RO-Crate's `http://schema.org/`
   terms and Bioschemas' `/properties/` namespace, and separated generic
   `LabProcess` recommendations from execution-specific object/result rules.
+
 - Represented housing allocation as a Bioschemas `LabProcess`/PROV activity
   that generates an HCMO assignment record without a fabricated ISA result.
+
 - Separated enclosure monitoring from physical sensor installation: removed the
   incorrect `monitoredBy`/`installedIn` inverse axiom, removed the Sensor
   installation existential, relaxed the SHACL installation cardinality, and
   added a conforming rack-level monitoring example.
+
 - Recorded Philippe Rocca-Serra's follow-up guidance on a readable upper-level
   presentation, corrected the process-side PROV-O term to `prov:Activity`, and
   distinguished sensor procurement, retrieval of existing information, and
   sensor recording in the OBI/ISA design notes and bridge example. STATO/HCMO
   class mappings and formal ISA conformance remain review work; no new
   alignment axiom is asserted.
+
 - Qualified SemTS alignment as provisional and documented that its canonical
   term IRIs and semantic fit remain unvalidated; added an explicit provisional
   edition policy for the developing `sosa:Property` term.
+
 - Made pySHACL validation ontology-aware with the documented RDFS entailment
   contract, while keeping OWL consistency checking in HermiT.
+
 - Run competency questions over the ontology plus positive examples and require
   complete reviewed answer rows rather than accepting matching counts or
   unexamined empty results.
+
 - Kept housing assignment outside `schema:result`: the unresolved allocation is
   a PROV activity that generates an HCMO record, not a claimed conformant ISA
   LabProcess output.
+
 - Exposed Experimental Group under Material entity by default and retained its
   more precise BFO object-aggregate parent in the optional developer profile.
+
 - Adopted the paper's three-level claim-strength policy: implemented semantic
   reuse/alignment, validated interoperability evidence, and formal profile
   conformance. Recorded the accepted vocabulary-by-vocabulary classification;
   provisional references are not counted as implemented reuse.
+
 - No HCMO class mapping axiom or new local process/statistics term was added.
 
 ### Renamed

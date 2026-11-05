@@ -5,7 +5,16 @@ paper describing HCMO for **ISWC** or **ESWC**. The resource being presented is
 the **Home-Cage Monitoring Ontology (HCMO)**. (Branding, HITL R3: use **HCMO
 only** — do not use the "MAPP" name in the paper.)
 
-## Target venue — **ESWC 2027, Resources Track** (decided, HITL Round 1)
+## Target venue — **ESWC 2027, Resources Track** (decided 2026-10-12; ISWC was the target from 2026-09-24 to 2026-10-12, see `ISWC-MIGRATION-PLAN.md`)
+
+**Decided 2026-10-12: ESWC 2027 Resources Track.** The call was not published on
+2026-10-12 (page: "Coming soon"). Planning baseline from the ESWC 2026 call:
+abstract about one week before the full paper (2026 edition: 27 Nov and
+4 Dec 2025, so expect late November / early December 2026); 15 pages plus
+unlimited references; single-anonymous review; resource links (Resource type,
+License, DOI, URL) right after the abstract; persistent URI, licence,
+registration in community repositories and a maintenance plan. Re-check
+everything against the 2027 call when it opens.
 
 Publishes in **Springer LNCS**, **single-anonymous** review (reviewers anonymous,
 **authors visible** — resource ownership must be checkable), **abstract
@@ -14,7 +23,7 @@ abstract. **Page budget: 15 pp + unlimited references.**
 
 > ESWC 2026 deadlines have passed; target the **2027** cycle (deadlines expected
 > ~Dec 2026). Re-confirm dates, page limit, and template against the live CfP when
-> it opens. (ISWC Resources Track is the equivalent fallback if needed.)
+> it opens. (ISWC Resources Track, deadline around May, is the fallback.)
 
 ## Tracking checklist (Cyril)
 
@@ -41,10 +50,14 @@ docs/paper/
   sections/               # earlier Markdown drafts retained as review history
   overleaf/               # authoritative PLMLatex/LNCS manuscript source
   evaluation/             # archived reasoner/interoperability/review evidence
-  sources/                # Gilbert 2026 report (PDF + EN translation) + figures
+  sources/                # gilbert-2026-internship-report/ (FR PDF + EN translation + figures; see its README)
   emails/                 # co-author comms (e.g. request-clean-v1.md)
   references.bib          # earlier Markdown-draft bibliography
 ```
+
+> Older entries in `TODO.md` and `ISWC-MIGRATION-PLAN.md` cite `docs/meetings/` and
+> `docs/BFO-SOSA-*.md` / `PROV-BFO-ALIGNMENT-PAPER-NOTES.md`. Those working notes now live in the
+> private `dhuzard/hcmo-internal-docs` repository under the same `docs/` paths.
 
 ## Workflow
 
@@ -64,6 +77,9 @@ docs/paper/
 - Code repository: <https://github.com/dhuzard/HCMO>
 - Version DOI (Zenodo, v0.3.0): <https://doi.org/10.5281/zenodo.22208202>
 - Concept DOI (all versions): <https://doi.org/10.5281/zenodo.18925284>
+- Conceptual precursor: HCM Definition Olog on Zenodo, version DOI
+  <https://doi.org/10.5281/zenodo.22646369> and concept DOI
+  <https://doi.org/10.5281/zenodo.22646368>
 - License: CC BY 4.0
 - Standards reused: SOSA/SSN, OWL-Time, PROV, BFO/IAO, QUDT 3.4.0; SHACL; JSON-LD
 - Engineering: release manifest, modular Turtle, reproducible build, CI gate,

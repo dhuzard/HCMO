@@ -1,4 +1,4 @@
-# HCMO 0.3.0 — bio — subjects, groups, housing assignments, and study factors
+# HCMO 0.4.1 — bio — subjects, groups, housing assignments, and study factors
 # Promoted after expert review; see docs/paper/MODULE-MAP.md. Namespace policy: …/hcm/bio#.
 #
 @prefix hcm: <https://w3id.org/hcmo/ontology/hcm#> .
@@ -13,6 +13,11 @@
 hcm-bio:ExperimentalGroup a owl:Class ;
     rdfs:label "Experimental Group" ;
     rdfs:comment "A group of biological subjects sharing an experimental condition, treatment, or study role." ;
+    rdfs:subClassOf BFO:0000040 .
+
+hcm-bio:InteractingGroup a owl:Class ;
+    rdfs:label "Interacting Group" ;
+    rdfs:comment "A transient collection of two or more subjects that jointly take part in a behavior during an observed interval, such as two animals in contact or three animals huddling together. It is defined by the observed behavior, not by the study design, and is therefore distinct from an experimental group." ;
     rdfs:subClassOf BFO:0000040 .
 
 hcm-bio:HousingAssignment a owl:Class ;
@@ -70,8 +75,8 @@ hcm-bio:hasHousingAssignment a owl:ObjectProperty ;
 
 hcm-bio:hasMember a owl:ObjectProperty ;
     rdfs:label "has member" ;
-    rdfs:comment "Relates an experimental group to a subject that is a member of the group." ;
-    rdfs:domain hcm-bio:ExperimentalGroup ;
+    rdfs:comment "Relates an experimental or interacting group to a subject that is a member of the group." ;
+    rdfs:domain [ a owl:Class ; owl:unionOf ( hcm-bio:ExperimentalGroup hcm-bio:InteractingGroup ) ] ;
     rdfs:range hcm-bio:Subject .
 
 hcm-bio:hasSpecies a owl:DatatypeProperty ;

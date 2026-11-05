@@ -1,0 +1,33 @@
+# NEGATIVE probe for the multi-animal behavior rules in shapes/hcm-shapes.ttl
+# (validate.py step 3). Each rule below must be reported:
+#   - an interacting group with fewer than two members
+#   - a role holder that is not in the observation's interacting group
+#   - the same subject as initiator and recipient
+# Not listed in hcmo.yaml; never loaded into the competency-query graph. Other,
+# unrelated shape violations in this deliberately incomplete graph are ignored.
+
+@prefix ex: <https://example.org/hcmo/social-invalid/> .
+@prefix hcm-bio: <https://w3id.org/hcmo/ontology/hcm/bio#> .
+@prefix hcm-obs: <https://w3id.org/hcmo/ontology/hcm/obs#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+
+ex:mouse-a a hcm-bio:Subject ; rdfs:label "Mouse A" .
+ex:mouse-b a hcm-bio:Subject ; rdfs:label "Mouse B" .
+ex:mouse-c a hcm-bio:Subject ; rdfs:label "Mouse C" .
+
+ex:lonely-group a hcm-bio:InteractingGroup ;
+  hcm-bio:hasMember ex:mouse-a .
+
+ex:pair-a-b a hcm-bio:InteractingGroup ;
+  hcm-bio:hasMember ex:mouse-a, ex:mouse-b .
+
+ex:outsider-role a hcm-obs:BehaviorObservation ;
+  sosa:hasFeatureOfInterest ex:pair-a-b ;
+  hcm-obs:hasInitiator ex:mouse-a ;
+  hcm-obs:hasRecipient ex:mouse-c .
+
+ex:self-directed a hcm-obs:BehaviorObservation ;
+  sosa:hasFeatureOfInterest ex:pair-a-b ;
+  hcm-obs:hasInitiator ex:mouse-b ;
+  hcm-obs:hasRecipient ex:mouse-b .

@@ -11,7 +11,18 @@ parsing, SHACL, competency-question, interoperability, and reasoner checks.
 Findings are reviewed before any ontology change. In particular, scanner output
 does not authorize changing or re-minting published HCMO IRIs.
 
-## Current 0.3.0 triage
+## 0.4.1 triage (2026-10-12)
+
+The automated run for `v0.4.1` passes the domain/range, datatype, import,
+IRI-scheme, licence and reasoner checks (consistent, 0 unsatisfiable classes),
+and repeats the documented exceptions below. One new finding: its namespace
+probe reports HTTP 404 for the HCMO core and module namespaces (also in the
+v0.3.1 and v0.4.0 runs), although every one of them resolves in our checks by
+content negotiation. Details and the tests run are in
+[`RELEASE-0.4.1-SCANS-2026-10-12.md`](RELEASE-0.4.1-SCANS-2026-10-12.md).
+Treated as non-blocking until confirmed with a manual run or the maintainers.
+
+## 0.3.0 triage
 
 A manual run on 31 August 2026, after restoring the GitHub release assets and
 PURL targets, parsed the release and resolved the HCMO core and four module

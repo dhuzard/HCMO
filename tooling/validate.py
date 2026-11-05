@@ -5,7 +5,8 @@ Steps (any failure -> non-zero exit):
   1. Parse every TTL under ontology/, shapes/, and examples/, plus all generated
      RDF distribution serializations declared in hcmo.yaml.
   2. Validate release-bearing metadata surfaces and the pinned external-
-     vocabulary contract without network access.
+     vocabulary contract without network access, and check that the generated
+     external-reuse report (docs/EXTERNAL-REUSE.md) matches the merged graph.
   3. Run pySHACL of shapes/ against each isolated example with the canonical
      ontology supplied as an ontology graph and RDFS inference enabled.
      Examples whose name contains "edge" or "invalid" are NEGATIVE tests
@@ -19,6 +20,10 @@ Steps (any failure -> non-zero exit):
   7. Run every indexed competency query against the canonical ontology plus all
      positive examples. The canonicalized result rows must equal the reviewed
      answers in queries/competency_questions.yaml.
+  8. Check that the generated SKOS vocabularies and form options are current,
+     validate vocabularies/*.ttl with shapes/vocab-shapes.ttl, validate each
+     example's vocabulary usage, and require every usage shape to fire on the
+     negative probe examples/vocab-usage-invalid.ttl.
 
 Usage: python tooling/validate.py
 """
@@ -28,6 +33,7 @@ import glob
 import csv
 import json
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -35,7 +41,9 @@ import yaml
 from rdflib import RDF, Graph, Literal, Namespace, URIRef, XSD
 from rdflib.compare import isomorphic
 from pyshacl import validate as shacl_validate
+from pyshacl.errors import ValidationFailure
 from external_vocab import validate_contract
+from reuse_report import check_report
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -50,6 +58,14 @@ def merged_graph(manifest: dict) -> Graph:
     for rel in manifest["modules"]:
         g.parse(ROOT / rel, format="turtle")
     return g
+
+
+SH = Namespace("http://www.w3.org/ns/shacl#")
+SOCIAL_PROBE_MESSAGES = (
+    "An interacting group needs at least two member subjects.",
+    "A subject with a role in a behavior observation must be its feature of interest",
+    "The initiator and the recipient of a directed behavior must be different subjects.",
+)
 
 
 def is_negative_example(relative_path: str) -> bool:
@@ -140,7 +156,7 @@ def evaluation_graph(manifest: dict, ontology_graph: Graph) -> Graph:
 def step_parse_all(manifest: dict) -> tuple[bool, list[str]]:
     ok = True
     notes = []
-    patterns = ["ontology/**/*.ttl", "shapes/**/*.ttl", "examples/**/*.ttl"]
+    patterns = ["ontology/**/*.ttl", "shapes/**/*.ttl", "examples/**/*.ttl", "vocabularies/**/*.ttl"]
     files = {Path(p) for pat in patterns for p in glob.glob(str(ROOT / pat), recursive=True)}
     files.update(
         {
@@ -161,6 +177,50 @@ def step_parse_all(manifest: dict) -> tuple[bool, list[str]]:
     return ok, notes
 
 
+def _run_shacl(
+    data_g: Graph, shapes_g: Graph, ontology_graph: Graph | None, inference: str
+) -> tuple[bool, Graph | None, str | None]:
+    """Run pySHACL and report a validation failure separately from non-conformance.
+
+    A malformed constraint (for example one that breaks the SHACL-SPARQL
+    pre-binding restrictions) makes the engine report a failure instead of
+    results. A test that only reads ``conforms`` cannot tell that apart from a
+    fixture that fails for the intended reasons.
+    """
+    try:
+        conforms, results, _ = shacl_validate(
+            data_g,
+            shacl_graph=shapes_g,
+            ont_graph=ontology_graph,
+            inference=inference,
+            abort_on_first=False,
+            do_owl_imports=False,
+        )
+    except ValidationFailure as exc:
+        return False, None, str(exc)
+    if not isinstance(results, Graph):
+        return False, None, str(results)
+    if (None, RDF.type, SH.ValidationFailure) in results:
+        message = next(
+            (str(m) for m in results.objects(None, SH.resultMessage)),
+            "the shapes graph reported sh:ValidationFailure",
+        )
+        return False, results, message
+    return conforms, results, None
+
+
+def _violation_count(results: Graph | None) -> int:
+    if results is None:
+        return 0
+    return len(set(results.subjects(RDF.type, SH.ValidationResult)))
+
+
+EXPECTED_NEGATIVE_VIOLATIONS = {
+    "examples/abox-edge-cases.ttl": 18,
+    "examples/abox-inferred-invalid.ttl": 5,
+}
+
+
 def step_shacl(manifest: dict, ontology_graph: Graph) -> tuple[bool, list[str]]:
     ok = True
     notes = []
@@ -178,40 +238,71 @@ def step_shacl(manifest: dict, ontology_graph: Graph) -> tuple[bool, list[str]]:
         data_g = Graph().parse(path, format="turtle")
         inference_probe = Path(rel).name == "abox-inferred-invalid.ttl"
         if inference_probe:
-            baseline_conforms, _, _ = shacl_validate(
-                data_g,
-                shacl_graph=shapes_g,
-                inference="none",
-                abort_on_first=False,
-                do_owl_imports=False,
+            baseline_conforms, _, baseline_failure = _run_shacl(
+                data_g, shapes_g, None, "none"
             )
+            if baseline_failure is not None:
+                ok = False
+                notes.append(
+                    f"[FAIL] SHACL {rel}: validation did not complete: {baseline_failure}"
+                )
+                continue
             if not baseline_conforms:
                 ok = False
                 notes.append(
                     f"[FAIL] SHACL {rel}: fixture is not inference-dependent"
                 )
                 continue
-        conforms, _, _ = shacl_validate(
-            data_g,
-            shacl_graph=shapes_g,
-            ont_graph=ontology_graph,
-            inference="rdfs",
-            abort_on_first=False,
-            do_owl_imports=False,
+        conforms, results, failure = _run_shacl(
+            data_g, shapes_g, ontology_graph, "rdfs"
         )
+        if failure is not None:
+            ok = False
+            notes.append(f"[FAIL] SHACL {rel}: validation did not complete: {failure}")
+            continue
+        found = _violation_count(results)
+        expected = EXPECTED_NEGATIVE_VIOLATIONS.get(rel)
         expect = "non-conformant" if negative else "conformant"
         actual = "conformant" if conforms else "non-conformant"
         passed = (conforms is not negative)  # positive->conform, negative->not
+        if passed and negative and found == 0:
+            passed = False
+            actual = "non-conformant with no sh:ValidationResult"
+        if passed and negative and expected is not None and found != expected:
+            passed = False
+            actual = f"{found} violations (validator expects {expected})"
         if not passed:
             ok = False
             notes.append(f"[FAIL] SHACL {rel}: expected {expect}, got {actual}")
         else:
-            notes.append(f"[OK]   SHACL {rel}: {actual} (expected {expect})")
+            detail = f", {found} violations" if negative else ""
+            notes.append(f"[OK]   SHACL {rel}: {actual}{detail} (expected {expect})")
             if inference_probe:
                 notes.append(
                     "[OK]   ontology-aware target probe: conformant without "
                     "ontology, non-conformant with ontology + RDFS"
                 )
+
+    probe = "examples/abox-social-invalid.ttl"
+    _, report_g, failure = _run_shacl(
+        Graph().parse(ROOT / probe, format="turtle"), shapes_g, ontology_graph, "rdfs"
+    )
+    if failure is not None:
+        ok = False
+        notes.append(f"[FAIL] multi-animal probe {probe}: validation did not complete: {failure}")
+        return ok, notes
+    messages = {str(m) for m in report_g.objects(None, SH.resultMessage)}
+    missing = [
+        expected for expected in SOCIAL_PROBE_MESSAGES
+        if not any(message.startswith(expected) for message in messages)
+    ]
+    if missing:
+        ok = False
+        notes.append(f"[FAIL] multi-animal probe {probe}: shapes did not fire: {missing}")
+    else:
+        notes.append(
+            f"[OK]   multi-animal probe {probe}: all {len(SOCIAL_PROBE_MESSAGES)} rules fired"
+        )
     return ok, notes
 
 
@@ -279,6 +370,93 @@ def step_isa_roundtrip(ontology_graph: Graph) -> tuple[bool, list[str]]:
         notes.append("[FAIL] canonical HCMO RDF and extended ISA RO-Crate are not graph-isomorphic")
     else:
         notes.append(f"[OK]   lossless HCMO RDF/extended ISA RO-Crate graph: {len(canonical)} triples")
+
+    result_matrix_path = fixture_root / "data" / "model-results.csv"
+    matrix_columns = [
+        "entity",
+        "term",
+        "entity_stato_iri",
+        "entity_stato_label",
+        "estimate",
+        "estimate_entity",
+        "estimate_stato_iri",
+        "estimate_stato_label",
+        "ci_lower",
+        "ci_upper",
+        "ci_entity",
+        "ci_stato_iri",
+        "ci_stato_label",
+        "p_value",
+        "p_value_entity",
+        "p_value_stato_iri",
+        "p_value_stato_label",
+        "model_formula",
+        "fixed_effects",
+        "random_effect",
+    ]
+    try:
+        with result_matrix_path.open(encoding="utf-8", newline="") as handle:
+            reader = csv.DictReader(handle)
+            matrix_rows = list(reader)
+        if reader.fieldnames != matrix_columns:
+            raise ValueError(f"unexpected columns: {reader.fieldnames}")
+        if len(matrix_rows) != 2:
+            raise ValueError(f"expected two result rows, found {len(matrix_rows)}")
+        rows_by_entity = {row["entity"]: row for row in matrix_rows}
+        model_row = rows_by_entity[f"{base}fitted-linear-mixed-model"]
+        contrast_row = rows_by_entity[f"{base}active-versus-vehicle-contrast"]
+        annotations = (
+            (
+                model_row,
+                "entity",
+                "entity_stato_iri",
+                "entity_stato_label",
+                "http://purl.obolibrary.org/obo/STATO_0000464",
+                "linear mixed model",
+            ),
+            (
+                contrast_row,
+                "estimate_entity",
+                "estimate_stato_iri",
+                "estimate_stato_label",
+                "http://purl.obolibrary.org/obo/STATO_0000384",
+                "contrast estimate",
+            ),
+            (
+                contrast_row,
+                "ci_entity",
+                "ci_stato_iri",
+                "ci_stato_label",
+                "http://purl.obolibrary.org/obo/STATO_0000231",
+                "95% confidence interval",
+            ),
+            (
+                contrast_row,
+                "p_value_entity",
+                "p_value_stato_iri",
+                "p_value_stato_label",
+                "http://purl.obolibrary.org/obo/STATO_0000700",
+                "p-value",
+            ),
+        )
+        for row, entity_field, iri_field, label_field, expected_iri, expected_label in annotations:
+            if row[iri_field] != expected_iri or row[label_field] != expected_label:
+                raise ValueError(
+                    f"{iri_field}/{label_field} does not match {expected_iri} ({expected_label})"
+                )
+            if (URIRef(row[entity_field]), RDF.type, URIRef(expected_iri)) not in canonical:
+                raise ValueError(
+                    f"{row[entity_field]} is not typed {expected_iri} in canonical RDF"
+                )
+        if contrast_row["entity_stato_iri"] or contrast_row["entity_stato_label"]:
+            raise ValueError("the untyped contrast row acquired an unsupported STATO class")
+        notes.append(
+            "[OK]   STATO-annotated result matrix: model, contrast estimate, "
+            "95% confidence interval, and p-value"
+        )
+    except Exception as exc:  # noqa: BLE001
+        ok = False
+        notes.append(f"[FAIL] STATO-annotated result matrix: {exc}")
 
     monitored_animals = URIRef("https://w3id.org/hcmo/ontology/hcm#hasMonitoredAnimals")
     if any(canonical.triples((None, monitored_animals, None))):
@@ -535,6 +713,23 @@ def canonical_result_rows(result) -> list[dict[str, str | None]]:
     return sorted(rows, key=lambda row: json.dumps(row, sort_keys=True))
 
 
+def undeclared_prefixes(query: str) -> set[str]:
+    """Prefix names a query uses in prefixed names without a PREFIX declaration.
+
+    rdflib's `Graph.query` silently resolves prefixes bound in the data graph,
+    so a missing declaration passes here and fails on Fuseki with
+    "Unresolved prefixed name". IRIs, string literals and comments are
+    stripped before looking for `prefix:local` tokens.
+    """
+    declared = set(re.findall(r"(?im)^\s*PREFIX\s+([A-Za-z][\w-]*)?:", query))
+    body = re.sub(r"(?im)^\s*PREFIX\s+[^\n]*$", "", query)
+    body = re.sub(r"<[^>]*>", "", body)
+    body = re.sub(r'"(?:[^"\\]|\\.)*"', "", body)
+    body = re.sub(r"#[^\n]*", "", body)
+    used = set(re.findall(r"(?<![\w?$:<])([A-Za-z][\w-]*):(?=[A-Za-z_])", body))
+    return used - declared
+
+
 def step_queries(
     manifest: dict, graph: Graph
 ) -> tuple[bool, list[str], dict[str, int | None]]:
@@ -586,6 +781,16 @@ def step_queries(
             )
             continue
         path = ROOT / rel
+        undeclared = undeclared_prefixes(path.read_text(encoding="utf-8"))
+        if undeclared:
+            ok = False
+            rowcounts[rel] = None
+            notes.append(
+                f"[FAIL] query {question_id} ({rel}): prefixes used but not "
+                f"declared: {sorted(undeclared)} (rdflib resolves them from the "
+                "data graph; a SPARQL endpoint rejects the query)"
+            )
+            continue
         try:
             res = graph.query(path.read_text(encoding="utf-8"))
             actual = canonical_result_rows(res)
@@ -612,6 +817,95 @@ def step_queries(
     return ok, notes, rowcounts
 
 
+VOCAB_PROBE_MESSAGES = (
+    "hcm-tech:hasFileFormatConcept must point at a concept",
+    "hcm-tech:hasDataAccessMethod must point at a concept",
+    "hcm-tech:hasFileFormat does not match",
+    "hcm-tech:hasFileFormat names a different format",
+)
+
+
+def shacl_results(data_g: Graph, shapes_g: Graph) -> list[tuple[URIRef, str, str]]:
+    """Return (severity, message, focus node) for each SHACL result."""
+    _, report_g, _ = shacl_validate(
+        data_g,
+        shacl_graph=shapes_g,
+        inference="none",
+        abort_on_first=False,
+        do_owl_imports=False,
+    )
+    return sorted(
+        (
+            report_g.value(result, SH.resultSeverity),
+            str(report_g.value(result, SH.resultMessage)),
+            str(report_g.value(result, SH.focusNode)),
+        )
+        for result in report_g.subjects(RDF.type, SH.ValidationResult)
+    )
+
+
+def step_vocabularies(manifest: dict) -> tuple[bool, list[str]]:
+    ok = True
+    notes = []
+    check = subprocess.run(
+        [sys.executable, str(ROOT / "tooling" / "export_hcm_vocab.py"), "--check"],
+        capture_output=True,
+        text=True,
+    )
+    if check.returncode:
+        ok = False
+        notes.extend((check.stdout + check.stderr).strip().splitlines())
+    else:
+        notes.append("[OK]   generated vendor/system vocabularies and form options are current")
+
+    vocab_g = Graph()
+    for path in sorted((ROOT / "vocabularies").glob("*.ttl")):
+        vocab_g.parse(path, format="turtle")
+    shapes_g = Graph().parse(ROOT / "shapes" / "vocab-shapes.ttl", format="turtle")
+    skos = Namespace("http://www.w3.org/2004/02/skos/core#")
+
+    results = shacl_results(vocab_g, shapes_g)
+    if results:
+        ok = False
+        for severity, message, focus in results[:10]:
+            notes.append(f"[FAIL] vocabulary {focus}: {message}")
+    else:
+        notes.append(
+            f"[OK]   vocabulary integrity: {len(set(vocab_g.subjects(RDF.type, skos.Concept)))} "
+            f"concepts in {len(set(vocab_g.subjects(RDF.type, skos.ConceptScheme)))} schemes"
+        )
+
+    for rel in manifest.get("examples", []):
+        data_g = Graph().parse(ROOT / rel, format="turtle") + vocab_g
+        results = shacl_results(data_g, shapes_g)
+        violations = [r for r in results if r[0] == SH.Violation]
+        for severity, message, focus in results:
+            if severity != SH.Violation:
+                notes.append(f"[WARN] vocabulary usage {rel} {focus}: {message}")
+        if violations:
+            ok = False
+            for _, message, focus in violations:
+                notes.append(f"[FAIL] vocabulary usage {rel} {focus}: {message}")
+        else:
+            notes.append(f"[OK]   vocabulary usage {rel}: no violations")
+
+    probe = "examples/vocab-usage-invalid.ttl"
+    results = shacl_results(Graph().parse(ROOT / probe, format="turtle") + vocab_g, shapes_g)
+    missing = [
+        expected for expected in VOCAB_PROBE_MESSAGES
+        if not any(message.startswith(expected) for _, message, _ in results)
+    ]
+    if missing:
+        ok = False
+        notes.append(f"[FAIL] negative probe {probe}: shapes did not fire: {missing}")
+    else:
+        notes.append(
+            f"[OK]   negative probe {probe}: all {len(VOCAB_PROBE_MESSAGES)} usage shapes fired "
+            f"({len(results)} result(s))"
+        )
+    return ok, notes
+
+
 def main() -> int:
     manifest = load_manifest()
     ontology_graph = merged_graph(manifest)
@@ -628,6 +922,10 @@ def main() -> int:
     all_ok &= ok
 
     ok, notes = validate_contract(verify_network=False)
+    print("\n".join(notes))
+    all_ok &= ok
+
+    ok, notes = check_report()
     print("\n".join(notes))
     all_ok &= ok
 
@@ -654,6 +952,11 @@ def main() -> int:
     print("\n== 7. Competency queries vs ontology and positive examples ==")
     query_graph = evaluation_graph(manifest, ontology_graph)
     ok, notes, rowcounts = step_queries(manifest, query_graph)
+    print("\n".join(notes))
+    all_ok &= ok
+
+    print("\n== 8. SKOS vocabularies ==")
+    ok, notes = step_vocabularies(manifest)
     print("\n".join(notes))
     all_ok &= ok
 

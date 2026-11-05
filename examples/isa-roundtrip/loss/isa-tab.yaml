@@ -3,6 +3,7 @@ status: controlled-loss-contract
 source: ../canonical.ttl
 executable_scope:
   validator: ../../../tooling/validate_isa_native_projection.py
+  generated_output: ../native-isa/isatab/
   path: animal-8 Source -> specimen collection -> genuine tissue Sample
 preserved:
   - stable HCMO animal and specimen identifiers through explicit Comment[HCMO IRI] columns

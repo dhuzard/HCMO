@@ -1,0 +1,10 @@
+# Docker build context for deploy/fuseki/Dockerfile (context = repo root).
+# Allow-list: exclude everything (docs/paper holds large zips), then re-include
+# only what the image loads or needs to build.
+*
+!hcmo.yaml
+!dist/hcmo.ttl
+!examples/*.ttl
+!vocabularies/*.ttl
+!docs/hcm-systems/catalog.ttl
+!deploy/fuseki/**

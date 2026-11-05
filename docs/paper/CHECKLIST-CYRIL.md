@@ -63,7 +63,7 @@
 | 35 | KGQA | Capture/figure du démonstrateur | Non | ⬜ | — | Seulement si utile. |
 | 36 | Soumission | Format & template | Oui | ✅ | `CALL-REQUIREMENTS.md` | **LNCS** (Springer). |
 | 37 | Soumission | (Non-)anonymisation | Oui | ✅ | `CALL-REQUIREMENTS.md` | **Single-anonymous** : auteurs nommés. |
-| 38 | Soumission | Figures principales | Oui | ✅ | `overleaf/figures/f1.tex`, `f2.tex`, `f3.tex` | Trois figures TikZ vectorielles et sans dépendance draw.io: pipeline, modèle 5 modules et fixture de round trip. |
+| 38 | Soumission | Figures principales | Oui | ✅ | `overleaf/figures/f1.tex`, `f2.tex`, `f3.tex`, `f4.tex` | Quatre figures TikZ vectorielles et sans dépendance draw.io: pipeline, modèle 5 modules, fixture de round trip et séparation entre ontologie normative et preuves d'interopérabilité au niveau des instances. |
 | 39 | Soumission | Tableau récap des ressources | Oui | ✅ | `metadata/resource-metadata.md` | GitHub/DOI/docs/examples/SHACL/queries. |
 | 40 | Soumission | Relecture interne complète | Oui | ⬜ | `TODO.md` (T22) | À faire en fin de rédaction. |
 | 41 | Soumission | Liste auteurs & contributions | Oui | ✅ | `metadata/authors.md` | Ordre confirmé; Gilbert, Todorov et Huzard correspondants; Todorov/Huzard co-derniers. |

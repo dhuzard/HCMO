@@ -1,0 +1,185 @@
+# HCMO modality vocabulary (SKOS).
+#
+# Hand-authored controlled vocabulary for the monitoring modalities of home-cage
+# monitoring systems (the Modality column of docs/hcm-systems/CATALOG.md, split on
+# "+" and deduplicated). Contributed from the Metadatapp registry, which uses it to
+# classify systems. Not part of the release manifest (hcmo.yaml).
+#
+# Validated by shapes/vocab-shapes.ttl (python tooling/validate.py).
+
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix mod: <https://w3id.org/hcmo/id/vocab/modality/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+mod:acoustic-usv a skos:Concept ;
+    dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
+    skos:altLabel "acoustic (USV mics)"@en,
+        "acoustic (USV)"@en ;
+    skos:definition "Records ultrasonic vocalisations with ultrasound-sensitive microphones."@en ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/modality> ;
+    skos:prefLabel "ultrasonic vocalisation recording"@en ;
+    skos:topConceptOf <https://w3id.org/hcmo/id/vocab/modality> .
+
+mod:body-weight a skos:Concept ;
+    dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
+    skos:altLabel "body-weight gate"@en ;
+    skos:definition "Measures the body weight of animals, typically when they enter a weighing station in the cage."@en ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/modality> ;
+    skos:prefLabel "body-weight measurement"@en ;
+    skos:topConceptOf <https://w3id.org/hcmo/id/vocab/modality> .
+
+mod:capacitive-sensing a skos:Concept ;
+    dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
+    skos:altLabel "EMF (capacitive electrode array under cage)"@en ;
+    skos:definition "Detects animals or their activity from changes in the electrical capacitance of electrodes placed on or under the cage."@en ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/modality> ;
+    skos:prefLabel "capacitive sensing"@en ;
+    skos:topConceptOf <https://w3id.org/hcmo/id/vocab/modality> .
+
+mod:depth-video a skos:Concept ;
+    dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
+    skos:altLabel "video (IR depth)"@en ;
+    skos:broader mod:video ;
+    skos:definition "Records video together with per-pixel distance, using infrared depth imaging."@en ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/modality> ;
+    skos:prefLabel "infrared depth video"@en .
+
+mod:environmental-sensing a skos:Concept ;
+    dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
+    skos:altLabel "environment"@en,
+        "environmental"@en ;
+    skos:definition "Measures cage or room conditions such as temperature, humidity, light or gas concentration."@en ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/modality> ;
+    skos:prefLabel "environmental sensing"@en ;
+    skos:topConceptOf <https://w3id.org/hcmo/id/vocab/modality> .
+
+mod:feeding-and-drinking a skos:Concept ;
+    dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
+    skos:altLabel "feeding/drinking"@en,
+        "food intake"@en ;
+    skos:definition "Records food and fluid intake, by weight, pellet or lick events."@en ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/modality> ;
+    skos:prefLabel "feeding and drinking monitoring"@en ;
+    skos:topConceptOf <https://w3id.org/hcmo/id/vocab/modality> .
+
+mod:implantable-telemetry a skos:Concept ;
+    dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
+    skos:altLabel "telemetry"@en ;
+    skos:definition "Records physiological signals with a transmitter implanted in the animal and a receiver outside the cage."@en ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/modality> ;
+    skos:prefLabel "implantable telemetry"@en ;
+    skos:topConceptOf <https://w3id.org/hcmo/id/vocab/modality> .
+
+mod:indirect-calorimetry a skos:Concept ;
+    dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
+    skos:altLabel "metabolic (calorimetry)"@en ;
+    skos:definition "Estimates energy expenditure from oxygen consumption and carbon dioxide production measured in the cage air."@en ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/modality> ;
+    skos:prefLabel "indirect calorimetry"@en ;
+    skos:topConceptOf <https://w3id.org/hcmo/id/vocab/modality> .
+
+mod:infrared-beam-break a skos:Concept ;
+    dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
+    skos:altLabel "IR barriers"@en,
+        "IR beam-break"@en ;
+    skos:definition "Detects presence or movement when an animal interrupts one or more infrared light beams."@en ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/modality> ;
+    skos:prefLabel "infrared beam-break"@en ;
+    skos:topConceptOf <https://w3id.org/hcmo/id/vocab/modality> .
+
+mod:lickometry a skos:Concept ;
+    dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
+    skos:altLabel "lickometer (two-bottle)"@en ;
+    skos:definition "Counts and times licks at a drinking spout."@en ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/modality> ;
+    skos:prefLabel "lickometry"@en ;
+    skos:topConceptOf <https://w3id.org/hcmo/id/vocab/modality> .
+
+mod:load-cell-vibration a skos:Concept ;
+    dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
+    skos:altLabel "load cell"@en,
+        "load cells / vibration"@en ;
+    skos:definition "Infers behaviour from force or vibration signals picked up by load cells under the cage."@en ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/modality> ;
+    skos:prefLabel "load cells and vibration"@en ;
+    skos:topConceptOf <https://w3id.org/hcmo/id/vocab/modality> .
+
+mod:operant-testing a skos:Concept ;
+    dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
+    skos:altLabel "operant (nose-poke)"@en,
+        "operant (sensory discrimination)"@en,
+        "operant (touch screens, nose poke, feeder)"@en,
+        "operant / cognitive, group-housed"@en ;
+    skos:definition "Trains and tests animals on tasks in the home cage, with responses and rewards recorded automatically."@en ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/modality> ;
+    skos:prefLabel "operant and cognitive testing"@en ;
+    skos:topConceptOf <https://w3id.org/hcmo/id/vocab/modality> .
+
+mod:optogenetic-stimulation a skos:Concept ;
+    dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
+    skos:altLabel "wireless optogenetic implants"@en ;
+    skos:definition "Delivers light to neurons in the freely moving animal from a wireless implant."@en ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/modality> ;
+    skos:prefLabel "wireless optogenetic stimulation"@en ;
+    skos:topConceptOf <https://w3id.org/hcmo/id/vocab/modality> .
+
+mod:passive-infrared a skos:Concept ;
+    dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
+    skos:altLabel "PIR activity"@en ;
+    skos:definition "Detects animal activity from the infrared radiation changes seen by a passive infrared sensor."@en ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/modality> ;
+    skos:prefLabel "passive infrared activity sensing"@en ;
+    skos:topConceptOf <https://w3id.org/hcmo/id/vocab/modality> .
+
+mod:plethysmography a skos:Concept ;
+    dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
+    skos:definition "Measures breathing by recording the pressure or volume changes it causes in an enclosure."@en ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/modality> ;
+    skos:prefLabel "plethysmography"@en ;
+    skos:topConceptOf <https://w3id.org/hcmo/id/vocab/modality> .
+
+mod:rfid a skos:Concept ;
+    dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
+    skos:altLabel "RFID"@en,
+        "RFID (LF, ISO 11784/85 FDX-B)"@en,
+        "RFID tunnel reader"@en ;
+    skos:definition "Identifies individual animals carrying a radio-frequency identification transponder."@en ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/modality> ;
+    skos:prefLabel "RFID identification"@en ;
+    skos:topConceptOf <https://w3id.org/hcmo/id/vocab/modality> .
+
+mod:video a skos:Concept ;
+    dcterms:source <https://github.com/dhuzard/HCMO/blob/main/docs/hcm-systems/CATALOG.md> ;
+    skos:altLabel "retrofit camera system"@en,
+        "video (integrated arena)"@en,
+        "video (retrofit on standard shoebox cages)"@en,
+        "video pipeline"@en ;
+    skos:definition "Records the cage with one or more cameras for tracking or behaviour analysis."@en ;
+    skos:inScheme <https://w3id.org/hcmo/id/vocab/modality> ;
+    skos:narrower mod:depth-video ;
+    skos:prefLabel "video"@en ;
+    skos:topConceptOf <https://w3id.org/hcmo/id/vocab/modality> .
+
+<https://w3id.org/hcmo/id/vocab/modality> a skos:ConceptScheme ;
+    dcterms:created "2026-10-12"^^xsd:date ;
+    dcterms:description "Monitoring modalities of home-cage monitoring systems."@en ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:title "HCMO modality vocabulary"@en ;
+    skos:hasTopConcept mod:acoustic-usv,
+        mod:body-weight,
+        mod:capacitive-sensing,
+        mod:environmental-sensing,
+        mod:feeding-and-drinking,
+        mod:implantable-telemetry,
+        mod:indirect-calorimetry,
+        mod:infrared-beam-break,
+        mod:lickometry,
+        mod:load-cell-vibration,
+        mod:operant-testing,
+        mod:optogenetic-stimulation,
+        mod:passive-infrared,
+        mod:plethysmography,
+        mod:rfid,
+        mod:video .
+

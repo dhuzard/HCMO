@@ -19,6 +19,12 @@ Never "just edit labels". Treat every change as a semantic change unless proven 
 - External-vocabulary contract: `external-vocabularies.yaml` — separate from
   the stable `hcmo.yaml` API; records versions, namespaces, used terms, and
   source checksums.
+- SKOS vocabularies (CBox, not in the release manifest): `vocabularies/`.
+  `file-formats.ttl` and `data-access-methods.ttl` are hand-authored;
+  `vendors.ttl`, `systems.ttl`, and the contribution-form chips are generated
+  from `docs/hcm-systems/CATALOG.md` and those files by
+  `tooling/export_hcm_vocab.py` (never hand-edit them). Shapes:
+  `shapes/vocab-shapes.ttl`.
 - Mapping registries: `mappings/semantic/` contains review-only SSSOM tables;
   `mappings/exchange/` contains directional serialization contracts. Neither
   registry is merged into canonical HCMO reasoning by default.
@@ -37,7 +43,7 @@ If these paths change, update this map and `hcmo.yaml` before editing.
 
 ## Namespace (authoritative)
 - Base namespace: `https://w3id.org/hcmo/ontology/hcm#`
-- Ontology IRI: `https://w3id.org/hcmo/ontology/hcm` · versionIRI `…/hcm/0.3.0`
+- Ontology IRI: `https://w3id.org/hcmo/ontology/hcm` · versionIRI `…/hcm/0.4.1`
 - Module sub-namespaces: `…/hcm/bio#`, `…/hcm/env#`, `…/hcm/obs#`, `…/hcm/tech#`
 - Never re-mint IRIs for existing concepts. Deprecate instead. Keep the namespace exactly as authored; if it must change, call it out and bump `owl:versionIRI`.
 

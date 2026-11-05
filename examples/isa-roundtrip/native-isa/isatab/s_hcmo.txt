@@ -1,0 +1,2 @@
+Source Name	Comment[HCMO IRI]	Protocol REF	Comment[HCMO IRI]	Sample Name	Comment[HCMO IRI]
+animal-8	https://example.org/hcmo/isa-roundtrip/animal-8	sample collection	https://example.org/hcmo/isa-roundtrip/process-specimen-collection	tissue specimen animal 8	https://example.org/hcmo/isa-roundtrip/tissue-sample-animal-8

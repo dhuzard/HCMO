@@ -19,15 +19,15 @@ authors:
   - family-names: "Sonfack Sounchio"
     given-names: "Serge"
     orcid: "https://orcid.org/0000-0002-6085-6818"
-    affiliation: "Production Engineering Laboratory/UFTMiP, France"
-  - family-names: "Toffano"
-    given-names: "Antoine"
-    orcid: "https://orcid.org/0009-0008-0575-8490"
-    affiliation: "LIRMM, Université de Montpellier, CNRS, Montpellier, France"
+    affiliation: "Robert Bosch Sp. z o. o., Jutrzenki 105, Poland"
   - family-names: "Larmande"
     given-names: "Pierre"
     orcid: "https://orcid.org/0000-0002-2923-9790"
     affiliation: "DIADE, Université de Montpellier, IRD, CIRAD, Montpellier, France"
+  - family-names: "Girard"
+    given-names: "Benoît"
+    orcid: "https://orcid.org/0000-0002-3914-6483"
+    affiliation: "Department of Basic Neurosciences, University of Geneva, Switzerland"
   - family-names: "Rocca-Serra"
     given-names: "Philippe"
     orcid: "https://orcid.org/0000-0001-9853-5668"
@@ -42,13 +42,16 @@ authors:
     orcid: "https://orcid.org/0000-0003-4820-7951"
     email: "damien.huzard@gmail.com"
     affiliation: "Neuronautix, Montpellier, France"
-version: 0.3.0
-date-released: 2026-08-31
-doi: 10.5281/zenodo.22208202
+version: 0.4.1
+date-released: 2026-10-12
+doi: 10.5281/zenodo.23315766
 identifiers:
   - type: doi
     value: 10.5281/zenodo.18925284
     description: Zenodo concept DOI for all HCMO versions
+  - type: doi
+    value: 10.5281/zenodo.22208202
+    description: Zenodo version DOI of HCMO 0.3.0
 url: "https://github.com/dhuzard/HCMO"
 repository-code: "https://github.com/dhuzard/HCMO"
 license: CC-BY-4.0

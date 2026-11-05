@@ -1,0 +1,36 @@
+name: BFO/SOSA bridge profile
+
+# Optional profile (ADR-0005). Does not gate the default release.
+on:
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'ontology/profiles/bfo-sosa-bridge.ttl'
+      - 'ontology/modules/**'
+      - 'shapes/profiles/**'
+      - 'examples/**'
+      - 'third_party/bfo-sosa-bridge/**'
+      - 'external-vocabularies.yaml'
+      - 'tooling/bridge_profile.py'
+      - '.github/workflows/bridge-profile.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  bridge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Install dependencies
+        run: pip install -r tooling/requirements.txt -r tooling/reasoning-requirements.txt
+      - name: Check the bridge profile (pinned BFO and the alignment's target BFO)
+        run: python tooling/bridge_profile.py check --bfo both --java-memory 3000

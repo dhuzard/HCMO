@@ -112,7 +112,12 @@ ISA-JSON and ISA-Tab are controlled-loss projections. Their currently tested
 native overlap is one animal Source → genuine tissue Sample collection,
 executed with pinned `isatools` 0.14.3 through JSON → Tab → JSON. Explicit
 `Comment[HCMO IRI]` annotations preserve source identities because ISA-Tab
-regenerates internal identifiers. Housing, direct whole-animal recording,
+regenerates internal identifiers. The reproducible ISA-API outputs and the
+Figure 3 input decisions are checked in at
+`examples/isa-roundtrip/native-isa/`. The broader fixture's generated result
+matrix exposes reviewed STATO IRIs, labels, and semantic-entity links while
+the canonical RDF preserves the typed entities and exact CSV fragments.
+Housing, direct whole-animal recording,
 source-bound factor values, explicit groups, repeated observations, and
 semantic STATO/file-fragment links remain declared losses. A broader native
 HCM assay projection requires a reviewed ISA configuration. The unresolved

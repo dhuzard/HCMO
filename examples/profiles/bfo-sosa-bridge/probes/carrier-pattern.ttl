@@ -1,0 +1,17 @@
+@prefix ex: <https://example.org/hcmo/bridge-probe#> .
+@prefix BFO: <http://purl.obolibrary.org/obo/BFO_> .
+@prefix hcm-obs: <https://w3id.org/hcmo/ontology/hcm/obs#> .
+@prefix hcm-tech: <https://w3id.org/hcmo/ontology/hcm/tech#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+
+# Documented carrier pattern: the deployed running installation (material carrier) is the sensor; it bears a quality that concretizes the code. Consistent.
+
+ex:tracker-code a hcm-tech:Software .
+ex:tracker-run-cage7 a hcm-tech:Sensor ;
+    owl:differentFrom ex:tracker-code ;
+    BFO:0000196 ex:tracker-run-cage7-state .
+ex:tracker-run-cage7-state a BFO:0000019 ;
+    BFO:0000059 ex:tracker-code .
+ex:obs-1 a hcm-obs:BehaviorObservation ;
+    sosa:madeBySensor ex:tracker-run-cage7 .
