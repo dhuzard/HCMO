@@ -19,7 +19,12 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
   The configuration is the whole-animal HCM assay projection that
   `docs/A02-ISA-STATO-COMPATIBILITY.md` lists as deferred; it is not yet
   reviewed against the loss contracts in `examples/isa-roundtrip/loss/`, and
-  the example's README records that and the other open items.
+  the example's README records that and the other open items. Term
+  accessions were checked against OLS4: the study design descriptors now use
+  `OBI:0500014` *factorial design* and `OBI:0500002` *repeated measure design*
+  (PR #62 had `STATO:0000234`, which is *residual*), and the `nucleic acid
+  sequencing` protocol uses `EFO:0004170` instead of `OBI:0001959`
+  (*multiplexed nucleotide library sequencing*).
 
 - `tooling/run_cqs.py`: runs the competency questions of
   `queries/competency_questions.yaml` against a SPARQL 1.1 Protocol endpoint

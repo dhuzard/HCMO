@@ -43,8 +43,8 @@ Comment[Funding Programme]
 Comment[Grant Agreement]													
 STUDY DESIGN DESCRIPTORS													
 Study Design Type	factorial design	repeated measure design											
-Study Design Type Term Accession Number	STATO:0000234												
-Study Design Type Term Source REF	STATO												
+Study Design Type Term Accession Number	OBI:0500014	OBI:0500002											
+Study Design Type Term Source REF	STATO	STATO											
 STUDY PUBLICATIONS													
 Study PubMed ID													
 Study Publication DOI													
@@ -71,8 +71,8 @@ Comment[target_repository]		ena
 STUDY PROTOCOLS													
 Study Protocol Name	growth protocol	sample collection	nucleic acid extraction	library construction	nucleic acid sequencing	data acquisition							
 Study Protocol Type	growth protocol	sample collection	nucleic acid extraction	library construction	nucleic acid sequencing	data acquisition							
-Study Protocol Type Term Accession Number	EFO:0003789	OBI:0000659	OBI:0666667	OBI:0000711	OBI:0001959								
-Study Protocol Type Term Source REF	EFO	OBI	OBI	OBI	OBI								
+Study Protocol Type Term Accession Number	EFO:0003789	OBI:0000659	OBI:0666667	OBI:0000711	EFO:0004170								
+Study Protocol Type Term Source REF	EFO	OBI	OBI	OBI	EFO								
 Study Protocol Description	growth protocol description	sample collection description	nucleic acid extraction procedure documentation	library preparation procedure documentation	nucleic acid sequencing procedure documentation	data acquisition							
 Study Protocol URI													
 Study Protocol Version													

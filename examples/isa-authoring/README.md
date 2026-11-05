@@ -83,9 +83,16 @@ assays, data files, characteristic accessions) with the committed file.
   animal).
 - The activity count is recorded as `Comment[raw signal]`; the raw files named
   in `Raw Data File` are not part of the repository.
-- The `repeated measure design` design descriptor has no verified STATO
-  accession yet. `phenotyping`, `home cage monitoring`, `data acquisition` and
-  the `environment` factor type have no ontology accession.
+- Term accessions were checked against OLS4 (2026-11-05). `factorial design`
+  is `OBI:0500014` and `repeated measure design` is `OBI:0500002`, both imported
+  by STATO (the original `STATO:0000234` is *residual*); the `nucleic acid
+  sequencing` protocol is `EFO:0004170` (the original `OBI:0001959` is
+  *multiplexed nucleotide library sequencing*). `phenotyping`, `home cage
+  monitoring`, `data acquisition` and the `environment` factor type still have
+  no accession. Candidates: `EFO:0920062` *phenotyping* and `MMO:0000596`
+  *home cage monitoring method*. They are left for the configuration review
+  because MMO is not yet a declared term source and the protocol type
+  (`data acquisition` vs `home cage monitoring`) is still undecided.
 - The transcription-profiling assay is synthetic (placeholder file names,
   flowcell and library metadata).
 - No HCMO IRIs are carried yet. Adding `Comment[HCMO IRI]` columns, as in
