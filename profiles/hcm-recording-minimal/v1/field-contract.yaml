@@ -1,0 +1,260 @@
+profile_id: hcm-recording-minimal
+version: '1'
+status: engineering draft; pending expert review
+source_commit: 4cc95afbf826400cf1fc113aef521061c687c111
+missing_semantics: Absent means not supplied; null and empty values are invalid. Each
+  count is per stated entity, not per study. No inference from absence.
+sources:
+  ontology:
+    path: dist/hcmo.ttl
+    version: 0.4.1
+    sha256: 3c8919703638e081495f8e729e3b5048bda6c2920caf29b2950e30b897c64bb3
+  manifest:
+    path: hcmo.yaml
+    version: 0.4.1
+    sha256: 256dc005768cf1cb40850dcf5e0537d9b3768699061dc552af0d825591f6cde3
+  external:
+    path: external-vocabularies.yaml
+    version: repository@4cc95afbf826400cf1fc113aef521061c687c111
+    sha256: 3066a41f7d1fee5ecbb3aba94ef8d79f5b248d836293b408b6933757f13e2b5c
+  modality:
+    path: vocabularies/modality.ttl
+    version: repository@4cc95afbf826400cf1fc113aef521061c687c111
+    sha256: 5ad46a9750653fd9a8380d391264a85427b648f03d989d2d846dc11c63497666
+  technology:
+    path: vocabularies/sensor-technology.ttl
+    version: repository@4cc95afbf826400cf1fc113aef521061c687c111
+    sha256: 792598b222aee2ad3d9cee3ca0ed5aa2ca3793f50a6ea9dbae97c4cf63de8b56
+  context:
+    path: ontology/context.jsonld
+    version: 0.4.1
+    sha256: dc99514141167274b8820e8d488ced43b985a3e5992d185ab7d640dfce9721d3
+  core_shapes:
+    path: shapes/hcm-shapes.ttl
+    version: 0.4.1
+    sha256: f67d93925fdd163d505c9e053e0254e7f3183a341b77dba0e43c752c757963f3
+fields:
+  enclosure_identifier:
+    definition: Identifier assigned to the monitored enclosure.
+    entity: https://w3id.org/hcmo/ontology/hcm#MonitoredEnclosure
+    property: https://w3id.org/hcmo/ontology/hcm#hasEnclosureIdentifier
+    value_type: string
+    min_count: 1
+    max_count: 1
+    policy: {}
+    evidence: none
+    review: none
+    datatype: http://www.w3.org/2001/XMLSchema#string
+  sensor_identifier:
+    definition: Identifier assigned to the sensor.
+    entity: https://w3id.org/hcmo/ontology/hcm/tech#Sensor
+    property: https://w3id.org/hcmo/ontology/hcm/tech#hasSensorIdentifier
+    value_type: string
+    min_count: 1
+    max_count: 1
+    policy: {}
+    evidence: none
+    review: none
+    datatype: http://www.w3.org/2001/XMLSchema#string
+  sensor_type:
+    definition: Type reported for the sensor.
+    entity: https://w3id.org/hcmo/ontology/hcm/tech#Sensor
+    property: https://w3id.org/hcmo/ontology/hcm/tech#hasSensorType
+    value_type: string
+    min_count: 0
+    max_count: 1
+    policy: {}
+    evidence: none
+    review: none
+    datatype: http://www.w3.org/2001/XMLSchema#string
+  species:
+    definition: Species name or identifier reported for the subject.
+    entity: https://w3id.org/hcmo/ontology/hcm/bio#Subject
+    property: https://w3id.org/hcmo/ontology/hcm/bio#hasSpecies
+    value_type: string
+    min_count: 1
+    max_count: 1
+    policy: {}
+    evidence: none
+    review: none
+    datatype: http://www.w3.org/2001/XMLSchema#string
+  sex:
+    definition: Biological sex reported for the subject.
+    entity: https://w3id.org/hcmo/ontology/hcm/bio#Subject
+    property: https://w3id.org/hcmo/ontology/hcm/bio#hasBiologicalSex
+    value_type: string
+    min_count: 0
+    max_count: 1
+    policy: {}
+    evidence: none
+    review: none
+    datatype: http://www.w3.org/2001/XMLSchema#string
+  strain:
+    definition: Strain, line, or breed reported for the subject.
+    entity: https://w3id.org/hcmo/ontology/hcm/bio#Subject
+    property: https://w3id.org/hcmo/ontology/hcm/bio#hasStrain
+    value_type: string
+    min_count: 0
+    max_count: 1
+    policy: {}
+    evidence: none
+    review: none
+    datatype: http://www.w3.org/2001/XMLSchema#string
+  date_of_birth:
+    definition: Date of birth reported for the subject.
+    entity: https://w3id.org/hcmo/ontology/hcm/bio#Subject
+    property: https://w3id.org/hcmo/ontology/hcm/bio#hasDateOfBirth
+    value_type: date
+    min_count: 0
+    max_count: 1
+    policy:
+      lexical_subset: YYYY-MM-DD without timezone, years 0001–9999
+    evidence: none
+    review: none
+    datatype: http://www.w3.org/2001/XMLSchema#date
+  sensor_technology_raw:
+    definition: Technology reported for the sensor.
+    entity: https://w3id.org/hcmo/ontology/hcm/tech#Sensor
+    property: https://w3id.org/hcmo/ontology/hcm/tech#hasSensorTechnology
+    value_type: string
+    min_count: 0
+    max_count: 1
+    policy: {}
+    evidence: none
+    review: none
+    datatype: http://www.w3.org/2001/XMLSchema#string
+  sampling_rate:
+    definition: Sampling rate of the sensor.
+    entity: https://w3id.org/hcmo/ontology/hcm/tech#Sensor
+    property: https://w3id.org/hcmo/ontology/hcm/tech#hasSamplingRateQuantity
+    value_type: quantity
+    min_count: 0
+    max_count: 1
+    policy:
+      class: http://qudt.org/schema/qudt/QuantityValue
+      numeric_property: http://qudt.org/schema/qudt/numericValue
+      unit_property: http://qudt.org/schema/qudt/hasUnit
+      allowed_units:
+      - http://qudt.org/vocab/unit/HZ
+      minimum_exclusive: 0
+    evidence: none
+    review: none
+    datatype: null
+  light_phase_duration:
+    definition: Duration of the light phase in a light cycle.
+    entity: https://w3id.org/hcmo/ontology/hcm/env#LightCycle
+    property: https://w3id.org/hcmo/ontology/hcm/env#hasLightPhaseDuration
+    value_type: duration
+    min_count: 0
+    max_count: 1
+    policy:
+      lexical_subset: positive or zero day/time xsd:duration components only; no year,
+        month, or negative duration
+    evidence: none
+    review: none
+    datatype: http://www.w3.org/2001/XMLSchema#duration
+  dark_phase_start:
+    definition: Start time of the dark phase in a light cycle.
+    entity: https://w3id.org/hcmo/ontology/hcm/env#LightCycle
+    property: https://w3id.org/hcmo/ontology/hcm/env#hasDarkPhaseStart
+    value_type: time
+    min_count: 0
+    max_count: 1
+    policy:
+      lexical_subset: HH:MM:SS with optional fractional seconds and optional Z or
+        offset up to 14:00; hours 00–23
+    evidence: none
+    review: none
+    datatype: http://www.w3.org/2001/XMLSchema#time
+  modality:
+    definition: Reviewed normalization of the reported modality.
+    entity: profile annotation
+    property: null
+    value_type: mapping
+    min_count: 0
+    max_count: 1
+    policy:
+      source: modality
+      scheme: https://w3id.org/hcmo/id/vocab/modality
+      allowed:
+      - https://w3id.org/hcmo/id/vocab/modality/acoustic-usv
+      - https://w3id.org/hcmo/id/vocab/modality/body-weight
+      - https://w3id.org/hcmo/id/vocab/modality/capacitive-sensing
+      - https://w3id.org/hcmo/id/vocab/modality/depth-video
+      - https://w3id.org/hcmo/id/vocab/modality/environmental-sensing
+      - https://w3id.org/hcmo/id/vocab/modality/feeding-and-drinking
+      - https://w3id.org/hcmo/id/vocab/modality/implantable-telemetry
+      - https://w3id.org/hcmo/id/vocab/modality/indirect-calorimetry
+      - https://w3id.org/hcmo/id/vocab/modality/infrared-beam-break
+      - https://w3id.org/hcmo/id/vocab/modality/lickometry
+      - https://w3id.org/hcmo/id/vocab/modality/load-cell-vibration
+      - https://w3id.org/hcmo/id/vocab/modality/operant-testing
+      - https://w3id.org/hcmo/id/vocab/modality/optogenetic-stimulation
+      - https://w3id.org/hcmo/id/vocab/modality/passive-infrared
+      - https://w3id.org/hcmo/id/vocab/modality/plethysmography
+      - https://w3id.org/hcmo/id/vocab/modality/rfid
+      - https://w3id.org/hcmo/id/vocab/modality/video
+      kind: skos:Concept
+      hierarchy: skos:broader
+    evidence: required for reviewed
+    review: required for reviewed
+    datatype: null
+  sensor_technology:
+    definition: Reviewed normalization of the reported sensor technology.
+    entity: profile annotation
+    property: null
+    value_type: mapping
+    min_count: 0
+    max_count: 1
+    policy:
+      source: technology
+      scheme: https://w3id.org/hcmo/id/vocab/sensor-technology
+      allowed:
+      - https://w3id.org/hcmo/id/vocab/sensor-technology/capacitance
+      - https://w3id.org/hcmo/id/vocab/sensor-technology/capacitive-touch
+      - https://w3id.org/hcmo/id/vocab/sensor-technology/gas-analysis
+      - https://w3id.org/hcmo/id/vocab/sensor-technology/infrared-beam-break
+      - https://w3id.org/hcmo/id/vocab/sensor-technology/infrared-video
+      - https://w3id.org/hcmo/id/vocab/sensor-technology/load-cell
+      - https://w3id.org/hcmo/id/vocab/sensor-technology/low-frequency-rfid
+      - https://w3id.org/hcmo/id/vocab/sensor-technology/time-of-flight-depth-imaging
+      kind: skos:Concept
+      hierarchy: skos:broader
+    evidence: required for reviewed
+    review: required for reviewed
+    datatype: null
+  taxon:
+    definition: Unresolved normalization of the reported species.
+    entity: profile annotation
+    property: null
+    value_type: mapping
+    min_count: 0
+    max_count: 1
+    policy:
+      source_field: species
+      allowed: []
+      reason: No authoritative taxon release pinned; species rank cannot be verified.
+    evidence: preserve available evidence
+    review: unresolved only
+    datatype: null
+mapping_record:
+  members:
+    source_value: nonempty string
+    status:
+    - unresolved
+    - needs_review
+    - reviewed
+    iri: IRI string for reviewed; null otherwise
+    evidence: nonempty string for reviewed; null or string otherwise
+    reviewer: nonempty string for reviewed; null otherwise
+    alternatives: array of nonempty strings
+    evidence_facts: array of strings
+  reviewed_requirements:
+    modality:
+      https://w3id.org/hcmo/id/vocab/modality/depth-video:
+      - depth_channel
+    sensor_technology:
+      '*':
+      - system_technology
+  note: Evidence facts are submitter assertions requiring expert review; they do not
+    establish mapping correctness.

@@ -33,6 +33,8 @@ jobs:
           fi
       - name: Validate (parse + SHACL + competency queries)
         run: python tooling/validate.py
+      - name: Verify recording profile pins and synthetic cases offline
+        run: python tooling/validate_recording_minimal.py
 
   interoperability:
     runs-on: ubuntu-latest

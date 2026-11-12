@@ -7,6 +7,8 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Added
 
+- Optional HCM Recording Minimal v1 engineering draft: pinned field contract, synthetic cases, gap report, and offline validation. The profile leaves HCMO 0.4.1 unchanged and awaits expert review.
+
 - `tooling/run_cqs.py`: runs the competency questions of
   `queries/competency_questions.yaml` against a SPARQL 1.1 Protocol endpoint
   (Fuseki, the Metadatapp public endpoint) and compares the rows with the
