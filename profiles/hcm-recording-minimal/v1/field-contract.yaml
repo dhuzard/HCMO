@@ -107,7 +107,8 @@ fields:
     value_type: date
     min_count: 0
     max_count: 1
-    policy: {}
+    policy:
+      lexical_subset: YYYY-MM-DD without timezone, years 0001–9999
     evidence: none
     review: none
     datatype: http://www.w3.org/2001/XMLSchema#date
@@ -146,7 +147,9 @@ fields:
     value_type: duration
     min_count: 0
     max_count: 1
-    policy: {}
+    policy:
+      lexical_subset: positive or zero day/time xsd:duration components only; no year,
+        month, or negative duration
     evidence: none
     review: none
     datatype: http://www.w3.org/2001/XMLSchema#duration
@@ -157,7 +160,9 @@ fields:
     value_type: time
     min_count: 0
     max_count: 1
-    policy: {}
+    policy:
+      lexical_subset: HH:MM:SS with optional fractional seconds and optional Z or
+        offset up to 14:00; hours 00–23
     evidence: none
     review: none
     datatype: http://www.w3.org/2001/XMLSchema#time

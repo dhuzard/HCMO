@@ -811,5 +811,343 @@
         ]
       }
     }
+  },
+  {
+    "name": "time-hour-only",
+    "expect": "invalid",
+    "case": {
+      "enclosure_identifier": "synthetic-cage-1",
+      "sensor_identifier": "synthetic-sensor-1",
+      "sensor_type": "camera",
+      "species": "reported mouse",
+      "sex": "reported female",
+      "strain": "synthetic line",
+      "sensor_technology_raw": "infrared camera with documented illumination",
+      "sampling_rate": {
+        "numeric_value": 30,
+        "unit": "http://qudt.org/vocab/unit/HZ"
+      },
+      "light_phase_duration": "PT12H",
+      "dark_phase_start": "12",
+      "taxon": {
+        "source_value": "reported mouse",
+        "status": "unresolved",
+        "iri": null,
+        "evidence": null,
+        "reviewer": null,
+        "alternatives": [],
+        "evidence_facts": []
+      },
+      "modality": {
+        "source_value": "camera recording",
+        "status": "reviewed",
+        "iri": "https://w3id.org/hcmo/id/vocab/modality/video",
+        "evidence": "synthetic camera specification",
+        "reviewer": "synthetic reviewer",
+        "alternatives": [],
+        "evidence_facts": []
+      },
+      "sensor_technology": {
+        "source_value": "infrared camera with documented illumination",
+        "status": "reviewed",
+        "iri": "https://w3id.org/hcmo/id/vocab/sensor-technology/infrared-video",
+        "evidence": "synthetic camera specification",
+        "reviewer": "synthetic reviewer",
+        "alternatives": [],
+        "evidence_facts": [
+          "system_technology"
+        ]
+      }
+    }
+  },
+  {
+    "name": "time-missing-seconds",
+    "expect": "invalid",
+    "case": {
+      "enclosure_identifier": "synthetic-cage-1",
+      "sensor_identifier": "synthetic-sensor-1",
+      "sensor_type": "camera",
+      "species": "reported mouse",
+      "sex": "reported female",
+      "strain": "synthetic line",
+      "sensor_technology_raw": "infrared camera with documented illumination",
+      "sampling_rate": {
+        "numeric_value": 30,
+        "unit": "http://qudt.org/vocab/unit/HZ"
+      },
+      "light_phase_duration": "PT12H",
+      "dark_phase_start": "19:00",
+      "taxon": {
+        "source_value": "reported mouse",
+        "status": "unresolved",
+        "iri": null,
+        "evidence": null,
+        "reviewer": null,
+        "alternatives": [],
+        "evidence_facts": []
+      },
+      "modality": {
+        "source_value": "camera recording",
+        "status": "reviewed",
+        "iri": "https://w3id.org/hcmo/id/vocab/modality/video",
+        "evidence": "synthetic camera specification",
+        "reviewer": "synthetic reviewer",
+        "alternatives": [],
+        "evidence_facts": []
+      },
+      "sensor_technology": {
+        "source_value": "infrared camera with documented illumination",
+        "status": "reviewed",
+        "iri": "https://w3id.org/hcmo/id/vocab/sensor-technology/infrared-video",
+        "evidence": "synthetic camera specification",
+        "reviewer": "synthetic reviewer",
+        "alternatives": [],
+        "evidence_facts": [
+          "system_technology"
+        ]
+      }
+    }
+  },
+  {
+    "name": "time-offset-out-of-range",
+    "expect": "invalid",
+    "case": {
+      "enclosure_identifier": "synthetic-cage-1",
+      "sensor_identifier": "synthetic-sensor-1",
+      "sensor_type": "camera",
+      "species": "reported mouse",
+      "sex": "reported female",
+      "strain": "synthetic line",
+      "sensor_technology_raw": "infrared camera with documented illumination",
+      "sampling_rate": {
+        "numeric_value": 30,
+        "unit": "http://qudt.org/vocab/unit/HZ"
+      },
+      "light_phase_duration": "PT12H",
+      "dark_phase_start": "19:00:00+15:00",
+      "taxon": {
+        "source_value": "reported mouse",
+        "status": "unresolved",
+        "iri": null,
+        "evidence": null,
+        "reviewer": null,
+        "alternatives": [],
+        "evidence_facts": []
+      },
+      "modality": {
+        "source_value": "camera recording",
+        "status": "reviewed",
+        "iri": "https://w3id.org/hcmo/id/vocab/modality/video",
+        "evidence": "synthetic camera specification",
+        "reviewer": "synthetic reviewer",
+        "alternatives": [],
+        "evidence_facts": []
+      },
+      "sensor_technology": {
+        "source_value": "infrared camera with documented illumination",
+        "status": "reviewed",
+        "iri": "https://w3id.org/hcmo/id/vocab/sensor-technology/infrared-video",
+        "evidence": "synthetic camera specification",
+        "reviewer": "synthetic reviewer",
+        "alternatives": [],
+        "evidence_facts": [
+          "system_technology"
+        ]
+      }
+    }
+  },
+  {
+    "name": "empty-duration-time",
+    "expect": "invalid",
+    "case": {
+      "enclosure_identifier": "synthetic-cage-1",
+      "sensor_identifier": "synthetic-sensor-1",
+      "sensor_type": "camera",
+      "species": "reported mouse",
+      "sex": "reported female",
+      "strain": "synthetic line",
+      "sensor_technology_raw": "infrared camera with documented illumination",
+      "sampling_rate": {
+        "numeric_value": 30,
+        "unit": "http://qudt.org/vocab/unit/HZ"
+      },
+      "light_phase_duration": "P1DT",
+      "dark_phase_start": "19:00:00",
+      "taxon": {
+        "source_value": "reported mouse",
+        "status": "unresolved",
+        "iri": null,
+        "evidence": null,
+        "reviewer": null,
+        "alternatives": [],
+        "evidence_facts": []
+      },
+      "modality": {
+        "source_value": "camera recording",
+        "status": "reviewed",
+        "iri": "https://w3id.org/hcmo/id/vocab/modality/video",
+        "evidence": "synthetic camera specification",
+        "reviewer": "synthetic reviewer",
+        "alternatives": [],
+        "evidence_facts": []
+      },
+      "sensor_technology": {
+        "source_value": "infrared camera with documented illumination",
+        "status": "reviewed",
+        "iri": "https://w3id.org/hcmo/id/vocab/sensor-technology/infrared-video",
+        "evidence": "synthetic camera specification",
+        "reviewer": "synthetic reviewer",
+        "alternatives": [],
+        "evidence_facts": [
+          "system_technology"
+        ]
+      }
+    }
+  },
+  {
+    "name": "non-finite-rate",
+    "expect": "invalid",
+    "case": {
+      "enclosure_identifier": "synthetic-cage-1",
+      "sensor_identifier": "synthetic-sensor-1",
+      "sensor_type": "camera",
+      "species": "reported mouse",
+      "sex": "reported female",
+      "strain": "synthetic line",
+      "sensor_technology_raw": "infrared camera with documented illumination",
+      "sampling_rate": {
+        "numeric_value": -1,
+        "unit": "http://qudt.org/vocab/unit/HZ"
+      },
+      "light_phase_duration": "PT12H",
+      "dark_phase_start": "19:00:00",
+      "taxon": {
+        "source_value": "reported mouse",
+        "status": "unresolved",
+        "iri": null,
+        "evidence": null,
+        "reviewer": null,
+        "alternatives": [],
+        "evidence_facts": []
+      },
+      "modality": {
+        "source_value": "camera recording",
+        "status": "reviewed",
+        "iri": "https://w3id.org/hcmo/id/vocab/modality/video",
+        "evidence": "synthetic camera specification",
+        "reviewer": "synthetic reviewer",
+        "alternatives": [],
+        "evidence_facts": []
+      },
+      "sensor_technology": {
+        "source_value": "infrared camera with documented illumination",
+        "status": "reviewed",
+        "iri": "https://w3id.org/hcmo/id/vocab/sensor-technology/infrared-video",
+        "evidence": "synthetic camera specification",
+        "reviewer": "synthetic reviewer",
+        "alternatives": [],
+        "evidence_facts": [
+          "system_technology"
+        ]
+      }
+    }
+  },
+  {
+    "name": "malformed-facts",
+    "expect": "invalid",
+    "case": {
+      "enclosure_identifier": "synthetic-cage-1",
+      "sensor_identifier": "synthetic-sensor-1",
+      "sensor_type": "camera",
+      "species": "reported mouse",
+      "sex": "reported female",
+      "strain": "synthetic line",
+      "sensor_technology_raw": "infrared camera with documented illumination",
+      "sampling_rate": {
+        "numeric_value": 30,
+        "unit": "http://qudt.org/vocab/unit/HZ"
+      },
+      "light_phase_duration": "PT12H",
+      "dark_phase_start": "19:00:00",
+      "taxon": {
+        "source_value": "reported mouse",
+        "status": "unresolved",
+        "iri": null,
+        "evidence": null,
+        "reviewer": null,
+        "alternatives": [],
+        "evidence_facts": []
+      },
+      "modality": {
+        "source_value": "camera recording",
+        "status": "reviewed",
+        "iri": "https://w3id.org/hcmo/id/vocab/modality/video",
+        "evidence": "synthetic camera specification",
+        "reviewer": "synthetic reviewer",
+        "alternatives": [],
+        "evidence_facts": [
+          {}
+        ]
+      },
+      "sensor_technology": {
+        "source_value": "infrared camera with documented illumination",
+        "status": "reviewed",
+        "iri": "https://w3id.org/hcmo/id/vocab/sensor-technology/infrared-video",
+        "evidence": "synthetic camera specification",
+        "reviewer": "synthetic reviewer",
+        "alternatives": [],
+        "evidence_facts": [
+          "system_technology"
+        ]
+      }
+    }
+  },
+  {
+    "name": "large-finite-integer",
+    "expect": "valid",
+    "case": {
+      "enclosure_identifier": "synthetic-cage-1",
+      "sensor_identifier": "synthetic-sensor-1",
+      "sensor_type": "camera",
+      "species": "reported mouse",
+      "sex": "reported female",
+      "strain": "synthetic line",
+      "sensor_technology_raw": "infrared camera with documented illumination",
+      "sampling_rate": {
+        "numeric_value": 10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000,
+        "unit": "http://qudt.org/vocab/unit/HZ"
+      },
+      "light_phase_duration": "PT12H",
+      "dark_phase_start": "19:00:00",
+      "taxon": {
+        "source_value": "reported mouse",
+        "status": "unresolved",
+        "iri": null,
+        "evidence": null,
+        "reviewer": null,
+        "alternatives": [],
+        "evidence_facts": []
+      },
+      "modality": {
+        "source_value": "camera recording",
+        "status": "reviewed",
+        "iri": "https://w3id.org/hcmo/id/vocab/modality/video",
+        "evidence": "synthetic camera specification",
+        "reviewer": "synthetic reviewer",
+        "alternatives": [],
+        "evidence_facts": []
+      },
+      "sensor_technology": {
+        "source_value": "infrared camera with documented illumination",
+        "status": "reviewed",
+        "iri": "https://w3id.org/hcmo/id/vocab/sensor-technology/infrared-video",
+        "evidence": "synthetic camera specification",
+        "reviewer": "synthetic reviewer",
+        "alternatives": [],
+        "evidence_facts": [
+          "system_technology"
+        ]
+      }
+    }
   }
 ]

@@ -59,8 +59,16 @@ def validate(case, contract, graphs):
                 if kind == 'date':
                     if not re.fullmatch(r'\d{4}-\d{2}-\d{2}', value): raise ValueError('date')
                     datetime.date.fromisoformat(value)
-                if kind == 'time': datetime.time.fromisoformat(value.replace('Z', '+00:00'))
-                if kind == 'duration' and not re.fullmatch(r'P(?=\d|T\d)(?:\d+D)?(?:T(?:\d+H)?(?:\d+M)?(?:\d+(?:\.\d+)?S)?)?', value):
+                if kind == 'time':
+                    match = re.fullmatch(r'(\d{2}):(\d{2}):(\d{2})(?:\.(\d+))?(Z|[+-]\d{2}:\d{2})?', value)
+                    if not match: raise ValueError('time')
+                    hour, minute, second = map(int, match.group(1, 2, 3))
+                    if hour > 23 or minute > 59 or second > 59: raise ValueError('time')
+                    zone = match.group(5)
+                    if zone and zone != 'Z':
+                        zh, zm = map(int, zone[1:].split(':'))
+                        if zh > 14 or zm > 59 or (zh == 14 and zm != 0): raise ValueError('timezone')
+                if kind == 'duration' and (not re.fullmatch(r'P(?=\d|T\d)(?:\d+D)?(?:T(?=\d)(?:\d+H)?(?:\d+M)?(?:\d+(?:\.\d+)?S)?)?', value) or value.endswith('T')):
                     raise ValueError('duration')
             except ValueError:
                 errors.append(f'{key}: invalid {kind}')
@@ -68,7 +76,7 @@ def validate(case, contract, graphs):
             if not isinstance(value, dict) or set(value) != {'numeric_value', 'unit'}:
                 errors.append(f'{key}: expected numeric_value and unit')
             elif (isinstance(value['numeric_value'], bool) or not isinstance(value['numeric_value'], (float, int))
-                  or not math.isfinite(value['numeric_value']) or value['numeric_value'] <= 0
+                  or (isinstance(value['numeric_value'], float) and not math.isfinite(value['numeric_value'])) or value['numeric_value'] <= 0
                   or value['unit'] not in policy['allowed_units']):
                 errors.append(f'{key}: invalid value or unit')
         elif kind == 'mapping':
@@ -96,7 +104,7 @@ def validate(case, contract, graphs):
                     errors.append(f'{key}: reviewed mapping needs evidence and reviewer')
                 required = contract['mapping_record']['reviewed_requirements'].get(key, {})
                 facts = required.get(iri, required.get('*', [])) if isinstance(iri, str) else []
-                if not set(facts).issubset(value['evidence_facts']):
+                if not isinstance(value['evidence_facts'], list) or any(not isinstance(x, str) for x in value['evidence_facts']) or not set(facts).issubset(value['evidence_facts']):
                     errors.append(f'{key}: missing evidence facts')
             else:
                 errors.append(f'{key}: unsupported or unreviewed status')
