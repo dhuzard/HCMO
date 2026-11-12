@@ -1,2 +1,11 @@
 third_party/bfo-sosa-bridge/** -text
 **/*.review/*.json merge=human-review-thread
+
+# Byte-pinned recording-profile sources must be identical across checkouts.
+dist/hcmo.ttl text eol=lf
+hcmo.yaml text eol=lf
+external-vocabularies.yaml text eol=lf
+ontology/context.jsonld text eol=lf
+shapes/hcm-shapes.ttl text eol=lf
+vocabularies/modality.ttl text eol=lf
+vocabularies/sensor-technology.ttl text eol=lf

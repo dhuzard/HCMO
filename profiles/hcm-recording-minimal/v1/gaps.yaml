@@ -1,0 +1,19 @@
+gaps:
+  taxon:
+    reason: No authoritative taxonomy release and species-rank subset is pinned.
+    representation: Preserve species literal and optional unresolved evidence-bound mapping with alternatives; do not publish a normalized taxon.
+  modality:
+    reason: No canonical HCMO predicate connects the reported modality to a SKOS concept.
+    representation: Profile-side mapping record; no invented RDF predicate.
+  sensor_technology:
+    reason: hasSensorTechnology is a datatype property, not a concept link.
+    representation: Preserve literal and keep normalization in a separate profile-side record.
+  sampling_rate:
+    reason: Structured quantity cannot be represented losslessly by a single scalar field.
+    representation: QUDT QuantityValue with numericValue and hasUnit; Hz is the v1 explicit allowed unit.
+  light_context:
+    reason: A duration or clock time alone does not establish timezone or actual lighting conditions.
+    representation: Record separately on a LightCycle; retain additional context externally.
+  cedar:
+    reason: Nested quantities, evidence records, local scheme membership and cross-field review checks require external validation.
+    representation: Export only supported primitive fields; report omissions and retain source document.
