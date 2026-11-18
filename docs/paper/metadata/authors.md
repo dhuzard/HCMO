@@ -5,12 +5,13 @@ Toffano removed 2026-10-26, issue #54):** Cyril
 Gilbert is **first author**. The middle-author order is Gaoussou Sanou, Serge
 Sonfack Sounchio, Pierre Larmande, Benoît Girard, and Philippe
 Rocca-Serra. Konstantin Todorov and Damien Huzard
-are **co-last**; Damien remains the final listed author. Cyril Gilbert,
-Konstantin Todorov, and Damien Huzard are the three corresponding authors.
+are **co-last**; Damien remains the final listed author. Konstantin Todorov
+and Damien Huzard are the two corresponding authors (submission-day decision,
+2026-11-18); Cyril remains first author.
 
 | # | Author | Role | ORCID | Affiliation |
 |---|--------|------|-------|-------------|
-| 1 | **Cyril Gilbert** | **First / corresponding ✉** | 0009-0008-2489-8106 | LIRMM, Université de Montpellier, CNRS, Montpellier, France |
+| 1 | **Cyril Gilbert** | **First author** | 0009-0008-2489-8106 | LIRMM, Université de Montpellier, CNRS, Montpellier, France |
 | 2 | Gaoussou Sanou | contributing author | 0000-0003-2204-2466 | IMGT®, IGH, Université de Montpellier, CNRS, Montpellier, France |
 | 3 | Serge Sonfack Sounchio | contributing author | 0000-0002-6085-6818 | Robert Bosch Sp. z o. o., Jutrzenki 105, Poland |
 | 4 | Pierre Larmande | contributing author | 0000-0002-2923-9790 | DIADE, Université de Montpellier, IRD, CIRAD, Montpellier, France |
@@ -18,6 +19,31 @@ Konstantin Todorov, and Damien Huzard are the three corresponding authors.
 | 6 | Philippe Rocca-Serra | contributing author | 0000-0001-9853-5668 | Oxford e-Research Centre, Department of Engineering Science, University of Oxford, Oxford OX1 3QG, United Kingdom |
 | 7 | **Konstantin Todorov** | **Co-last / corresponding ✉** | 0000-0002-9116-6692 | LIRMM, Université de Montpellier, CNRS, Montpellier, France |
 | 8 | **Damien Huzard** | **Co-last / corresponding ✉; final listed author** | 0000-0003-4820-7951 | Neuronautix, Montpellier, France |
+
+## Submission form details
+
+Saved from Damien's submission-form entries on **2026-11-18**. The reusable
+CSV is [`submission-authors.csv`](submission-authors.csv). Author order is the
+manuscript order. Only Konstantin Todorov and Damien Huzard are marked as
+corresponding authors, following the submission-day decision.
+
+Country/region is preserved as **France for all eight authors**, exactly as
+supplied. Before entering it in the portal, check what that field represents:
+Serge's affiliation is in Poland, Benoît's in Switzerland, and Philippe's in
+the United Kingdom. Their country values have not been inferred or changed.
+Cyril's affiliation below preserves the supplied English submission wording;
+the manuscript uses the French university name.
+
+| # | First name | Last name | Email | Country/region | Submission affiliation | Corresponding author |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | Cyril | Gilbert | cyril.gilbert8@gmail.com | France | LIRMM, CNRS, University of Montpellier, Montpellier, France | No |
+| 2 | Gaoussou | Sanou | gaoussou.sanou@igh.cnrs.fr | France | IMGT®, IGH, Université de Montpellier, CNRS, Montpellier, France | No |
+| 3 | Serge | Sonfack Sounchio | *(not stored in the repository)* | France | Robert Bosch Sp. z o. o., Jutrzenki 105, Poland | No |
+| 4 | Pierre | Larmande | pierre.larmande@ird.fr | France | DIADE, Université de Montpellier, IRD, CIRAD, Montpellier, France | No |
+| 5 | Benoît | Girard | *(not stored in the repository, at his request)* | France | Department of Basic Neurosciences, University of Geneva, Switzerland | No |
+| 6 | Philippe | Rocca-Serra | philippe.rocca-serra@oerc.ox.ac.uk | France | Oxford e-Research Centre, Department of Engineering Science, University of Oxford, Oxford OX1 3QG, United Kingdom | No |
+| 7 | Konstantin | Todorov | konstantin.todorov@lirmm.fr | France | LIRMM, Université de Montpellier, CNRS, Montpellier, France | Yes |
+| 8 | Damien | Huzard | damien.huzard@gmail.com | France | Neuronautix, Montpellier, France | Yes |
 
 > ✉ = corresponding author. Single-anonymous track → authors are **named** in
 > the submission. Equal-contribution/co-last wording still needs to be adapted
@@ -80,24 +106,35 @@ development of Metadatapp.
 
 ## To provide before submission (T-author)
 - [x] ORCIDs for Gilbert, Sanou, Sonfack Sounchio, Toffano. *(provided 2026-06-29)*
-- [x] Author order and three corresponding authors. *(updated 2026-09-04)*
-- [x] Exact submission affiliations for all 9 authors confirmed and recorded in
+- [x] Author order and two corresponding authors: Konstantin Todorov and
+      Damien Huzard. *(submission-day decision, 2026-11-18)*
+- [x] Exact submission affiliations for all eight current manuscript authors confirmed and recorded in
       `CITATION.cff` and the repository README. *(Eight confirmed 2026-09-04;
       Benoît Girard confirmed 2026-10-14.)*
-- [x] Corresponding emails confirmed 2026-08-31: Cyril Gilbert
+- [x] Contact emails confirmed 2026-08-31: Cyril Gilbert
       (`cyril.gilbert8@gmail.com`), Konstantin Todorov
       (`konstantin.todorov@lirmm.fr`), and Damien Huzard
       (`damien.huzard@gmail.com`).
 - [x] Benoît Girard (added 2026-09-24; ORCID 0000-0002-3914-6483 received):
       affiliation supplied 2026-10-14 and recorded in `main.tex`, `CITATION.cff`,
       and README.
-- [ ] Decide whether Benoît Girard is added to the release creator metadata.
-- [ ] Add Philippe Rocca-Serra between Larmande and Todorov in the published
-      Zenodo creator metadata. Preserve the existing Git tag and archived
-      ontology graph; this is a metadata-only correction.
+- [x] Benoît Girard is present in the published 0.4.1 Zenodo creator metadata
+      (verified through the public API on 2026-11-18). His archived creator
+      record lacks the Geneva affiliation; the manuscript and `CITATION.cff`
+      include it.
+- [x] Philippe Rocca-Serra is present between Girard and Todorov in the
+      published 0.4.1 Zenodo creator metadata (verified 2026-11-18).
+      The immutable release retains nine creators, including Antoine Toffano;
+      the current manuscript has eight authors. Its resource citation describes
+      that archived release and retains its original creator list.
 - [x] Development provenance, funding/acknowledgement, and Damien Huzard
       conflict-of-interest facts supplied; final prose is in the Overleaf
       manuscript.
+- [ ] Final-version approval and agreement to submission from all current
+      coauthors: not verified by this audit. Damien initially reported on
+      2026-11-18 that the comment deadline passed without replies. Cyril
+      subsequently supplied review comments, which were incorporated; this
+      records his feedback without treating it as final-version approval.
 
 ## Development provenance, funding, and conflict-of-interest facts
 

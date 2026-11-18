@@ -8,15 +8,14 @@
 \usepackage{booktabs}
 \usepackage{hyperref}
 \usepackage{microtype}
+\setlength{\emergencystretch}{1em}
 \usepackage{tabularx}
-\usepackage{todonotes}
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta,positioning,shapes.geometric}
 \usepackage{xcolor}
-\usepackage{pdfcomment}
 
 \newif\ifreview
-\reviewtrue
+\reviewfalse
 \ifreview
   \newcommand{\new}[1]{\textcolor{blue!70!black}{#1}}
 \else
@@ -27,16 +26,12 @@
 % names) stay inline.
 \newcommand{\fnurl}[1]{\footnote{\url{#1}}}
 
-\newcommand{\reviewcomment}[2]{%
-  \pdfmarkupcomment[markup=Highlight,color={1 1 0}]{#1}{#2}%
-}
-
 \title{HCMO: A FAIR Ontology for Home-Cage Monitoring}
 \titlerunning{HCMO: A FAIR Ontology for Home-Cage Monitoring}
 
 \author{
 Cyril Gilbert\inst{1}\orcidID{0009-0008-2489-8106}
-\thanks{First and corresponding author.} \and
+\thanks{First author.} \and
 Gaoussou Sanou\inst{2}\orcidID{0000-0003-2204-2466} \and
 Serge Sonfack Sounchio\inst{3}\orcidID{0000-0002-6085-6818} \and
 Pierre Larmande\inst{4}\orcidID{0000-0002-2923-9790} \and
@@ -138,7 +133,14 @@ R: Resources; S: Software; Su: Supervision; V: Validation; Vi: Visualization;
 WO/WR: Writing -- original draft / review \& editing. Detailed statement in
 the repository\fnurl{https://github.com/dhuzard/HCMO/blob/main/docs/paper/metadata/authors.md}.}
 
-\textbf{Disclosure of delegation to generative AI.}
+\textbf{Competing interests.}
+Damien Huzard initiated Metadatapp as an entrepreneurial project and currently
+maintains it as open-source software. He also provides consultancy services in
+preclinical research and research metadata through
+Neuronautix. The other authors declare no competing
+interests.
+
+\section*{Use of Generative AI}
 \new{The authors declare the use of generative AI in the research and writing
 process. According to the GAIDeT taxonomy \cite{gaidet2026}, the following
 tasks were delegated to GAI tools under full human supervision: literature
@@ -148,17 +150,10 @@ curation and organization; visualization; reproducibility testing; text
 generation; proofreading and editing; summarizing text; translation;
 reformatting; quality assessment; identification of limitations;
 recommendations. Tools: Anthropic Claude Code (Claude Opus~4.8--5.5,
-Sonnet~5.5, Fable~5.1), OpenAI Codex (GPT-5 to GPT-6.1), and GitHub Copilot
+Sonnet~5.5, Fable~5.1), OpenAI Codex (GPT-5 to GPT-6.2), and GitHub Copilot
 Autofix. Responsibility for the final manuscript lies entirely with the
 authors; GAI tools are not authors and bear no responsibility for the outcomes.
 Declaration submitted by: collective responsibility.}
-
-\textbf{Competing interests.}
-Damien Huzard initiated Metadatapp as an entrepreneurial project and currently
-maintains it as open-source software. He also provides consultancy services in
-preclinical research and research metadata through
-Neuronautix. The other authors declare no competing
-interests.
 
 \bibliographystyle{splncs04}
 \bibliography{references}

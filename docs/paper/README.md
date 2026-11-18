@@ -7,23 +7,19 @@ only** — do not use the "MAPP" name in the paper.)
 
 ## Target venue — **ESWC 2027, Resources Track** (decided 2026-10-12; ISWC was the target from 2026-09-24 to 2026-10-12, see `ISWC-MIGRATION-PLAN.md`)
 
-**Decided 2026-10-12: ESWC 2027 Resources Track.** The call was not published on
-2026-10-12 (page: "Coming soon"). Planning baseline from the ESWC 2026 call:
-abstract about one week before the full paper (2026 edition: 27 Nov and
-4 Dec 2025, so expect late November / early December 2026); 15 pages plus
-unlimited references; single-anonymous review; resource links (Resource type,
-License, DOI, URL) right after the abstract; persistent URI, licence,
-registration in community repositories and a maintenance plan. Re-check
-everything against the 2027 call when it opens.
+**Decided 2026-10-12; live call verified 2026-11-18:**
+[ESWC 2027 Resources Track](https://2027.eswc-conferences.org/calls/papers-resource-track/).
+Abstract deadline: **10 December 2026**; full-paper deadline:
+**17 December 2026**, both 23:59 Anywhere on Earth (UTC−12).
 
 Publishes in **Springer LNCS**, **single-anonymous** review (reviewers anonymous,
 **authors visible** — resource ownership must be checkable), **abstract
 pre-submission** required, **mandatory resource-metadata block** right after the
 abstract. **Page budget: 15 pp + unlimited references.**
 
-> ESWC 2026 deadlines have passed; target the **2027** cycle (deadlines expected
-> ~Dec 2026). Re-confirm dates, page limit, and template against the live CfP when
-> it opens. (ISWC Resources Track, deadline around May, is the fallback.)
+The final repository copy was confirmed as authoritative by Damien on
+2026-11-18. The dated submission audit is in
+[`evaluation/SUBMISSION-CHECK-2026-11-18.md`](evaluation/SUBMISSION-CHECK-2026-11-18.md).
 
 ## Tracking checklist (Cyril)
 
@@ -75,7 +71,7 @@ docs/paper/
 - Ontology IRI / PURL: <https://w3id.org/hcmo/ontology/hcm>
 - Documentation (WIDOCO): <https://dhuzard.github.io/HCMO/index-en.html>
 - Code repository: <https://github.com/dhuzard/HCMO>
-- Version DOI (Zenodo, v0.3.0): <https://doi.org/10.5281/zenodo.22208202>
+- Version DOI (Zenodo, v0.4.1): <https://doi.org/10.5281/zenodo.23315766>
 - Concept DOI (all versions): <https://doi.org/10.5281/zenodo.18925284>
 - Conceptual precursor: HCM Definition Olog on Zenodo, version DOI
   <https://doi.org/10.5281/zenodo.22646369> and concept DOI

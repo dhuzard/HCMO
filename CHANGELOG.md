@@ -7,6 +7,11 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Added
 
+- Submission metadata for all eight manuscript authors, including supplied
+  email addresses, country/region, affiliation and the selected two
+  corresponding authors, in `docs/paper/metadata/submission-authors.csv` and
+  the existing author metadata sheet.
+
 - Optional HCM Recording Minimal v1 engineering draft: pinned field contract, synthetic cases, gap report, and offline validation. The profile leaves HCMO 0.4.1 unchanged and awaits expert review.
 
 - `tooling/run_cqs.py`: runs the competency questions of
@@ -37,6 +42,24 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
   the release manifest. The modality definitions are new and open to review.
 
 ### Changed
+
+- Paper: address Cyril's submission review by pinning the post-release SHACL
+  results to commit `81440fee6eda4eb5f626957589bd1a4e7988347f` and stating how
+  information loss in the native ISA projection limits reconstruction of
+  experimental context. Retain the corrected space after "prefixes.".
+
+- Paper: revise the abstract around the interoperability problem, HCMO's
+  modelling contribution and intended reuse; remove the detailed HermiT and
+  SPARQL result sentence and shorten the standards and release-artifact lists.
+
+- Paper: prepare the ESWC 2027 submission copy with review highlighting disabled,
+  no visible TODO, a separate Use of Generative AI section immediately before
+  the bibliography, and the factorial-fixture figure fitted to the text width.
+  Refresh the call checklist and archive the 18 November submission checks;
+  preserve the distinction between passed technical checks and unverified
+  coauthor approval or portal submission. Ontology terms and axioms are unchanged.
+  Konstantin Todorov and Damien Huzard are the two corresponding authors,
+  as selected for submission; author order and co-last roles are retained.
 
 - Paper: Antoine Toffano removed from the author list and the CRediT statement
   (#54) and thanked among the non-author contributions for project discussions
