@@ -14,11 +14,13 @@ HCMO developed through four stages:
    through Metadatapp's semantic-development work and related grant
    preparation. Leonardo Restivo confirmed this date (2026-09-24) and followed
    the development through the CEDAR user list.
-3. A COST mobility grant (€750) awarded to Damien Huzard for *Mapping the
-   Home-Cage Monitoring Ontology to Device Metadata* supported limited
-   preliminary device-metadata mapping, project scoping, and publication of an
-   early GitHub version in September 2025, with contributions from Leonardo
-   Restivo and Benoît Girard. Benoît Girard is a co-author of the HCMO article
+3. A Virtual Mobility Grant (€750) of COST Action CA20135 (TEATIME), awarded
+   to Damien Huzard for the project *Mapping the Home-Cage Monitoring Ontology
+   to Device Metadata*, supported preliminary mapping and implementation work
+   on HCMO, including project scoping and publication of an early GitHub
+   version in September 2025. The project was initiated by Benoît Girard, who
+   wrote the proposal, with contributions from Leonardo Restivo. Benoît Girard
+   is a co-author of the HCMO article
    (decided 2026-09-24) and is credited there in the CRediT statement rather
    than in the acknowledgements. His Conceptualization role is qualified as
    *initial project framing* (agreed 2026-09-29): it covers the early-stage
@@ -35,12 +37,18 @@ HCMO developed through four stages:
 
 ## Non-author contributions
 
-- **Initial HCM profile of the TEATIME Olog:** Leonardo Restivo and Davor Virag.
-- **Preparation and preliminary scoping of the COST mobility-grant project and
-  early categorisation of metadata elements used in auxiliary authoring tools:**
-  Leonardo Restivo (non-author), with Benoît Girard (now a co-author).
+These entries follow the non-author contributions paragraph of the HCMO article.
+
+- **HCM Definition Olog:** COST Action TEATIME (CA20135), particularly Working
+  Group 2, as its collective producer. Leonardo Restivo introduced the Olog
+  approach and facilitated its community-based development.
+- **Semantic-components model of Bains et al.:** Leonardo Restivo and Davor
+  Virag.
+- **Preliminary scoping of the COST mobility-grant project:** Leonardo Restivo.
 - **Early conceptual and software architecture developed for HCMO within
   Metadatapp:** Laurent Huzard.
+- **Participation in project discussions (January–March 2026):** Antoine
+  Toffano.
 - **Domain expertise and feedback:** Benoit Petit-Demoulière, Vootele Voikar,
   Leonardo Restivo, Davor Virag, and Marion Rivalan.
 
@@ -62,35 +70,34 @@ development of Metadatapp.
 
 ## Auxiliary field-tier inventory
 
-The preliminary project work by Benoît Girard and Leonardo Restivo included an
-early categorisation of metadata elements used in auxiliary authoring tools.
-Damien Huzard subsequently introduced a Mandatory/Recommended/Optional inventory
-into the repository and revised it. The current inventory differs substantially
-from the earlier historical repository inventory. Because the original
-field-level classification supplied during preliminary scoping is not available
-in the repository, the precise continuity of individual assignments and
-rationales cannot be reconstructed from version history alone.
+The source classification document for the repository's
+Mandatory/Recommended/Optional field tiers is Benoît Girard's email to Damien
+Huzard of 2 October 2025. It set out a fourteen-item
+Mandatory/Recommended/Optional classification of metadata elements, with a
+scientific rationale for each item, together with the argument for a
+device-agnostic conceptual blueprint. The field-tier document and the
+device-agnostic blueprint workbench introduced the next day (commit
+`a421285`, 3 October 2025) drew on that email, including several of its
+formulations. The inventory was then expanded and revised in the repository.
 
 The current inventory is documentation and input to the optional authoring
 workbench. Its tiers are not encoded as distinctions in the OWL ontology or the
 canonical SHACL shapes, and they were not evaluated as part of the scientific
 contribution reported in the HCMO article.
 
-### Repository evidence
+### Repository history
 
-- Commit `3f2fc24` (30 September 2025), authored by Damien Huzard, introduced
-  Mandatory/Recommended/Optional markers in the authoring interface.
-- Commit `a421285` (3 October 2025), authored by Damien Huzard, introduced the
-  field-tier document used by the device-agnostic blueprint workbench.
-- Commit `af52605` (6 October 2025), authored by Damien Huzard, reintroduced and
-  expanded `docs/FIELD-TIERS.md`; later revisions remain visible in its Git
-  history.
+- Commit `3f2fc24` (30 September 2025) introduced Mandatory/Recommended/Optional
+  markers in the authoring interface.
+- Commit `a421285` (3 October 2025) introduced the field-tier document used by
+  the device-agnostic blueprint workbench, following the 2 October 2025 email.
+- Commit `af52605` (6 October 2025) reintroduced and expanded
+  `docs/FIELD-TIERS.md`; later revisions remain visible in its Git history.
 - The earlier repository inventory, `ontology/hcmo-field-inventory.tsv`, had 30
   entries: 14 Mandatory, 12 Recommended, and 4 Optional. The current
   `docs/FIELD-TIERS.md` has 36 entries: 20 Mandatory, 11 Recommended, and 5
-  Optional. Numerous fields were removed, added, split, or assigned a different
-  tier.
-- No commit message or tracked field-level source attributes either repository
-  inventory to Benoît Girard or Leonardo Restivo. Their preliminary contribution
-  is recorded in the project-provenance statement, while Git history establishes
-  only when and by whom the repository artifacts were committed and revised.
+  Optional.
+
+Contributions to HCMO are recorded from the project record (emails, proposal
+documents, meetings and manuscript work), not inferred from commit authorship
+or pull requests; most contributors never committed to this repository.

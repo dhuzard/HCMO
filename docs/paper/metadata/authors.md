@@ -88,10 +88,14 @@ manuscript 2026-11-03):
 The authors acknowledge the TEATIME Olog and the COST Action TEATIME community
 as sources of domain terminology, expertise, and feedback.
 
-- **Initial HCM profile of the TEATIME Olog:** Leonardo Restivo and Davor Virag.
-- **Preparation and preliminary scoping of the COST mobility-grant project and
-  early categorisation of metadata elements used in auxiliary authoring tools:**
-  Leonardo Restivo. (Benoît Girard, who also contributed, is now a co-author.)
+- **HCM Definition Olog:** COST Action TEATIME (CA20135), particularly Working
+  Group 2, as its collective producer; Leonardo Restivo introduced the Olog
+  approach and facilitated its community-based development.
+- **Semantic-components model of Bains et al.:** Leonardo Restivo and Davor
+  Virag.
+- **Preliminary scoping of the COST mobility-grant project:** Leonardo Restivo.
+  (The project was initiated by Benoît Girard, who wrote the proposal; he is a
+  co-author and is credited in the CRediT statement.)
 - **Early conceptual and software architecture developed for HCMO within
   Metadatapp:** Laurent Huzard.
 - **Participation in project discussions (January–March 2026), before leaving
@@ -146,11 +150,15 @@ development of Metadatapp.
      machine-actionable ontology, HCM-D, published on BioPortal (no longer
      active), through Metadatapp's semantic-development work and related grant
      preparation (date confirmed by Leonardo Restivo, 2026-09-24).
-  3. A COST mobility grant (€750) awarded to Damien Huzard for *Mapping the
-     Home-Cage Monitoring Ontology to Device Metadata* supported limited
-     preliminary device-metadata mapping, project scoping, and publication of
-     an early GitHub version in September 2025, with contributions from Leonardo
-     Restivo and Benoît Girard.
+  3. A Virtual Mobility Grant (€750) of COST Action CA20135 (TEATIME), awarded
+     to Damien Huzard for the project *Mapping the Home-Cage Monitoring
+     Ontology to Device Metadata*, supported preliminary mapping and
+     implementation work on HCMO, including project scoping and publication of
+     an early GitHub version in September 2025. The project was initiated by
+     Benoît Girard, who wrote the proposal, with contributions from Leonardo
+     Restivo. Benoît Girard's 2 October 2025 email is the source
+     classification document for the Mandatory/Recommended/Optional field
+     tiers (see `docs/PROVENANCE.md`).
   4. An Exogene grant (€23,000), administered by the Pôle Universitaire
      d'Innovation of the University of Montpellier and awarded to Metadatapp to
      support collaboration between Damien Huzard and Konstantin Todorov,
