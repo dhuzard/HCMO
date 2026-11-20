@@ -1,0 +1,9 @@
+author_number,first_name,last_name,email,country_region,affiliation,corresponding_author
+1,Cyril,Gilbert,cyril.gilbert8@gmail.com,France,"LIRMM, CNRS, University of Montpellier, Montpellier, France",false
+2,Gaoussou,Sanou,gaoussou.sanou@igh.cnrs.fr,France,"IMGT®, IGH, Université de Montpellier, CNRS, Montpellier, France",false
+3,Serge,Sonfack Sounchio,,France,"Robert Bosch Sp. z o. o., Jutrzenki 105, Poland",false
+4,Pierre,Larmande,pierre.larmande@ird.fr,France,"DIADE, Université de Montpellier, IRD, CIRAD, Montpellier, France",false
+5,Benoît,Girard,,France,"Department of Basic Neurosciences, University of Geneva, Switzerland",false
+6,Philippe,Rocca-Serra,philippe.rocca-serra@oerc.ox.ac.uk,France,"Oxford e-Research Centre, Department of Engineering Science, University of Oxford, Oxford OX1 3QG, United Kingdom",false
+7,Konstantin,Todorov,konstantin.todorov@lirmm.fr,France,"LIRMM, Université de Montpellier, CNRS, Montpellier, France",true
+8,Damien,Huzard,damien.huzard@gmail.com,France,"Neuronautix, Montpellier, France",true

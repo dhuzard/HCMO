@@ -1,7 +1,12 @@
 # HCMO Resource Paper — TODO & change tracking
 
 **Status legend:** ☐ todo · ◐ in progress · ☑ done · ⚠ blocked
-**Last updated:** 2026-09-24
+**Last updated:** 2026-11-18
+
+**Submission-day status:** see
+[`evaluation/SUBMISSION-CHECK-2026-11-18.md`](evaluation/SUBMISSION-CHECK-2026-11-18.md)
+and the refreshed `CALL-REQUIREMENTS.md`. Older phase notes below retain their
+dated context; the authoritative manuscript is `overleaf/`, not `sections/`.
 
 This is the single source of truth for paper progress. Update the **status**
 column and append to the **Change log** whenever something moves.
@@ -90,9 +95,9 @@ column and append to the **Change log** whenever something moves.
 
 | ID | Task | Status |
 |----|------|--------|
-| T21 | Complete **CALL-REQUIREMENTS.md** checklist — all ✔. **Open:** the official ESWC 2027 Resources Track page was checked on 2026-09-17 but still said “Coming soon”; recheck and replace the provisional 2026 baseline when the call is published. | ☐ |
-| T22 | Internal review pass (co-authors) + proofread, page-count check. **Current evidence:** clean local LNCS compilation on 2026-09-17 produced 19 pages total (16 before the bibliography + 3 references), one content page over the provisional ESWC 2026 baseline. The untracked `HCMO.zip` also compiled to 19 pages with the same toolchain but contains source drift in four files; reconcile it with `docs/paper/overleaf/` before treating any reported 20-page PDF as authoritative. | ☐ |
-| T23 | Confirm affiliations + ORCIDs of all 9 authors and corresponding emails — see `metadata/authors.md` | ☑ | All ORCIDs, author order, affiliations, and three corresponding emails are confirmed. Philippe Rocca-Serra must still be added to the published Zenodo creator metadata. |
+| T21 | Verify the published call and complete **CALL-REQUIREMENTS.md**. Live rules checked 2026-11-18; technical checks pass. Human declarations and EasyChair actions remain open. | ◐ |
+| T22 | Final repository source confirmed by Damien on 2026-11-18. Clean LNCS build: 17 pages, references start on page 15; no unresolved citations, review markup or margin overflows. Damien reports no coauthor replies after the comment deadline; final-version approval remains unverified. | ◐ |
+| T23 | Confirm affiliations + ORCIDs of all eight current manuscript authors and corresponding emails — see `metadata/authors.md` | ☑ | Konstantin Todorov and Damien Huzard selected as the two corresponding authors on 2026-11-18. Public Zenodo API checked: Girard and Rocca-Serra are present; the archived release retains its nine original creators. |
 | T23b | **Confirm the license with all co-authors** | ☑ | CC BY 4.0 confirmed 2026-08-31. |
 | T24 | Submit **abstract** by pre-submission deadline | ☐ |
 | T25 | Submit **full paper** (+ supplementary material link) | ☐ |
@@ -103,6 +108,8 @@ column and append to the **Change log** whenever something moves.
 
 | Date | Change | By |
 |------|--------|----|
+| 2026-11-18 | Cyril's submission review incorporated: pinned post-release SHACL results to a clean, revalidated export of `81440fee6eda4eb5f626957589bd1a4e7988347f` and archived its output and environment; added the practical experimental-context consequences of native ISA losses; verified the existing spacing fix. Rebuilt the PDF and source ZIP within the page limit. | Damien/Codex |
+| 2026-11-18 | Submission audit: verified the live ESWC 2027 call and public release links; re-ran build, validation, HermiT, CQ, external-vocabulary and interoperability checks. Disabled review highlighting, removed the visible BioPortal reminder while retaining the registry follow-up in the audit, fitted Fig. 4 to the text width, repaired spacing and bibliography presentation, and placed the AI disclosure in the required section. Rebuilt the submission package. Human approval and portal submission remain unverified. | Damien/Codex |
 | 2026-09-24 | **Fig. 4 shows the repeated measures** — design box now reads "2 x 2 factorial design / treatment / enrichment / 4 groups x 2 animals / repeated measures: 7 days"; recording box "56 observations (8 animals x 7)". Box widened so nothing overlaps or hyphenates. Still 15 pp. before references. | Damien/Claude |
 | 2026-09-24 | **P1 closed — Actuator correction sent.** The BFO/SOSA email went out at 12:36 with point 4 proposing to retire `hcm-tech:Actuator`; a reply-all correction was sent the same day (keep all four HCMO classes, per A05). Decisions record P5, the plan's Motion 3, and a correction banner in the plan updated; the sent status and the correction text are recorded. | Damien/Claude |
 | 2026-09-24 | **Web links as footnotes; module count made consistent; Fig. 3 arrow fixed** — every web link is now a footnote (availability statement, BioPortal, examples and evaluation folders, Neuronautix, TEATIME); identifiers stay inline; FOOPS!/OOPS!/AskWol service URLs moved to their bibliography entries, and GitHub/Zenodo/docs are linked once, in the availability statement. Table 1 and the pipeline figure now say "5 domain + upper-level + compatibility", matching the seven manifest sources. Fig. 3 round-trip-to-checks arrow rerouted clear of the claim-boundary box. Still 15 pp. before references. Flagged: decision A05 retains `hcm-tech:Actuator`, contradicting point 4 of the BFO/SOSA email. | Damien/Claude |

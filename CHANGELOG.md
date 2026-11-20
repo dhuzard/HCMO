@@ -7,6 +7,30 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
 
 ### Added
 
+- Submission metadata for all eight manuscript authors, including supplied
+  email addresses, country/region, affiliation and the selected two
+  corresponding authors, in `docs/paper/metadata/submission-authors.csv` and
+  the existing author metadata sheet. Personal email addresses not already
+  public in the manuscript (Benoît Girard, at his request, and Serge Sonfack
+  Sounchio) are not stored in the repository.
+
+### Changed
+
+- Paper (Benoît Girard's final-draft review): Sect. 6 now states that HermiT
+  found the ontology consistent with no unsatisfiable class; SHACL is cited to
+  the W3C Recommendation (2017) and HermiT to Glimm et al. (2014), with
+  Gangemi et al. (2006) kept for ontology-evaluation practice; affiliations
+  are numbered in order of appearance (Geneva 5, Oxford 6, Neuronautix 7).
+- `docs/PROVENANCE.md` and `docs/paper/metadata/authors.md` aligned with the
+  paper's Funding and non-author-contribution paragraphs: the COST CA20135
+  (TEATIME) Virtual Mobility Grant project was initiated by Benoît Girard, who
+  wrote the proposal; his 2 October 2025 email is recorded as the source
+  classification document for the Mandatory/Recommended/Optional field tiers;
+  the commit-authorship argument is removed for all contributors; the HCM
+  Definition Olog is credited to TEATIME WG2, with Leonardo Restivo as
+  facilitator, and the Bains et al. semantic-components model to Leonardo
+  Restivo and Davor Virag.
+
 - Optional HCM Recording Minimal v1 engineering draft: pinned field contract, synthetic cases, gap report, and offline validation. The profile leaves HCMO 0.4.1 unchanged and awaits expert review.
 
 - `tooling/run_cqs.py`: runs the competency questions of
@@ -37,6 +61,24 @@ track `owl:versionInfo` of the ontology (`https://w3id.org/hcmo/ontology/hcm`).
   the release manifest. The modality definitions are new and open to review.
 
 ### Changed
+
+- Paper: address Cyril's submission review by pinning the post-release SHACL
+  results to commit `81440fee6eda4eb5f626957589bd1a4e7988347f` and stating how
+  information loss in the native ISA projection limits reconstruction of
+  experimental context. Retain the corrected space after "prefixes.".
+
+- Paper: revise the abstract around the interoperability problem, HCMO's
+  modelling contribution and intended reuse; remove the detailed HermiT and
+  SPARQL result sentence and shorten the standards and release-artifact lists.
+
+- Paper: prepare the ESWC 2027 submission copy with review highlighting disabled,
+  no visible TODO, a separate Use of Generative AI section immediately before
+  the bibliography, and the factorial-fixture figure fitted to the text width.
+  Refresh the call checklist and archive the 18 November submission checks;
+  preserve the distinction between passed technical checks and unverified
+  coauthor approval or portal submission. Ontology terms and axioms are unchanged.
+  Konstantin Todorov and Damien Huzard are the two corresponding authors,
+  as selected for submission; author order and co-last roles are retained.
 
 - Paper: Antoine Toffano removed from the author list and the CRediT statement
   (#54) and thanked among the non-author contributions for project discussions

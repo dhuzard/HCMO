@@ -1,0 +1,125 @@
+== 1. Parse ontology and generated RDF artifacts ==
+[OK]   parsed dist\hcmo.json
+[OK]   parsed dist\hcmo.owl
+[OK]   parsed dist\hcmo.ttl
+[OK]   parsed examples\abox-edge-cases.ttl
+[OK]   parsed examples\abox-inferred-invalid.ttl
+[OK]   parsed examples\abox-minimal.ttl
+[OK]   parsed examples\abox-social-invalid.ttl
+[OK]   parsed examples\dvc-tecniplast.ttl
+[OK]   parsed examples\isa-hcmo-bridge.ttl
+[OK]   parsed examples\isa-roundtrip\canonical.ttl
+[OK]   parsed examples\profiles\bfo-sosa-bridge\probes\carrier-pattern.ttl
+[OK]   parsed examples\profiles\bfo-sosa-bridge\probes\direct-concretizes.ttl
+[OK]   parsed examples\profiles\bfo-sosa-bridge\probes\observation-result.ttl
+[OK]   parsed examples\profiles\bfo-sosa-bridge\probes\physical-specimen-result.ttl
+[OK]   parsed examples\profiles\bfo-sosa-bridge\probes\process-foi.ttl
+[OK]   parsed examples\profiles\bfo-sosa-bridge\probes\separate-running-sensor.ttl
+[OK]   parsed examples\profiles\bfo-sosa-bridge\probes\software-sensor.ttl
+[OK]   parsed examples\user-submission.ttl
+[OK]   parsed examples\vocab-usage-invalid.ttl
+[OK]   parsed ontology\legacy\hcm-align.ttl
+[OK]   parsed ontology\legacy\hcm-bridge-animal.ttl
+[OK]   parsed ontology\legacy\hcm-metadata.ttl
+[OK]   parsed ontology\legacy\hcm.ttl
+[OK]   parsed ontology\legacy\mapp-0.0.1\hcm-bio.ttl
+[OK]   parsed ontology\legacy\mapp-0.0.1\hcm-core.ttl
+[OK]   parsed ontology\legacy\mapp-0.0.1\hcm-env.ttl
+[OK]   parsed ontology\legacy\mapp-0.0.1\hcm-obs.ttl
+[OK]   parsed ontology\modules\external-upper.ttl
+[OK]   parsed ontology\modules\hcm-bio.ttl
+[OK]   parsed ontology\modules\hcm-compat.ttl
+[OK]   parsed ontology\modules\hcm-core.ttl
+[OK]   parsed ontology\modules\hcm-env.ttl
+[OK]   parsed ontology\modules\hcm-obs.ttl
+[OK]   parsed ontology\modules\hcm-tech.ttl
+[OK]   parsed ontology\profiles\bfo-sosa-bridge.ttl
+[OK]   parsed ontology\profiles\external-upper-developer.ttl
+[OK]   parsed ontology\v2\hcmo-v2-merged-clean.ttl
+[OK]   parsed ontology\v2\hcmo-v2-merged.ttl
+[OK]   parsed shapes\hcm-shapes.ttl
+[OK]   parsed shapes\isa-hcmo-evidence-shapes.ttl
+[OK]   parsed shapes\isa-hcmo-roundtrip-shapes.ttl
+[OK]   parsed shapes\profiles\bfo-sosa-bridge-shapes.ttl
+[OK]   parsed shapes\vocab-shapes.ttl
+[OK]   parsed vocabularies\data-access-methods.ttl
+[OK]   parsed vocabularies\file-formats.ttl
+[OK]   parsed vocabularies\modality.ttl
+[OK]   parsed vocabularies\sensor-technology.ttl
+[OK]   parsed vocabularies\systems.ttl
+[OK]   parsed vocabularies\vendors.ttl
+
+== 2. Release and external vocabulary contracts ==
+[OK]   release metadata surfaces agree on HCMO 0.4.1 with preferred DOI 10.5281/zenodo.23315766; ontology DOI metadata is represented
+[OK]   hcmo.yaml API shape unchanged
+[OK]   external contract: 12 vocabularies, 15 checksummed artifacts
+[OK]   end-user upper presentation: 5 canonical anchors
+[OK]   optional developer upper profile: 11 source terms
+[OK]   active RDF and query IRIs covered by term allowlists
+[OK]   SOSA 2017 and SemTS 1.2.0 semantic policy enforced
+[OK]   docs/EXTERNAL-REUSE.md matches the merged graph
+
+== 3. SHACL (shapes vs examples) ==
+[OK]   SHACL examples/abox-minimal.ttl: conformant (expected conformant)
+[OK]   SHACL examples/user-submission.ttl: conformant (expected conformant)
+[OK]   SHACL examples/isa-hcmo-bridge.ttl: conformant (expected conformant)
+[OK]   SHACL examples/abox-edge-cases.ttl: non-conformant, 18 violations (expected non-conformant)
+[OK]   SHACL examples/abox-inferred-invalid.ttl: non-conformant, 5 violations (expected non-conformant)
+[OK]   ontology-aware target probe: conformant without ontology, non-conformant with ontology + RDFS
+[OK]   multi-animal probe examples/abox-social-invalid.ttl: all 3 rules fired
+
+== 4. ISA/STATO evidence graph ==
+[OK]   ISA/STATO evidence graph: conformant
+[OK]   ISA/STATO acyclic-process negative probe: non-conformant
+
+== 5. Accepted ISA/STATO round-trip policy ==
+[OK]   lossless HCMO RDF/extended ISA RO-Crate graph: 1539 triples
+[OK]   STATO-annotated result matrix: model, contrast estimate, 95% confidence interval, and p-value
+[OK]   housing history uses assignments, not a timeless monitored-animal shortcut
+[OK]   ISA round-trip semantic invariants: conformant
+[OK]   overlapping-housing negative probe: non-conformant
+[OK]   orphan HousingAssignment negative probe: non-conformant
+[OK]   reversed housing interval negative probe: non-conformant
+[OK]   incomplete allocation execution negative probe: non-conformant
+[OK]   untyped allocation execution negative probe: non-conformant
+[OK]   unchanged animal as ISA result negative probe: non-conformant
+[OK]   observation outside authoritative housing negative probe: non-conformant
+[OK]   ISA round-trip CQ housing-history: 9 exact answer(s)
+[OK]   ISA round-trip CQ factorial-groups: 8 exact answer(s)
+[OK]   ISA round-trip CQ repeated-observation-counts: 8 exact answer(s)
+[OK]   ISA round-trip CQ statistical-result-fragments: 4 exact answer(s)
+[OK]   ISA round-trip CQ source-sample-identity: 1 exact answer(s)
+
+== 6. Mapping and exchange contracts ==
+[OK]   semantic mapping registry: 12 review-only mapping(s)
+[OK]   exchange registry: 4 directional rule(s), two controlled-loss manifests with an executable native overlap
+
+== 7. Competency queries vs ontology and positive examples ==
+[OK]   query animals-by-enclosure (queries/cq-animals-by-enclosure.rq): 3 exact answer(s)
+[OK]   query isa-factor-group-assignment (queries/cq-isa-factor-group-assignment.rq): 1 exact answer(s)
+[OK]   query isa-recording-provenance (queries/cq-isa-recording-provenance.rq): 1 exact answer(s)
+[OK]   query isa-statistical-result-provenance (queries/cq-isa-statistical-result-provenance.rq): 1 exact answer(s)
+[OK]   query missing-dimensions (queries/cq-missing-dimensions.rq): 0 exact answer(s)
+[OK]   query environment-spec-observation (queries/cq-environment-spec-observation.rq): 1 exact answer(s)
+[OK]   query current-housing-at-time (queries/cq-current-housing-at-time.rq): 1 exact answer(s)
+[OK]   query status-evidence-at-time (queries/cq-status-evidence-at-time.rq): 1 exact answer(s)
+[OK]   query needs-provisioning (queries/cq-needs-provisioning.rq): 4 exact answer(s)
+[OK]   query sensors-behaviors (queries/cq-sensors-behaviors.rq): 5 exact answer(s)
+[OK]   query systems-24h-limited (queries/cq-systems-24h-limited.rq): 1 exact answer(s)
+[OK]   query social-interaction-partners (queries/cq-social-interaction-partners.rq): 2 exact answer(s)
+
+== 8. SKOS vocabularies ==
+[OK]   generated vendor/system vocabularies and form options are current
+[OK]   vocabulary integrity: 88 concepts in 6 schemes
+[OK]   vocabulary usage examples/abox-minimal.ttl: no violations
+[OK]   vocabulary usage examples/user-submission.ttl: no violations
+[OK]   vocabulary usage examples/isa-hcmo-bridge.ttl: no violations
+[OK]   vocabulary usage examples/abox-edge-cases.ttl: no violations
+[OK]   vocabulary usage examples/abox-inferred-invalid.ttl: no violations
+[OK]   negative probe examples/vocab-usage-invalid.ttl: all 4 usage shapes fired (4 result(s))
+
+== Summary ==
+  ontology graph triples: 1459
+  CQ evaluation graph triples: 1865
+  queries returning rows: ['queries/cq-animals-by-enclosure.rq', 'queries/cq-isa-factor-group-assignment.rq', 'queries/cq-isa-recording-provenance.rq', 'queries/cq-isa-statistical-result-provenance.rq', 'queries/cq-environment-spec-observation.rq', 'queries/cq-current-housing-at-time.rq', 'queries/cq-status-evidence-at-time.rq', 'queries/cq-needs-provisioning.rq', 'queries/cq-sensors-behaviors.rq', 'queries/cq-systems-24h-limited.rq', 'queries/cq-social-interaction-partners.rq']
+  result: PASS
