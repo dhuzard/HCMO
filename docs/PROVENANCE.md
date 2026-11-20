@@ -39,7 +39,7 @@ HCMO developed through four stages:
 
 These entries follow the non-author contributions paragraph of the HCMO article.
 
-- **HCM Definition Olog:** COST Action TEATIME (CA20135), particularly Working
+- **HCM Definition:** COST Action TEATIME (CA20135), particularly Working
   Group 2, as its collective producer. Leonardo Restivo introduced the Olog
   approach and facilitated its community-based development.
 - **Semantic-components model of Bains et al.:** Leonardo Restivo and Davor
